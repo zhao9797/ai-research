@@ -522,7 +522,7 @@ updated: 2026-06-18
 - [InternVL-U: Democratizing Unified Multimodal Models for Understanding, Reasoning, Generation and Editing](2026/internvl-u.md) — 上海人工智能实验室 Shanghai AI Lab (OpenGVLab / InternVL) · 2026-03 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2603.09877
 - [LongCat-Flash-Prover: Advancing Native Formal Reasoning via Agentic Tool-Integrated Reinforcement Learning](2026/longcat-flash-prover.md) — 美团 Meituan (LongCat Team) · 2026-03 · paper · [后训练/agentic训练/架构] — https://arxiv.org/abs/2603.21065
 - [LongCat-Next: Lexicalizing Modalities as Discrete Tokens](2026/longcat-next.md) — 美团 Meituan (LongCat Team) · 2026-03 · paper · [架构/预训练数据] — https://arxiv.org/abs/2603.27538
-- [Mistral Small 4（统一 Instruct + Reasoning + Devstral，MoE 119B/6.5B）](2026/mistral-small-4.md) — Mistral AI · 2026-03 · model-card · [架构/后训练/agentic训练] — https://huggingface.co/mistralai/Mistral-Small-4-119B-2603
+- [Mistral Small 4 119B A6B（统一 Instruct + Reasoning + Devstral）](2026/mistral-small-4.md) — Mistral AI · 2026-03 · model-card · [架构/后训练/agentic训练] — https://huggingface.co/mistralai/Mistral-Small-4-119B-2603
 - [Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation](2026/nemotron-cascade-2.md) — NVIDIA · 2026-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2603.19220
 - [Phi-4-reasoning-vision-15B Technical Report](2026/phi-4-reasoning-vision-15b-technical-report.md) — Microsoft Research · 2026-03 · report · [预训练数据/架构/后训练] — https://www.microsoft.com/en-us/research/wp-content/uploads/2026/03/Phi-4-reasoning-vision-15B-Tech-Report.pdf
 - [DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence](2026/deepseek-v4-technical-report.md) — DeepSeek (深度求索) · 2026-04 · report · [架构/AI infra/后训练/预训练数据] — https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro
@@ -548,12 +548,12 @@ updated: 2026-06-18
 - [Step 3.7 Flash](2026/step-3.7-flash.md) — 阶跃星辰 StepFun · 2026-05 · model-card · [架构/agentic训练/后训练] — https://huggingface.co/stepfun-ai/Step-3.7-Flash
 - [The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence](2026/minimax-m2-series.md) — MiniMax (稀宇科技) · 2026-05 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2605.26494
 - [Baichuan-M4: A Clinical-Grade Medical Agent System for Continuous Care](2026/baichuan-m4.md) — 百川智能 Baichuan Intelligence · 2026-06 · paper · [后训练/agentic训练/架构] — https://arxiv.org/abs/2606.08982
-- [GLM-5.2（智谱旗舰：长程任务 + 1M 上下文 + IndexShare 稀疏注意力）](2026/glm-5.2.md) — 智谱 Z.ai (Zhipu) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/zai-org/GLM-5.2
+- [GLM-5.2（智谱旗舰：long-horizon + 1M 上下文 + IndexShare 稀疏注意力）](2026/glm-5.2.md) — 智谱 Z.ai (Zhipu) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/zai-org/GLM-5.2
 - [Intern-S2-Preview（上海 AILab：35B 科学多模态，task scaling）](2026/intern-s2-preview.md) — 上海人工智能实验室 Shanghai AI Lab (InternLM) · 2026-06 · model-card · [架构/后训练/预训练数据/agentic训练] — https://huggingface.co/internlm/Intern-S2-Preview-FP8
 - [Introducing new capabilities to GPT-Rosalind](2026/gpt-rosalind.md) — OpenAI · 2026-06 · blog · [后训练/agentic训练] — https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/
 - [Kimi K2.6（月之暗面：原生多模态 agentic，1T MoE，agent swarm）](2026/kimi-k2.6.md) — 月之暗面 Moonshot AI · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/moonshotai/Kimi-K2.6
 - [Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale](2026/ling-ring-2.6-technical-report.md) — 蚂蚁 InclusionAI / Ant Group (Ling Team) · 2026-06 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2606.15079
 - [MiniMax Sparse Attention](2026/minimax-sparse-attention.md) — MiniMax (稀宇科技) · 2026-06 · paper · [架构/AI infra] — https://arxiv.org/abs/2606.13392
-- [MiniMax-M3（原生多模态，1M 上下文，MiniMax Sparse Attention）](2026/minimax-m3.md) — MiniMax (稀宇科技) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/MiniMaxAI/MiniMax-M3
+- [MiniMax-M3（原生多模态，1M 上下文，MiniMax Sparse Attention）](2026/minimax-m3.md) — MiniMax (稀宇科技) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练/预训练数据] — https://huggingface.co/MiniMaxAI/MiniMax-M3
 - [Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning](2026/nemotron-3-ultra.md) — NVIDIA · 2026-06 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2606.15007
-- [Qwen-AgentWorld-35B-A3B（首个语言世界模型：agent 环境仿真）](2026/qwen-agentworld.md) — 阿里巴巴 Qwen · 2026-06 · paper · [agentic训练/架构/后训练/预训练数据] — https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B
+- [Qwen-AgentWorld-35B-A3B（首个语言世界模型 LWM：agent 环境仿真）](2026/qwen-agentworld.md) — 阿里巴巴 Qwen · 2026-06 · paper · [agentic训练/架构/后训练/预训练数据] — https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B
