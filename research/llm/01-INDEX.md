@@ -502,7 +502,7 @@ updated: 2026-06-18
 - [Ring-1T — Every Step Evolves: Scaling Reinforcement Learning for Trillion-Scale Thinking Model](2025/ring-1t.md) — 蚂蚁集团 百灵 / inclusionAI (Ant Group Ling Team) · 2025-10 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2510.18855
 - [DeepSeek-V3.2 (含 V3.2-Exp / DeepSeek Sparse Attention)](2025/deepseek-v3.2.md) — DeepSeek · 2025-12 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2512.02556
 
-## 2026（46 条）
+## 2026（47 条）
 
 - ["DeepSeek-OCR 2: Visual Causal Flow"](2026/deepseek-ocr-2.md) — DeepSeek (深度求索) · 2026-01 · paper · [架构/预训练数据] — https://arxiv.org/abs/2601.20552
 - ["LongCat-Flash-Thinking-2601 Technical Report"](2026/longcat-flash-thinking-2601.md) — 美团 Meituan (LongCat Team) · 2026-01 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2601.16725
@@ -545,6 +545,7 @@ updated: 2026-06-18
 - [Gemini 3.5 Flash Model Card](2026/gemini-3-5-flash-model-card.md) — Google DeepMind · 2026-05 · model-card · [架构/后训练] — https://deepmind.google/models/model-cards/gemini-3-5-flash/
 - [Natural Language Autoencoders Produce Unsupervised Explanations of LLM Activations](2026/natural-language-autoencoders.md) — Anthropic · 2026-05 · paper · [后训练] — https://transformer-circuits.pub/2026/nla/
 - [Remote agents in Vibe. Powered by Mistral Medium 3.5.](2026/mistral-medium-3-5.md) — Mistral AI · 2026-05 · blog · [架构/后训练/agentic训练] — https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/
+- [MiniCPM5-1B（MiniCPM5 系列首款，端侧 1B SOTA）](2026/minicpm5-1b.md) — 面壁智能 ModelBest / OpenBMB (清华 THUNLP) · 2026-05 · model-card · [架构/预训练数据/后训练/agentic训练] — https://huggingface.co/openbmb/MiniCPM5-1B
 - ["Baichuan-M4: A Clinical-Grade Medical Agent System for Continuous Care"](2026/baichuan-m4.md) — 百川智能 Baichuan Intelligence · 2026-06 · paper · [后训练/agentic训练/架构] — https://arxiv.org/abs/2606.08982
 - ["Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale"](2026/ling-ring-2.6-technical-report.md) — 蚂蚁 InclusionAI / Ant Group (Ling Team) · 2026-06 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2606.15079
 - ["MiniMax Sparse Attention"](2026/minimax-sparse-attention.md) — MiniMax (稀宇科技) · 2026-06 · paper · [架构/AI infra] — https://arxiv.org/abs/2606.13392
