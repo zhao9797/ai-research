@@ -511,7 +511,7 @@ updated: 2026-06-18
 - [Skywork UniPic 3.0: Unified Multi-Image Composition via Sequence Modeling](2026/skywork-unipic-3.0.md) — 昆仑万维 Skywork (Kunlun) · 2026-01 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2601.15664
 - [Stable-DiffCoder: Pushing the Frontier of Code Diffusion Large Language Model](2026/stable-diffcoder.md) — 字节跳动 Seed (ByteDance Seed) · 2026-01 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2601.15892
 - [ERNIE 5.0 Technical Report](2026/ernie-5.0-technical-report.md) — 百度 Baidu (ERNIE Team) · 2026-02 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2602.04705
-- [GLM-5: from Vibe Coding to Agentic Engineering](2026/glm-5-vibe-coding-to-agentic-engineering.md) — 智谱 Z.ai (Zhipu / GLM-5-Team) · 2026-02 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2602.15763
+- [GLM-5: from Vibe Coding to Agentic Engineering](2026/glm-5-vibe-coding-to-agentic-engineering.md) — 智谱 Z.ai (Zhipu / GLM-5-Team) · 2026-02 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2602.15763
 - [Gemini 3.1 Pro Model Card](2026/gemini-3-1-pro-model-card.md) — Google DeepMind · 2026-02 · model-card · [架构/后训练] — https://deepmind.google/models/model-cards/gemini-3-1-pro/
 - [Kimi K2.5: Visual Agentic Intelligence](2026/kimi-k2.5-visual-agentic-intelligence.md) — 月之暗面 Moonshot AI (Kimi Team) · 2026-02 · paper · [架构/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2602.02276
 - [Qwen3.5-397B-A17B（Qwen3.5 旗舰开源权重模型）](2026/qwen3.5-397b-a17b.md) — 阿里巴巴 Qwen 团队 · 2026-02 · model-release · [pretraining/architecture/infra/post-training/agentic/multimodal/moe/linear-attention] — https://qwen.ai/blog?id=qwen3.5
@@ -556,4 +556,4 @@ updated: 2026-06-18
 - [MiniMax Sparse Attention](2026/minimax-sparse-attention.md) — MiniMax (稀宇科技) · 2026-06 · paper · [架构/AI infra] — https://arxiv.org/abs/2606.13392
 - [MiniMax-M3（原生多模态，1M 上下文，MiniMax Sparse Attention）](2026/minimax-m3.md) — MiniMax (稀宇科技) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练/预训练数据] — https://huggingface.co/MiniMaxAI/MiniMax-M3
 - [Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning](2026/nemotron-3-ultra.md) — NVIDIA · 2026-06 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2606.15007
-- [Qwen-AgentWorld-35B-A3B（首个语言世界模型 LWM：agent 环境仿真）](2026/qwen-agentworld.md) — 阿里巴巴 Qwen · 2026-06 · paper · [agentic训练/架构/后训练/预训练数据] — https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B
+- [Qwen-AgentWorld（首个语言世界模型 LWM：agent 环境仿真）](2026/qwen-agentworld.md) — 阿里巴巴 Qwen · 2026-06 · paper · [agentic训练/架构/后训练/预训练数据] — https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B
