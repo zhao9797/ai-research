@@ -21,9 +21,12 @@ downloaded: [glm-5.2-readme.md, glm-5.2-config.json, arxiv-2603.12201-glm-indexs
 - **IndexShare**（arXiv 2603.12201，已落盘）：每 4 个稀疏注意力层**复用同一 indexer**，1M 上下文下 per-token FLOPs 降 **2.9×**。
 - **改进 MTP**：投机解码 acceptance length 提升达 **20%**。
 
-## 数据 / 训练 / RL
-- 基座预训练数据、训练配方与 RL 对齐细节承自 **GLM-5 技术报告 (2602.15763)**（见库内 glm-5 页）；GLM-5.2 为其旗舰迭代。
-- 新增能力：稳定 1M 长程上下文、**多档 thinking effort**（性能/延迟权衡）、更强 coding。
+## 数据 / 训练 / 后训练（承 GLM-5 报告 2602.15763，Figure 5）
+- **基座 28.5T tokens 分阶段**：预训练 通用 18T@4K → 代码&推理 9T@4K；中训练 长代码&推理 1T@32K → 长上下文&Agent 数据 500B/50B@128K/200K；稀疏注意力适配 20B@200K。744B 总参 / ~40B 激活、256 专家、80 层（GLM-5.2 config 为 78 层）。
+- **后训练管线（超越标准 SFT，序贯 RL）**：Base →「Overall SFT」→ **Reasoning RL → Agentic RL → General RL**，全程叠加 **On-Policy Cross-Stage Distillation（在线策略跨阶段蒸馏，用 logits/weights）防灾难性遗忘** —— 保住推理锐度的同时成为稳健通才。
+  - **异步 RL 基础设施**：基于 **slime 框架** + 解耦 rollout 引擎（承 GLM-4.5），进一步解耦 generation 与 training 最大化 GPU 利用，支持大规模 agent 轨迹探索、无同步瓶颈。
+  - **新颖异步 Agent RL 算法**：GLM-4.5 用迭代自蒸馏 + outcome supervision；GLM-5 发展异步算法从多样 long-horizon 交互持续学习，专门优化规划与自我纠错（对应真实编码场景的统治力）。
+- GLM-5.2 在此配方上新增：稳定 1M 上下文、IndexShare、**多档 thinking effort**（性能/延迟权衡）、更强 coding。
 
 ## Benchmark（vs GLM-5.1 / Qwen3.7-Max / MiniMax-M3 / DeepSeek-V4-Pro / Claude Opus 4.8 / GPT-5.5 / Gemini 3.1 Pro）
 - **推理**：HLE 40.5（w/Tools 54.7）；AIME 2026 **99.2**（榜首）；HMMT Feb 2026 92.5；IMOAnswerBench **91.0**；GPQA-Diamond 91.2。

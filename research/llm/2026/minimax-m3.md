@@ -33,7 +33,7 @@ downloaded: [minimax-m3-readme.md, minimax-m3-config.json]
 - 前沿级 long-horizon agentic（coding & cowork 双强）；配套 MiniMax Agent（agent.minimax.io）。
 
 ## Benchmark
-- 官方仅以图表披露（figures/benchmark.jpeg），无文本表；定位 frontier-level long-horizon agentic。
+- 官方 HF card 与 GitHub README 均**只以一张图披露**（figures/benchmark.jpeg，已落盘），无文本表；该图分辨率过高、视觉 OCR 两次均未能可靠读出数值，故此处不抄具体分数以免出错。定位为 frontier-level long-horizon agentic（coding & cowork）；逐项数字以技术报告 arXiv 2606.13392 为准。
 
 ## AI infra / 部署
 - SGLang / vLLM / Transformers（`minimax_m3_vl`）/ KTransformers / unsloth；推理参数 temp 1.0 / top_p 0.95 / top_k 40；许可 minimax-community。

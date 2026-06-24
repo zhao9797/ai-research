@@ -2,3 +2,8 @@
 # 原始 PDF 不入 git（约 2.5GB）：备份在 HuggingFace Storage Bucket，
 # 可用 research/llm/01-INDEX.md 中的 URL 重新下载。
 *.pdf
+
+# benchmark 图等大图走 HF bucket,不入 git
+*.png
+*.jpg
+*.jpeg

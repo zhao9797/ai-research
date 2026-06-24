@@ -30,8 +30,13 @@ downloaded: [mistral-small-4-readme.md, mistral-small-4-config.json]
 ## agentic
 - best-in-class agentic：原生 function calling + JSON 输出；强 system prompt 遵从；面向 SWE 自动化与代码库探索（Devstral 血统）。
 
-## Benchmark（官方以图表披露，文本要点）
-- 带 reasoning 时**匹配或超过 GPT-OSS 120B**（三项基准）且输出显著更短：AA LCR **0.72** 仅 **1.6K 字符**（Qwen 同水平需 3.5–4× 输出 5.8–6.1K）；LiveCodeBench 超 GPT-OSS 120B 且**少 20% 输出**；另含 AIME25。
+## Benchmark（数值读自官方图表）
+- **vs 自家（带 reasoning）**：GPQA-Diamond 71.2 · MMLU-Pro 78 · AllenAI IFBench 48 · Arena Hard 58.3 · MMMU-Pro 60 —— 全面超 Small 3.2，逼近/部分超 Medium 3.1 与 Large 3。
+- **vs Magistral（推理预代）**：AA LCR 71.2 · AIME25 83.8 · Collie 62.9 · LiveCodeBench 63.6（接近 Magistral Medium 1.2）。
+- **vs 外部（Score @ 输出长度，reasoning 模式，"短输出"是卖点）**：
+  - AA LCR：Mistral **72 @1.6K 字符** vs GPT-OSS-120B 51 @2.5K · Claude Haiku 80 @2.7K · Qwen3-Next-80B 75 @5.8K · Qwen3.5-122B 84 @5.7K（同档分数下输出最短）。
+  - LiveCodeBench：Mistral **64 @4.7K** vs GPT-OSS-120B 63 @23.6K（分数胜且输出仅 1/5）· Qwen3.5-122B 74 @20.9K。
+  - AIME25：Mistral 84 @27.9K vs GPT-OSS-120B 89 @14.9K · Qwen3.5-122B 93 @26.4K（此项略低于 GPT-OSS）。
 
 ## 原始链接
 - url: https://huggingface.co/mistralai/Mistral-Small-4-119B-2603 （另：-eagle 投机解码 / -NVFP4 量化）
