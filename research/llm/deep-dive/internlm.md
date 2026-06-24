@@ -337,3 +337,6 @@
 - Intern-S1：https://huggingface.co/internlm/Intern-S1 ｜ config https://huggingface.co/internlm/Intern-S1/raw/main/config.json ｜本地 `deep-dive/files/intern-s1-config.json` ｜ GitHub https://github.com/InternLM/Intern-S1
 - InternLM 主仓 GitHub README（版本时间线/model zoo）：https://github.com/InternLM/InternLM
 - InternVL 主仓 GitHub：https://github.com/OpenGVLab/InternVL
+
+## 增量补录（2026-06+，初版调研后）
+- **Intern-S2-Preview** — 35B 科学多模态，**task scaling** 全链(pretrain→RL)，从 Qwen3.5 续训，仅 35B 比肩万亿级 Intern-S1-Pro；shared-weight MTP+KL + CoT 压缩；首个「材料晶体结构生成 + 强通用」开源模型。详见 [2026/intern-s2-preview.md](../2026/intern-s2-preview.md)。

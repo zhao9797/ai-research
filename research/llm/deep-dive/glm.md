@@ -430,3 +430,6 @@ updated: 2026-06-18
 - **GLM-4.6 增量**：相对 GLM-4.5 新增训练 token 量、数据配比变化、RL 配方差异未公开（博客仅给能力/上下文/效率结论）。
 - **GLM-4.5 数据语言/领域百分比**：只给质量桶/上采样策略与各 mid-training 阶段 token 量，未给「中/英/代码/数学」精确占比百分数。
 - **GLM-5.1**：无独立技术报告，仅在 GLM-5.2 card 对比表出现分数。
+
+## 增量补录（2026-06+，初版调研后）
+- **GLM-5.2** — `glm_moe_dsa`，hidden 6144 / 78 层 / 64 头 MLA(qk_head_dim 256=nope192+rope64) / 256 路由专家+1 共享(8/tok) / **1M 上下文** / rope 8e6；**IndexShare**（每 4 个稀疏注意力层共享 indexer，1M 下 per-token FLOPs −2.9×，arXiv 2603.12201）+ 改进 MTP（accept +20%）；MIT。详见 [2026/glm-5.2.md](../2026/glm-5.2.md)。

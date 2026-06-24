@@ -281,3 +281,6 @@
 - **精度**：全部 bfloat16；NeMo 额外做 QAT 支持 FP8 推理。
 - **对齐**：唯一明确公开的 RL 算法是 **Mixtral 8x7B 的 SFT→DPO**；其余型号只说「微调与对齐」，未公开是否用 DPO/PPO，更无 RLVR/GRPO 等迹象。
 - **一贯的不透明**：Mistral 从不公开预训练 token 数、数据来源/配比 %、数据 pipeline、算力（卡数/卡时/FLOPs）、并行（TP/PP/DP/EP/ZeRO）、优化器/LR/warmup、退火/课程学习——这是与 Llama/OLMo/Qwen/Nemotron 等的最大差异。
+
+## 增量补录（2026-03，初版漏收）
+- **Mistral Small 4 (119B-2603)** — 统一 **Instruct + Reasoning(原 Magistral) + Devstral** 于一体；MoE 128 专家/4 active，119B/6.5B 激活，36 层，256K，多模态输入，reasoning effort 可调；vs Small 3 延迟 −40% / 吞吐 3×。详见 [2026/mistral-small-4.md](../2026/mistral-small-4.md)。

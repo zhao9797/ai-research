@@ -374,3 +374,7 @@ updated: 2026-06-18
 - Pangu Ultra MoE: 华为 Ascend 官方报告（arXiv）；openPangu 开源页
 
 > 说明：本档所有架构/训练数字均来自上述 PDF 正文表格与官方 HF config/model card。第三方解读、评测聚合站一律未采用。
+
+## 增量补录（2026-06+，初版调研后）
+- **Kimi K2.6**（月之暗面）— 1T MoE / 32B 激活，384 专家+1 共享(8/tok)，MLA，61 层，256K；原生多模态 agentic，**agent swarm 300 子 agent / 4000 步**协同。另有 K2.7-Code。详见 [2026/kimi-k2.6.md](../2026/kimi-k2.6.md)。
+- **MiniMax-M3** — ~428B / ~23B 激活，60 层，64 头 / 4 KV，**1M 上下文**，**MiniMax Sparse Attention**（vs M2：prefill 9×、decode 15× @1M，per-token 算力 1/20，arXiv 2606.13392）。详见 [2026/minimax-m3.md](../2026/minimax-m3.md)。
