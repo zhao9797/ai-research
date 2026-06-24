@@ -1,5 +1,5 @@
 ---
-title: Alpaca: A Strong, Replicable Instruction-Following Model
+title: "Alpaca: A Strong, Replicable Instruction-Following Model"
 org: Stanford CRFM
 country: US
 date: 2023-03

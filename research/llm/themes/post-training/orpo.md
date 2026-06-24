@@ -1,5 +1,5 @@
 ---
-title: ORPO: Monolithic Preference Optimization without Reference Model
+title: "ORPO: Monolithic Preference Optimization without Reference Model"
 org: KAIST
 country: other
 date: 2024-03

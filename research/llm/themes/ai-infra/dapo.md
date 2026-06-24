@@ -1,5 +1,5 @@
 ---
-title: DAPO: An Open-Source LLM Reinforcement Learning System at Scale
+title: "DAPO: An Open-Source LLM Reinforcement Learning System at Scale"
 org: ByteDance Seed / Tsinghua University (AIR)
 country: China
 date: 2025-03

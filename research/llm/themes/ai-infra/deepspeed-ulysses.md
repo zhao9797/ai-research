@@ -1,5 +1,5 @@
 ---
-title: DeepSpeed Ulysses: System Optimizations for Enabling Training of Extreme Long Sequence Transformer Models
+title: "DeepSpeed Ulysses: System Optimizations for Enabling Training of Extreme Long Sequence Transformer Models"
 org: Microsoft (DeepSpeed)
 country: US
 date: 2023-09

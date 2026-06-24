@@ -1,5 +1,5 @@
 ---
-title: DISTFLASHATTN: Distributed Memory-efficient Attention for Long-context LLMs Training
+title: "DISTFLASHATTN: Distributed Memory-efficient Attention for Long-context LLMs Training"
 org: UC Berkeley / UCSD / CMU / MBZUAI
 country: US
 date: 2023-10

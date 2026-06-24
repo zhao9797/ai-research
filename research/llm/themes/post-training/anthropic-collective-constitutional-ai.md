@@ -1,5 +1,5 @@
 ---
-title: Collective Constitutional AI: Aligning a Language Model with Public Input
+title: "Collective Constitutional AI: Aligning a Language Model with Public Input"
 org: Anthropic
 country: US
 date: 2023-10

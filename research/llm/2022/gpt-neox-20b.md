@@ -1,8 +1,13 @@
 ---
-title: GPT-NeoX-20B: An Open-Source Autoregressive Language Model
-org: EleutherAI    country: US    date: 2022-04    type: paper
+title: "GPT-NeoX-20B: An Open-Source Autoregressive Language Model"
+org: EleutherAI
+country: US
+date: 2022-04
+type: paper
 categories: [预训练数据, 架构, AI infra]
-url: https://arxiv.org/abs/2204.06745    pdf_url: https://arxiv.org/pdf/2204.06745    github_url: https://github.com/EleutherAI/gpt-neox
+url: https://arxiv.org/abs/2204.06745
+pdf_url: https://arxiv.org/pdf/2204.06745
+github_url: https://github.com/EleutherAI/gpt-neox
 downloaded: [gpt-neox-20b.pdf]
 ---
 

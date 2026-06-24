@@ -1,5 +1,5 @@
 ---
-title: ToolRL: Reward is All Tool Learning Needs
+title: "ToolRL: Reward is All Tool Learning Needs"
 org: University of Illinois Urbana-Champaign
 country: US
 date: 2025-04

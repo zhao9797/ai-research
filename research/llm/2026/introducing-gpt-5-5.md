@@ -1,8 +1,13 @@
 ---
 title: Introducing GPT-5.5
-org: OpenAI    country: US    date: 2026-04    type: blog
+org: OpenAI
+country: US
+date: 2026-04
+type: blog
 categories: [后训练, agentic训练]
-url: https://openai.com/index/introducing-gpt-5-5/    pdf_url:     github_url:
+url: https://openai.com/index/introducing-gpt-5-5/
+pdf_url:
+github_url:
 downloaded: [openai-gpt-5-5.html]
 ---
 

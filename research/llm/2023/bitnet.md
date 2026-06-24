@@ -1,5 +1,5 @@
 ---
-title: BitNet: Scaling 1-bit Transformers for Large Language Models
+title: "BitNet: Scaling 1-bit Transformers for Large Language Models"
 org: Microsoft Research
 country: US
 date: 2023-10

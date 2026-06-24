@@ -1,8 +1,13 @@
 ---
 title: A Generalist Agent (Gato)
-org: DeepMind    country: UK    date: 2022-05    type: paper
+org: DeepMind
+country: UK
+date: 2022-05
+type: paper
 categories: [agentic训练, 架构]
-url: https://arxiv.org/abs/2205.06175    pdf_url: https://arxiv.org/pdf/2205.06175    github_url:
+url: https://arxiv.org/abs/2205.06175
+pdf_url: https://arxiv.org/pdf/2205.06175
+github_url:
 downloaded: [gato.pdf]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models
+title: "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models"
 org: 智谱 AI / Z.ai (Zhipu AI)
 country: China
 date: 2025-08

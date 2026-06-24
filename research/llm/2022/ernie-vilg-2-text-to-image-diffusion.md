@@ -1,8 +1,13 @@
 ---
-title: ERNIE-ViLG 2.0: Improving Text-to-Image Diffusion Model with Knowledge-Enhanced Mixture-of-Denoising-Experts
-org: 百度 (Baidu)    country: China    date: 2022-10    type: paper
+title: "ERNIE-ViLG 2.0: Improving Text-to-Image Diffusion Model with Knowledge-Enhanced Mixture-of-Denoising-Experts"
+org: 百度 (Baidu)
+country: China
+date: 2022-10
+type: paper
 categories: [架构, 预训练数据]
-url: https://arxiv.org/abs/2210.15257    pdf_url: https://arxiv.org/pdf/2210.15257    github_url:
+url: https://arxiv.org/abs/2210.15257
+pdf_url: https://arxiv.org/pdf/2210.15257
+github_url:
 downloaded: [ernie-vilg-2.pdf]
 ---
 

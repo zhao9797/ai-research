@@ -1,8 +1,13 @@
 ---
 title: Gemini 3.5 Flash Model Card
-org: Google DeepMind    country: US    date: 2026-05    type: model-card
+org: Google DeepMind
+country: US
+date: 2026-05
+type: model-card
 categories: [架构, 后训练]
-url: https://deepmind.google/models/model-cards/gemini-3-5-flash/    pdf_url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-5-Flash-Model-Card.pdf    github_url:
+url: https://deepmind.google/models/model-cards/gemini-3-5-flash/
+pdf_url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-5-Flash-Model-Card.pdf
+github_url:
 downloaded: [gemini-3-5-flash-model-card.pdf]
 ---
 

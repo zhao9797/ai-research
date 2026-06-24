@@ -1,8 +1,13 @@
 ---
-title: CodeGen: An Open Large Language Model for Code with Multi-Turn Program Synthesis
-org: Salesforce Research    country: US    date: 2022-03    type: paper
+title: "CodeGen: An Open Large Language Model for Code with Multi-Turn Program Synthesis"
+org: Salesforce Research
+country: US
+date: 2022-03
+type: paper
 categories: [预训练数据, 后训练]
-url: https://arxiv.org/abs/2203.13474    pdf_url: https://arxiv.org/pdf/2203.13474    github_url: https://github.com/salesforce/CodeGen
+url: https://arxiv.org/abs/2203.13474
+pdf_url: https://arxiv.org/pdf/2203.13474
+github_url: https://github.com/salesforce/CodeGen
 downloaded: [codegen.pdf]
 ---
 

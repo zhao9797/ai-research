@@ -1,5 +1,5 @@
 ---
-title: ST-MoE: Designing Stable and Transferable Sparse Expert Models
+title: "ST-MoE: Designing Stable and Transferable Sparse Expert Models"
 org: Google
 country: US
 date: 2022-02

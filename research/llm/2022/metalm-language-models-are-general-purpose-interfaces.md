@@ -1,8 +1,13 @@
 ---
 title: Language Models are General-Purpose Interfaces (MetaLM)
-org: Microsoft Research    country: US    date: 2022-06    type: paper
+org: Microsoft Research
+country: US
+date: 2022-06
+type: paper
 categories: [架构]
-url: https://arxiv.org/abs/2206.06336    pdf_url: https://arxiv.org/pdf/2206.06336    github_url: https://github.com/microsoft/unilm
+url: https://arxiv.org/abs/2206.06336
+pdf_url: https://arxiv.org/pdf/2206.06336
+github_url: https://github.com/microsoft/unilm
 downloaded: [metalm.pdf]
 ---
 

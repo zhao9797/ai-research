@@ -1,8 +1,13 @@
 ---
 title: Introducing new capabilities to GPT-Rosalind
-org: OpenAI    country: US    date: 2026-06    type: blog
+org: OpenAI
+country: US
+date: 2026-06
+type: blog
 categories: [后训练, agentic训练]
-url: https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/    pdf_url:     github_url:
+url: https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/
+pdf_url:
+github_url:
 downloaded: [openai-gpt-rosalind.html]
 ---
 

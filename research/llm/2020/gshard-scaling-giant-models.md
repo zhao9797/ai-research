@@ -1,5 +1,5 @@
 ---
-title: GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding
+title: "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding"
 org: Google
 country: US
 date: 2020-06

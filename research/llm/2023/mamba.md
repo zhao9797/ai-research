@@ -1,5 +1,5 @@
 ---
-title: Mamba: Linear-Time Sequence Modeling with Selective State Spaces
+title: "Mamba: Linear-Time Sequence Modeling with Selective State Spaces"
 org: Carnegie Mellon / Princeton
 country: US
 date: 2023-12

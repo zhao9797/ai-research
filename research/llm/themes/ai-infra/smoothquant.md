@@ -1,5 +1,5 @@
 ---
-title: SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models
+title: "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models"
 org: MIT (Han Lab) / NVIDIA
 country: US
 date: 2022-11

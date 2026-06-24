@@ -1,8 +1,13 @@
 ---
 title: Reducing Activation Recomputation in Large Transformer Models
-org: NVIDIA    country: US    date: 2022-05    type: paper
+org: NVIDIA
+country: US
+date: 2022-05
+type: paper
 categories: [AI infra]
-url: https://arxiv.org/abs/2205.05198    pdf_url: https://arxiv.org/pdf/2205.05198    github_url: https://github.com/NVIDIA/Megatron-LM
+url: https://arxiv.org/abs/2205.05198
+pdf_url: https://arxiv.org/pdf/2205.05198
+github_url: https://github.com/NVIDIA/Megatron-LM
 downloaded: [reducing-activation-recomputation.pdf]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Deliberative Alignment: Reasoning Enables Safer Language Models
+title: "Deliberative Alignment: Reasoning Enables Safer Language Models"
 org: OpenAI
 country: US
 date: 2024-12

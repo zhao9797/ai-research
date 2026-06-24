@@ -1,8 +1,13 @@
 ---
-title: Galactica: A Large Language Model for Science
-org: Meta AI    country: US    date: 2022-11    type: paper
+title: "Galactica: A Large Language Model for Science"
+org: Meta AI
+country: US
+date: 2022-11
+type: paper
 categories: [预训练数据, 架构]
-url: https://arxiv.org/abs/2211.09085    pdf_url: https://arxiv.org/pdf/2211.09085    github_url:
+url: https://arxiv.org/abs/2211.09085
+pdf_url: https://arxiv.org/pdf/2211.09085
+github_url:
 downloaded: [galactica.pdf]
 ---
 

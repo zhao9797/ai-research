@@ -1,5 +1,5 @@
 ---
-title: Tree of Thoughts: Deliberate Problem Solving with Large Language Models
+title: "Tree of Thoughts: Deliberate Problem Solving with Large Language Models"
 org: Princeton / Google DeepMind
 country: US
 date: 2023-05

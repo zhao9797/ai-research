@@ -1,8 +1,13 @@
 ---
 title: Phi-4-reasoning-vision-15B Technical Report
-org: Microsoft Research    country: US    date: 2026-03    type: report
+org: Microsoft Research
+country: US
+date: 2026-03
+type: report
 categories: [预训练数据, 架构, 后训练]
-url: https://www.microsoft.com/en-us/research/wp-content/uploads/2026/03/Phi-4-reasoning-vision-15B-Tech-Report.pdf    pdf_url: https://www.microsoft.com/en-us/research/wp-content/uploads/2026/03/Phi-4-reasoning-vision-15B-Tech-Report.pdf    github_url: https://github.com/microsoft/Phi-4-reasoning-vision-15B
+url: https://www.microsoft.com/en-us/research/wp-content/uploads/2026/03/Phi-4-reasoning-vision-15B-Tech-Report.pdf
+pdf_url: https://www.microsoft.com/en-us/research/wp-content/uploads/2026/03/Phi-4-reasoning-vision-15B-Tech-Report.pdf
+github_url: https://github.com/microsoft/Phi-4-reasoning-vision-15B
 downloaded: [phi-4-reasoning-vision-15b-tech-report.pdf]
 ---
 

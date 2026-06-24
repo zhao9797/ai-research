@@ -1,5 +1,5 @@
 ---
-title: Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model
+title: "Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model"
 org: StepFun / Tsinghua
 country: China
 date: 2025-03

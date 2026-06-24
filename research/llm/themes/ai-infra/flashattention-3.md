@@ -1,5 +1,5 @@
 ---
-title: FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision
+title: "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision"
 org: Colfax / Meta / NVIDIA / Together AI / Princeton / Dao-AILab
 country: US
 date: 2024-07

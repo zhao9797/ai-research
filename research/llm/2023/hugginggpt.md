@@ -1,5 +1,5 @@
 ---
-title: HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face
+title: "HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face"
 org: Microsoft Research / Zhejiang University
 country: US
 date: 2023-03

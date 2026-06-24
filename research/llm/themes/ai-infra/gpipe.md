@@ -1,5 +1,5 @@
 ---
-title: GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism
+title: "GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism"
 org: Google
 country: US
 date: 2018-11

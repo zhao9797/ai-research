@@ -1,8 +1,13 @@
 ---
-title: Self-Instruct: Aligning Language Models with Self-Generated Instructions
-org: Univ. of Washington / AllenAI 等    country: US    date: 2022-12    type: paper
+title: "Self-Instruct: Aligning Language Models with Self-Generated Instructions"
+org: Univ. of Washington / AllenAI 等
+country: US
+date: 2022-12
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2212.10560    pdf_url: https://arxiv.org/pdf/2212.10560    github_url: https://github.com/yizhongw/self-instruct
+url: https://arxiv.org/abs/2212.10560
+pdf_url: https://arxiv.org/pdf/2212.10560
+github_url: https://github.com/yizhongw/self-instruct
 downloaded: [self-instruct.pdf]
 ---
 

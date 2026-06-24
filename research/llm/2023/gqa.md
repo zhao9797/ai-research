@@ -1,5 +1,5 @@
 ---
-title: GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints
+title: "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints"
 org: Google Research
 country: US
 date: 2023-05

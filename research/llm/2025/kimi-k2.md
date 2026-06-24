@@ -1,5 +1,5 @@
 ---
-title: Kimi K2: Open Agentic Intelligence
+title: "Kimi K2: Open Agentic Intelligence"
 org: 月之暗面 Moonshot AI
 country: China
 date: 2025-07

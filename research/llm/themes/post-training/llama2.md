@@ -1,5 +1,5 @@
 ---
-title: Llama 2: Open Foundation and Fine-Tuned Chat Models
+title: "Llama 2: Open Foundation and Fine-Tuned Chat Models"
 org: Meta
 country: US
 date: 2023-07

@@ -1,5 +1,5 @@
 ---
-title: Pythia: A Suite for Analyzing LLMs Across Training and Scaling
+title: "Pythia: A Suite for Analyzing LLMs Across Training and Scaling"
 org: EleutherAI
 country: US
 date: 2023-04

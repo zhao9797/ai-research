@@ -1,5 +1,5 @@
 ---
-title: MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs
+title: "MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs"
 org: ByteDance / Peking University
 country: China
 date: 2024-02

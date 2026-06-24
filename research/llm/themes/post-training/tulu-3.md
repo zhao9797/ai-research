@@ -1,5 +1,5 @@
 ---
-title: Tulu 3: Pushing Frontiers in Open Language Model Post-Training
+title: "Tulu 3: Pushing Frontiers in Open Language Model Post-Training"
 org: AI2 (Allen Institute for AI)
 country: US
 date: 2024-11

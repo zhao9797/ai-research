@@ -1,5 +1,5 @@
 ---
-title: KTO: Model Alignment as Prospect Theoretic Optimization
+title: "KTO: Model Alignment as Prospect Theoretic Optimization"
 org: Stanford / Contextual AI
 country: US
 date: 2024-02

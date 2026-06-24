@@ -1,5 +1,5 @@
 ---
-title: Direct Preference Optimization: Your Language Model is Secretly a Reward Model (DPO)
+title: "Direct Preference Optimization: Your Language Model is Secretly a Reward Model (DPO)"
 org: Stanford
 country: US
 date: 2023-05

@@ -1,5 +1,5 @@
 ---
-title: HybridFlow: A Flexible and Efficient RLHF Framework (verl)
+title: "HybridFlow: A Flexible and Efficient RLHF Framework (verl)"
 org: ByteDance / Hong Kong University
 country: China
 date: 2024-09

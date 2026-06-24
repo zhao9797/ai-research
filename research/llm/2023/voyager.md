@@ -1,5 +1,5 @@
 ---
-title: Voyager: An Open-Ended Embodied Agent with Large Language Models
+title: "Voyager: An Open-Ended Embodied Agent with Large Language Models"
 org: NVIDIA / Caltech
 country: US
 date: 2023-05

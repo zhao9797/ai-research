@@ -1,5 +1,5 @@
 ---
-title: WebDancer: Towards Autonomous Information Seeking Agency
+title: "WebDancer: Towards Autonomous Information Seeking Agency"
 org: Tongyi Lab, Alibaba (通义)
 country: China
 date: 2025-05

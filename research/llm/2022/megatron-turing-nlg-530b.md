@@ -1,8 +1,13 @@
 ---
 title: Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B
-org: Microsoft & NVIDIA    country: US    date: 2022-01    type: paper
+org: Microsoft & NVIDIA
+country: US
+date: 2022-01
+type: paper
 categories: [AI infra, 预训练数据, 架构]
-url: https://arxiv.org/abs/2201.11990    pdf_url: https://arxiv.org/pdf/2201.11990    github_url: https://github.com/microsoft/Megatron-DeepSpeed
+url: https://arxiv.org/abs/2201.11990
+pdf_url: https://arxiv.org/pdf/2201.11990
+github_url: https://github.com/microsoft/Megatron-DeepSpeed
 downloaded: [megatron-turing-nlg-530b.pdf]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Orca: Progressive Learning from Complex Explanation Traces of GPT-4
+title: "Orca: Progressive Learning from Complex Explanation Traces of GPT-4"
 org: Microsoft Research
 country: US
 date: 2023-06

@@ -1,8 +1,13 @@
 ---
 title: Large Language Models Can Self-Improve
-org: Google / UIUC    country: US    date: 2022-10    type: paper
+org: Google / UIUC
+country: US
+date: 2022-10
+type: paper
 categories: [后训练, agentic训练]
-url: https://arxiv.org/abs/2210.11610    pdf_url: https://arxiv.org/pdf/2210.11610    github_url:
+url: https://arxiv.org/abs/2210.11610
+pdf_url: https://arxiv.org/pdf/2210.11610
+github_url:
 downloaded: [lm-self-improve.pdf]
 ---
 

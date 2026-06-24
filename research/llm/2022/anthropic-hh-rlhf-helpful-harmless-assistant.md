@@ -1,8 +1,13 @@
 ---
 title: Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback
-org: Anthropic    country: US    date: 2022-04    type: paper
+org: Anthropic
+country: US
+date: 2022-04
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2204.05862    pdf_url: https://arxiv.org/pdf/2204.05862    github_url: https://github.com/anthropics/hh-rlhf
+url: https://arxiv.org/abs/2204.05862
+pdf_url: https://arxiv.org/pdf/2204.05862
+github_url: https://github.com/anthropics/hh-rlhf
 downloaded: [anthropic-hh-rlhf.pdf]
 ---
 

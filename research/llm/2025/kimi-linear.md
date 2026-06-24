@@ -1,5 +1,5 @@
 ---
-title: Kimi Linear: An Expressive, Efficient Attention Architecture
+title: "Kimi Linear: An Expressive, Efficient Attention Architecture"
 org: 月之暗面 Moonshot AI
 country: China
 date: 2025-10

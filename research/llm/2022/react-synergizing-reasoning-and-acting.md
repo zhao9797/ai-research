@@ -1,8 +1,13 @@
 ---
-title: ReAct: Synergizing Reasoning and Acting in Language Models
-org: Princeton & Google Research    country: US    date: 2022-10    type: paper
+title: "ReAct: Synergizing Reasoning and Acting in Language Models"
+org: Princeton & Google Research
+country: US
+date: 2022-10
+type: paper
 categories: [agentic训练, 后训练]
-url: https://arxiv.org/abs/2210.03629    pdf_url: https://arxiv.org/pdf/2210.03629    github_url: https://github.com/ysymyth/ReAct
+url: https://arxiv.org/abs/2210.03629
+pdf_url: https://arxiv.org/pdf/2210.03629
+github_url: https://github.com/ysymyth/ReAct
 downloaded: [react.pdf]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models
+title: "ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models"
 org: NVIDIA
 country: US
 date: 2025-05

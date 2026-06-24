@@ -1,8 +1,13 @@
 ---
 title: Natural Language Autoencoders Produce Unsupervised Explanations of LLM Activations
-org: Anthropic    country: US    date: 2026-05    type: paper
+org: Anthropic
+country: US
+date: 2026-05
+type: paper
 categories: [后训练]
-url: https://transformer-circuits.pub/2026/nla/    pdf_url:     github_url:
+url: https://transformer-circuits.pub/2026/nla/
+pdf_url:
+github_url:
 downloaded: [anthropic-nla.html]
 ---
 

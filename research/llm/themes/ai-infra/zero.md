@@ -1,5 +1,5 @@
 ---
-title: ZeRO: Memory Optimizations Toward Training Trillion Parameter Models
+title: "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models"
 org: Microsoft (DeepSpeed)
 country: US
 date: 2019-10

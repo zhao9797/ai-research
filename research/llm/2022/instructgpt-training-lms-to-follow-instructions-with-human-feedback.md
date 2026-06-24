@@ -1,8 +1,13 @@
 ---
 title: Training language models to follow instructions with human feedback (InstructGPT)
-org: OpenAI    country: US    date: 2022-03    type: paper
+org: OpenAI
+country: US
+date: 2022-03
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2203.02155    pdf_url: https://arxiv.org/pdf/2203.02155    github_url: https://github.com/openai/following-instructions-human-feedback
+url: https://arxiv.org/abs/2203.02155
+pdf_url: https://arxiv.org/pdf/2203.02155
+github_url: https://github.com/openai/following-instructions-human-feedback
 downloaded: [instructgpt.pdf]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: RLAIF vs. RLHF: Scaling RL from Human Feedback with AI Feedback
+title: "RLAIF vs. RLHF: Scaling RL from Human Feedback with AI Feedback"
 org: Google Research
 country: US
 date: 2023-09

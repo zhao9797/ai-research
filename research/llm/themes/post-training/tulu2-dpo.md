@@ -1,5 +1,5 @@
 ---
-title: Camels in a Changing Climate: Enhancing LM Adaptation with Tulu 2
+title: "Camels in a Changing Climate: Enhancing LM Adaptation with Tulu 2"
 org: AI2 (Allen Institute for AI)
 country: US
 date: 2023-11

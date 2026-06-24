@@ -1,5 +1,5 @@
 ---
-title: AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning
+title: "AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning"
 org: Ant Group / Tsinghua University (IIIS)
 country: China
 date: 2025-05

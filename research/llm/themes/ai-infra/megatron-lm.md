@@ -1,5 +1,5 @@
 ---
-title: Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism
+title: "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism"
 org: NVIDIA
 country: US
 date: 2019-09

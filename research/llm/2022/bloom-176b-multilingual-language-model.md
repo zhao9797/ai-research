@@ -1,8 +1,13 @@
 ---
-title: BLOOM: A 176B-Parameter Open-Access Multilingual Language Model
-org: BigScience    country: EU/International    date: 2022-11    type: paper
+title: "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model"
+org: BigScience
+country: EU/International
+date: 2022-11
+type: paper
 categories: [预训练数据, 架构, AI infra]
-url: https://arxiv.org/abs/2211.05100    pdf_url: https://arxiv.org/pdf/2211.05100    github_url: https://huggingface.co/bigscience/bloom
+url: https://arxiv.org/abs/2211.05100
+pdf_url: https://arxiv.org/pdf/2211.05100
+github_url: https://huggingface.co/bigscience/bloom
 downloaded: [bloom.pdf]
 ---
 

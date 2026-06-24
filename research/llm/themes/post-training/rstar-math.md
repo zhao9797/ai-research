@@ -1,5 +1,5 @@
 ---
-title: rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking
+title: "rStar-Math: Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking"
 org: Microsoft Research Asia
 country: US
 date: 2025-01

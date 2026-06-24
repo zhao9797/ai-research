@@ -1,5 +1,5 @@
 ---
-title: SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills
+title: "SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills"
 org: Microsoft Research India / Georgia Tech
 country: US
 date: 2023-08

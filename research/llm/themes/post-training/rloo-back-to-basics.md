@@ -1,5 +1,5 @@
 ---
-title: Back to Basics: Revisiting REINFORCE Style Optimization for Learning from Human Feedback in LLMs (RLOO)
+title: "Back to Basics: Revisiting REINFORCE Style Optimization for Learning from Human Feedback in LLMs (RLOO)"
 org: Cohere / Cohere For AI
 country: EU
 date: 2024-02

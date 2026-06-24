@@ -1,5 +1,5 @@
 ---
-title: Generative Agents: Interactive Simulacra of Human Behavior
+title: "Generative Agents: Interactive Simulacra of Human Behavior"
 org: Stanford / Google
 country: US
 date: 2023-04

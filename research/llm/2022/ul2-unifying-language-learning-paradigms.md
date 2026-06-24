@@ -1,8 +1,13 @@
 ---
-title: UL2: Unifying Language Learning Paradigms
-org: Google Research (Brain)    country: US    date: 2022-05    type: paper
+title: "UL2: Unifying Language Learning Paradigms"
+org: Google Research (Brain)
+country: US
+date: 2022-05
+type: paper
 categories: [架构, 预训练数据]
-url: https://arxiv.org/abs/2205.05131    pdf_url: https://arxiv.org/pdf/2205.05131    github_url: https://github.com/google-research/google-research/tree/master/ul2
+url: https://arxiv.org/abs/2205.05131
+pdf_url: https://arxiv.org/pdf/2205.05131
+github_url: https://github.com/google-research/google-research/tree/master/ul2
 downloaded: [ul2.pdf]
 ---
 

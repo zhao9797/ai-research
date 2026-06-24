@@ -1,8 +1,13 @@
 ---
 title: Training Compute-Optimal Large Language Models (Chinchilla)
-org: DeepMind    country: UK/US    date: 2022-03    type: paper
+org: DeepMind
+country: UK/US
+date: 2022-03
+type: paper
 categories: [预训练数据, 架构]
-url: https://arxiv.org/abs/2203.15556    pdf_url: https://arxiv.org/pdf/2203.15556    github_url:
+url: https://arxiv.org/abs/2203.15556
+pdf_url: https://arxiv.org/pdf/2203.15556
+github_url:
 downloaded: [chinchilla.pdf]
 ---
 

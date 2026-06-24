@@ -1,8 +1,13 @@
 ---
 title: Scaling Instruction-Finetuned Language Models (Flan / Flan-PaLM)
-org: Google Research    country: US    date: 2022-10    type: paper
+org: Google Research
+country: US
+date: 2022-10
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2210.11416    pdf_url: https://arxiv.org/pdf/2210.11416    github_url: https://github.com/google-research/FLAN
+url: https://arxiv.org/abs/2210.11416
+pdf_url: https://arxiv.org/pdf/2210.11416
+github_url: https://github.com/google-research/FLAN
 downloaded: [flan-scaling.pdf]
 ---
 

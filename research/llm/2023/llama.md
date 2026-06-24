@@ -1,5 +1,5 @@
 ---
-title: LLaMA: Open and Efficient Foundation Language Models
+title: "LLaMA: Open and Efficient Foundation Language Models"
 org: Meta AI
 country: US
 date: 2023-02

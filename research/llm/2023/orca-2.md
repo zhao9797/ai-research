@@ -1,5 +1,5 @@
 ---
-title: Orca 2: Teaching Small Language Models How to Reason
+title: "Orca 2: Teaching Small Language Models How to Reason"
 org: Microsoft Research
 country: US
 date: 2023-11

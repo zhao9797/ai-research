@@ -1,5 +1,5 @@
 ---
-title: SimPO: Simple Preference Optimization with a Reference-Free Reward
+title: "SimPO: Simple Preference Optimization with a Reference-Free Reward"
 org: Princeton / University of Virginia
 country: US
 date: 2024-05

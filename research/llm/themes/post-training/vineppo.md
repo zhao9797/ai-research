@@ -1,5 +1,5 @@
 ---
-title: VinePPO: Unlocking RL Potential For LLM Reasoning Through Refined Credit Assignment
+title: "VinePPO: Unlocking RL Potential For LLM Reasoning Through Refined Credit Assignment"
 org: Mila / McGill / ServiceNow
 country: other
 date: 2024-10

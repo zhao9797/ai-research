@@ -1,5 +1,5 @@
 ---
-title: Qwen2.5-Max: Exploring the Intelligence of Large-scale MoE Model
+title: "Qwen2.5-Max: Exploring the Intelligence of Large-scale MoE Model"
 org: 阿里巴巴 Qwen Team
 country: China
 date: 2025-01

@@ -1,8 +1,13 @@
 ---
-title: Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation
-org: NVIDIA    country: US    date: 2026-03    type: paper
+title: "Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation"
+org: NVIDIA
+country: US
+date: 2026-03
+type: paper
 categories: [后训练, agentic训练]
-url: https://arxiv.org/abs/2603.19220    pdf_url: https://arxiv.org/pdf/2603.19220    github_url:
+url: https://arxiv.org/abs/2603.19220
+pdf_url: https://arxiv.org/pdf/2603.19220
+github_url:
 downloaded: [arxiv-2603.19220.pdf]
 ---
 

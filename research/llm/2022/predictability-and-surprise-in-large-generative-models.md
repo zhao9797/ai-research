@@ -1,8 +1,13 @@
 ---
 title: Predictability and Surprise in Large Generative Models
-org: Anthropic    country: US    date: 2022-02    type: paper
+org: Anthropic
+country: US
+date: 2022-02
+type: paper
 categories: [架构]
-url: https://arxiv.org/abs/2202.07785    pdf_url: https://arxiv.org/pdf/2202.07785    github_url:
+url: https://arxiv.org/abs/2202.07785
+pdf_url: https://arxiv.org/pdf/2202.07785
+github_url:
 downloaded: [predictability-and-surprise.pdf]
 ---
 

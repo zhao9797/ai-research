@@ -1,8 +1,13 @@
 ---
-title: Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models (BIG-bench)
-org: Google 等 132 机构协作    country: US/International    date: 2022-06    type: paper
+title: "Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models (BIG-bench)"
+org: Google 等 132 机构协作
+country: US/International
+date: 2022-06
+type: paper
 categories: [预训练数据]
-url: https://arxiv.org/abs/2206.04615    pdf_url: https://arxiv.org/pdf/2206.04615    github_url: https://github.com/google/BIG-bench
+url: https://arxiv.org/abs/2206.04615
+pdf_url: https://arxiv.org/pdf/2206.04615
+github_url: https://github.com/google/BIG-bench
 downloaded: [big-bench.pdf]
 ---
 

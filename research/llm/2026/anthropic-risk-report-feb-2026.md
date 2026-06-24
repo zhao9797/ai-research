@@ -1,8 +1,13 @@
 ---
-title: Risk Report: February 2026
-org: Anthropic    country: US    date: 2026-02    type: report
+title: "Risk Report: February 2026"
+org: Anthropic
+country: US
+date: 2026-02
+type: report
 categories: [后训练, agentic训练]
-url: https://www.anthropic.com/feb-2026-risk-report    pdf_url: https://www-cdn.anthropic.com/097c63b5fe7dd8b14866e1f15bb1910ec713658a.pdf    github_url:
+url: https://www.anthropic.com/feb-2026-risk-report
+pdf_url: https://www-cdn.anthropic.com/097c63b5fe7dd8b14866e1f15bb1910ec713658a.pdf
+github_url:
 downloaded: [anthropic-feb-2026-risk-report.pdf]
 ---
 

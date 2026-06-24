@@ -1,5 +1,5 @@
 ---
-title: FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness
+title: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness"
 org: Stanford / Dao-AILab
 country: US
 date: 2022-05

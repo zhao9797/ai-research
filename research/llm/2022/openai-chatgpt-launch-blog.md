@@ -1,8 +1,13 @@
 ---
 title: Introducing ChatGPT (官方发布博客)
-org: OpenAI    country: US    date: 2022-11    type: blog
+org: OpenAI
+country: US
+date: 2022-11
+type: blog
 categories: [后训练]
-url: https://openai.com/index/chatgpt/    pdf_url:    github_url:
+url: https://openai.com/index/chatgpt/
+pdf_url:
+github_url:
 downloaded: [openai-chatgpt-blog.html]
 ---
 

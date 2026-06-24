@@ -1,5 +1,5 @@
 ---
-title: Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving
+title: "Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving"
 org: Moonshot AI / Tsinghua University
 country: China
 date: 2024-06

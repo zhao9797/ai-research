@@ -1,5 +1,5 @@
 ---
-title: SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution
+title: "SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution"
 org: Meta (FAIR / GenAI)
 country: US
 date: 2025-02

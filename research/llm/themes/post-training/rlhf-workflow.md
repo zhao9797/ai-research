@@ -1,5 +1,5 @@
 ---
-title: RLHF Workflow: From Reward Modeling to Online RLHF
+title: "RLHF Workflow: From Reward Modeling to Online RLHF"
 org: Salesforce / UIUC (RLHFlow)
 country: US
 date: 2024-05

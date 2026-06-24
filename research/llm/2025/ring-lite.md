@@ -1,5 +1,5 @@
 ---
-title: Ring-lite: Scalable Reasoning via C3PO-Stabilized Reinforcement Learning for LLMs
+title: "Ring-lite: Scalable Reasoning via C3PO-Stabilized Reinforcement Learning for LLMs"
 org: 蚂蚁集团 Ling Team / inclusionAI (Ant Group)
 country: China
 date: 2025-06

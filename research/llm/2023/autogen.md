@@ -1,5 +1,5 @@
 ---
-title: AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation
+title: "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation"
 org: Microsoft Research
 country: US
 date: 2023-08

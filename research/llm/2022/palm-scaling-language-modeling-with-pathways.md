@@ -1,8 +1,13 @@
 ---
-title: PaLM: Scaling Language Modeling with Pathways
-org: Google Research    country: US    date: 2022-04    type: paper
+title: "PaLM: Scaling Language Modeling with Pathways"
+org: Google Research
+country: US
+date: 2022-04
+type: paper
 categories: [预训练数据, 架构, AI infra]
-url: https://arxiv.org/abs/2204.02311    pdf_url: https://arxiv.org/pdf/2204.02311    github_url:
+url: https://arxiv.org/abs/2204.02311
+pdf_url: https://arxiv.org/pdf/2204.02311
+github_url:
 downloaded: [palm.pdf]
 ---
 

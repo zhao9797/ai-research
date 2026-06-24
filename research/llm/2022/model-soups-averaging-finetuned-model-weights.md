@@ -1,8 +1,13 @@
 ---
-title: Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time
-org: Univ. of Washington / Google / Columbia 等    country: US    date: 2022-03    type: paper
+title: "Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time"
+org: Univ. of Washington / Google / Columbia 等
+country: US
+date: 2022-03
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2203.05482    pdf_url: https://arxiv.org/pdf/2203.05482    github_url: https://github.com/mlfoundations/model-soups
+url: https://arxiv.org/abs/2203.05482
+pdf_url: https://arxiv.org/pdf/2203.05482
+github_url: https://github.com/mlfoundations/model-soups
 downloaded: [model-soups.pdf]
 ---
 

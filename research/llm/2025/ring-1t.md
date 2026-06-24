@@ -1,5 +1,5 @@
 ---
-title: Ring-1T — Every Step Evolves: Scaling Reinforcement Learning for Trillion-Scale Thinking Model
+title: "Ring-1T — Every Step Evolves: Scaling Reinforcement Learning for Trillion-Scale Thinking Model"
 org: 蚂蚁集团 百灵 / inclusionAI (Ant Group Ling Team)
 country: China
 date: 2025-10

@@ -1,5 +1,5 @@
 ---
-title: OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework
+title: "OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework"
 org: OpenRLHF community (含 ByteDance/NVIDIA 等贡献者)
 country: China
 date: 2024-05

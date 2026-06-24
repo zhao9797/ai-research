@@ -1,5 +1,5 @@
 ---
-title: NeMo-Aligner: Scalable Toolkit for Efficient Model Alignment
+title: "NeMo-Aligner: Scalable Toolkit for Efficient Model Alignment"
 org: NVIDIA
 country: US
 date: 2024-05

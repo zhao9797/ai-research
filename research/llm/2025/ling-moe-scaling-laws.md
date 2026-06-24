@@ -1,5 +1,5 @@
 ---
-title: Towards Greater Leverage: Scaling Laws for Efficient Mixture-of-Experts Language Models
+title: "Towards Greater Leverage: Scaling Laws for Efficient Mixture-of-Experts Language Models"
 org: 蚂蚁集团 Ling Team / inclusionAI (Ant Group)
 country: China
 date: 2025-07

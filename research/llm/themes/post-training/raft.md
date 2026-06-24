@@ -1,5 +1,5 @@
 ---
-title: RAFT: Reward rAnked FineTuning for Generative Foundation Model Alignment
+title: "RAFT: Reward rAnked FineTuning for Generative Foundation Model Alignment"
 org: HKUST / LMFlow
 country: China
 date: 2023-04

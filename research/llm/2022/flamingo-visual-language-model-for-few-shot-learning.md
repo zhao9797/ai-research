@@ -1,8 +1,13 @@
 ---
-title: Flamingo: a Visual Language Model for Few-Shot Learning
-org: DeepMind    country: UK    date: 2022-04    type: paper
+title: "Flamingo: a Visual Language Model for Few-Shot Learning"
+org: DeepMind
+country: UK
+date: 2022-04
+type: paper
 categories: [架构, 预训练数据]
-url: https://arxiv.org/abs/2204.14198    pdf_url: https://arxiv.org/pdf/2204.14198    github_url:
+url: https://arxiv.org/abs/2204.14198
+pdf_url: https://arxiv.org/pdf/2204.14198
+github_url:
 downloaded: [flamingo.pdf]
 ---
 

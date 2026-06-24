@@ -1,5 +1,5 @@
 ---
-title: DeepSpeed-FastGen: High-throughput Text Generation for LLMs via MII and DeepSpeed-Inference
+title: "DeepSpeed-FastGen: High-throughput Text Generation for LLMs via MII and DeepSpeed-Inference"
 org: Microsoft (DeepSpeed)
 country: US
 date: 2024-01

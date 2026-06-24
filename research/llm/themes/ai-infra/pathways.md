@@ -1,5 +1,5 @@
 ---
-title: Pathways: Asynchronous Distributed Dataflow for ML
+title: "Pathways: Asynchronous Distributed Dataflow for ML"
 org: Google
 country: US
 date: 2022-03

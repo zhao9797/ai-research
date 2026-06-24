@@ -1,5 +1,5 @@
 ---
-title: LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale
+title: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale"
 org: University of Washington / Meta / Hugging Face
 country: US
 date: 2022-08

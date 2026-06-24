@@ -1,8 +1,13 @@
 ---
-title: Molmo2: Open Weights and Data for Vision-Language Models with Video Understanding and Grounding
-org: Allen Institute for AI (Ai2) / University of Washington    country: US    date: 2026-01    type: paper
+title: "Molmo2: Open Weights and Data for Vision-Language Models with Video Understanding and Grounding"
+org: Allen Institute for AI (Ai2) / University of Washington
+country: US
+date: 2026-01
+type: paper
 categories: [预训练数据, 架构, 后训练]
-url: https://arxiv.org/abs/2601.10611    pdf_url: https://arxiv.org/pdf/2601.10611    github_url: https://github.com/allenai/molmo2
+url: https://arxiv.org/abs/2601.10611
+pdf_url: https://arxiv.org/pdf/2601.10611
+github_url: https://github.com/allenai/molmo2
 downloaded: [molmo2-arxiv-2601.10611.pdf]
 ---
 

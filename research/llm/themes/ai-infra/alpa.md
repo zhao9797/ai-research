@@ -1,5 +1,5 @@
 ---
-title: Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning
+title: "Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning"
 org: UC Berkeley / Google / AMPLab
 country: US
 date: 2022-01

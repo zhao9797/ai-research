@@ -1,5 +1,5 @@
 ---
-title: Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention
+title: "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention"
 org: DeepSeek-AI / Peking University / University of Washington
 country: China
 date: 2025-02

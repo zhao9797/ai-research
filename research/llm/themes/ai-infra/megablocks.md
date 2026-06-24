@@ -1,5 +1,5 @@
 ---
-title: MegaBlocks: Efficient Sparse Training with Mixture-of-Experts
+title: "MegaBlocks: Efficient Sparse Training with Mixture-of-Experts"
 org: Stanford / Microsoft / Google
 country: US
 date: 2022-11

@@ -1,8 +1,13 @@
 ---
 title: Improving alignment of dialogue agents via targeted human judgements (Sparrow)
-org: DeepMind    country: UK    date: 2022-09    type: paper
+org: DeepMind
+country: UK
+date: 2022-09
+type: paper
 categories: [后训练, agentic训练]
-url: https://arxiv.org/abs/2209.14375    pdf_url: https://arxiv.org/pdf/2209.14375    github_url:
+url: https://arxiv.org/abs/2209.14375
+pdf_url: https://arxiv.org/pdf/2209.14375
+github_url:
 downloaded: [sparrow.pdf]
 ---
 

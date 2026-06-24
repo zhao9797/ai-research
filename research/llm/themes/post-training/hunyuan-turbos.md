@@ -1,5 +1,5 @@
 ---
-title: Hunyuan-TurboS: Advancing Large Language Models through Mamba-Transformer Synergy and Adaptive Chain-of-Thought
+title: "Hunyuan-TurboS: Advancing Large Language Models through Mamba-Transformer Synergy and Adaptive Chain-of-Thought"
 org: Tencent (腾讯混元)
 country: China
 date: 2025-05

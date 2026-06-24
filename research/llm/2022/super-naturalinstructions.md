@@ -1,8 +1,13 @@
 ---
-title: Super-NaturalInstructions: Generalization via Declarative Instructions on 1600+ NLP Tasks
-org: AllenAI / Univ. Washington 等 (Tk-Instruct)    country: US    date: 2022-04    type: paper
+title: "Super-NaturalInstructions: Generalization via Declarative Instructions on 1600+ NLP Tasks"
+org: AllenAI / Univ. Washington 等 (Tk-Instruct)
+country: US
+date: 2022-04
+type: paper
 categories: [后训练, 预训练数据]
-url: https://arxiv.org/abs/2204.07705    pdf_url: https://arxiv.org/pdf/2204.07705    github_url: https://github.com/allenai/natural-instructions
+url: https://arxiv.org/abs/2204.07705
+pdf_url: https://arxiv.org/pdf/2204.07705
+github_url: https://github.com/allenai/natural-instructions
 downloaded: [super-naturalinstructions.pdf]
 ---
 

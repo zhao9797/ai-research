@@ -1,5 +1,5 @@
 ---
-title: Zephyr: Direct Distillation of LM Alignment
+title: "Zephyr: Direct Distillation of LM Alignment"
 org: Hugging Face
 country: US
 date: 2023-10

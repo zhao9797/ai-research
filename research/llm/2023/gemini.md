@@ -1,5 +1,5 @@
 ---
-title: Gemini: A Family of Highly Capable Multimodal Models
+title: "Gemini: A Family of Highly Capable Multimodal Models"
 org: Google DeepMind
 country: US
 date: 2023-12

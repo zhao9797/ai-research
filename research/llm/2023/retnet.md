@@ -1,5 +1,5 @@
 ---
-title: Retentive Network: A Successor to Transformer for Large Language Models
+title: "Retentive Network: A Successor to Transformer for Large Language Models"
 org: Microsoft Research
 country: US
 date: 2023-07

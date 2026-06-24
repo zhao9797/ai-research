@@ -1,8 +1,13 @@
 ---
-title: Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned
-org: Anthropic    country: US    date: 2022-08    type: paper
+title: "Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned"
+org: Anthropic
+country: US
+date: 2022-08
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2209.07858    pdf_url: https://arxiv.org/pdf/2209.07858    github_url: https://github.com/anthropics/hh-rlhf
+url: https://arxiv.org/abs/2209.07858
+pdf_url: https://arxiv.org/pdf/2209.07858
+github_url: https://github.com/anthropics/hh-rlhf
 downloaded: [anthropic-red-teaming.pdf]
 ---
 

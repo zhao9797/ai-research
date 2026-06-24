@@ -1,5 +1,5 @@
 ---
-title: AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration
+title: "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration"
 org: MIT (Han Lab) / SJTU / others
 country: US
 date: 2023-06

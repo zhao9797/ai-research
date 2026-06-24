@@ -1,5 +1,5 @@
 ---
-title: Seed1.5-Thinking: Advancing Superb Reasoning Models with Reinforcement Learning
+title: "Seed1.5-Thinking: Advancing Superb Reasoning Models with Reinforcement Learning"
 org: ByteDance Seed
 country: China
 date: 2025-04

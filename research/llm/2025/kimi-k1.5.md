@@ -1,5 +1,5 @@
 ---
-title: Kimi k1.5: Scaling Reinforcement Learning with LLMs
+title: "Kimi k1.5: Scaling Reinforcement Learning with LLMs"
 org: 月之暗面 Moonshot AI
 country: China
 date: 2025-01

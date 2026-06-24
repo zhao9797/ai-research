@@ -1,8 +1,13 @@
 ---
 title: Aligning language models to follow instructions (InstructGPT 官方博客)
-org: OpenAI    country: US    date: 2022-01    type: blog
+org: OpenAI
+country: US
+date: 2022-01
+type: blog
 categories: [后训练]
-url: https://openai.com/index/instruction-following/    pdf_url:    github_url: https://github.com/openai/following-instructions-human-feedback
+url: https://openai.com/index/instruction-following/
+pdf_url:
+github_url: https://github.com/openai/following-instructions-human-feedback
 downloaded: [openai-instructgpt-blog.html]
 ---
 

@@ -1,8 +1,13 @@
 ---
 title: Self-Consistency Improves Chain of Thought Reasoning in Language Models
-org: Google Research (Brain)    country: US    date: 2022-03    type: paper
+org: Google Research (Brain)
+country: US
+date: 2022-03
+type: paper
 categories: [后训练, agentic训练]
-url: https://arxiv.org/abs/2203.11171    pdf_url: https://arxiv.org/pdf/2203.11171    github_url:
+url: https://arxiv.org/abs/2203.11171
+pdf_url: https://arxiv.org/pdf/2203.11171
+github_url:
 downloaded: [self-consistency.pdf]
 ---
 

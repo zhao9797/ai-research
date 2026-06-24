@@ -1,8 +1,13 @@
 ---
-title: OPT: Open Pre-trained Transformer Language Models
-org: Meta AI    country: US    date: 2022-05    type: paper
+title: "OPT: Open Pre-trained Transformer Language Models"
+org: Meta AI
+country: US
+date: 2022-05
+type: paper
 categories: [预训练数据, 架构, AI infra]
-url: https://arxiv.org/abs/2205.01068    pdf_url: https://arxiv.org/pdf/2205.01068    github_url: https://github.com/facebookresearch/metaseq
+url: https://arxiv.org/abs/2205.01068
+pdf_url: https://arxiv.org/pdf/2205.01068
+github_url: https://github.com/facebookresearch/metaseq
 downloaded: [opt.pdf]
 ---
 

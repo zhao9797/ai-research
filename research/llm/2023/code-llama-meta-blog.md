@@ -1,5 +1,5 @@
 ---
-title: Code Llama: Meta's state-of-the-art LLM for coding
+title: "Code Llama: Meta's state-of-the-art LLM for coding"
 org: Meta AI
 country: US
 date: 2023-08

@@ -1,5 +1,5 @@
 ---
-title: Baichuan-M2: Scaling Medical Capability with Large Verifier System
+title: "Baichuan-M2: Scaling Medical Capability with Large Verifier System"
 org: 百川智能 (Baichuan AI)
 country: China
 date: 2025-09

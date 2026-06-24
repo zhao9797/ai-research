@@ -1,5 +1,5 @@
 ---
-title: MegaScale-Infer: Serving Mixture-of-Experts at Scale with Disaggregated Expert Parallelism
+title: "MegaScale-Infer: Serving Mixture-of-Experts at Scale with Disaggregated Expert Parallelism"
 org: ByteDance / Peking University
 country: China
 date: 2025-04

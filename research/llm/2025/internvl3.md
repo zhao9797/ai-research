@@ -1,5 +1,5 @@
 ---
-title: InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models
+title: "InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models"
 org: 上海人工智能实验室 (Shanghai AI Lab) / OpenGVLab
 country: China
 date: 2025-04

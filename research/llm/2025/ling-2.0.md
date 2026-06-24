@@ -1,5 +1,5 @@
 ---
-title: Ling 2.0 — Every Activation Boosted: Scaling General Reasoner to 1 Trillion Open Language Foundation (含 Ling-1T)
+title: "Ling 2.0 — Every Activation Boosted: Scaling General Reasoner to 1 Trillion Open Language Foundation (含 Ling-1T)"
 org: 蚂蚁集团 百灵 / inclusionAI (Ant Group Ling Team)
 country: China
 date: 2025-10

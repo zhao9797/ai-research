@@ -1,5 +1,5 @@
 ---
-title: SGLang: Efficient Execution of Structured Language Model Programs
+title: "SGLang: Efficient Execution of Structured Language Model Programs"
 org: Stanford / UC Berkeley / others (SGLang)
 country: US
 date: 2023-12

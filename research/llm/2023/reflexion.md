@@ -1,5 +1,5 @@
 ---
-title: Reflexion: Language Agents with Verbal Reinforcement Learning
+title: "Reflexion: Language Agents with Verbal Reinforcement Learning"
 org: Northeastern / MIT / Princeton
 country: US
 date: 2023-03

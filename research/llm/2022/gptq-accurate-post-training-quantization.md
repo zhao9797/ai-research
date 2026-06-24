@@ -1,8 +1,13 @@
 ---
-title: GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers
-org: IST Austria / ETH Zurich 等    country: EU    date: 2022-10    type: paper
+title: "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers"
+org: IST Austria / ETH Zurich 等
+country: EU
+date: 2022-10
+type: paper
 categories: [AI infra]
-url: https://arxiv.org/abs/2210.17323    pdf_url: https://arxiv.org/pdf/2210.17323    github_url: https://github.com/IST-DASLab/gptq
+url: https://arxiv.org/abs/2210.17323
+pdf_url: https://arxiv.org/pdf/2210.17323
+github_url: https://github.com/IST-DASLab/gptq
 downloaded: [gptq.pdf]
 ---
 

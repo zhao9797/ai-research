@@ -1,8 +1,13 @@
 ---
-title: Introducing Muse Spark: Scaling Towards Personal Superintelligence
-org: Meta (Meta Superintelligence Labs)    country: US    date: 2026-04    type: blog
+title: "Introducing Muse Spark: Scaling Towards Personal Superintelligence"
+org: Meta (Meta Superintelligence Labs)
+country: US
+date: 2026-04
+type: blog
 categories: [预训练数据, 架构, AI infra, 后训练, agentic训练]
-url: https://ai.meta.com/blog/introducing-muse-spark-msl/    pdf_url:     github_url:
+url: https://ai.meta.com/blog/introducing-muse-spark-msl/
+pdf_url:
+github_url:
 downloaded: [meta-muse-spark.html]
 ---
 

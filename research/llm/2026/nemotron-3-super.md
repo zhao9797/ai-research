@@ -1,8 +1,13 @@
 ---
-title: Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning
-org: NVIDIA    country: US    date: 2026-04    type: paper
+title: "Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning"
+org: NVIDIA
+country: US
+date: 2026-04
+type: paper
 categories: [架构, AI infra, 后训练, agentic训练, 预训练数据]
-url: https://arxiv.org/abs/2604.12374    pdf_url: https://arxiv.org/pdf/2604.12374    github_url:
+url: https://arxiv.org/abs/2604.12374
+pdf_url: https://arxiv.org/pdf/2604.12374
+github_url:
 downloaded: [arxiv-2604.12374.pdf]
 ---
 

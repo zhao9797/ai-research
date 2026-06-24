@@ -1,5 +1,5 @@
 ---
-title: UltraFeedback: Boosting Language Models with Scaled AI Feedback
+title: "UltraFeedback: Boosting Language Models with Scaled AI Feedback"
 org: Tsinghua / OpenBMB
 country: China
 date: 2023-10

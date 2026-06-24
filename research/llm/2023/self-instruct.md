@@ -1,5 +1,5 @@
 ---
-title: Self-Instruct: Aligning Language Models with Self-Generated Instructions
+title: "Self-Instruct: Aligning Language Models with Self-Generated Instructions"
 org: University of Washington / AI2
 country: US
 date: 2022-12

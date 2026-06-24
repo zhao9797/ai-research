@@ -1,8 +1,13 @@
 ---
-title: System Card: Claude Opus 4.6
-org: Anthropic    country: US    date: 2026-02    type: model-card
+title: "System Card: Claude Opus 4.6"
+org: Anthropic
+country: US
+date: 2026-02
+type: model-card
 categories: [后训练, agentic训练, 预训练数据]
-url: https://www.anthropic.com/system-cards    pdf_url: https://www-cdn.anthropic.com/14e4fb01875d2a69f646fa5e574dea2b1c0ff7b5.pdf    github_url:
+url: https://www.anthropic.com/system-cards
+pdf_url: https://www-cdn.anthropic.com/14e4fb01875d2a69f646fa5e574dea2b1c0ff7b5.pdf
+github_url:
 downloaded: [anthropic-claude-opus-4-6-system-card.pdf]
 ---
 

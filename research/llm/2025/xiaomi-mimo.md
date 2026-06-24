@@ -1,5 +1,5 @@
 ---
-title: MiMo: Unlocking the Reasoning Potential of Language Model -- From Pretraining to Posttraining
+title: "MiMo: Unlocking the Reasoning Potential of Language Model -- From Pretraining to Posttraining"
 org: 小米 (Xiaomi) MiMo / LLM-Core Team
 country: China
 date: 2025-05

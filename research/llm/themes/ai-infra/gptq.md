@@ -1,5 +1,5 @@
 ---
-title: GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers
+title: "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers"
 org: IST Austria / ETH Zurich / Neural Magic
 country: EU
 date: 2022-10

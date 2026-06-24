@@ -1,5 +1,5 @@
 ---
-title: GLM-4.6: Advanced Agentic, Reasoning and Coding Capabilities
+title: "GLM-4.6: Advanced Agentic, Reasoning and Coding Capabilities"
 org: 智谱 AI / Z.ai (Zhipu AI)
 country: China
 date: 2025-09

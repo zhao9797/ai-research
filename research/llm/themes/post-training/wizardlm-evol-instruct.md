@@ -1,5 +1,5 @@
 ---
-title: WizardLM: Empowering Large Language Models to Follow Complex Instructions (Evol-Instruct)
+title: "WizardLM: Empowering Large Language Models to Follow Complex Instructions (Evol-Instruct)"
 org: Microsoft / Peking University
 country: US
 date: 2023-04

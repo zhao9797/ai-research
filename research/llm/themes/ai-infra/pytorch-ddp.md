@@ -1,5 +1,5 @@
 ---
-title: PyTorch Distributed: Experiences on Accelerating Data Parallel Training
+title: "PyTorch Distributed: Experiences on Accelerating Data Parallel Training"
 org: Meta (Facebook AI)
 country: US
 date: 2020-06

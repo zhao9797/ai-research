@@ -1,8 +1,13 @@
 ---
 title: Remote agents in Vibe. Powered by Mistral Medium 3.5.
-org: Mistral AI    country: EU    date: 2026-05    type: blog
+org: Mistral AI
+country: EU
+date: 2026-05
+type: blog
 categories: [架构, 后训练, agentic训练]
-url: https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/    pdf_url:     github_url:
+url: https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/
+pdf_url:
+github_url:
 downloaded: [mistral-medium-3-5.html]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: WebGPT: Browser-assisted question-answering with human feedback
+title: "WebGPT: Browser-assisted question-answering with human feedback"
 org: OpenAI
 country: US
 date: 2021-12

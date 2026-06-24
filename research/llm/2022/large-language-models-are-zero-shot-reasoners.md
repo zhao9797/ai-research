@@ -1,8 +1,13 @@
 ---
 title: Large Language Models are Zero-Shot Reasoners
-org: Univ. of Tokyo / Google Research    country: Japan/US    date: 2022-05    type: paper
+org: Univ. of Tokyo / Google Research
+country: Japan/US
+date: 2022-05
+type: paper
 categories: [后训练, agentic训练]
-url: https://arxiv.org/abs/2205.11916    pdf_url: https://arxiv.org/pdf/2205.11916    github_url:
+url: https://arxiv.org/abs/2205.11916
+pdf_url: https://arxiv.org/pdf/2205.11916
+github_url:
 downloaded: [zero-shot-reasoners.pdf]
 ---
 

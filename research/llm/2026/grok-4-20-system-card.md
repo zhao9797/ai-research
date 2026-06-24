@@ -1,8 +1,13 @@
 ---
 title: Grok 4.20 System Card
-org: xAI    country: US    date: 2026-04    type: model-card
+org: xAI
+country: US
+date: 2026-04
+type: model-card
 categories: [后训练, agentic训练]
-url: https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf    pdf_url: https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf    github_url:
+url: https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf
+pdf_url: https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf
+github_url:
 downloaded: [xai-grok-4-20-model-card.pdf]
 ---
 

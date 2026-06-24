@@ -1,8 +1,13 @@
 ---
 title: Language Models (Mostly) Know What They Know
-org: Anthropic    country: US    date: 2022-07    type: paper
+org: Anthropic
+country: US
+date: 2022-07
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2207.05221    pdf_url: https://arxiv.org/pdf/2207.05221    github_url:
+url: https://arxiv.org/abs/2207.05221
+pdf_url: https://arxiv.org/pdf/2207.05221
+github_url:
 downloaded: [lm-know-what-they-know.pdf]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: RWKV: Reinventing RNNs for the Transformer Era
+title: "RWKV: Reinventing RNNs for the Transformer Era"
 org: EleutherAI / RWKV Foundation
 country: US
 date: 2023-05

@@ -1,5 +1,5 @@
 ---
-title: Streaming DiLoCo with overlapping communication: Towards a Distributed Free Lunch
+title: "Streaming DiLoCo with overlapping communication: Towards a Distributed Free Lunch"
 org: Google DeepMind / Google Research
 country: US
 date: 2025-01

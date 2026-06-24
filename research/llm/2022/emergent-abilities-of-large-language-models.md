@@ -1,8 +1,13 @@
 ---
 title: Emergent Abilities of Large Language Models
-org: Google / DeepMind / Stanford / UNC    country: US    date: 2022-06    type: paper
+org: Google / DeepMind / Stanford / UNC
+country: US
+date: 2022-06
+type: paper
 categories: [架构]
-url: https://arxiv.org/abs/2206.07682    pdf_url: https://arxiv.org/pdf/2206.07682    github_url:
+url: https://arxiv.org/abs/2206.07682
+pdf_url: https://arxiv.org/pdf/2206.07682
+github_url:
 downloaded: [emergent-abilities.pdf]
 ---
 

@@ -1,8 +1,13 @@
 ---
-title: Atlas: Few-shot Learning with Retrieval Augmented Language Models
-org: Meta AI    country: US    date: 2022-08    type: paper
+title: "Atlas: Few-shot Learning with Retrieval Augmented Language Models"
+org: Meta AI
+country: US
+date: 2022-08
+type: paper
 categories: [架构, 预训练数据]
-url: https://arxiv.org/abs/2208.03299    pdf_url: https://arxiv.org/pdf/2208.03299    github_url: https://github.com/facebookresearch/atlas
+url: https://arxiv.org/abs/2208.03299
+pdf_url: https://arxiv.org/pdf/2208.03299
+github_url: https://github.com/facebookresearch/atlas
 downloaded: [atlas.pdf]
 ---
 

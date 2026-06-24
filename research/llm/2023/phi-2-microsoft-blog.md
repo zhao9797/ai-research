@@ -1,5 +1,5 @@
 ---
-title: Phi-2: The surprising power of small language models
+title: "Phi-2: The surprising power of small language models"
 org: Microsoft Research
 country: US
 date: 2023-12

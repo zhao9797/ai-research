@@ -1,5 +1,5 @@
 ---
-title: Skywork R1V: Pioneering Multimodal Reasoning with Chain-of-Thought
+title: "Skywork R1V: Pioneering Multimodal Reasoning with Chain-of-Thought"
 org: 昆仑万维 天工 (Kunlun Skywork AI)
 country: China
 date: 2025-04

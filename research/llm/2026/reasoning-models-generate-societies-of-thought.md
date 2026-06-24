@@ -1,8 +1,13 @@
 ---
 title: Reasoning Models Generate Societies of Thought
-org: Google (Paradigms of Intelligence Team) / University of Chicago / Santa Fe Institute    country: US    date: 2026-01    type: paper
+org: Google (Paradigms of Intelligence Team) / University of Chicago / Santa Fe Institute
+country: US
+date: 2026-01
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2601.10825    pdf_url: https://arxiv.org/pdf/2601.10825    github_url:
+url: https://arxiv.org/abs/2601.10825
+pdf_url: https://arxiv.org/pdf/2601.10825
+github_url:
 downloaded: [arxiv-2601.10825.pdf]
 ---
 

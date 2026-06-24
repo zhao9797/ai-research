@@ -1,5 +1,5 @@
 ---
-title: Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context
+title: "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context"
 org: Google DeepMind
 country: US
 date: 2024-03

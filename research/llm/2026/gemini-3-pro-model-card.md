@@ -1,8 +1,13 @@
 ---
 title: Gemini 3 Pro Model Card (Last Updated May 2026)
-org: Google DeepMind    country: US    date: 2026-05    type: model-card
+org: Google DeepMind
+country: US
+date: 2026-05
+type: model-card
 categories: [架构, 预训练数据, 后训练, AI infra]
-url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf    pdf_url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf    github_url:
+url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf
+pdf_url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf
+github_url:
 downloaded: [gemini-3-pro-model-card.pdf]
 ---
 

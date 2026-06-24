@@ -1,5 +1,5 @@
 ---
-title: DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model
+title: "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model"
 org: DeepSeek-AI
 country: China
 date: 2024-05

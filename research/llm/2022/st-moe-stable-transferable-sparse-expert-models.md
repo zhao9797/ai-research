@@ -1,8 +1,13 @@
 ---
-title: ST-MoE: Designing Stable and Transferable Sparse Expert Models
-org: Google Research (Brain)    country: US    date: 2022-02    type: paper
+title: "ST-MoE: Designing Stable and Transferable Sparse Expert Models"
+org: Google Research (Brain)
+country: US
+date: 2022-02
+type: paper
 categories: [架构, AI infra]
-url: https://arxiv.org/abs/2202.08906    pdf_url: https://arxiv.org/pdf/2202.08906    github_url:
+url: https://arxiv.org/abs/2202.08906
+pdf_url: https://arxiv.org/pdf/2202.08906
+github_url:
 downloaded: [st-moe.pdf]
 ---
 

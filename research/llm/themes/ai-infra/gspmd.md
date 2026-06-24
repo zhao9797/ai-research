@@ -1,5 +1,5 @@
 ---
-title: GSPMD: General and Scalable Parallelization for ML Computation Graphs
+title: "GSPMD: General and Scalable Parallelization for ML Computation Graphs"
 org: Google
 country: US
 date: 2021-05

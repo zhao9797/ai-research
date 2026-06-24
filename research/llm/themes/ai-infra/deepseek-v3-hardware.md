@@ -1,5 +1,5 @@
 ---
-title: Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures
+title: "Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures"
 org: DeepSeek-AI
 country: China
 date: 2025-05

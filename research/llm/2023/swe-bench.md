@@ -1,5 +1,5 @@
 ---
-title: SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
+title: "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?"
 org: Princeton / University of Chicago
 country: US
 date: 2023-10

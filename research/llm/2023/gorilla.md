@@ -1,5 +1,5 @@
 ---
-title: Gorilla: Large Language Model Connected with Massive APIs
+title: "Gorilla: Large Language Model Connected with Massive APIs"
 org: UC Berkeley / Microsoft Research
 country: US
 date: 2023-05

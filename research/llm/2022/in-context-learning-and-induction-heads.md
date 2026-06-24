@@ -1,8 +1,13 @@
 ---
 title: In-context Learning and Induction Heads
-org: Anthropic    country: US    date: 2022-09    type: paper
+org: Anthropic
+country: US
+date: 2022-09
+type: paper
 categories: [架构]
-url: https://arxiv.org/abs/2209.11895    pdf_url: https://arxiv.org/pdf/2209.11895    github_url:
+url: https://arxiv.org/abs/2209.11895
+pdf_url: https://arxiv.org/pdf/2209.11895
+github_url:
 downloaded: [induction-heads.pdf]
 ---
 

@@ -1,8 +1,13 @@
 ---
 title: Challenging BIG-Bench Tasks and Whether Chain-of-Thought Can Solve Them (BBH)
-org: Google Research / Stanford    country: US    date: 2022-10    type: paper
+org: Google Research / Stanford
+country: US
+date: 2022-10
+type: paper
 categories: [预训练数据, 后训练]
-url: https://arxiv.org/abs/2210.09261    pdf_url: https://arxiv.org/pdf/2210.09261    github_url: https://github.com/suzgunmirac/BIG-Bench-Hard
+url: https://arxiv.org/abs/2210.09261
+pdf_url: https://arxiv.org/pdf/2210.09261
+github_url: https://github.com/suzgunmirac/BIG-Bench-Hard
 downloaded: [bbh.pdf]
 ---
 

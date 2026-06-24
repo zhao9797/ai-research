@@ -1,8 +1,13 @@
 ---
 title: Solving Quantitative Reasoning Problems with Language Models (Minerva)
-org: Google Research    country: US    date: 2022-06    type: paper
+org: Google Research
+country: US
+date: 2022-06
+type: paper
 categories: [预训练数据, 后训练]
-url: https://arxiv.org/abs/2206.14858    pdf_url: https://arxiv.org/pdf/2206.14858    github_url:
+url: https://arxiv.org/abs/2206.14858
+pdf_url: https://arxiv.org/pdf/2206.14858
+github_url:
 downloaded: [minerva.pdf]
 ---
 

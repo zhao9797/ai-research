@@ -1,5 +1,5 @@
 ---
-title: FastMoE: A Fast Mixture-of-Expert Training System
+title: "FastMoE: A Fast Mixture-of-Expert Training System"
 org: Tsinghua University / others
 country: China
 date: 2021-03

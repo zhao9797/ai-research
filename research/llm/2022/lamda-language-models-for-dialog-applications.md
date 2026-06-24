@@ -1,8 +1,13 @@
 ---
-title: LaMDA: Language Models for Dialog Applications
-org: Google Research    country: US    date: 2022-01    type: paper
+title: "LaMDA: Language Models for Dialog Applications"
+org: Google Research
+country: US
+date: 2022-01
+type: paper
 categories: [预训练数据, 后训练]
-url: https://arxiv.org/abs/2201.08239    pdf_url: https://arxiv.org/pdf/2201.08239    github_url:
+url: https://arxiv.org/abs/2201.08239
+pdf_url: https://arxiv.org/pdf/2201.08239
+github_url:
 downloaded: [lamda.pdf]
 ---
 

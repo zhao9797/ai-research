@@ -1,5 +1,5 @@
 ---
-title: TorchTitan: One-stop PyTorch native solution for production ready LLM pre-training
+title: "TorchTitan: One-stop PyTorch native solution for production ready LLM pre-training"
 org: Meta (PyTorch)
 country: US
 date: 2024-10

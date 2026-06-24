@@ -1,8 +1,13 @@
 ---
-title: DeepNet: Scaling Transformers to 1,000 Layers (DeepNorm)
-org: Microsoft Research    country: US    date: 2022-03    type: paper
+title: "DeepNet: Scaling Transformers to 1,000 Layers (DeepNorm)"
+org: Microsoft Research
+country: US
+date: 2022-03
+type: paper
 categories: [架构]
-url: https://arxiv.org/abs/2203.00555    pdf_url: https://arxiv.org/pdf/2203.00555    github_url: https://github.com/microsoft/torchscale
+url: https://arxiv.org/abs/2203.00555
+pdf_url: https://arxiv.org/pdf/2203.00555
+github_url: https://github.com/microsoft/torchscale
 downloaded: [deepnet.pdf]
 ---
 

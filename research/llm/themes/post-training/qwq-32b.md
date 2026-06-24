@@ -1,5 +1,5 @@
 ---
-title: QwQ-32B: Embracing the Power of Reinforcement Learning
+title: "QwQ-32B: Embracing the Power of Reinforcement Learning"
 org: Qwen Team, Alibaba
 country: China
 date: 2025-03

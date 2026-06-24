@@ -1,5 +1,5 @@
 ---
-title: Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding
+title: "Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding"
 org: 阶跃星辰 (StepFun)
 country: China
 date: 2025-07

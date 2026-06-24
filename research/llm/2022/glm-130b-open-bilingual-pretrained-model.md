@@ -1,8 +1,13 @@
 ---
-title: GLM-130B: An Open Bilingual Pre-trained Model
-org: 清华大学 / 智谱 (Tsinghua KEG & Zhipu)    country: China    date: 2022-10    type: paper
+title: "GLM-130B: An Open Bilingual Pre-trained Model"
+org: 清华大学 / 智谱 (Tsinghua KEG & Zhipu)
+country: China
+date: 2022-10
+type: paper
 categories: [预训练数据, 架构, AI infra]
-url: https://arxiv.org/abs/2210.02414    pdf_url: https://arxiv.org/pdf/2210.02414    github_url: https://github.com/THUDM/GLM-130B
+url: https://arxiv.org/abs/2210.02414
+pdf_url: https://arxiv.org/pdf/2210.02414
+github_url: https://github.com/THUDM/GLM-130B
 downloaded: [glm-130b.pdf]
 ---
 

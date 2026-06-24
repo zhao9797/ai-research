@@ -1,8 +1,13 @@
 ---
 title: Robust Speech Recognition via Large-Scale Weak Supervision (Whisper)
-org: OpenAI    country: US    date: 2022-12    type: paper
+org: OpenAI
+country: US
+date: 2022-12
+type: paper
 categories: [预训练数据, 架构]
-url: https://arxiv.org/abs/2212.04356    pdf_url: https://arxiv.org/pdf/2212.04356    github_url: https://github.com/openai/whisper
+url: https://arxiv.org/abs/2212.04356
+pdf_url: https://arxiv.org/pdf/2212.04356
+github_url: https://github.com/openai/whisper
 downloaded: [whisper.pdf]
 ---
 

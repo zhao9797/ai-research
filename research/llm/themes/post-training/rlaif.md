@@ -1,5 +1,5 @@
 ---
-title: RLAIF vs. RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback
+title: "RLAIF vs. RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback"
 org: Google Research / DeepMind
 country: US
 date: 2023-09

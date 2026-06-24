@@ -1,5 +1,5 @@
 ---
-title: DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition
+title: "DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition"
 org: DeepSeek
 country: China
 date: 2025-04

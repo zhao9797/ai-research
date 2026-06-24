@@ -1,8 +1,13 @@
 ---
 title: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
-org: Google Research (Brain)    country: US    date: 2022-01    type: paper
+org: Google Research (Brain)
+country: US
+date: 2022-01
+type: paper
 categories: [后训练, agentic训练]
-url: https://arxiv.org/abs/2201.11903    pdf_url: https://arxiv.org/pdf/2201.11903    github_url:
+url: https://arxiv.org/abs/2201.11903
+pdf_url: https://arxiv.org/pdf/2201.11903
+github_url:
 downloaded: [chain-of-thought.pdf]
 ---
 

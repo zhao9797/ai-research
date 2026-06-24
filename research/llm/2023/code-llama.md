@@ -1,5 +1,5 @@
 ---
-title: Code Llama: Open Foundation Models for Code
+title: "Code Llama: Open Foundation Models for Code"
 org: Meta AI
 country: US
 date: 2023-08

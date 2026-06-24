@@ -1,8 +1,13 @@
 ---
-title: FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness
-org: Stanford    country: US    date: 2022-05    type: paper
+title: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness"
+org: Stanford
+country: US
+date: 2022-05
+type: paper
 categories: [AI infra, 架构]
-url: https://arxiv.org/abs/2205.14135    pdf_url: https://arxiv.org/pdf/2205.14135    github_url: https://github.com/Dao-AILab/flash-attention
+url: https://arxiv.org/abs/2205.14135
+pdf_url: https://arxiv.org/pdf/2205.14135
+github_url: https://github.com/Dao-AILab/flash-attention
 downloaded: [flashattention.pdf]
 ---
 

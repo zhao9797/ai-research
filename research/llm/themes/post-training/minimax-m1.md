@@ -1,5 +1,5 @@
 ---
-title: MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention
+title: "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention"
 org: MiniMax (稀宇科技)
 country: China
 date: 2025-06

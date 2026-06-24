@@ -1,5 +1,5 @@
 ---
-title: YaRN: Efficient Context Window Extension of Large Language Models
+title: "YaRN: Efficient Context Window Extension of Large Language Models"
 org: Nous Research / EleutherAI
 country: US
 date: 2023-09

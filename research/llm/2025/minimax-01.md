@@ -1,5 +1,5 @@
 ---
-title: MiniMax-01: Scaling Foundation Models with Lightning Attention
+title: "MiniMax-01: Scaling Foundation Models with Lightning Attention"
 org: MiniMax (稀宇科技)
 country: China
 date: 2025-01

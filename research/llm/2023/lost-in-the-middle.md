@@ -1,5 +1,5 @@
 ---
-title: Lost in the Middle: How Language Models Use Long Contexts
+title: "Lost in the Middle: How Language Models Use Long Contexts"
 org: Stanford University
 country: US
 date: 2023-07

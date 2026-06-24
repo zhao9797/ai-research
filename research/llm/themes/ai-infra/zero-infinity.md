@@ -1,5 +1,5 @@
 ---
-title: ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning
+title: "ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning"
 org: Microsoft (DeepSpeed)
 country: US
 date: 2021-04

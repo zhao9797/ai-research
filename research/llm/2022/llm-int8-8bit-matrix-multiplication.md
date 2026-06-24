@@ -1,8 +1,13 @@
 ---
-title: LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale
-org: Univ. of Washington / Meta AI 等 (bitsandbytes)    country: US    date: 2022-08    type: paper
+title: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale"
+org: Univ. of Washington / Meta AI 等 (bitsandbytes)
+country: US
+date: 2022-08
+type: paper
 categories: [AI infra]
-url: https://arxiv.org/abs/2208.07339    pdf_url: https://arxiv.org/pdf/2208.07339    github_url: https://github.com/bitsandbytes-foundation/bitsandbytes
+url: https://arxiv.org/abs/2208.07339
+pdf_url: https://arxiv.org/pdf/2208.07339
+github_url: https://github.com/bitsandbytes-foundation/bitsandbytes
 downloaded: [llm-int8.pdf]
 ---
 

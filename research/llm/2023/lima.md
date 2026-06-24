@@ -1,5 +1,5 @@
 ---
-title: LIMA: Less Is More for Alignment
+title: "LIMA: Less Is More for Alignment"
 org: Meta AI
 country: US
 date: 2023-05

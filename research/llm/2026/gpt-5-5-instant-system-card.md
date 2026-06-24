@@ -1,8 +1,13 @@
 ---
 title: GPT-5.5 Instant System Card
-org: OpenAI    country: US    date: 2026-05    type: model-card
+org: OpenAI
+country: US
+date: 2026-05
+type: model-card
 categories: [后训练, 预训练数据]
-url: https://openai.com/index/gpt-5-5-instant-system-card/    pdf_url: https://deploymentsafety.openai.com/gpt-5-5-instant/gpt-5-5-instant.pdf    github_url:
+url: https://openai.com/index/gpt-5-5-instant-system-card/
+pdf_url: https://deploymentsafety.openai.com/gpt-5-5-instant/gpt-5-5-instant.pdf
+github_url:
 downloaded: [openai-gpt-5-5-instant-system-card.pdf, openai-gpt-5-5-instant-system-card.html]
 ---
 

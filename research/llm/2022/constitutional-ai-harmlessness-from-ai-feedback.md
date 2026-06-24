@@ -1,8 +1,13 @@
 ---
-title: Constitutional AI: Harmlessness from AI Feedback
-org: Anthropic    country: US    date: 2022-12    type: paper
+title: "Constitutional AI: Harmlessness from AI Feedback"
+org: Anthropic
+country: US
+date: 2022-12
+type: paper
 categories: [后训练]
-url: https://arxiv.org/abs/2212.08073    pdf_url: https://arxiv.org/pdf/2212.08073    github_url:
+url: https://arxiv.org/abs/2212.08073
+pdf_url: https://arxiv.org/pdf/2212.08073
+github_url:
 downloaded: [constitutional-ai.pdf]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning
+title: "GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning"
 org: 智谱 AI / Z.ai (Zhipu AI)
 country: China
 date: 2025-07
