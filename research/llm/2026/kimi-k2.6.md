@@ -7,7 +7,7 @@ type: model-card
 categories: [架构, AI infra, 后训练, agentic训练]
 url: https://huggingface.co/moonshotai/Kimi-K2.6
 github_url: https://github.com/MoonshotAI/Kimi-K2
-downloaded: [kimi-k2.6-readme.md, kimi-k2.6-config.json, arxiv-2602.02276-kimi-k2.5.pdf]
+downloaded: [kimi-k2.6-readme.md, kimi-k2.6-config.json, kimi-k2.6-blog.md, arxiv-2602.02276-kimi-k2.5.pdf]
 ---
 
 ## 一句话定位
@@ -36,7 +36,7 @@ downloaded: [kimi-k2.6-readme.md, kimi-k2.6-config.json, arxiv-2602.02276-kimi-k
 - **推理模式**：preserve_thinking（多轮保留完整 reasoning）+ interleaved thinking + 多步 tool call；Thinking(temp 1.0) / Instant(temp 0.6, `thinking:disabled`)，top_p 0.95。
 
 ## agentic
-- **Agent Swarm**：横向扩到 **300 个 sub-agents、4000 步**协同，动态分解为并行领域专精子任务，一次自主运行产出文档/网站/表格。
+- **Agent Swarm**：横向扩到 **300 个 sub-agents、4000 步**协同（**K2.5 为 100/1500，K2.6 翻 3×**），动态分解为并行领域专精子任务，一次自主运行产出文档/网站/幻灯/表格。官方实证：12 小时 14 轮把 Zig 推理吞吐从 ~15→~193 tok/s(超 LM Studio 20%)；按 CV 派 100 子 agent 匹配 100 个岗位并各出定制简历；K2.6-backed agent 自主运维 5 天(监控/事件响应/全周期处理)。
 - 7×24 常驻后台 agent（自主管日程、跑代码、跨平台编排）；coding-driven design（prompt/视觉 → 生产级界面 + 动画）；long-horizon coding 跨 Rust/Go/Python。
 - 最佳 agent 框架：Kimi Code CLI。
 

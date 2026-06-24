@@ -8,7 +8,7 @@ categories: [agentic训练, 架构, 后训练, 预训练数据]
 url: https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B
 pdf_url: https://arxiv.org/abs/2606.24597
 github_url: https://github.com/QwenLM/Qwen-AgentWorld
-downloaded: [qwen-agentworld-readme.md, qwen-agentworld-config.json, arxiv-2606.24597-qwen-agentworld.pdf]
+downloaded: [qwen-agentworld-readme.md, qwen-agentworld-config.json, qwen-agentworld-blog.md, arxiv-2606.24597-qwen-agentworld.pdf]
 ---
 
 ## 一句话定位
