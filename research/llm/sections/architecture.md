@@ -109,3 +109,12 @@
 - DeepSeek-VL2 (DeepSeek-AI, 2024-12, report) — 把 MoE + MLA 的语言侧与「动态拼图」高分辨率视觉编码结合，做成稀疏激活的视觉语言 MoE，高效处理任意宽高比高分辨率图像。 https://arxiv.org/abs/2412.10302
 - Qwen2.5-VL (Qwen Team, Alibaba, 2025-03, report) — Qwen 视觉语言旗舰，强化精确目标定位、文档/表格结构化解析、小时级长视频理解，引入绝对时间编码与原生分辨率窗口注意力 ViT。 https://arxiv.org/abs/2502.13923
 - Qwen2.5-Omni (Qwen Team, Alibaba, 2025-03, report) — 端到端原生全模态：单模型感知文本/图像/音频/视频并流式同时生成文本与语音，核心是 Thinker-Talker 双脑架构 + TMRoPE（时间对齐多模态 RoPE），代表 native omni-modal 路线。 https://arxiv.org/abs/2503.20215
+
+## 增量补录（2026 调研后查漏，架构维度）
+- **GLM-5.2** — glm_moe_dsa：MLA+Muon Split、256 专家/8、78 层、**IndexShare**（每4稀疏层共享 indexer，1M FLOPs −2.9×）、改进 MTP。[详](../2026/glm-5.2.md)
+- **Kimi-K2.6** — 1T/32B MoE、MLA、384 专家/8+1 共享、61 层、MoonViT 400M、native INT4。[详](../2026/kimi-k2.6.md)
+- **MiniMax-M3** — ~428B/23B、**MSA 双分支稀疏注意力**(Index+Main, KL训indexer)、1M。[详](../2026/minimax-m3.md)
+- **Qwen-AgentWorld** — 混合 Gated DeltaNet+Gated Attention(3:1)、256 专家/8、MTP。[详](../2026/qwen-agentworld.md)
+- **MiniCPM5-1B** — 回归标准 LlamaForCausalLM(1536/24层/GQA 16·2/128K)。[详](../2026/minicpm5-1b.md)
+- **Mistral-Small-4** — mistral4 MoE 128/4 active、119B/6.5B、256K、多模态输入。[详](../2026/mistral-small-4.md)
+- **Intern-S2-Preview** — qwen3_5_moe_text、256 专家/8、FP8。[详](../2026/intern-s2-preview.md)

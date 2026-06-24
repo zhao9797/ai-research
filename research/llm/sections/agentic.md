@@ -171,3 +171,11 @@
 - **Baichuan-M4: A Clinical-Grade Medical Agent System for Continuous Care** (百川智能, 2026-06, paper) — 临床级医疗 agent 系统，面向“持续照护”而非单轮问答：Baichuan-Harness 运行时（工具使用/长期患者记忆/多 agent 协调）+ 连续照护 RL 核心推理模型（span-level reward SPAR++、推理路径压缩、课程学习）+ 临床工具层（循证检索/多模态影像）；动态 OSCE 问诊/长上下文临床记忆/医疗 OCR 均领先。https://arxiv.org/abs/2606.08982
 - **Ling and Ring 2.6 Technical Report** (蚂蚁 InclusionAI, 2026-06, paper) — 万亿级 MoE 模型族（Ling-2.6 即时响应 / Ring-2.6 深度推理）：经“架构迁移预训练 + 大规模后训练”从 Ling-2.0 升级，引入 hybrid linear attention（Lightning Attention + MLA），以 Evolutionary CoT / Linguistic Unit Policy Optimization 优化每输出 token 能力密度。https://arxiv.org/abs/2606.15079
 - **Nemotron 3 Ultra** (NVIDIA, 2026-06, paper) — Nemotron 3 家族最强（550B 总/55B 激活混合 Mamba-Attention MoE）为长时自主 agentic 优化：20T token 预训练→扩 1M 上下文→SFT+RL+多教师在线策略蒸馏(MOPD)；LatentMoE/MTP/NVFP4/多环境 RLVR，吞吐相比公开 SOTA 最高约 6×，全开源。https://arxiv.org/abs/2606.15007
+
+## 增量补录（2026 调研后查漏，agentic 维度）
+- **Qwen-AgentWorld** — **首个语言世界模型(LWM)**，7 域环境仿真；两范式：当模拟器做 Sim RL(+4.3~12.3)、当 agent 基础模型 warm-up(+5.2~11.8)。[详](../2026/qwen-agentworld.md)
+- **Kimi-K2.6** — **agent swarm 300 子agent/4000步**、7×24 后台 agent、coding-driven design；Agentic benchmark(BrowseComp swarm 86.3/OSWorld-V 73.1)。[详](../2026/kimi-k2.6.md)
+- **GLM-5.2** — Agentic RL + 分层上下文管理(BrowseComp 55.3→75.9)；MCP-Atlas 76.8。[详](../2026/glm-5.2.md)
+- **MiniMax-M3** — frontier long-horizon agentic(coding & cowork)。[详](../2026/minimax-m3.md)
+- **Mistral-Small-4** — 原生 function calling+JSON、SWE 自动化(Devstral)。[详](../2026/mistral-small-4.md)
+- **Intern-S2-Preview** — 科学工作流 agent(OpenClaw/Hermes/Claude Code 集成)。[详](../2026/intern-s2-preview.md)
