@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<!-- Meta tags for Zotero grab citation -->
+	<meta name="citation_title" content="Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold">
+	<meta name="citation_author" content="Pan, Xingang">
+	<meta name="citation_author" content="Tewari, Ayush">
+	<meta name="citation_author" content="Thomas Leimkühler">
+	<meta name="citation_author" content="Liu, Lingjie">
+	<meta name="citation_author" content="Abhimitra, Meka">
+	<meta name="citation_author" content="Theobalt, Christian">
+	<!-- meta name="citation_publication_date" content="2020">
+	<meta name="citation_conference_title" content="European Conference on Computer Vision (ECCV) 2020" --> 
+
+	<meta name="robots" content="index,follow">
+	<meta name="description" content="Synthesizing visual content that meets users' needs often requires flexible and precise controllability of the pose, shape, expression, and layout of the generated objects. Existing approaches gain controllability of generative adversarial networks (GANs) via manually annotated training data or a prior 3D model, which often lack flexibility, precision, and generality. In this work, we study a powerful yet much less explored way of controlling GANs, that is, to "drag" any points of the image to precisely reach target points in a user-interactive manner, as shown in Fig.1. To achieve this, we propose DragGAN, which consists of two main components including: 1) a feature-based motion supervision that drives the handle point to move towards the target position, and 2) a new point tracking approach that leverages the discriminative GAN features to keep localizing the position of the handle points. Through DragGAN, anyone can deform an image with precise control over where pixels go, thus manipulating the pose, shape, expression, and layout of diverse categories such as animals, cars, humans, landscapes, etc. As these manipulations are performed on the learned generative image manifold of a GAN, they tend to produce realistic outputs even for challenging scenarios such as hallucinating occluded content and deforming shapes that consistently follow the object's rigidity. Both qualitative and quantitative comparisons demonstrate the advantage of DragGAN over prior approaches in the tasks of image manipulation and point tracking. We also showcase the manipulation of real images through GAN inversion."> 
+	<link rel="author" href="https://xingangpan.github.io/"/> 
+
+	<!-- Fonts and stuff -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/project.css" media="screen" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/iconize.css" />
+	<script src="js/google-code-prettify/prettify.js"></script>
+</head>
+
+<body>
+	<div id="content">
+		<div id="content-inner" >
+			<div class="section logos"  style="text-align:center">
+			
+				<a href="http://www.mpi-inf.mpg.de/" target="_blank"><img src="images/mpii-logo.png" height="40"></a>
+				<a href="https://www.via-center.science/" target="_blank"><img src="images/via-logo.png" height="40"></a>
+				<a href="https://www.mit.edu/" target="_blank"><img src="images/mit-logo.png" height="40"></a>
+                <a href="https://www.upenn.edu/" target="_blank"><img src="images/upenn-logo.png" height="40"></a>
+				<a href="https://www.google.com/" target="_blank"><img src="images/google.png" height="40"></a>
+                
+			</div>
+
+			<div class="section head">
+			
+				<h1>Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold</h1>
+
+				<div class="authors">
+				<br>
+                    <a href="https://xingangpan.github.io/" target="_blank">Xingang Pan</a><sup> 1,2</sup>&#160;&#160;					
+					<a href="https://ayushtewari.com/" target="_blank">Ayush Tewari</a><sup> 3</sup>&#160;&#160;					
+					<a href="https://people.mpi-inf.mpg.de/~tleimkue/" target="_blank">Thomas Leimkühler</a><sup> 1</sup>&#160;&#160;					
+                    <a href="https://lingjie0206.github.io/" target="_blank">Lingjie Liu</a><sup> 1,4</sup>&#160;&#160;		
+                    <a href="https://www.meka.page/" target="_blank">Abhimitra Meka</a><sup> 5</sup>&#160;&#160;		
+					<a href="http://www.mpi-inf.mpg.de/~theobalt/" target="_blank">Christian Theobalt</a><sup> 1,2</sup>&#160;&#160;
+					
+					<br>
+				</div>
+
+				<div class="affiliations">
+					<sup>1</sup><a href="http://www.mpi-inf.mpg.de/" target="_blank">Max Planck Institute for Informatics</a>&#160;&#160;
+					<sup>2</sup><a href="https://www.via-center.science/" target="_blank">Saarbrücken Research Center for Visual Computing, Interaction and AI</a>&#160;&#160;
+					<sup>3</sup><a href="https://www.mit.edu/" target="_blank">MIT</a>&#160;&#160;
+					<sup>4</sup><a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a>&#160;&#160;
+					<sup>5</sup>Google AR/VR</a>&#160;&#160;
+				</div>
+
+				<div class="venue"><a href="https://s2023.siggraph.org/" target="_blank">SIGGRAPH 2023 Conference Proceedings</a></div>
+
+				<!--div class="venue"><a href="http://cvpr2021.thecvf.com/" target="_blank">Accepted** at Computer Vision and Pattern Recognition (CVPR) 2021</a></div>
+				<div class="tagline"><a href="http://cvpr2021.thecvf.com/" target="_blank">**To be published on June 2021</a></div -->				
+				
+			</div>
+			
+			<!-- <div class="section teaser">
+				<img src="data/teaser.png"  width="940" alt="Inverse rendering"/>	                				
+			</div> -->
+
+			<div class="section teaser">	
+				<img src="images/teasor.png"  width="940" alt="DragGAN"/>						
+				<!-- <center><video width="860" controls><source src="data/GAN2X_video.mp4" type="video/mp4"></video><br>
+				</center> -->
+			</div>
+			
+			<div class="section abstract">
+				<h2>Abstract</h2>
+				<p>
+					Synthesizing visual content that meets users' needs often requires flexible and precise controllability of the pose, shape, expression, and layout of the generated objects. Existing approaches gain controllability of generative adversarial networks (GANs) via manually annotated training data or a prior 3D model, which often lack flexibility, precision, and generality. In this work, we study a powerful yet much less explored way of controlling GANs, that is, to "drag" any points of the image to precisely reach target points in a user-interactive manner, as shown in Fig.1. To achieve this, we propose DragGAN, which consists of two main components including: 1) a feature-based motion supervision that drives the handle point to move towards the target position, and 2) a new point tracking approach that leverages the discriminative GAN features to keep localizing the position of the handle points. Through DragGAN, anyone can deform an image with precise control over where pixels go, thus manipulating the pose, shape, expression, and layout of diverse categories such as animals, cars, humans, landscapes, etc. As these manipulations are performed on the learned generative image manifold of a GAN, they tend to produce realistic outputs even for challenging scenarios such as hallucinating occluded content and deforming shapes that consistently follow the object's rigidity. Both qualitative and quantitative comparisons demonstrate the advantage of DragGAN over prior approaches in the tasks of image manipulation and point tracking. We also showcase the manipulation of real images through GAN inversion.
+				</p>
+			</div>
+			
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/DragGAN.mp4" type="video/mp4"></video><br>
+					Main demo (accelerated)
+				</center>
+			</div>
+			
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/lion.mp4" type="video/mp4"></video><br>
+					Lion
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/cat.mp4" type="video/mp4"></video><br>
+					Cat
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/dog.mp4" type="video/mp4"></video><br>
+					Dog
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/horse.mp4" type="video/mp4"></video><br>
+					Horse
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/elephant.mp4" type="video/mp4"></video><br>
+					Elephant
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/face.mp4" type="video/mp4"></video><br>
+					Face
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/human.mp4" type="video/mp4"></video><br>
+					Human
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/car.mp4" type="video/mp4"></video><br>
+					Car
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/microscope.mp4" type="video/mp4"></video><br>
+					Microscope
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/landscapes.mp4" type="video/mp4"></video><br>
+					Landscapes
+				</center>
+			</div>
+
+			<div class="section teaser">							
+				<center><video width="600" controls><source src="data/real_image.mp4" type="video/mp4"></video><br>
+					Real image
+				</center>
+			</div>
+
+			<div class="section downloads">
+				<h2>Downloads</h2>
+				<center>
+				<ul>
+                
+					<li class="grid">
+						<div class = "griditem">
+							<a href="data/paper.pdf" target="_blank" class="imageLink"><img src = "images/pdf.png"></a><br/>
+							Paper<br/>
+							<br/>
+						</div>
+					</li>
+					<li class="grid">
+						<div class = "griditem">
+							<a href="https://github.com/XingangPan/DragGAN" target="_blank" class="imageLink"><img src = "images/code.png"></a><br/>
+							Code<br/>
+						</div>
+					</li>
+					<!-- <li class="grid">
+						<div class = "griditem">
+							<a href="data/supplementary.pdf" target="_blank" class="imageLink"><img src = "images/pdf.png"></a><br/>
+							Supplemental document<br/>
+						</div>
+					</li> -->
+					<!-- <li class="grid"> 
+						<div class = "griditem"> 
+						<a href="data/GAN2X_video.mp4" target="_blank" class="imageLink"><img src = "images/mp4.png"></a><br />
+						Main video<br /> 
+						<br/> 
+						</div>
+					</li> -->
+				</ul>
+				</center>
+			</div>
+			<br />
+			
+			
+			
+			<div class="section list">
+				<h2>Citation</h2>
+				<div class="section bibtex">
+					<pre>
+@inproceedings{pan2023_DragGAN,
+    title={Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold}, 
+    author={Pan, Xingang and Tewari, Ayush, and Leimk{\"u}hler, Thomas and Liu, Lingjie and Meka, Abhimitra and Theobalt, Christian},
+    booktitle = {ACM SIGGRAPH 2023 Conference Proceedings},
+    year={2023}
+}
+			</div>
+			</div>
+
+			<div class="section acknowledgments">
+				<h2>License</h2>
+				<p>
+					Images, text and video files on this site are made freely available for non-commercial use under the <a href='LICENSE.txt'>Creative Commons CC BY-NC 4.0 license</a>. Feel free to use any of the material in your own work, as long as you give us appropriate credit by mentioning the title and author list of our paper. 
+				</p>
+			</div>
+
+            
+			<div class="section acknowledgments">
+				<h2>Acknowledgments</h2>
+				<p>
+                This work was supported by ERC Consolidator Grant 4DReply (770784). Lingjie Liu was supported by Lise Meitner Postdoctoral Fellowship. This project was also supported by Saarbrücken Research Center for Visual Computing, Interaction and AI.
+				</p>
+			</div>
+
+			<div class="section contact">
+				<h2>Contact</h2>
+				For questions and clarifications please get in touch with:<br />
+                Xingang Pan <a href='mailt&#111;&#58;xingangpan1994@gmail.com'>xingangpan1994[at]gmail[dot]com</a>                 
+			</div>
+
+			<div class="section">
+				<hr class="smooth">
+				This page is <a href="http://www.zotero.org" target="_blank">Zotero</a> translator friendly. Page last updated 
+				<script type="text/javascript">
+					var m = "This page was last updated: " + document.lastModified;
+					var p = m.length-9;
+					document.writeln("<left>");
+					document.write(m.substring(p, 0) + ".");
+					document.writeln("</left>");
+				</script>
+				<a href="https://www.mpi-inf.mpg.de/imprint/">Imprint</a>. <a href="https://data-protection.mpi-klsb.mpg.de/inf/gvv.mpi-inf.mpg.de/projects/">Data Protection</a>.
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,1286 @@
+arXiv:2307.11410v2 [cs.CV] 19 May 2024
+
+Subject-Diffusion: Open Domain Personalized Text-to-Image
+Generation without Test-time Fine-tuning
+Jian Ma
+
+Junhao Liang∗
+
+OPPO AI Center
+ShenZhen, China
+majian2@oppo.com
+
+Southern University of Science and Technology
+ShenZhen, China
+12132342@mail.sustech.edu.cn
+
+Chen Chen†
+
+Haonan Lu†
+
+OPPO AI Center
+ShenZhen, China
+chenchen4@oppo.com
+
+OPPO AI Center
+ShenZhen, China
+luhaonan@oppo.com
+
+Figure 1: Our Subject-Diffusion is capable of generating high-fidelity subject-driven images (general and human subjects) using just one
+reference image, without test-time fine-tuning, allowing for the preservation of identity and editability. Furthermore, our model supports the
+generation of multiple subjects within a single model. We also show the interpolation ability between reference images and word concepts.
+The original images, except for the left-below boy, are from the DreamBench [Ruiz et al. 2023] dataset.
+
+ABSTRACT
+∗ Work done during internship at OPPO
+† corresponding authors
+
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+© 2024 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM ISBN 979-8-4007-0525-0/24/07. . . $15.00
+https://doi.org/10.1145/3641519.3657469
+
+Recent progress in personalized image generation using diffusion
+models has been significant. However, development in the area of
+open-domain and test-time fine-tuning-free personalized image
+generation is proceeding rather slowly. In this paper, we propose
+Subject-Diffusion, a novel open-domain personalized image generation model that, in addition to not requiring test-time fine-tuning,
+also only requires a single reference image to support personalized generation of single- or two-subjects in any domain. Firstly,
+we construct an automatic data labeling tool and use the LAIONAesthetics dataset to construct a large-scale dataset consisting of
+76M images and their corresponding subject detection bounding
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+boxes, segmentation masks, and text descriptions. Secondly, we
+design a new unified framework that combines text and image
+semantics by incorporating coarse location and fine-grained reference image control to maximize subject fidelity and generalization.
+Furthermore, we also adopt an attention control mechanism to support two-subject generation. Extensive qualitative and quantitative
+results demonstrate that our method have certain advantages over
+other frameworks in single, multiple, and human-customized image
+generation.
+
+CCS CONCEPTS
+• Computing methodologies → Computer vision.
+
+KEYWORDS
+Text-to-Image, Personalization, Open-Domain, Diffusion
+ACM Reference Format:
+Jian Ma, Junhao Liang, Chen Chen, and Haonan Lu. 2024. Subject-Diffusion:
+Open Domain Personalized Text-to-Image Generation without Test-time
+Fine-tuning. In Special Interest Group on Computer Graphics and Interactive
+Techniques Conference Conference Papers ’24 (SIGGRAPH Conference Papers
+’24), July 27-August 1, 2024, Denver, CO, USA. ACM, New York, NY, USA,
+12 pages. https://doi.org/10.1145/3641519.3657469
+
+1
+
+INTRODUCTION
+
+Recently, the rapid advancement of diffusion-based generative models [Ho et al. 2020; Song et al. 2020a,b] has led to the development of
+numerous large-scale synthesis models [Balaji et al. 2022; Feng et al.
+2023; Nichol et al. 2022; Ramesh et al. 2022; Rombach et al. 2022;
+Saharia et al. 2022]. These models have been trained on extensive
+datasets containing billions of image-text pairs, such as LAION5B [Schuhmann et al. 2022], and have demonstrated remarkable
+text-to-image generation capabilities, exhibiting impressive artistry,
+authenticity, and semantic alignment. However, relying solely on
+textual information proves insufficient to fully capture user intentions. Consequently, the integration of textual descriptions and
+reference images to produce customized images has emerged as a
+promising research direction.
+Leveraging pre-trained text-to-image generation model, such as
+Stable Diffusion [Rombach et al. 2022] and Imagen [Saharia et al.
+2022], numerous approaches [Avrahami et al. 2023; Gal et al. 2022;
+Hao et al. 2023; Kumari et al. 2023; Ruiz et al. 2023; Smith et al.
+2023; Tewel et al. 2023] propose fine-tuning these models, typically
+with 3 to 5 provided reference images. These methods, which often
+yield satisfactory outcomes, necessitate the execution of specialized
+network training, as seen in word embedding space [Gal et al. 2022]
+or in specific layers of the UNet [Kumari et al. 2023; Ruiz et al.
+2023], or by appending side branches [Smith et al. 2023]. However,
+this approach is not efficient for realistic application. An alternate
+strategic roadmap [Chen et al. 2023a, 2022; Wei et al. 2023; Xiao et al.
+2023; Zhou et al. 2023a] is to re-train the text-to-image base model
+by specially designed network structures or training strategies on
+a large-scale personalized image dataset. Nonetheless, this often
+compromises the fidelity and generalization when contrasted with
+test-time fine-tuning approaches. Additionally, some techniques
+are only able to produce personalized image generation within
+specific domains, such as portrait [Jia et al. 2023; Shi et al. 2023;
+
+Jian Ma, Junhao Liang, Chen Chen, and Haonan Lu.
+
+Xiao et al. 2023], cats [Shi et al. 2023] or dogs [Jia et al. 2023]. Even
+though some recent proposed algorithms [Li et al. 2023a; Ma et al.
+2023a; Wei et al. 2023] can achieve open-domain customized image
+generation, they can only handle single-concept issues. However,
+with regard to a single reference image, multiple concept generation,
+test-time fine-tuning free, and open-domain zero-shot capability,
+very few papers have considered the comprehensive capability.
+A large-scale training dataset, incorporating object-level segmentation masks and image-level intricate language descriptions,
+is essential for zero-shot personalized image generation. However,
+in the case of such labor-intensive labeling tasks, the publicly accessible datasets, including LVIS [Gupta et al. 2019], ADE20K [Zhou
+et al. 2019], COCO-stuff [Caesar et al. 2018], Visual Genome [Krishna et al. 2017], and Open Images [Kuznetsova et al. 2020], usually
+suffer from insufficient quantities of images ranging from 10k to
+1M, or a lack of text descriptions entirely. Addressing this data
+scarcity issue for open-domain personalized image generation, we
+are inspired to develop an automatic data labeling tool, which will
+be thoroughly discussed in Sec. 3.1.
+As mentioned in [Zhou et al. 2023b], the information of personalized images may overwhelmingly dominate that of the text input of
+the user to prevent creative generation. In order to balance fidelity
+and editability, we propose to fuse the input text prompt and objectlevel image features by continually training the CLIP text encoder
+(unlike fixing the encoder as FastComposer [Xiao et al. 2023] and
+Elite [Wei et al. 2023]) based on a specific prompt style. We further
+propose to integrate fine-grained reference image patches, detected
+object bounding boxes, and location masks to control the fidelity
+of generated images. Finally, to further control the generation of
+multiple subjects, we introduce cross-attention map control during
+training. As exhibited in Fig. 1, based on the constructed largescale structured data in an open domain and our proposed new
+model architecture, Subject-Diffusion achieves remarkable fidelity
+and editability, which can perform single, multiple, and human
+subject personalized generation by modifying their shape, pose,
+background, and even style with only one reference image for each
+subject. In addition, Subject-Diffusion can also perform smooth
+interpolation between customized images and text descriptions by
+using a specially designed denoising process. In terms of quantitative comparisons, our model has certain advantages over other
+methods, including test-time fine-tuning and non-fine-tuning approaches on the DreamBench [Ruiz et al. 2023] and our proposed
+larger open-domain test dataset.
+We summarize our contributions in the following aspects: (i)
+We design an automatic dataset construction pipeline and create a
+sizable and structured training dataset that comprises 76M opendomain images and 222M entities. (ii) To the best of our knowledge,
+we propose a personalized image generation framework, which is
+the first work to address the challenge of simultaneously generating
+open-domain single- and two-concept personalized images without
+test-time fine-tuning, solely relying on a single reference image for
+each subject. (iii) Both quantitative and qualitative experimental
+results demonstrate the excellent performance of our framework
+as compared with other methods.
+
+Subject-Diffusion
+
+2 RELATED WORK
+2.1 Text-to-Image Generation
+The diffusion model has emerged as a promising direction to generate images with high fidelity and diversity based on provided
+textual input. GLIDE [Nichol et al. 2022] utilizes an unclassified
+guide to introduce text conditions into the diffusion process. DALLE2 [Ramesh et al. 2022] uses a diffusion prior module and cascading
+diffusion decoders to generate high-resolution images based on
+the CLIP text encoder. Imagen [Saharia et al. 2022] emphasizes language understanding and suggests using a large T5 language model
+to better represent semantics. Latent diffusion model [Rombach
+et al. 2022] uses an autoencoder to project images into the latent
+space and applies the diffusion process to generate latent-level
+feature maps. Stable diffusion (SD) [Rombach et al. 2022], ERNIEViLG2.0 [Feng et al. 2023] and ediffi [Balaji et al. 2022] propose to
+employ a cross-attention mechanism to inject textual conditions
+into the diffusion generation process. Our framework is built on the
+basis of SD due to its flexible scalability and open-source nature.
+
+2.2
+
+Subject-driven Text-to-Image Generation
+
+Currently, there are two main frameworks for personalized textto-image generation from the perspective of whether to introduce
+test-time fine-tuning. In terms of test-time fine-tuning strategies, a
+group of solutions requires several personalized images containing
+a specific subject and then directly fine-tune the token embedding
+of the subject to adapt to learning visual concepts [Alaluf et al. 2023;
+Gal et al. 2022; Han et al. 2023b; Voynov et al. 2023; Yang et al. 2023].
+Another group of approaches fine-tune the generation model using
+these images [Chen et al. 2023b; Fei et al. 2023; Han et al. 2023a; Kumari et al. 2023; Ruiz et al. 2023], among which DreamBooth [Ruiz
+et al. 2023] fine-tunes the entire UNet network, while Custom Diffusion [Kumari et al. 2023] only fine-tunes the K and V layers of
+the cross-attention. On the other hand, Custom Diffusion proposes
+the personalized generation of multiple subjects for the first time.
+SVDiff [Han et al. 2023a] constructs training data using cutmix
+and adds regularization penalties to limit the confusion of multiple
+subject attention maps. Cones proposes concept neurons and updates only the concept neurons for a single subject in the K and V
+layers of cross-attention. For multiple personalized subject generation, the concept neurons of multiple trained personalized models
+are directly concatenated. Mix-of-Show [Gu et al. 2023] trains a
+separate LoRA model [Hu et al. 2021] for each subject and then
+performs fusion. Cones 2 [Liu et al. 2023b] generates two-subject
+combination images by learning the residual of token embedding
+and controlling the attention map. MagiCapture [Hyung et al. 2023]
+introduce a multi-concept personalization method capable of generating high-resolution portrait images that faithfully capture the
+characteristics of both source and reference images.
+Since test-time fine-tuning methods suffer from a notoriously
+time-consuming problem, another research route involves constructing a large amount of domain-specific data or using opendomain image data for training without additional fine-tuning.
+InstructPix2Pix [Brooks et al. 2023] can follow human instructions
+to perform various editing tasks, including object swapping, style
+transfer, and environment modification, by simply concatenating
+the latent of the reference images during the model noise injection
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+process. ELITE [Wei et al. 2023] proposes global and local mapping
+training schemes using the OpenImages testset, which contains
+125k images and 600 object classes as training data. However, due to
+the limitations of the model architecture, the text alignment effect
+is relatively moderate. UMM-Diffusion presents a novel Unified
+Multi-Modal Latent Diffusion [Ma et al. 2023a] that takes joint
+texts and images that contain specified subjects as input sequences
+and generates customized images with the subjects. Its limitations
+include the inability to support multiple subjects and its training
+data being selected from LAION-400M [Schuhmann et al. 2021],
+resulting in poor performance in generating rare themes. Similarly,
+Taming Encoder [Jia et al. 2023], InstantBooth [Shi et al. 2023], FastComposer [Xiao et al. 2023], Face-Diffuser [Wang et al. 2023b] and
+PhotoVerse [Chen et al. 2023c] are all trained on domain-specific
+data. BLIP-Diffusion[Li et al. 2023a] uses OpenImages data, and due
+to its two-stage training scheme, it achieves good fidelity effects
+but does not support two-subject generation. IP-Adapter [Ye et al.
+2023] uses a lightweight image prompt adaptation method with
+the decoupled cross-attention strategy for existing text-to-image
+diffusion models. SuTI [Chen et al. 2023a] propose a subject-driven
+text-to-image generator that performs instant and customized generation for a visual subject. Costomization Assistant [Zhou et al.
+2023a] employs MLLM to enable test-time tuning-free personalized
+image generation with more user-friendly interactions.
+In contrast, our model, which is trained on a sizable, self-constructed
+open-domain dataset, performs exceptionally well in terms of the
+trade-off between fidelity and generalization in both single- and
+two-subject generation by providing only one reference image for
+each subject.
+
+3
+
+METHODOLOGY
+
+In this section, we will first introduce our large-scale open-domain
+dataset for personalized image generation. Then, an overview of
+the Subject-Diffusion framework, followed by an explanation of
+how we leverage auxiliary information, including reformulating
+prompts, integrating fine-grained image and location information,
+and a cross-attention map control strategy, will be detailed.
+
+3.1
+
+Dataset Construction
+
+In order to equip the diffusion model with the capacity for arbitrary subject image generation, there exists a need for a substantial
+multimodal dataset that encompasses open-domain capabilities.
+However, current image datasets either contain a limited number
+of images, as demonstrated in COCO-Stuff [Caesar et al. 2018] and
+OpenImages [Kuznetsova et al. 2020], or are deficient in modalities
+such as segmentation masks and detection bounding boxes, coupled
+with inconsistent data quality as evidenced in LAION-5B [Schuhmann et al. 2022]. Hence, we are inspired to devise a large-scale,
+high-quality multimodal dataset that is fitting for our specific task.
+As depicted in Fig. 2, we outline the three steps we took to create
+our training data based on LAION-5B. The captions for the images
+provided by LAION-5B are of poor quality, often containing irrelevant or non-sensical language. This can pose a significant challenge
+for text-to-image tasks that require accurate image captions. To
+address this issue, by using BLIP-2 [Li et al. 2023a], we can generate
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+Jian Ma, Junhao Liang, Chen Chen, and Haonan Lu.
+
+Figure 2: The procedure for training data generation.(a) We first use BLIP2 [Li et al. 2023a] to generate the caption of the given image, then we
+use spacy [Honnibal et al. 2020] to extract tags based on the part of speech of each word in the caption sentence. (b) We use the extracted tags as
+input to Grounding DINO [Liu et al. 2023a] to obtain detection boxes for each object, and then these detection boxes are used as input prompt
+to SAM [Kirillov et al. 2023] to obtain their respective object masks. (c) Finally, all the different modalities are combined into structured data as
+our multimodal dataset.
+
+more precise captions for each image. However, for our subjectdriven image generation task, we also need to obtain entities’ masks
+and labels from the images. In order to accomplish this, we perform
+part-of-speech analysis on the generated captions and treat the
+nouns as entity tags. Once we have obtained the entity labels, we
+can use the open-set detection model Grounding DINO [Liu et al.
+2023a] to detect the corresponding location of the entity and use the
+detection box as a cue for the segmentation model SAM [Kirillov
+et al. 2023] to determine the corresponding mask. Finally, we combine the image-text pairs, detection boxes, segmentation masks, and
+corresponding labels for all instances to structure the data. Based
+on the aforementioned pipeline, we apply sophisticated filtering
+strategies, to form the final high-quality dataset called SubjectDiffusion Dataset (SDD). Our dataset contains 76M examples, 222M
+entities, and 162K common object classes, which is much larger
+than the number of annotated images in the famous OpenImages
+(1M images) [Kuznetsova et al. 2020]. Furthermore, it also covers
+a wide range of variations involving the capture of scenes, entity
+classes, and photography conditions (resolution, illumination, etc.).
+This great diversity, as well as its large scale, offers great potential
+for learning subject-driven image generation abilities in the open
+domain, which is believed to boost the development of generative
+artificial intelligence.
+
+3.2
+
+Model Overview
+
+The comprehensive training structure of our suggested SubjectDiffusion is portrayed in Fig. 3. The design philosophy behind
+
+Subject-Diffusion is primarily rooted in three elements. First, we
+craft a specific prompt format and utilize a text encoder to blend
+the text with object-level visual features, serving as conditions for
+SD. Second, to amplify the authenticity of the created personalized
+images, we suggest integrating an adapter among each self- and
+cross-attention block. This adapter encodes the dense patch features
+of the segmented objects along with their corresponding bounding
+box data. Third, to equip Subject-Diffusion with multiple personalized image generation capabilities, we propose implementing a
+cross-attention map control strategy, grounded in segmentation
+masks, to enforce a model that concentrates on local optimization
+between the entity and its associated area.
+
+3.3
+
+Exploitation of Auxiliary Information
+
+Fusion text encoder. As proposed in Textual Inversion [Gal et al.
+2022], a learned image embedding incorporated with prompt embedding is essential to achieve personalized image generation. Therefore, we first construct a new prompt template similar to BLIPDiffusion [Li et al. 2023a]: “[text prompt], the [subject label 0] is
+[PH_0], the [subject label 1] is [PH_1], ...” where “text prompt” represents the original text description, “subject label *” represents the
+category label of the subject, and “PH_*” are place holders corresponding to the subject image. Then, in contrast to approaches [Ma
+et al. 2023b,a; Shi et al. 2023; Xiao et al. 2023], we choose to fuse text
+and image information before the text encoder. We conduct extensive experiments, showing that fusing text and image information
+before the text encoder and then retraining the entire text encoder
+
+Subject-Diffusion
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+Frozen
+Add Noise
+
+Trainable
+Concat
+
+Input Image
+
+Cross
+Attention
+
+Adapter
+
+...
+
+Self
+Attention
+
+Subject Segments
+
+Adapter
+
+Image
+Encoder
+
+Self
+Attention
+
+Augment
+
+Cross
+Attention
+
+MLP
+
+U-Net
+a dog and a cat are lying
+on the lawn, the dog is
+[PH_0], the cat is [PH_1]
+
+Embed
+
+Text
+Encoder
+
+w w
+k
+
+v
+
+Denoise
+
+Denoised Image
+
+w w
+k
+
+v
+
+Caption
+Replace
+Embeddings
+
+Figure 3: An overview of the proposed Subject-Diffusion method based on SD structure. (i) We first design a specific condition by integrating
+the text prompt and object image features. (ii) Then, we extract fine-grained image local patch features, combining with the detected object
+bounding boxes, and insert an adapter module between self- and cross-attention in the UNet to enhance the model’s fidelity ability. (iii) Further,
+we propose to employ an attention map control strategy to deal with the multiple object generation issue.
+
+has stronger self-consistency than fusing them later. Specifically,
+we replace the entity token embedding at the first embedding layer
+of the text encoder with the image subject “CLS” embedding at the
+corresponding position, and then retrain the entire text encoder.
+Dense image and object location control. Generating personalized
+images in an open domain while ensuring the fidelity of the subject image with only textual input poses a significant challenge.
+To address this challenge, we propose to incorporate dense image features as an important input condition, similar to the textual input condition. To ensure that the model focuses solely on
+the subject information of the image and disregards the background information, we feed the segmented subject image into
+the CLIP [Radford et al. 2021] image encoder to obtain 256-length
+patch feature tokens. Furthermore, to prevent confusion when generating multiple subjects, we fuse the corresponding image embedding with the Fourier-transformed coordinate position information of the subject. Subsequently, we feed the fused information into the UNet framework for learning, similar to GLIGEN [Li
+et al. 2023b]. In each Transformer block, we introduce a new learnable adapter layer between the self-attention layer and the crossattention layer, which takes the fused information as input and is
+defined as L𝑎 := L𝑎 + 𝛽 · 𝑡𝑎𝑛ℎ(𝛾) · 𝑆 ([L𝑎 , ℎ𝑒 ]), where L𝑎 is the
+output of the self-attention layer, 𝛽 a constant to balance the importance of the adapter layer, 𝛾 a learnable scalar that is initialized
+as 0, 𝑆 the self-attention operator, and ℎ𝑒 = 𝑀𝐿𝑃 ([𝑣, 𝐹𝑜𝑢𝑟𝑖𝑒𝑟 (𝑙)]),
+where 𝑀𝐿𝑃 (·, ·) is a multi-layer perceptron that concatenates the
+two inputs across the feature dimension: 𝑣 the visual 256 patch
+feature tokens of an image, and 𝑙 the coordinate position information of the subject. In the process of training the UNet model, we
+selectively activate the key and value layers of the cross-attention
+layers and the adapter layers while freezing the remaining layers.
+This approach is adopted to enable the model to focus more on
+learning the adapter layer.
+
+In addition, to prevent model learning from collapsing, a locationarea control is innovatively introduced to decouple the distribution
+between the foreground and background regions. Specifically, as
+shown in Fig. 3, a binary mask feature map is generated and concatenated to the original image latent feature for a single subject. For
+multiple subjects, we overlay the binary images of each subject and
+then concatenate them onto the latent feature. During inference,
+the binary image can be specified by the user, detected automatically based on the user’s personalized image, or just randomly
+generated.
+Cross attention map control. Currently, text-to-image generation
+models often encounter confusion and omissions when generating multiple entities. Most solutions involve controlling the crossattention map during model inference [Chefer et al. 2023; Rassin
+et al. 2023; Wang et al. 2023a; Wu et al. 2023]. The approaches proposed in this study are primarily based on the conclusions drawn
+from Prompt-to-Prompt [Avrahami et al. 2023; Han et al. 2023a;
+Hertz et al. 2022; Xiao et al. 2023]: The cross-attention in the text-toimage diffusion models can reflect the positions of each generated
+object specified by the corresponding text token, which is calculated
+from:
+𝐶𝐴𝑙 (𝑧𝑡 , 𝑦𝑘 ) = 𝑆𝑜 𝑓 𝑡𝑚𝑎𝑥 (𝑄𝑙 (𝑧𝑡 ) · 𝐿𝑙 (𝑦𝑘 )𝑇 ),
+(1)
+where 𝐶𝐴𝑙 (𝑧𝑡 , 𝑦𝑘 ) is the cross-attention map at layer 𝑙 of the denoising network between the intermediate feature of the noisy latent 𝑧𝑡
+and the 𝑘𝑡ℎ text token 𝑦𝑘 , and 𝑄𝑙 and 𝐿𝑙 are the query and key projections. For each text token, we could get an attention map of size
+ℎ𝑙 × 𝑤𝑙 , where ℎ𝑙 and 𝑤𝑙 are the spatial dimensions of the feature
+𝑧𝑡 and the cross-attention mechanism within diffusion models governs the layout of generated images. The scores in cross-attention
+maps represent the amount of information that flows from a text
+token to a latent pixel. Similarly, we assume that subject confusion
+arises from an unrestricted cross-attention mechanism, as a single
+latent pixel can attend to all other tokens. Therefore, we introduce
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+Jian Ma, Junhao Liang, Chen Chen, and Haonan Lu.
+
+an additional loss term that encourages the model not only to reconstruct the pixels associated with learned concepts, but also to
+ensure that each token only attends to the image region occupied
+by the corresponding concept. For instance, as illustrated in Fig. 3,
+we introduce an attention map regularization term at the position
+of the entity tokens “dog” , “[cls_0]”, “cat” and “[cls_1]”. Intuitively,
+the positions within the area containing the entity e.g., “cat”, should
+have larger values than other positions, so we optimize 𝑧𝑡 toward
+the target that the desired area of the object has large values by
+penalizing the L1 deviation between the attention maps and the
+corresponding segmentation maps of the entities. We choose 𝑙 to
+be the layers with ℎ𝑙 = 𝑤𝑙 = {32, 16, 8}. Formally, we incorporate
+the following loss terms into the training phase:
+𝑁
+
+𝐿𝑎𝑡𝑡𝑛 =
+
+1 ∑︁ ∑︁
+|𝐶𝐴𝑙 (𝑧𝑡 , 𝑦𝑘 ) − 𝑀𝑘 |
+𝑁
+
+(2)
+
+𝑘=1 𝑙
+
+where 𝑀𝑘 is the segmentation mask of the 𝑘𝑡ℎ object corresponding
+to its text token.
+Objective function. As shown in Fig. 3, given the original clear
+image 𝑥 0 and segmented subject image 𝑥𝑠 , the detected image mask
+𝑙𝑚 is concatenated to the noisy image latent vector 𝑧𝑡 to form a
+new latent vector 𝑧𝑡′ = 𝑐𝑜𝑛𝑐𝑎𝑡 (𝑧𝑡 , 𝑙𝑚 ). After dimension adjustment
+through a convolution layer, the feature vector 𝑧˜𝑡 = 𝑐𝑜𝑛𝑣_𝑖𝑛(𝑧𝑡′ ) is
+fed into the UNet as the query component. In terms of conditional
+information, given the text prompt 𝑦, 𝐶 = 𝑇𝜃 (𝑣𝑔 , 𝑡 𝑦 ) is fused by
+the text encoder 𝑇𝜃 from segmented image global embedding (𝑣𝑔 =
+𝐼𝜃 (𝑥𝑠 )) and the text token embeddings (𝑡 𝑦 ) which are extracted
+from the fixed CLIP image encoder (𝐼𝜃 ) and the text embedding
+layer, respectively. For the adapters, they receive local image patch
+features 𝑣 and bbox coordinates 𝑙 as additional information through
+a MLP feature fusion. Consequently, the Subject-Diffusion training
+objective is:
+
+
+L = E E (𝑥 0 ),𝑦,𝜖∼N (0,1),𝑡 ∥ 𝜖 −𝜖𝜃 (𝑧𝑡 , 𝑡, 𝑦, 𝑥𝑠 , 𝑙, 𝑙𝑚 ) ∥ 22 +𝜆𝑎𝑡𝑡𝑛 𝐿𝑎𝑡𝑡𝑛 .
+(3)
+where 𝜆𝑎𝑡𝑡𝑛 is a weighting hyper-parameter.
+
+4 EXPERIMENTS
+4.1 Implementation Details and Evaluation
+The Subject-Diffusion is trained on SDD, as detailed information
+is provided in Sec. 3.1. We follow the benchmark DreamBench proposed in [Ruiz et al. 2023] for quantitative and qualitative comparison. In order to further validate the model’s generation capability
+in the open domain, we also utilize the validation and test data from
+OpenImages, which comprises 296 classes with two different entity
+images in each class. In comparison, DreamBench only includes 30
+classes. We evaluate our method with image alignment and text
+alignment metrics. For image alignment, we calculate the CLIP
+visual similarity (CLIP-I) and DINO [Caron et al. 2021] similarity
+between the generated images and the target concept images. For
+text alignment, we calculate the CLIP text-image similarity (CLIP-T)
+between the generated images and the given text prompts.
+We compare several methods for personalized image generation,
+including Textual Inversion [Gal et al. 2022], DreamBooth [Ruiz et al.
+2023] and Custom Diffusion [Kumari et al. 2023]. All of these models
+require test-time fine-tuning on personalized images in a certain
+
+category. Additionally, we compare ELITE [Wei et al. 2023] and
+BLIP-Diffusion [Li et al. 2023a], both are trained on OpenImages
+without test-time fine-tuning. Another approach compared, IPAdapter [Ye et al. 2023], is trained on a large-scale open-domain
+dataset without test-time fine-tuning, also.
+
+4.2
+
+Experiments
+
+Generating personalized images can be a resource-intensive task,
+with some methods requiring significant storage and computing
+power to fine-tune models based on user-provided photos. However,
+our method and similar ones do not require any test-time finetuning and can generate personalized images in a zero-shot manner,
+making them more efficient and user-friendly. In the following
+sections, we will present both quantitative and qualitative results
+of our method as compared with other approaches in both singleand two-subject settings.
+Comparison results for single-subject. We compare our SubjectDiffusion with the 6 aforementioned methods for single-subject
+generation. In Table 1, we follow DreamBooth and Blip-Diffusion to
+generate 6 images for each text prompt provided by DreamBench,
+amounting in total to 4,500 images for all the subjects. We report the
+average DINO, CLIP-I, and CLIP-T scores over all pairs of real and
+generated images. The overall results show that our method significantly outperforms other methods in terms of DINO score, with a
+score of 0.711 compared to DreamBooth’s score of 0.668. Our CLIPI and CLIP-T scores are also slightly higher or on par with other
+fine-tuning free algorithms, ELITE and BLIP-Diffusion. However,
+the CLIP-I score of IP-Adapter is higher than our method (0.813 vs
+0.782). Furthermore, we conduct experiments on the OpenImages
+testset, which has about 10× the number of subjects as DreamBench,
+and our method still achieve high DINO (0.668), CLIP-I (0.782), and
+CLIP-T (0.303) scores, revealing its generalization ability.
+Fig. 4 displays a comparison of the qualitative results of singlesubject image generation across various prompts, using different
+approaches. Excluding Textual Inversion, ELITE and IP-adapter,
+which exhibit significantly lower subject fidelity, our proposed
+method’s subject fidelity and text consistency are comparable to
+DreamBooth and CustomDiffusion methods that require multiple
+images for fine-tuning.
+Comparison result for two-subject. We conduct a comparison
+study on our method with two fine-tuning-based approaches, i.e.,
+DreamBooth and Custom Diffusion. This study involves 30 different
+combinations of two subjects from DreamBench. For each combination, we generated 6 images per prompt by utilizing 25 text prompts
+from DreamBench. As depicted in Fig. 5, we present five prompts
+of generated images. Overall, our method demonstrates superior
+performance compared to the other two methods, particularly in
+maintaining subject fidelity in the generated images. On the one
+hand, images generated by the comparative methods often miss one
+subject, as exemplified by DreamBooth’s failure to include entities
+like “on cobblestone street” and “floating on water”, as well as Custom Diffusion’s inability to accurately capture entities in “on dirty
+road” and “on cobblestone street”. On the other hand, while these
+methods are capable of generating two subjects, the appearance features between them are noticeably leaking and mixing, leading to
+
+Subject-Diffusion
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+Table 1: Quantitative single subject results. DB denotes DreamBench,
+
+Table 3: Ablation Results.↑ and ↓ indicate increase or decrease, re-
+
+and OIT represents the OpenImage testset. † indicates experimental results referenced from BLIP-Diffusion. The value of ELITE is
+tested by ourself. Boldface indicates the best results of zero shot
+approaches evaluated in Dreambench.All the comparison methods
+here are based on the SD model.
+
+spectively. Boldface indicates full-setting results.
+
+Single
+
+Methods
+
+Type
+
+Testset
+
+DINO
+
+CLIP-I
+
+CLIP-T
+
+Real Images †
+
+-
+
+-
+
+0.774
+
+0.885
+
+-
+
+Textual Inversion †
+DreamBooth †
+Custom Diffusion
+
+FT
+FT
+FT
+
+DB
+DB
+DB
+
+0.569
+0.668
+0.643
+
+0.780
+0.803
+0.790
+
+0.255
+0.305
+0.305
+
+ELITE
+BLIP-Diffusion †
+IP-Adapter †
+
+ZS
+ZS
+ZS
+
+DB
+DB
+DB
+
+0.621
+0.594
+0.667
+
+0.771
+0.779
+0.813
+
+0.293
+0.300
+0.289
+
+Subject-Diffusion
+
+ZS
+
+DB
+OIT
+
+0.711
+0.668
+
+0.787
+0.782
+
+0.293
+0.303
+
+lower subject fidelity when compared to the images provided by the
+user. By contrast, the images generated by our method effectively
+preserve the user-provided subjects, and each one is accurately
+produced.
+We also calculate DINO, CLIP-I and CLIP-T scores on all groups
+of the generated images, user-provided images and prompts. To
+obtain CLIP-I, we average the calculated similarities between the
+generated image and the two subjects, as results presented in Table 2.
+Obviously, our approach shows remarkable superiority over DreamBooth and Custom Diffusion across DINO and CLIP-T, providing
+compelling evidence of its ability to capture the subject information
+of reference images more accurately and display multiple entities
+in a single image simultaneously.
+Table 2: Quantitative result of two subject generation. ZS means
+zero-shot and FT denotes fine-tuning. Boldface indicates the best
+results.
+
+Methods
+
+Type
+
+DINO
+
+CLIP-I
+
+CLIP-T
+
+DreamBooth
+Custom Diffusion
+Subject-Diffusion
+
+FT
+FT
+ZS
+
+0.430
+0.464
+0.506
+
+0.695
+0.698
+0.696
+
+0.308
+0.300
+0.310
+
+4.3
+
+Ablation Studies
+
+The ablation studies involve examining two main aspects, namely:
+1) the impact of our training data and 2) the impact of different
+components in our Subject-Diffusion model. As shown in Table 3,
+we present zero-shot evaluation results for both single- and twosubject cases. We observe that all the ablation settings result in
+weaker quantitative results than our full setting.
+Impact of our training data. The training data proposed in this
+paper consists of large-scale, richly annotated images, thereby enabling our model to effectively capture the appearance features of
+any given subject. To further assess the impact of training data,
+we retrain our model using OpenImages [Kuznetsova et al. 2020]
+
+Subject
+
+Two
+Subjects
+
+Index
+
+Methods
+
+DINO
+
+CLIP-I
+
+CLIP-T
+
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
+(g)
+
+Subject-Diffusion
+trained on OpenImage
+w/o location control
+w/o box coordinates
+w/o adapter layer
+w/o attention map control
+w/o image cls feature
+
+0.711
+0.664↓
+0.694↓
+0.732↑
+0.534↓
+0.692↓
+0.637↓
+
+0.787
+0.777↓
+0.778↓
+0.810↑
+0.731↓
+0.789↑
+0.719↓
+
+0.293
+0.294↑
+0.275↓
+0.282↓
+0.291↓
+0.288↓
+0.299↑
+
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
+(g)
+
+Subject-Diffusion
+trained on OpenImage
+w/o location control
+w/o box coordinates
+w/o adapter layer
+w/o attention map control
+w/o image cls feature
+
+0.506
+0.491↓
+0.477↓
+0.464↓
+0.411↓
+0.500↓
+0.457↓
+
+0.696
+0.693↓
+0.666↓
+0.687↓
+0.649↓
+0.688↓
+0.627↓
+
+0.310
+0.302↓
+0.281↓
+0.305↓
+0.307↓
+0.302↓
+0.309↓
+
+training data, limiting the categories to only 600. Our evaluation results (a) and (b) demonstrate that this smaller dataset leads to lower
+image similarity, with the DINO and CLIP-I scores both decreasing
+for single-subject and two-subject cases, which underscores the importance of utilizing large-scale training data in generating highly
+personalized images. However, the results still surpass or are on
+par with those of ELITE and BLIP-diffusion (0.664 vs. 0.621 vs. 0.594
+for DINO), demonstrating the effectiveness of Subject-Diffusion’s
+model structure and training strategy.
+Impact of different components. The comparison between experiments (a) and (c) declares that, if we remove the location control
+(object masks), our model will apparently degenerate over all evaluation metrics. Experiments (a) and (d) indicate that the introduction
+of box coordinates leads to significant improvements in two-subject
+generation (with the DINO score increasing by 0.042, the CLIP-I
+score increasing by 0.09, and the CLIP-T score increasing by 0.005).
+However, the fidelity of single-subject generation decreased by
+0.021 for the DINO score and 0.023 for the CLIP-I score. This decline may be due to the fact that, when generating a single subject,
+the information becomes overly redundant, making it challenging
+for the model to grasp the key details of the subject.
+The high fidelity of our model is primarily attributed to the 256
+image patch features input to the adapter layer. As demonstrated in
+experiment (e), removing this module results in a significant drop
+in nearly all of the metrics. Experimental results (f) clearly indicate that the attention map control operation delivers a substantial
+performance improvement for two-subject generation as well as
+a slight performance improvement for single-subject generation.
+This difference is most likely due to the ability of the attention map
+control mechanism to prevent confusion between different subjects.
+The results of (a) and (g) indicate that the absence of the image
+“CLS” feature led to a significant reduction in the fidelity of the
+subject, highlighting the significance of the feature in representing
+the overall image information.
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+Table 4: Comparison among our method and baselines on singlesubject human image generation. † indicates that the experimental
+values are referenced from FastComposer.
+
+Method
+
+Images↓
+
+ID Preser.↑
+
+Prompt Consis.↑
+
+StableDiffusion†
+
+0
+
+0.039
+
+0.268
+
+Textual-Inversion†
+DreamBooth†
+Custom Diffusion†
+FastComposer†
+IP-Adapter†
+Subject-Diffusion
+
+5
+5
+5
+1
+1
+1
+
+0.293
+0.273
+0.434
+0.514
+0.520
+0.605
+
+0.219
+0.239
+0.233
+0.243
+0.201
+0.228
+
+4.4
+
+Human Image Generation
+
+Due to our method’s ability to produce high-fidelity results, it is also
+well-suited for human image generation. To evaluate our model’s effectiveness in this area, we use the single-entity evaluation method
+employed in FastComposer [Xiao et al. 2023] and compare our
+model’s performance to that of other existing methods. The experimental results are shown in Table 4. Subject-Diffusion significantly
+outperforms all baseline approaches in identity preservation, with
+an exceptionally high score that surpasses FastComposer trained on
+the specific portrait dataset by 0.091. However, in terms of prompt
+consistency, our method is slightly weaker than FastComposer (0.015). We believe this vulnerability could be due to our method’s
+tendency to prioritize subject fidelity when dealing with challenging prompt words.
+
+4.5
+
+DreamBench, amounting in total to 4,500 images for all the subjects. Considering whether the models or demos of the comparison
+methods are open-sourced, we mainly compared our method with
+three methods, ELITE, IP-Adapter and BLIP-Diffusion. Our scoring
+rules are as follows: for each image, annotator independently score
+it based on two criteria - the fidelity of the generated image and
+prompt consistency. Scores range from 1 to 5 points. As the score
+increases, the fidelity and prompt consistency become stronger. The
+final results of the User study are shown in Table. 5. The results of
+each method will ultimately be averaged.
+Our method has a slight advantage in prompt consistency metric
+compared to BLIP-Diffusion, and has a significant advantage in
+the fidelity metric compared to all three methods. ELITE has a
+significant advantage in prompt consistency, but sacrifices image
+fidelity, while IP-Adapter achieves a better balance between the two
+metrics. Simultaneously, the differences between the annotation
+results and parts of the conclusions in Table 1 indicate that objective
+metrics cannot truly reflect human preferences. The annotation
+results further demonstrate the mutual constraint between these
+two metrics, so simultaneously improving them is an important
+future research direction for personalized image generation.
+Table 5: Qualitative single subject results with user study.
+Scores
+
+ID Preser.↑
+
+Prompt Consis.↑
+
+ELITE
+IP-Adapter
+BLIP-Diffusion
+Subject-Diffusion
+
+1.7928
+2.2178
+1.9330
+3.4748
+
+2.5276
+2.3213
+2.2293
+2.2689
+
+Text-Image Interpolation
+
+By utilizing the “[text prompt], the [subject label] is [PH]” prompt
+template during image generation, we are able to utilize the dual
+semantics of both text and image to control the generated image
+output. Moreover, we could utilize texts and images from distinct
+categories and perform interpolation of generated images by controlling the proportion of the diffusion steps. To achieve this, we
+remove the user input image control once the image layout is generated, retaining only the textual semantic control. Our step-based
+interpolation method is represented by the following formula:
+(
+𝜖 (𝑧𝑡 , 𝑡, 𝑦 ′, 𝑥𝑠 , 𝑙, 𝑙𝑚 ) if 𝑡 > 𝛼𝑇 ,
+𝜖𝑡 = 𝜃
+(4)
+𝜖𝜃 (𝑧𝑡 , 𝑡, 𝑦)
+otherwise
+In this context, 𝑦 denotes the original text prompt, while 𝑦 ′ signifies employing a convoluted text template: "[text prompt]𝑎 , the
+[subject]𝑏 is [cls]𝑎 ". The visualization examples can be found in
+Fig. 6. We provide this experiment to show that the high-level information of the user-provided images are successfully extracted
+and rendered in generated images during early backward diffusion
+stages. Thus we can adjust 𝛼 to balance image fidelity and editablity
+according to different prompts.
+
+5
+
+Jian Ma, Junhao Liang, Chen Chen, and Haonan Lu.
+
+USER STUDY
+
+We perform a user study to analyze the fidelity and prompt consistency of the generated images. we follow DreamBooth and BLIPDiffusion to generate 6 images for each text prompt provided by
+
+6
+
+CONCLUSION AND LIMITATION
+
+Thus far, the considerable cost and limited availability of manual labeling have presented profound challenges to the pragmatic
+deployment of personalized image generation models. Drawing inspiration from advancements in zero-shot large models, this study
+introduces an automated data labeling tool to assemble a large-scale
+structured image dataset. Subsequently, we establish a comprehensive framework that merges text and image semantics, leveraging
+various tiers of information to optimize subject fidelity and generalization. Empirical analysis from our experiments demonstrate that
+our methodology surpasses existing models on the DreamBench
+dataset, suggesting potential to serve as a foundation for enhancing
+the efficiency of personalized image generation models within the
+open domain.
+Limitation. Although our method is capable of zero-shot generation with any reference image in open domains and can handle multi-subject scenarios, it still has certain limitations. First,
+our method faces challenges in editing attributes and accessories
+within user-input images, leading to limitations in the scope of
+the model’s applicability. Secondly, when generating personalized
+images for more than two subjects, our model will fail to render
+harmonious images with a high probability. In the future, we will
+conduct further research to address these shortcomings.
+
+Subject-Diffusion
+
+REFERENCES
+Yuval Alaluf, Elad Richardson, Gal Metzer, and Daniel Cohen-Or. 2023. A Neural
+Space-Time Representation for Text-to-Image Personalization. arXiv preprint
+arXiv:2305.15391 (2023).
+Omri Avrahami, Kfir Aberman, Ohad Fried, Daniel Cohen-Or, and Dani Lischinski.
+2023. Break-A-Scene: Extracting Multiple Concepts from a Single Image. arXiv
+preprint arXiv:2305.16311 (2023).
+Yogesh Balaji, Seungjun Nah, Xun Huang, Arash Vahdat, Jiaming Song, Karsten Kreis,
+Miika Aittala, Timo Aila, Samuli Laine, Bryan Catanzaro, et al. 2022. ediffi: Textto-image diffusion models with an ensemble of expert denoisers. arXiv preprint
+arXiv:2211.01324 (2022).
+Tim Brooks, Aleksander Holynski, and Alexei A Efros. 2023. Instructpix2pix: Learning
+to follow image editing instructions. In Proceedings of the IEEE/CVF Conference on
+Computer Vision and Pattern Recognition. 18392–18402.
+Holger Caesar, Jasper Uijlings, and Vittorio Ferrari. 2018. Coco-stuff: Thing and stuff
+classes in context. In Proceedings of the IEEE conference on computer vision and
+pattern recognition. 1209–1218.
+Mathilde Caron, Hugo Touvron, Ishan Misra, Hervé Jégou, Julien Mairal, Piotr Bojanowski, and Armand Joulin. 2021. Emerging properties in self-supervised vision
+transformers. In Proceedings of the IEEE/CVF international conference on computer
+vision. 9650–9660.
+Hila Chefer, Yuval Alaluf, Yael Vinker, Lior Wolf, and Daniel Cohen-Or. 2023. Attendand-excite: Attention-based semantic guidance for text-to-image diffusion models.
+arXiv preprint arXiv:2301.13826 (2023).
+Hong Chen, Yipeng Zhang, Xin Wang, Xuguang Duan, Yuwei Zhou, and Wenwu Zhu.
+2023b. Disenbooth: Identity-preserving disentangled tuning for subject-driven
+text-to-image generation. arXiv preprint arXiv:2305.03374 (2023).
+Li Chen, Mengyi Zhao, Yiheng Liu, Mingxu Ding, Yangyang Song, Shizun Wang, Xu
+Wang, Hao Yang, Jing Liu, Kang Du, et al. 2023c. PhotoVerse: Tuning-Free Image Customization with Text-to-Image Diffusion Models. arXiv preprint arXiv:2309.05793
+(2023).
+Wenhu Chen, Hexiang Hu, Yandong Li, Nataniel Rui, Xuhui Jia, Ming-Wei Chang, and
+William W Cohen. 2023a. Subject-driven text-to-image generation via apprenticeship learning. arXiv preprint arXiv:2304.00186 (2023).
+Wenhu Chen, Hexiang Hu, Chitwan Saharia, and William W Cohen. 2022. Re-imagen:
+Retrieval-augmented text-to-image generator. arXiv preprint arXiv:2209.14491
+(2022).
+Zhengcong Fei, Mingyuan Fan, and Junshi Huang. 2023. Gradient-Free Textual Inversion. arXiv preprint arXiv:2304.05818 (2023).
+Zhida Feng, Zhenyu Zhang, Xintong Yu, Yewei Fang, Lanxin Li, Xuyi Chen, Yuxiang Lu,
+Jiaxiang Liu, Weichong Yin, Shikun Feng, et al. 2023. ERNIE-ViLG 2.0: Improving
+text-to-image diffusion model with knowledge-enhanced mixture-of-denoisingexperts. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
+Recognition. 10135–10145.
+Rinon Gal, Yuval Alaluf, Yuval Atzmon, Or Patashnik, Amit H Bermano, Gal Chechik,
+and Daniel Cohen-Or. 2022. An image is worth one word: Personalizing text-toimage generation using textual inversion. arXiv preprint arXiv:2208.01618 (2022).
+Yuchao Gu, Xintao Wang, Jay Zhangjie Wu, Yujun Shi, Yunpeng Chen, Zihan Fan,
+Wuyou Xiao, Rui Zhao, Shuning Chang, Weijia Wu, et al. 2023. Mix-of-Show:
+Decentralized Low-Rank Adaptation for Multi-Concept Customization of Diffusion
+Models. arXiv preprint arXiv:2305.18292 (2023).
+Agrim Gupta, Piotr Dollar, and Ross Girshick. 2019. Lvis: A dataset for large vocabulary
+instance segmentation. In Proceedings of the IEEE/CVF conference on computer vision
+and pattern recognition. 5356–5364.
+Inhwa Han, Serin Yang, Taesung Kwon, and Jong Chul Ye. 2023b. Highly Personalized Text Embedding for Image Manipulation by Stable Diffusion. arXiv preprint
+arXiv:2303.08767 (2023).
+Ligong Han, Yinxiao Li, Han Zhang, Peyman Milanfar, Dimitris Metaxas, and Feng
+Yang. 2023a. Svdiff: Compact parameter space for diffusion fine-tuning. arXiv
+preprint arXiv:2303.11305 (2023).
+Shaozhe Hao, Kai Han, Shihao Zhao, and Kwan-Yee K Wong. 2023. ViCo: DetailPreserving Visual Condition for Personalized Text-to-Image Generation. arXiv
+preprint arXiv:2306.00971 (2023).
+Amir Hertz, Ron Mokady, Jay Tenenbaum, Kfir Aberman, Yael Pritch, and Daniel
+Cohen-Or. 2022. Prompt-to-prompt image editing with cross attention control.
+arXiv preprint arXiv:2208.01626 (2022).
+Jonathan Ho, Ajay Jain, and Pieter Abbeel. 2020. Denoising diffusion probabilistic
+models. Advances in Neural Information Processing Systems 33 (2020), 6840–6851.
+Matthew Honnibal, Ines Montani, Sofie Van Landeghem, Adriane Boyd, et al. 2020.
+spaCy: Industrial-strength natural language processing in python. (2020).
+Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang,
+Lu Wang, and Weizhu Chen. 2021. Lora: Low-rank adaptation of large language
+models. arXiv preprint arXiv:2106.09685 (2021).
+Junha Hyung, Jaeyo Shin, and Jaegul Choo. 2023. MagiCapture: High-Resolution
+Multi-Concept Portrait Customization. arXiv:2309.06895 [cs.CV]
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+Xuhui Jia, Yang Zhao, Kelvin CK Chan, Yandong Li, Han Zhang, Boqing Gong, Tingbo
+Hou, Huisheng Wang, and Yu-Chuan Su. 2023. Taming encoder for zero finetuning image customization with text-to-image diffusion models. arXiv preprint
+arXiv:2304.02642 (2023).
+Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura
+Gustafson, Tete Xiao, Spencer Whitehead, Alexander C Berg, Wan-Yen Lo, et al.
+2023. Segment anything. arXiv preprint arXiv:2304.02643 (2023).
+Ranjay Krishna, Yuke Zhu, Oliver Groth, Justin Johnson, Kenji Hata, Joshua Kravitz,
+Stephanie Chen, Yannis Kalantidis, Li-Jia Li, David A Shamma, et al. 2017. Visual genome: Connecting language and vision using crowdsourced dense image
+annotations. International Journal of Computer Vision 123 (2017), 32–73.
+Nupur Kumari, Bingliang Zhang, Richard Zhang, Eli Shechtman, and Jun-Yan Zhu.
+2023. Multi-concept customization of text-to-image diffusion. In Proceedings of the
+IEEE/CVF Conference on Computer Vision and Pattern Recognition. 1931–1941.
+Alina Kuznetsova, Hassan Rom, Neil Alldrin, Jasper Uijlings, Ivan Krasin, Jordi PontTuset, Shahab Kamali, Stefan Popov, Matteo Malloci, Alexander Kolesnikov, et al.
+2020. The open images dataset v4: Unified image classification, object detection,
+and visual relationship detection at scale. International Journal of Computer Vision
+128, 7 (2020), 1956–1981.
+Dongxu Li, Junnan Li, and Steven CH Hoi. 2023a. Blip-diffusion: Pre-trained subject
+representation for controllable text-to-image generation and editing. arXiv preprint
+arXiv:2305.14720 (2023).
+Yuheng Li, Haotian Liu, Qingyang Wu, Fangzhou Mu, Jianwei Yang, Jianfeng Gao,
+Chunyuan Li, and Yong Jae Lee. 2023b. Gligen: Open-set grounded text-to-image
+generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and
+Pattern Recognition. 22511–22521.
+Shilong Liu, Zhaoyang Zeng, Tianhe Ren, Feng Li, Hao Zhang, Jie Yang, Chunyuan Li,
+Jianwei Yang, Hang Su, Jun Zhu, et al. 2023a. Grounding dino: Marrying dino with
+grounded pre-training for open-set object detection. arXiv preprint arXiv:2303.05499
+(2023).
+Zhiheng Liu, Yifei Zhang, Yujun Shen, Kecheng Zheng, Kai Zhu, Ruili Feng, Yu Liu,
+Deli Zhao, Jingren Zhou, and Yang Cao. 2023b. Cones 2: Customizable Image
+Synthesis with Multiple Subjects. arXiv preprint arXiv:2305.19327 (2023).
+Jian Ma, Mingjun Zhao, Chen Chen, Ruichen Wang, Di Niu, Haonan Lu, and Xiaodong
+Lin. 2023b. GlyphDraw: Learning to Draw Chinese Characters in Image Synthesis
+Models Coherently. arXiv preprint arXiv:2303.17870 (2023).
+Yiyang Ma, Huan Yang, Wenjing Wang, Jianlong Fu, and Jiaying Liu. 2023a. Unified
+multi-modal latent diffusion for joint subject and text conditional image generation.
+arXiv preprint arXiv:2303.09319 (2023).
+Alexander Quinn Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav Shyam, Pamela
+Mishkin, Bob Mcgrew, Ilya Sutskever, and Mark Chen. 2022. GLIDE: Towards
+Photorealistic Image Generation and Editing with Text-Guided Diffusion Models.
+In International Conference on Machine Learning. PMLR, 16784–16804.
+Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al.
+2021. Learning transferable visual models from natural language supervision. In
+International conference on machine learning. PMLR, 8748–8763.
+Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, and Mark Chen. 2022.
+Hierarchical text-conditional image generation with clip latents. arXiv preprint
+arXiv:2204.06125 (2022).
+Royi Rassin, Eran Hirsch, Daniel Glickman, Shauli Ravfogel, Yoav Goldberg, and
+Gal Chechik. 2023. Linguistic Binding in Diffusion Models: Enhancing Attribute
+Correspondence through Attention Map Alignment. arXiv preprint arXiv:2306.08877
+(2023).
+Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer.
+2022. High-resolution image synthesis with latent diffusion models. In Proceedings
+of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 10684–
+10695.
+Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch, Michael Rubinstein, and
+Kfir Aberman. 2023. Dreambooth: Fine tuning text-to-image diffusion models for
+subject-driven generation. In Proceedings of the IEEE/CVF Conference on Computer
+Vision and Pattern Recognition. 22500–22510.
+Chitwan Saharia, William Chan, Saurabh Saxena, Lala Li, Jay Whang, Emily L Denton,
+Kamyar Ghasemipour, Raphael Gontijo Lopes, Burcu Karagol Ayan, Tim Salimans,
+et al. 2022. Photorealistic text-to-image diffusion models with deep language
+understanding. Advances in Neural Information Processing Systems 35 (2022), 36479–
+36494.
+Christoph Schuhmann, Romain Beaumont, Richard Vencu, Cade Gordon, Ross Wightman, Mehdi Cherti, Theo Coombes, Aarush Katta, Clayton Mullis, Mitchell Wortsman, et al. 2022. Laion-5b: An open large-scale dataset for training next generation
+image-text models. arXiv preprint arXiv:2210.08402 (2022).
+Christoph Schuhmann, Richard Vencu, Romain Beaumont, Robert Kaczmarczyk, Clayton Mullis, Aarush Katta, Theo Coombes, Jenia Jitsev, and Aran Komatsuzaki.
+2021. Laion-400m: Open dataset of clip-filtered 400 million image-text pairs. arXiv
+preprint arXiv:2111.02114 (2021).
+Jing Shi, Wei Xiong, Zhe Lin, and Hyun Joon Jung. 2023. Instantbooth: Personalized textto-image generation without test-time finetuning. arXiv preprint arXiv:2304.03411
+(2023).
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+James Seale Smith, Yen-Chang Hsu, Lingyu Zhang, Ting Hua, Zsolt Kira, Yilin Shen, and
+Hongxia Jin. 2023. Continual diffusion: Continual customization of text-to-image
+diffusion with c-lora. arXiv preprint arXiv:2304.06027 (2023).
+Jiaming Song, Chenlin Meng, and Stefano Ermon. 2020a. Denoising diffusion implicit
+models. arXiv preprint arXiv:2010.02502 (2020).
+Yang Song, Jascha Sohl-Dickstein, Diederik P Kingma, Abhishek Kumar, Stefano
+Ermon, and Ben Poole. 2020b. Score-based generative modeling through stochastic
+differential equations. arXiv preprint arXiv:2011.13456 (2020).
+Yoad Tewel, Rinon Gal, Gal Chechik, and Yuval Atzmon. 2023. Key-locked rank one
+editing for text-to-image personalization. arXiv preprint arXiv:2305.01644 (2023).
+Andrey Voynov, Qinghao Chu, Daniel Cohen-Or, and Kfir Aberman. 2023. 𝑃 +: Extended
+Textual Conditioning in Text-to-Image Generation. arXiv preprint arXiv:2303.09522
+(2023).
+Ruichen Wang, Zekang Chen, Chen Chen, Jian Ma, Haonan Lu, and Xiaodong Lin.
+2023a. Compositional text-to-image synthesis with attention map control of diffusion models. arXiv preprint arXiv:2305.13921 (2023).
+Yibin Wang, Weizhong Zhang, Jianwei Zheng, and Cheng Jin. 2023b. High-fidelity
+Person-centric Subject-to-Image Synthesis. arXiv:2311.10329 [cs.CV]
+Yuxiang Wei, Yabo Zhang, Zhilong Ji, Jinfeng Bai, Lei Zhang, and Wangmeng Zuo.
+2023. Elite: Encoding visual concepts into textual embeddings for customized
+text-to-image generation. arXiv preprint arXiv:2302.13848 (2023).
+
+Jian Ma, Junhao Liang, Chen Chen, and Haonan Lu.
+
+Qiucheng Wu, Yujian Liu, Handong Zhao, Trung Bui, Zhe Lin, Yang Zhang, and Shiyu
+Chang. 2023. Harnessing the spatial-temporal attention of diffusion models for
+high-fidelity text-to-image synthesis. arXiv preprint arXiv:2304.03869 (2023).
+Guangxuan Xiao, Tianwei Yin, William T Freeman, Frédo Durand, and Song Han.
+2023. FastComposer: Tuning-Free Multi-Subject Image Generation with Localized
+Attention. arXiv preprint arXiv:2305.10431 (2023).
+Jianan Yang, Haobo Wang, Ruixuan Xiao, Sai Wu, Gang Chen, and Junbo Zhao. 2023.
+Controllable Textual Inversion for Personalized Text-to-Image Generation. arXiv
+preprint arXiv:2304.05265 (2023).
+Hu Ye, Jun Zhang, Sibo Liu, Xiao Han, and Wei Yang. 2023.
+IP-Adapter:
+Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models.
+arXiv:2308.06721 [cs.CV]
+Bolei Zhou, Hang Zhao, Xavier Puig, Tete Xiao, Sanja Fidler, Adela Barriuso, and
+Antonio Torralba. 2019. Semantic understanding of scenes through the ade20k
+dataset. International Journal of Computer Vision 127 (2019), 302–321.
+Yufan Zhou, Ruiyi Zhang, Jiuxiang Gu, and Tong Sun. 2023a. Customization Assistant
+for Text-to-image Generation. arXiv:2312.03045 [cs.CV]
+Yufan Zhou, Ruiyi Zhang, Tong Sun, and Jinhui Xu. 2023b. Enhancing Detail Preservation for Customized Text-to-Image Generation: A Regularization-Free Approach.
+arXiv preprint arXiv:2305.13579 (2023).
+
+Subject-Diffusion
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+Input
+Images
+
+Textual
+Inversion
+
+Dream
+Booth
+
+Custom
+Diffusion
+
+ELITE
+
+IP-Adapter
+
+Ours
+
+a can with a mountain in the
+background
+
+a toy on a cobblestone street
+
+a boot in the jungle
+
+Figure 4: Qualitative result for single-subject generation. Textual Inversion, DreamBooth and Custom Diffusion employ all three reference
+images to fine-tune models, whereas only ELITE and Subject-Diffusion can generate personalized images using a single input reference image
+(corresponding position) without fine-tuning. All original images are from the DreamBench [Ruiz et al. 2023] dataset.
+
+SIGGRAPH Conference Papers ’24, July 27-August 1, 2024, Denver, CO, USA
+
+Jian Ma, Junhao Liang, Chen Chen, and Haonan Lu.
+
+Input
+Images
+
+Dream
+Booth
+
+Custom
+Diffusion
+
+Ours
+
+on dirty road
+
+on the beach
+
+on cobblestone street on wooden floor
+
+floating on water
+
+Figure 5: Qualitative result for two-subject generation. All original images are from the DreamBench [Ruiz et al. 2023] dataset.
+  0 .2
+
+  0 .4
+
+  0 .6
+
+  0 .8
+
+ 1
+
+man
+
+woman
+
+dog
+
+cat
+
+wolf
+
+lion
+
+Figure 6: Text-image interpolation. The prompts are followings: A man in the rain, the woman is [PH]; A dog in the snow, the cat is [PH]; A
+wolf in the forest, the lion is [PH]. The dog image is from the DreamBench [Ruiz et al. 2023] dataset.
+
+

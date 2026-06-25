@@ -1,0 +1,872 @@
+arXiv:2311.04145v1 [cs.CV] 7 Nov 2023
+
+I2VGen-XL: High-Quality Image-to-Video Synthesis
+via Cascaded Diffusion Models
+Shiwei Zhang1∗ Jiayu Wang1∗ Yingya Zhang1∗ Kang Zhao1 Hangjie Yuan2
+Zhiwu Qin3 Xiang Wang3 Deli Zhao1 Jingren Zhou1
+1
+Alibaba Group 2 Zhejiang University
+3
+Huazhong University of Science and Technology
+{zhangjin.zsw, wangjiayu.wjy}@alibaba-inc.com
+{yingya.zyy, zhaokang.zk, jingren.zhou}@alibaba-inc.com
+hj.yuan@zju.edu.cn
+
+{qzw, wxiang}@hust.edu.cn
+
+zhaodeli@gmail.com
+
+Figure 1. Examples of the generated videos. I2VGen-XL is capable of generating high-quality videos of various categories, such as art,
+humans, animals, technology, and more. The generated videos exhibit advantages like high definition, high resolution, smoothness, and
+aesthetic appeal, catering to a wider range of video content creation.
+
+Abstract
+Video synthesis has recently made remarkable strides
+benefiting from the rapid development of diffusion models.
+However, it still encounters challenges in terms of semantic
+accuracy, clarity and spatio-temporal continuity. They
+∗ Equal contribution.
+
+primarily arise from the scarcity of well-aligned text-video
+data and the complex inherent structure of videos, making
+it difficult for the model to simultaneously ensure semantic
+and qualitative excellence. In this report, we propose
+a cascaded I2VGen-XL approach that enhances model
+performance by decoupling these two factors and ensures
+the alignment of the input data by utilizing static images
+as a form of crucial guidance. I2VGen-XL consists of two
+
+stages: i) the base stage guarantees coherent semantics
+and preserves content from input images by using two
+hierarchical encoders, and ii) the refinement stage enhances
+the video’s details by incorporating an additional brief text
+and improves the resolution to 1280×720. To improve
+the diversity, we collect around 35 million single-shot textvideo pairs and 6 billion text-image pairs to optimize the
+model. By this means, I2VGen-XL can simultaneously
+enhance the semantic accuracy, continuity of details and
+clarity of generated videos. Through extensive experiments,
+we have investigated the underlying principles of I2VGenXL and compared it with current top methods, which can
+demonstrate its effectiveness on diverse data. The source
+code and models will be publicly available at https:
+//i2vgen-xl.github.io.
+
+1. Introduction
+Recently, the technological revolution brought by diffusion models [14, 41] in image synthesis [35] has been
+impressively remarkable, and it has also led to significant
+advancements in video synthesis [3, 27, 39]. Typically, they
+can generate realistic videos with unprecedented levels of
+fidelity and diversity from a textual prompt as input [3], or
+even control content and motion patterns in videos based on
+different guidances [45, 46]. Despite these advancements,
+ensuring coherent semantics in both spatial and motion
+dimensions, as well as maintaining continuity of details in
+generated videos continues to pose significant challenges,
+thereby limiting its potential applications.
+Current existing approaches to tackle this problem
+mainly fall into two categories. The first category employs
+multiple models to progressively improve video quality like
+Imagen Video [13]. However, these methods primarily
+optimize the same objective using identical inputs at each
+stage, without explicitly decoupling the tasks. Consequently, this leads to the learning of similar distributions
+at each stage, resulting in non-negligible noise in generated
+videos. The second category [29, 46] requires additional
+guidance or training processes. While they have shown
+promising performance, fulfilling the guidance and training
+requirements in some scenarios remains a significant challenge. Moreover, as a common challenge, the insufficient
+alignment of video-text pairs also significantly impedes the
+further advancement of video synthesis.
+The success of SDXL [31] inspires us to develop a
+cascaded I2VGen-XL method capable of generating highdefinition videos with coherent spatial and motion dynamics, along with continuous details. I2VGen-XL first reduces
+the reliance on well-aligned text-video pairs by utilizing a
+single static image as the primary condition, and it mainly
+consists of two stages as shown in Fig. 2: i) The base stage
+aims to ensure semantic coherence in generated videos
+at a low resolution, while simultaneously preserving the
+
+content and identity information of input images. For this
+purpose, we devise two hierarchical encoders, i.e., a fixed
+CLIP encoder and learnable content encoder, to respectively
+extract high-level semantics and low-level details, which
+are then incorporated into a video diffusion model. ii)
+The refinement stage is to improve the video resolution to
+1280×720 and refine details and artifacts that exist within
+generated videos. Specifically, we train a distinct video
+diffusion model with a simple text as input, optimizing its
+initial 600 denoising steps. By using the noising-denoising
+process [28], we can generate high-definition videos with
+both temporal and spatial coherence from low-resolution
+videos.
+Furthermore, we have collected 35 million high-quality
+single-shot videos and 6 billion images, covering a broad
+spectrum of common categories in daily life, to enhance the
+diversity and robustness of I2VGen-XL. Finally, through
+a comprehensive evaluation of a wide range of data, we
+meticulously analyze the effectiveness of I2VGen-XL. We
+delve into the working mechanism of the refinement model
+in the frequency domain and benchmark it against current
+top-ranked methods. The results demonstrate that I2VGenXL exhibits more reasonable and significant motions in
+these cases.
+
+2. Related Works
+Diffusion probabilistic models. Diffusion Probabilistic
+Models (DPM) [41] is a powerful class of generative
+models to learn a diffusion process that generates a target probability distribution. The initial efforts in image
+generation utilizing DPMs were primarily centered around
+enhancing performance [7, 20, 22]. These models have
+been validated to be more effective than major traditional
+generation methods, including GANs [11] and VAE [23],
+in terms of diversity and realism. Therefore, DPMs have
+gradually emerged as a crucial branch in the field of
+generative methods, but they are plagued by inefficiency.
+For this purpose, some studies aim to reduce the number
+of denoising steps in the model by improving sampling
+efficiency, such as learning-free sampling [24,42,43,56,56]
+and learning based sampling [37, 48, 60]. There are also
+methods like LDM [35], LSGM [43] and RDM [19] that utilize distribution learning in the latent space to significantly
+reduce computational overhead and enable the generation
+of high-resolution image [10, 51]. Our I2VGen-XL applies
+the LDM framework in both two stages in this report.
+Image synthesis via diffusion models. In the current
+mainstream of diffusion model-based image generation,
+language models, e.g., and T5 [33], are utilized to extract
+features and cross-attention is employed as a conditioning
+mechanism to control the generated content. Typically,
+Stable diffusion [35] and DALL-E 2 [34] apply CLIP [32]
+text encoder, and Imagen [36] applies the T5 to improve
+
+Base Stage
+
+CLIP
+D.Enc.
+
+Refinement Stage
+
+Text
+“A yellow robot.”
+
+G.Enc
+
+Input Image
+
++
+Noise
+
+Resize &
+Reverse
+
+LDM
+
+LDM
+
+448 * 256 * 32
+
+1280 *720*32
+
+Figure 2. The overall framework of I2VGen-XL. In the base stage, two hierarchical encoders are employed to simultaneously capture
+high-level semantics and low-level details of input images, ensuring more realistic dynamics while preserving the content and structure
+of images. In the refinement stage, a separate diffusion model is utilized to enhance the resolution and significantly improve the temporal
+continuity of videos by refining details. “D.Enc.” and “G.Enc.” denote the detail encoder and global encoder, respectively.
+
+text-image alignment and image quality. Following them,
+some methods aim to perform text-based image editing
+with diffusion models like Imagic [21] and Sine [58]. In
+addition, another significant research branch is controllable
+generation, where additional conditions are used to generate
+target images in a more flexible manner, such as ControlNet [55] and Composer [20].
+
+and places significant emphasis on fostering the growth
+of the community. Compared to them, I2VGen-XL, as
+an alternative approach, focuses on enhancing the imageto-video task to enhance video quality, especially in the
+domain of video content creation, and jointly promotes the
+advancement of the community.
+
+Video synthesis via diffusion models. Early research
+in video generation [16, 40, 54, 59] primarily focuses
+on using GAN-related methods, but maintaining spatiotemporal coherence as well as realism remains a significant
+challenge. Inspired by the significant advancements in
+image generation, diffusion models are also becoming
+mainstream techniques in video generation [12, 17, 27, 39].
+VDM [15], VideoLDM [52] and Modelscope-T2V [44]
+achieve significant performance improvement by designing a UNet with temporal-awareness capability to directly
+generate complete video chunks. Instead of modeling the
+video distribution in the pixels space, MagicVideo [61]
+does not use temporal convolution by designing an extra
+adapter. Just like in image generation, controllability
+is also a crucial objective in the field of video generation [5, 6, 18, 49]. Typically, Gen-1 [8] utilizes depth as
+an additional condition to decouple structure and content
+and achieves excellent results in video-to-video translation tasks. VideoComposer [46] enables flexible control
+over video generation by combining textual conditions,
+spatial conditions, and temporal conditions. Furthermore,
+Dragnuwa [53] takes controllability to the next level by
+allowing users to control video motion models through
+simple drag-and-drop gestures, enhancing controllability
+even further. Generating high-definition videos has always
+been an important goal in this field, and significant progress
+has also been made recently [1, 13]. Imagen Video [13]
+and Lavie [47] synthesize high-definition videos to achieve
+performance improvement in a progressive manner. As a
+concurrent method, Videocrafter1 [4, 50] leverages a diffusion model to address high-quality video generation tasks
+
+3. I2VGen-XL
+In this section, we will present a comprehensive introduction of the proposed I2VGen-XL, illustrating how it
+improves the resolution and spatio-temporal consistency
+of generated videos while simultaneously preserving the
+content of input images. To begin with, we will present a
+concise summary of the fundamental principles underlying
+the latent diffusion model. Subsequently, we delve into
+the design details and relevant concepts of I2VGen-XL,
+as shown in Fig. 2. Finally, we will elucidate its training
+strategy and the inference process.
+
+3.1. Preliminaries
+Latent Diffusion Model (LDM) [3, 35] is a kind of
+effective and efficient diffusion model that gradually recovers the target latent from Gaussian noise, preserving
+visual manifold, and ultimately reconstructs high-fidelity
+images or videos from the latent. For a video x ∈
+RF ×H×W ×3 , we follow VideoComposer [46] to use the
+encoder of a pretrained VQGAN [9] to compress it into
+a low-dimensional latent representation z = E(x), where
+z ∈ RF ×h×w×c . Inversely, the corresponding decoder D
+can map the latent representations back to the pixel space
+x̄ = D(z).
+LDM consists of diffusion and denoising processes.
+During the diffusion stage, it gradually injects noise to z
+to obtain a noise-corrupted latent zt , where t ∈ {1, ..., T }
+(T = 1000 in this work). During the denoising stage, it
+applies a denoising function ϵθ (·, ·, t) on zt . The optimized
+
+Stage
+
+Paramters
+Output Size
+
+C(4, 64, 52 , 1, 1)
+
+
+SiLU()
+
+
+32 × 48 × 64
+ C(64, 64, 32 , 1) 
+SiLU()
+A.A.P(32,
+32)  32 × 32 × 64
+
+C(64, 256, 32 , 2, 1)
+
+
+SiLU()
+
+
+ C(256, 256, 32 , 1, 1)  16 × 16 × 256
+SiLU()
+
+
+C(256, 512, 32 , 2, 1)
+
+
+SiLU()
+
+
+8 × 8 × 512
+ C(512, 512, 32 , 1, 1) 
+SiLU()
+
+
+C(512, 512, 32 , 2, 1)
+
+
+SiLU()
+
+
+4 × 4 × 512
+ C(512, 512, 32 , 1, 1) 
+SiLU()
+
+
+C(512, 512, 32 , 2, 1)
+
+
+SiLU()
+
+
+ C(512, 1024, 32 , 1, 1)  2 × 2 × 1024
+SiLU()
+C(1024, 1024, 22 , 2, 1)
+1 × 1 × 1024
+
+
+Stem
+Pool
+Stage 1
+
+Stage 2
+
+Stage 3
+
+Stage 4
+Output
+
+Table 1. The architecture of the global encoder. The ‘C’ represents
+the Conv2D with the corresponding parameters being input dimension, output dimension, kernel size, stride, and padding. ‘A.A.P’
+is the 2D Adaptive Average Pooling operator.
+
+objective can be formulated as follows:
+
+
+LV LDM = EE(x),ϵ∈N (0,1),t ∥ϵ − ϵθ (zt , t)∥22 .
+
+(1)
+
+Regarding ϵθ (·, ·, t), we inherit the well-designed 3D UNet
+form [44, 46] because of its powerful temporal modeling
+abilities . In this report, we will refer to LDM that utilizes a
+3D architecture as VLDM unless otherwise specified.
+
+3.2. I2VGen-XL
+The purpose of I2VGen-XL is to generate high-quality
+videos from static images. Therefore, it needs to achieve
+two crucial objectives: semantic consistency, which involves accurately predicting the intent in the images and
+then generating precise motions while maintaining the content as well as the structure of the input images; high spatiotemporal coherence and clarity, which are fundamental
+attributes of a video and critical for ensuring the potential
+of video creation applications. To this end, I2VGenXL decomposes these two objectives through a cascaded
+strategy consisting of two stages: base stage and refinement
+stage.
+Base stage. Based on a VLDM, we design the first stage at
+low resolutions (i.e., 448×256), which primarily focuses on
+incorporating multi-level feature extraction, including highlevel semantics and low-level details learning, on the input
+
+images to ensure intent comprehension and preserve content
+effectively.
+i) High-level semantics learning. The most straightforward method is to refer to our previous attempt1 that applies
+the visual encoder of CLIP to extract the semantic features.
+However, we observed that this approach resulted in poor
+preservation of the content and structure of the input image
+in the generated videos. The main reason is that CLIP’s
+training objective is to align visual and language features,
+which leads to learning high-level semantics but disregards
+the perception of fine details in the images. To alleviate
+this issue, we incorporate an additional trainable global
+encoder (i.e, G.Enc.) to learn complementary features with
+the same shape, whose architecture is shown in Tab. 1.
+Then, the two one-dimensional features are integrated via
+addition operation and embedded into each spatial layer of
+the 3D UNet using cross-attention. Despite these efforts,
+compressing the input images into a low-dimensional vector
+still leads to information loss.
+ii) Low-level details. To mitigate the loss of details, we
+employ the features extracted from the encoder of VQGAN
+(i.e, D.Enc.) and directly add them to the input noise on
+the first frame. This choice is made based on the encoder’s
+capability to fully reconstruct the original image, ensuring
+the preservation of all its details. Our experiments reveal
+that employing a local encoder instead of a more complex
+semantic encoder leads to videos with better preservation of
+image content. However, as the video plays on, noticeable
+distortions emerge, suggesting a diminishing clarity of
+semantics. This highlights the complementary nature of the
+two hierarchical encoders, indicating that their integration
+is advantageous.
+Refinement stage. From the base model, we can obtain
+a low-resolution video with diverse and semantically accurate motions. However, these videos may suffer from
+various issues such as noise, temporal and spatial jitter, and
+deformations. Thus the refinement model has two main
+objectives: i) to enhance the video resolution, increasing it
+from 448 × 256 to 1280 × 720 or higher; ii) to improve
+the spatio-temporal continuity and clarity of the video,
+addressing artifacts in both time and space.
+To improve the video quality, we train a separate
+VLDM that specializes in high-quality, high-resolution data
+and employ a noising-denoising process as introduced by
+SDEdit [28] on the generated videos from the first stage.
+Unlike the base model, the refinement model uses the userprovided simple text (e.g. a few words) as a condition rather
+than the original input image. The reason is that we have
+found a significant decrease in the effectiveness of video
+correction when the input conditions for both stages are
+the same. This could be due to the introduction of similar
+mappings with identical conditions, leading to a lack of
+1 https://modelscope.cn/models/damo/Image-to-Video/summary
+
+Figure 3. The results of the refinement model. It is evident that the refinement model effectively restores video details and ensures temporal
+continuity, thus proving its effectiveness.
+
+restorative capability in the model. On the other hand,
+introducing a different condition brings about effective
+compensation.
+Specifically, we encode the text using CLIP and embed
+it into the 3D UNet by cross-attention. Then, based on
+the pre-trained model from the base stage, we train a
+high-resolution model using carefully selected high-quality
+videos, all of which have resolutions greater than 1280 ×
+720.
+
+3.3. Traning and Inference
+Training. For the base model, we initialize the spatial
+component of the 3D UNet with pre-trained parameters
+from SD2.1 [3], enabling I2VGen-XL to possess initial
+spatial generation capabilities. During the training of the
+entire 3D UNet, we moderate the parameter updating for
+the spatial layers by applying a coefficient γ = 0.2, which
+is a scaled-down factor compared to that of the temporal
+layers.
+For the refinement model, we initialize it using the welltrained base model and adopt the same training strategy.
+To enhance the concentration of the refinement model on
+spatio-temporal details, we train it specifically on the initial
+Tr noise scales for denoising. Furthermore, we adopt a
+two-stage training strategy: i) We conduct high-resolution
+training across the entire high-resolution dataset. ii) In
+order to further enhance the model’s perception of details,
+we carry out a final round of fine-tuning on a meticulously
+chosen subset of around one million high-quality videos.
+Inference. As mentioned above, we employ a noisingdenoising process to concatenate the two parts of the model
+like [3]. During inference, we use DDIM [57] and DPMsolver++ [26] by considering the generation efficiency and
+generation quality at different resolutions. After obtaining
+the low-resolution videos in the first stage, we resize them
+
+to 1280 × 720. We perform Tr reverse computations with
+noise addition using DDIM on the new latent space. Then,
+we use the refinement model for the first Tr denoising scales
+to obtain the final high-resolution videos. The generative
+process can be formalized as:
+ϵ̂θ,t (zt , ci , ct , t) = ϵθ (zt , ct , ϵ̂θ,i (zt , ci , T ), t)
+
+(2)
+
+where ci and ct represent the input image and text conditions, respectively; ϵ̂θ,t and ϵ̂θ,i denote the denoising
+processes of the base model and the refinement model,
+respectively; T is the total number of noise scales in the
+base stage.
+
+4. Experiments
+4.1. Experimental Setup
+Datasets. To optimize I2VGen-XL, we use two kinds of
+training data, i.e., public datasets which comprise WebVid10M [2] and LAION-400M [38], as well as private
+datasets consisting of video-text pairs and image-text pairs
+of the same type. In total, these two datasets consist of
+35 million videos and 6 billion images, with resolutions
+ranging from 360p to 2k. We then sorted them based on
+aesthetic score, motion intensity, and proportion of the main
+subject. This facilitates training with balanced samples.
+Implementations. We adopt AdamW [25] as the optimizer
+with a fixed learning rate of 8 × 10−5 . We simultaneously
+utilize dynamic frames and dynamic FPS during training.
+For frame length, we use a data supply ratio of 1 : 1 : 1 : 5
+for 1, 8, 16, and 32 frames respectively. Similarly, we use
+a ratio of 1 : 2 : 4 : 1 for 1, 4, 8, and 16 FPS, and
+it indicates that the input is a static image when FPS is
+equal to 1. We use center crop to compose the input videos
+with H = 256, W = 448 and H = 720, W = 1280 for
+the base and refinement stages respectively. For training
+
+Figure 4. Comparations with Gen-2 and Pika Labs.
+
+the diffusion models, we employ the v-parameterization of
+diffusion models and offset noise with a strength of 0.1. The
+linear schedule is used. During inference, the default value
+of Tr is set to 600, but it may vary for certain examples.
+
+4.2. Experimental Results
+Compartion with top methods. To demonstrate the
+effectiveness of our proposed method, we compare the
+performance of I2VGen-XL with the leading methods Gen2 [8] and Pika [30], which are widely recognized as the
+current state-of-the-arts in the field. We used their web
+interfaces to generate videos with three types of images,
+including pseudo-factual, real, and abstract paintings, as
+shown Fig. 4. From these results, several conclusions can
+be drawn: i) Richness of motions: our results exhibit more
+
+realistic and diverse motions, such as the example of a
+flying dog. In contrast, the videos generated by Gen-2
+and Pika appear to be closer to a static state, indicating
+that I2VGen-XL achieves a better richness of motions; ii)
+Degree of ID preservation: from these three samples, it can
+be observed that Gen-2 and Pika successfully preserve the
+identity of the objects, while our method loses some details
+of the input images. In our experiments, we also found that
+the degree of ID preservation and the intensity of motion
+exhibit a certain trade-off relationship. We strike a balance
+between these two factors.
+Analyse of Refinement model. Fig. 3 illustrates the
+generated videos before and after the refinement stage.
+These results reveal substantial enhancements in spatial
+details, including refined facial and bodily features, along
+
+Figure 5. More videos from diverse categories, including people, animals, anime, Chinese paintings, and more.
+
+Figure 6. Generated videos from input text prompts.
+
+Low resolution
+High resolution
+Noise
+
+700
+
+LQ Video
+
+HQ Video
+
+Mean of amplitude
+
+600
+500
+400
+300
+200
+100
+0
+Input Noise
+
+Input Image
+
+0
+
+(a) Spatial spectrogram
+
+200
+
+400
+600
+Frequency
+
+800
+
+(b) Spatial distribution
+Low resolution
+High resolution
+Noise
+
+Mean of amplitude
+
+250
+200
+150
+
+Figure 8. Generated videos of human bodies by I2VGen-XL.
+
+100
+50
+0
+
+(d) Temporal section
+
+0
+
+50
+
+100
+
+150 200 250
+Frequency
+
+300
+
+350
+
+(e) Temporal distribution
+
+Figure 7. Frequency spectrum analysis of the refinement model.
+
+with a conspicuous reduction in noise within local details.
+To further elucidate the working mechanism of the refinement model, we analyzed the spatial and temporal changes
+occurring in the generated videos during this process in
+the frequency domain in Fig. 7. Fig. 7a presents the
+frequency spectra of four spatial inputs, which reveals that
+low-quality video exhibits a frequency distribution similar
+to that of noise in the high-frequency range, while highquality videos demonstrate a closer resemblance to the
+frequency distribution of the input image. Combining this
+with the spatial frequency distribution depicted in Fig. 7b,
+it can be observed that the refinement model effectively
+preserves low-frequency data while exhibiting smoother
+variations in high-frequency data. From the perspective
+of the temporal dimension, Fig. 7d presents the temporal
+profiles of the low-quality video (top) and the high-quality
+video (bottom), demonstrating a clear improvement in
+the continuity of the high-definition video. Additionally,
+combining Fig. 7b and Fig. 7e, it can be observed that
+the refinement model preserves low-frequency components,
+reduces mid-frequency components, and enhances highfrequency components, both in the spatial and temporal
+domains. This indicates that the artifacts in the spatiotemporal domain mainly reside in the mid-frequency range.
+Qualitative analysis. We also conducted experiments on a
+wider range of images, including categories such as human
+faces, 3D cartoons, anime, Chinese paintings, and small animals. The results are shown in Fig. 5. We can observe that
+the generated videos simultaneously consider the content
+of the images and the aesthetics of the synthesized videos,
+while also exhibiting meaningful and accurate motions. For
+example, in the sixth row, the model accurately captures
+the cute mouth movements of the kitten. Additionally, in
+
+the fifth row, the woodblock bird model accurately rotates
+its head while maintaining the original style. These results
+indicate that I2VGen-XL exhibits promising generalization
+ability.
+Generating stable human body movements remains a
+major challenge in video synthesis. Therefore, we also
+specifically validated the robustness of I2VGen-XL on
+human body images, as shown in Fig. 8. It can be observed
+that the model’s predictions and generated motions for
+human bodies are reasonably realistic, with most of the
+characteristic features of human bodies well-preserved.
+Text-to-video. One of the main challenges in text-tovideo synthesis currently is the collection of high-quality
+video-text pairs, which makes it more difficult to achieve
+semantic alignment between the video and text compared
+to image synthesis. Therefore, combining image synthesis
+techniques, such as Stable Diffusion [3] and Wanxiang2 ,
+with image-to-video synthesis can help improve the quality
+of generated videos. In fact, to respect privacy, almost
+all samples in this report are generated by combining
+these two. Additionally, in Fig. 6, we separately generate
+samples, and it can be observed that the video and text
+exhibit high semantic consistency.
+Limitations. The proposed I2VGen-XL in this report has
+shown significant improvements in both semantic consistency and spatio-temporal quality in video synthesis. However, it still has the following limitations, which also serve
+as our future works: i) Human body motion generation,
+as mentioned earlier, still presents significant challenges in
+terms of freedom and naturalness. This is primarily due to
+the intricate and rich nature of human-related movements,
+which increases the difficulty of generation; ii) Limited
+ability to generate long videos. Current models mainly
+generate short videos of a few seconds with a single shot,
+and they are not yet capable of generating long videos with
+continuous storytelling and multiple scenes; iii) Limited
+user intent understanding. The current scarcity of videotext paired data restricts the ability of video synthesis mod2 https://wanxiang.aliyun-inc.com
+
+els to comprehend user inputs, such as captions or images,
+effectively. This significantly increases the difficulty for
+users to interact with the models.
+
+5. Conclusion
+In this report, we introduced a cascaded video synthesis
+model called I2VGen-XL, which is capable of generating high-quality videos from a single static image. We
+approached the problem from two perspectives: semantic
+consistency and spatio-temporal continuity, and devised
+two stages to address each of these two purposes separately.
+The effectiveness of the I2VGen-XL method is validated
+using a substantial amount of category data. Additionally,
+we explored a new paradigm of video synthesis by combining the I2VGen-XL approach with the image synthesis
+algorithm. However, despite these efforts, we know that
+video synthesis still faces numerous challenges. Further
+exploration is needed in areas such as human objects,
+duration, and intent understanding, in order to address more
+practical tasks in video synthesis.
+
+References
+[1] Zeroscope-XL text-to-video. https://huggingface.
+co/spaces/fffiloni/zeroscope. 2023. 3
+[2] Max Bain, Arsha Nagrani, Gül Varol, and Andrew Zisserman. Frozen in time: A joint video and image encoder for
+end-to-end retrieval. In ICCV, pages 1728–1738, 2021. 5
+[3] Andreas Blattmann, Robin Rombach, Huan Ling, Tim Dockhorn, Seung Wook Kim, Sanja Fidler, and Karsten Kreis.
+Align your latents: High-resolution video synthesis with
+latent diffusion models. In CVPR, pages 22563–22575,
+2023. 2, 3, 5, 8
+[4] Haoxin Chen, Menghan Xia, Yingqing He, Yong Zhang,
+Xiaodong Cun, Shaoshu Yang, Jinbo Xing, Yaofang Liu,
+Qifeng Chen, Xintao Wang, Chao Weng, and Ying Shan.
+Videocrafter1: Open diffusion models for high-quality video
+generation. arXiv preprint arXiv:2310.19512, 2023. 3
+[5] Weifeng Chen, Jie Wu, Pan Xie, Hefeng Wu, Jiashi Li,
+Xin Xia, Xuefeng Xiao, and Liang Lin. Control-a-video:
+Controllable text-to-video generation with diffusion models.
+arXiv preprint arXiv:2305.13840, 2023. 3
+[6] Ernie Chu, Shuo-Yen Lin, and Jun-Cheng Chen. Video
+controlnet: Towards temporally consistent synthetic-to-real
+video translation using conditional image diffusion models.
+arXiv preprint arXiv:2305.19193, 2023. 3
+[7] Prafulla Dhariwal and Alexander Nichol. Diffusion models
+beat GANs on image synthesis. NeurIPS, pages 8780–8794,
+2021. 2
+[8] Patrick Esser, Johnathan Chiu, Parmida Atighehchian,
+Jonathan Granskog, and Anastasis Germanidis. Structure
+and content-guided video synthesis with diffusion models.
+arXiv preprint arXiv:2302.03011, 2023. 3, 6
+[9] Patrick Esser, Robin Rombach, and Bjorn Ommer. Taming
+transformers for high-resolution image synthesis. In CVPR,
+pages 12873–12883, 2021. 3
+
+[10] Charles Fefferman, Sanjoy Mitter, and Hariharan Narayanan.
+Testing the manifold hypothesis. Journal of the American
+Mathematical Society, pages 983–1049, 2016. 2
+[11] Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing
+Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and
+Yoshua Bengio. Generative adversarial networks. Communications of the ACM, pages 139–144, 2020. 2
+[12] William Harvey, Saeid Naderiparizi, Vaden Masrani, Christian Weilbach, and Frank Wood. Flexible diffusion modeling
+of long videos. arXiv preprint arXiv:2205.11495, 2022. 3
+[13] Jonathan Ho, William Chan, Chitwan Saharia, Jay Whang,
+Ruiqi Gao, Alexey Gritsenko, Diederik P Kingma, Ben
+Poole, Mohammad Norouzi, David J Fleet, et al. Imagen
+video: High definition video generation with diffusion models. arXiv preprint arXiv:2210.02303, 2022. 2, 3
+[14] Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising
+diffusion probabilistic models. NeurIPS, pages 6840–6851,
+2020. 2
+[15] Jonathan Ho, Tim Salimans, Alexey Gritsenko, William
+Chan, Mohammad Norouzi, and David J Fleet. Video
+diffusion models. arXiv preprint arXiv:2204.03458, 2022.
+3
+[16] Wenyi Hong, Ming Ding, Wendi Zheng, Xinghan Liu,
+and Jie Tang.
+Cogvideo: Large-scale pretraining for
+text-to-video generation via transformers. arXiv preprint
+arXiv:2205.15868, 2022. 3
+[17] Tobias Höppe, Arash Mehrjou, Stefan Bauer, Didrik Nielsen,
+and Andrea Dittadi. Diffusion models for video prediction
+and infilling. arXiv preprint arXiv:2206.07696, 2022. 3
+[18] Zhihao Hu and Dong Xu. Videocontrolnet: A motion-guided
+video-to-video translation framework by using diffusion
+model with controlnet. arXiv preprint arXiv:2307.14073,
+2023. 3
+[19] Chin-Wei Huang, Milad Aghajohari, Joey Bose, Prakash
+Panangaden, and Aaron C Courville. Riemannian diffusion
+models. NeurIPS, pages 2750–2761, 2022. 2
+[20] Lianghua Huang, Di Chen, Yu Liu, Yujun Shen, Deli Zhao,
+and Jingren Zhou. Composer: Creative and controllable
+image synthesis with composable conditions. arXiv preprint
+arXiv:2302.09778, 2023. 2, 3
+[21] Bahjat Kawar, Shiran Zada, Oran Lang, Omer Tov, Huiwen
+Chang, Tali Dekel, Inbar Mosseri, and Michal Irani. Imagic:
+Text-based real image editing with diffusion models. arXiv
+preprint arXiv:2210.09276, 2022. 3
+[22] Diederik Kingma, Tim Salimans, Ben Poole, and Jonathan
+Ho. Variational diffusion models. NeurIPS, pages 21696–
+21707, 2021. 2
+[23] Diederik P Kingma and Max Welling. Auto-encoding
+variational bayes. arXiv preprint arXiv:1312.6114, 2013. 2
+[24] Luping Liu, Yi Ren, Zhijie Lin, and Zhou Zhao. Pseudo
+numerical methods for diffusion models on manifolds. In
+ICLR, 2022. 2
+[25] Ilya Loshchilov and Frank Hutter. Decoupled weight decay
+regularization. arXiv preprint arXiv:1711.05101, 2017. 5
+[26] Cheng Lu, Yuhao Zhou, Fan Bao, Jianfei Chen, Chongxuan
+Li, and Jun Zhu. Dpm-solver: A fast ode solver for diffusion
+probabilistic model sampling in around 10 steps. NeurIPS,
+35:5775–5787, 2022. 5
+
+[27] Zhengxiong Luo, Dayou Chen, Yingya Zhang, Yan Huang,
+Liang Wang, Yujun Shen, Deli Zhao, Jingren Zhou, and
+Tieniu Tan. Videofusion: Decomposed diffusion models for
+high-quality video generation. In CVPR, 2023. 2, 3
+[28] Chenlin Meng, Yutong He, Yang Song, Jiaming Song, Jiajun
+Wu, Jun-Yan Zhu, and Stefano Ermon. Sdedit: Guided
+image synthesis and editing with stochastic differential equations. arXiv preprint arXiv:2108.01073, 2021. 2, 4
+[29] Hao Ouyang, Qiuyu Wang, Yuxi Xiao, Qingyan Bai, Juntao Zhang, Kecheng Zheng, Xiaowei Zhou, Qifeng Chen,
+and Yujun Shen. Codef: Content deformation fields for
+temporally consistent video processing. arXiv preprint
+arXiv:2308.07926, 2023. 2
+[30] PikaLab. Pika Lab discord server. https://www.pika.
+art. 2023. 6
+[31] Dustin Podell, Zion English, Kyle Lacey, Andreas
+Blattmann, Tim Dockhorn, Jonas Müller, Joe Penna, and
+Robin Rombach. SDXL: Improving latent diffusion models for high-resolution image synthesis. arXiv preprint
+arXiv:2307.01952, 2023. 2
+[32] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya
+Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry,
+Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning
+transferable visual models from natural language supervision. In ICML, pages 8748–8763, 2021. 2
+[33] Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee,
+Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, and
+Peter J Liu. Exploring the limits of transfer learning with
+a unified text-to-text transformer. The Journal of Machine
+Learning Research, pages 5485–5551, 2020. 2
+[34] Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu,
+and Mark Chen. Hierarchical text-conditional image generation with clip latents. arXiv preprint arXiv:2204.06125,
+2022. 2
+[35] Robin Rombach, Andreas Blattmann, Dominik Lorenz,
+Patrick Esser, and Björn Ommer. High-resolution image
+synthesis with latent diffusion models. In CVPR, pages
+10684–10695, 2022. 2, 3
+[36] Chitwan Saharia, William Chan, Saurabh Saxena, Lala
+Li, Jay Whang, Emily L Denton, Kamyar Ghasemipour,
+Raphael Gontijo Lopes, Burcu Karagol Ayan, Tim Salimans,
+et al. Photorealistic text-to-image diffusion models with
+deep language understanding. NeurIPS, pages 36479–36494,
+2022. 2
+[37] Tim Salimans and Jonathan Ho. Progressive distillation for
+fast sampling of diffusion models. In ICLR, 2022. 2
+[38] Christoph Schuhmann, Richard Vencu, Romain Beaumont,
+Robert Kaczmarczyk, Clayton Mullis, Aarush Katta, Theo
+Coombes, Jenia Jitsev, and Aran Komatsuzaki. Laion-400m:
+Open dataset of clip-filtered 400 million image-text pairs.
+arXiv preprint arXiv:2111.02114, 2021. 5
+[39] Uriel Singer, Adam Polyak, Thomas Hayes, Xi Yin, Jie An,
+Songyang Zhang, Qiyuan Hu, Harry Yang, Oron Ashual,
+Oran Gafni, et al. Make-a-video: Text-to-video generation
+without text-video data. arXiv preprint arXiv:2209.14792,
+2022. 2, 3
+[40] Ivan Skorokhodov, Sergey Tulyakov, and Mohamed Elhoseiny. Stylegan-v: A continuous video generator with the
+
+price, image quality and perks of stylegan2. In CVPR, pages
+3626–3636, 2022. 3
+[41] Jascha Sohl-Dickstein, Eric Weiss, Niru Maheswaranathan,
+and Surya Ganguli. Deep unsupervised learning using
+nonequilibrium thermodynamics. In ICCV, pages 2256–
+2265, 2015. 2
+[42] Jiaming Song, Chenlin Meng, and Stefano Ermon.
+Denoising diffusion implicit models.
+arXiv preprint
+arXiv:2010.02502, 2020. 2
+[43] Yang Song, Jascha Sohl-Dickstein, Diederik P Kingma,
+Abhishek Kumar, Stefano Ermon, and Ben Poole. Scorebased generative modeling through stochastic differential
+equations. arXiv preprint arXiv:2011.13456, 2020. 2
+[44] Jiuniu Wang, Hangjie Yuan, Dayou Chen, Yingya Zhang,
+Xiang Wang, and Shiwei Zhang. Modelscope text-to-video
+technical report. arXiv preprint arXiv:2308.06571, 2023. 3,
+4
+[45] Jiayu Wang, Kang Zhao, Yifeng Ma, Shiwei Zhang, Yingya
+Zhang, Yujun Shen, Deli Zhao, and Jingren Zhou. Facecomposer: A unified model for versatile facial content creation.
+In NeurIPS, 2023. 2
+[46] Xiang Wang, Hangjie Yuan, Shiwei Zhang, Dayou Chen,
+Jiuniu Wang, Yingya Zhang, Yujun Shen, Deli Zhao, and Jingren Zhou. Videocomposer: Compositional video synthesis
+with motion controllability. NeurIPS, 2023. 2, 3, 4
+[47] Yaohui Wang, Xinyuan Chen, Xin Ma, Shangchen Zhou,
+Ziqi Huang, Yi Wang, Ceyuan Yang, Yinan He, Jiashuo Yu,
+Peiqing Yang, et al. Lavie: High-quality video generation
+with cascaded latent diffusion models. arXiv preprint
+arXiv:2309.15103, 2023. 3
+[48] Daniel Watson, William Chan, Jonathan Ho, and Mohammad Norouzi. Learning fast samplers for diffusion models
+by differentiating through sample quality. In ICLR, 2022. 2
+[49] Jinbo Xing, Menghan Xia, Yuxin Liu, Yuechen Zhang, Yong
+Zhang, Yingqing He, Hanyuan Liu, Haoxin Chen, Xiaodong
+Cun, Xintao Wang, et al. Make-your-video: Customized
+video generation using textual and structural guidance. arXiv
+preprint arXiv:2306.00943, 2023. 3
+[50] Jinbo Xing, Menghan Xia, Yong Zhang, Haoxin Chen, Xintao Wang, Tien-Tsin Wong, and Ying Shan. Dynamicrafter:
+Animating open-domain images with video diffusion priors.
+arXiv preprint arXiv:2310.12190, 2023. 3
+[51] Ling Yang, Zhilong Zhang, Yang Song, Shenda Hong,
+Runsheng Xu, Yue Zhao, Yingxia Shao, Wentao Zhang,
+Bin Cui, and Ming-Hsuan Yang. Diffusion models: A
+comprehensive survey of methods and applications. arXiv
+preprint arXiv:2209.00796, 2022. 2
+[52] Ruihan Yang, Prakhar Srivastava, and Stephan Mandt. Diffusion probabilistic modeling for video generation. arXiv
+preprint arXiv:2203.09481, 2022. 3
+[53] Shengming Yin, Chenfei Wu, Jian Liang, Jie Shi, Houqiang
+Li, Gong Ming, and Nan Duan. Dragnuwa: Fine-grained
+control in video generation by integrating text, image, and
+trajectory. arXiv preprint arXiv:2308.08089, 2023. 3
+[54] Sihyun Yu, Jihoon Tack, Sangwoo Mo, Hyunsu Kim, Junho
+Kim, Jung-Woo Ha, and Jinwoo Shin. Generating videos
+with dynamics-aware implicit generative adversarial networks. arXiv preprint arXiv:2202.10571, 2022. 3
+
+[55] Lvmin Zhang, Anyi Rao, and Maneesh Agrawala. Adding
+conditional control to text-to-image diffusion models. In
+ICCV, pages 3836–3847, 2023. 3
+[56] Qinsheng Zhang and Yongxin Chen. Fast sampling of
+diffusion models with exponential integrator. 2022. 2
+[57] Qinsheng Zhang, Molei Tao, and Yongxin Chen. gddim:
+Generalized denoising diffusion implicit models. arXiv
+preprint arXiv:2206.05564, 2022. 5
+[58] Zhixing Zhang, Ligong Han, Arnab Ghosh, Dimitris N
+Metaxas, and Jian Ren. Sine: Single image editing with
+text-to-image diffusion models. In CVPR, pages 6027–6037,
+2023. 3
+[59] Long Zhao, Xi Peng, Yu Tian, Mubbasir Kapadia, and
+Dimitris Metaxas. Learning to forecast and refine residual
+motion for image-to-video generation. In ECCV, pages 387–
+403, 2018. 3
+[60] Huangjie Zheng, Pengcheng He, Weizhu Chen, and
+Mingyuan Zhou. Truncated diffusion probabilistic models.
+stat, page 7, 2022. 2
+[61] Daquan Zhou, Weimin Wang, Hanshu Yan, Weiwei Lv,
+Yizhe Zhu, and Jiashi Feng. Magicvideo: Efficient video
+generation with latent diffusion models. arXiv preprint
+arXiv:2211.11018, 2022. 3
+
+
