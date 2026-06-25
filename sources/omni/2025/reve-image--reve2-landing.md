@@ -1,0 +1,120 @@
+# Reve Image - Model
+Source: https://app.reve.com/
+Reve Image - Model
+
+# {Reve}2.0Images you can touch
+
+See what's possible
+
+1. [Introduction](#introduction)
+2. [Planning & rendering](#planning-and-rendering)
+3. [Images as code](#images-as-code)
+4. [Agent native](#agent-native)
+5. [Rendering at 4K](#rendering-at-4k)
+6. [Lossless editing](#lossless-editing)
+7. [The whole machine](#the-whole-machine)
+8. [Reve aesthetic](#reve-aesthetic)
+9. [The editor](#the-editor)
+
+**World-changing innovation tends to happen in two phases.** The first is humanity figuring out how to unleash a powerful force (fire, electricity, computation). The second is learning to control it.
+
+Print technology was around for eight hundred years before the Gutenberg press made it configurable enough that it could be used to efficiently disseminate knowledge. Humans studied wings and built gliders for over a century before the Wright brothers realized that the true unlock wasn't lift, but a three-axis mechanism for controlling pitch, roll, and yaw. And gunpowder had been used to create rockets and fireworks for seven hundred years before we learned to use gimbals to direct thrust, empowering humanity to not just leave Earth, but begin exploring new worlds.
+
+**Generative AI is no different.** The first LLMs were completion models that, until they were post-trained to be conversational, generated seemingly random tokens. And the first four years of image generation has largely been spent in its "fireworks phase": pack as much material into a tube as possible, light it up, and hope to be entertained by whatever materializes.
+
+**Today, that changes.**
+
+Diffusion models generate beautiful images, but they're not very intelligent or steerable. Autoregressive models (LLMs) are extremely intelligent, but they don't generate particularly aesthetic images, and latency makes creative iteration painfully slow.
+
+**Reve 2.0 leverages the best of both worlds by separating planning from rendering.** Reve images are meticulously laid out before being rendered to ensure that they are sufficiently detailed, and that each element is both correct and coherent. Not only does better planning lead to better images, but it also allows humans to inspect and participate in the planning process, as well as edit the layout in order to edit the image.
+
+The concept of separating concerns is one of the most important architectural and cultural patterns ever discovered by humans. It enables specialization, abstraction, and flexibility. **At Reve, we've always believed that the old way of generating images directly from text would be like generating entire applications without first generating a codebase.** Going from prompt to binary without code in the middle would make the process slow, opaque, and almost impossible for the creator to meaningfully participate in.
+
+In fact, we felt that code was such an apt metaphor that code is exactly where we started.
+
+![](/model-landing/4.png)
+
+Layout
+
+Image
+
+**We have always believed in code as the ultimate primitive.** Therefore, in order to "solve" digital images, we knew that representing them as code would be the key.
+
+Our previous model, Reve 1.0, was trained not on captions, but on detailed data structures that define composition, relationships, style, text, and more. It proved our hypothesis that simply expanding the "alt tags" that the first diffusion models were trained on into increasingly dense captions was not the optimal path toward fine-grained creative control.
+
+But while Reve 1.0 proved the thesis, it also showed us that there was a lot more work to be done. The next step was to combine novel image planning and diffusion architectures with far more data, 3x the number of parameters, and, of course, more compute.
+
+The results have exceeded our expectations. While we're still relatively early in what we believe we can achieve with this new paradigm, it is now clear that the key to both controllable image generation and editing is not denser prompts, but a highly detailed, highly manipulatable, intermediate representation expressed as code.
+
+Prompt Generate 15 baby emperor penguins arranged in a lineup in the Arctic
+
+**Reve was very early to the agent game. We've always believed in creative collaboration between humans and AI.** The question in our mind was never if, but how. On the surface, it seems like having LLMs write and edit prompts for image generation models is like joining two gears that mesh perfectly: Language is what LLMs do best, and image models turn text into pixels.
+
+But language is imprecise, full of nuance, highly subjective, and lossy. Additionally, creativity isn't a one-way workflow. It's inherently iterative, and while LLM vision has gotten better, the reality is that text is still their native modality. It's no accident that LLMs have excelled far more in code than they have in, say, direct computer use.
+
+**Because Reve 2.0 images are code-based, they are agent-native, meaning agents can both "see" them and reason about them.** But unlike other opaque agentic image generation and editing platforms, we can also build highly expressive, direct manipulation tools on top of the exact same intermediate representation.
+
+![](/model-landing/agent-1.png)
+
+Reve Image
+
+![](/model-landing/agent-2.png)
+
+Pending edits
+
+![](/model-landing/agent-3.png)
+
+Edits applied
+
+Reve 2.0 uses a novel and highly performant rendering architecture to generate images at native 4K x 4K resolution — true 16 megapixels. Not only is our renderer the fastest 4K image model in the world, but it enables a fundamentally different creative workflow.
+
+Anyone who has spent time iterating on AI-generated images knows the frustration of finally getting an image exactly how you want it only to watch subtle details shift during upscaling. Upscaling can feel like one final dice roll after a long succession of dice rolls. The answer is not a separate upscaling step; it's to iterate at high-resolution, ensuring that what you see is truly what you get.
+
+Working at high resolution matters both for digital work and for physical media. At 16MP, Reve 2.0 images are suitable for high-quality print workflows right out of the box. Rather than treating high resolution as a post-processing step, Reve treats it as a first-class primitive.
+
+**Iteration is at the core of every creative process.** Creativity is not, and will never be, a one-shot workflow. But modern image generation models punish iteration through progressive degradation.
+
+Each synthesized image contains diffusion and compression artifacts. When that image is reused as a reference image for another generation, those artifacts are carried forward, and a second layer of artifacts introduced. Over time, those artifacts do not just accumulate, but compound.
+
+There are two ways that the Reve 2.0 model mitigates degradation:
+
+1. Less degradation with image references. Reve 2.0 uses a novel rendering architecture designed specifically to resist this form of collapse. Image edits remain more stable through longer iterative workflows than other leading image models.
+2. Zero degradation without image references. In the same way that running similar code results in similar output, generating images from code "locks image elements" providing much greater stability with no accumulation of artifacts whatsoever.
+
+**Reve 2.0 turns generative image editing into a proper iterative creative process.**
+
+Reve Image
+
+Edit 1
+
+Edit 2
+
+Edit 3
+
+Edit 4
+
+**Because Reve 2.0 represents images as code, text can be rendered with more explicit control.** Composition, positioning, spacing, and relationships between elements are defined with far greater precision before the rendering process even begins.
+
+**Graphic design workflows in particular become dramatically more controllable.** Text can be positioned exactly where it belongs within a composition. Layouts are not just coherent, but intelligent. And integrated environmental typography — handwriting, street signs, packaging, labels, menus, license plates — feels significantly less synthetic than what we typically see from other leading image models.
+
+**Reve 2.0 elevates high-quality text rendering from an evaluation checkbox to true and tasteful design.**
+
+AI generated images used to be identifiable by their plastic, excessively smoothed, and over-saturated appearance. While largely a thing of the past, modern AI images have developed a new tell: technical precision which lacks an aesthetic soul.
+
+**Ever since the launch of our Preview model in March of 2025, Reve has become known for its distinctly cinematic, filmic, and photojournalistic aesthetic.** And now that we're using code to plan images, we're able to incorporate significantly more detail, and at native 16MP resolution, that effect becomes dramatically more immersive. Lighting feels more natural. Spatial relationships become more convincing. Additional fine details emerge when zooming in.
+
+**Reve 2.0 was trained not just to render objects correctly, but to understand composition, framing, mood, atmosphere, and visual intention.** The ability to explicitly control composition transforms the model from a generic image synthesizer into something much closer to a virtual camera and photo editor combined into a single creative workflow.
+
+Alan Kay famously said that people who are serious about software should make their own hardware. **At Reve, we believe the same principle applies to creativity: companies that are truly serious about creative tooling should train their own models.** Conversely, companies that don't build their own tooling are much less likely to train models that can power the types of workflows that creatives ultimately need.
+
+Reve 2.0 is not a model that sits underneath a disconnected application layer. **The model and the product were designed together from the very beginning.**
+
+**Because images are represented as code, every part of an image becomes addressable, editable, and manipulatable.** That foundation enabled us to build what we believe is the most powerful direct-manipulation editor for generative images ever created.
+
+**Reve 2.0 images are the code. Reve.com is the editor.**
+
+Unleash your creativity at reve.com.
+
+Reve is a team of researchers, creatives, and engineers based in Palo Alto, California.
+
+## What will you make?

@@ -1,0 +1,1546 @@
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Goku</title>
+    <meta name="description" content="Flow Based Video Generative Foundation Models">
+    <meta name="keywords" content="Video generation, image generation, diffusion model, fast, real-time, distillation, adversarial">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#EDE8F5">
+    <meta property="og:image" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./assets/ball.png" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-stretch: 100%;
+            font-display: block;
+            font-weight: 300 700;
+            src: url('./assets/roboto.woff2') format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        video {
+            background-color: #000000;
+            aspect-ratio: 16 / 9;
+        }
+
+        section.portrait video {
+            background-color: #000000;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+        }
+
+        section.portrait .prompt-wrap.full-screen-wrap video {
+            object-fit: cover;
+        }
+
+        section.portrait .flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        section.portrait2 .flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        section.portrait .flex > div {
+            flex: 0 0 calc((100% - 5 * 10px) / 6);
+        }
+        section.portrait2 .flex > div {
+            flex: 0 0 calc((100% - 1 * 10px) / 2);
+        }
+
+        section.portrait .prompt {
+            font-size: 10px;
+        }
+        section.portrait2 .prompt {
+            font-size: 12px;
+        }
+
+        section.portrait .flex-row {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section.portrait2 .flex-row {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            section.portrait .flex > div {
+                flex: 0 0 calc((100% - 1 * 10px) / 2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            section.portrait2 .flex > div {
+                flex: 0 0 calc((100% - 0 * 10px) / 1);
+            }
+        }
+
+        /* Ensure prompt adjusts for portrait mode */
+        .portrait .prompt {
+            position: absolute;  /* Allow positioning relative to the container */
+            bottom: 5%;          /* Adjust this to control the vertical placement of the prompt */
+            left: 50%;           /* Center horizontally */
+            transform: translateX(-50%); /* Offset by 50% of its width to truly center */
+            max-width: 80%;
+            text-align: center;  /* Center the text inside the prompt */
+            color: white;        /* Optional, if you want the text to stand out */
+            font-size: 1.2em;    /* Optional, adjust the text size */
+        }
+
+        .portrait2 .prompt{
+            position: absolute;  /* Allow positioning relative to the container */
+            bottom: 5%;          /* Adjust this to control the vertical placement of the prompt */
+            left: 50%;           /* Center horizontally */
+            transform: translateX(-50%); /* Offset by 50% of its width to truly center */
+            max-width: 80%;
+            text-align: center;  /* Center the text inside the prompt */
+            color: white;        /* Optional, if you want the text to stand out */
+            font-size: 1.2em;    /* Optional, adjust the text size */
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: "Roboto", sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        #intro {
+            padding: 140px 0 80px 0;
+            justify-content: center; /* Center content vertically */
+            text-align: center; /* Center text alignment */
+        }
+
+        #intro h1 {
+            font-size: 80px;
+            font-weight: 300;
+            margin: 20px 0;
+        }
+
+        #intro h2 {
+            margin: 20px 0 40px 0;
+            font-weight: 300;
+            color: #ccc
+        }
+
+        #intro h2 strong {
+            color: #fff;
+        }
+
+        .authors {
+            font-size: 18px;
+            font-weight: 300;
+            color: #bbb;
+            text-align: center;
+            margin-bottom: 25px;
+            width: 70%; /* More compact */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-block {
+            display: inline-block;
+            margin: 0 10px 0 10px;
+        }
+
+        .author-block a {
+            color: #d1d1d1; /* Lighter color for links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .author-block a:hover {
+            color: #fff; /* Hover effect */
+        }
+
+        .author-affiliation {
+            font-size: 16px;
+            color: #bbb;
+            text-align: center;
+            margin-bottom: 60px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-affiliation .author-block {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        section {
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 0 10%;
+        }
+
+        .button {
+            background-color: #ccc;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            text-decoration: none;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #fff;
+        }
+
+        .bibtex-section {
+            background-color: #111;
+            padding: 40px 10%;
+            text-align: center;
+            margin-top: 60px;
+            color: #ccc;
+        }
+
+        .bibtex-section h3 {
+            font-size: 24px;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .bibtex-code {
+            background-color: #222;
+            color: #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            display: inline-block;
+            font-family: monospace;
+            max-width: 800px;
+            overflow-x: auto;
+        }
+
+        section {
+            margin-top: 100px;
+        }
+        section:first-of-type {
+            margin-top: 0;
+        }
+
+        .title {
+            background-color: #000;
+            position: sticky;
+            top: 0;
+            padding: 20px 10%;
+            font-size: 20px;
+            font-weight: 600;
+            z-index: 1000;
+            min-height: 60px;
+            box-sizing: border-box;
+        }
+
+        .description {
+            padding: 0 10% 20px 10%;
+            color: #999;
+            line-height: 25px;
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .flex-row {
+            display: flex;
+            column-gap: 5px;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            padding: 0 5px 5px 5px;
+            
+        }
+
+        .flex-row > div {
+            flex-grow: 1;
+            flex-basis: 0;
+            position: relative;
+        }
+
+        .flex > div {
+            width: calc(100% / 3 - 5px * 2 / 3);
+            margin-top: 2.5px;
+            margin-bottom: 2.5px;
+            position: relative;
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 5px;
+        }
+
+        .prompt-wrap {
+            position: relative;
+        }
+
+        .flex-2 {
+            justify-content: center;
+            column-gap: 5px;
+        }
+        .flex-2 > div {
+            width: calc(100% / 2 - 5px / 2);
+            min-width: calc(100% / 3 - 5px * 2 / 3);
+            max-width: calc(100vh - 200px);
+        }
+
+        video, img {
+            width: 100%;
+        }
+
+        .loading-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .loading-text {
+            font-size: 24px;
+            margin-bottom: 10px; /* Adds space between text and icon */
+        }
+
+        .loading-icon {
+            font-size: 48px;
+        }
+
+        .prompt {
+            max-width: calc(100% - 20px);
+            position: absolute;
+            background: rgba(0,0,0,0.5);
+            color: rgba(255,255,255,0.9);
+            font-size: 10px;
+            backdrop-filter: blur(10px);
+            bottom: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+            box-sizing: border-box;
+        }
+
+        .flex-very-compact .full-screen-button {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            border-radius: 0;
+        }
+
+        .chinese {
+            font-family: 'Noto Sans SC', sans-serif; /* Choose a Chinese font */
+            font-weight: bold;
+            color: #d18585; /* A strong red */
+            font-size: 1.1em; /* Slightly larger */
+        }
+
+        @media (hover: hover) {
+            .prompt-wrap:hover .prompt,
+            .full-screen-wrap:hover .full-screen-button {
+                opacity: 1;
+                pointer-events: all;
+            }
+            #contributors a:hover {
+                background-color: #222;
+            }
+        }
+
+        @media (hover: none) {
+            #contributors a {
+                pointer-events: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .flex-dynamic > div {
+                width: calc(100% / 2 - 5px / 2);
+            }
+        }
+
+        @media (max-width: 640px) {
+            #intro h1 {
+                font-size: 50px;
+            }
+            #intro h2 {
+                font-size: 20px;
+            }
+            .ruler {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 512px) {
+            .flex-dynamic > div,
+            .flex-dynamic-1 > div {
+                width: 100%;
+            }
+
+            .content {
+                padding: 0 12px;
+            }
+
+            .description {
+                padding: 0 12px 20px 12px;
+            }
+
+            .title {
+                padding: 20px 12px;
+            }
+
+            .ruler-tight {
+                font-size: 6px;
+                column-gap: 0;
+            }
+
+            .title-long {
+                font-size: 16px;
+            }
+
+        }
+
+        .margin-top {
+            margin-top: 50px;
+        }
+
+        .ruler {
+            text-align: center;
+            position: sticky;
+            top: 60px;
+            z-index: 999;
+            background-color: #000;
+            color: #999;
+            padding: 5px 0;
+        }
+
+        .ruler > div {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .selected {
+            box-shadow: 0 0 0 5px #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="intro">
+        <div class="content">
+            <h1><strong>Goku</strong></h1>
+            <h2>Flow Based Video Generative Foundation Models</h2>
+
+            <div class="authors">
+                <span class="author-block"><a href="https://www.shoufachen.com">Shoufa Chen</a><sup>1*</sup></span>
+                <span class="author-block"><a href="https://chongjiange.github.io/">Chongjian Ge</a><sup>1*</sup></span>
+                <span class="author-block"><a href="https://scholar.google.com/citations?user=7FlkVy8AAAAJ">Yuqi Zhang</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://openreview.net/profile?id=~Yida_Zhang2">Yida Zhang</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://www.zhufengda.net/">Fengda Zhu</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://github.com/haoy945">Hao Yang</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://scholar.google.com/citations?user=173GpBQAAAAJ&hl=zh-CN">Hongxiang Hao</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://github.com/whlook">Hui Wu</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://github.com/lazychao">Zhichao Lai</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://openreview.net/profile?id=~Yifei_Hu3">Yifei Hu</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://github.com/tcl326">Ting-Che Lin</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://jshilong.github.io/">Shilong Zhang</a><sup>1</sup></span>
+                <span class="author-block"><a href="https://scholar.google.com/citations?user=2A7_3hoAAAAJ&hl=en">Fu Li</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://www.linkedin.com/in/chuanli1101/">Chuan Li</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://www.linkedin.com/in/xing-wang-49369620/">Xing Wang</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://scholar.google.com/citations?user=Gf9amnoAAAAJ&hl=en">Yanghua Peng</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://peizesun.github.io/">Peize Sun</a><sup>1</sup></span>
+                <span class="author-block"><a href="http://luoping.me/">Ping Luo</a><sup>1</sup></span>
+                <span class="author-block"><a href="https://scholar.google.com/citations?user=6dikuoYAAAAJ&hl=en">Yi Jiang</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://shallowyuan.github.io/">Zehuan Yuan</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://www.linkedin.com/in/bingyp">Bingyue Peng</a><sup>2</sup></span>
+                <span class="author-block"><a href="https://scholar.google.com/citations?user=1ypDmDwAAAAJ&hl=en">Xiaobing Liu</a><sup>2</sup></span>
+            </div>
+
+            <!-- Added the affiliations section -->
+            <div class="author-affiliation">
+                <span class="author-block"><sup>1</sup>The University of Hong Kong (HKU)</span>
+                <span class="author-block"><sup>2</sup>ByteDance</span>
+            </div>
+
+            <a class="button" href="https://arxiv.org/abs/2502.04896" target="_blank" rel="noopener noreferrer">
+                Research Paper
+            </a>
+            <a class="button" href="https://github.com/Saiyan-World/goku" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-github" style="font-size:17px"></i>
+                GitHub
+            </a>
+            <a href="https://huggingface.co/datasets/saiyan-world/Goku-MovieGenBench" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">🤗</span>
+                <span>MovieGen Bench</span>
+            </a>
+        </div>
+
+    </section>
+    <section id="video">
+        <div class="title">
+            Text-to-Video Generation Demos on MovieGenBench
+        </div>
+        <div class="description">
+            We present a collection of video generation demos created using the Goku model.
+For a fair comparison, we use the original MovieGenBench prompts without any modifications.
+The full set is available in the <a href='https://huggingface.co/datasets/saiyan-world/Goku-MovieGenBench'>🤗 Goku MovieGenBench</a>.
+Please wait a moment for the video to load ☕☕.
+        </div>
+        
+        <div class="flex flex-dynamic">
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0001.mp4"></video>
+                <div class="prompt">A stylish woman walks down a Tokyo street filled with warm glowing neon and animated city signage. She wears a black leather jacket, a long red dress, and black boots, and carries a black purse. She wears sunglasses and red lipstick. She walks confidently and casually. The street is damp and reflective, creating a mirror effect of the colorful lights. Many pedestrians walk about.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0002.mp4"></video>
+                <div class="prompt">Several giant wooly mammoths approach treading through a snowy meadow, their long wooly fur lightly blows in the wind as they walk, snow covered trees and dramatic snow capped mountains in the distance, mid afternoon light with wispy clouds and a sun high in the distance creates a warm glow, the low camera view is stunning capturing the large furry mammal with beautiful photography, depth of field.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0006.mp4"></video>
+                <div class="prompt">A gorgeously rendered papercraft world of a coral reef, rife with colorful fish and sea creatures.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0007.mp4"></video>
+                <div class="prompt">This close-up shot of a Victoria crowned pigeon showcases its striking blue plumage and red chest. Its crest is made of delicate, lacy feathers, while its eye is a striking red color. The bird’s head is tilted slightly to the side, giving the impression of it looking regal and majestic. The background is blurred, drawing attention to the bird’s striking appearance.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0013.mp4"></video>
+                <div class="prompt">A cartoon kangaroo disco dances.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0017.mp4"></video>
+                <div class="prompt">3D animation of a small, round, fluffy creature with big, expressive eyes explores a vibrant, enchanted forest. The creature, a whimsical blend of a rabbit and a squirrel, has soft blue fur and a bushy, striped tail. It hops along a sparkling stream, its eyes wide with wonder. The forest is alive with magical elements: flowers that glow and change colors, trees with leaves in shades of purple and silver, and small floating lights that resemble fireflies. The creature stops to interact playfully with a group of tiny, fairy-like beings dancing around a mushroom ring. The creature looks up in awe at a large, glowing tree that seems to be the heart of the forest.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0028.mp4"></video>
+                <div class="prompt">A stop motion animation of a flower growing out of the windowsill of a suburban house.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0030.mp4"></video>
+                <div class="prompt">An extreme close-up of an gray-haired man with a beard in his 60s, he is deep in thought pondering the history of the universe as he sits at a cafe in Paris, his eyes focus on people offscreen as they walk as he sits mostly motionless, he is dressed in a wool coat suit coat with a button-down shirt , he wears a brown beret and glasses and has a very professorial appearance, and the end he offers a subtle closed-mouth smile as if he found the answer to the mystery of life, the lighting is very cinematic with the golden light and the Parisian streets and city in the background, depth of field, cinematic 35mm film.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0031.mp4"></video>
+                <div class="prompt">A beautiful silhouette animation shows a wolf howling at the moon, feeling lonely, until it finds its pack.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0033.mp4"></video>
+                <div class="prompt">A litter of golden retriever puppies playing in the snow. Their heads pop out of the snow, covered in.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0042.mp4"></video>
+                <div class="prompt">This close-up shot of a chameleon showcases its striking color changing capabilities. The background is blurred, drawing attention to the animal’s striking appearance.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0044.mp4"></video>
+                <div class="prompt">A white and orange tabby cat is seen happily darting through a dense garden, as if chasing something. Its eyes are wide and happy as it jogs forward, scanning the branches, flowers, and leaves as it walks. The path is narrow as it makes its way between all the plants. the scene is captured from a ground-level angle, following the cat closely, giving a low and intimate perspective. The image is cinematic with warm tones and a grainy texture. The scattered daylight between the leaves and plants above creates a warm contrast, accentuating the cat’s orange fur. The shot is clear and sharp, with a shallow depth of field.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0049.mp4"></video>
+                <div class="prompt">Chef chopping onions in the kitchen for the preparation of the dish</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0056.mp4"></video>
+                <div class="prompt">A  man sits at a table and eats noodles with chopsticks</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0098.mp4"></video>
+                <div class="prompt">A middle-aged sad bald man becomes happy as a wig of curly hair and sunglasses fall suddenly on his head.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0103.mp4"></video>
+                <div class="prompt">A man made of rocks walking in the forest, full-body shot.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0133.mp4"></video>
+                <div class="prompt">A bear driving a car</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0264.mp4"></video>
+                <div class="prompt">A miniature baby zebra walking on a fingertip</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0265.mp4"></video>
+                <div class="prompt">A dog made of ice melts completely in a hot summer day</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0271.mp4"></video>
+                <div class="prompt">Penguins roller skating</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0529.mp4"></video>
+                <div class="prompt">A serene orchard is in full bloom, with trees heavy with blossoms and bees buzzing around, darting from flower to flower in a display of natural harmony.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0590.mp4"></video>
+                <div class="prompt">A panda in a scientist's lab coat, conducting experiments with beakers and test tubes.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0741.mp4"></video>
+                <div class="prompt">A delicate layer of morning frost melting off a flower petal, the tiny droplets glistening like diamonds in the light.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0769.mp4"></video>
+                <div class="prompt">A wide-angle view of a dramatic cliffside overlooking the ocean, waves crashing against the rocks far below.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0772.mp4"></video>
+                <div class="prompt">A close-up of a butterfly's wings, showing the intricate patterns and vibrant colors in fine detail.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0848.mp4"></video>
+                <div class="prompt">A handheld shot chasing after a group of friends laughing and playing on the beach at sunset.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0858.mp4"></video>
+                <div class="prompt">A rapid tracking shot of small, big-eared gremlins on a wooden rollercoaster in a midcentury theme park. The gremlins have thin, scaly green skin with brown and black flecks. They stretch their spindly arms up and scream with wide, toothy grins as they race down a steep drop. The rollercoaster's honey-brown wooden tracks contrast with the bright, neon theme park colors. In the background, the ocean glimmers, its waves crashing against the shore, capturing the nostalgia of 1980s horror movies.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0859.mp4"></video>
+                <div class="prompt">Tracking shot. Cinematic scene. A 19th century scuba diver runs down a busy street in New York City. The light is natural and warm, glinting off of the diver's suit. The diver's suit is burnished and old, held together with rusted bolts. The diver's helmet is round, with a black round glass porthole in the front. All around the diver, people walk down the street in period specific attire, such as large corset dresses with sweeping skirts, tailored suits, and top hats. The scene should feel joyful and amusing, heightening the thrill of the running diver.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0862.mp4"></video>
+                <div class="prompt">An imposing, atomic-powered, retro-futuristic robot strides down the red carpet at a glamorous movie premiere. Its bulky, gleaming exosuit shines under the bright lights of camera flashes, reflecting the glitz of the event. The robot’s large, round helmet, with its glowing visor, gives it an air of mysterious authority, while the articulated joints in its thick, metallic arms and legs move with precision. Its jetpack, attached to its back, hums softly as it powers the machine forward, and the crowd marvels at the fusion of vintage design and futuristic technology</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0870.mp4"></video>
+                <div class="prompt">A llama coding and typing on his laptop in a cafe</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0886.mp4"></video>
+                <div class="prompt">A mother bird feeding her chicks in the nest, delicately placing food into their wide-open beaks as they chirp eagerly.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0908.mp4"></video>
+                <div class="prompt">a toy robot wearing purple overalls and cowboy boots taking a pleasant stroll in Johannesburg South Africa during a beautiful sunset</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0923.mp4"></video>
+                <div class="prompt">a woman wearing blue jeans and a white t shirt taking a pleasant stroll in Mumbai India during a beautiful sunset</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0959.mp4"></video>
+                <div class="prompt">an adorable kangaroo wearing purple overalls and cowboy boots taking a pleasant stroll in Mumbai India during a beautiful sunset</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_0991.mp4"></video>
+                <div class="prompt">an old man wearing purple overalls and cowboy boots taking a pleasant stroll in Johannesburg South Africa during a winter storm</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/moviegen_bench/moviegen_bench_1002.mp4"></video>
+                <div class="prompt">an old man wearing a green dress and a sun hat taking a pleasant stroll in Antarctica during a colorful festival</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video">
+        <div class="title">
+            More Landscape Demos
+        </div>
+
+        <div class="flex flex-dynamic">
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/hq_1.mp4"></video>
+                <div class="prompt">A capybara relaxes in a wooden barrel filled with steaming hot spring water, its serene gaze adding tranquility to the scene. Perched atop its head is a vibrant orange, adding a playful contrast to its soft brown fur.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/hq_3.mp4"></video>
+                <div class="prompt">In a modern, upscale hotel suite, the camera starts from the center of the living room. The room features light-colored sofas and large floor-to-ceiling windows overlooking the city's skyscrapers and night view.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/hq_5.mp4"></video>
+                <div class="prompt">An extreme close-up shot of an ant emerging from its nest. The camera pulls back revealing a neighborhood beyond the hill.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_motion/motion_2.mp4"></video>
+                <div class="prompt">A snowboarder carves down a steep slope, their board cutting swiftly through the snow. Powder sprays in all directions as they zigzag.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/human/human_3.mp4"></video>
+                <div class="prompt">In a realistic close-up shot with smooth camera movement, a charming  woman is seen outdoors on a grassy lawn. She is wearing a white shirt paired with a white jacket, and she adorns a necklace and earrings, adding elegance to her appearance. The woman is gracefully walking around an area enclosed by a wooden fence, moving in a gentle arc as she walks past the fence. The background features a lush green lawn and tent-like structures, creating a serene and refreshing atmosphere. The lighting is ample, highlighting the natural beauty of the scene.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/unreal/unreal_2.mp4"></video>
+                <div class="prompt">Two pirate ships engaged in an intense battle, their sails billowing as they maneuver through the dark, swirling surface of a coffee cup.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/unreal/unreal_8.mp4"></video>
+                <div class="prompt">A pig flying in the blue sky.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/143__seed_42.mp4"></video>
+                <div class="prompt">A fisherman casts his line into a misty lake at dawn, the stillness of the water interrupted only by the ripples spreading from the cast in a peaceful scene.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/146__seed_42.mp4"></video>
+                <div class="prompt">A honeybee drifting between lavender blossoms. Each wingbeat slowed to a gentle wave, pollen particles floating in still air. In super slow motion, even the bee's compound eyes shimmer, revealing details normally invisible to the human eye.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/183__seed_42.mp4"></video>
+                <div class="prompt">A close-up shot reveals an elderly sailor in weathered yellow oilskins, smoking a pipe on his catamaran's deck. His yellow cat curls contentedly beside him as sunset light bathes the scene in warm tones. Gentle waves lap against the hull while seabirds circle overhead.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/186__seed_42.mp4"></video>
+                <div class="prompt">Through a Venetian canal at dawn, glide as morning light paints ancient facades in pastel hues. Track a solitary gondola as it approaches a weathered stone bridge. Above, wooden shutters open with a creak as an unseen resident scatters crumbs to circling pigeons.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/268__seed_42.mp4"></video>
+                <div class="prompt">A retro, 70s Urban Grit style scene shows a lone astronaut wandering through a desolate Martian landscape. The colors are muted and dusty, with a worn-down, rugged space suit adding to the gritty, survivalist tone as they search for signs of life against the backdrop of a blood-red sky.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/8.mp4"></video>
+                <div class="prompt">A man is holding a bass and is positioned in front of a microphone in a room. He appears to be speaking or singing into the microphone.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/9.mp4"></video>
+                <div class="prompt">A man wearing a white protective suit, blue gloves, and a mask is holding a water gun and spraying water on the plants in a greenhouse.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/11.mp4"></video>
+                <div class="prompt">In a well-lit room with a white desk, a laptop, and a shelf with various items in the background, a woman and a boy are interacting with a smartphone.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/12.mp4"></video>
+                <div class="prompt">A beautiful woman and a handsome man kissing in the rain.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/18.mp4"></video>
+                <div class="prompt">A cyclist pedals furiously in a downhill race, the wind whipping past their helmet as they navigate sharp turns on the rugged mountain path. Gravel kicks up behind them, their body leaning forward for maximum speed. The bike sways side to side in sync with their fast, rhythmic pedaling, a blur against the scenic mountainside.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/15.mp4"></video>
+                <div class="prompt">In a serene, sunlit park with lush green grass and tall trees swaying gently in the breeze, two people are stretching their leg, focusing intently on their flexibility.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/17.mp4"></video>
+                <div class="prompt">A martial artist performs a flurry of fast kicks and punches in a dojo, their movements precise and fluid. Each motion is executed with speed and grace, the sound of their rapid strikes cutting through the air. The floor beneath them vibrates with every powerful kick, as they pivot quickly between stances.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/23.mp4"></video>
+                <div class="prompt">At the heart of a volcano, a dreamlike castle stands atop the lava, surrounded by mystical light and smoke.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/24.mp4"></video>
+                <div class="prompt">A sky city above the clouds, with massive airships gliding through, and the city spires glowing with a mystic light.</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="video">
+        <div class="title">
+            Prompts from Chinese Poetry
+        </div>
+
+        <div class="flex flex-dynamic">
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/26.mp4"></video>
+                <div class="prompt">
+                    <span class="chinese">江南好，风景旧曾谙。日出江花红胜火，春来江水绿如蓝。</span><br>
+                    Jiangnan is good. The scenery, once familiar. When the sun rises, the river’s flowers are more red than fire, In spring, the river’s water is as green as blue.
+                </div>
+                <!-- <div class="prompt">江南好，风景旧曾谙。日出江花红胜火，春来江水绿如蓝。 Jiangnan is good. The scenery, once familiar. When the sun rises, the river’s flowers are more red than fire, In spring, the river’s water is as green as blue.</div> -->
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/27.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" > 月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。</span><br>
+                    The moon sets, crows caw, and frost fills the sky, Riverside maples and fishing lights, troubled sleep at night. Beyond Suzhou, the Han Shan Temple lies, At midnight, its bell rings to a traveler’s plight.</div>
+            </div>
+            <!-- <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/28.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" > 好雨知时节，当春乃发生。随风潜入夜，润物细无声。</span><br>
+                    The good rain knows its time right, It will fall when spring comes. With wind it steals in night, And quietly it sows everything.</div>
+            </div> -->
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/29.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" > 空山新雨后，天气晚来秋。明月松间照，清泉石上流。</span><br>
+                    After the new rain on the empty mountain, Autumn’s cool airs come with the dusk. A shining moon among pine shadows, clear springs flow over the stones.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/30.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" > 朝辞白帝彩云间，千里江陵一日还。两岸猿声啼不住，轻舟已过万重山。</span><br>
+                    At dawn I depart the White Emperor crowned with cloud, A thousand miles to Jiangling, we sail in a single day. With the monkey’s sad cries echoing from the riverbanks, My light boat has already passed ten thousand mountains.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/31.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" > 独坐幽篁里，弹琴复长啸。深林人不知，明月来相照。</span><br>
+                    Sitting alone in the solitude of the bamboo grove, I play my zither and sometimes lift my voice in song. Deep in the forest, no one knows I am here. Only the bright moon comes to shine on me.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/32.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" > 渭城朝雨浥轻尘，客舍青青柳色新。劝君更尽一杯酒，西出阳关无故人。</span><br>
+                    Morning rain in Weicheng dampens the light dust. The inn is green with the fresh color of willows. I urge you to drink another cup of wine. In the west of Yangguan, you will have no old friends.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/33.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" > 松下问童子，言师采药去。只在此山中，云深不知处。</span><br>
+                    I ask a child below a pine, who says to pick his master went. But in this mountain high and deep, to where in clouds his day be spent?</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/34.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" > 春花秋月何时了，往事知多少。小楼昨夜又东风，故国不堪回首月明中。 </span><br>
+                    When will the spring flowers and autumn moon end? How much do we know of the lost years? Last night, the east wind again visited the small tower. I dare not look back at my old country in the moonlight.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/showcase/35.mp4"></video>
+                <div class="prompt">
+                    <span class = "chinese" >千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。 </span><br>
+                    A thousand mountains, no bird in flight, ten thousand paths, no trace of men. On a lone boat, a straw-clad old man, alone fishing in the cold river snow.</div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="portrait">
+        <div class="title">
+        Portrait Video Demos
+        </div>
+
+        <div class="flex flex-dynamic">
+
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/278__seed_320.mp4"></video>
+                <div class="prompt">The video begins with a realistic capture, transitioning from a mid-range view to a close-up as the camera zooms in from a distance and then remains focused on the subject. The main character is a charming gray squirrel perched on the trunk of a large tree. The squirrel is sitting on a branch, attentively gazing at its surroundings while slowly nibbling on food. The scene features abundantly green trees and yellow leaves, creating beautiful light and shadow effects on the ground and nearby structures. The environment is a tranquil park with ample lighting and a serene atmosphere.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/portrait/4__seed_46.mp4"></video>
+                <div class="prompt">A young Chinese woman has an unwavering gaze as she looks directly into the camera lens, blinking occasionally. Her expression is assertive as she speaks loudly, with noticeable movements of her mouth opening and closing. She is dressed in a white shirt paired with high-waisted green pants, complemented by a printed scarf around her neck. Her overall appearance is simple yet elegant, exuding a sense of competence and style. In the background, a purple car and a contemporary office environment can be seen. The wood-designed walls add a touch of simplicity and modernity, while the tidy tables and chairs create a professional and comfortable ambiance.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/portrait/41__seed_83.mp4"></video>
+                <div class="prompt">A Chinese middle-aged butcher stands in front of a meat shop's refrigeration display. He wears a white apron and gazes intently forward, making direct eye contact with the camera. His eyes blink as he speaks loudly, with his mouth opening and closing noticeably. His hands, inside rubber gloves, subtly flex and relax. The background features a bone cleaver and an electronic scale, while white mist from the refrigeration condenses on the counter's edge.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/portrait/70__seed_112.mp4"></video>
+                <div class="prompt">A realistic capture features the upper body of an elderly Chinese woman standing confidently in a park's square dance area. She wears a light-colored knit sweater and has a determined gaze as she looks directly at the camera. Her eyes blink, and she speaks loudly, with her mouth opening and closing noticeably. Her hands are clenched into fists, moving up and down.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/portrait/3.mp4"></video>
+                <div class="prompt">A blue car driving down a dirt road near train tracks.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/portrait/4.mp4"></video>
+                <div class="prompt">A little boy in a yellow raincoat leaps energetically over a large puddle in an alleyway.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/hq_6.mp4"></video>
+                <div class="prompt">A vintage steam train with gleaming black and red carriages chugs along a winding track through a lush, green countryside.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/hq_9.mp4"></video>
+                <div class="prompt">In a realistic full-view shot, the camera gently moves along a mountain road lined with blooming cherry blossom trees on both sides.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/human/human_5.mp4"></video>
+                <div class="prompt">A realistically filmed video with a medium shot and stationary camera captures a 28-year-old Chinese woman standing gracefully on a bridge. She is charming and fresh-faced, wearing a conservative black dress that maintains a modest appearance. Her long hair gently sways in the breeze as she holds her hands naturally at her sides. In the background, a vibrant city river is visible, with glittering lights illuminating both banks, creating a picturesque urban scene.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/high_quality/hq_8.mp4"></video>
+                <div class="prompt">A corgi wearing sunglasses strolling on the beach of a tropical island.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/0.mp4"></video>
+                <div class="prompt">A woman in workout gear is lifting weights at a gym, her biceps flexing with each lift, sweat visible on her forehead, with a closeup on her determined expression and muscle movement.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/1.mp4"></video>
+                <div class="prompt">A grandmother with neatly combed grey hair stands behind a colorful birthday cake with numerous candles at a wood dining room table, expression is one of pure joy and happiness, with a happy glow in her eye. She leans forward and blows out the candles with a gentle puff, the cake has pink frosting and sprinkles and the candles cease to flicker, the grandmother wears a light blue blouse adorned with floral patterns, several happy friends and family sitting at the table can be seen celebrating, out of focus. The scene is beautifully captured, cinematic, showing a 3/4 view of the grandmother and the dining room. Warm color tones and soft lighting enhance the mood.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/3.mp4"></video>
+                <div class="prompt">In a cozy, dimly lit room adorned with vintage posters and soft, ambient lighting, a person is playing a guitar, their fingers skillfully strumming the strings, creating a soothing melody.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/4.mp4"></video>
+                <div class="prompt">On a sun-dappled, tree-lined street in a quiet suburban neighborhood, a person is riding a bike, his hair flowing in the gentle breeze as they pedal leisurely.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/84__seed_126.mp4"></video>
+                <div class="prompt">A realistically shot video features a medium shot with a stationary camera. A 22-year-old Chinese woman with long, silky black hair sits at a library's reading table. She is wearing a casual yet stylish outfit, consisting of a fitted white blouse and black jeans. Her face is delicately framed by her hair as she focuses intensely on an open book. After a long period of reading, she appears to experience a headache. The woman sets the book down and rubs her temples with both hands, displaying a pained expression. The serene and quiet atmosphere of the library forms the backdrop, filled with wooden shelves and numerous books.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/263__seed_305.mp4"></video>
+                <div class="prompt">In a realistically shot, mid-range scene with a stationary camera, two cats interact on a white sofa indoors. A striking orange and white cat sits elegantly on the sofa, attentively watching an orange cat. The orange cat stands and animatedly waves its front paws, seemingly attempting to playfully swat at the other cat. This interaction takes place in a home living room, where a closed white door serves as a simple background, complementing the clean and clear style of the setting.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/112__seed_154.mp4"></video>
+                <div class="prompt">In a brightly lit study room, a charming young woman wearing a sporty jacket is intently writing at a desk. The desk is adorned with open books and various stationery items. In the background, bookshelves filled with books and decorative pieces are visible, creating a quiet and conducive environment for studying. The camera captures her focused expression and slight movements as she writes, enhancing the serene atmosphere of the scene.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/135__seed_177.mp4"></video>
+                <div class="prompt">In a realistic filming style, the video features a smooth-moving, first-person camera perspective from inside a car driving along a mountain road. The view shifts gently between the front of the car and the side windows. Through the front window, the interior of a tunnel briefly appears, while the side windows reveal a wide-open mountain landscape. The scene captures blue skies with fluffy white clouds, undulating peaks, and dense forests. The overall atmosphere is fresh and natural, showcasing stunning scenery.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/192__seed_234.mp4"></video>
+                <div class="prompt">The video, captured in a realistic style with a wide panoramic perspective and a stationary camera, showcases a lush bamboo forest with tall, densely packed bamboo. In the center, large rocks are topped by a flowing waterfall. The water cascades over the rocks, creating a mist that envelops the area, exuding a sense of natural serenity and freshness. The background features the bamboo forest, where light filters through the bamboo, creating a tranquil and harmonious atmosphere.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/232__seed_274.mp4"></video>
+                <div class="prompt">In a realistic and detailed close-up shot, the camera remains stationary, capturing a piece of fried chicken cooking in a sizzling hot oil pan. The oil is vigorously bubbling, creating a dynamic and lively scene. The camera highlights the golden, crispy exterior of the fried chicken, contrasting with the roiling oil in the pan. In the background, there are other kitchen items subtly visible, but the focus remains entirely on the fried chicken. The entire scene exudes a mouthwatering and tempting culinary allure.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/251__seed_293.mp4"></video>
+                <div class="prompt">In a realistic medium shot with a static camera, a koala stands on a tree trunk, gently chewing eucalyptus leaves. The koala's expression is calm, and it is covered in soft, grey and white fur. The background features a clear blue sky and some lush green foliage, creating a serene and natural environment.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/I2V/252__seed_294.mp4"></video>
+                <div class="prompt">In a realistic filming with a medium shot, the camera slowly moves to capture an Australian kangaroo walking through the wilderness, glancing around. The kangaroo approaches the camera, allowing viewers to clearly see the details of its face and body. The background reveals an expansive wilderness landscape with red sandy soil on the ground and trees in the distance. The lighting is abundant, creating a serene and natural atmosphere.</div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="intro">
+        <div class="content">
+            <h1><strong>Goku+: Video Ads Foundation Models</strong></h1>
+        </div>
+        <div class="description">
+            Goku+ is a new family of video foundation models built on top of Goku, specifically designed to optimize advertising scenarios involving humans and products to maximize performance. Our latest research breakthroughs show how you can create advertising videos at 100 times lower cost.
+        </div>
+    </section>
+
+    <section class="portrait">
+        <div class="title">
+        Goku+: Create Marketing Avatar from Text
+        </div>
+
+        <div class="description">
+            Goku+ transforms text into hyper-realistic human videos, significantly outperforming existing methods. In particular, it can generate videos longer than 20 seconds, featuring stable hand movements and highly expressive facial and body movements of human subjects.
+        </div>
+    
+        <div class="flex flex-dynamic">
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Avatar/1.mp4"></video>
+                <div class="prompt">Prompt : A young man aged 25 to 35 is sitting in the living room in a leisurely environment. He is dressed in casual attire suitable for spring or autumn. The room exudes a comfortable and minimalist beauty, quite different from the typical office interior. He is live-streaming, sitting in front of a desk with a laptop in front of him. His demeanor is relaxed and friendly, occasionally gesturing with his hands while speaking. The background of the living room includes some personal style elements, such as a few modern pieces of furniture or decorations, creating a cozy atmosphere.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Avatar/2.mp4"></video>
+                <div class="prompt">Prompt :A beautiful woman, aged between 25 and 35, is dressed in a professional yet chic outfit, emphasizing her intellectual character. She exudes a sense of sophistication and confidence. The spring and autumn seasons are reflected in her attire, which could be a stylish blazer paired with a fashionable blouse, marking her as a host. She is captured in an outdoor setting on a high-end street, possibly lined with upscale boutiques or cafes. Despite being outside, she maintains a professional demeanor, possibly speaking into a microphone or engaging with an unseen audience, showing her poise and eloquence as a host.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Avatar/3.mp4"></video>
+                <div class="prompt">Prompt : A 55-year-old, beautiful Asian woman with fair, delicate skin and smooth, shiny hair is wearing conservative clothing, seated in a luxurious Frenchstyle bathroom. This is a close-up shot of her face, from a near distance. She is sitting naturally, facing the camera, and chatting with us.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Avatar/4.mp4"></video>
+                <div class="prompt">Prompt : A young man dressed in a red cardigan over a white shirt, sitting in front of a festive background decorated with traditional Chinese elements such as red lanterns and decorations. The man is smiling and appears to be speaking or presenting, with an open and friendly expression. The setting suggests a celebratory or cultural theme, possibly linked to Chinese New Year.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Avatar/9.mp4"></video>
+                <div class="prompt">Prompt : A casual, everyday photo—candid, possibly taken secretly or spontaneously, without artistic posing, without perfect composition, and with no filters. The lighting is natural, and the overall feel is natural. The subject is a 21-year-old woman of European descent, fair-skinned with blonde hair and blue eyes, and she is quite attractive. She’s wearing a woolen dress with a small microphone pinned to it—perhaps she’s being interviewed? The setting is indoors, her hands aren’t visible in the frame, and she is looking at the viewer. It’s a half-length shot, taken in a casual, everyday manner.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Avatar/10.mp4"></video>
+                <div class="prompt">Prompt : An attractive lady in her late 20s to early 30s, dressed in a professional and stylish outfit, sits on a high-end stage indoors. She wears a tailored blazer in a bright color suitable for the spring and fall seasons, with a matching shirt underneath. A friendly and engaging host, she radiates warmth as she interacts with the audience. She sits at a sleek table with a modern laptop in front of her, speaking confidently and using expressive gestures that reflect her professional demeanor. The background is sophisticated stage lighting and decorations, enhancing the overall high-end atmosphere.</div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="portrait">
+        <div class="title">
+        Goku+: Turn Product Image To Video Clip
+        </div>
+
+        <div class="description">
+            Goku+ converts your product images into captivating video clips, ensuring end-to-end optimization. This process enhances the appeal and effectiveness of your marketing materials.
+        </div>
+
+        <div class="flex flex-dynamic">
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads_I2V/1.mp4"></video>
+                <div class="prompt"></div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads_I2V/2.mp4"></video>
+                <div class="prompt"></div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads_I2V/3.mp4"></video>
+                <div class="prompt"></div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads_I2V/4.mp4"></video>
+                <div class="prompt"></div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads_I2V/5.mp4"></video>
+                <div class="prompt"></div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads_I2V/6.mp4"></video>
+                <div class="prompt"></div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="portrait">
+        <div class="title">
+        Goku+: Product and Human Interaction
+        </div>
+
+        <div class="description">
+            Goku+ produces realistic and highly engaging videos tailored to showcase specific products. These videos effectively capture the essence of the products, boosting viewer engagement and interest.
+        </div>
+
+        <div class="flex flex-dynamic">
+
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Human-interaction/1.mp4"></video>
+                <div class="prompt">The model gazes gracefully out the window, her elegant smile accentuating the sparkle of the bracelet on her wrist. As she gently turns her head, the sunlight catches the bracelet, creating a dazzling effect.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Human-interaction/2.mp4"></video>
+                <div class="prompt">The woman, dressed in a floral dress and denim jacket, walks gracefully forward, her hair gently swaying in the breeze. The camera captures her steady approach, focusing on the movement of her hair and the falling leaves, enhancing the serene autumn atmosphere.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Human-interaction/3.mp4"></video>
+                <div class="prompt">The model's hand gracefully holds the white bottle of facial cleanser, presenting it to the camera. As the camera slowly zooms in, the model gently rotates the bottle, showcasing its sleek design and smooth surface. The soft lighting highlights the model's perfectly manicured nails, adding elegance to the presentation. The video concludes with a close-up of the bottle, emphasizing its clean and minimalist aesthetic.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Human-interaction/6.mp4"></video>
+                <div class="prompt">The model gracefully steps forward and backward, showcasing the stylish blue boots on a brick pavement. The camera smoothly pans up and down, capturing the texture and design of the boots with each step. The model's movements are fluid, emphasizing the comfort and elegance of the footwear.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Human-interaction/4.mp4"></video>
+                <div class="prompt">The woman stands behind a colorful Minnie Mouse product, her head gently swaying left and right as she speaks animatedly. Her hands rest on the table, framing the product, while her mouth opens and closes with noticeable emphasis, conveying her enthusiasm and detailed explanation. The camera remains steady, capturing her expressive gestures and the vibrant design of the product in front of her.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/Human-interaction/7.mp4"></video>
+                <div class="prompt">The man stands behind a table with three colorful bottles labeled ""Sngo 护衣留香珠"" in front of him. He gestures towards each bottle, explaining their features and benefits. His hands move smoothly as he points to the pink, yellow, and green-topped bottles, emphasizing their unique scents. The camera remains steady, capturing his detailed presentation and the vibrant packaging of the products.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portrait2">
+        <div class="title">
+        Goku+: Optimize Advertising Scenarios
+        </div>
+
+        <div class="description">
+            Goku+ specializes in creating customized high-definition videos from text to optimize advertising scenarios, significantly outperforming competing video foundation models.
+        </div>
+
+        <div class="flex flex-dynamic">
+
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads/eat_crf1.mp4"></video>
+                <div class="prompt">Food & Snack.</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads/walking2_crf2.mp4"></video>
+                <div class="prompt">Fashion & Cloth</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads/showcase2_crf2.mp4"></video>
+                <div class="prompt">Product Display</div>
+            </div>
+            <div class="prompt-wrap full-screen-wrap" style="position: relative;">
+                <div class="loading-placeholder">
+                    <div class="loading-text">Loading...</div>
+                    <div class="loading-icon">☕</div>
+                </div>
+                <video autoplay playsinline muted loop onloadeddata="this.style.display='block'; this.previousElementSibling.style.display='none';" src="./assets/videos/ads/fmcg_crf2.mp4"></video>
+                <div class="prompt">FMCG</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bibtex-section">
+        <h3>BibTeX</h3>
+        <pre class="bibtex-code">@article{chen2025goku,
+  title={Goku: Flow Based Video Generative Foundation Models},
+  author={Chen, Shoufa and Ge, Chongjian and Zhang, Yuqi and Zhang, Yida and Zhu, Fengda and Yang, Hao and Hao, Hongxiang and Wu, Hui and Lai, Zhichao and Hu, Yifei and Lin, Ting-Che and Zhang, Shilong and Li, Fu and Li, Chuan and Wang, Xing and Peng, Yanghua and Sun, Peize and Luo, Ping and Jiang, Yi and Yuan, Zehuan and Peng, Bingyue and Liu, Xiaobing},
+  journal={arXiv preprint arXiv:2502.04896},
+  year={2025}
+}</pre>
+    </section>
+
+</body></html>

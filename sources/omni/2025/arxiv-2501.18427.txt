@@ -1,0 +1,1972 @@
+2025-5-20
+
+SANA 1.5: Efficient Scaling of Training-Time and
+Inference-Time Compute in Linear Diffusion Transformer
+Enze Xie1* Junsong Chen1*
+Zhekai Zhang2 Muyang Li2
+1
+
+NVIDIA
+
+2
+
+MIT
+
+3
+
+Yuyang Zhao1† Jincheng Yu1† Ligeng Zhu1† Chengyue Wu6 Yujun Lin2
+Junyu Chen3 Han Cai1 Bingchen Liu4 Daquan Zhou5 Song Han1,2
+
+Tsinghua University
+
+4
+
+Playground
+
+5
+
+Peking University
+
+6
+
+The University of Hong Kong
+
+arXiv:2501.18427v4 [cs.CV] 17 May 2025
+
+* Equal contribution. † Core contribution.
+
+Abstract: This paper presents SANA-1.5, a linear Diffusion Transformer for efficient scaling in text-to-image generation.
+Building upon SANA-1.0, we introduce three key innovations: (1) Efficient Training Scaling: A depth-growth paradigm
+that enables scaling from 1.6B to 4.8B parameters with significantly reduced computational resources, combined with a
+memory-efficient 8-bit optimizer. (2) Model Depth Pruning: A block importance analysis technique for efficient model
+compression to arbitrary sizes with minimal quality loss. (3) Inference-time Scaling: A repeated sampling strategy
+that trades computation for model capacity, enabling smaller models to match larger model quality at inference time.
+Through these strategies, SANA-1.5 achieves a text-image alignment score of 0.81 on GenEval, which can be further
+improved to 0.96 through inference scaling with VILA-Judge, establishing a new SoTA on GenEval benchmark. These
+innovations enable efficient model scaling across different compute budgets while maintaining high quality, making
+high-quality image generation more accessible. Our code and pre-trained models are released.
+Links: Github Code | HF Models | Demo | Project Page
+
+1. Introduction
+Text-to-image diffusion models have demonstrated remarkable progress in the past year, with a clear trend towards
+larger model sizes. Although scaling up the size of the
+model has proven effective in improving the quality of
+generation, it comes with substantial computational costs.
+For instance, recent industry models have grown from
+PixArt’s 0.6B parameters [1] to 24B in Playground v3 [2],
+resulting in prohibitive training and inference costs for
+most practitioners.
+In contrast, SANA-1.0 [3] introduced an efficient linear diffusion transformer that achieved competitive performance
+while significantly reducing computational requirements.
+Building upon this foundation, this work explores two
+fundamental questions: i) how is the scalability of linear
+diffusion transformer; ii) how can we scale up large linear
+DiT and reduce the training cost?
+This paper presents SANA-1.5, which introduces three
+key innovations for efficient model scaling in both training
+and inference time. First, we propose an efficient model
+growth strategy that enables scaling SANA from 1.6B (20
+blocks) to 4.8B parameters (60 blocks) while reusing the
+knowledge learned in the smaller model. Unlike traditional
+scaling approaches that train large models from scratch,
+our method initializes additional blocks strategically, allowing the large model to retain the prior knowledge of the
+small model. This approach reduces training time by 60%
+compared to training from scratch, as shown in Figure 2.
+Second, we introduce a model depth pruning technique
+that enables efficient model compression. By analyzing
+
+© 2025 NVIDIA. All rights reserved.
+
+block importance through input-output similarity patterns
+in diffusion transformers, we prune less important blocks
+and quickly recover the model quality through fine-tuning
+(e.g., 5 minutes on a single GPU). Our grow-then-prune
+approach effectively compresses the 60-block model to various configurations (40/30/20 blocks) while maintaining
+competitive quality, providing an efficient path for flexible
+model deployment across different compute budgets.
+Third, we propose an inference-time scaling strategy for
+SANA, which enables smaller models to match larger
+model quality through compute rather than parameter scaling. By generating multiple samples and leveraging a
+VLM-based selection mechanism, our approach improves
+the GenEval score from 0.81 to 0.96. This improvement
+follows a similar log-linear scaling pattern observed in
+LLMs [4], demonstrating that computational resources
+can be effectively traded for model capacity, challenging
+the conventional wisdom that larger models are always
+necessary for better quality.
+rThese three technical contributions - model growth,
+model depth pruning and inference scaling - form a coherent framework for efficient model scaling. The model
+growth strategy first explores a larger optimization space,
+discovering better feature representations. The model
+depth pruning then identifies and preserves these essential features, enabling efficient deployment. Meanwhile,
+inference-time scaling provides a complementary perspective. When model capacity is constrained, we can utilize
+extra inference-time computational resources to achieve
+similar or even better results than larger models. Together,
+these approaches demonstrate that thoughtful optimiza-
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+8-bit CAME Optimizer
+
+Forward
+Backward
+
+(a) Model Growth.
+
+𝑁, 𝑀, 𝑁# and 𝑁" denotes number of block
+𝑁" < 𝑁# < (𝑁 + 𝑀)
+
+LD Block
+
+LD Block
+
+LD Block
+
+LD Block
+
+Consumer
+GPU
+
+4.8B Model
+GenEval 0.81
+
+Verifier
+
+LD Block
+
+LD Block
+
+LD Block
+
+(SigLIP, VLM)
+LD Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Pre-trained Blocks x (𝑁 + 𝑀)
+
+LD Block
+
+Pruned to Blocks x 𝑁!
+
+Cloud Service
+
+Linear DiT Block
+
+Inference Scaling
+
+New Blocks x 𝑀
+
+Prediction
+
+Unpatchify
+
+x𝑀
+
+4.8B Model
+GenEval 0.96
+
+Best K
+samples
+
+Mobile
+
+1.6B Model
+GenEval 0.66
+
+Pruned to Blocks x 𝑁"
+
+(b) Model Depth Pruning.
+
+Model Growth
+
+Pre-trained Blocks x 𝑁
+
+Linear DiT
+Block
+
+x𝑁
+
+Linear DiT
+Block
+
+Linear DiT
+Block
+
+Linear DiT
+Block
+
+Patchify
+
+Latent
+
+SANA
+User Prompt:
+a photo of a
+stop sign and
+a toaster.
+
+(c) Inference Scaling.
+
+(d) Performance Boost.
+
+Figure 1 | The overall framework of SANA-1.5. (a) Model Growth: We initialize the large model with a pre-trained
+small model, and train the large model with 8-bit CAME, which largely accelerates the training convergence and reduces
+VRAM requirements. (b) Model Pruning: After training the large model, smaller models of different sizes are pruned
+and fine-tuned for different situations. (c-d) Inference Scaling: We repeat generating many samples with SANA and use
+VLM as a verifier to select the best-of-N samples, which largely boosts the quality.
+tion strategies can outperform simple parameter scaling,
+providing multiple paths to achieve high quality under
+different resource constraints.
+To enable efficient training and fine-tuning large models,
+we implement a memory-efficient optimizer CAME-8bit
+by extending CAME [5] with block-wise 8-bit quantization [6]. CAME-8bit reduces memory usage by ∼8×
+compared to AdamW-32bit [7] while maintaining training
+stability. This optimization proves effective not only in
+pre-training but is particularly valuable for single-GPU
+fine-tuning scenarios, enabling researchers to fine-tune
+SANA-4.8B on consumer GPUs like RTX 4090, making
+large model fine-tuning more accessible to the open-source
+community.
+Our extensive experiments demonstrate that SANA-1.5
+achieves 2.5× faster training convergence than the traditional approach (i.e., scale up and train from scratch).
+Through our training scaling strategy, we improve the
+GenEval score from 0.66 to 0.81, which can be further
+boosted to 0.96 with inference scaling, establishing a new
+state-of-the-art on the GenEval benchmark. More importantly, our findings reveal a fundamental insight: efficient
+scaling can be achieved through better optimization trajectories rather than simply increasing model capacity. By
+leveraging knowledge from smaller models and carefully
+designing the growth-pruning process, we show that the
+path to better quailty does not always require larger models.
+In summary, SANA-1.5 introduces a new perspective on
+model scaling in text-to-image generation. Rather than
+following the conventional paradigm “bigger is better”, we
+
+demonstrate that the growth and pruning of strategic models, combined with the inference-time scaling, can achieve
+comparable or better results with significantly reduced
+training resources. This approach not only advances the
+theoretical understanding of model scaling but also makes
+high-quality text-to-image generation more accessible to
+the broader research community and practical applications.
+
+2. Methods
+2.1. Overview
+Increasingly larger models have dominated text-to-image
+generation, but SANA-1.5 introduces a different paradigm
+that achieves efficient scaling through three complementary strategies. Rather than training large models from
+scratch, we first expand a base model with 𝑁 transformer
+layers to 𝑁 + 𝑀 layers (where 𝑁 = 20, 𝑀 = 40 in our
+experiments) while preserving its learned knowledge. During inference, we employ two complementary approaches
+for efficient deployment: (1) a model depth pruning mechanism that identifies and preserves essential transformer
+blocks, enabling flexible model configurations with small
+fine-tuning cost, and (2) an inference scaling strategy that
+trades computation for model capacity through repeat
+sampling and VLM-guided selection. Meanwhile, our
+memory-efficient CAME-8bit optimizer makes it possible to fine-tune billion-scale models on a single consumer
+GPU. Figure 1 illustrates how these components work
+together to achieve efficient scaling in different computational budgets.
+
+2
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+0.70 GenEval
+SANA-1.0 0.66 GenEval
+
+layers in the expanded model:
+𝜃𝑟𝑖+𝑗 = 𝜃𝑖pre ,
+
+saving 60% training cost
+
+Figure 2 | Training efficiency comparison of different
+initialization strategies. Training curves on GenEval
+benchmark for SANA-1.5 4.8B using model growth strategy vs training from scratch. Our model growth approach
+achieves the same performance (0.70 GenEval) with 60%
+fewer training steps, significantly improving training efficiency.
+2.2. Efficient Model Growth
+Rather than training large models from scratch, we
+propose an efficient model growth strategy that expands
+a pre-trained DiT with 𝑁 layers to 𝑁 + 𝑀 layers while
+preserving its learned knowledge. We explore three
+initialization strategies to ensure effective knowledge
+transfer during model expansion. Figure 11 in the
+appendix illustrates the three strategies.
+
+E6F0E7 F7E8E6
+for 𝑗 ∈ {0, . . . , 𝑟 − 1}, 𝑖 ∈ [0, 𝑁 − 1],
+
+where 𝑟 represents the expansion ratio (e.g., 𝑟 = 3 when
+expanding from 20 to 60 layers), 𝜃𝑖 denotes the parameters of layer 𝑖 in the expanded model, 𝜃𝑖pre represents the
+parameters from the pre-trained model.
+
+Stability Enhancement To ensure training stability
+across all initialization strategies, we incorporate layer
+normalization for query and key components in both linear
+self-attention and cross-attention modules. This normalmetrics curve
+ization technique is crucial as it: (1) stabilizes the attention
+computation during the early stages of training, (2) prevents potential gradient instability when integrating new
+layers, and (3) enables rapid adaptation while maintaining
+model quality.
+
+working
+
+Identity Mapping Initialization We initialize the
+weights of specific components to zero in new layers,
+particularly the output projections of self-attention, crossattention, and the final point-wise convolution in MLP
+blocks, following [8]. This zero-initialization ensures that
+new transformer blocks initially behave as identity functions, providing two key benefits: (1) exact preservation
+of the pre-trained model’s behavior at the start of training, and (2) stable optimization path from a known good
+solution.
+
+￼
+
+Initialization Strategies Let 𝜃𝑖 ∈ R𝑑 denote the parameters of layer 𝑖 in the expanded model and 𝜃𝑖pre ∈ R𝑑 represent the parameters of layer 𝑖 of the pre-trained model,
+where 𝑑 is the parameter dimension of each layer. We
+investigate three approaches for parameter initialization:
+(1) Partial Preservation Init, where we preserve the first 𝑁
+pre-trained layers and randomly initialize the additional 𝑀
+layers, with special handling of key components. Formally,
+for 𝑖-th layer index:
+{︃
+𝜃𝑖pre ,
+if 𝑖 < 𝑁
+𝜃𝑖 =
+,
+2
+𝒩 (0, 𝜎 ), if 𝑖 ≥ 𝑁
+
+Design Choice Among these strategies, we adopt the
+partial preservation initialization approach for its simplicity and stability. This choice creates a natural division
+of labor: the pre-trained 𝑁 layers maintain their feature
+extraction capabilities while the randomly initialized 𝑀
+layers, starting from identity mappings, gradually learn
+to refine these representations. Empirically, this approach
+provides the most stable training dynamics compared to
+cyclic and block expansion strategies. Considering the
+block importance (see analysis in Section 3.3), we drop
+the last two blocks in the pre-trained model to enhance
+the learning of newly added blocks.
+
+where 𝒩 (0, 𝜎 2 ) is the normal distribution with standard
+deviation as 𝜎.
+
+2.3. Memory-Efficient CAME-8bit Optimizer
+
+(2) Cyclic Replication Init, which repeats the pre-trained
+layers periodically. For 𝑖-th layer in the expanded model:
+𝜃𝑖 = 𝜃𝑖premod 𝑁
+(3) Block Replication Init, which extends each pre-trained
+layer into consecutive layers. Given expansion ratio 𝑟 =
+𝑀/𝑁 , for pre-trained 𝑖-th layer, it initializes 𝑟 consecutive
+
+Building upon CAME [5] and AdamW-8bit [6], we propose CAME-8bit for efficient large-scale model training. CAME reduces memory usage by half compared
+to AdamW through matrix factorization of second-order
+moments, making it particularly efficient for large linear and convolutional layers. We further extend CAME
+with block-wise 8-bit quantization for first-order moments,
+while preserving 32-bit precision for critical statistics to
+
+3
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+maintain optimization stability. This hybrid approach reduces the optimizer’s memory footprint to approximately
+1/8 of AdamW, enabling billion-scale model training on
+consumer GPUs without compromising convergence properties.
+
+into various smaller configurations while maintaining comparable quality. Inspired by Minitron [9], a transformer
+compression technique for LLMs, we analyze block importance through input-output similarity patterns:
+BI𝑖 = 1 − E𝑋,𝑡
+
+Block-wise Quantization Strategy We adopt a selective
+quantization approach where only large matrices (>16K
+parameters) in linear and 1×1 convolution layers are quantized, as these layers dominate the optimizer’s memory
+footprint. For each block of size 2048, we compute independent scaling factors to preserve local statistical properties. Given a tensor block 𝑥 ∈ R𝑛 representing the
+first-order momentum values, the quantization function
+𝑞(𝑥) maps each value to an 8-bit integer:
+(︂
+𝑞(𝑥) = round
+
+)︂
+𝑥 − min(𝑥)
+× 255 ,
+max(𝑥) − min(𝑥)
+
+(1)
+
+where min(𝑥) and max(𝑥) are the minimum and maximum values in the block respectively, and round(·) maps
+to the nearest integer. This linear quantization preserves
+the relative magnitude of values within each block while
+compressing the storage to 8 bits per value.
+Hybrid Precision Design To maintain optimization stability, we keep second-order statistics in 32-bit precision,
+as these are critical for proper gradient scaling. Benefiting
+from CAME’s matrix factorization, these statistics are already memory-efficient: for a linear layer with 𝑑𝑖𝑛 input
+dimensions and 𝑑𝑜𝑢𝑡 output dimensions, the storage of
+second-order moments is reduced from 𝑂(𝑑𝑖𝑛 × 𝑑𝑜𝑢𝑡 ) to
+𝑂(𝑑𝑖𝑛 +𝑑𝑜𝑢𝑡 ), making their precision less critical for overall memory consumption. This hybrid approach reduces
+memory usage while preserving CAME’s convergence
+properties. Memory reduction can be formulated as:
+∑︁
+𝑀saved =
+(𝑛𝑙 × 24) bytes,
+(2)
+𝑙∈ℒ
+
+where ℒ is the set of quantized layers, 𝑛𝑙 is the parameter
+count of layer 𝑙, and 24 represents the maximum bytes
+saved per parameter. In practice, the actual memory savings are slightly lower due to several factors: (1) small
+layers (<16K parameters) remain in 32-bit precision, (2)
+second-order statistics are kept in 32-bit, and (3) additional
+overhead from quantization metadata. Nevertheless, this
+approximation provides a good estimate of the memory
+efficiency gained through our hybrid quantization strategy.
+2.4. Model Depth Pruning
+To address the challenge of balancing effectiveness and
+efficiency in large models, we introduce a model depth
+pruning approach that efficiently compresses large models
+
+X𝑇𝑖,𝑡 X𝑖+1,𝑡
+,
+‖X𝑖,𝑡 ‖2 ‖X𝑖+1,𝑡 ‖2
+
+(3)
+
+where X𝑖,𝑡 denotes the input of the 𝑖-th transformer block.
+We average the block importance across diffusion timesteps and our calibration dataset, which contains 100 diverse prompts. As shown in Figure 5c, the block importance is higher in head and tail blocks, and we conjecture
+that the head blocks change the latent distribution to diffusion distribution and the tail blocks change it back. The
+middle blocks commonly have higher similarity between
+input and output features, demonstrating the gradual refinement of the generated results. We prune the transformer
+blocks based on the importance of the sorted block. As
+illustrated in Figure 4, pruning the blocks will gradually
+impair the high-frequency details. Therefore, after pruning, we further fine-tune the model to compensate for the
+information loss. Specifically, we use the same training
+loss as the large model to supervise the pruned models.
+Adapting the pruned model to complete information is surprisingly easy. With only 100 fine-tune steps, the pruned
+1.6B model can achieve comparable quality with the full
+4.8B model and outperform the SANA-1.0 1.6B model
+(Table 3).
+2.5. Inference-Time Scaling
+With sufficient training, SANA-1.5 gains stronger generation abilities after efficient model growth. Inspired by the
+recent success of inference-time scaling in large language
+models (LLMs) [4], we are interested in inference-time
+scaling to push the generation upper bound.
+Scaling Denoising Steps v.s. Scaling Samplings For
+SANA and many other diffusion models, a natural option
+to scale up the inference-time computation is to increase
+the number of denoising steps. However, using more denoising steps is not ideal for scaling for two reasons. First,
+additional denoising steps cannot self-correct errors. Figure 3(a) illustrates this with a sample, where objects misplaced at an early stage remained unchanged in subsequent
+steps. Second, the generation quality quickly reaches a
+plateau. As shown in Figure 3, SANA produces visually
+pleasing results with just 20 steps, showing no significant
+visual improvement even increase 2.5× steps.
+In contrast, scaling the number of sampling candidates is
+a more promising direction. As presented in Figure 3(b), a
+small model SANA (1.6B) can also generate correct results
+for difficult test prompts when given multiple attempts,
+much like a sloppy/scattered student who can draw as
+
+4
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+Artifacts cannot be self-correcting when
+scaling denoising steps.
+
+Prompt: a photo of an apple above a tv
+
+✓
+
+VLM
+
+✓
+
+t=0
+
+t=5
+
+t=20
+
+VLM
+
+✓
+
+xN
+
+VLM
+
+VLM
+
+VLM
+
+t=50
+VLM
+
+t=0
+
+t=20
+
+Minor improvements when
+increasing from 20 to 50
+
+(a). Scale Denoising Steps (✗)
+
+(b). Scale Sampling Noises (✓)
+
+(c). Best-of-N Judged by VLM Specialist
+
+Figure 3 | Comparing Scaling Between Denoising Steps and Samples with VLM Judgment Visualization. (a)
+Scaling denoising steps show only minor improvements and often fail to self-correct artifacts, making it a poor option
+for scaling up. (b) In contrast, scaling sampling noise proves more effective, with VLM specialists helping to verify and
+select images that match the prompts. (c) VLM evaluates and ranks the best images in a tournament format.
+a photo of an apple above a tv
+
+requested but sometimes makes mistakes during execution.
+With enough698520838
+opportunities to try, it can still provide a
+satisfactory answer. Therefore, we choose to generate
+more images and introduce a “patient teacher” to score the
+results, which will be expanded in the following.
+0
+
+Visual Language Model (VLM) as the Judge To find
+images that best match a given prompt, a model that understands both text and images is needed. While popular
+models like CLIP [10] and SigLIP [11] offer multi-modal
+capabilities, their small context windows (77 tokens for
+CLIP and 66 tokens for SigLIP) limit their effectiveness.
+This limitation poses a problem since SANA usually takes
+long, detailed descriptions as inputs. To address this, we
+explored Visual Language Models to evaluate promptmatching for generated images. We tested commercial
+multi-modal APIs, specifically GPT-4o [12] and Gemini1.5-pro [13], but encountered two significant issues. First,
+when evaluating single images against prompts, both APIs
+lacked consistency in their ratings across different runs.
+Second, when tasked with selecting the best-matching images from multiple options, both models exhibited a strong
+bias toward the first-presented options, regardless of image
+ordering or shuffling.
+Instead of applying existing models or APIs, we trained
+a specialized NVILA-2B [14] to score the images, which
+we named VILA-Judge: Sana generates then VILA picks.
+We created a 2M prompt-matching dataset with prompts
+generated in the GenEval style. We excluded the prompts
+that are already existed in GenEval evalset and generated
+the images using using Flux-Schnell [15] to avoid overfitting. We then formatted these as multimodal conversations,
+as shown below
+• User: You are an AI assistant specializing
+in image analysis and ranking. Your task
+is to analyze and compare image based
+
+on how well they match the given prompt.
+<image> The given prompt is: <prompt>.
+Please consider the prompt and the image to
+make a decision and response directly with
+’yes’ or ’no’
+• VILA-Judge: ’yes’ / ’no’.
+
+The fine-tuned VILA-Judge can effectively assess how
+well images match their prompts and robustly filters out
+prompt-mismatching images. During inference, we compare two images in each round until the top-N candidates
+are determined
+• When VILA-Judge responses one ‘yes’ and one ‘no’,
+we pick the image with ‘yes’;
+• When VILA-Judge responses both ‘yes’ or ‘no’, we
+pick the image with higher confidence (logprob);
+Such tournament-style comparison robustly filters out
+prompt-mismatching images and consistently boosts the
+GenEval scores, as illustrated in Figure 3(c) and Table. 2.
+More details of inference time scaling are attached in Appendix B.
+
+3. Experiments
+3.1. Experimental Setup
+Model Architecture. Our final model (SANA-4.8B)
+scales to 60 layers while maintaining the same channel
+dimension (2240 per layer) and FFN dimension (5600)
+as SANA-1.6B. The architecture, training data, and other
+hyperparameters remain consistent with SANA-1.6B [3].
+Training Details. We conduct distributed training using
+PyTorch DDP across 64 NVIDIA A100 GPUs on 8 DGX
+nodes. Our training pipeline follows a two-phase strategy:
+we first pre-train the model with a learning rate of 1e-4,
+
+5
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+Table 1 | Comprehensive comparison of our method with SOTA approaches in efficiency and performance. The
+speed is tested on one A100 GPU with BF16 Precision. Throughput: Measured with batch=10. Latency: Measured with
+batch=1 and sampling step=20. We highlight the best and second best entries.
+Throughput
+(samples/s)
+
+Latency
+(s)
+
+Params
+(B)
+
+FID ↓
+
+CLIP ↑
+
+GenEval ↑
+
+DPG ↑
+
+LUMINA-Next [16]
+SDXL [17]
+Playground v2.5 [18]
+Hunyuan-DiT [19]
+PixArt-Σ [1]
+DALLE 3 [20]
+SD3-medium [21]
+FLUX-dev [15]
+FLUX-schnell [15]
+Playground v3 [2]
+
+0.12
+0.15
+0.21
+0.05
+0.4
+0.28
+0.04
+0.5
+0.06
+
+9.1
+6.5
+5.3
+18.2
+2.7
+4.4
+23.0
+2.1
+15.0
+
+2.0
+2.6
+2.6
+1.5
+0.6
+2.0
+12.0
+12.0
+24
+
+7.58
+6.63
+6.09
+6.54
+6.15
+11.92
+10.15
+7.94
+-
+
+26.84
+29.03
+29.13
+28.19
+28.26
+27.83
+27.47
+28.14
+-
+
+0.46
+0.55
+0.56
+0.63
+0.54
+0.67
+0.62
+0.67
+0.71
+0.76
+
+74.6
+74.7
+75.5
+78.9
+80.5
+83.5
+84.1
+84.0
+84.8
+87.0
+
+SANA-1.0 0.6B [3]
+SANA-1.0 1.6B [3]
+
+1.7
+1.0
+
+0.9
+1.2
+
+0.6
+1.6
+
+5.81
+5.76
+
+28.36
+28.67
+
+0.64
+0.66
+
+83.6
+84.8
+
+SANA-1.5 4.8B Pre
+SANA-1.5 4.8B Ours
+
+0.26
+0.26
+
+4.2
+4.2
+
+4.8
+4.8
+
+5.42
+5.99
+
+29.16
+29.23
+
+0.72
+0.81
+
+85.0
+84.7
+
+Methods
+
+Table 2 | Detailed GenEval evaluation benchmark. SANA-1.5 + Inference Scaling with 2048 samples achieves
+absolute SoTA compared to open-source and commercial methods. We used the numbers from Playground v3 [2] for the
+baseline methods.
+Method
+
+Overall
+
+Single
+
+Two
+
+Counting
+
+Colors
+
+Position
+
+Color Attribution
+
+SDXL [17]
+DALLE 3 [20]
+Flux-dev [15]
+SD3 [21]
+Playground v3 [2]
+
+0.55
+0.67
+0.68
+0.74
+0.76
+
+0.98
+0.96
+0.99
+0.99
+0.99
+
+0.74
+0.87
+0.85
+0.94
+0.95
+
+0.39
+0.47
+0.74
+0.72
+0.72
+
+0.85
+0.83
+0.79
+0.89
+0.82
+
+0.15
+0.43
+0.21
+0.33
+0.50
+
+0.23
+0.45
+0.48
+0.60
+0.54
+
+SD1.5 [22]
++ Inference Scaling
+
+0.42
+0.87
+
+0.98
+1.00
+
+0.39
+0.97
+
+0.31
+0.93
+
+0.72
+0.96
+
+0.04
+0.75
+
+0.06
+0.62
+
+SANA-1.5 4.8B Pre
+SANA-1.5 4.8B Ours
++ Inference Scaling
+
+0.72
+0.81
+0.96
+
+0.99
+0.99
+1.00
+
+0.85
+0.93
+1.00
+
+0.77
+0.86
+0.97
+
+0.87
+0.84
+0.94
+
+0.34
+0.59
+0.96
+
+0.54
+0.65
+0.87
+
+followed by supervised fine-tuning (SFT) with a reduced
+learning rate of 2e-5. The global batch size is dynamically adjusted between 1024 and 4096 throughout the
+training process. Following common practice in large language model training, we initially pre-train on a large-scale
+dataset before performing SFT on a high-quality dataset.
+Evaluation Protocol. We adopt multiple evaluation metrics, including FID, CLIP Score, GenEval [23], and DPG
+Bench [24], comparing it with SOTA methods. FID and
+Clip Score are evaluated on the MJHQ-30K [18] dataset,
+which contains 30K images from Midjourney. GenEval
+and DPG-Bench both focus on measuring text-image alignment, with 553 and 1,065 test prompts, respectively. We
+particularly emphasize the GenEval as it better reflects
+text-image alignment and shows more room for improvement than other metrics.
+
+3.2. Main Results
+Model Growth We compare SANA-4.8B with the most
+advanced text-to-image generation methods in Table 1.
+The scaling from SANA-1.6B to 4.8B Pre (Pre-trained)
+brings substantial improvements: 0.06 absolute gains in
+GenEval (from 0.66 to 0.72), 0.34 reduction in FID (from
+5.76 to 5.42), and 0.2 improvement in DPG score (from
+84.8 to 85.0). Compared to state-of-the-art methods, our
+4.8B model achieves comparable or better results than
+much larger models like Playground v3 (24B) and FLUX
+(12B) while using only a fraction of their parameters. We
+further perform post-training on the 4.8B model using a
+high-quality dataset, with details provided in Sec. 3.3.
+To differentiate between the models, we refer to the pretrained model as Pre and the post-trained model as Ours.
+After post-training, SANA-4.8B achieves a significant per-
+
+6
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+Model Pruning We compare among difference sizes of
+SANA-1.5 and SANA-1.0 models in Figure 4 and Table 3.
+For a fair comparison with SANA-1.0 1.6B, the SANA1.5 4.8B model here is trained without supervised finetuning from high-quality data. All results are evaluated
+on images of size 512×512. With a small computational
+cost, the pruned and fine-tuned model outperforms the
+model trained from scratch (0.672 v.s. 0.664), which is an
+efficient approach to obtaining models of various sizes.
+Inference Scaling We incorporate inference scaling with
+the SANA-1.5 4.8B v2 model and compare it against other
+large image generation models on the GenEval benchmark
+(Table 2). By selecting samples from 2048 generated images, the inference-scaled model outperforms naive singleimage generation by 15% in overall accuracy from 0.81
+to 0.96, with particularly significant improvements in the
+“Position” (from 0.59 to 0.96), and “Color Attribution”
+(from 0.65 to 0.87). Furthermore, equipped with inference
+scaling, our 4.8B model outperforms Playground v3 (24B)
+by 20% in overall accuracy (0.76 vs 0.96). These results
+demonstrate that trading inference efficiency can enhance
+model generation quality and accuracy, even with much
+smaller base model size (4.8B vs 24B).
+Table 3 | Evaluation of pruned SANA models. “3.2B”
+and “1.6B” denote the model directly pruned from SANA1.5 4.8B, and “+FT” denotes efficiently fine-tuning the
+pruned model.
+
+Method
+
+4.8B
+
+3.2B
+
++FT
+
+1.6B
+
++FT
+
+SANA-1.0 1.6B
+
+GenEval ↑
+
+0.693
+
+0.673
+
+0.684
+
+0.571
+
+0.672
+
+0.664
+
+3.3. Analysis
+Comparison of Different Optimizers We compare
+CAME-8bit with AdamW-8bit and their 32-bit counterparts in Figure 6 for SANA-1.6B training. The 8-bit optimizers (AdamW-8bit, Came-8bit) achieve comparable
+convergence to their 32-bit counterparts while significantly
+reducing GPU memory usage. Specifically, CAME-8bit reduces memory consumption by 25% compared to AdamW
+(43GB vs 57GB) with no degradation in training convergence speed. Note that CAME-8bit reduces optimizer
+
+Model Depth Pruning
+SANA 1.5 (4.8B)
+GenEval 0.693
+
+Prune to 3.2B
+GenEval 0.673
+
+Prune to 2.4B
+GenEval 0.647
+
+Prune to 1.6B
+GenEval 0.571
+
+Prune to 3.2B+FT
+GenEval 0.684
+
+Prune to 2.4B+FT
+GenEval 0.675
+
+Prune to 1.6B+FT
+GenEval 0.672
+
+Prompt:
+A close-up photo of a
+person. The subject is
+a woman. She wore a
+blue coat with a gray
+dress underneath …
+
+Fine-tuning
+
+formance improvement on the GenEval benchmark, increasing from 0.72 to 0.81. Notably, SANA-4.8B demonstrates 0.81 GenEval score, outperforming Playground
+v3’s 0.76, but with 5.5 times lower latency than FLUXdev (23.0s). Our model also maintains 6.5 times higher
+throughput than these larger models (compared to FLUXdev’s 0.04 samples/s), making it more practical for realworld applications. The speed is tested on one A100 GPU
+with FP16 Precision.
+
+Figure 4 | Visual comparison of SANA-1.5 models with
+different pruned configurations. Our adaptive depth
+pruning enables efficient compression to various model
+sizes (from 1.6B to 4.8B). While aggressive pruning may
+slightly affect fine-grained details, the semantic content is
+well preserved, and the overall image quality can be easily
+recovered after brief fine-tuning (100 steps on 1 GPU),
+demonstrating the effectiveness of our pruning strategy.
+Table 4 | Model performance across different scales.
+Models are first pre-trained and then fine-tuned (SFT) on
+high-quality data.
+
+Params. (B)
+
+Stage
+
+Train Steps
+
+GenEval ↑
+
+0.6
+
+pre-train
++ SFT
+
+>200K
+∼10K
+
+0.64
+0.68 (+4%)
+
+1.6
+
+pre-train
++ SFT
+
+>200K
+∼10K
+
+0.66
+0.69 (+3%)
+
+4.8
+
+pre-train
++ SFT
+
+>100K
+∼10K
+
+0.69
+0.72 (+3%)
+
+state memory usage proportionally to model size, yielding
+greater memory savings for larger models.
+Comparison of Different Initialization Strategies We
+compare the three types of initialization strategies in Figure 7. Partial Preservation Init shows stable training behavior while Cyclic and Block Replication strategies suffer
+from training instability (NaN losses). Such observation
+is also supported by the block importance analysis in Figure 5. The feature distribution of the 4.8B model is different from the 1.6B model due to the model capacity, and
+thus, replication of the block weight increases the difficulty
+of convergence to the final distribution.
+Block Importance Instructing Model Growth The
+analysis of block importance instructs both our initialization strategy and pruning approach. The block importance of the pre-trained SANA-1.0 model is shown in
+Figure 5a, where more information resides in the head and
+tail blocks. During model scaling, we initially attempted
+to append new blocks directly after all the pre-trained
+
+7
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+0.6B
+
+1.6B
+
+4.8B
+
+0.80
+
+0.75
+
+0.70
+
+0.65
+
+(a) SANA 1.6B trained from scratch.
+
+4
+
+64
+
+256
+
+512
+
+1024
+
+(b) SANA-4.8B trained from scratch.
+
+2048
+
+(c) SANA 4.8B with model growth.
+
+Figure 5 | Analysis of block importance (BI) across different models: (a) SANA-1.0 1.6B, (b) SANA 4.8B trained
+from scratch, and (c) our final SANA-1.5 4.8B with initialization.
+
+1.6B+scale > 4.8B
+
+1.6B+scale > 4.8B
+
+0.6B+scale > 1.6B
+0.6B+scale > 1.6B
+
+Figure 6 | Training loss curves for dif- Figure 7 | Comparison of differferent optimizers on a 1.6B parameter ent initialization strategies. Partial
+diffusion model. The CAME-8bit re- Preservation Init shows stable trainduces memory consumption by 25% ing behavior while Cyclic and Block
+compared to AdamW while maintain- ￼Replication strategies suffer from training the convergence speed.
+ing instability (NaN losses).
+blocks. However, we observed that the newly added blocks
+failed to learn effective information and became stuck in
+local minima. The primary reason is that the well-learned
+pre-trained features dominate the feature representation
+through skip connections. Therefore, we remove the last
+two blocks, which are more task-relevant, before adding
+new blocks. This process effectively facilitates learning in
+the later blocks.
+
+Figure 8 | Inference-time Scaling Results. Scaling up inference time compute consistently yields better GenEval
+scores, and helps the small model to
+achieve comparable or better performance with larger ones.
+
+fine-tuning on a curated dataset (3M samples from 50M
+pre-training data) significantly and efficiently improves
+model capabilities of different model sizes. Specifically,
+by fine-tuning on image-text pairs with CLIP score > 25,
+our 4.8B model achieves a 3% improvement in GenEval
+score compared to the pre-trained model, as shown in
+Table 4.
+
+Block Importance Instructing Model Depth Pruning
+As shown in Figure 5c, blocks in the middle to the end have
+low importance scores, especially when compared with the
+model trained from scratch (Figure 5b). This indicates potential for model size reduction. Based on this observation,
+we prune the blocks in SANA-1.5 4.8B according to their
+sorted importance scores. In Figure 4, pruning the blocks
+(gradually reducing from 60 to 20 blocks) impairs highfrequency information. The lack of high-frequency details
+degrades the accuracy of GenEval benchmark to 0.571.
+However, the image layout and semantic information are
+well preserved. Therefore, high-frequency information
+can be quickly recovered with 100 steps of fine-tuning on
+a single GPU.
+
+Furthermore, we created a new small-scale SFT data
+set, consisting of 144,291 images generated from 18,240
+prompts in the GenEval style. Each prompt generates
+7.91 “correct” images on average. We limit each prompt
+to generate at most 10 correct images to prevent overfitting. The correct image is filtered by the GenEval toolkit.
+Note that we excluded the prompts already existing in
+GenEval evalset and generated images using Flux-Schnell
+to avoid overfitting. As shown in Table 2, this new SFT
+data improves the GenEval result of SANA-1.5-4.8B from
+0.72 (v1) to 0.81 (v2). Figure 9 presents a comprehensive
+comparison between SANA-1.5-4.8B and current stateof-the-art methods across multiple challenging scenarios.
+The results demonstrate SANA-1.5-4.8B’s consistent superiority in generated image quality, as evidenced by both
+quantitative metrics and visual assessment.
+
+High-quality Data Fine-tuning While extensive pretraining on large-scale datasets leads to quality saturation,
+
+Inference Time Scaling Figure 8 demonstrates the benefits of scaling up inference-time computation. First,
+
+8
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+SD3 Medium
+
+FLUX-dev
+
+FLUX-schnell SANA 1.0 1.6B SANA 1.5 4.8B
+
+Bright scene, aerial view, ancient city, fantasy, gorgeous light, mirror reflection, high detail, wide angle lens.
+
+An astronaut riding a horse on the moon, oil painting by Van Gogh.
+
+A story-book illustration of a giant god-like person made of stone, half-burried in a green valley …
+
+Color photo of a corgi made of transparent glass, standing on the riverside in Yosemite National Park.
+
+fusion models. Research in language [32] and vision domains [33, 34] both revealed power-law relationships. In
+the image generation field, [35, 36] has explored RLHF
+to align model with human preferences. More recent concurrent work [37, 38] have explored various strategies to
+improve generation quality without increasing model size.
+
+5. Conclusion
+This paper presents a comprehensive approach to efficient model scaling, addressing both training and inference
+compute challenges. For training efficiency, we propose
+a memory-efficient optimizer CAME-8bit and a stable
+model growth strategy. For inference scaling and acceleration, we introduce repeat sampling and depth pruning techniques. These approaches collectively enable significant
+quality improvements under limited computing budgets,
+making large-scale generative models more accessible.
+This work contributes to democratizing large-scale AI research by making it more accessible to researchers with
+limited resources.
+
+A smart monkey with a laptop, in pixel art style
+
+Figure 9 | Comparison of SANA-1.5 against SoTA methods. We evaluate SANA-1.5 alongside contemporary approaches using identical text prompts, including challenging cases with noisy inputs and long-form text. For detailed assessment, please zoom into the comparative samples.
+
+SANA’s accuracy on GenEval consistently improves with
+more samplings. Second, inference-time scaling enables
+smaller SANA models to match or even surpass the accuracy of larger ones (1.6B + scaling is better than 4.8B).
+This reveals the potential of scaling up inference and allows SANA to push toward new state-of-the-art results.
+As shown in Table 2, our best SANA model with inference
+scaling outperforms all previous commercial and community models. The only limitation is increased computational cost: sampling 𝑁 images requires 𝑁 × 49, 140𝐺
+FLOPs for SANA generation and 2𝑁 × 4, 518𝐺 FLOPs
+for VILA-Judge judgment and comparison. We leave the
+efficiency for future work.
+
+Impact Statement
+Misusing generative AI models to generate NSFW content is a challenging issue for the community. To enhance
+safety, we have equipped SANA together with a safety
+check model [39]. Specifically, the user prompt will first
+be sent to the safety check model to determine whether it
+contains NSFW(not safe for work) content. While SANA1.5 demonstrates efficient model scaling, challenges remain in complex generation tasks, particularly text rendering and human details. Our work makes large-scale model
+training more accessible, while encouraging responsible
+development and deployment to prevent misuse.
+
+4. Related Work
+We put a relatively brief overview of related work in the
+main text, with a more comprehensive version in the appendix. Text-to-image generation has evolved rapidly,
+from Stable Diffusion [25] to more recent architectures
+like DiT [26] and its variants [15, 21, 27]. Efficiencyfocused works like SnapGen [28], PixArt-𝛼 [27] and
+SANA [3] have significantly reduced training and inference costs. Autoregressive models [29, 30, 31] are also
+developed rapidly and achieve comparable quality as dif-
+
+9
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+A. Full Related Work
+Text to Image Generation Text-to-image generation has undergone rapid evolution in model architectures and
+efficiency. The field gained momentum with Stable Diffusion [25], and later witnessed a pivotal shift towards Diffusion
+Transformers (DiT) [26] architectures. PixArt-𝛼 [27] demonstrated competitive quality while significantly reducing
+training costs to just 10.8% of Stable Diffusion v1.5’s requirements [25]. Recent large-scale models like FLUX [15] and
+Stable Diffusion 3 [21] have pushed the boundaries in compositional generation capabilities, while Playground v3 [2]
+achieved state-of-the-art image quality through full integration with Large Language Models (LLMs) [40]. PixArt-Σ [1]
+further enabled direct 4K resolution image generation with a compact 0.6B parameter model. In parallel, efficiencyfocused innovations like SANA [3] introduced breakthrough capabilities in high-resolution synthesis through deep
+compression autoencoding [41] and linear attention mechanisms, making deployment possible even on laptop GPUs.
+These developments showcase the field’s progression toward both more powerful and more accessible text-to-image
+generation.
+
+Diffusion Model Pruning Neural network pruning [42] is an effective technique for improving the efficiency of neural
+models, particularly for deployment on resource-constrained devices. By removing redundant weights, it reduces both
+model size and computational complexity. In LLMs, researchers have successfully applied pruning to shrink models
+for various applications [9, 43]. For generative models, [44] employ neural architecture search [45] to prune GAN
+channels [46]. SnapFusion [47] extends this to diffusion models, using elastic depth [45] to prune UNet blocks [48],
+managing to deploy Stable Diffusion on mobile phones. Similarly, MobileDiffusion [49] shrinks UNet depth and distills
+the model for single-step inference. Our approach targets the recent DiT architecture [50]. We instead use a heuristic
+method to identify and prune less important blocks directly, avoiding the overhead of search.
+
+Training Scaling in LLM and DiT Training scaling laws have been extensively studied in both language [32, 51]
+and vision [33, 34, 52] domains. For language models, research has revealed power-law relationships between model
+accuracy and factors like model size, dataset size, and compute [32]. These scaling patterns have been consistently
+observed across several orders of magnitude. Recently, similar scaling properties have been discovered in diffusion-based
+text-to-image generation. Studies show that DiT’s pre-training loss follows power-law relationships with computational
+resources [34]. Furthermore, extensive experiments on scaling both denoising backbones and training sets reveal that
+increasing transformer blocks is more parameter-efficient than increasing channel numbers for improving text-image
+alignment. The quality and diversity of the training set prove more crucial than mere dataset size [33]. These findings
+provide valuable insights for determining optimal model architectures and data requirements in both domains.
+
+Inference Scaling Law Recent studies have revealed significant insights into inference scaling laws for large language
+models. The pioneering work “Large Language Monkeys” [4] discovered that coverage (the fraction of problems solved)
+scales with the number of samples following a log-linear relationship. Building upon this, self-consistency approaches
+demonstrated that sampling multiple reasoning paths and selecting the most consistent answer can substantially improve
+model accuracy [53]. This was further enhanced by progressive-hint prompting techniques [54], achieving significant
+gains on various reasoning benchmarks. Recent theoretical work [55] shows that smaller models paired with advanced
+inference algorithms can outperform larger models under the same computation budget. However, studies on compound
+inference systems [56] reveal that increasing LLM calls shows non-monotonic behavior, performing better on “easy”
+queries but worse on “hard” ones. These findings collectively demonstrate the importance of optimizing inference
+strategies rather than simply scaling up model size or increasing the sampling budget. Concurrent works [37, 38] have
+also independently explored and validated the effectiveness of inference scaling in diffusion models.
+
+B. Inference-Time Scaling Details
+Dataset. To finetune NVILA [14] for SANA inference-time scaling, we generated 2.5M images and evaluated their
+alignment with the given prompts using the GenEval toolkit. We utilize 15,654 unique prompts and generate 160 images
+per prompt using Flux-Schnell. Our prompts are constructed in a style similar to GenEval, incorporating 80 object
+classes from Mask2Former along with attributes such as color, spatial location, quantity, and various relationships.
+Importantly, our prompts do not overlap with the GenEval test set. To evaluate the generated images, we leverage the
+GenEval toolkit. Finally, we train NVILA using the prompts, images, and their corresponding labels (yes or no).
+
+10
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+Linear DiT Block
+
+(a) Partial Preservation Init
+
+(b) Cyclic Replication Init
+
+(c) Block Replication Init
+
+Pre-trained Weight
+
+Random-Init Weight
+
+Figure 11 | Illustration of initialization strategies. (a) Partial Preservation Init, which preserves the pre-trained layers
+and randomly initialize the new layers. (b) Cyclic Replication Init, which repeats the pre-trained layers periodically. (c)
+Block Replication Init, which extends each pre-trained layer into consecutive layers.
+Training Setup. We follow the setting in NVILA with learning 2 × 10−5 , Adam optimizer, cosine scheduler with
+warmup ratio 0.03 and batch size of 8 per device and train the 2M dataset with one epoch.
+
+C. More Implementation Details
+
+Scale
+
+Scale
+nxd
+
+nxd
+
+Attention with QK Norm As shown in Figure 10, we introduce RMS normalization [57] to Query and Key in both linear attention’s self-attention block and vanilla cross-attention
+module to stabilize the training of large diffusion models.
+Similar to the findings in [21], we observe that the attention
+logits in ReLU-based linear attention [58] also grow uncontrollably and frequently exceed the numerical range of FP16
+precision (6.5e5), which leads to training instability (NaN).
+By incorporating QK normalization, we effectively address
+this issue in large linear transformers. Notably, although our
+pretrained SANA-1.0 1.6B was not initially trained with QK
+normalization, we also find that it quickly adapts to these
+additional normalization layers within just 1K fine-tuning
+step [21]. This modification, combined with bf16 mixed precision and our proposed CAME-8bit optimizer (Section 2.3),
+enables efficient scaling of linear transformer models while
+maintaining training stability.
+
+MatMul
+
+MatMul
+nxm
+
+dxd
+
+nxd
+
+MatMul
+dxn
+
+ReLU
+
+nxd
+
+dxm
+
+RMSNorm
+
+RMSNorm
+
+Linear
+
+Linear
+
+Linear
+
+K
+
+V
+
+nxd
+
+ReLU
+
+nxd
+
+dxn
+
+RMSNorm
+
+RMSNorm
+
+Linear
+
+Linear
+
+Q
+
+mxd
+
+Softmax
+
+K
+
+Linear
+
+V
+
+Q
+
+Text Embedding
+
+(a). Linear self attention (b). Vanilla cross attention
+
+Figure 10 | Architecture design of linear selfattention and cross-attention blocks in SANA. Both
+attention blocks incorporate RMSNorm on query and
+key for training large model more stable, where linear
+self-attention is used for content encoding and vanilla
+cross-attention for text condition injection.
+
+Multilingual Auto-labeling Pipeline In Figure 13, we
+present the results of our multilingual multi-caption auto-labeling pipeline. For each image, we use GPT-4 to translate
+small-scale data, only 100K English prompts, into: pure Chinese, English-Chinese mixed, and emoji-enriched text. This
+approach enables us to build a comprehensive multilingual training dataset that captures diverse ways of describing
+the same visual content. More results are shown in Figure 14. As a result, we fine-tune SANA with only a few
+iterations(∼10K), then it demonstrates more stable and accurate outputs for Chinese text and emoji expressions.
+Comparison of Different Initialization Strategies We illustrate the three types of initialization strategies in Figure 11.
+Partial Preservation Init preserves the pre-trained layers and randomly initialize the new layers (Figure 11(a)). Cyclic
+
+11
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+(a). FID Score
+
+(b). CLIP Score
+
+(c). DPG Score
+
+Figure 12 | Performance comparison of model growth and training from scratch across FID, CLIP score, and
+DPGBench metrics. Our model growth strategy demonstrates superior performance over training from scratch,
+achieving either better results within the same training duration or equivalent performance with approximately 60% less
+training time.
+
+Replication Init repeats the pre-trained layers periodically (Figure 11(b)). Block Replication Init extends each pre-trained
+layer into consecutive layers (Figure 11(c)). Among these strategies, we adopt the partial preservation initialization
+approach for its simplicity and stability. Empirically, this approach provides the most stable training dynamics compared
+to cyclic and block expansion strategies, as shown in Figure 7.
+
+D. More Results
+Model Growth Results As shown in Figure 12, our model growth strategy consistently outperforms training from
+scratch across FID, CLIP score, and DPG benchmarks. Specifically, our approach achieves better quality within the
+same training duration or reaches equivalent quality with an approximately 60% reduction in training time compared to
+training from scratch.
+
+Comparison between different pruned model sizes As shown in Figure 16, we compare different sizes of SANA-1.5
+and SANA-1.0 models. Starting from SANA-1.5 4.8B model (GenEval score 0.693), our pruned variants maintain
+strong accuracy with 3.2B (0.684) and 1.6B (0.672) parameter counts, consistently outperforming SANA-1.0 1.6B
+(0.665). This flexible pruning approach allows us to obtain models of any desired size while preserving quality. In
+particular, larger models demonstrate superior capabilities in image details, pixel quality, and semantic alignment.
+
+￼
+
+More Visualization Images In Figure 18, we show more images generated by our model with various prompts. SANA
+demonstrates comprehensive generation capabilities across multiple aspects, including high-fidelity detail rendering,
+accurate semantic understanding, and reliable text generation. The samples showcase the model’s versatility in handling
+diverse scenarios, from intricate textures and complex compositions to accurate text rendering and faithful prompt
+interpretation. These results highlight the robust image quality of the model in both artistic and practical generation
+tasks.
+
+More Inference-Time Scaling Examples We provide additional inference-time scaling examples in Figure 17. During
+the tournament, VLM judges and filters prompt-mismatching images. We highlight winners with bold green lines
+and include the winning rationale. Images with incorrect object counts (e.g., the 4th image in Figure 17b) lose the
+comparison and are filtered by VLM. When two images match the prompt with similar quality, VLM fairly judges that
+"Both images match the prompt" as shown in Figure 17a and selects one based on preference. Therefore, SANA-1.5
+inference scaling effectively filter out those “bad” generations and improves GenEval scores.
+
+Prompt Rewrite Enhancement As discussed in [59, 60], at inference time, we employ GPT-4o to rewrite user
+prompts by adding more details, which leads to richer and more detailed visualization results. This demonstrates the
+importance of prompt engineering in maximizing model capabilities. The comparisons are shown in Figure 19.
+
+12
+
+m
+
+wo
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+GPT-4
+
+User
+
+You will be provided with an image description. You have three separate goals.
+The ﬁrst one is to translate it into Chinese. Try to use simple words that native Chinese would say.
+The second one is to replace nouns or verbs in the original description with emojis if possible. You should
+ensure the non-emoji part is English. The replaced word should not appear together with its replacement.
+Only verbs and nouns are replaced.
+The third one is to create a description of a mixture of English, and Chinese words and emojis. You can pick
+the Chinese or English version of description, then replace only verbs and nouns with the other language or
+emojis if possible. The replaced word should not appear together with its replacement. Only verbs and
+nouns are replaced.
+You will output a JSON object containing the following information:
+{
+
+}
+
+"Chinese": "<string>", // Chinese description
+”Mix": "<string>" // mixture description
+”Emoji": "<string>", // emoji description
+
+Do not output anything else.
+Original: illustration of an oPice worker dressed in a beach wear and surﬁng pants, reclining on an oPice
+chair, looking at his big desktop setup on his oPice desk, relaxed and happy body posture, with beach straw
+hat, oPice environment, illustrated in the style of a children's book, Illustration
+
+Chinese: ⼀个办公室⼯作⼈员穿着沙滩⾐和冲浪裤，靠在办公椅上，看着他的⼤桌⾯设置，放松⽽快乐的
+姿势，戴着沙滩草帽，办公室环境，像⼉童书籍的⻛格插图。
+Mix: ⼀个 oPice⼯作⼈员穿着 beach wear 和 surﬁng pants，靠在 oPice chair 上，看着他的⼤ desktop
+setup 在他的 oPice desk，放松⽽ happy 的姿势，戴着 beach straw hat, oPice environment，像 children's
+book 的⻛格插图。
+Emoji: illustration of a 🧑💼 dressed in a 🏖 and 🩳, reclining on a 🪑, looking at his big 💻 setup on his 🖥,
+relaxed and happy body posture, with 🏖 straw hat, oPice environment, illustrated in the style of a children's
+book, Illustration
+
+Figure 13 | Illustration of our multi-lingual prompt translation pipeline. We leverage GPT-4 to translate 100k
+English prompts into four formats: (1) Pure English (2) Pure Chinese (3) English-Chinese mixture (4) Emoji-mixed
+prompts. Example shows a single English prompt translated into these parallel versions, demonstrating how we construct
+our multi-lingual training data.
+Original: A cute black swan surrounded by colorful ﬂowers,
+depicted in the style of an oil painting with vibrant colors and
+textured brush strokes. The background is ﬁlled with various
+blossoms of di@erent sizes and hues, creating a lively atmosphere
+that complements the adorable swan's expression.
+Chinese: ⼀只可爱的⿊天鹅被五颜六⾊的花朵围绕，画⻛像油画
+⼀样，⾊彩鲜艳，笔触有质感。背景充满了各种⼤⼩和颜⾊的花
+朵，营造出⼀种⽣动的氛围，衬托出可爱天鹅的表情。
+Mix: ⼀只 cute 🦢 被 🌸🌼🌺 围绕，画⻛像 oil painting ⼀样，⾊彩
+鲜艳，笔触有质感。背景充满了各种 🌷 的不同⼤⼩和颜⾊，营
+造出⼀种 lively 氛围，衬托出可爱 🦢 的 expression。
+Emoji: A cute 🦢 surrounded by 🌸🌼🌺, depicted in the style of an
+oil painting with vibrant colors and textured brush strokes. The
+background is ﬁlled with various 🌷 of di@erent sizes and hues,
+creating a lively atmosphere that complements the adorable 🦢's
+expression.
+
+Figure 14 | More illustration of the multi-lingual dataset.
+
+E. Discussion of Potential Misuse of SANA-1.5
+Misusing generative AI models to generate NSFW content is a challenging issue for the community. To enhance safety,
+we have equipped SANA-1.5 together with a safety check model (e.g., ShieldGemma-2B [61]). Specifically, the user
+13
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+Figure 15 | SANA’s multi-lingual capabilities unlocked through efficient fine-tuning. Comparing image generation
+quality between baseline model (left, English-only training) and our model (right, fine-tuned with 100k multi-lingual
+samples) on mixed English/Chinese/emoji prompts.
+prompt will first be sent to the safety check model to determine whether it contains NSFW(not safe for work) content.
+If the user prompt does not contain NSFW, it will continue to be sent to SANA-1.5 to generate an image. If the user
+prompt contains NSFW content, the request will be rejected. After extensive testing, we found that ShieldGemma can
+perfectly filter out NSFW prompts entered by users under strict thresholds, and our pipeline will not create harmful
+AI-generated content.
+
+14
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+Prompt
+
+SANA 1.5 (4.8B)
+GenEval 0.693
+
+SANA 1.5 (3.2B)
+GenEval 0.684
+
+SANA 1.5 (1.6B)
+GenEval 0.672
+
+SANA 1.0 (1.6B)
+GenEval 0.664
+
+An antique botanical
+illustration drawn with fine
+lines and a touch of
+watercolour whimsy …
+
+Pirate ship trapped in a
+cosmic maelstrom nebula,
+rendered in cosmic beach
+whirlpool engine …
+
+Color photo of a corgi made
+of transparent glass, standing
+on the riverside in Yosemite
+National Park…
+
+Figure 16 | Comparison among different sizes of SANA 1.5 and SANA 1.0. With model scaling and pruning, SANA
+1.5 achieves better performance than SANA 1.0 of the same size, while maintaining flexibility in model capacity
+selection. Larger models demonstrate enhanced capabilities in detail rendering, image quality, and semantic alignment.
+
+15
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+VLM
+Judge
+
+VLM
+Judge
+
+VLM
+Judge
+
+VLM
+Judge
+
+VLM
+Judge
+
+VLM
+Judge
+
+Prompt: a photo of an orange
+racket a photo of a purple suitcase and an orange
+Prompt:
+a photo of a purple suitcase and
+(a)tennis
+Prompt:
+pizza
+and a yellow sports ball
+an orange pizza
+
+VLM
+Judge
+
+VLM
+Judge
+
+VLM
+Judge
+
+(b) Prompt: a photo of an orange tennis racket and a yellow sports ball
+
+Figure 17 | Visualization of SANA-1.5 inference-time scaling. During the tournament, VLM judges and filters
+prompt-mismatching images.
+VLM
+Judge
+
+VLM
+Judge
+
+VLM
+Judge
+
+Prompt: a photo of an orange tennis racket
+and a yellow sports ball
+
+Prompt: a photo of a purple suitcase and
+an orange pizza
+
+16
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+1.
+
+2.
+
+3.
+4.
+5.
+
+1.
+2.
+3.
+
+4.
+5.
+
+1.
+2.
+3.
+4.
+
+5.
+6.
+
+1.
+2.
+3.
+4.
+
+A charming 3D-rendered cartoon toucan with exaggerated features, styled in a whimsical yet detailed manner. The character features a disproportionately large, bright orange beak that dominates its face, complemented by a single oversized expressive brown eye. Its plumage combines classic black and
+white coloring - a fluffy white chest and belly area contrasts beautifully with sleek black feathers covering its back and wings. The bird sports a distinctive messy crest of navy blue feathers on top of its head, giving it a playful, disheveled appearance. The texturing is remarkably detailed, showing individual
+feathers and subtle variations in the plumage. The character stands on thin, sturdy legs with detailed scaled texture. The lighting setup creates depth and dimension, casting soft shadows that emphasize the bird's round, appealing form against a neutral gradient background. The overall design strikes a
+perfect balance between cartoon stylization and realistic texturing, making it suitable for animation or game character design
+A magical castle emerges from the pages of an ancient open book, creating an enchanting winter tableau. The Gothic-style castle, with its soaring spires and numerous towers, stands majestically atop a snow-covered rocky outcrop. The castle's gray stone walls are illuminated by warm golden light
+pouring from countless arched windows and doorways, creating a welcoming glow against the misty twilight sky. The architecture features intricate details: pointed turrets capped with snow, ornate flying buttresses, and delicate Gothic windows. Small flags flutter from the highest towers, while ravens
+soar dramatically against the moody sky, their silhouettes adding movement to the scene. In the foreground, a weathered leather-bound book lies open, its pages aged and filled with text in an elegant script. Autumn leaves and snowflakes scatter across its pages, bridging the gap between the real world
+and the magical realm rising from its pages. Soft bokeh lights dance in the background, suggesting magical sparkles or floating lanterns. The color palette combines cool blues and grays of the winter scene with warm amber glows from the castle windows and scattered lighting elements. The mood is
+enhanced by a subtle fog that wraps around the castle's base, creating an ethereal atmosphere. The composition suggests a story coming to life, where fantasy and reality merge in a single, spellbinding moment.
+Big elephant made of bananas
+still life photography of two porcelain cherries with blue and white floral pattern, Chinese pottery style decoration, one cherry stem has a glowing sparkler, magical sparks against turquoise background, high-end product photography, soft diffused lighting, clean composition, delicate ceramic texture, fine
+detailed Ming-style floral prints, crisp shadows, glossy ceramic surface reflections, festive celebratory mood, studio lighting setup, sharp focus, luxury product aesthetic
+poster design with huge text "AGI IS COMING" rendered in glitch art style, digital distortion effects, fragmented typography, corrupted data aesthetics, black ink base with RGB channel splits, cyberpunk graffiti elements, scattered binary code, broken pixel artifacts, CRT scan lines, datamosh effects,
+quantum computing visual motifs.
+
+a cyberpunk cat with a neon sign that says ”SANA 1.5"
+SANA's meme cosmic adventure continues! Our Tabby cat astronaut, clad in a sleek white spacesuit, stands proudly on the lunar surface. With one paw raised, she holds aloft a flag bearing the iconic SANA logo - The flag flutters in the vacuum of space, its message clear: 'SANA' boldly emblazoned across
+its fabric. In the background, a small lunar lander rests on the gray, rocky terrain, its ladder extended. A second astronaut, also in a white spacesuit, floats nearby, tethered to the lander. The Earth looms large in the distance, its blue and white surface a stark contrast to the black void of space. This
+whimsical scene captures the spirit of exploration and the unexpected - a Tabby cat embarking on a mission to the moon, representing the SANA's meme brand in this cosmic setting.
+A whimsical illustration of the Smirking Cat (the mischievous meme cat) sitting atop a retro-style red and white rocket with text 'TO THE MOON'. The cat appears with its iconic sly grin and playful expression, giving a knowing smirk that perfectly matches the optimistic message. The rocket design is
+reminiscent of 1950s space age artwork, featuring stylized flame trails in orange and yellow. The entire image has a sticker-like quality with white borders and a minimalist color palette. The composition captures the cat's cheeky, self-satisfied expression, creating a perfect blend of humor and cryptoculture optimism.
+anime style digital art, mystical light beam piercing through sky, Studio Ghibli inspired landscape, serene meadow with wild grass and rocks, fluffy cumulus clouds, starry twilight sky, pink and purple ethereal light pillar, detailed grass field, soft natural lighting, peaceful countryside scene, vibrant color
+palette, dreamy atmosphere, fantasy elements, detailed vegetation, cinematic composition
+surreal art of landscape morphing into a cat's head silhouette, intricate nature elements forming feline features, mountains create pointed ears, rolling hills shape the face curves, forests and meadows texture the fur pattern, rivers flow as whiskers, lakes form the eyes with sunset reflection, clouds define
+soft fur edges, minimal white background highlighting the cat head shape, dreamlike composition, delicate details, organic flowing lines, nature meets feline anatomy, soft muted color palette, ethereal atmosphere, conceptual illustration style, fine art quality
+
+ultra-detailed 3D render of premium semiconductor chip, prominent glowing 'AI' text embossed in center, cyberpunk blue illuminated letters against dark metallic surface, futuristic circuit board patterns radiating from text, floating holographic AI letters with light scatter effect, premium macro
+photography, clean white wave background, depth of field blur, advanced technological aesthetics with precise circuit traces, volumetric lighting around text, ray-traced reflections
+ace of spades playing card engulfed in dramatic flames, black card with glowing golden symbols, intense fire effects surrounding card edges, burning ember particles, dark background, realistic fire texture, cinematic lighting, high contrast photography, floating sparks and ash, mystical atmosphere,
+detailed flame tendrils, casino noir aesthetic, high-end 3D render quality, dramatic composition
+hyperrealistic 3D render of a stylized cartoon chicken in basketball uniform, dynamic slam dunk pose, jumping high with basketball, urban street court background, dramatic action shot, motion blur effects, neon lights at dusk, streetball atmosphere, detailed feather texture, glowing court lines, floating
+movement, cinematic sports photography style, vibrant complementary colors
+A highly detailed and realistic scene of human-like robots exploring the surface of Mars. The robots have advanced humanoid designs with metallic bodies, glowing sensors, and flexible joints. They are examining the Martian landscape with futuristic equipment, such as scanning devices and
+holographic displays. The Martian environment includes red rocky terrain, towering cliffs, and a hazy orange sky, with Earth visible faintly in the background. The image captures a sense of discovery and technological advancement, emphasizing the robots' human-like features. Designed in a
+cinematic, futuristic style
+ultra-detailed glass bottle terrarium featuring a miniature 3-story traditional Japanese villa, architectural photography style, precise architectural details with wooden beams and tiled roofs, delicate moss and tiny plants growing organically on the structure, ambient interior lighting casting warm glows
+through miniature shoji screens, the entire scene captured inside a clean cylindrical glass vessel, soft living room lighting enhancing glass reflections, tilt-shift photography effect emphasizing the miniature scale, photorealistic rendering with attention to glass refraction and natural materials
+Mermaid caught by fishing boat in the early morning, vintage photo from the late 20th century. Men on board are looking at a mermaid-like woman with long hair and a fish tail emerging from the water. She is standing up. Raw, vintage photograph
+
+A 3D rendering of a red and gold "2025" number with dragon head decoraMon, adorned with Chinese New Year elements, with a pure white background, studio lighMng, soQ lighMng, and bright colors. This high-resoluMon photography style adopts minimalist design, with simple lines and details
+A smirking Shiba Inu (doge meme) wearing nerdy tech glasses, standing on its hind legs and holding a glowing holographic sign that reads "NVDA 1000". The doge has that characteristic knowing grin and raised eyebrows. The scene is set against a background of ﬂoating stock charts and red/green candles.
+The doge wears a simple tech company t-shirt, giving a thumbs up with its free paw. The composition has a meme-like quality with clean, vibrant colors and slight depth of ﬁeld blur in the background. The holographic sign emits a subtle green glow, matching NVIDIA's brand color.
+surreal digital art of giant croissant as hot air balloon, person in blue winter jacket riding in woven wicker basket, majestic snow-capped mountain peaks background, soft morning light, crisp pastry details with golden-brown ﬂaky layers, whimsical transportation concept, dreamy winter landscape,
+ethereal atmosphere, cinematic composition, photorealistic pastry texture, adventure mood, clean blue sky with wispy clouds, high-end food photography meets landscape, magical realism style
+Magical realism styleproduct photography of Nike sneaker constructed entirely from building blocks, vibrant color blocks in blue, yellow, red and black, ﬂoating above scattered toy bricks, intricate brick texture details, modern sneaker silhouette, precise brick construction, macro photography style,
+shallow depth of ﬁeld, soft studio lighting, ﬂoating brick pieces in background, crisp focus on shoe details, playful toy aesthetic meets product design, dynamic ﬂoating composition
+
+Figure 18 | High-resolution image generation examples from SANA 1.5, showcasing its capabilities in the accurate
+prompt following, spatial reasoning, text rendering, and aesthetics across different styles and aspect ratios.
+
+17
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+Original (Left): a photo of two sheep.
+Rewrite (Right): A pastoral scene captured in vivid photographic detail. Two woolly ovine graze peacefully in a lush, verdant
+
+meadow, their ﬂeecy coats gleaming in the golden afternoon sunlight. The sheep stand side by side, one with a slight tilt of its
+head as if pausing to regard the camera with mild curiosity. Their large, soulful eyes convey a sense of gentle tranquility, a timeless
+serenity found in the simple rhythms of nature. The grassy knoll upon which they stand is a patchwork of emerald and sage hues,
+interspersed with delicate wildﬂowers in shades of lavender and buttercup yellow. In the distance, the silhouettes of rolling
+hillsides recede into a hazy azure horizon, creating a bucolic, pastoral tableau. This photographic portrait captures the inherent
+dignity and peaceful grace of these woolly companions.
+
+Original (Left): a bench.
+Rewrite (Right): A tranquil garden vignette framed by a rustic wooden bench weathered by the elements. The bench's sturdy
+
+slats stretch in gently curving lines, their surface worn smooth by the passage of countless visitors seeking respite. Verdant vines
+and lush ﬂowering plants spill over the edges, softening the bench's rigid form with trailing tendrils and bursts of pastel petals.
+Dappled sunlight ﬁlters through the canopy overhead, casting a warm glow and creating a serene, inviting atmosphere for quiet
+contemplation. The simple, elegant design of the bench serves as an understated yet essential focal point, beckoning the viewer
+to pause, sit, and immerse themselves in the calming natural ambiance.
+
+Figure 19 | Visual comparison of image generation results before and after prompt enhancement. For each example,
+the left shows the result from the original simple prompt, while the right demonstrates the output with enhanced prompt,
+showing improved visual quality and richer details.
+
+18
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+References
+[1] Junsong Chen, Chongjian Ge, Enze Xie, Yue Wu, Lewei Yao, Xiaozhe Ren, Zhongdao Wang, Ping Luo, Huchuan Lu, and
+Zhenguo Li. Pixart-𝜎: Weak-to-strong training of diffusion transformer for 4k text-to-image generation. arXiv preprint
+arXiv:2403.04692, 2024.
+[2] Bingchen Liu, Ehsan Akhgari, Alexander Visheratin, Aleks Kamko, Linmiao Xu, Shivam Shrirao, Joao Souza, Suhail Doshi,
+and Daiqing Li. Playground v3: Improving text-to-image alignment with deep-fusion large language models. arXiv preprint
+arXiv:2409.10695, 2024.
+[3] Enze Xie, Junsong Chen, Junyu Chen, Han Cai, Haotian Tang, Yujun Lin, Zhekai Zhang, Muyang Li, Ligeng Zhu, Yao Lu, et al.
+Sana: Efficient high-resolution image synthesis with linear diffusion transformers. arXiv preprint arXiv:2410.10629, 2024.
+[4] Bradley Brown, Jordan Juravsky, Ryan Ehrlich, Ronald Clark, Quoc V Le, Christopher Ré, and Azalia Mirhoseini. Large
+language monkeys: Scaling inference compute with repeated sampling. arXiv preprint arXiv:2407.21787, 2024.
+[5] Yang Luo, Xiaozhe Ren, Zangwei Zheng, Zhuo Jiang, Xin Jiang, and Yang You. Came: Confidence-guided adaptive memory
+efficient optimization. In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1:
+Long Papers), pages 4442–4453, 2023.
+[6] Tim Dettmers, Mike Lewis, Sam Shleifer, and Luke Zettlemoyer. 8-bit optimizers via block-wise quantization. arXiv preprint
+arXiv:2110.02861, 2021.
+[7] I Loshchilov. Decoupled weight decay regularization. arXiv preprint arXiv:1711.05101, 2017.
+[8] Tianqi Chen, Ian Goodfellow, and Jonathon Shlens. Net2net: Accelerating learning via knowledge transfer. arXiv preprint
+arXiv:1511.05641, 2015.
+[9] Sharath Turuvekere Sreenivas, Saurav Muralidharan, Raviraj Joshi, Marcin Chochowski, Mostofa Patwary, Mohammad Shoeybi,
+Bryan Catanzaro, Jan Kautz, and Pavlo Molchanov. Llm pruning and distillation in practice: The minitron approach. arXiv
+preprint arXiv:2408.11796, 2024.
+[10] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell,
+Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning transferable visual models from natural language
+supervision, 2021.
+[11] Xiaohua Zhai, Basil Mustafa, Alexander Kolesnikov, and Lucas Beyer. Sigmoid loss for language image pre-training, 2023.
+[12] OpenAI. Gpt-4 technical report. arXiv preprint arXiv:2303.08774, 2023.
+[13] Gemini Team. Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context. arXiv preprint
+arXiv:2403.05530, 2024.
+[14] Zhijian Liu, Ligeng Zhu, Baifeng Shi, Zhuoyang Zhang, Yuming Lou, Shang Yang, Haocheng Xi, Shiyi Cao, Yuxian Gu,
+Dacheng Li, et al. Nvila: Efficient frontier visual language models. arXiv preprint arXiv:2412.04468, 2024.
+[15] Black Forest Labs. Flux, 2024.
+[16] Le Zhuo, Ruoyi Du, Han Xiao, Yangguang Li, Dongyang Liu, Rongjie Huang, Wenze Liu, Lirui Zhao, Fu-Yun Wang, Zhanyu
+Ma, et al. Lumina-next: Making lumina-t2x stronger and faster with next-dit. arXiv preprint arXiv:2406.18583, 2024.
+[17] Dustin Podell, Zion English, Kyle Lacey, Andreas Blattmann, Tim Dockhorn, Jonas Müller, Joe Penna, and Robin Rombach.
+Sdxl: Improving latent diffusion models for high-resolution image synthesis. arXiv preprint arXiv:2307.01952, 2023.
+[18] Daiqing Li, Aleks Kamko, Ehsan Akhgari, Ali Sabet, Linmiao Xu, and Suhail Doshi. Playground v2. 5: Three insights towards
+enhancing aesthetic quality in text-to-image generation. arXiv preprint arXiv:2402.17245, 2024.
+[19] Zhimin Li, Jianwei Zhang, Qin Lin, Jiangfeng Xiong, Yanxin Long, Xinchi Deng, Yingfang Zhang, Xingchao Liu, Minbin
+Huang, Zedong Xiao, et al. Hunyuan-dit: A powerful multi-resolution diffusion transformer with fine-grained chinese
+understanding. arXiv preprint arXiv:2405.08748, 2024.
+[20] OpenAI. Dalle-3, 2023.
+[21] Patrick Esser, Sumith Kulal, Andreas Blattmann, Rahim Entezari, Jonas Müller, Harry Saini, Yam Levi, Dominik Lorenz, Axel
+Sauer, Frederic Boesel, et al. Scaling rectified flow transformers for high-resolution image synthesis. In Forty-first International
+Conference on Machine Learning, 2024.
+
+19
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+[22] Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-resolution image synthesis with
+latent diffusion models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR),
+pages 10684–10695, June 2022.
+[23] Dhruba Ghosh, Hannaneh Hajishirzi, and Ludwig Schmidt. Geneval: An object-focused framework for evaluating text-to-image
+alignment. Advances in Neural Information Processing Systems, 36, 2024.
+[24] Xiwei Hu, Rui Wang, Yixiao Fang, Bin Fu, Pei Cheng, and Gang Yu. Ella: Equip diffusion models with llm for enhanced
+semantic alignment. arXiv preprint arXiv:2403.05135, 2024.
+[25] Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Björn Ommer. High-resolution image synthesis
+with latent diffusion models. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages
+10684–10695, 2022.
+[26] William Peebles and Saining Xie. Scalable diffusion models with transformers. arXiv preprint arXiv:2212.09748, 2022.
+[27] Junsong Chen, YU Jincheng, GE Chongjian, Lewei Yao, Enze Xie, Zhongdao Wang, James Kwok, Ping Luo, Huchuan Lu,
+and Zhenguo Li. Pixart-𝛼: Fast training of diffusion transformer for photorealistic text-to-image synthesis. In International
+Conference on Learning Representations, 2024.
+[28] Dongting Hu, Jierun Chen, Xijie Huang, Huseyin Coskun, Arpit Sahni, Aarush Gupta, Anujraaj Goyal, Dishani Lahiri, Rajesh
+Singh, Yerlan Idelbayev, et al. Snapgen: Taming high-resolution text-to-image models for mobile devices with efficient
+architectures and training. arXiv preprint arXiv:2412.09619, 2024.
+[29] Haotian Tang, Yecheng Wu, Shang Yang, Enze Xie, Junsong Chen, Junyu Chen, Zhuoyang Zhang, Han Cai, Yao Lu, and Song
+Han. Hart: Efficient visual generation with hybrid autoregressive transformer. arXiv preprint arXiv:2410.10812, 2024.
+[30] Keyu Tian, Yi Jiang, Zehuan Yuan, Bingyue Peng, and Liwei Wang. Visual autoregressive modeling: Scalable image generation
+via next-scale prediction. In Advances in Neural Information Processing Systems (NeurIPS), 2024.
+[31] Peize Sun, Yi Jiang, Shoufa Chen, Shilong Zhang, Bingyue Peng, Ping Luo, and Zehuan Yuan. Autoregressive model beats
+diffusion: Llama for scalable image generation. arXiv preprint arXiv:2406.06525, 2024.
+[32] Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford,
+Jeffrey Wu, and Dario Amodei. Scaling laws for neural language models. arXiv preprint arXiv:2001.08361, 2020.
+[33] Hao Li, Yang Zou, Ying Wang, Orchid Majumder, Yusheng Xie, R Manmatha, Ashwin Swaminathan, Zhuowen Tu, Stefano
+Ermon, and Stefano Soatto. On the scalability of diffusion-based text-to-image generation. In Proceedings of the IEEE/CVF
+Conference on Computer Vision and Pattern Recognition, pages 9400–9409, 2024.
+[34] Zhengyang Liang, Hao He, Ceyuan Yang, and Bo Dai. Scaling laws for diffusion transformers. arXiv preprint arXiv:2410.08184,
+2024.
+[35] Jiazheng Xu, Xiao Liu, Yuchen Wu, Yuxuan Tong, Qinkai Li, Ming Ding, Jie Tang, and Yuxiao Dong. Imagereward: learning
+and evaluating human preferences for text-to-image generation. In Proceedings of the 37th International Conference on Neural
+Information Processing Systems, pages 15903–15935, 2023.
+[36] Jiazheng Xu, Xiao Liu, Yuchen Wu, Yuxuan Tong, Qinkai Li, Ming Ding, Jie Tang, and Yuxiao Dong. Imagereward: Learning
+and evaluating human preferences for text-to-image generation. Advances in Neural Information Processing Systems, 36, 2024.
+[37] Raghav Singhal, Zachary Horvitz, Ryan Teehan, Mengye Ren, Zhou Yu, Kathleen McKeown, and Rajesh Ranganath. A general
+framework for inference-time scaling and steering of diffusion models. arXiv preprint arXiv:2501.06848, 2025.
+[38] Nanye Ma, Shangyuan Tong, Haolin Jia, Hexiang Hu, Yu-Chuan Su, Mingda Zhang, Xuan Yang, Yandong Li, Tommi Jaakkola,
+Xuhui Jia, et al. Inference-time scaling for diffusion models beyond scaling denoising steps. arXiv preprint arXiv:2501.09732,
+2025.
+[39] Wenjun Zeng, Yuchi Liu, Ryan Mullins, Ludovic Peran, Joe Fernandez, Hamza Harkous, Karthik Narasimhan, Drew Proud,
+Piyush Kumar, Bhaktipriya Radharapu, Olivia Sturman, and Oscar Wahltinez. Shieldgemma: Generative ai content moderation
+based on gemma, 2024.
+[40] Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan
+Schelten, Amy Yang, Angela Fan, et al. The llama 3 herd of models. arXiv preprint arXiv:2407.21783, 2024.
+[41] Junyu Chen, Han Cai, Junsong Chen, Enze Xie, Shang Yang, Haotian Tang, Muyang Li, Yao Lu, and Song Han. Deep
+compression autoencoder for efficient high-resolution diffusion models. arXiv preprint arXiv:2410.10733, 2024.
+
+20
+
+SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer
+
+[42] Song Han, Huizi Mao, and William J Dally. Deep Compression: Compressing Deep Neural Networks with Pruning, Trained
+Quantization and Huffman Coding. In ICLR, 2016.
+[43] Xinyin Ma, Gongfan Fang, and Xinchao Wang. Llm-pruner: On the structural pruning of large language models. NeurIPs,
+2023.
+[44] Muyang Li, Ji Lin, Yaoyao Ding, Zhijian Liu, Jun-Yan Zhu, and Song Han. Gan compression: Efficient architectures for
+interactive conditional gans. In CVPR, 2020.
+[45] Han Cai, Chuang Gan, Tianzhe Wang, Zhekai Zhang, and Song Han. Once-for-all: Train one network and specialize it for
+efficient deployment. arXiv preprint arXiv:1908.09791, 2019.
+[46] Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua
+Bengio. Generative adversarial nets. NeurIPS, 2014.
+[47] Yanyu Li, Huan Wang, Qing Jin, Ju Hu, Pavlo Chemerys, Yun Fu, Yanzhi Wang, Sergey Tulyakov, and Jian Ren. Snapfusion:
+Text-to-image diffusion model on mobile devices within two seconds. Advances in Neural Information Processing Systems, 36,
+2024.
+[48] Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models. Advances in neural information processing
+systems, 33:6840–6851, 2020.
+[49] Yang Zhao, Yanwu Xu, Zhisheng Xiao, and Tingbo Hou. Mobilediffusion: Subsecond text-to-image generation on mobile
+devices. arXiv preprint arXiv:2311.16567, 2023.
+[50] William Peebles and Saining Xie. Scalable diffusion models with transformers. In Proceedings of the IEEE/CVF International
+Conference on Computer Vision, pages 4195–4205, 2023.
+[51] Ibrahim M Alabdulmohsin, Behnam Neyshabur, and Xiaohua Zhai. Revisiting neural scaling laws in language and vision.
+Advances in Neural Information Processing Systems, 35:22300–22312, 2022.
+[52] Xiaohua Zhai, Alexander Kolesnikov, Neil Houlsby, and Lucas Beyer.
+arXiv:2106.04560, 2021.
+
+Scaling vision transformers.
+
+arXiv preprint
+
+[53] Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, and Denny Zhou.
+Self-consistency improves chain of thought reasoning in language models. arXiv preprint arXiv:2203.11171, 2022.
+[54] Chuanyang Zheng, Zhengying Liu, Enze Xie, Zhenguo Li, and Yu Li. Progressive-hint prompting improves reasoning in large
+language models. arXiv preprint arXiv:2304.09797, 2023.
+[55] Yangzhen Wu, Zhiqing Sun, Shanda Li, Sean Welleck, and Yiming Yang. Inference scaling laws: An empirical analysis of
+compute-optimal inference for problem-solving with language models. arXiv preprint arXiv:2408.00724, 2024.
+[56] Lingjiao Chen, Jared Quincy Davis, Boris Hanin, Peter Bailis, Ion Stoica, Matei Zaharia, and James Zou. Are more llm calls all
+you need? towards scaling laws of compound inference systems. arXiv preprint arXiv:2403.02419, 2024.
+[57] Biao Zhang and Rico Sennrich. Root mean square layer normalization. Advances in Neural Information Processing Systems,
+32, 2019.
+[58] Han Cai, Junyan Li, Muyan Hu, Chuang Gan, and Song Han. Efficientvit: Lightweight multi-scale attention for high-resolution
+dense prediction. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 17302–17313, 2023.
+[59] Xinlong Wang, Xiaosong Zhang, Zhengxiong Luo, Quan Sun, Yufeng Cui, Jinsheng Wang, Fan Zhang, Yueze Wang, Zhen Li,
+Qiying Yu, et al. Emu3: Next-token prediction is all you need. arXiv preprint arXiv:2409.18869, 2024.
+[60] Jian Han, Jinlai Liu, Yi Jiang, Bin Yan, Yuqi Zhang, Zehuan Yuan, Bingyue Peng, and Xiaobing Liu. Infinity: Scaling bitwise
+autoregressive modeling for high-resolution image synthesis. arXiv preprint arXiv:2412.04431, 2024.
+[61] Wenjun Zeng, Yuchi Liu, Ryan Mullins, Ludovic Peran, Joe Fernandez, Hamza Harkous, Karthik Narasimhan, Drew Proud,
+Piyush Kumar, Bhaktipriya Radharapu, Olivia Sturman, and Oscar Wahltinez. Shieldgemma: Generative ai content moderation
+based on gemma, 2024.
+
+21
+
+

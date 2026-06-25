@@ -5,10 +5,6 @@ Experiment with Gemini 2.0 Flash native image generation
 
 
 
-developers.googleblog.com uses cookies to deliver and enhance the quality of its services and to analyze traffic. If you agree, cookies are also used to serve advertising and to personalize the content and advertisements that you see. [Learn more](https://policies.google.com/technologies/cookies?hl=en)
-
-AgreeNo thanks
-
 
 
 

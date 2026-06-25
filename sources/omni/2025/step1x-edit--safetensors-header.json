@@ -1,0 +1,25 @@
+{
+  "_source": "safetensors header of stepfun-ai/Step1X-Edit/step1x-edit-i1258.safetensors (HF resolve/main), read via HTTP Range request 2026-06-25",
+  "file_bytes": 24855692578,
+  "file_GB_bf16": 24.86,
+  "vae_bytes": 335304388,
+  "vae_GB": 0.34,
+  "total_params": 12427800385,
+  "total_params_B": 12.428,
+  "all_dtype": "BF16",
+  "num_double_blocks": 19,
+  "num_single_blocks": 38,
+  "connector.S.c_embedder.linear_1.weight_shape": [
+    4096,
+    3584
+  ],
+  "connector.S.c_embedder.linear_2.weight_shape": [
+    4096,
+    4096
+  ],
+  "connector.S.individual_token_refiner.blocks.0.mlp.fc1.weight_shape": [
+    16384,
+    4096
+  ],
+  "metadata_field": {}
+}
