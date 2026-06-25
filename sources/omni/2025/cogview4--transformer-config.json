@@ -1,0 +1,19 @@
+{
+  "_class_name": "CogView4Transformer2DModel",
+  "_diffusers_version": "0.33.0.dev0",
+  "attention_head_dim": 128,
+  "condition_dim": 256,
+  "in_channels": 16,
+  "num_attention_heads": 32,
+  "num_layers": 28,
+  "out_channels": 16,
+  "patch_size": 2,
+  "pos_embed_max_size": 128,
+  "rope_axes_dim": [
+    256,
+    256
+  ],
+  "sample_size": 128,
+  "text_embed_dim": 4096,
+  "time_embed_dim": 512
+}

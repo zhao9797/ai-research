@@ -1,0 +1,30 @@
+{
+  "transformer_config": {
+    "_class_name": "HiDreamImageTransformer2DModel",
+    "attention_head_dim": 128,
+    "axes_dims_rope": [64, 32, 32],
+    "caption_channels": [4096, 4096],
+    "max_resolution": [128, 128],
+    "in_channels": 16,
+    "out_channels": 16,
+    "num_attention_heads": 20,
+    "num_routed_experts": 4,
+    "num_activated_experts": 2,
+    "num_layers": 16,
+    "num_single_layers": 32,
+    "patch_size": 2,
+    "text_emb_dim": 2048,
+    "llama_layers_tapped": "0-31 plus layer 31 repeated (48 entries total)"
+  },
+  "pipeline_components": {
+    "text_encoder": "CLIPTextModelWithProjection (CLIP-L)",
+    "text_encoder_2": "CLIPTextModelWithProjection (CLIP-G)",
+    "text_encoder_3": "T5EncoderModel (T5-XXL)",
+    "text_encoder_4": "LlamaForCausalLM (Llama-3.1-8B-Instruct)",
+    "vae": "AutoencoderKL (from FLUX.1 [schnell])",
+    "scheduler": "UniPCMultistepScheduler",
+    "transformer": "HiDreamImageTransformer2DModel"
+  },
+  "source": "https://huggingface.co/HiDream-ai/HiDream-I1-Full/raw/main/transformer/config.json + model_index.json",
+  "note": "Saved 2026-06-25 to provide exact architecture numbers not fully specified in arXiv:2505.22705"
+}

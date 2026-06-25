@@ -1,0 +1,24 @@
+{
+  "_class_name": "CogView4Pipeline",
+  "_diffusers_version": "0.33.0.dev0",
+  "scheduler": [
+    "diffusers",
+    "FlowMatchEulerDiscreteScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "GlmModel"
+  ],
+  "tokenizer": [
+    "transformers",
+    "PreTrainedTokenizerFast"
+  ],
+  "transformer": [
+    "diffusers",
+    "CogView4Transformer2DModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
