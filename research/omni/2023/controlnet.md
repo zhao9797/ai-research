@@ -33,6 +33,9 @@ ControlNet 是给"冻结的"大规模文生图扩散模型（实现于 [[stable-
 **核心贡献**：(1) 提出 ControlNet 这一可给预训练文生图扩散模型加空间局部条件的高效微调结构；(2) 放出对 SD 的多种预训练 ControlNet（Canny/Hough 线/涂鸦/人体关键点/分割/法线/深度/卡通线稿）；(3) 用消融实验对比多种替代结构，并跨任务做用户研究验证。
 
 ## 模型架构
+![controlnet 架构](../figs/controlnet/arch.png)
+> 图源：ControlNet 论文 Figure 3（Stable Diffusion U-Net connected with a ControlNet），https://arxiv.org/abs/2302.05543
+
 **Backbone**：U-Net（[[latent-diffusion-ldm|LDM]]/SD 1.5 与 2.1 共用同一 U-Net）。SD 的 U-Net 由编码器、中间块、带跳连的解码器组成，**共 25 个块**：其中 8 个是上/下采样卷积层，另外 17 个"主块"各含 **4 个 ResNet 层 + 2 个 ViT**（每个 ViT 含若干 cross-/self-attention）。编码器/解码器各 12 个块，4 个分辨率（64×64、32×32、16×16、8×8），每分辨率重复 3 次。文本经 CLIP text encoder 编码，时间步用位置编码的 time encoder。
 
 **ControlNet 基本单元（图 2）**：对一个"网络块" `y = F(x; Θ)`，
@@ -95,6 +98,9 @@ ControlNet 是给"冻结的"大规模文生图扩散模型（实现于 [[stable-
 - **部署形态**：开源权重在 HF `lllyasviel/ControlNet`，9 个 Gradio 演示 app，已被 diffusers 等主流框架集成。
 
 ## 评测 benchmark（把效果讲清楚）
+![controlnet 结构消融对比](../figs/controlnet/result.png)
+> 图源：ControlNet 论文 Figure 8（Ablative study of different architectures on a sketch condition；充分/冲突/不足 prompt 下 ControlNet vs Lite vs MLP），https://arxiv.org/abs/2302.05543
+
 所有数字均来自论文/补充材料（一手源）。
 
 **1) 用户研究——涂鸦草图（AHR，1=最差 5=最好；12 名用户、20 张未见草图、5 方法）**

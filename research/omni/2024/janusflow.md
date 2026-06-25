@@ -27,6 +27,9 @@ JanusFlow 用一个仅 **1.3B** 的 LLM（DeepSeek-LLM-1.3B-base）把"理解 = 
 JanusFlow 走第三条路，核心改进是把当时图像生成 SOTA 方法 **rectified flow**（[[rectified-flow]]，被 [[stable-diffusion-3]] 验证）直接嵌进 LLM：不像 Transfusion 那样在 LLM 上设计复杂的注意力掩码，作者发现**普通 causal attention 就够用**，只需给 LLM 配一对轻量 encoder/decoder 适配流匹配操作。相对同门前作 [[janus]]（VQ 自回归生成，FID 10.10）的关键升级，就是把生成从离散自回归换成连续 rectified flow，FID 提升到 9.51，并在指令跟随类生成 benchmark 上大幅领先。
 
 ## 模型架构
+![janusflow 架构](../figs/janusflow/arch.png)
+> 图源：JanusFlow 论文 Fig. 2 "Architecture of the proposed JanusFlow"（arXiv:2411.07975）
+
 **Backbone**：单个增强版 DeepSeek-LLM-1.3B，24 层 transformer，序列长 4096，理解与生成共用同一套 LLM 权重。
 
 **解耦双视觉编码器（核心设计）**：
@@ -72,6 +75,9 @@ JanusFlow 走第三条路，核心改进是把当时图像生成 SOTA 方法 **r
 - 部署：HF 上提供 JanusFlow-1.3B 权重 + Gradio 在线 demo（`deepseek-ai/JanusFlow-1.3B`）；license MIT（代码）+ DeepSeek Model License（权重）。
 
 ## 评测 benchmark（把效果讲清楚）
+![janusflow 关键结果](../figs/janusflow/result.png)
+> 图源：JanusFlow 论文 Fig. 1（雷达图：JanusFlow-1.3B vs Emu3-Chat/InstructBLIP/LLaVA-v1.5-Phi/Show-o 在理解与生成 benchmark 的对比，arXiv:2411.07975）
+
 所有数字来自已落盘的 arXiv PDF（主表 + 附录）。主结果为 **384×384** 模型，1.3B。
 
 **文生图 — GenEval（overall）**：JanusFlow **0.63**，超过统一模型 Show-o(0.53)/Chameleon(0.39)/LWM(0.47)/SEED-X(0.49)、与 Transfusion(7.3B, 0.63) 持平、超过前作 Janus(0.61)；并超过生成专用 SDv1.5(0.43)/SDXL(0.55)/DALL-E 2(0.52)/PixArt-α(0.48)/IF-XL(4.3B, 0.61)，在表中仅次于 DALL-E 3(0.67)。子项：Single 0.97 / Two 0.59 / Count 0.45 / Colors 0.83 / Pos 0.53 / Color-Attri 0.42。

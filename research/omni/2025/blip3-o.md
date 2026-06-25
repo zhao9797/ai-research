@@ -30,6 +30,9 @@ BLIP3-o 是 Salesforce Research 提出的"全开放"统一多模态模型族（4
 三条轴的结论凝练为论文的核心 Finding：CLIP 特征比 VAE 特征更紧凑、语义更丰富，训练更快、生成质量更高；Flow Matching 比 MSE 更好（能建模分布、采样更多样）；顺序训练能保住理解能力又把全部容量留给生成。BLIP3-o 是 Salesforce BLIP-3（xGen-MM）开源谱系的延续，目标是把统一多模态做成"架构 + 训练 + 数据"全可复现的开放基线。相关前置工作可参见 [[latent-diffusion-ldm]]、[[clip]]、[[emu2]]、[[lumina-next]]。
 
 ## 模型架构
+![blip3-o 架构](../figs/blip3-o/arch.png)
+> 图源：BLIP3-o 论文 Figure 1（arXiv:2505.09568, https://arxiv.org/abs/2505.09568）
+
 整体是 **Autoregressive + Diffusion 混合架构**（见论文 Figure 1）：
 
 - **理解侧**：用 CLIP 编码图像，自回归模型在目标文本 token 与预测 token 间算交叉熵损失（标准 MLLM 范式）。
@@ -92,6 +95,9 @@ BLIP3-o 是 Salesforce Research 提出的"全开放"统一多模态模型族（4
 - **部署形态**：开放在线 demo（blip3o.salesforceresearch.ai）+ HF 权重（4B/8B）+ Discord/WeChat 社区支持。
 
 ## 评测 benchmark（把效果讲清楚）
+![blip3-o 设计选择对比（GenEval/DPG/FID 随训练步）](../figs/blip3-o/result.png)
+> 图源：BLIP3-o 论文 Figure 4 "Comparison of different design choices"（arXiv:2505.09568, https://arxiv.org/abs/2505.09568）
+
 **设计选择对比实验（探索阶段，Llama-3.2-1B 底座，约 25M 数据，每 ~3200 step 评一次）**：在 MJHQ-30k 上报 FID（美学），GenEval / DPG-Bench 报 prompt 对齐。结论：**CLIP + Flow Matching 在 GenEval 和 DPG-Bench 上 prompt 对齐最好**；VAE + Flow Matching 的 FID 最低（最优）但 FID 有误导性——作者测 GPT-4o 在 MJHQ-30k 的 FID 约 30.0，反而很高，说明 FID 衡量的是风格偏离而非真实生成质量。总体判定 **CLIP + Flow Matching 为最佳设计**。
 
 **图像生成（论文 Table 2，与统一模型同期 SOTA 对比）**：

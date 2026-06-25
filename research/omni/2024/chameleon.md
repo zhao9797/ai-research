@@ -29,6 +29,9 @@ Chameleon 走的是**早融合 + token-based** 路线：所有模态（图像、
 与最相似的 Gemini 相比：Gemini 也是早融合 token-based，但**使用独立的图像解码器**；Chameleon 是端到端 dense、无任何路由组件，因此对「理解」和「生成」两类任务更通用。代价是早融合带来严重的优化稳定性与表示学习挑战，这正是本文工程贡献的重点。
 
 ## 模型架构
+![chameleon 架构](../figs/chameleon/arch.png)
+> 图源：Chameleon: Mixed-Modal Early-Fusion Foundation Models, Figure 1 (arXiv:2405.09818) https://arxiv.org/abs/2405.09818
+
 - **Backbone**：自回归 decoder-only Transformer，架构主体沿用 [[llama-2]]（RMSNorm、SwiGLU 激活、RoPE 旋转位置编码）。两个规模：Chameleon-7B 与 Chameleon-34B，上下文长度 4k，**未使用 GQA**（见 Table 1）。
 - **统一 token 空间**：无独立的图像/文本编码器，也无 domain-specific 解码器；图像和文本 token 共享同一套 Transformer 权重，混在一条序列里做 next-token 自回归。
 - **图像 tokenizer（visual tokenizer）**：基于 Make-A-Scene（Gafni et al., 2022）的 VQ 式 tokenizer，把 **512×512 图像编码成 1024 个离散 token**，**codebook 大小 8192**。训练 tokenizer 只用授权图像；因人脸生成重要，预训练时把含人脸图像上采样 2 倍。已知弱点：对**含大量文字的图像重建差**，这从根本上限制了模型的重 OCR 类能力。
@@ -71,6 +74,9 @@ Chameleon 走的是**早融合 + token-based** 路线：所有模态（图像、
 - **部署形态**：作为研究 artifact 开源（GitHub facebookresearch/chameleon，含独立推理代码 + viewer + 人评 prompt 数据；另有 HF collection 与门控 checkpoint，需申请访问）。**注**：论文 PDF 描述的是完整图文生成能力；而**公开释出的 checkpoint 仅保留图文理解 / 文本生成、关闭了图像生成**——这是发布层面的限制（广泛报道，非 PDF 内陈述，本地未落盘一手发布说明，标注来源为 release 行为）。README/miniviewer 中较大模型以 `30b` 命名（论文正文 safety 段亦混用 "30B"，与 Table 1/5 的 "34B" 同指一个模型）。
 
 ## 评测 benchmark（把效果讲清楚）
+![chameleon 关键结果：长文本混合模态开放生成人评胜率](../figs/chameleon/result.png)
+> 图源：Chameleon: Mixed-Modal Early-Fusion Foundation Models, Figure 9b（相对评测胜率 vs Gemini+/GPT-4V+/Gemini/GPT-4V）(arXiv:2405.09818) https://arxiv.org/abs/2405.09818
+
 **重要前提**：因 Chameleon 能力太杂没有单一对标模型，论文按「每个子领域对标该领域最强模型」。图像**生成质量未用 FID / GenEval / T2I-CompBench / MJHQ-30K / PickScore 等自动指标报告**，仅通过人评衡量（源里无这些数字，故记「未报告」）。
 
 **文本（预训练模型，未 SFT，Table 6）**——

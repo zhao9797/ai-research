@@ -32,6 +32,9 @@ IP-Adapter 是一个仅 **22M 参数** 的轻量适配器，用「**解耦交叉
 作者诊断核心病根：**原 cross-attention 的 K/V 投影权重是为文本特征训练的**，把图像特征拼进去只是「把图像特征对齐到文本特征空间」，从而丢失图像专有信息，导致只能做到粗粒度控制。IP-Adapter 的方案就是不去挤占文本通道，而是**给图像特征单独开一条 cross-attention 通道**。其灵感与 [[controlnet]] / T2I-Adapter 一脉相承（冻结主干、外挂可训练模块），但创新点在条件注入方式。
 
 ## 模型架构
+![ip-adapter 架构](../figs/ip-adapter/arch.png)
+> 图源：IP-Adapter 论文 Figure 2「The overall architecture of our proposed IP-Adapter with decoupled cross-attention strategy」（arXiv:2308.06721, https://ar5iv.labs.arxiv.org/html/2308.06721 ）
+
 **Backbone**：标准 SD（基于 U-Net 的潜空间扩散模型，VAE 编解码到 latent，frozen CLIP text encoder 提供文本特征）。论文实现基于 **SD v1.5**。整套 IP-Adapter 由两部分组成：
 
 **1) 图像编码器（image encoder）**
@@ -81,6 +84,9 @@ IP-Adapter 是一个仅 **22M 参数** 的轻量适配器，用「**解耦交叉
 - 部署形态：diffusers 原生支持（2023-11 合入）、safetensors、WebUI(sd-webui-controlnet)、ComfyUI、InvokeAI、AnimateDiff prompt-travel 等社区生态全面接入。
 
 ## 评测 benchmark（把效果讲清楚）
+![ip-adapter 图像变体定性结果](../figs/ip-adapter/result.png)
+> 图源：官方 GitHub README 配图 `assets/demo/image_variations.jpg`（左：参考图 → 右：IP-Adapter 生成的 4 张变体），https://github.com/tencent-ailab/IP-Adapter
+
 评测在 **COCO2017 验证集（5000 图带 caption）**上做：每个样本基于图像 prompt 生成 4 张，共 20000 张/方法。两指标（均用 CLIP ViT-L/14 计算）：
 - **CLIP-I**：生成图与图像 prompt 的 CLIP 图像 embedding 相似度（衡量对参考图的忠实度）；
 - **CLIP-T**：生成图与图像 prompt 的 caption 的 CLIPScore（衡量文本对齐/语义保留）。

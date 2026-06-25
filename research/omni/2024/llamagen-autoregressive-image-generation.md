@@ -72,6 +72,9 @@ LlamaGen 的研究哲学正相反：**减少视觉信号上的归纳偏置，架
 - **部署。** 开源 HF Space gradio demo；本地 gradio；vLLM serving 脚本。
 
 ## 评测 benchmark（把效果讲清楚）
+![llamagen-autoregressive-image-generation 模型规模 scaling（FID vs 训练 epoch，含 CFG）](../figs/llamagen-autoregressive-image-generation/result.png)
+> 图源：LlamaGen 论文 Figure 2 "Scaling model size"（arXiv:2406.06525，with classifier-free guidance）
+
 **Tokenizer 重建（ImageNet 256×256 val）。** 码本维度消融：C 从 256→8，rFID 9.21→2.19、利用率 0.29%→97%；码本大小：4096→16384，rFID 3.02→2.19。ds16 下 token 数 vs rFID：256 tok 2.19 / 576 tok **0.94** / 1024 tok 0.70；ds8 下 1024 tok rFID **0.59**（PSNR 24.45, SSIM 0.813, 利用率 97.6%）。与他法对比（Table 4）：ds16 本文 rFID 2.19 优于 VQGAN（4.99/8.30）、MaskGIT（2.28）；ds8 本文 0.59 优于 ViT-VQGAN（1.28）、VQGAN（1.19）。**关键结论**：离散 tokenizer 已能匹敌 SD-VAE/SDXL-VAE/OpenAI Consistency Decoder 等连续 VAE（ds8 rFID 0.59 vs SD-VAE 0.74、SDXL-VAE 0.68），「离散表示不再是图像重建瓶颈」。
 
 **类别条件 ImageNet 256×256（FID 主指标，Table 6）。**

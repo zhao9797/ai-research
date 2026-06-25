@@ -32,6 +32,9 @@ Ming-Omni 是蚂蚁 Inclusion AI 的统一全模态模型：以 MoE LLM [[ling]]
 技术脉络上，它站在三条线交汇处：MoE LLM（Ling）、统一图像理解-生成（对标 [[janus-pro]] / Janus / TokenFlow / Emu3，但走"冻结 MLLM + 轻量桥接"而非共享视觉 token 空间路线）、端到端语音（沿用 Whisper 编码 + CosyVoice 式自回归 audio decoder）。图像生成部分直接复用同门工作 **Ming-Lite-Uni**，与 [[latent-diffusion-ldm]] 系 DiT 解码器对接。
 
 ## 模型架构
+![ming-omni 架构](../figs/ming-omni/arch.png)
+> 图源：Ming-Omni 论文 Figure 2 "The overall framework of Ming-Omni"（arXiv:2506.09344）
+
 整体是"**专属编码器 → Ling(MoE) → 专属生成解码器**"的端到端框架（论文 Fig.2）。
 
 **语言中枢 Ling（MoE）** — 据 HF `config.json`（`bailing_moe`）：hidden 2048、28 层、注意力头 16、词表 126464；**64 个 routing experts + 2 个 shared experts，每 token 激活 6 个 routing expert**（`num_experts_per_tok=6`），`first_k_dense_replace=0`（全层 MoE）。轻量版基座为 **Ling-lite**，对外口径"**2.8B 激活参数**"（Ling-lite 公开为 ~16.8B 总参 / ~2.75B 激活的 MoE）。

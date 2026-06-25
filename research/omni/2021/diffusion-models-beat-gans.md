@@ -27,6 +27,9 @@ OpenAI（Dhariwal & Nichol, 2021-05）通过一系列架构消融得到改进的
 作者把差距归因于两点：(1) GAN 的网络架构被反复打磨、扩散用的 U-Net 还很「原始」；(2) GAN 有 truncation trick 这种「牺牲多样性换保真度」的旋钮，扩散没有。本文对症下药：**先改架构（→ ADM），再发明引导旋钮（→ classifier guidance）**。这是「guidance（引导）」思想的源头——它直接催生了同年稍晚的 [[classifier-free-guidance]]（无需单独分类器），并为后续所有 text-to-image（[[glide]] / [[dall-e-2]] / [[latent-diffusion-ldm]] / [[imagen]]）确立了「扩散 + 引导」的统治性范式。模型代码与权重在 `openai/guided-diffusion` 开源。
 
 ## 模型架构
+![diffusion-models-beat-gans 架构](../figs/diffusion-models-beat-gans/arch.png)
+> 图源：Dhariwal & Nichol, "Diffusion Models Beat GANs on Image Synthesis" (arXiv:2105.05233) Figure 2 — 各项 U-Net/ADM 架构改动（多分辨率注意力、更多头、BigGAN 上/下采样残差块、skip rescale）的 FID-vs-wall-clock 消融
+
 **Backbone：改进版 U-Net（论文称 ADM = Ablated Diffusion Model）。** 在 Ho et al. 的 U-Net（残差块栈 + 下采样卷积 + 对称上采样 + skip 连接 + 单头 16×16 全局注意力 + 时间步嵌入注入每个残差块）基础上，做了一组消融并保留以下改动：
 
 - **多分辨率注意力**：在 32×32、16×16、8×8 三个分辨率都加注意力（而非仅 16×16）。
@@ -64,6 +67,9 @@ OpenAI（Dhariwal & Nichol, 2021-05）通过一系列架构消融得到改进的
 - **推理**：250 步（DDPM）或 25 步（DDIM）；分类器引导每步多一次分类器前向 + 反传梯度。部署形态为开源 checkpoint（`classifier_sample.py` / `image_sample.py` / `super_res_sample.py`）。
 
 ## 评测 benchmark（把效果讲清楚）
+![diffusion-models-beat-gans 结果](../figs/diffusion-models-beat-gans/result.png)
+> 图源：Dhariwal & Nichol, "Diffusion Models Beat GANs on Image Synthesis" (arXiv:2105.05233) Figure 5 — ImageNet 128² 上 classifier guidance（橙）的 FID-vs-IS 权衡严格优于 BigGAN-deep truncation（蓝）
+
 主表（Table 5，ADM=改进架构，ADM-G=加分类器引导，ADM-U=加上采样栈）：
 
 **ImageNet 128×128**：BigGAN-deep FID 6.02 / Prec 0.86 / Rec 0.35；ADM 5.91；**ADM-G FID 2.97**，Prec 0.78 / Rec 0.59；ADM-G 仅 25 步 FID 5.98。

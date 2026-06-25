@@ -27,6 +27,9 @@ InstaFlow 是**第一个由 Stable Diffusion 蒸馏得到、能在单步（one-s
 作者的核心洞察：**直接蒸馏 SD 之所以失败，根因是 SD 概率流 ODE 轨迹弯曲、噪声与图像之间的耦合（coupling）很差**，学生网络一步学不会这种"扭曲映射"。InstaFlow 把 [[rectified-flow]]（Liu et al. 2022 的 reflow 思想，此前只在 CIFAR10 等小数据集验证过）首次扩到大规模文生图：reflow 在**不改变边缘分布**的前提下迭代拉直轨迹、降低传输代价、把耦合变规整，从而让单步蒸馏变得可行。它与 [[stable-diffusion-1]]、[[latent-diffusion-ldm]]、[[ddpm]] 一脉相承（都在 SD 的潜空间上做），并与同期的 [[consistency-models]] / [[latent-consistency-models]]、[[dmd]]、[[sdxl-turbo-add]]（ADD）并列为"少步/单步生成"的里程碑工作——区别在于 InstaFlow **不用对抗损失、不用一致性约束，纯监督最小二乘**。
 
 ## 模型架构
+![instaflow-one-step-rectified-flow-t2i 架构](../figs/instaflow-one-step-rectified-flow-t2i/arch.png)
+> 图源：InstaFlow: One Step is Enough for High-Quality Diffusion-Based Text-to-Image Generation (arXiv:2309.06380) Figure 3
+
 完全复用 SD 的三段式结构，**不引入新组件**：
 - **Text encoder**：CLIP ViT-L/14，训练全程冻结（编码 1 张图约 0.01s）。
 - **潜空间生成器（被蒸馏的主体）**：SD 的 U-Net。reflow 阶段不改结构、只微调；蒸馏阶段把时间固定 t=0、学单步 Euler 映射 `x + v(x|T)`。
@@ -71,6 +74,9 @@ InstaFlow 是**第一个由 Stable Diffusion 蒸馏得到、能在单步（one-s
 - **生态兼容（README）**：InstaFlow 单步模型**直接兼容预训练 ControlNet、LoRA、SDXL-Refiner**（无需重训）；社区提供 ONNX 版、Colab、本地 Gradio。
 
 ## 评测 benchmark（把效果讲清楚）
+![instaflow-one-step-rectified-flow-t2i 关键结果](../figs/instaflow-one-step-rectified-flow-t2i/result.png)
+> 图源：InstaFlow: One Step is Enough for High-Quality Diffusion-Based Text-to-Image Generation (arXiv:2309.06380) Figure 1
+
 统一在 NVIDIA A100、batch=1 测时延。核心数字（论文 Table 1/2/4/5）：
 
 **MS COCO 2017-5k（FID-5k / CLIP，评测协议沿用 Progressive Distillation [58]；论文未明示 FID 计算分辨率，仅 COCO2014 注明下采样到 256）** —— 下列正式版数字取自 Table 2a（SD 1.5 系），预实验数字取自 Table 1a/Table 4（SD 1.4 系）。

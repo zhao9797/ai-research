@@ -29,6 +29,9 @@ MAR（Masked Autoregressive）用一个**小 MLP 上的逐 token 扩散过程（
 作者的答案：用**扩散过程**来建模**每个 token 的条件分布 p(x|z)**，从而把自回归直接搬到连续值域，彻底去掉 VQ。这与 [[latent-diffusion-ldm]]/[[dit-scalable-diffusion-transformers]] 这类"用一个扩散过程建模所有 token 的联合分布"形成鲜明对照——MAR 把"token 之间的依赖"交给自回归、把"每个 token 自身的分布"交给扩散，二者分工。相关同期工作 GIVT 也做连续 token 序列模型，但用固定数目的高斯混合（GMM）建分布，表达力受限；MAR 用扩散建任意分布。技术脉络上 MAR 是 MAE/MAGE（掩码生成，作者前作）与 DDPM/DiT（扩散）的合流。
 
 ## 模型架构
+![mar-autoregressive-without-vector-quantization 架构](../figs/mar-autoregressive-without-vector-quantization/arch.png)
+> 图源：Figure 1 "Diffusion Loss", Li et al., *Autoregressive Image Generation without Vector Quantization* (arXiv:2406.11838)
+
 **三件套：连续值 tokenizer + 自回归/掩码自回归 Transformer + 小扩散 MLP（Diffusion Loss head）。**
 
 - **Tokenizer / VAE**：直接用 LDM 公开的 **KL-16**（连续值，KL 正则的 VAE，stride 16，无量化）；对照实验也用其 VQ-16、KL-8、OpenAI Consistency Decoder。256×256 图经 KL-16 得 16×16=256 个 token，每 token 是 16 维连续向量。不自训 tokenizer——这也是论文承认的局限（系统质量受限于现成 tokenizer）。
@@ -69,6 +72,9 @@ MAR（Masked Autoregressive）用一个**小 MLP 上的逐 token 扩散过程（
 - **速度/精度权衡**：MAR（即便不用 kv-cache）比带 kv-cache 的 causal-AR 权衡更好；对比 DiT-XL（靠扩散步数控速）MAR **更快且更准**——<0.3 秒/张 + FID <2.0。
 
 ## 评测 benchmark（把效果讲清楚）
+![mar-autoregressive-without-vector-quantization 关键结果](../figs/mar-autoregressive-without-vector-quantization/result.png)
+> 图源：Figure 7 "Speed/accuracy trade-off"（FID vs 推理耗时，MAR+DiffLoss 同时更快更准，优于 AR/MAR CrossEnt 与 DiT），arXiv:2406.11838
+
 **(1) Diffusion Loss vs Cross-entropy（Table 1，AR/MAR-L ~400M，400ep，256×256，w/ CFG）**
 - AR raster causal：CE 4.92 → DiffLoss 4.69 FID
 - MAR rand causal：CE 4.36 → DiffLoss 4.07

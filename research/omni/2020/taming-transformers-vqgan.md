@@ -31,6 +31,9 @@ VQGAN 的破局点是 **two-stage（两阶段）**思路的强化版：
 VQGAN 的关键论断是反 VQVAE 的：**第一阶段要尽可能"强"、感受野尽可能大、压缩率尽可能高**（codebook 装"上下文丰富的视觉部件"而非局部 patch），把建模低层统计量的活儿从 transformer 卸给 CNN+GAN；transformer 只负责它最擅长的——长程组合关系。这一"强 tokenizer + 序列模型"分工后来被 [[latent-diffusion-ldm]]（直接复用 VQGAN 的 autoencoder 做 latent space）、Parti、Muse、Chameleon 等全面继承。两位一作 Esser/Rombach 正是 Stable Diffusion 的核心作者。
 
 ## 模型架构
+![taming-transformers-vqgan 架构](../figs/taming-transformers-vqgan/arch.png)
+> 图源：Esser et al., "Taming Transformers for High-Resolution Image Synthesis" (arXiv:2012.09841), Figure 2
+
 两阶段，二者通过**离散 codebook**对接：
 
 **第一阶段：卷积 VQGAN（tokenizer）**

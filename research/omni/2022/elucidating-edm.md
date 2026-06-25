@@ -30,6 +30,9 @@ EDM（Karras 等，NVIDIA，NeurIPS 2022）把扩散模型从"理论缠绕的一
 
 ## 模型架构
 
+![elucidating-edm 架构](../figs/elucidating-edm/arch.png)
+> 图源：Karras et al., "Elucidating the Design Space of Diffusion-Based Generative Models" (NeurIPS 2022), Table 1 — https://arxiv.org/abs/2206.00364
+
 EDM 本身不发明 backbone，而是复用三种现成 U-Net 类去噪网络 F_θ，并统一套上预处理外壳（Table 1 / Table 8）：
 
 - **三种 backbone**（均为带 self-attention 的 U-Net）：
@@ -87,6 +90,9 @@ EDM 是方法论文，用标准学术数据集，无大规模图文对：
 - **部署形态**：官方 PyTorch 参考实现（一次性 code drop，不接 PR），CC BY-NC-SA 4.0，提供 config A/F 预训练 pkl。注意它走的是**few-step ODE 求解器**路线，与蒸馏（[[consistency-models]]/progressive distillation）正交——EDM 不做步数蒸馏。
 
 ## 评测 benchmark（把效果讲清楚）
+
+![elucidating-edm 结果](../figs/elucidating-edm/result.png)
+> 图源：Karras et al., "Elucidating the Design Space of Diffusion-Based Generative Models" (NeurIPS 2022), Figure 2（FID vs NFE，三个预训练模型的确定性采样器对比）— https://arxiv.org/abs/2206.00364
 
 指标统一为 FID（5 万生成图 vs 全部真实图，每个数取 3 次最小值）。
 

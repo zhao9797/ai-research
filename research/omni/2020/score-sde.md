@@ -29,6 +29,9 @@ updated: 2026-06-25
 二者本质都在"估计 score + 逐尺度去噪"，但用离散噪声尺度，理论割裂、采样方法各异。本文的核心洞见：**当噪声尺度数 N→∞，这两套离散加噪过程分别收敛到两个不同的连续时间 SDE**。于是把整套问题搬到连续时间 SDE 上，得到统一框架，并解锁三类新能力：(1) 任意通用 SDE 数值解法 + 新的 PC 采样；(2) 概率流 ODE 带来确定性采样、精确似然、可逆编码与隐空间编辑；(3) 用单个无条件模型经条件逆向 SDE 做可控生成（类条件、inpainting、上色等逆问题）。它是连续时间扩散/flow 视角的理论奠基工作，直接启发后续 [[ddim]]、概率流 ODE 加速、以及 flow matching/rectified flow 一系。相关后续生态如 [[latent-diffusion-ldm]] 也建立在这套连续扩散观之上。
 
 ## 模型架构
+![score-sde 架构](../figs/score-sde/arch.png)
+> 图源：Song et al., "Score-Based Generative Modeling through Stochastic Differential Equations" (ICLR 2021), Figure 2 — Overview of score-based generative modeling through SDEs（https://arxiv.org/abs/2011.13456）
+
 本文是**方法 + 架构改进**双线，不是单一新模型。
 
 **核心数学对象（与具体网络无关）**

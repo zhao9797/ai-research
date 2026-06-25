@@ -32,6 +32,9 @@ Movie Gen 是 Meta 生成式媒体的「第三波」工作，延续自 Make-A-Sc
 
 ## 模型架构
 
+![movie-gen 架构](../figs/movie-gen/arch.png)
+> 图源：Movie Gen: A Cast of Media Foundation Models（Meta, 2024）Figure 3「Overview of the joint image and video generation pipeline」https://ai.meta.com/static-resource/movie-gen-research-paper
+
 ### Movie Gen Video（30B，联合 T2I + T2V）
 - **Backbone**：Transformer，**严格照搬 LLaMa3 设计空间**——RMSNorm、SwiGLU、48 层、model dim 6144、FFN dim 16384、48 个注意力头。30B 仅指 Transformer 本体（不含文本编码器/TAE）。对 LLaMa3 block 做了 3 处改造：(1) 在 self-attn 与 FFN 之间插入 **cross-attention** 注入文本条件；(2) 加 **adaptive layer norm**（adaLN）注入 flow 时间步 t；(3) 用**全双向注意力**取代因果注意力。消融显示 LLaMa3-like 架构对 DiT 在质量上 +18.6%、文本对齐 +12.6%。
 - **Visual tokenizer（TAE，Temporal Autoencoder）**：基于 VAE，把 RGB 视频在**时/高/宽三维各 8× 压缩**（8×8×8），潜空间通道 C=16。架构是把图像 AE「inflate」——每个 2D 空间卷积后加 1D 时间卷积、每个空间 attention 后加 1D 时间 attention（即 2.5D，消融显示 3D 仅微弱更好但内存/算力贵得多）。图像被当作单帧视频统一编码。关键 trick：**Outlier Penalty Loss（OPL）**——发现标准 VAE 目标会产生高范数"latent dots"导致解码出"spot"伪影（一种 shortcut learning），加一项惩罚远离均值的潜值的损失（r=3，权重 1e5）即可消除。长视频推理用**时间维 tiling**（编码 tile=32 帧无重叠，解码 16 帧重叠 + 线性混合）。
@@ -99,6 +102,9 @@ Movie Gen 是 Meta 生成式媒体的「第三波」工作，延续自 Make-A-Sc
 - **推理**：视频侧靠 linear-quadratic schedule（50 步）+ MultiDiffusion 上采样（~20 步）。论文**未给出具体端到端生成延迟/GPU·秒数字**（标注为未报告）。
 
 ## 评测 benchmark（把效果讲清楚）
+
+![movie-gen 文生图 ELO 对比](../figs/movie-gen/result.png)
+> 图源：Movie Gen: A Cast of Media Foundation Models（Meta, 2024）Figure 18「ELO rating comparison of text-to-image methods」https://ai.meta.com/static-resource/movie-gen-research-paper
 
 > Meta 明确论证 **FVD/IS/CLIP 等自动指标与视频人评不相关**，主线用**人评 A/B 净胜率（net win rate = win%−loss%，范围 [−100,100]）**，并自建 **Movie Gen Video Bench（1000 prompt，3× 于前作）**。
 

@@ -12,3 +12,7 @@
 node_modules/
 .quartz/
 public/
+
+# 保留 research 下精选论文配图（带出处的方法/结果图）；sources 下图片仍忽略
+!research/omni/figs/
+!research/omni/figs/**

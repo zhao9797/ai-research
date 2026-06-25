@@ -32,6 +32,9 @@ BAGEL 是字节 Seed 开源的 **统一多模态基础模型**（7B 激活 / 14B
 作者选 Integrated Transformer 的理由：**bottleneck-free**，全层都能让理解/生成无损交互，更利于 scale、更适合后续 RL。生成走 Rectified Flow（对标 SD3 [[stable-diffusion-3]] / FLUX [[flux-1]]），理解走 next-token（沿用 AR LLM 强项）。
 
 ## 模型架构
+![bagel 架构](../figs/bagel/arch.png)
+> 图源：BAGEL 论文 Figure 2《Emerging Properties in Unified Multimodal Pretraining》(arXiv:2505.14683)
+
 **Backbone：MoT（Mixture-of-Transformer-Experts）**，由 Qwen2.5 LLM 初始化的 decoder-only transformer。两个 transformer expert：
 - **理解专家（Und. Expert）**：处理 text token 与 ViT token（沿用原 Qwen2.5 全部参数）；
 - **生成专家（Gen. Expert）**：复制 Qwen2.5 LLM 的全部可训练参数得到的全尺寸专家，**专门处理 VAE token**。
@@ -91,6 +94,9 @@ BAGEL 是字节 Seed 开源的 **统一多模态基础模型**（7B 激活 / 14B
 - **部署形态（来自 GitHub README / HF）**：开源代码 + checkpoint（Apache-2.0），提供 Gradio WebUI 与 HF Space demo。**VRAM 分档**：32GB+（或多卡）跑全精度；社区贡献 **NF4 量化**（推荐 12–32GB VRAM）、**INT8**（22–32GB）、**DFloat11 (DF11) 压缩版**；有 Windows 安装/打包方案。模型由 Qwen2.5-7B-Instruct + SigLIP2-so400m + FLUX.1-schnell VAE 组合 finetune 得到，三者均 Apache-2.0。
 
 ## 评测 benchmark（把效果讲清楚）
+![bagel 生成能力随训练 token 的 scaling 曲线](../figs/bagel/result.png)
+> 图源：BAGEL 论文 Figure 7(b)《Emerging Properties in Unified Multimodal Pretraining》(arXiv:2505.14683) —— GenEval 生成分随训练 token 增长，且 prompt rewriter 显著抬升上限
+
 **多模态理解（Table 4，BAGEL=7B 激活）**：MME-P 1687 / MME-S **2388**，MMBench **85.0**，MMMU **55.3**，MM-Vet **67.2**，MathVista **73.1**，MMVP **69.3**。相比 Janus-Pro-7B，MMMU/MM-Vet 分别 **+14.3 / +17.1**；在多数 benchmark 上还超过专用理解模型 Qwen2.5-VL-7B、InternVL2.5——说明 MoT 缓解任务冲突的同时保住了理解力。
 
 **T2I 生成**：

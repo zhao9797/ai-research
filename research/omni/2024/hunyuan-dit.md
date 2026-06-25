@@ -25,6 +25,9 @@ Hunyuan-DiT 是腾讯混元 2024 年 5 月开源的中英双语文生图 **Diffu
 DALL·E、Stable Diffusion、PixArt-α 等主流文生图模型缺乏对中文 prompt 的直接理解；当时的中文方案（AltDiffusion、PAI-Diffusion、Taiyi）生成质量仍不足。Hunyuan-DiT 的定位是补上"既懂中文又达到强生成质量"的开源空白：它把 [[pixart-alpha]] 开创的 DiT-as-T2I 路线（用 transformer 替换 U-Net 做扩散 backbone，见 [[dit-scalable-diffusion-transformers]]、[[latent-diffusion-ldm]]）与双语理解、工业级数据流水线、多轮交互式生成结合，构成腾讯首个完整开源的 DiT 文生图全栈（模型 + 训练码 + 蒸馏/加速 + ControlNet/LoRA/IP-Adapter + captioner + 对话增强）。它是国产开源 T2I 的标志性工作，发布时已对标闭源 [[dall-e-3]]、MidJourney v6 与 [[stable-diffusion-3]]。
 
 ## 模型架构
+![hunyuan-dit 架构](../figs/hunyuan-dit/arch.png)
+> 图源：Hunyuan-DiT 官方 README / 论文 Fig.7（https://github.com/Tencent/HunyuanDiT，arXiv:2405.08748）
+
 **总体**：latent-space 扩散模型。先用预训练 VAE 把图像压到低维 latent，再用 transformer 参数化的扩散模型学分布。
 
 - **VAE**：直接用 [[sdxl]] 的 VAE（由 SD 1.5 的 VAE 在 512×512 上微调而来）。下采样因子 8，latent 通道数 4（config: `in_channels=4`）。作者发现高分辨率 SDXL VAE 相比 SD 1.5 VAE 提升清晰度、缓解过饱和、减少畸变。
@@ -70,6 +73,9 @@ DALL·E、Stable Diffusion、PixArt-α 等主流文生图模型缺乏对中文 p
 - **算力规模未披露**：论文/README 均未给出训练 GPU 数量、GPU·小时、吞吐等具体数字。
 
 ## 评测 benchmark（把效果讲清楚）
+![hunyuan-dit 消融结果](../figs/hunyuan-dit/result.png)
+> 图源：Hunyuan-DiT 论文 Fig.15（位置编码与模型结构消融：FID / CLIP-Score vs 训练步，arXiv:2405.08748）
+
 **专业人评（≥50 名评估员，4 维度：文图一致性 / 排除 AI 瑕疵 / 主体清晰度 / 美学；评测集 3 级层级、8 个一级类 + >70 个二级类、>3000 prompt；通过率逐级聚合）。论文 Table 1：**
 
 | 类型 | 模型 | 文图一致性% | 排除AI瑕疵% | 主体清晰度% | 美学% | 综合% |

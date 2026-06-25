@@ -34,6 +34,9 @@ Muse 是 Google Research 提出的文生图模型，用**掩码生成式 Transfo
 定位意义：Muse 是"统一掩码生成（masked generative）"路线在文生图上的标志性工作，影响了后续 MaskGIT 系、MAGE、以及把离散 token + 并行/掩码解码与自回归/扩散对比的一系列研究，也是"非扩散、非自回归亦可达扩散质量且更快"的有力证据。
 
 ## 模型架构
+![muse 架构](../figs/muse/arch.png)
+> 图源：Muse: Text-To-Image Generation via Masked Generative Transformers (arXiv:2301.00704) Figure 3 — Muse Framework
+
 Muse 是**多子模型级联（cascade）**，除 VQGAN 外全部基于 Transformer。整体含 5 个部件（见论文 Figure 3）：
 
 1. **冻结文本编码器 T5-XXL**（4.6B 参数，不参与训练）：输入 caption → 一串 4096 维语言嵌入，再线性投影到 Transformer 隐维度。论文强调 T5 嵌入携带名词（物体）、动词（动作）、形容词（视觉属性）、介词（空间关系）、基数（cardinality）与组合等丰富语义。
@@ -92,6 +95,9 @@ Muse 是**多子模型级联（cascade）**，除 VQGAN 外全部基于 Transfor
 - **量化 / 部署形态**：论文**未披露**量化方案；且**明确不开源代码、不放公开 demo**（出于滥用与数据偏见的伦理考量）。
 
 ## 评测 benchmark（把效果讲清楚）
+
+![muse CLIP-FID 权衡](../figs/muse/result.png)
+> 图源：Muse: Text-To-Image Generation via Masked Generative Transformers (arXiv:2301.00704) Figure 8 — CLIP vs. FID tradeoff curve
 
 **CC3M（训练+评测同分布，Table 1）**——Muse 创当时 SOTA：
 

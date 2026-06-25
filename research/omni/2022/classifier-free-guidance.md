@@ -27,6 +27,9 @@ Classifier-Free Guidance（CFG，Ho & Salimans）提出**无需任何分类器**
 - **CFG 的定位**：用**纯生成模型**回答"能否在没有分类器的情况下做引导"。它把引导信号从"外部判别器梯度"换成"条件分数 − 无条件分数"的外推，彻底剔除分类器，从而证明 IS/FID 的提升并非来自对分类器的对抗。技术脉络上承 [[ddpm]] / 连续时间扩散（[[score-sde]]、[[vdm]]）的 ε-预测与去噪分数匹配框架，下启 [[glide]]、[[dall-e-2]]、[[imagen]]、[[stable-diffusion-1]] 等几乎全部文生图工作的默认引导手段。
 
 ## 模型架构
+![classifier-free-guidance 架构](../figs/classifier-free-guidance/arch.png)
+> 图源：Ho & Salimans, "Classifier-Free Diffusion Guidance" (arXiv:2207.12598) Figure 2 —— 三高斯混合上引导强度递增对条件密度的重塑示意（最左为非引导边缘密度），是 CFG 方法的核心直觉图。
+
 - **不引入新架构**：CFG 是一种**训练+采样协议**，复用 Dhariwal & Nichol（2021）guided-diffusion 的 **ADM U-Net** backbone 与超参（仅把离散时间换成连续时间训练）。无新增 visual tokenizer / VAE / text encoder——实验是**类别条件 ImageNet 生成**，条件 c 是类别标签，不是文本。
 - **关键设计：单网络参数化两套分数**。同一个去噪网络 θ(zλ, c) 既学有条件分数也学无条件分数——无条件时把条件 c 喂入一个**空标记 ∅**（null token），即 `θ(zλ) = θ(zλ, c=∅)`。因此**不增加任何参数量**，相比 classifier guidance（diffusion + 额外分类器两套网络）反而**用了更少的总容量**。
 - **参数化**：ε-prediction，`xθ(zλ) = (zλ − σλ·θ(zλ))/αλ`；方差用 σ̃²(λ'|λ) 与 σ²(λ|λ') 的对数空间插值，系数 v 为常数超参（非学习量），仅在有限步采样时起作用。

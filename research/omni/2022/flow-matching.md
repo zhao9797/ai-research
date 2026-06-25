@@ -27,6 +27,9 @@ Flow Matching（FM）提出一种 **simulation-free（无需 ODE 仿真）** 的
 - **技术脉络位置**：与 [[latent-diffusion-ldm]]/[[ddpm]] 同属"通过 ODE/SDE 在噪声-数据间搬运概率质量"的连续生成范式；FM 把 Song et al. 2021 的 probability-flow ODE 视角推广，并与**同期**的 [[rectified-flow]]（Liu et al. 2022, arXiv:2209.03003）和 Stochastic Interpolants（Albergo & Vanden-Eijnden 2022, arXiv:2209.15571）独立殊途同归——三者都得到类似的条件回归目标。FM 的 OT 路径（µ_t=t·x₁，σ_t 线性）在 σ_min→0 时即 rectified flow 的"直线插值"。
 
 ## 模型架构
+![flow-matching 架构](../figs/flow-matching/arch.png)
+> 图源：Lipman et al., "Flow Matching for Generative Modeling" (arXiv:2210.02747) Figure 2 — 扩散路径条件 score function vs OT 路径条件向量场（t=0→1）
+
 本文是**方法/理论工作，不发布产品或权重**；架构沿用已有 backbone，只替换训练目标。
 - **被建模对象**：神经网络直接参数化**时间相关向量场** v_t(x;θ): [0,1]×R^d→R^d（注意不是 score、不是 ε，而是 ODE 的速度场）。生成时从先验噪声 x₀∼N(0,I) 出发，用现成 ODE 求解器积分 dφ_t/dt=v_t(φ_t) 到 t=1 得样本。
 - **Backbone**：图像实验直接复用 **Dhariwal & Nichol (2021) 的 U-Net（ADM 架构）**，"minimal changes"，不引入新结构；2D toy 实验用 5 层×512 的 MLP。FM 的贡献与 backbone 正交——任何接收 (x,t) 的网络都能用。
@@ -74,6 +77,9 @@ Flow Matching（FM）提出一种 **simulation-free（无需 ODE 仿真）** 的
 - **似然计算 infra**：用 Hutchinson trace 估计器把散度 div(v_t) 的 O(d) 计算变成无偏随机估计（式34-35），配合 instantaneous change-of-variable ODE（式28）算 BPD。FID/IS 用 TensorFlow-GAN 库（ImageNet-128 沿用 openai/guided-diffusion 评测脚本以对齐 ADM）。
 
 ## 评测 benchmark（把效果讲清楚）
+![flow-matching 关键结果](../figs/flow-matching/result.png)
+> 图源：Lipman et al., "Flow Matching for Generative Modeling" (arXiv:2210.02747) Figure 5 — ImageNet-64 训练过程 FID 曲线，FM-OT（蓝）始终最低且收敛最快
+
 所有数字均为**无条件生成**（除超分外），同架构同超参，FM 三法横评（数字来自论文 Table 1/2/4）。
 
 **Table 1 — NLL(BPD↓) / FID↓ / NFE↓：**

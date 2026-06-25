@@ -35,6 +35,9 @@ MetaQuery 走相反的哲学——"**生成归扩散，理解归 LLM**"（Render
 作者还点出本范式与同期 **GPT-4o 图像生成系统**（token → transformer → diffusion → pixels）可能共享高层哲学。技术脉络上接 [[latent-diffusion-ldm]] / [[sana]] 扩散解码器与 [[llava]] 系 MLLM。
 
 ## 模型架构
+![metaqueries 架构](../figs/metaqueries/arch.png)
+> 图源：MetaQueries (Transfer between Modalities with MetaQueries, arXiv:2504.06256) Figure 1 / 官方 GitHub facebookresearch/metaquery assets/metaquery.jpg
+
 整体范式：`token → [冻结 MLLM] → [可学习查询] → [连接器 transformer] → [扩散解码器] → pixels`。
 
 - **可学习查询（MetaQueries）**：随机初始化 `Q ∈ R^{N×D}`，N 为查询数、D 等于 MLLM 隐藏维度。把 Q 直接拼到 MLLM 输入序列中"查询"出生成条件 C。**全序列继续用因果掩码**（causal masking），不为 Q 特意开双向注意力——实验表明冻结 LLM 在因果掩码下已是强力的"特征重采样器"（feature resampler，类 Flamingo 思想）。最终论文统一取 **N = 256**（在质量与效率间平衡；reconstruction 任务 token 越多越好，T2I 视觉质量在 64 token 后收敛、prompt alignment 随 token 增加持续提升）。
@@ -77,6 +80,9 @@ MetaQuery 走相反的哲学——"**生成归扩散，理解归 LLM**"（Render
 - **推理/部署**：开源 `app.py` Gradio demo（给 checkpoint 即可起）；推理成本 = MLLM 前向（出条件）+ 扩散采样，量化/缓存/步数蒸馏等加速**未单独披露**，依赖底层 Sana/SD 的特性。
 
 ## 评测 benchmark（把效果讲清楚）
+![metaqueries 文生图定性结果](../figs/metaqueries/result.png)
+> 图源：MetaQueries 论文 Figure 5 定性 T2I 结果 / 官方 GitHub facebookresearch/metaquery assets/t2i.jpg
+
 所有数字均来自论文 Table 4–10 / 项目页（一手源）。`†` = 重写提示，`‡` = 作者复测。
 
 **理解 + 生成总表（Table 4，主力解码器 Sana；COCO FID 用 SD v1.5）**

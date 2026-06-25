@@ -36,6 +36,9 @@ Sora 是 OpenAI 2024-02-15 以技术报告《Video generation models as world si
 - **时间线。** 2024-02 技术报告 + landing page 公布（仅研究预览，开放红队与艺术家访问）；2024-12-09 以更快的 **Sora Turbo** 转为公开产品（sora.com，详见 [[sora]] 的产品发布页）。本页聚焦 2024-02 这份技术报告所披露的**方法与研究结论**。
 
 ## 模型架构
+![sora 架构](../figs/sora/arch.png)
+> 图源：OpenAI, "Video generation models as world simulators" (2024) — https://openai.com/index/video-generation-models-as-world-simulators/
+
 > 关键前提：技术报告原文明确声明"**Model and implementation details are not included in this report**"，因此**参数量、层数、tokenizer 具体结构、文本编码器选型、潜空间维度均未披露**。下文只整理一手源可确证的设计。
 
 - **整体两段式：先压缩成潜空间，再分解为时空 patch。** "At a high level, we turn videos into patches by first compressing videos into a lower-dimensional latent space, and subsequently decomposing the representation into spacetime patches."

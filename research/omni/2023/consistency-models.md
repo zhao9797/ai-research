@@ -27,6 +27,9 @@ OpenAI（Yang Song、Prafulla Dhariwal、Mark Chen、Ilya Sutskever）提出的*
 一致性模型直接攻这个痛点：建立在连续时间扩散的 **Probability Flow (PF) ODE**（Song et al. 2021）之上，采用 [[elucidating-edm]]（Karras et al. 2022）的设定（μ=0、σ(t)=√(2t)、T=80、ϵ=0.002、pixel∈[−1,1]）。核心思想是学一个函数 f，把同一条 PF-ODE 轨迹上**任意** (x_t, t) 都映到轨迹原点 x_ϵ，这种"同一轨迹输出一致"即**自一致性（self-consistency）**。相比 PD 需要多轮逐次减半步数，一致性模型一次蒸馏即可单步生成；相比依赖合成数据集的蒸馏，它在线采样训练对、无需预构数据集；两种训练方式都**不需要对抗训练**，对架构约束极小。
 
 ## 模型架构
+![consistency-models 架构](../figs/consistency-models/arch.jpg)
+> 图源：Song et al., "Consistency Models" (arXiv:2303.01469) Figure 1
+
 一致性模型不引入新 backbone，而是**复用扩散模型架构**，仅修改输出参数化以满足边界条件：
 
 - **Backbone（U-Net 系）**：CIFAR-10 用 Song et al. (2021) 的 **NCSN++** 架构；ImageNet 64×64 与 LSUN Bedroom/Cat 256×256 用 Dhariwal & Nichol (2021)（[[diffusion-models-beat-gans]] guided-diffusion）的 U-Net 架构。与对应 [[elucidating-edm]] 模型完全同构，便于直接借用强力扩散架构并用预训练权重初始化。
@@ -78,6 +81,9 @@ OpenAI（Yang Song、Prafulla Dhariwal、Mark Chen、Ilya Sutskever）提出的*
 - **代码与部署**：官方仓库 `openai/consistency_models`（PyTorch，基于 `openai/guided-diffusion`，覆盖 ImageNet-64/LSUN-256）；CIFAR-10 实验为 JAX（`openai/consistency_models_cifar10`）。已集成进 HuggingFace **🧨 diffusers** 的 `ConsistencyModelPipeline`，`num_inference_steps=1` 单步采样，可用 `torch.compile()` 进一步提速。评测用 FID/Precision/Recall/IS（evaluator.py，沿用 guided-diffusion 协议）。
 
 ## 评测 benchmark（把效果讲清楚）
+![consistency-models 关键结果](../figs/consistency-models/result.jpg)
+> 图源：Song et al., "Consistency Models" (arXiv:2303.01469) Figure 6 — ImageNet 64×64 上 CD（一致性蒸馏）vs PD（渐进蒸馏）随采样步数的 FID 对比，CD(LPIPS) 全程领先且单步即达 FID≈6
+
 评测指标：FID（↓）、IS（↑）、Precision/Recall（↑）。NFE=网络评估次数。
 
 **蒸馏对比（CIFAR-10，Table 1，FID↓）**

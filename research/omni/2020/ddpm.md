@@ -32,6 +32,9 @@ DDPM 的核心定位：
 相对前置工作（Appendix C 明确列出与 NCSN 的 4 点差异）：(1) 用带自注意力的 U-Net 而非 RefineNet，且在每一层都注入时间 t 的 sinusoidal 嵌入；(2) 前向过程每步用 √(1−β_t) 缩放数据使方差不发散（NCSN 无此缩放）；(3) 前向过程彻底破坏信号使 q(x_T|x_0)≈N(0,I)，先验与聚合后验匹配，且 β_t 很小保证可逆；(4) Langevin 式采样器的系数严格由 β_t 推导，训练直接以变分推断方式优化采样器本身，而非 NCSN 那样事后手工设定。
 
 ## 模型架构
+![ddpm 架构](../figs/ddpm/arch.png)
+> 图源：Ho et al., "Denoising Diffusion Probabilistic Models" (arXiv:2006.11239) Figure 2 — 前向 q(x_t|x_{t-1}) 与反向 p_θ(x_{t-1}|x_t) 的有向图模型
+
 **Backbone：带自注意力的 U-Net。** 沿用 PixelCNN++（ref.[52]）的主干，本质是基于 Wide ResNet（ref.[72]）的 U-Net（ref.[48]）。把原版的 weight normalization 换成 **group normalization** 以简化实现。
 
 - **分辨率层级**：32×32 模型用 4 个特征图分辨率（32×32 → 4×4）；256×256 模型用 6 个层级。每个分辨率层级有 **2 个卷积残差块**。
@@ -87,6 +90,9 @@ DDPM 是无条件图像生成，使用标准学术数据集，无大规模图文
 - 无并行/分布式/量化等大规模工程描述（单 TPU v3-8 规模，学术 setup）。
 
 ## 评测 benchmark（把效果讲清楚）
+![ddpm 结果](../figs/ddpm/result.png)
+> 图源：Ho et al., DDPM (arXiv:2006.11239) Table 1（CIFAR10 IS/FID/NLL，DDPM L_simple FID=3.17）+ Figure 5 右（率失真曲线）；取自官方项目页 hojonathanho.github.io/diffusion
+
 所有数字均来自论文 Table 1/2/3（一手源）。
 
 **CIFAR10（无条件，Table 1）：**

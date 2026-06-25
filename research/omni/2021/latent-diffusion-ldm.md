@@ -34,6 +34,9 @@ LDM 的核心洞察是把图像生成显式拆成两个阶段：
 - 对比联合训练 encoder/decoder + score prior 的 LSGM：LDM 把自编码器与扩散先验**解耦**，自编码器只训一次即可复用于多个下游任务，且无需在重建与生成能力间做精细加权。
 
 ## 模型架构
+![latent-diffusion-ldm 架构](../figs/latent-diffusion-ldm/arch.png)
+> 图源：Rombach et al., "High-Resolution Image Synthesis with Latent Diffusion Models" (arXiv:2112.10752) Figure 3 — 条件注入（concat / cross-attention）
+
 **两阶段结构。**
 
 **第一阶段 — 感知压缩自编码器（E, D）：**
@@ -89,6 +92,9 @@ LDM 的核心洞察是把图像生成显式拆成两个阶段：
 - **部署形态**：开源 PyTorch 代码 + 预训练权重（conda 环境 `ldm`），后被集成进 HuggingFace Spaces（Gradio web demo）。
 
 ## 评测 benchmark（把效果讲清楚）
+![latent-diffusion-ldm 压缩率-质量-吞吐权衡](../figs/latent-diffusion-ldm/result.png)
+> 图源：Rombach et al., "High-Resolution Image Synthesis with Latent Diffusion Models" (arXiv:2112.10752) Figure 7 — ImageNet 上不同下采样因子 LDM 的采样吞吐 vs FID 权衡（LDM-4/8 为效率-质量甜区）
+
 （数字均来自已抓取的 PDF 正文与附录表）
 
 **无条件生成（Tab 1，256²，FID↓）：**

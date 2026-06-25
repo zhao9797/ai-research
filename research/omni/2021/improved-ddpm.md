@@ -30,6 +30,9 @@ OpenAI（Alex Nichol & Prafulla Dhariwal, 2021-02）对 [[ddpm]] 的四点关键
 本文逐一回应：用**学习方差 + 混合目标**把似然做上去；选 **ImageNet 64×64**（多样性与分辨率的折中、且有大量自回归/VAE 基线可比）作为主战场证明可 scale；用**跳步采样**把步数降一个数量级。论文还用 **precision/recall** 与 GAN 正面比较 mode coverage。与本文**并行**的 [[ddim]]（Song et al. 2020a）走的是另一条快采样路线（确定性隐式模型），文中作为对照纳入实验。这条改进线随后直接被 OpenAI 自家 [[diffusion-models-beat-gans]]（guided diffusion / classifier guidance）继承，并最终汇入 [[glide]]、[[dall-e-2]] 乃至整个文生图工程范式；其代码库 `openai/improved-diffusion` 成为后续大量扩散工作的事实基座。
 
 ## 模型架构
+![improved-ddpm 架构](../figs/improved-ddpm/arch.png)
+> 图源：Improved DDPM 论文 Figure 5（余弦 vs 线性噪声调度 ᾱ_t），https://arxiv.org/abs/2102.09672
+
 - **Backbone：U-Net**（沿用 [[ddpm]] 的结构，pixel-space，非 latent）。相对 DDPM 的改动：
   - 注意力层改用 **multi-head attention**（4 个 head，总通道数不变，原 DDPM 为 1 head）；
   - 注意力不只在 16×16 分辨率用，**额外在 8×8 分辨率也加注意力**；
@@ -70,6 +73,9 @@ OpenAI（Alex Nichol & Prafulla Dhariwal, 2021-02）对 [[ddpm]] 的四点关键
 - **开源资产**：`openai/improved-diffusion` 提供训练/采样脚本与多个预训练 checkpoint（LSUN bedroom 100M、unconditional ImageNet64 / CIFAR-10 的 L_vlb+cosine 版本，存于 `openaipublic.blob.core.windows.net`）。
 
 ## 评测 benchmark（把效果讲清楚）
+![improved-ddpm 关键结果](../figs/improved-ddpm/result.png)
+> 图源：Improved DDPM 论文 Figure 10（FID 随训练算力的幂律 scaling，4 个模型尺寸 30M/68M/120M/270M），https://arxiv.org/abs/2102.09672
+
 数字均来自论文表/图（一手）。
 
 **ImageNet 64×64 消融（Table 1，200K 迭代除非注明，NLL=bits/dim，FID 多为 10K 样本口径）**：

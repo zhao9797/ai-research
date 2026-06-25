@@ -32,6 +32,9 @@ Qwen-Image 站在 [[latent-diffusion-ldm]] → [[mmdit]]（[[stable-diffusion-3]
 
 ## 模型架构
 
+![qwen-image 架构](../figs/qwen-image/arch.png)
+> 图源：Qwen-Image Technical Report (arXiv:2508.02324) Figure 6 — Overview of the Qwen-Image architecture
+
 采用标准**双流（double-stream）MMDiT** 架构（Esser et al. 2024，即 SD3 的 MMDiT），由三大组件协同：
 
 **1. 条件编码器 = 冻结的 Qwen2.5-VL（MLLM）**
@@ -108,6 +111,9 @@ Qwen-Image 站在 [[latent-diffusion-ldm]] → [[mmdit]]（[[stable-diffusion-3]
 - **推理/部署**：开源 diffusers 集成；HF 默认 50 步、true_cfg=4.0、原生支持 1328×1328（1:1）/1664×928（16:9）等多比例。生态侧 LightX2V 提供 Day-0 加速（NVIDIA/海光/沐曦/昇腾/寒武纪），vLLM-Omni、SGLang-Diffusion 提供高性能推理（长序列并行、缓存加速、快算子）。
 
 ## 评测 benchmark（把效果讲清楚）
+
+![qwen-image 评测结果](../figs/qwen-image/result.png)
+> 图源：Qwen-Image 官方 GitHub/博客 bench.png — (a) 图像生成与编辑 benchmark，(b) 文本渲染 benchmark（https://github.com/QwenLM/Qwen-Image）
 
 **VAE 重建（Table 2，ImageNet-256 / 富文本-256，PSNR/SSIM）**：Qwen-Image-VAE 全面 SOTA。富文本图（Text_256）PSNR **36.63 / SSIM 0.9839**，远超 FLUX-VAE（32.65/0.9792）、Hunyuan-VAE（32.83/0.9773）、Wan2.1-VAE（26.77/0.9386）；ImageNet 域 PSNR 33.42 / SSIM 0.9159。图像处理时仅激活 19M 编码器 + 25M 解码器参数。
 

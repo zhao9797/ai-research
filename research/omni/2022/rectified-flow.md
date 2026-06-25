@@ -32,6 +32,9 @@ Rectified flow 的定位是：**用纯 ODE（不需要 SDE 工具）、用标准
 
 ## 模型架构
 
+![rectified-flow 架构](../figs/rectified-flow/arch.png)
+> 图源：Flow Straight and Fast (arXiv 2209.03003), Figure 1 / 官方 GitHub README github_misc/intro_two_gauss.png — 线性插值轨迹相交 →(b) rectified flow 在交点"重布线"避免交叉 →(d) reflow 后轨迹趋直
+
 本文是**方法论工作**，不引入新网络结构，沿用 diffusion 的成熟 backbone：
 
 - **漂移网络 v(z,t)**：图像生成实验全部采用 [[score-sde]] 的 **DDPM++（U-Net）** 架构来表示漂移力 `v^X`，输出与输入同维（`R^d → R^d`），不引入任何额外参数——这正是 rectified flow 的卖点之一："可直接 scale 到大模型，开销等同标准监督学习"。
@@ -78,6 +81,9 @@ min_v ∫_0^1 E[ || (X1 − X0) − v(Xt, t) ||^2 ] dt,   Xt = t·X1 + (1−t)·
 - **部署形态**：开源代码 + Google Drive 上的预训练 checkpoint（CIFAR-10 的 1/2/3-rectified flow 及各自蒸馏版、四个 256×256 数据集模型）。其工业化形态是后续 **InstaFlow**（把 rectified flow 用于 Stable Diffusion 做一步文生图）。
 
 ## 评测 benchmark（把效果讲清楚）
+
+![rectified-flow 关键结果](../figs/rectified-flow/result.png)
+> 图源：官方 GitHub README github_misc/intro_rf.jpeg（AFHQ-Cat，arXiv 2209.03003）— 1-/2-Rectified Flow 在 N=1→1000 全步与蒸馏(N=1)下的采样：2-rectified flow 单步即出清晰图像，体现 reflow 拉直轨迹后的少步/单步生成质量
 
 **CIFAR-10 无条件生成（DDPM++ 架构，Table 1a）**，FID↓ / IS↑ / Recall↑ / NFE↓：
 

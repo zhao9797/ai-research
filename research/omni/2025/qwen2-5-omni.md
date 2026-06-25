@@ -31,6 +31,9 @@ Qwen2.5-Omni 是阿里 Qwen 团队 2025-03 推出的**端到端全模态**单一
 Qwen2.5-Omni 的定位是 Qwen 系列的**旗舰全模态开源模型**，把 [[qwen2-5-vl]] 的视觉编码器、[[qwen2-audio]] 的音频编码器、Qwen2.5 的 LLM 三者整合进一个可端到端训练/推理的系统，并新增流式语音输出。它对标的是 OpenAI GPT-4o 这类闭源 omni 模型，而以**完全开源**（Apache-2.0，7B/3B 双尺寸 + GPTQ/AWQ 量化版）的形态发布，是开源全模态的代表性工作。
 
 ## 模型架构
+![qwen2-5-omni 架构](../figs/qwen2-5-omni/arch.png)
+> 图源：Qwen2.5-Omni GitHub README（Model Architecture，overview.png）https://github.com/QwenLM/Qwen2.5-Omni
+
 整体是 **Thinker-Talker** 架构（受 Mini-Omni 启发的双轨设计）：
 
 - **Thinker（"大脑"）**：一个 Transformer decoder（LLM），外挂音频编码器、视觉编码器，负责理解文本/音频/视频输入并生成高层表示与文本。
@@ -96,6 +99,9 @@ Qwen2.5-Omni 的定位是 Qwen 系列的**旗舰全模态开源模型**，把 [[
   - 输出语音支持两种音色：**Chelsie（女）/ Ethan（男）**，默认 Chelsie，经 `speaker` 参数切换。
 
 ## 评测 benchmark（把效果讲清楚）
+![qwen2-5-omni 跨模态性能对比](../figs/qwen2-5-omni/result.png)
+> 图源：Qwen2.5-Omni GitHub README（Performance，bar.png）https://github.com/QwenLM/Qwen2.5-Omni
+
 全部数字来自已落盘的技术报告（arxiv-2503.20215）。模型分理解(X→Text)与语音生成(X→Speech)两大类评测。
 
 **Text→Text（7B 纯文本对比，Table 1）**：Qwen2.5-Omni-7B 介于 Qwen2-7B 与 Qwen2.5-7B 之间，多数基准超 Qwen2-7B。例：MMLU-Pro 47.0、MMLU-redux 71.0、GSM8K 88.7、MATH 71.5、HumanEval 78.7、MBPP 73.2、LiveCodeBench(2305-2409) 24.6。

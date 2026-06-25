@@ -65,6 +65,9 @@ DPM-Solver 是为扩散 ODE 量身定制的**高阶、免训练**专用数值求
 - **部署形态**：纯算法、即插即用，无需重训。README 报告 Stable Diffusion 官方 demo 接入后从 50 步降到 25 步、采样快一倍；用 JAX 在 TPUv2-8 上 4 秒生成 8 张图。
 
 ## 评测 benchmark（把效果讲清楚）
+![dpm-solver 关键结果：Guided-Diffusion 上 DDIM(10/15/20/100 NFE) vs DPM-Solver(10 NFE)](../figs/dpm-solver/result.png)
+> 图源：DPM-Solver 论文 Figure 1 / GitHub README teaser（github.com/LuChengTHU/dpm-solver，ImageNet 256×256 + classifier guidance；DPM-Solver 仅 10 NFE 即达 DDIM 100 NFE 画质）
+
 评测指标统一用 **FID↓**（各设置抽 50K 样本计算）。NFE = 噪声预测网络的调用次数。
 
 **与连续时间方法对比（CIFAR-10，"VP deep" 连续模型，线性调度）：**

@@ -30,6 +30,9 @@ SD3 要同时回答两个问题：
 它是 SD 系列从 UNet（SDXL/Stable Cascade）转向 **DiT 系 + flow matching** 的转折点，直接奠定了后续 [[flux-1]]（BFL，同一批作者）与 SD3.5 的范式。论文承诺开放实验数据、代码、权重（后续以 SD3 Medium 2B 等多规格 800M–8B 发布）。
 
 ## 模型架构
+![stable-diffusion-3 架构](../figs/stable-diffusion-3/arch.png)
+> 图源：Scaling Rectified Flow Transformers for High-Resolution Image Synthesis (SD3), Figure 2 — Our model architecture（(a) Overview of all components / (b) One MM-DiT block），https://arxiv.org/abs/2403.03206
+
 **整体（latent diffusion）**：沿用 LDM 框架，在预训练自编码器的隐空间中训练；下采样因子 f=8。
 
 **Autoencoder（VAE）**：把 RGB `X∈R^{H×W×3}` 编码到 `x∈R^{h×w×d}`。SD3 把隐通道数从常用的 **d=4 提升到 d=16**——重建质量显著上升（见数据节 Table 3），且 16 通道在 sample FID 上 scaling 更好，故全程采用 d=16。
@@ -77,6 +80,9 @@ SD3 要同时回答两个问题：
 - **T5 可选**：推理去 T5 显著降显存，代价仅在复杂排版。
 
 ## 评测 benchmark（把效果讲清楚）
+![stable-diffusion-3 scaling 结果](../figs/stable-diffusion-3/result.png)
+> 图源：SD3 论文 Figure 8 — Quantitative effects of scaling（上排：validation loss vs 训练步数/FLOPs；下排：validation loss 与 GenEval / Human-Pref ELO / T2I-CompBench 的强相关，r≈−0.92~−0.98），https://arxiv.org/abs/2403.03206
+
 **GenEval（Table 5，越高越好；Ours 为各深度）**
 
 | 模型 | Overall | Single | Two | Counting | Colors | Position | Color Attr. |

@@ -32,6 +32,9 @@ SiT（Scalable Interpolant Transformers）把 [[dit-scalable-diffusion-transform
 理论根基是 Albergo–Vanden-Eijnden 的**随机插值框架**（arXiv:2303.08797，统一 flow 与 diffusion）。该框架的关键松绑：标准 score-based 扩散（如 [[score-sde]] 的 VP-SDE）只在 `t→∞` 才收敛到 `N(0,I)`、且 `α_t/σ_t/w_t` 都被前向 SDE 绑定；插值则在 `t∈[0,1]` 上令 `x_t = α_t·x* + σ_t·ε` **无偏精确**地从数据插到高斯（`α_0=σ_1=1, α_1=σ_0=0`），三个系数**互相解耦、且可在训练后再选**。SiT 把这套理论第一次系统地落到 ImageNet 大规模 latent 生成上，证明每一步「离开扩散、走向插值」的移动都能稳定降 FID。相关前置工作：[[ddpm]]、[[score-sde]]、[[latent-diffusion-ldm]]（LDM/Stable Diffusion VAE）、Flow Matching（Lipman 2023）、Rectified Flow（Liu 2023）。
 
 ## 模型架构
+![sit-scalable-interpolant-transformers 架构](../figs/sit-scalable-interpolant-transformers/arch.png)
+> 图源：SiT 论文 Figure 2（arXiv:2401.08740）。SiT（红）严格沿用 DiT（蓝）架构，四档尺寸 S/B/L/XL 下 FID-50K 随训练步全面更低、收敛更快——SiT 无独立框架图，此图最能体现其"同架构下的设计空间改动效果"。
+
 **严格沿用 DiT，不动一处结构**，以排除任何 backbone 混淆因素——这是 SiT 论文方法论的核心约束（"exact same model structure, number of parameters, and GFLOPs"）。
 
 - **Backbone**：DiT 式纯 transformer（ViT 风格），AdaLN-Zero 条件块注入时间 `t` 与类别标签 `y`；patch size 固定为 2（论文称 p=2 样本质量最好）。
@@ -92,6 +95,9 @@ SiT（Scalable Interpolant Transformers）把 [[dit-scalable-diffusion-transform
 - **采样推理**：ODE 用二阶 **Heun**，SDE 用一阶 **Euler-Maruyama**；主实验 **NFE=250**（与 DDPM 250 步对齐做公平比较）。SDE 在 `t=0` 附近做 `h=0.04` 的时间区间裁剪 + 单个长 last step，显著提升性能。ODE 在低 NFE 区收敛更快，SDE 在大算力预算下能到更低 FID（Fig.5）。
 
 ## 评测 benchmark（把效果讲清楚）
+![sit-scalable-interpolant-transformers 结果](../figs/sit-scalable-interpolant-transformers/result.png)
+> 图源：SiT 论文 Figure 5（arXiv:2401.08740）。SiT-B + Linear 插值下，ODE（Heun）vs SDE（三种扩散系数 σ_t/β_t/sin²）的 FID-10K vs NFE：ODE 在低 NFE 收敛更快，SDE 在大算力预算下能到更低 FID。
+
 全部数字来自论文正文 Table 1/7/8 与官方 README，**ImageNet class-conditional、FID-50K（ADM TensorFlow 评测套件、GPU 采样）**。
 
 **与 DiT 逐尺寸对比（400K 步，无 cfg，Euler-Maruyama 250 步）**：
