@@ -1,0 +1,2697 @@
+arXiv:2412.04332v4 [cs.CV] 10 Apr 2025
+
+Liquid: Language Models are Scalable and Unified
+Multi-modal Generators
+Junfeng Wu1,2 , Yi Jiang2,† , Chuofan Ma2,3 ,
+Yuliang Liu1 , Hengshuang Zhao3 , Zehuan Yuan2 , Song Bai2,∗ , Xiang Bai1,∗
+1
+Huazhong University of Science and Technology 2 Bytedance Inc
+3
+The University of Hong Kong
+wjf5203@gmail.com, jiangyi.enjoy@bytedance.com,
+b20mcf@connect.hku.hk, ylliu@hust.edu.cn, hszhao@cs.hku.hk
+yuanzehuan@bytedance.com, songbai.site@gmail.com, xbai@hust.edu.cn
+
+Abstract
+We present Liquid, an auto-regressive generation paradigm that seamlessly integrates visual comprehension and generation by tokenizing images into discrete
+codes and learning these code embeddings alongside text tokens within a shared
+feature space for both vision and language. Unlike previous multimodal large
+language model (MLLM), Liquid achieves this integration using a single large
+language model (LLM), eliminating the need for external pretrained visual embeddings such as CLIP. For the first time, Liquid uncovers a scaling law that
+performance drop unavoidably brought by the unified training of visual and language tasks diminishes as the model size increases. Furthermore, the unified token
+space enables visual generation and comprehension tasks to mutually enhance
+each other, effectively removing the typical interference seen in earlier models.
+We show that existing LLMs can serve as strong foundations for Liquid, saving
+100× in training costs while outperforming Chameleon in multimodal capabilities and maintaining language performance comparable to mainstream LLMs
+like LLAMA2. Liquid also outperforms models like SD v2.1 and SD-XL (FID
+of 5.47 on MJHQ-30K), excelling in both vision-language and text-only tasks.
+This work demonstrates that LLMs such as Qwen2.5 and GEMMA2 are powerful
+multimodal generators, offering a scalable solution for enhancing both visionlanguage understanding and generation. The code and models are released at
+https://github.com/FoundationVision/Liquid.
+
+1
+
+Introduction
+
+The recent advancement of Large Language Models (LLMs) [4, 69, 8, 52, 70, 65] has sparked
+a trend of extending the foundational capabilities of LLMs to the visual domain, giving rise to
+Multi-modal Large Language Models (MLLMs) [39, 83, 37, 42, 5, 38]. In the realm of visual
+understanding, MLLMs such as LLaVA [39] typically adopt the pretrained CLIP [50] model as the
+visual tokenizer, followed by a two-stage training process to align the vision-and-language feature
+space. While for text-guided visual generation, most MLLMs [17, 18, 24, 63, 62, 68] rely on an
+external diffusion model to generate images as shown in Fig. 1(a). Despite these methods have
+achieved remarkable multi-modal understanding and generation performances, the use of external
+visual modules introduces additional architecture complexity to the system, and potentially poses a
+bottleneck when scaling up the LLMs.
+∗
+
+Corresponding authors: <xbai@hust.edu.cn>, <songbai.site@gmail.com>; †: project lead
+
+Technical report.
+
+Image
+
+Text
+
+Image
+
+Text
+
+Semantic
+Encoder
+
+Text
+Tokenizer
+
+Image
+Tokenizer
+
+Text
+Tokenizer
+
+Image
+Tokenizer
+
+Image
+
+Text
+
+Image
+
+Text
+
+Image
+
+Text
+
+Semantic Image
+Tokenizer
+
+Text
+Tokenizer
+
+Image
+Tokenizer
+
+Text
+Tokenizer
+
+Image
+Tokenizer
+
+Text
+Tokenizer
+
+MLLM
+
+MLLM (AR)
+
+Diffusion
+Models
+
+AR
+
+Diffusion
+
+Text
+Response
+
+Generated
+Image
+
+Text
+Response
+
+Separate Head
+
+e.g., DreamLLM, SEED-X,
+VL-GPT, MetaMorph
+(a)
+
+Text
+Text
+Tokenizer
+
+Image
+Semantic
+Encoder
+
+MLLM (AR)
+
+MLLM (AR)
+
+Separate Head
+
+Text
+Response
+
+Text
+Response
+
+Generated
+Image
+
+Generated
+Image
+
+Separate Head
+
+Generated
+Image
+
+e.g., VILA-U, TokenFlow
+
+MLLM (AR)
+Separate Head
+
+Text
+Response
+
+Generated
+Image
+
+e.g., SynerGen-VL
+
+MLLM (AR)
+Text
+Response
+
+Generated
+Image
+
+e.g., LWM, Chameleon,
+Ours (Continue train with
+extended vocabulary)
+(f)
+
+e.g., Transfusion, Show-o
+
+e.g., Janus, Janus-Pro
+
+(b)
+
+(c)
+
+No externalized models
+
+No externalized models
+
+No externalized models
+
+No externalized models
+
+No externalized models
+
+No externalized models
+
+No additional semantic pretraining
+
+No additional semantic pretraining
+
+No additional semantic pretraining
+
+No additional semantic pretraining
+
+No additional semantic pretraining
+
+No additional semantic pretraining
+
+Unified output head
+
+Unified output head
+
+Unified output head
+
+Unified output head
+
+Unified output head
+
+Unified output head
+
+Unified visual representation for
+
+Unified visual representation for
+
+Unified visual representation for
+
+Unified visual representation for
+
+Unified visual representation for
+
+Unified visual representation for
+
+und. and gen.
+
+und. and gen.
+
+und. and gen.
+
+und. and gen.
+
+und. and gen.
+
+und. and gen.
+
+Unified training objective &
+
+Unified training objective &
+
+Unified training objective &
+
+Unified training objective &
+
+Unified training objective &
+
+Unified training objective &
+
+inference for und. and gen.
+
+inference for und. and gen.
+
+inference for und. and gen.
+
+inference for und. and gen.
+
+inference for und. and gen.
+
+inference for und. and gen.
+
+(d)
+
+(e)
+
+Figure 1: Compared to existing unified MLLMs, Liquid eliminates the need for additional model
+composition, semantic pre-training, or separate output heads. It directly performs next-token prediction and training within a unified vision-language space, requiring only an extension of vocabulary
+and low-cost continue training. This design enables seamless adaptation to any existing LLMs.
+In light of the aforementioned issues, an emerging line of research [15, 54, 12, 78, 67, 61] attempts
+to employ the VQVAE [71, 15] model as a universal visual tokenizer for MLLMs. Analogous to
+the role played by the BPE [58] tokenizer in LLMs, VQVAE establishes a bi-directional mapping
+between raw pixels and discrete codes. This enables the MLLMs to learn visual code embeddings
+jointly with text tokens, rather than constrained by the feature space of a pretrained visual encoders
+like CLIP or pretrained visual generators like diffusion models. Moreover, the discrete nature of
+visual tokens allows uniform modeling of visual and text tokens with the same next-token prediction
+loss, which seamlessly integrates both modalities. LWM [40] and Chameleon [64] are the pioneers
+in exploring this approach. However, these methods involve extensive training from scratch, which
+makes it computationally expensive to disseminate exploration in this form. Follow-up works further
+introduce diffusion modeling [82, 76] but leads to inconsistent training objectives between visual
+and text generation as show in Fig. 1(b). (c) and (d) require additional semantic pretraining for
+image tokenizers [74, 75, 49], while (e) necessitates additional preprocessing and postprocessing
+steps for visual tokens [27]. EMU3 [72] has verified that the next prediction paradigm can achieve
+SOTA results in both understanding and generation tasks by finetuning separate two models, but
+there is a lack of exploration of the effects of unifying these two tasks within one model. In this
+paper, we explore the potential of solely employing LLMs as multimodal generators, and conduct
+a comprehensive empirical study to investigate a series of properties including the scaling laws of
+visual generation, the impact on original language capabilities, and the interrelation between
+visual understanding and generation tasks.
+We first revisit the plain design of MLLMs and present Liquid, a scalable decoder-only architecture
+for multi-modal generation and understanding. We employ the VQGAN [15] as image tokenizer
+to encode images into discrete tokens, similar to how a BPE processes text. This allows images
+and text to share the same vocabulary space, enabling LLMs to understand and generate images
+without any structural modifications. We find that existing LLMs are excellent starting points for
+training, as they have already acquired strong semantic understanding and generation capabilities.
+Compared to training from scratch like Chameleon [64], this approach saves 100× of training cost
+while achieving stronger multimodal capabilities. We employ language data and image-text pair
+data to train six different sizes of LLMs, ranging from 0.5B to 32B across various model families.
+For each model, we create three distinct versions by training with text-only data, image generation
+data, and a combination of both tasks. This approach allows us to analyze the performance and
+interrelation between these tasks across different scales.
+Our experiments reveal several insightful properties: 1) Directly employing LLMs for visual generation exhibits clear scaling laws in both validation loss and image consistency metrics, consistent
+with those seen in LLMs, regardless of whether the models retain their language capabilities or
+focus solely on visual generation tasks. 2) When trained with multimodal data such as image-text
+pairs and pure language data, the language capabilities of the models are lower compared to those
+trained with only language data. However, this tradeoff diminishes as the model size increases,
+indicating that larger models have sufficient capacity to handle both tasks seamlessly, demonstrating
+the strong potential of LLMs as unified multimodal generator. 3) The visual understanding and
+visual generation tasks can mutually benefit each other. We find that increasing the data for either
+2
+
+Text discrete tokens
+[bos]
+
+[bos]
+
+text
+
+16
+26
+
+“snowman” “in”
+
+77
+
+“wonderland”
+
+Unified Token Space
+
+…
+
+“winter”
+
+…
+
+“a”
+
+…
+
+BPE
+tokenize
+
+“Cheer” “ful”
+
+“Cheerful snowman in
+a winter wonderland.”
+
+LLMs
+
+54
+
+𝑝 𝑠 = ς𝑖 𝑝(𝑠𝑖 |𝑠<𝑖 )
+32 54 7 782 654 811 ?
+
+782
+
+𝑠<𝑖
+
+654
+
+𝑠𝑖
+
+…
+
+…
+
+…
+
+811
+
+[boi]
+
+[boi]
+
+Words vocabulary
+
+VQVAE
+tokenize
+
+BPE
+detokenize
+
+32
+
+VQVAE
+detokenize
+
+919
+
+image
+
+882
+
+[eoi]
+
+[eoi]
+
+Image codebook
+
+Image discrete tokens
+
+Figure 2: Pipeline of Liquid. The structure of Liquid follows a consistent format that treats images
+in the exact same way as text. A VQVAE based image tokenizer transforms the input images into
+discrete codes, which sharing the same vocabulary and embedding space with text codes. The image
+tokens and text tokens, once mixed, are fed into the LLMs and trained in the form of next token
+prediction. The lower part of the figure demonstrates that Liquid can handle various multi-modal
+understanding and generation tasks.
+visual generation or visual understanding tasks improves the performance of the other, demonstrating
+the advantages and natural rationale of this paradigm in joint optimization.
+We evaluate the capabilities of Liquid across text-guided image generation, visual understanding,
+and general text-only tasks. For image generation, Liquid outperforms other auto-regressive based
+models, as well as some diffusion models like SD-XL and achieve FID of 5.47 on MJHQ-30K,
+demonstrating that LLMs can acquire excellent imagery capabilities efficiently with a limited amount
+of data. For visual understanding, Liquid surpasses Chameleon and achieved results comparable to
+those of well-established MLLMs. In text-only tasks, Liquid achieves comparable performance with
+Chameleon, which used mix pre-training on a very large scale, and surpasses the performance of
+LLAMA2, demonstrating undegraded linguistic capabilities.
+In summary, the main contributions of this paper can be categorized into the following points:
+• An efficient decoder-only multi-modal generation framework that seamlessly carries out
+visual generation, visual comprehension, and pure language tasks.
+• Comprehensive experiments about scaling laws of unified autoregressive multi-modal models, revealing that the trade-off between language and visual tasks diminishes as scale of
+model increases.
+• An insightful discovery regarding the mutual boost of visual understanding and generation
+tasks within LLMs through the unification of visual tokens, highlighting the potential of
+LLMs to improve both understanding and generation capabilities by mixtraining.
+
+2
+
+Preliminaries
+
+Image Tokenizer. We use a VQGAN [15] from Chameleon [64] as image tokenizer. It encodes a 512
+× 512 image into 32 × 32 discrete tokens in a codebook of size 8192, which are flattened into a 1024
+image token for LLM. In LLMs such as Llama [69] and Gemma [65], the raw text input will also
+be tokenized into numbers (discrete IDs) representing the positions of the words in the vocabulary
+by the BPE [58] tokenizer. For example, "a small dog" is tokenized into [235250, 2301, 5929] in
+Gemma, the vocabulary size is 256,000. Therefore, we only need to extend the entire vocabulary
+size to 256, 000 + 8192, where the former for text and the latter for image. In this way, both vision
+and language are represented as sequences of discrete IDs, whether for input or output. After that,
+IDs index the input embeddings through an embedding-layer, thus completing the unification of the
+embedding space. Correspondingly, we extend the original LM head by 8192 dimensions to enable
+the model to predict both text and image tokens within the same embedding space.
+Architecture. As illustrated in Fig. 2, Liquid can be constructed based on any existing LLMs. In
+this paper, we employ the GEMMA-7B [65] as base model of Liquid to validate its multimodal
+understanding, image generation capabilities, and performance on text-only tasks after augmenting
+3
+
+it with the ability to understand and generate images. To further investigate whether a trade-off
+exists when accommodating visual generation tasks and text generation tasks within the same LLM
+space, as well as to explore the scaling performance of different sized models, we conduct same
+training on Llama-3 1B [14], GEMMA-2 series [66] at scales of 2B, 9B, and Qwen2.5 series [23]
+at scales of 0.5B, 7B, 32B, thereby observing their distinct performances. We refrain from altering
+any structures within the LLMs to facilitate continued training directly from pre-trained weights.
+The only modification is the addition of 8192 new learnable embeddings for discrete image tokens.
+Correspondingly, we extend the original LM head by 8192 dimensions to enable the model to predict
+both text and image tokens within the same embedding space. The LLMs maintain their original
+next-token prediction training objective with cross-entropy loss. , with the only variation being that
+their vocabulary space has been extended from purely language-space to a combined space for both
+visual and linguistic modalities.
+Data Preparation. To maintain the language abilities of the pre-trained LLMs, we sample text-only
+data from public datasets for the pre-training stage. We sample 15M text data from DCLM [28],
+12M from SlimPajama [60], and 3M code data from Starcoderdata [31], totaling 30M text instances
+for approximately 60 billion text tokens. For image-text pairs, we use JourneyDB [46] and internal
+MidJourney-style synthetic data to compile 30M high-quality image data, for a total of 30 billion
+image tokens. All the data are used to form a hybrid multi-modal data for continue pre-training,
+resulting in quick acquisition of image generation capabilities while retaining language abilities.
+Training Procedure. We use a total of 60M data to continue pretraining our models. For all
+image-text pair data, we define the input format for multi-modal training data as:
+[bos] {text token} [boi] {image token} [eoi][eos] .
+
+Here, [bos] and [eos] are the begin-of-sequence and end-of-sequence tokens defined in the original
+text tokenizer. We incorporate two additional spatial tokens, [boi] and [eoi] to signify the start and end
+of image tokens. Furthermore, we reverse 20% of text-to-image data as captioning task to enhance the
+visual understanding abilities. In the scaling experiments, for each model size, we independently use
+30M text-only data, 30M text-to-image data, and a mixed dataset of 60M data to train three different
+versions of the models. We then evaluate their performance on a series of tasks.
+Since all images are tokenized into discrete image tokens that share the same vocabulary and
+embedding space as text tokens, the training objective is consistent with LLMs via next-token
+prediction and utilizes the standard cross-entropy loss. Moreover, we observe that during the continue
+pre-training stage, models of 7B size and above tend to encounter loss spikes in the early stages of
+training. It significantly impacts the training performance and convergence speed. To mitigate this
+issue, we reduce the max grad norm to 0.5 for larger models and use max-z loss [77] to normalize the
+logits, enhancing the stability of training.
+Training Details. In all experiments, we initiate with a learning rate of 2e-5. Except for the scaling
+experiments that employed a constant learning rate, all other tests utilized a cosine learning schedule.
+The training batch size is set at 1024, and the max context length is set to 2048. We use the DeepSpeed
+Zero3 optimization strategy.
+
+3
+
+Scaling, Trade-offs, and Synergy in Unified Multi-modal Generation
+
+In this section, we investigate the following questions under the unified decoder-only multi-modal
+paradigm of Liquid:
+§3.1 Does vision generation adhere to the scaling laws observed in LLMs?
+§3.2 Do vision generation and language tasks exhibit mutual interference or enhancement?
+§3.3 Is there a mutually beneficial relationship between vision understanding and generation?
+Evaluation settings. We use validation loss, token accuracy, and VQAscore from GenAI-Bench [35]
+to evaluate the performance of visual generation tasks. For language ability, we use the average
+score across five widely-used benchmarks: HellaSwag [80], WinoGrande [56] , ARC-Easy [10],
+ARC-Challenge [10], and BoolQ [9]. For visual understanding tasks, we conduct evaluations on
+VQA-v2 [19], GQA [22], TextVQA [59], POPE [32], and MME [16].
+4
+
+0.75
+
+6.6
+7.6
+
+6.4
+
+0.7
+0.65
+
+6.6
+
+5.8
+5.6
+
+5.4
+5.2
+
+0.6
+
+VQA Score
+
+6
+
+Validation Acc.
+
+Validation Loss
+
+6.2
+
+5.6
+
+4.6
+
+0.5
+
+0.45
+0.4
+
+3.6
+
+5
+
+0.35
+
+4.8
+
+2.6
+5
+
+15
+
+25
+Iterations (K)
+
+35
+
+5
+
+15
+
+25
+Iterations (K)
+
+0.3
+
+35
+
+5
+
+0.7
+
+6.2
+
+0.65
+
+Validation Loss
+
+0.65
+
+6.4
+
+0.6
+
+6
+
+VQA Score
+
+0.7
+
+5.8
+
+R2 = 0.9051
+
+0.55
+
+5.6
+
+0.5
+
+0.4
+4.8
+
+5.3
+
+5.8
+Validation Loss
+
+6.3
+
+35
+
+0.6
+0.55
+0.5
+
+5.2
+
+0.4
+
+5
+
+0.35
+
+4.8
+1.00E+19
+
+25
+Iterations (K)
+
+0.45
+
+5.4
+
+0.45
+
+15
+
+0.75
+
+6.6
+
+0.75
+
+VQA Score
+
+0.55
+
+1.00E+20
+1.00E+21
+Training FLOPs
+
+1.00E+22
+
+0.3
+1.00E+19
+
+1.00E+20
+1.00E+21
+Training FLOPs
+
+1.00E+22
+
+Figure 3: Scaling behavior of LLMs in multimodal generation across different sizes. We explore
+the visual generation performance of LLMs ranging from 0.5B to 32B in size after undergoing mixed
+training with language data and text-to-image data. The validation loss smoothly decreases as both
+the model size and training iterations increase, while token accuracy and VQA Score consistently rise.
+The VQA Score consistently increases as the validation loss decreases, indicating a strong correlation
+between them. Under the same training FLOPs, smaller models reach lower validation losses more
+quickly, but larger models ultimately achieve higher evaluation metrics.
+
+3.1
+
+Scaling Results on Visual Generation
+
+We explore the visual generation performance of LLMs ranging from 0.5B to 32B in size after
+mixed training with 60M language and text-to-image data. As shown in Fig. 3, with the increase
+in model size and training iterations, the validation loss smoothly decreases, while token accuracy
+and VQA Score consistently increase. The VQA score continues to rise as the validation loss
+decreases, indicating a strong correlation between validation loss and holistic image evaluation
+metrics. Moreover, we observe a clear power-law scaling trend for Loss as a function of Training
+FLOPs, as consistent with LLMs. Under the same training FLOPs, we find smaller models achieve
+lower validation losses and higher VQA Scores more quickly, but larger models ultimately reach
+higher evaluation metrics. This may be attributed to the fact that smaller models can train for more
+steps under the same FLOPs, enabling them to transition more quickly from the language domain to
+the multimodal domain. Although smaller models can quickly acquire visual generation abilities,
+their upper limits are lower, making it difficult to achieve high-quality visual generation results. For
+further visualizations on scaling model size and training compute, please refer to Fig. 4.
+Finding 1: After equipping LLMs with visual capabilities through vocabulary expansion,
+their performance on visual generation tasks still follows the power-law scaling law observed
+in language tasks.
+
+3.2
+
+Is there a conflict between visual and language generation?
+
+To explore the mutual influence between visual and language generation, we train models of six
+different sizes under three distinct settings and compared their performances. In addition to training
+on a mixed multimodal dataset of 60M mix data, we separately train two sets of models, one on 30M
+text-only data and the other on 30M text-to-image data, to isolate language and visual generation
+capabilities. We then compare the performance gaps between these isolated models and the mixed
+model on both language tasks and visual generation tasks.
+5
+
+Scaling up model size
+
+Scaling up training compute
+
+Figure 4: Scaling model size and training compute improves visual fidelity and soundness. Zoom in
+for a better view. Samples are drawn from Liquid models of 4 different sizes (0.5B, 1B, 2B, 9B) and
+3 different training steps (5K, 15K, 40K).
+
+To investigate the impact on language capabilities, we evaluate the language performance of the
+mixed pre-train model against the model pre-trained solely on text-only data, as illustrated in Fig. 5,
+we find a trade-off phenomenon when both tasks were mixed in the training of smaller models;
+however, as the model size increased, this trade-off gradually disappear. It confirms that larger models
+possess sufficient capacity to handle both visual and language spaces generation concurrently.
+In language tasks, we observe a trade-off in performance of multimodal LLMs, raising the question
+of whether this trade-off also exists in visual generation tasks. As illustrated in Fig. 6, mixed training
+leads to higher validation loss on visual generation tasks for models of every size. However, the
+detrimental effect on the VQA-Score decreases as the model size increases. This reduction is partly
+due to the increased capacity of larger models and may also be attributed to the evaluation metrics
+approaching saturation. Nevertheless, it can be argued that as the size of the model increases, the
+6
+
+6
+
+70
+
+5
+
+65
+
+4
+
+Trade-off
+
+Mean Score
+
+75
+
+60
+
+55
+Text Only
+Mix Training
+
+50
+
+3
+
+2
+1
+
+45
+
+0
+0.5B
+
+1B
+
+2B
+7B
+Model Size
+
+9B
+
+32B
+
+0.5B
+
+1B
+
+2B
+
+7B
+
+9B
+
+32B
+
+Model Size
+Figure 5: The performance impact of multi-modal mixed training
+versus text-only training on
+language tasks. Multi-modal mixed training does impact language performance when the model size
+is small. However, this degradation gradually disappears as the model size increases.
+
+6.5
+
+0.75
+
+6.3
+
+0.7
+
+6.1
+0.65
+5.9
+
+VQA Score
+
+Validation Loss
+
+0.6
+5.7
+5.5
+
+0.55
+0.5
+
+5.3
+0.45
+
+5.1
+4.9
+
+0.4
+
+4.7
+
+0.35
+
+4.5
+5
+
+10
+
+15
+
+20
+25
+Iterations (K)
+
+30
+
+35
+
+0.3
+
+40
+
+5
+
+6
+
+0.75
+
+5.8
+
+0.73
+
+15
+
+20
+25
+Iterations (K)
+
+30
+
+35
+
+40
+
+0.71
+
+5.6
+
+0.69
+VQA Score
+
+Validation Loss
+
+10
+
+5.4
+5.2
+5
+
+0.67
+0.65
+0.63
+0.61
+
+4.8
+
+0.59
+
+Mix Training
+T2I Training
+
+4.6
+
+Mix Training
+T2I Training
+
+0.57
+
+4.4
+
+0.55
+0.5B
+
+1B
+
+2B
+7B
+Model Size
+
+9B
+
+32B
+
+0.5B
+
+1B
+
+2B
+7B
+Model Size
+
+9B
+
+32B
+
+Figure 6: Scaling results between T2I only training and Mix training. Mix training results in higher
+validation loss on visual generation tasks for models of every size. However, its impact on the VQA
+Score diminishes as the size of the model increases.
+trade-off between visual generation and language tasks gradually diminishes or even disappears. This
+encourages leveraging the scaling capabilities of LLMs into multimodal models.
+Finding 2: There exists a trade-off between visual and language generation, but this tradeoff gradually diminishes as the model size increases.
+3.3
+
+Will Understanding and Generation Tasks Mutually Improve Each Other?
+
+When visual inputs and outputs are modeled by LLMs in the same manner, the gap between them
+effectively vanishes for LLMs. In this section, we explore whether there exists a synergistic relationship between visual generation and language capabilities. We conduct three experiments. In the
+first set, we used a combination of 10M text-only data, 10M visual generation data, and 10M visual
+understanding data, resulting in a total of 30M data for the pre-training phase, which serves as the
+baseline. Next, we add 10M visual generation data (‘Add Gen.’) and 10M visual understanding data
+7
+
+Training Data
+
+Method
+Baseline
+Add Gen.
+Add Und.
+
+Text-only
+10M
+10M
+10M
+
+Visual Gen.
+10M
+20M
+10M
+
+Visual Generation
+Visual Und.
+10M
+10M
+20M
+
+gFID↓
+19.9
+12.8
+14.9
+
+Basic
+0.63
+0.78
+0.73
+
+Advanced
+0.58
+0.63
+0.62
+
+Visual Understanding
+Overall
+0.60
+0.69
+0.66
+
+VQAv2
+60.7
+64.5
+63.5
+
+GQA
+51.3
+53.2
+53.7
+
+TextVQA
+39.2
+39.8
+40.5
+
+POPE
+75.9
+78.0
+76.8
+
+MME
+909.6
+1066.8
+1035.1
+
+Table 1: The impact between visual understanding and generation tasks. “Visual Gen." refers to the
+data used for training text-guided image generation, while“Visual Und." refers to the data used for
+training visual understanding capabilities. Compared to the baseline, adding more understanding
+data improve the generation capability, and increasing the generation data also aids in understanding
+ability.
+10M text + 10M Gen. + 10M Und.
+MJHQ-30K
+
+10M text + 10M Gen. + 20M Und.
+GenAI-Adv
+
+GenAI-Basic
+
+10M text + 20M Gen. + 10M Und.
+
+VQAv2
+
+GQA
+
+POPE
+
+20
+
+0.80
+
+0.75
+
+65
+
+55
+
+79
+
+18
+
+0.75
+
+0.70
+
+64
+
+54
+
+78
+
+16
+
+0.70
+
+0.65
+
+63
+
+53
+
+77
+
+14
+
+0.65
+
+0.60
+
+62
+
+52
+
+76
+
+12
+
+0.60
+
+0.55
+
+61
+
+51
+
+75
+
+10
+
+0.55
+
+0.50
+
+60
+
+50
+
+Base
+-line
+
+Add
+Und.
+
+Add
+Gen.
+
+Base
+-line
+
+Add
+Und.
+
+Add
+Gen.
+
+Base
+-line
+
+Add
+Und.
+
+Add
+Gen.
+
+Base
+-line
+
+Visual Generation Task
+
+Add
+Und.
+
+Add
+Gen.
+
+74
+Base
+-line
+
+Add
+Und.
+
+Add
+Gen.
+
+Base
+-line
+
+Add
+Und.
+
+Add
+Gen.
+
+Visual Understanding Task
+
+Figure 7: Synergistic mutual enhancement between visual understanding and generation tasks:
+expanding training data for one improves performance in both.
+
+(‘Add Und.’) respectively. After the three pret-raining phases, we fine-tune the models on instruction
+data and subsequently evaluate them on both visual understanding and generation benchmarks.
+As shown in Tab. 1 and Fig. 7, we observe that adding more visual understanding data during
+pre-training significantly improves the performance of visual generation tasks. Conversely, adding
+more generation data further enhances the performance of understanding tasks. This phenomenon
+indicates that when the modality spaces for visual understanding and generation are unified, the
+training of these two tasks can mutually benefit each other. Intuitively, when images are represented
+in the same feature space, both visual generation and visual understanding tasks require stronger
+consistency constraints and sufficient interaction between language and visual information. Therefore,
+the optimization directions for these two tasks are very similar. It further demonstrates the potential
+of LLMs as general-purpose multi-modal generators.
+Finding 3: There exists a synergistic relationship between visual understanding and generation, where increasing data for either leads to simultaneous improvements in both.
+
+4
+
+Experiments
+
+We will obtain two types of models: the Pretrain model and the Instruction Tuning model (IT).
+When we initialize with an existing LLM and pretrain it on a mixed dataset of 60M multimodal data,
+the resulting model is referred to as the Pretrain model. This model retains fundamental language
+capabilities while additionally acquiring visual generation abilities. We evaluate its performance on
+both visual generation tasks and language tasks. For visual understanding tasks, we followed the
+pipeline commonly used in most visual understanding works. Specifically, we performed additional
+supervised fine-tuning (SFT) on the Pretrain model to enhance its instruction-following capabilities
+and then assessed its visual understanding performance.
+4.1
+
+Quantitative Results on Visual Generation
+
+For the image generation tasks, we evaluate the model on three benchmarks: GenAI-Bench [35],
+MJHQ-30K [26], and WISE [45]. GenAI-Bench [35] is an challenging image-to-text generation
+benchmark designed to evaluate the capabilities of visual generation models. It employs VQAScore,
+which leverages a visual-question-answering (VQA) model. This enables more precise evaluation of
+8
+
+Method
+
+Type
+
+#Training Images
+
+Attribute↑
+
+Relation↑
+
+Scene↑
+
+Overall↑
+
+Spatial
+
+Action
+
+Part
+
+SD v2.1 [55]
+SD-XL [48]
+Midjourney v6 [51]
+DALL-E 3 [36]
+
+Diffusion
+Diffusion
+Diffusion
+Diffusion
+
+2000M
+2000M
+–
+–
+
+0.80
+0.84
+0.88
+0.91
+
+0.79
+0.84
+0.87
+0.90
+
+0.76
+0.82
+0.87
+0.92
+
+0.77
+0.83
+0.87
+0.89
+
+0.80
+0.89
+0.91
+0.91
+
+0.78
+0.83
+0.87
+0.90
+
+Show-o [76]
+LWM [40]
+VILA-U [75] (256)
+VILA-U [75] (384)
+
+Discrete Diff.
+Autoregressive
+Autoregressive
+Autoregressive
+
+36M
+–
+15M
+15M
+
+0.72
+0.63
+0.78
+0.75
+
+0.72
+0.62
+0.78
+0.76
+
+0.70
+0.65
+0.77
+0.75
+
+0.70
+0.63
+0.78
+0.73
+
+0.75
+0.70
+0.79
+0.75
+
+0.70
+0.63
+0.76
+0.73
+
+Liquid-7B
+
+Autoregressive
+
+30M
+
+0.84
+
+0.86
+
+0.81
+
+0.83
+
+0.91
+
+0.83
+
+(a) VQAScores on basic prompts of GenAI-Bench
+Method
+
+Type
+
+#Training Images
+
+Count↑
+
+Differ↑
+
+Logical↑
+
+Compare↑
+
+Negate
+
+Universal
+
+Overall↑
+
+SD v2.1 [55]
+SD-XL [48]
+Midjourney v6 [51]
+DALL-E 3 [36]
+
+Diffusion
+Diffusion
+Diffusion
+Diffusion
+
+2000M
+2000M
+–
+–
+
+0.68
+0.71
+0.78
+0.82
+
+0.70
+0.73
+0.78
+0.78
+
+0.68
+0.69
+0.79
+0.82
+
+0.54
+0.50
+0.50
+0.48
+
+0.64
+0.66
+0.76
+0.80
+
+0.62
+0.63
+0.69
+0.70
+
+Show-o [76]
+LWM [40]
+VILA-U [75] (256)
+VILA-U [75] (384)
+
+Discrete Diff.
+Autoregressive
+Autoregressive
+Autoregressive
+
+36M
+–
+15M
+15M
+
+0.70
+0.59
+0.70
+0.68
+
+0.62
+0.58
+0.71
+0.67
+
+0.71
+0.54
+0.74
+0.71
+
+0.51
+0.49
+0.53
+0.51
+
+0.65
+0.52
+0.66
+0.64
+
+0.60
+0.53
+0.64
+0.61
+
+Liquid-7B
+
+Autoregressive
+
+30M
+
+0.76
+
+0.73
+
+0.74
+
+0.46
+
+0.74
+
+0.65
+
+(b) VQAScores on advanced prompts of GenAI-Bench
+Table 2: Comparison of VQAscore with other visual generation methods on GenAI-Bench. The basic
+prompts primarily focus on aspects such as scene, attribute, and relation, while the advanced prompts
+place a greater emphasis on counting, comparison, differentiation, and logic. The advanced prompts
+require complex visio-linguistic reasoning and present a significantly higher level of difficulty. Liquid
+outperformes all auto-regressive unified MLLMs on both types of prompts and has even surpassed
+some well-established diffusion models like SD v2.1 [55] and SD-XL [48]. It demonstrates that the
+images generated by Liquid align well with the input text prompts.
+
+how well the generated image aligns with the text prompt, critically assessing the capability to parse
+scenes, objects, attributes, relationships, and engage in higher-order reasoning such as comparison and
+logic. MJHQ [26] calculates the Frechet Inception Distance (FID) [21] score between the generated
+images and 30K high-quality images to assess the quality of the generated images.
+WISE [45] is the first comprehensive benchmark
+Type
+#Images FID↓
+designed to evaluate world knowledge integra- Method
+SD-XL [48]
+Diffusion
+2000M 9.55
+tion in text-to-image generation, featuring 1,000
+PixArt [6]
+Diffusion
+25M 6.14
+carefully curated prompts spanning 25 diverse
+Playground v2.5 [26] Diffusion
+–
+4.48
+subdomains. It proposes WiScore as evaluation
+Show-o
+[76]
+Discrete
+Diff.
+36M
+15.18
+metric to systematically assesses knowledgeLWM [40]
+Autoregressive
+–
+17.77
+image alignment through a weighted combina- VILA-U (256) [75] Autoregressive 15M 12.81
+tion of semantic consistency, physical realism, VILA-U (384) [75] Autoregressive 15M 7.69
+and aesthetic quality. These three benchmarks
+Janus [74]
+Autoregressive
+10.10
+collectively evaluate the generated images from
+Liquid-7B
+Autoregressive 30M 5.47
+three perspectives: text-image alignment, image
+realism and fidelity, and world knowledge with Table 3: Comparison with other visual generation
+reasoning.
+methods on MJHQ-30K evaluation benchmark.
+Text-image Alignment. As shown in Tab. 2, The FID of Liquid is lower than that of all the
+compare with other auto-regressive based meth- auto-regressive models and even outperforms most
+ods, Liquid achieves a better overall score under diffusion models. It indicates that the images genboth basic prompts and advanced prompts. This erated by Liquid have superior aesthetic quality.
+suggests that the images generated by Liquid
+align better semantically with the input text prompts. Notably, Liquid also outperforms some wellestablished diffusion models like SD v2.1 [55] and SD-XL [48] for both basic and advanced prompts.
+9
+
+512×512
+
+640×960
+
+512×512
+
+512×1024
+
+640×960
+
+512×512
+
+512×512
+
+512×512
+
+512×512
+
+512×512
+
+512×512
+
+1024×512
+
+1280×480
+
+640×960
+
+512×1024
+
+512×512
+
+1280×480
+
+1024×512
+
+1024×512
+
+1024×512
+
+480×1280
+
+Figure 8: The generated samples from Liquid-7B, showcase excellent capabilities in crafting high
+aesthetic and described-consistent images.
+
+Compared to these diffusion models, Liquid utilizes significantly fewer image data, which indicating
+that learning based on LLMs can assist the model in understanding the semantic association between
+the generated content and prompts, while also offering higher training efficiency. Moreover, it
+demonstrates that LLMs have strong potential for generating complex visual content.
+Image Realism and Fidelity. In Tab. 3, we report FID on MJHQ-30K to compare the images
+quality generated by Liquid with other models. It is observable that Liquid not only has a lower FID
+than all other auto-regressive methods but also surpasses most well-known diffusion models except
+Playground v2.5 [26], achieving a very low FID of 5.47. It indicates that LLMs are also capable
+of generating high-quality images, providing proof that the upper limit of LLMs in terms of image
+aesthetic quality is not inferior to diffusion models. Further more, due to the capability of LLM to
+generate dynamically-length content in the form of next-token prediction, the convenience can be
+applied to visual generation. We find that by appending instructions about the resolution to the input
+text prompt, such as "length is: width is:", the model can quickly learn to generate the corresponding
+code according to the specified number of rows and columns. Fig 8 demonstrates the generation
+results at various resolutions, showcasing the flexibility of Liquid.
+World Knowledge and Reasoning. Compared to prior methods that only evaluate shallow text-image
+alignment, WISE introduces more challenging reasoning-driven prompts (e.g., ‘Einstein’s favorite
+musical instrument’), requiring models to generate images based on deeper semantic understanding.
+AAs shown in Tab. 4, Liquid significantly outperforms other unified MLLMs in complex reasoning
+scenarios for visual generation and achieves overall WiScore at 0.41, Notably, it even surpasses
+10
+
+Type
+
+Model
+
+Cultural
+
+Time
+
+Space
+
+Biology
+
+Physics
+
+Chemistry
+
+Overall
+
+Gen. Only
+
+FLUX.1-dev
+FLUX.1-schnell
+PixArt-Alpha
+playground-v2.5
+SD-v1-5
+SD-2-1
+SD-XL-base-0.9
+SD-3-medium
+
+0.48
+0.39
+0.45
+0.49
+0.34
+0.30
+0.43
+0.42
+
+0.58
+0.44
+0.50
+0.58
+0.35
+0.38
+0.48
+0.44
+
+0.62
+0.50
+0.48
+0.55
+0.32
+0.35
+0.47
+0.48
+
+0.42
+0.31
+0.49
+0.43
+0.28
+0.33
+0.44
+0.39
+
+0.51
+0.44
+0.56
+0.48
+0.29
+0.34
+0.45
+0.47
+
+0.35
+0.26
+0.34
+0.33
+0.21
+0.21
+0.27
+0.29
+
+0.50
+0.40
+0.47
+0.49
+0.32
+0.32
+0.43
+0.42
+
+Und. & Gen.
+
+Ours
+Emu3∗
+Janus-1.3B
+JanusFlow-1.3B
+Janus-Pro-1B
+Janus-Pro-7B
+Orthus-7B-base
+Orthus-7B-instruct
+Show-o-demo
+VILA-U-7b-256
+
+0.38
+0.34
+0.16
+0.13
+0.20
+0.30
+0.07
+0.23
+0.28
+0.26
+
+0.42
+0.45
+0.26
+0.26
+0.28
+0.37
+0.10
+0.31
+0.36
+0.33
+
+0.53
+0.48
+0.35
+0.28
+0.45
+0.49
+0.12
+0.38
+0.40
+0.37
+
+0.36
+0.41
+0.28
+0.20
+0.24
+0.36
+0.15
+0.28
+0.23
+0.35
+
+0.47
+0.45
+0.30
+0.19
+0.32
+0.42
+0.15
+0.31
+0.33
+0.39
+
+0.30
+0.27
+0.14
+0.11
+0.16
+0.26
+0.10
+0.20
+0.22
+0.23
+
+0.41
+0.39
+0.23
+0.18
+0.26
+0.35
+0.10
+0.27
+0.30
+0.31
+
+Table 4: Normalized WiScore of different models on WISE benchmark. Liquid substantially surpasses
+all unified MLLMs while rivaling leading specialized visual generation models. * indicates the
+model underwent text-to-image fine-tuning rather than retaining full comprehension and generation
+capabilities. “Und.” and “Gen.” denote “understanding” and “generation”.
+Method
+
+BaseModel
+
+Training
+
+BoolQ
+
+PIQA
+
+SIQA
+
+HellaSwag
+
+WinoGrande
+
+ARC-e
+
+ARC-c
+
+MMLU
+
+Llama2 [70]
+
+Llama-7B
+Llama-13B
+
+–
+–
+
+77.4
+81.7
+
+78.8
+80.5
+
+48.3
+50.3
+
+77.2
+80.7
+
+69.2
+72.8
+
+75.2
+77.3
+
+45.9
+49.4
+
+45.3
+54.8
+
+Chameleon [64]
+
+Chameleon-7B
+Chameleon-34B
+
+–
+–
+
+81.4
+86.0
+
+79.6
+83.3
+
+57.0
+63.3
+
+74.2
+82.7
+
+70.4
+78.5
+
+76.1
+84.1
+
+46.5
+59.7
+
+52.1
+65.8
+
+Gemma [65]
+
+Gemma-7B
+
+–
+
+83.4
+
+81.2
+
+51.8
+
+80.9
+
+75.1
+
+53.8
+
+81.0
+
+62.6
+
+VILA-U [75]
+
+Llama2-7B
+
+multi-modal
+
+70.6
+
+73.5
+
+47.7
+
+54.2
+
+57.3
+
+51.6
+
+34.0
+
+25.5
+
+Ours
+
+Gemma-7B
+Gemma-7B
+Llama3-1B
+Llama3-1B
+Qwen2.5-7B
+Qwen2.5-7B
+Qwen2.5-32B
+Qwen2.5-32B
+
+text-only
+multi-modal
+text-only
+multi-modal
+text-only
+multi-modal
+text-only
+multi-modal
+
+82.1
+81.0
+61.0
+53.3
+80.8
+80.0
+85.2
+84.9
+
+81.4
+81.0
+75.3
+73.8
+79.5
+78.7
+80.5
+79.8
+
+46.9
+46.7
+41.7
+40.3
+45.4
+45.5
+46.1
+45.6
+
+77.2
+76.1
+62.7
+55.0
+75.4
+73.5
+79.2
+79.7
+
+71.7
+72.7
+59.7
+54.5
+70.0
+66.7
+74.0
+73.5
+
+76.3
+75.6
+61.5
+59.0
+74.1
+74.5
+78.9
+78.2
+
+48.8
+49.0
+34.0
+32.4
+50.4
+49.2
+56.1
+56.3
+
+55.5
+56.0
+27.2
+24.5
+64.9
+62.0
+68.0
+66.5
+
+Table 5: Performance of pre-trained model on standard text-only benchmarks. Liquid outperforms
+the well-established language model Llama2 and the mix-pretrained multi-modal language model
+Chameleon in most tasks, exhibiting undegraded linguistic capabilities.
+specialized generative models such as SD series and FLUX.1-schnell, demonstrating its strong
+retention of world knowledge and reasoning capabilities.
+4.2
+
+Comparison with Mainstream LLMs
+
+To validate whether acquiring image understanding and generation capabilities has any impact on
+the original language abilities of the LLMs, we compare our mixed multimodal pretrained model
+against other state-of-the-art large language models and multi-modal language models across a suite
+of popular benchmarks that measure commonsense reasoning and reading comprehension capabilities:
+HellaSwag [80], WinoGrande [56] , ARC-Easy [10], ARC-Challenge [10], OpenBookQA [44], PIQA
+[3], SIQA [57], and BoolQ [9]. We also perform an evaluation of the 5-shot results on MMLU [20],
+a comprehensive benchmark that measures world/in-domain knowledge and problem-solving skills
+across 57 subjects.
+As shown in Tab. 5, Liquid outperforms the well-established language model Llama2 [70] and the
+mix-pretrained multi-modal language model Chameleon [64] in most tasks, exhibiting undegraded
+linguistic capabilities. Compared with Chameleon [64], which is mixed pretrained with an extremely
+large scale of data, Liquid performs training from existing LLMs that already possess decent language
+11
+
+Type
+
+Method
+
+LLM
+
+Visual Token
+
+Res.
+
+VQAv2
+
+GQA
+
+TextVQA
+
+POPE
+
+MME
+
+Und. Only
+
+LLaVA-1.5 [39]
+VILA [34]
+InstructBLIP [11]
+IDEFICS-9B [25]
+
+Vicuna-1.5-7B
+LLaMA-2-7B
+Vicuna-7B
+LLaMA-7B
+
+Continuous
+Continuous
+Continuous
+Continuous
+
+336
+336
+224
+224
+
+78.5∗
+79.9∗
+–
+50.9
+
+62.0∗
+62.3∗
+49.2
+38.4
+
+58.2
+64.4
+50.1
+25.9
+
+85.9
+85.5
+–
+–
+
+1510.7
+1533.0
+–
+–
+
+Unified-IO 2 [41]
+Emu [63]
+LaVIT [24]
+DreamLLM [13]
+CM3Leon-7B [79]
+LWM [40]
+Show-o [76]
+VILA-U [40]
+Chameleon [64]
+Ours
+Ours†
+Ours‡
+
+6.8B from scratch
+LLaMA-13B
+LLaMA-7B
+Vicuna-7B
+7B from scratch
+LLaMA-2-7B
+Phi-1.5-1.3B
+LLaMA-2-7B
+34B from scratch
+Gemma-7B
+Gemma-7B
+LLaMA-2-7B
+
+Continuous
+Continuous
+Continuous
+Continuous
+Discrete
+Discrete
+Discrete
+Discrete
+Discrete
+Discrete
+Discrete
+Discrete
+
+384
+224
+224
+224
+256
+256
+256
+256
+512
+512
+512
+256
+
+79.4∗
+52.0
+66.0
+72.9∗
+47.6
+55.8
+59.3∗
+75.3∗
+69.6
+68.0∗
+71.3∗
+76.8∗
+
+–
+–
+46.8
+–
+–
+44.8
+48.7∗
+58.3∗
+–
+56.1∗
+58.4∗
+61.1∗
+
+–
+–
+–
+41.8
+–
+18.8
+–
+48.3
+–
+40.4
+42.4
+51.6
+
+87.7
+–
+–
+–
+–
+75.2
+73.8
+83.9
+–
+81.1
+81.1
+83.2
+
+–
+–
+–
+–
+–
+–
+948.4
+1336.2
+–
+1107.2
+1119.3
+1448.0
+
+Und. & Gen.
+
+Table 6: Comparison with leading methods on visual language benchmarks. * indicates that images
+in the training split of these datasets are observed during training. “Und.” and “Gen.” denote
+“understanding” and “generation”. Our performance surpasses most models that unify understanding
+and generation, and it is comparable with models dedicated to visual understanding in some tasks. †
+has a longer pre-training phase, ‡ indicates the use of a VQVAE aligned with CLIP semantics during
+training.
+
+capabilities, maintaining these capabilities without degradation. This result validates the efficiency
+of our training framework and demonstrates that with this framework, we can extend the visual
+generation and understanding capabilities to LLMs of any structure and size.
+4.3
+
+Quantitative Results on Visual Understanding
+
+To evaluate the visual understanding capabilities, we use 1M LMSYS [81] as text-only instruction
+data, coupled with 1M text-to-Image data sampled from high-quality data, and 1.5M multi-modal
+instruction tuning data introduced in Minigemini [33]. This compiles a 3.5M hybrid instruction
+tuning data for further refining our pretrained model. We report results on widely-adopted zero-shot
+image-based benchmarks, which include VQA-v2 [19], GQA [22], TextVQA [59], POPE [32], and
+MME [16].
+As shown in Tab. 6, compare with the MLLMs with discrete visual token, Liquid outperforms
+models with stander VQVAE like LWM [40], Chameleon [64], and Show-o [76]. However, the
+performance of MLLMs using discrete visual tokens on visual understanding tasks tends to be lower
+than mainstream models that employ continuous visual tokens. Most MLLMs with continuous
+visual token use CLIP features as visual input, it is a significant advantage considering that CLIP is
+pre-trained on a large-scale image-text pair dataset, leading to a strong alignment between its visual
+space features and language space features. This alignment substantially aids the LLMs, making
+it easier for them to understand visual content. In contrast, using image tokens derived directly
+from VQVAE tokenizer as input means that the corresponding embedding features in the LLM are
+reinitialized with out any alignment. Without extensive pre-training to align feature spaces, the
+visual understanding capabilities might be slightly inferior to models using CLIP as visual input.
+The difference in performance mainly stems from the fact that most VQVAE currently do not align
+image-text spaces. VILA-U [75] has confirmed that by adding CLIP loss during the VQVAE training
+to align its visual space, the performance of visual understanding tasks can be improved.
+In another hand, we attempt to increase the training step the pre-training phase by add one more
+epoch, and then we were surprised to discover that the model could achieve better performance on
+visual understanding tasks (marked with †). This result indicates that mixed-modality pre-training
+plays a role similar to CLIP pre-training, aligning text and visual embedding spaces. More pretraining or more suitable embedding initialization methods could further boost the performance
+of discrete visual tokens on visual understanding tasks. To further explore the potential of this
+paradigm, we replace the VQVAE in Chameleon with UniTok [43] that aligns visual and language
+spaces during training (marked with ‡), outperforming VILA-U [75], which trained a CLIP-based
+multi-codebook VQVAE to improve understanding, and achieving results on par with LLaVA. This
+demonstrates the importance of visual-semantic space alignment for understanding tasks. Larger-scale
+12
+
+pretraining or introducing semantic-aligned priors for visual tokens proves crucial for enhancing the
+comprehension capabilities of unified multimodal models, representing a key direction for future
+tokenizer improvements.
+4.4
+
+In-Context Learning Across Modalities
+
+In-context learning (ICL) is a hallmark capability of LLMs that enables few-shot adaptation through task demonstrations — has
+revolutionized how models generalize to unseen scenarios without parameter updates.
+To investigate whether our unified multimodal architecture Liquid can extend this
+emergent capability to the vision-language
+space, we attempt to provide the model
+with several cross-modal task examples. We
+find that incorporating interleaved multimodal data [84] into the pretraining dataset
+enables the model to further learn interFigure 9: Liquid has good in-context learning capabilactions between multimodal contents, as
+ity. We feed two image-text pairs and a third image as
+shown in Fig. 9, given “<image1> is sunny,
+the context to prompt the model.
+<image2> is rainy, <image3>”, Liquid correctly associates the third image with “is
+snowy” by recognizing the weather-related visual-textual pattern. Similarly, when shown images of a
+cheetah, eagle, and dolphin paired with their motion domains “fast on land”, “fast in air”, the model
+infers “fast in water” by aligning visual semantics with spatial attributes. These results demonstrate
+that the model not only grounds individual modalities but also discovers structured cross-modal
+relationships from limited context, mimicking the compositional reasoning of pure-text ICL. Crucially, this capability emerges without explicit multi-modal alignment supervision, suggesting that
+the model internalizes a unified representation space where visual and textual patterns cohere into
+reusable "prompts". Our findings position multi-modal ICL as a promising direction for few-shot
+adaptation in vision-language systems.
+4.5
+
+Visual Comparative Analysis
+
+Impact of Classifier-free Guidance. Classifier-Free Guidance (CFG) scale is hyperparameter that
+control the trade-off between sample quality and diversity in conditional generative models. The
+visual variations of generated images with different CFG scales t are illustrated in Fig. 10 As observed,
+higher CFG scales lead to better alignment between the generated images and the text prompts, but
+cause more chaotic object structures, stronger stylization, and worse photorealism. For example,
+when CFG=15, the structure of the book in the image becomes disordered. Conversely, lower CFG
+scales result in poorer consistency between the image content and the prompt, but improve the
+photorealism and fine-grained texture details.
+Comparison with Other Models. In Fig. 11, we present a comparison between Liquid and other
+unified multi-modal large models in terms of visual generation quality. Compared to models based on
+discrete multi-codebook (VILA-U), diffusion processes (Show-o), and multimodal tokenizers (Janus),
+Liquid demonstrates superior performance in knowledge-aware image generation (first row), scene
+generation accuracy and small-scale facial details (second row), as well as structural coherence of
+objects (third row, vehicles). This visual comparison quantitatively validates Liquid’s advancements
+in generating high-fidelity, semantically consistent images while maintaining strong multi-modal
+understanding capabilities.
+4.6
+
+Discussion
+
+Liquid addresses the following limitations of previous works:
+1. Previous unified multimodal models usually suffered from degraded language capabilities, limiting
+their broader applicability. Liquid demonstrates that a unified multimodal model can maintain on-par
+13
+
+w/o cfg
+
+cfg = 1.5
+
+cfg = 2.0
+
+cfg = 3.0
+
+cfg = 5.0
+
+cfg = 7.0
+
+cfg = 9.0
+
+cfg = 15.0
+
+Figure 10: The prompt for the first row of images is "A book with glowing runes floating beside
+a mystic crystal." The prompt for the second row is "A bird nocks an arrow." Higher CFG scales
+enhance the consistency between the model and the text prompt but degrade photorealism, while
+lower CFG scales improve image realism at the cost of weaker semantic alignment.
+Prompt
+
+Liquid
+
+VILA-U
+
+Show-o
+
+Janus 1B
+
+Janus Pro 1B
+
+Janus Pro 7B
+
+The witch Larina Nix
+
+A highly realistic,
+closeup photograph of a
+beautiful 35 year old
+redread woman writing
+in her journal, sitting on
+her balcony wearing
+warm, stylish outfits.
+
+Sports car, all parts,
+spraying, dispersion,
+sense of technology
+
+Figure 11: Visual generation comparison between Liquid and other unified multim-odal models for
+understanding and generation
+
+language performance even after continued training, preserving its potential as a versatile foundation
+model.
+2. No prior work has explored whether LLMs retain the power-law scaling laws observed in language
+tasks when extended to visual generation tasks. We prove this alignment and further show that vision
+can be effectively learned by LLMs as a form of language.
+3. Previous works [47, 74] observed conflicts between visual understanding and generation tasks. We
+discover that the unified token space enables visual generation and comprehension tasks to mutually
+enhance each other, effectively removing the conflict.
+
+5
+
+Related Work
+
+Multi-modal Large Language Models. The rapid advancement of Large Language Models
+(LLMs) [8, 4, 69, 70, 65] in recent years has inspired researchers to explore their application in
+visual understanding tasks. The integration of visual information with language models brings about
+potent multi-modal comprehension and reasoning abilities. Initial works such as LLaVA [39] and
+MiniGPT4 [83] propose to project features from a pre-trained visual foundation model [50, 30] into
+the feature space of LLMs, exhibiting encouraging multi-modal understanding capacities. Building
+upon this progress, an array of MLLMs [1, 29, 11, 2] have been well-designed and extensively trained
+14
+
+on comprehensive vision-language data, achieving noteworthy performance on visual understanding
+and reasoning tasks. The LLaVA series [39, 37, 42, 5, 7, 38, 33] employ image-text pair data to train
+a projector, projecting the image-feature from CLIP to align the language spaces within the input
+space of LLMs. They further enhance visual understanding and reasoning abilities by training the
+entire pipeline via a curated multi-modal instruction tuning dataset. Despite their robust multi-modal
+understanding capabilities, existing models are primarily focused on visual understanding, falling
+short on generating visual outputs that extend beyond text.
+Vision Generation. In the past few years, the realm of visual generation has been primarily dominated
+by diffusion models [48, 55, 51, 36, 53], which progressively generate high-quality, high-resolution
+images via a diffusion process over a continuous latent space. Several efforts [17, 18, 24, 63, 62, 73]
+have attempted to extend LLMs with pretrained diffusion models to integrate image generation
+capabilities. These studies employ diffusion models as a tool where the diffusion models generate
+images conditioned on the features output by the LLMs. In this combination, LLMs merely contribute
+the semantic feature output and lack the direct ability to generate visual content. Moreover, the upper
+limit of visual generation capacity is dictated by the pre-trained diffusion model, leaving the inherent
+potential of LLMs in visual generation under-explored.
+An alternative viable approach involves using autoregressive models to generate images by predicting
+the next token in a sequence, as exemplified by models like DALL-E [54], CogView [12], Parti [78]
+and LlamaGen [61]. Visual AutoRegressive modeling (VAR)[67] redefined auto-regressive learning
+on images as coarse-to-fine “next-scale prediction”. It demonstrates superior generalization and
+scaling capabilities compared to diffusion transformers while requiring fewer steps.These models
+typically employ VQVAE [15] to tokenize images into a set of discrete codes, subsequently training a
+decoder-only transformer to predict image codes which are then detokenized back to images. These
+approaches showcase the potential of decoder-only LLMs in directly conducting image generation.
+However, they often fail to match the performance of diffusion models and do not explore the
+possibility of unified output between visual and linguistic modalities. In this work, our objective is
+to enable LLMs to generate visual content via next-token prediction without altering their structure
+or capabilities, and explore the characteristics that emerge from the combination of these two tasks
+within LLMs.
+Unified Multimodal Understanding and Generation Several early efforts have explored how
+to construct a unified multi-modal large model for visual generation and understanding based on
+LLMs. The central challenge lies in tokenizing images into sequence inputs for the LLMs and
+detokenizing the sequential output of the LLMs back into images, the choice of image tokenizer.
+Some methods [17, 18, 63, 62] use vision encoders based on ViT like CLIP to encode images into
+continuous feature maps. The continuous visual space from CLIP can retain more visual information
+and have a pre-trained, aligned space with language feature. However, the continuous feature often
+necessitates an additional diffusion module for image detokenization. Other works [40, 64, 75]
+employ VQVAE to encode images into discrete tokens and train LLMs to predict them. Still other
+works [41, 76, 74, 49] use both ViT and VQVAE as tokenizers to garner their benefits. Discrete image
+features can share the same embedding space with text input, permitting joint reasoning over both
+modalities within a unified architecture without the requirement for modality-specific components. It
+is beneficial for model scale-up. Consequently, in our work, we choose VQVAE as the sole image
+tokenizer. Our work is most similar to LWM [40] and Chameleon [64]. However, they display
+inferior image understanding and generation capabilities, and need extensive large scale multi-modal
+pre-training, which is a significant burden. In contrast, we propose to start from any existing LLMs
+and enhance their visual understanding and generation abilities by continuing training with a small
+amount of high-quality data, without altering any model structures.
+
+6
+
+Conclusion
+
+In this paper, we present Liquid, an efficient framework enabling language models to acquire image
+generation and understanding capabilities without modifying the original structure. Unlike traditional
+multi-modal models employing extra visual models, Liquid directly tokenize images into discrete
+tokens that share the same embedding space with text tokens. This leads to a total unification of
+images and text within the models, which stokes the potential of multi-modal learning. Utilizing
+various existing LLMs provides a unique advantage to Liquid, enabling it to scale up easily and
+display similar scaling behavior to LLMs.
+15
+
+Leveraging this convenience, we conducted extensive scaling experiments on models ranging from
+0.5B to 32B across different model families. We identified some key characteristics of multimodal
+models under this unified token space. 1) Firstly, by directly training LLMs on visual generation
+tasks, they can retain foundational language capabilities while achieving results comparable to some
+mainstream diffusion models. 2) Secondly, this unification of multimodal tasks tends to impair both
+visual generation and language tasks; however, this impairment gradually diminishes as the model size
+increases. 3) Lastly, we found that when visual and language tokens are represented uniformly, visual
+understanding and generation tasks can mutually enhance each other. This reciprocity encourages the
+vast potential of large-scale pretraining under this paradigm.
+
+16
+
+References
+[1] J.-B. Alayrac, J. Donahue, P. Luc, A. Miech, I. Barr, Y. Hasson, K. Lenc, A. Mensch, K. Millican,
+M. Reynolds, et al. Flamingo: a visual language model for few-shot learning. Advances in Neural
+Information Processing Systems, 35:23716–23736, 2022. 14
+[2] J. Bai, S. Bai, S. Yang, S. Wang, S. Tan, P. Wang, J. Lin, C. Zhou, and J. Zhou. Qwen-vl: A frontier large
+vision-language model with versatile abilities. arXiv preprint arXiv:2308.12966, 2023. 14
+[3] Y. Bisk, R. Zellers, J. Gao, Y. Choi, et al. Piqa: Reasoning about physical commonsense in natural language.
+In Proceedings of the AAAI conference on artificial intelligence, pages 7432–7439, 2020. 11
+[4] T. Brown, B. Mann, N. Ryder, M. Subbiah, J. D. Kaplan, P. Dhariwal, A. Neelakantan, P. Shyam, G. Sastry,
+A. Askell, et al. Language models are few-shot learners. Advances in neural information processing
+systems, 33:1877–1901, 2020. 1, 14
+[5] G. H. Chen, S. Chen, R. Zhang, J. Chen, X. Wu, Z. Zhang, Z. Chen, J. Li, X. Wan, and B. Wang. Allava:
+Harnessing gpt4v-synthesized data for a lite vision-language model. arXiv preprint arXiv:2402.11684,
+2024. 1, 15
+[6] J. Chen, J. Yu, C. Ge, L. Yao, E. Xie, Y. Wu, Z. Wang, J. Kwok, P. Luo, H. Lu, et al. Pixart-alpha: Fast training of diffusion transformer for photorealistic text-to-image synthesis. arXiv preprint arXiv:2310.00426,
+2023. 9
+[7] L. Chen, J. Li, X. Dong, P. Zhang, C. He, J. Wang, F. Zhao, and D. Lin. Sharegpt4v: Improving large
+multi-modal models with better captions. arXiv preprint arXiv:2311.12793, 2023. 15
+[8] A. Chowdhery, S. Narang, J. Devlin, M. Bosma, G. Mishra, A. Roberts, P. Barham, H. W. Chung, C. Sutton,
+S. Gehrmann, et al. Palm: Scaling language modeling with pathways. arXiv preprint arXiv:2204.02311,
+2022. 1, 14
+[9] C. Clark, K. Lee, M.-W. Chang, T. Kwiatkowski, M. Collins, and K. Toutanova. Boolq: Exploring the
+surprising difficulty of natural yes/no questions. arXiv preprint arXiv:1905.10044, 2019. 4, 11
+[10] P. Clark, I. Cowhey, O. Etzioni, T. Khot, A. Sabharwal, C. Schoenick, and O. Tafjord. Think you have
+solved question answering? try arc, the ai2 reasoning challenge. arXiv preprint arXiv:1803.05457, 2018.
+4, 11
+[11] W. Dai, J. Li, D. Li, A. M. H. Tiong, J. Zhao, W. Wang, B. Li, P. Fung, and S. Hoi. Instructblip: Towards
+general-purpose vision-language models with instruction tuning. arXiv, 2023. 12, 14
+[12] M. Ding, Z. Yang, W. Hong, W. Zheng, C. Zhou, D. Yin, J. Lin, X. Zou, Z. Shao, H. Yang, et al. Cogview:
+Mastering text-to-image generation via transformers. Advances in neural information processing systems,
+34:19822–19835, 2021. 2, 15
+[13] R. Dong, C. Han, Y. Peng, Z. Qi, Z. Ge, J. Yang, L. Zhao, J. Sun, H. Zhou, H. Wei, et al. Dreamllm:
+Synergistic multimodal comprehension and creation. arXiv preprint arXiv:2309.11499, 2023. 12
+[14] A. Dubey, A. Jauhri, A. Pandey, A. Kadian, A. Al-Dahle, A. Letman, A. Mathur, A. Schelten, A. Yang,
+A. Fan, et al. The llama 3 herd of models. arXiv preprint arXiv:2407.21783, 2024. 4
+[15] P. Esser, R. Rombach, and B. Ommer. Taming transformers for high-resolution image synthesis. In
+Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 12873–12883,
+2021. 2, 3, 15
+[16] C. Fu, P. Chen, Y. Shen, Y. Qin, M. Zhang, X. Lin, J. Yang, X. Zheng, K. Li, X. Sun, Y. Wu, and R. Ji.
+Mme: A comprehensive evaluation benchmark for multimodal large language models, 2024. 4, 12
+[17] Y. Ge, Y. Ge, Z. Zeng, X. Wang, and Y. Shan. Planting a seed of vision in large language model. arXiv
+preprint arXiv:2307.08041, 2023. 1, 15
+[18] Y. Ge, S. Zhao, J. Zhu, Y. Ge, K. Yi, L. Song, C. Li, X. Ding, and Y. Shan. Seed-x: Multimodal models
+with unified multi-granularity comprehension and generation. arXiv preprint arXiv:2404.14396, 2024. 1,
+15
+[19] Y. Goyal, T. Khot, D. Summers-Stay, D. Batra, and D. Parikh. Making the V in VQA matter: Elevating
+the role of image understanding in Visual Question Answering. In Conference on Computer Vision and
+Pattern Recognition (CVPR), 2017. 4, 12
+[20] D. Hendrycks, C. Burns, S. Basart, A. Zou, M. Mazeika, D. X. Song, and J. Steinhardt. Measuring massive
+multitask language understanding. arXiv preprint arXiv:2009.03300, 2020. 11
+[21] M. Heusel, H. Ramsauer, T. Unterthiner, B. Nessler, and S. Hochreiter. Gans trained by a two time-scale
+update rule converge to a local nash equilibrium. Advances in neural information processing systems, 30,
+2017. 9
+[22] D. A. Hudson and C. D. Manning. Gqa: A new dataset for real-world visual reasoning and compositional question answering. In Proceedings of the IEEE/CVF conference on computer vision and pattern
+recognition, pages 6700–6709, 2019. 4, 12
+[23] B. Hui, J. Yang, Z. Cui, J. Yang, D. Liu, L. Zhang, T. Liu, J. Zhang, B. Yu, K. Lu, et al. Qwen2. 5-coder
+technical report. arXiv preprint arXiv:2409.12186, 2024. 4
+[24] Y. Jin, K. Xu, L. Chen, C. Liao, J. Tan, B. Chen, C. Lei, A. Liu, C. Song, X. Lei, et al. Unified languagevision pretraining with dynamic discrete visual tokenization. arXiv preprint arXiv:2309.04669, 2023. 1,
+12, 15
+
+17
+
+[25] H. Laurençon, D. van Strien, S. Bekman, L. Tronchon, L. Saulnier, T. Wang, S. Karamcheti, A. Singh,
+G. Pistilli, Y. Jernite, et al. Introducing idefics: An open reproduction of state-of-the-art visual language
+model, 2023. URL https://huggingface. co/blog/idefics. Accessed, pages 09–18, 2023. 12
+[26] D. Li, A. Kamko, E. Akhgari, A. Sabet, L. Xu, and S. Doshi. Playground v2. 5: Three insights towards
+enhancing aesthetic quality in text-to-image generation. arXiv preprint arXiv:2402.17245, 2024. 8, 9, 10
+[27] H. Li, C. Tian, J. Shao, X. Zhu, Z. Wang, J. Zhu, W. Dou, X. Wang, H. Li, L. Lu, et al. Synergen-vl:
+Towards synergistic image understanding and generation with vision experts and token folding. arXiv
+preprint arXiv:2412.09604, 2024. 2
+[28] J. Li, A. Fang, G. Smyrnis, M. Ivgi, M. Jordan, S. Gadre, H. Bansal, E. Guha, S. Keh, K. Arora, S. Garg,
+R. Xin, N. Muennighoff, R. Heckel, J. Mercat, M. Chen, S. Gururangan, M. Wortsman, A. Albalak,
+Y. Bitton, M. Nezhurina, A. Abbas, C.-Y. Hsieh, D. Ghosh, J. Gardner, M. Kilian, H. Zhang, R. Shao,
+S. Pratt, S. Sanyal, G. Ilharco, G. Daras, K. Marathe, A. Gokaslan, J. Zhang, K. Chandu, T. Nguyen,
+I. Vasiljevic, S. Kakade, S. Song, S. Sanghavi, F. Faghri, S. Oh, L. Zettlemoyer, K. Lo, A. El-Nouby,
+H. Pouransari, A. Toshev, S. Wang, D. Groeneveld, L. Soldaini, P. W. Koh, J. Jitsev, T. Kollar, A. G.
+Dimakis, Y. Carmon, A. Dave, L. Schmidt, and V. Shankar. Datacomp-lm: In search of the next generation
+of training sets for language models. arXiv preprint arXiv:2406.11794, 2024. 4
+[29] J. Li, D. Li, S. Savarese, and S. Hoi. Blip-2: Bootstrapping language-image pre-training with frozen image
+encoders and large language models. In International conference on machine learning, pages 19730–19742.
+PMLR, 2023. 14
+[30] J. Li, D. Li, C. Xiong, and S. Hoi. Blip: Bootstrapping language-image pre-training for unified visionlanguage understanding and generation. In International conference on machine learning, pages 12888–
+12900. PMLR, 2022. 14
+[31] R. Li, L. B. Allal, Y. Zi, N. Muennighoff, D. Kocetkov, C. Mou, M. Marone, C. Akiki, J. Li, J. Chim, Q. Liu,
+E. Zheltonozhskii, T. Y. Zhuo, T. Wang, O. Dehaene, M. Davaadorj, J. Lamy-Poirier, J. Monteiro, O. Shliazhko, N. Gontier, N. Meade, A. Zebaze, M.-H. Yee, L. K. Umapathi, J. Zhu, B. Lipkin, M. Oblokulov,
+Z. Wang, R. Murthy, J. Stillerman, S. S. Patel, D. Abulkhanov, M. Zocca, M. Dey, Z. Zhang, N. Fahmy,
+U. Bhattacharyya, W. Yu, S. Singh, S. Luccioni, P. Villegas, M. Kunakov, F. Zhdanov, M. Romero, T. Lee,
+N. Timor, J. Ding, C. Schlesinger, H. Schoelkopf, J. Ebert, T. Dao, M. Mishra, A. Gu, J. Robinson, C. J.
+Anderson, B. Dolan-Gavitt, D. Contractor, S. Reddy, D. Fried, D. Bahdanau, Y. Jernite, C. M. Ferrandis,
+S. Hughes, T. Wolf, A. Guha, L. von Werra, and H. de Vries. Starcoder: may the source be with you!
+arXiv preprint arXiv:2305.06161, 2023. 4
+[32] Y. Li, Y. Du, K. Zhou, J. Wang, W. X. Zhao, and J.-R. Wen. Evaluating object hallucination in large
+vision-language models. arXiv preprint arXiv:2305.10355, 2023. 4, 12
+[33] Y. Li, Y. Zhang, C. Wang, Z. Zhong, Y. Chen, R. Chu, S. Liu, and J. Jia. Mini-gemini: Mining the potential
+of multi-modality vision language models. arXiv preprint arXiv:2403.18814, 2024. 12, 15
+[34] J. Lin, H. Yin, W. Ping, Y. Lu, P. Molchanov, A. Tao, H. Mao, J. Kautz, M. Shoeybi, and S. Han. Vila: On
+pre-training for visual language models, 2023. 12
+[35] Z. Lin, D. Pathak, B. Li, J. Li, X. Xia, G. Neubig, P. Zhang, and D. Ramanan. Evaluating text-to-visual
+generation with image-to-text generation. arXiv preprint arXiv:2404.01291, 2024. 4, 8
+[36] Z. Lin, D. Pathak, B. Li, J. Li, X. Xia, G. Neubig, P. Zhang, and D. Ramanan. Evaluating text-to-visual
+generation with image-to-text generation. arXiv preprint arXiv:2404.01291, 2024. 9, 15
+[37] H. Liu, C. Li, Y. Li, and Y. J. Lee. Improved baselines with visual instruction tuning. In Proceedings of the
+IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 26296–26306, 2024. 1, 15
+[38] H. Liu, C. Li, Y. Li, B. Li, Y. Zhang, S. Shen, and Y. J. Lee. Llava-next: Improved reasoning, ocr, and
+world knowledge, January 2024. 1, 15
+[39] H. Liu, C. Li, Q. Wu, and Y. J. Lee. Visual instruction tuning. Advances in neural information processing
+systems, 36, 2024. 1, 12, 14, 15
+[40] H. Liu, W. Yan, M. Zaharia, and P. Abbeel. World model on million-length video and language with
+ringattention. arXiv preprint arXiv:2402.08268, 2024. 2, 9, 12, 15
+[41] J. Lu, C. Clark, S. Lee, Z. Zhang, S. Khosla, R. Marten, D. Hoiem, and A. Kembhavi. Unified-io 2: Scaling
+autoregressive multimodal models with vision language audio and action. In Proceedings of the IEEE/CVF
+Conference on Computer Vision and Pattern Recognition, pages 26439–26455, 2024. 12, 15
+[42] Y. Lu, C. Li, H. Liu, J. Yang, J. Gao, and Y. Shen. An empirical study of scaling instruct-tuned large
+multimodal models. arXiv preprint arXiv:2309.09958, 2023. 1, 15
+[43] C. Ma, Y. Jiang, J. Wu, J. Yang, X. Yu, Z. Yuan, B. Peng, and X. Qi. Unitok: A unified tokenizer for visual
+generation and understanding. arXiv preprint arXiv:2502.20321, 2025. 12
+[44] T. Mihaylov, P. Clark, T. Khot, and A. Sabharwal. Can a suit of armor conduct electricity? a new dataset
+for open book question answering. arXiv preprint arXiv:1809.02789, 2018. 11
+[45] Y. Niu, M. Ning, M. Zheng, B. Lin, P. Jin, J. Liao, K. Ning, B. Zhu, and L. Yuan. Wise: A world
+knowledge-informed semantic evaluation for text-to-image generation. arXiv preprint arXiv:2503.07265,
+2025. 8, 9
+[46] J. Pan, K. Sun, Y. Ge, H. Li, H. Duan, X. Wu, R. Zhang, A. Zhou, Z. Qin, Y. Wang, J. Dai, Y. Qiao, and
+H. Li. Journeydb: A benchmark for generative image understanding, 2023. 4
+
+18
+
+[47] K. Pan, S. Tang, J. Li, Z. Fan, W. Chow, S. Yan, T.-S. Chua, Y. Zhuang, and H. Zhang. Auto-encoding
+morph-tokens for multimodal llm. arXiv preprint arXiv:2405.01926, 2024. 14
+[48] D. Podell, Z. English, K. Lacey, A. Blattmann, T. Dockhorn, J. Müller, J. Penna, and R. Rombach. Sdxl:
+Improving latent diffusion models for high-resolution image synthesis. arXiv preprint arXiv:2307.01952,
+2023. 9, 15
+[49] L. Qu, H. Zhang, Y. Liu, X. Wang, Y. Jiang, Y. Gao, H. Ye, D. K. Du, Z. Yuan, and X. Wu. Tokenflow:
+Unified image tokenizer for multimodal understanding and generation. arXiv preprint arXiv:2412.03069,
+2024. 2, 15
+[50] A. Radford, J. W. Kim, C. Hallacy, A. Ramesh, G. Goh, S. Agarwal, G. Sastry, A. Askell, P. Mishkin,
+J. Clark, et al. Learning transferable visual models from natural language supervision. In International
+conference on machine learning, pages 8748–8763. PMLR, 2021. 1, 14
+[51] A. M. Radhakrishnan. Is midjourney-ai the new anti-hero of architectural imagery & creativity? GSJ,
+11(1):94–104, 2023. 9, 15
+[52] C. Raffel, N. Shazeer, A. Roberts, K. Lee, S. Narang, M. Matena, Y. Zhou, W. Li, and P. J. Liu. Exploring
+the limits of transfer learning with a unified text-to-text transformer. The Journal of Machine Learning
+Research, 21(1):5485–5551, 2020. 1
+[53] A. Ramesh, P. Dhariwal, A. Nichol, C. Chu, and M. Chen. Hierarchical text-conditional image generation
+with clip latents. arXiv preprint arXiv:2204.06125, 1(2):3, 2022. 15
+[54] A. Ramesh, M. Pavlov, G. Goh, S. Gray, C. Voss, A. Radford, M. Chen, and I. Sutskever. Zero-shot
+text-to-image generation. In International Conference on Machine Learning, pages 8821–8831. PMLR,
+2021. 2, 15
+[55] R. Rombach, A. Blattmann, D. Lorenz, P. Esser, and B. Ommer. High-resolution image synthesis with
+latent diffusion models. In Proceedings of the IEEE/CVF conference on computer vision and pattern
+recognition, pages 10684–10695, 2022. 9, 15
+[56] K. Sakaguchi, R. L. Bras, C. Bhagavatula, and Y. Choi. Winogrande: An adversarial winograd schema
+challenge at scale. Communications of the ACM, 64(9):99–106, 2021. 4, 11
+[57] M. Sap, H. Rashkin, D. Chen, R. LeBras, and Y. Choi. Socialiqa: Commonsense reasoning about social
+interactions. arXiv preprint arXiv:1904.09728, 2019. 11
+[58] R. Sennrich, B. Haddow, and A. Birch. Neural machine translation of rare words with subword units.
+In K. Erk and N. A. Smith, editors, Proceedings of the 54th Annual Meeting of the Association for
+Computational Linguistics (Volume 1: Long Papers), pages 1715–1725, Berlin, Germany, Aug. 2016.
+Association for Computational Linguistics. 2, 3
+[59] A. Singh, V. Natarajan, M. Shah, Y. Jiang, X. Chen, D. Batra, D. Parikh, and M. Rohrbach. Towards
+vqa models that can read. In Proceedings of the IEEE/CVF conference on computer vision and pattern
+recognition, pages 8317–8326, 2019. 4, 12
+[60] D. Soboleva, F. Al-Khateeb, R. Myers, J. R. Steeves, J. Hestness, and N. Dey. SlimPajama: A
+627B token cleaned and deduplicated version of RedPajama. https://www.cerebras.net/blog/
+slimpajama-a-627b-token-cleaned-and-deduplicated-version-of-redpajama, 2023. 4
+[61] P. Sun, Y. Jiang, S. Chen, S. Zhang, B. Peng, P. Luo, and Z. Yuan. Autoregressive model beats diffusion:
+Llama for scalable image generation. arXiv preprint arXiv:2406.06525, 2024. 2, 15
+[62] Q. Sun, Y. Cui, X. Zhang, F. Zhang, Q. Yu, Y. Wang, Y. Rao, J. Liu, T. Huang, and X. Wang. Generative
+multimodal models are in-context learners. In Proceedings of the IEEE/CVF Conference on Computer
+Vision and Pattern Recognition, pages 14398–14409, 2024. 1, 15
+[63] Q. Sun, Q. Yu, Y. Cui, F. Zhang, X. Zhang, Y. Wang, H. Gao, J. Liu, T. Huang, and X. Wang. Generative
+pretraining in multimodality. arXiv preprint arXiv:2307.05222, 2023. 1, 12, 15
+[64] C. Team. Chameleon: Mixed-modal early-fusion foundation models. arXiv preprint arXiv:2405.09818,
+2024. 2, 3, 11, 12, 15
+[65] G. Team, T. Mesnard, C. Hardin, R. Dadashi, S. Bhupatiraju, S. Pathak, L. Sifre, M. Rivière, M. S.
+Kale, J. Love, et al. Gemma: Open models based on gemini research and technology. arXiv preprint
+arXiv:2403.08295, 2024. 1, 3, 11, 14
+[66] G. Team, M. Riviere, S. Pathak, P. G. Sessa, C. Hardin, S. Bhupatiraju, L. Hussenot, T. Mesnard,
+B. Shahriari, A. Ramé, et al. Gemma 2: Improving open language models at a practical size. arXiv preprint
+arXiv:2408.00118, 2024. 4
+[67] K. Tian, Y. Jiang, Z. Yuan, B. Peng, and L. Wang. Visual autoregressive modeling: Scalable image
+generation via next-scale prediction. arXiv preprint arXiv:2404.02905, 2024. 2, 15
+[68] S. Tong, D. Fan, J. Zhu, Y. Xiong, X. Chen, K. Sinha, M. Rabbat, Y. LeCun, S. Xie, and Z. Liu. Metamorph:
+Multimodal understanding and generation via instruction tuning. arXiv preprint arXiv:2412.14164, 2024.
+1
+[69] H. Touvron, T. Lavril, G. Izacard, X. Martinet, M.-A. Lachaux, T. Lacroix, B. Rozière, N. Goyal, E. Hambro,
+F. Azhar, et al. Llama: Open and efficient foundation language models. arXiv preprint arXiv:2302.13971,
+2023. 1, 3, 14
+
+19
+
+[70] H. Touvron, L. Martin, K. Stone, P. Albert, A. Almahairi, Y. Babaei, N. Bashlykov, S. Batra, P. Bhargava,
+S. Bhosale, et al. Llama 2: Open foundation and fine-tuned chat models. arXiv preprint arXiv:2307.09288,
+2023. 1, 11, 14
+[71] A. Van Den Oord, O. Vinyals, et al. Neural discrete representation learning. Advances in neural information
+processing systems, 30, 2017. 2
+[72] X. Wang, X. Zhang, Z. Luo, Q. Sun, Y. Cui, J. Wang, F. Zhang, Y. Wang, Z. Li, Q. Yu, et al. Emu3:
+Next-token prediction is all you need. arXiv preprint arXiv:2409.18869, 2024. 2
+[73] Y. Wang, T. Xiong, D. Zhou, Z. Lin, Y. Zhao, B. Kang, J. Feng, and X. Liu. Loong: Generating minute-level
+long videos with autoregressive language models. arXiv preprint arXiv:2410.02757, 2024. 15
+[74] C. Wu, X. Chen, Z. Wu, Y. Ma, X. Liu, Z. Pan, W. Liu, Z. Xie, X. Yu, C. Ruan, et al. Janus: Decoupling
+visual encoding for unified multimodal understanding and generation. arXiv preprint arXiv:2410.13848,
+2024. 2, 9, 14, 15
+[75] Y. Wu, Z. Zhang, J. Chen, H. Tang, D. Li, Y. Fang, L. Zhu, E. Xie, H. Yin, L. Yi, et al. Vila-u: a unified
+foundation model integrating visual understanding and generation. arXiv preprint arXiv:2409.04429, 2024.
+2, 9, 11, 12, 15
+[76] J. Xie, W. Mao, Z. Bai, D. J. Zhang, W. Wang, K. Q. Lin, Y. Gu, Z. Chen, Z. Yang, and M. Z. Shou.
+Show-o: One single transformer to unify multimodal understanding and generation. arXiv preprint
+arXiv:2408.12528, 2024. 2, 9, 12, 15
+[77] A. Yang, B. Xiao, B. Wang, B. Zhang, C. Bian, C. Yin, C. Lv, D. Pan, D. Wang, D. Yan, et al. Baichuan 2:
+Open large-scale language models. arXiv preprint arXiv:2309.10305, 2023. 4
+[78] J. Yu, Y. Xu, J. Y. Koh, T. Luong, G. Baid, Z. Wang, V. Vasudevan, A. Ku, Y. Yang, B. K. Ayan, et al.
+Scaling autoregressive models for content-rich text-to-image generation. arXiv preprint arXiv:2206.10789,
+2(3):5, 2022. 2, 15
+[79] L. Yu, B. Shi, R. Pasunuru, B. Muller, O. Golovneva, T. Wang, A. Babu, B. Tang, B. Karrer, S. Sheynin,
+et al. Scaling autoregressive multi-modal models: Pretraining and instruction tuning. arXiv preprint
+arXiv:2309.02591, 2(3), 2023. 12
+[80] R. Zellers, A. Holtzman, Y. Bisk, A. Farhadi, and Y. Choi. Hellaswag: Can a machine really finish your
+sentence? arXiv preprint arXiv:1905.07830, 2019. 4, 11
+[81] L. Zheng, W.-L. Chiang, Y. Sheng, T. Li, S. Zhuang, Z. Wu, Y. Zhuang, Z. Li, Z. Lin, E. P. Xing, et al.
+Lmsys-chat-1m: A large-scale real-world llm conversation dataset. arXiv preprint arXiv:2309.11998, 2023.
+12
+[82] C. Zhou, L. Yu, A. Babu, K. Tirumala, M. Yasunaga, L. Shamis, J. Kahn, X. Ma, L. Zettlemoyer, and
+O. Levy. Transfusion: Predict the next token and diffuse images with one multi-modal model. arXiv
+preprint arXiv:2408.11039, 2024. 2
+[83] D. Zhu, J. Chen, X. Shen, X. Li, and M. Elhoseiny. Minigpt-4: Enhancing vision-language understanding
+with advanced large language models. arXiv preprint arXiv:2304.10592, 2023. 1, 14
+[84] W. Zhu, J. Hessel, A. Awadalla, S. Y. Gadre, J. Dodge, A. Fang, Y. Yu, L. Schmidt, W. Y. Wang, and
+Y. Choi. Multimodal c4: An open, billion-scale corpus of images interleaved with text. Advances in Neural
+Information Processing Systems, 36, 2024. 13
+
+20
+
+
