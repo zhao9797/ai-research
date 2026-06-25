@@ -26,7 +26,7 @@ CommonCanvas 是**仅用 Creative-Commons 授权图像 + BLIP-2 合成 caption**
 - **版权**：LAION 图像来源不明，是否构成"合理使用（fair use）"美国法院尚无定论，且当时已有 Anderson v. Stability AI、Getty v. Stability AI 等多起诉讼。
 - **可复现性**：LAION 数据集只存图像 URL 不存图像本身，存在严重 link rot，无法完整复现，还易被数据投毒攻击。
 
-本文回答的问题是：**能否只用 CC 授权数据高效训出一个高质量 t2i 模型？** 这是首个（据作者所知）"完全只用开放授权数据训练 t2i"的公开工作。它的定位不是刷 SOTA 画质，而是给"绕开版权"提供一条可行路径，并附带证明了"扩散模型其实被严重欠参数化（underparameterized），用远少于 LAION 的数据就能饱和 SD2"这一发现。技术上承接 [[latent-diffusion-ldm]] / [[stable-diffusion]] / [[sdxl]]，captioner 用 [[blip-2]]。
+本文回答的问题是：**能否只用 CC 授权数据高效训出一个高质量 t2i 模型？** 这是首个（据作者所知）"完全只用开放授权数据训练 t2i"的公开工作。它的定位不是刷 SOTA 画质，而是给"绕开版权"提供一条可行路径，并附带证明了"扩散模型其实被严重欠参数化（underparameterized），用远少于 LAION 的数据就能饱和 SD2"这一发现。技术上承接 [[latent-diffusion-ldm]] / [[stable-diffusion-1]] / [[sdxl]]，captioner 用 [[blip-2]]。
 
 两大子挑战：
 1. **数据不完整（incompleteness）**：CC 图像几乎都没有训练 t2i 所需的 caption。

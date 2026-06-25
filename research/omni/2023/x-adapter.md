@@ -23,7 +23,7 @@ reviewed: 2026-06-25
 X-Adapter 是一个"通用升级器"：训练**一个**版本到版本的适配网络，就能让在旧底模（SD1.5）上预训练好的插件（[[controlnet]]、[[lora]]、T2I-Adapter、InstructPix2Pix 等）**免重训**直接作用于升级后的底模（[[sdxl]] / SD2.1），并因升级模型更强而带来质量与文图对齐增益（数字均来自论文 Tab.1）：ControlNet 任务 CLIP-score 0.2426→0.2632、FID 33.09→30.95（与 SDEdit 基线 30.86 接近）；LoRA 任务 FID 32.46→29.88、CLIP-score 0.25→0.2640、风格相似度 0.83（>SDEdit 0.72）。
 
 ## 背景与定位
-**问题**：扩散社区里下游插件（plug-and-play 模块）的迭代速度远快于底模发布——ControlNet、LoRA、T2I-Adapter、IP-Adapter、AnimateDiff 等极大扩展了 [[stable-diffusion]] 的能力。但每当更大的底模（如 SDXL）发布，**所有插件都要为新底模重训**，维护成本极高。以 ControlNet 家族为例，要恢复原有能力得重训十几个不同网络。
+**问题**：扩散社区里下游插件（plug-and-play 模块）的迭代速度远快于底模发布——ControlNet、LoRA、T2I-Adapter、IP-Adapter、AnimateDiff 等极大扩展了 [[stable-diffusion-1]] 的能力。但每当更大的底模（如 SDXL）发布，**所有插件都要为新底模重训**，维护成本极高。以 ControlNet 家族为例，要恢复原有能力得重训十几个不同网络。
 
 **三大技术难点**（作者总结）：
 1. **连接器维度不匹配**——训练不同版本扩散模型时不会考虑插件兼容性，旧插件的原始连接点在新底模里可能因维度不同而不存在；

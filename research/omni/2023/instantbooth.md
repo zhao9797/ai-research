@@ -27,7 +27,7 @@ InstantBooth 是 Adobe 2023-04 提出的**免测试时微调（test-time-finetun
 - **反演到文本空间 + 微调**：[[dreambooth]] 微调整个扩散模型学一个唯一标识符；Textual Inversion 反演出一个文本 embedding。两者对每个新概念都要**在线优化几百~上千步、按概念存权重**，时间与存储不可扩展。
 - **学图到图映射**：如 InstructPix2Pix 需要大规模"同主体不同姿态"的成对数据（极难获取），且偏像素级映射，难做大姿态/位置变化；ControlNet 能吃多模态条件但没展示身份保持能力。
 
-InstantBooth 主张**把"学概念"的在线优化搬到离线训练**：训练一个泛化到未见概念的图像编码器（offline training-based design），推理时无需任何微调。与同期 concurrent work 的区别：ELITE 微调注意力层参数、UMM-Diffusion 只学一个视觉映射层但冻结生成器、SuTI 靠海量"专家模型生成的成对图"做 apprenticeship learning；**InstantBooth 用 adapter 把视觉信号紧耦合进生成器、冻结预训练参数，且不使用任何成对图像训练**。技术脉络上承 [[latent-diffusion-ldm]] / [[stable-diffusion]] 主干、[[dreambooth]] 的标识符思想、GLIGEN/Flamingo 的 adapter 注入思想。
+InstantBooth 主张**把"学概念"的在线优化搬到离线训练**：训练一个泛化到未见概念的图像编码器（offline training-based design），推理时无需任何微调。与同期 concurrent work 的区别：ELITE 微调注意力层参数、UMM-Diffusion 只学一个视觉映射层但冻结生成器、SuTI 靠海量"专家模型生成的成对图"做 apprenticeship learning；**InstantBooth 用 adapter 把视觉信号紧耦合进生成器、冻结预训练参数，且不使用任何成对图像训练**。技术脉络上承 [[latent-diffusion-ldm]] / [[stable-diffusion-1]] 主干、[[dreambooth]] 的标识符思想、GLIGEN/Flamingo 的 adapter 注入思想。
 
 ## 模型架构
 建立在冻结的 **Stable Diffusion V1-4**（公开可用的当时领先模型）之上，新增三组**可训练组件**，原模型（U-Net + CLIP 文本编码器）全程冻结。

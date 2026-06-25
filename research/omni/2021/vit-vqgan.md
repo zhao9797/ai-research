@@ -19,10 +19,10 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-ViT-VQGAN 把 [[vqgan]] 的 CNN 编码器/解码器整体换成 Vision Transformer，并引入「factorized codes + ℓ2-归一化码本」两项码本学习改进，将离散图像 tokenizer 的重建保真度、码本利用率与吞吐同时大幅提升；在此 tokenizer 上做两阶段自回归图像建模（VIM），ImageNet 256×256 类条件生成达到 **IS 175.1 / FID 4.17**（vanilla VQGAN 为 70.6 / 17.04），是 [[parti]]、[[muse]] 等自回归与掩码 T2I 模型 tokenizer 的直接技术源头。
+ViT-VQGAN 把 [[taming-transformers-vqgan]] 的 CNN 编码器/解码器整体换成 Vision Transformer，并引入「factorized codes + ℓ2-归一化码本」两项码本学习改进，将离散图像 tokenizer 的重建保真度、码本利用率与吞吐同时大幅提升；在此 tokenizer 上做两阶段自回归图像建模（VIM），ImageNet 256×256 类条件生成达到 **IS 175.1 / FID 4.17**（vanilla VQGAN 为 70.6 / 17.04），是 [[parti]]、[[muse]] 等自回归与掩码 T2I 模型 tokenizer 的直接技术源头。
 
 ## 背景与定位
-- **两阶段离散建模范式**：[[vqvae]] → [[dall-e-1]] → [[vqgan]] 这条线把图像生成拆成「stage-1 把图像量化成离散 token + stage-2 用自回归/Transformer 建模 token 分布」。stage-2 模型的天花板被 stage-1 tokenizer 的重建质量和码本表达力卡死——重建越糊、码本越少被用到，下游生成与表征就越差。
+- **两阶段离散建模范式**：[[vqvae]] → [[dall-e-1]] → [[taming-transformers-vqgan]] 这条线把图像生成拆成「stage-1 把图像量化成离散 token + stage-2 用自回归/Transformer 建模 token 分布」。stage-2 模型的天花板被 stage-1 tokenizer 的重建质量和码本表达力卡死——重建越糊、码本越少被用到，下游生成与表征就越差。
 - **vanilla VQGAN 的痛点**：① 编码器/解码器是 CNN（+少量 non-local attention），受卷积归纳偏置约束、在 TPU 上吞吐不高；② 码本「死码」严重，VQGAN 默认只能用 size=1024 的小码本并依赖 top-k/top-p 采样启发式才能出好结果，码本利用率低导致重建损失大、stage-2 多样性差。
 - **本文目标**：受 NLP「next-token 预训练带来强 zero/few-shot 与表征」启发，提出 Vector-quantized Image Modeling (VIM)，把图像也当成离散 token 序列做 GPT 式自回归预训练。要让这条路走通，关键瓶颈是 tokenizer——于是从架构到码本系统性改进 VQGAN，得到 ViT-VQGAN。相比同期纯像素自回归的 [[igpt]]（最大只能 64×64、序列极长），ViT-VQGAN 先量化再建模，序列短、可上 256×256，用更小模型、更少数据拿到更强结果。
 

@@ -22,7 +22,7 @@ updated: 2026-06-25
 DreamBooth 用 3–5 张某个特定主体（一只狗、一个包）的图，配合一个**罕见 token 标识符 [V]**对预训练文生图扩散模型做**全量微调**，再叠加自创的**类别先验保持损失（prior preservation loss, PPL）**对抗语言漂移，从而把"这个特定主体"植入模型输出域，之后可用 `a [V] dog in the jungle` 这类提示词在任意新场景重新生成它；在自建 30 主体评测集上主体保真度 DINO 0.696 / CLIP-I 0.812，大幅超越同期 Textual Inversion（0.569 / 0.780），用户研究中主体保真 68% vs 22% 压倒性偏好。开创了"主体定制化生成（subject-driven generation）"范式。
 
 ## 背景与定位
-2022 年的大文生图模型（[[imagen]]、[[dalle-2]]、[[stable-diffusion]]、Parti）已能从文本合成高质量多样图像，但有一个根本短板：**无法忠实复刻"用户自己那个特定主体"**。即使写出极其详细的文字描述（"复古黄色闹钟，白色表盘，右侧黄色数字 3……"），Imagen 也只能造出"风格相似但不是同一个"的实例；DALL-E 2 的图像引导（image-guided variation）能保留外观但改不了上下文。论文把这个新问题命名为 **subject-driven generation**，并指出其本质难点：文生图模型的**输出域表达力有限**，文本无法唯一指定一个具体实例。
+2022 年的大文生图模型（[[imagen]]、[[dall-e-2]]、[[stable-diffusion-1]]、Parti）已能从文本合成高质量多样图像，但有一个根本短板：**无法忠实复刻"用户自己那个特定主体"**。即使写出极其详细的文字描述（"复古黄色闹钟，白色表盘，右侧黄色数字 3……"），Imagen 也只能造出"风格相似但不是同一个"的实例；DALL-E 2 的图像引导（image-guided variation）能保留外观但改不了上下文。论文把这个新问题命名为 **subject-driven generation**，并指出其本质难点：文生图模型的**输出域表达力有限**，文本无法唯一指定一个具体实例。
 
 DreamBooth 之前最接近的工作是**并发**的 [[textual-inversion]]（Gal et al., 2022.08）——它冻结模型、只在文本嵌入空间学一个新 token 来表示概念。DreamBooth 的关键差异：**不冻结模型，而是微调模型权重本身**，把主体嵌入模型的**输出域**而非仅文本嵌入空间，因此保真度上限更高（受限于底模表达力而非冻结嵌入的表达力）。论文也与 GAN 时代的个性化先验（MyStyle 需要约 100 张且限人脸、Pivotal Tuning）划清界限：DreamBooth 只需 3–5 张、不限域。技术脉络上它站在 [[ddpm]] → cascaded diffusion（[[imagen]]）/ [[latent-diffusion-ldm]] 之上，是"如何把扩散大模型个性化"这条线的奠基工作。论文发表于 arXiv 2022.08，正式收录 CVPR 2023。
 

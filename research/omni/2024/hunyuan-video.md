@@ -22,9 +22,9 @@ updated: 2026-06-25
 HunyuanVideo 是腾讯混元 2024 年 12 月开源的 **13B 参数**文生视频基础模型——发布时**最大的开源视频生成模型**，用 Causal 3D VAE + 「双流→单流」全注意力 DiT + Flow Matching，系统性地披露了数据、架构、scaling law 与 infra。在 1,533 prompt、60 名专业评测员的人评里，**整体满意度第一（41.3%）**，超过 Gen-3 alpha、Luma 1.6 及三家中国头部闭源商业模型，尤其在运动质量上领先。
 
 ## 背景与定位
-2024 年视频生成领域的强模型（Sora、Gen-3、Luma、MovieGen 等）几乎全是闭源，开源社区缺乏一个像 [[stable-diffusion]] / [[flux]] 之于 T2I 那样的强基础模型，导致视频生成方向的算法创新停滞。HunyuanVideo 的目标就是「弥合开源与闭源视频基础模型的差距」（报告副标题），把数据管线、架构、scaling、训练、infra 一整套系统全部开源开放，让社区能在强 base 上做下游探索。
+2024 年视频生成领域的强模型（Sora、Gen-3、Luma、MovieGen 等）几乎全是闭源，开源社区缺乏一个像 [[stable-diffusion-1]] / [[flux-1]] 之于 T2I 那样的强基础模型，导致视频生成方向的算法创新停滞。HunyuanVideo 的目标就是「弥合开源与闭源视频基础模型的差距」（报告副标题），把数据管线、架构、scaling、训练、infra 一整套系统全部开源开放，让社区能在强 base 上做下游探索。
 
-技术脉络上它沿用了图像生成成熟范式并迁移到视频：[[latent-diffusion-ldm]] 的隐空间扩散思想 → [[dit]] 的 Transformer backbone → [[flux]] 的「双流到单流」MMDiT 设计 → [[sd3]] 的 Flow Matching / logit-normal 时间步采样。相对前置工作的关键改进：（1）从零训练 Causal 3D VAE（不复用预训练图像 VAE），重建质量超过 FLUX-VAE / CogVideoX-1.5 / Cosmos-VAE；（2）系统性建立 **T2I→T2V 两段式扩散 scaling law**，把「随机堆数据/算力/参数」的成本降低最多 **5×**；（3）用 **MLLM（decoder-only）替代 T5/CLIP** 作主文本编码器。
+技术脉络上它沿用了图像生成成熟范式并迁移到视频：[[latent-diffusion-ldm]] 的隐空间扩散思想 → [[dit]] 的 Transformer backbone → [[flux-1]] 的「双流到单流」MMDiT 设计 → [[stable-diffusion-3]] 的 Flow Matching / logit-normal 时间步采样。相对前置工作的关键改进：（1）从零训练 Causal 3D VAE（不复用预训练图像 VAE），重建质量超过 FLUX-VAE / CogVideoX-1.5 / Cosmos-VAE；（2）系统性建立 **T2I→T2V 两段式扩散 scaling law**，把「随机堆数据/算力/参数」的成本降低最多 **5×**；（3）用 **MLLM（decoder-only）替代 T5/CLIP** 作主文本编码器。
 
 ## 模型架构
 **整体管线**：像素视频/图像 → Causal 3D VAE 压到隐空间 → patchify 成 1D token 序列 → DiT backbone（文本作条件）→ 输出隐变量 → 3D VAE 解码回视频。
@@ -37,7 +37,7 @@ HunyuanVideo 是腾讯混元 2024 年 12 月开源的 **13B 参数**文生视频
 
 **Diffusion backbone（13B DiT）**
 - 采用**统一全注意力（Full Attention）**而非时空分离注意力，理由：性能更好、图像/视频统一生成、可复用 LLM 加速生态。图像被当作单帧视频统一处理。
-- 「**双流→单流**」混合设计（借鉴 [[flux]]）：双流阶段视频 token 与文本 token 各自走多个 Transformer block 学各自的 modulation；单流阶段把两者 concat 进后续 block 做多模态融合。
+- 「**双流→单流**」混合设计（借鉴 [[flux-1]]）：双流阶段视频 token 与文本 token 各自走多个 Transformer block 学各自的 modulation；单流阶段把两者 concat 进后续 block 做多模态融合。
 - 位置编码用 **3D RoPE**：把特征通道分成 (dt, dh, dw) 三段，分别乘以时/高/宽坐标的旋转频率再拼接，支持多分辨率、多宽高比、多时长生成。
 - 架构超参（Table 2）：**20 个双流 block + 40 个单流 block**，model dim 3072，FFN dim 12288，**24 个注意力头**，head dim 128；3D RoPE 的通道分段 (dt,dh,dw)=(16,56,56)（三段相加 = head dim 128）。patchify 用 kt×kh×kw 的 3D 卷积核（报告未给出具体核尺寸数值）。
 

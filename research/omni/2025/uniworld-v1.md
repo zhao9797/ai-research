@@ -28,7 +28,7 @@ UniWorld-V1 是北大 PKU-YuanGroup 推出的开源统一视觉模型：用**高
 - **编辑实验**："把公交车背面广告涂蓝"后，图中文字位置发生位移——若用强保低频的 VAE 特征，文字位置应几乎不变，故推断它不是 VAE。
 - **去噪实验**：把狗图加 0.6× 噪声后让 GPT-4o-Image 去噪，结果被错误重建成"鹿"；同时 GPT-4o / Qwen2.5-VL 也把 0.6× 噪声狗图描述成鹿。说明其生成依赖**强多模态理解先验**，而非保结构的 VAE 低频特征。
 
-结论：GPT-4o-Image **更可能用语义编码器而非 VAE** 抽参考图特征。UniWorld-V1 即据此设计——用语义编码器（SigLIP2）+ MLLM（Qwen2.5-VL）语义 token 双路注入。相关脉络见 [[latent-diffusion-ldm]] [[flux]] [[siglip]]。
+结论：GPT-4o-Image **更可能用语义编码器而非 VAE** 抽参考图特征。UniWorld-V1 即据此设计——用语义编码器（SigLIP2）+ MLLM（Qwen2.5-VL）语义 token 双路注入。相关脉络见 [[latent-diffusion-ldm]] [[flux-1]] [[siglip]]。
 
 ## 模型架构
 四大件：**VLM（理解）+ SigLIP（低层参考控制）+ DiT（生成）+ MLP connector**（论文 Figure 3）。

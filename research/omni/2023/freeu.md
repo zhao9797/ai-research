@@ -20,7 +20,7 @@ reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-FreeU（南洋理工 S-Lab，CVPR 2024 Oral）是一个**完全免训练、零新增参数、零额外显存/采样耗时**的扩散质量增强技巧：在 U-Net 解码阶段对**主干（backbone）特征做放大、对 skip-connection 特征做频域抑制**，仅靠推理时调两个标量因子（实现里拆成 b1/b2/s1/s2 四个）就能显著提升 [[stable-diffusion]]/SDXL/[[modelscope-t2v]] 等模型的生成保真度。人评中 SD+FreeU 在图文对齐与画质两项上各拿到 **85.88% / 85.34%** 的偏好票（视频侧 ModelScope+FreeU 为 84.71% / 85.67%），仅需"几行代码"即可集成。
+FreeU（南洋理工 S-Lab，CVPR 2024 Oral）是一个**完全免训练、零新增参数、零额外显存/采样耗时**的扩散质量增强技巧：在 U-Net 解码阶段对**主干（backbone）特征做放大、对 skip-connection 特征做频域抑制**，仅靠推理时调两个标量因子（实现里拆成 b1/b2/s1/s2 四个）就能显著提升 [[stable-diffusion-1]]/SDXL/[[modelscope-t2v]] 等模型的生成保真度。人评中 SD+FreeU 在图文对齐与画质两项上各拿到 **85.88% / 85.34%** 的偏好票（视频侧 ModelScope+FreeU 为 84.71% / 85.67%），仅需"几行代码"即可集成。
 
 ## 背景与定位
 扩散模型（[[ddpm]]、[[latent-diffusion-ldm]]）的去噪网络几乎全是 **time-conditional U-Net**，但学界绝大多数工作把这个 U-Net 当黑盒直接拿去做下游应用，**其内部各组件对去噪的具体贡献长期未被剖析**。FreeU 的切入点正是这块空白：不改权重、不加训练，纯粹从"U-Net 内部 backbone 与 skip 各自起什么作用"出发，找一份免费午餐（free lunch）。

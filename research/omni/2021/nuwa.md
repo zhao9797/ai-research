@@ -120,7 +120,7 @@ NÜWA 的 FID-0=12.9、CLIPSIM=0.3429 显著优于 DALL-E/CogView；XMC-GAN 的 
 **影响**：NÜWA 是统一多模态生成的早期里程碑，开创了 Microsoft 的 NUWA 系列（README 记录续作：NUWA-Infinity 无限视觉合成、NUWA-LIP 语言引导图像补全、NUWA-XL diffusion-over-diffusion 超长视频生成）。其"一个模型多任务、文/图/视频统一 token 化、局部稀疏注意"的思路，预示了后来 unified generation 的方向。同时它也是"预训练 → zero-shot 编辑/补全"范式的早期实践（编辑无需推理时训练，比 Paint By Word 快 6 倍）。
 
 **已知局限**：
-- 走的是**离散自回归路线**，逐 token 解码慢、易累积误差，质量受 VQ-GAN 重建上限制约；随后两年被 [[latent-diffusion-ldm]]/[[stable-diffusion]] 等扩散路线在图像质量上反超。
+- 走的是**离散自回归路线**，逐 token 解码慢、易累积误差，质量受 VQ-GAN 重建上限制约；随后两年被 [[latent-diffusion-ldm]]/[[stable-diffusion-1]] 等扩散路线在图像质量上反超。
 - 分辨率与视频长度受限（默认 336×336、10 帧 2.5fps；NÜWA-256 仅 4 帧），是 token 数与模型容量的折中。
 - 数据规模较小（T2I 仅 2.9M 对，远小于同期 CogView/DALL-E），靠多任务预训练弥补；无现代数据工程（re-caption、美学/安全过滤）。
 - 无偏好对齐(RLHF/DPO)、无蒸馏加速。

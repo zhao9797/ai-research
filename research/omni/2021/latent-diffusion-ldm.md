@@ -20,7 +20,7 @@ reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-LDM 把扩散过程从像素空间搬进一个预训练 VAE/VQGAN 的低维潜空间（典型下采样因子 f=4/8），并用 cross-attention 把文本/语义图/布局等条件注入 U-Net，从而在保持质量的前提下把训练算力降一个量级、推理也显著加速——它是 [[stable-diffusion]] 的直接前身，奠定了"潜空间扩散 + 交叉注意力条件"这一统治至今的范式；其 ImageNet 类条件 LDM-4-G 取得 FID 3.60（参数仅 400M），文生图 LDM-KL-8-G 在 MS-COCO 上 FID 12.63（1.45B，远小于同期 GLIDE 6B / DALL·E 12B 量级）。
+LDM 把扩散过程从像素空间搬进一个预训练 VAE/VQGAN 的低维潜空间（典型下采样因子 f=4/8），并用 cross-attention 把文本/语义图/布局等条件注入 U-Net，从而在保持质量的前提下把训练算力降一个量级、推理也显著加速——它是 [[stable-diffusion-1]] 的直接前身，奠定了"潜空间扩散 + 交叉注意力条件"这一统治至今的范式；其 ImageNet 类条件 LDM-4-G 取得 FID 3.60（参数仅 400M），文生图 LDM-KL-8-G 在 MS-COCO 上 FID 12.63（1.45B，远小于同期 GLIDE 6B / DALL·E 12B 量级）。
 
 ## 背景与定位
 扩散模型（[[ddpm]]、[[diffusion-models-beat-gans]] 的 ADM）此前直接在 RGB 像素空间做去噪，质量 SOTA 但代价惊人：论文引用 ADM 训练耗 150–1000 V100 天、单 A100 上采 5 万张样本约需 5 天。其根因在于扩散是 likelihood-based、mode-covering 模型，会把大量容量花在建模"感知上无关紧要"的高频细节上（图 2 的 rate-distortion 分析）。
@@ -30,14 +30,14 @@ LDM 的核心洞察是把图像生成显式拆成两个阶段：
 2. **语义压缩（semantic compression）**——真正的生成模型（扩散 U-Net）只在这个低维潜空间里学习数据的语义与构图。
 
 相对前置工作的改进：
-- 对比两阶段自回归路线（VQVAE-2、[[dall-e]]/DALL·E、VQGAN+Transformer/[[taming-transformers]]）：那些方法为了让 AR Transformer 可训练，必须把图像压到很高的离散压缩率（f=16，1D 序列），牺牲重建细节；LDM 的卷积 U-Net backbone 对空间维度有更好的 inductive bias，可用**更温和的压缩率**（f=4/8、二维潜空间）兼顾重建保真与生成效率。
+- 对比两阶段自回归路线（VQVAE-2、[[dall-e-1]]/DALL·E、VQGAN+Transformer/[[taming-transformers-vqgan]]）：那些方法为了让 AR Transformer 可训练，必须把图像压到很高的离散压缩率（f=16，1D 序列），牺牲重建细节；LDM 的卷积 U-Net backbone 对空间维度有更好的 inductive bias，可用**更温和的压缩率**（f=4/8、二维潜空间）兼顾重建保真与生成效率。
 - 对比联合训练 encoder/decoder + score prior 的 LSGM：LDM 把自编码器与扩散先验**解耦**，自编码器只训一次即可复用于多个下游任务，且无需在重建与生成能力间做精细加权。
 
 ## 模型架构
 **两阶段结构。**
 
 **第一阶段 — 感知压缩自编码器（E, D）：**
-- 基于 VQGAN（[[taming-transformers]]）的自编码器，编码器 E 把 `x ∈ R^{H×W×3}` 压成 `z = E(x) ∈ R^{h×w×c}`，下采样因子 `f = H/h = 2^m`，文中系统扫了 f ∈ {1,2,4,8,16,32}。
+- 基于 VQGAN（[[taming-transformers-vqgan]]）的自编码器，编码器 E 把 `x ∈ R^{H×W×3}` 压成 `z = E(x) ∈ R^{h×w×c}`，下采样因子 `f = H/h = 2^m`，文中系统扫了 f ∈ {1,2,4,8,16,32}。
 - 训练目标 = 感知损失（LPIPS）+ patch-based 对抗损失（patch discriminator），避免纯 L2/L1 造成的模糊（公式 25）。
 - 两种潜空间正则：**KL-reg**（对潜变量施加极弱 KL 惩罚趋向标准正态，权重 ~1e-6，即一个低权重 VAE）或 **VQ-reg**（在解码器内放一个向量量化层，码本 |Z|，可看作"量化层被吸收进解码器的 VQGAN"）。两者都只用极小正则以保证高保真重建。
 - 关键设计：潜空间是**二维**的（保留空间结构），不像 VQGAN+AR 那样把 z 拉成 1D 序列，因此能保留更多结构、重建更好（附录 Tab 8 的 autoencoder zoo，均在 OpenImages 训、ImageNet-val 评 R-FID↓：f=4 KL R-FID 0.27、f=4 VQ R-FID 0.58，远优于 DALL·E f=8 的 R-FID 32.01、VQGAN f=16 的 4.98）。
@@ -67,7 +67,7 @@ LDM 的核心洞察是把图像生成显式拆成两个阶段：
 - **语义图到图像**：Flickr-Landscapes / 景观图配语义图（256² 训练，512² 微调）。
 - **超分**：ImageNet，按 SR3 的处理流水线做 ×4 bicubic 下采样；另训一个 **LDM-BSR**，把固定 bicubic 退化换成更多样的退化流水线（JPEG 压缩噪声、相机传感器噪声、多种插值、高斯模糊核与高斯噪声随机组合），以泛化到真实世界图像。
 - **Inpainting**：Places（256² 随机裁剪训练、512² 评估，按 LaMa 协议生成合成 mask）。
-- 数据清洗/配比/美学过滤/安全过滤：论文**未披露**专门的美学打分或安全过滤流程（这部分要到后续 [[stable-diffusion]] 的 LAION-aesthetics 才系统化）；本文用的是 LAION-400M 原生的 CLIP 过滤。无 re-captioning。
+- 数据清洗/配比/美学过滤/安全过滤：论文**未披露**专门的美学打分或安全过滤流程（这部分要到后续 [[stable-diffusion-1]] 的 LAION-aesthetics 才系统化）；本文用的是 LAION-400M 原生的 CLIP 过滤。无 re-captioning。
 
 ## 训练方法
 - **训练目标**：标准 DDPM 风格的 **ε-prediction**（去噪重加权变分下界，公式 1/2/3），T=1000 步，**linear** 噪声调度（附录 Tab 12–15 全部模型均为 linear schedule）。不是 flow matching、不是 next-token——这是经典离散时间扩散。
@@ -127,7 +127,7 @@ LDM 的核心洞察是把图像生成显式拆成两个阶段：
 3. **可复用的解耦自编码器**：自编码器训一次、多任务复用，且无需在重建与生成间精细加权。
 
 **影响：**
-- 直接催生 **[[stable-diffusion]]**（同作者 Rombach/Blattmann/Esser，Stability AI/Runway/CompVis）——SD 即在 LDM 框架上换用冻结 CLIP text encoder + 更大 LAION-aesthetics 数据，成为开源文生图的事实标准与整个开放生态（ControlNet、LoRA、各类微调）的底座。
+- 直接催生 **[[stable-diffusion-1]]**（同作者 Rombach/Blattmann/Esser，Stability AI/Runway/CompVis）——SD 即在 LDM 框架上换用冻结 CLIP text encoder + 更大 LAION-aesthetics 数据，成为开源文生图的事实标准与整个开放生态（ControlNet、LoRA、各类微调）的底座。
 - "潜空间 + 交叉注意力条件"成为后续几乎所有主流文生图/视频/3D 扩散（含 SDXL、视频扩散、众多 DiT 派生）的默认起点。
 - VAE 潜空间 + diffusion backbone 的解耦设计也影响了后来 DiT/MMDiT（把 U-Net 换 Transformer，但潜空间扩散的两阶段骨架不变）。
 

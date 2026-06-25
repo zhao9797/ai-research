@@ -27,13 +27,13 @@ Sora 是 OpenAI 2024-02-15 以技术报告《Video generation models as world si
 
 ## 背景与定位
 - **要解决什么问题。** 此前视频生成（RNN、GAN、自回归 transformer、早期视频扩散如 Imagen Video / Align-your-Latents / Photorealistic Video Generation）大多局限于**窄类别数据、短视频、固定尺寸**（论文原话："narrow category of visual data, on shorter videos, or on videos of a fixed size"，典型设定 4 秒 @ 256×256）。Sora 的目标是做一个**通用的视觉数据生成器（generalist model of visual data）**：同一个模型覆盖不同时长、宽高比、分辨率，直至 1 分钟高清。
-- **技术脉络中的位置。** Sora 把 LLM 的成功配方迁移到视觉：LLM 靠 internet-scale 数据 + 把代码/数学/多语种统一成 **token** 获得通才能力；Sora 则把视觉数据统一成 **patch**。它是 [[latent-diffusion-ldm]]（在压缩潜空间扩散）+ [[ddpm]]（去噪扩散目标）+ [[dit]]（Diffusion Transformer, Peebles & Xie 2023）+ DALL·E 3 recaptioning（[[dalle-3]]）几条线的工程集成，并首次把它们推到"原生变长/变分辨率/变宽高比的视频"这一新规模。论文显式援引 NaViT（Patch n' Pack）作为"任意宽高比与分辨率"的 patch 化思想来源。
+- **技术脉络中的位置。** Sora 把 LLM 的成功配方迁移到视觉：LLM 靠 internet-scale 数据 + 把代码/数学/多语种统一成 **token** 获得通才能力；Sora 则把视觉数据统一成 **patch**。它是 [[latent-diffusion-ldm]]（在压缩潜空间扩散）+ [[ddpm]]（去噪扩散目标）+ [[dit]]（Diffusion Transformer, Peebles & Xie 2023）+ DALL·E 3 recaptioning（[[dall-e-3]]）几条线的工程集成，并首次把它们推到"原生变长/变分辨率/变宽高比的视频"这一新规模。论文显式援引 NaViT（Patch n' Pack）作为"任意宽高比与分辨率"的 patch 化思想来源。
 - **相对前置工作的关键改进。**
   1. 放弃"把所有视频 crop/resize 成固定方形尺寸"的工业惯例，**用原生尺寸训练**，并实证这能提升构图与取景（framing/composition）。
   2. 验证 DiT 在**视频**上同样具备随训练算力扩展的 scaling 性质（base / 4× / 32× 算力的样本质量对比是报告核心实证）。
   3. 用同一模型统一图像与视频生成（图像 = 单帧视频）。
 - **范式意义。** 技术报告把视频生成重新框定为"**世界模拟器**"问题，而非娱乐性玩具。论文末尾观点："continued scaling of video models is a promising path towards the development of capable simulators of the physical and digital world"。这一判断引爆了 2024–2025 视频生成军备竞赛（[[kling]]、[[gen-3-alpha]]、Veo、[[movie-gen]]、[[cogvideox]]、[[hunyuan-video]] 等），是该赛道的标杆事件。
-- **时间线。** 2024-02 技术报告 + landing page 公布（仅研究预览，开放红队与艺术家访问）；2024-12-09 以更快的 **Sora Turbo** 转为公开产品（sora.com，详见 [[openai-sora-1-public]] 的产品发布页）。本页聚焦 2024-02 这份技术报告所披露的**方法与研究结论**。
+- **时间线。** 2024-02 技术报告 + landing page 公布（仅研究预览，开放红队与艺术家访问）；2024-12-09 以更快的 **Sora Turbo** 转为公开产品（sora.com，详见 [[sora]] 的产品发布页）。本页聚焦 2024-02 这份技术报告所披露的**方法与研究结论**。
 
 ## 模型架构
 > 关键前提：技术报告原文明确声明"**Model and implementation details are not included in this report**"，因此**参数量、层数、tokenizer 具体结构、文本编码器选型、潜空间维度均未披露**。下文只整理一手源可确证的设计。

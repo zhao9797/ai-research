@@ -24,7 +24,7 @@ Lumina-Next 是 [[lumina-t2x]] 的下一代升级：把核心扩散变换器从 
 ## 背景与定位
 [[lumina-t2x]]（arXiv 2405.05945）提出 flow-based 大扩散变换器 Flag-DiT，主打"低训练资源 + 任意分辨率/宽高比/时长"的统一生成框架，但实测暴露三大短板：**图文对齐弱、推理慢、外推有重复/伪影**——根因是训练不足、数据不足、以及不合适的 1D RoPE 上下文扩展策略。
 
-作者来自 **Shanghai AI Laboratory + 香港中文大学（CUHK）**（论文署名）。Lumina-Next 不是新预训练范式，而是一套**架构 + 外推 + 采样**的系统性手术，目标"更强更快"。技术脉络上：它把 LLM 社区成熟的位置外推方法（[[position-interpolation]]、NTK-Aware Scaled RoPE、[[yarn]]）首次系统迁移到 **3D RoPE 的视觉扩散变换器**，并针对 flow 模型重新设计时间离散化（区别于 [[edm]] 等扩散调度）。相对前置工作 [[sit]]、[[dit]]、[[pixart-alpha]]、[[sdxl]]，它在 ImageNet 上收敛更快，在 2K/全景外推与少步采样上质量更优。Next-DiT 这套骨干后来成为 **Lumina-Image 2.0** 的基础。
+作者来自 **Shanghai AI Laboratory + 香港中文大学（CUHK）**（论文署名）。Lumina-Next 不是新预训练范式，而是一套**架构 + 外推 + 采样**的系统性手术，目标"更强更快"。技术脉络上：它把 LLM 社区成熟的位置外推方法（[[position-interpolation]]、NTK-Aware Scaled RoPE、[[yarn]]）首次系统迁移到 **3D RoPE 的视觉扩散变换器**，并针对 flow 模型重新设计时间离散化（区别于 [[elucidating-edm]] 等扩散调度）。相对前置工作 [[sit]]、[[dit]]、[[pixart-alpha]]、[[sdxl]]，它在 ImageNet 上收敛更快，在 2K/全景外推与少步采样上质量更优。Next-DiT 这套骨干后来成为 **Lumina-Image 2.0** 的基础。
 
 ## 模型架构
 **Backbone：Next-DiT（由 Flag-DiT 升级而来）**。Flag-DiT 本身是带 flow matching、RMSNorm、QK-Norm 的可扩展 DiT。Next-DiT 的关键改动（论文 Fig.2）：
@@ -53,7 +53,7 @@ Lumina-Next 是 [[lumina-t2x]] 的下一代升级：把核心扩散变换器从 
 **训练目标**：**Flow matching / Rectified Flow**——噪声到数据的线性插值、预测常数速度场（沿用 Flag-DiT 的 flow 公式，保证稳定性与可扩展性）。HF 模型卡明确标注 prediction = Rectified Flow。
 
 **采样侧（本文核心创新，多为训练-free）**：
-- **优化时间表**：详细分析 Euler 解 Flow ODE 的局部截断误差与曲率——发现误差在 **t≈0（纯噪声）处最大、t≈1（干净数据）处次大**，中间时步最小；这与扩散模型 [[edm]]（误差随接近干净数据单调增）相反，故"扩散调度不适配 flow"。提出两个参数化时间表：**Rational**（σ 参数，σ=1 退化为 uniform）与 **Sigmoid**（分段 sigmoid，两端步长大于中间）。全文采用 **sigmoid，µ=0.6, α=6, β=20**。该调度**零额外计算**。
+- **优化时间表**：详细分析 Euler 解 Flow ODE 的局部截断误差与曲率——发现误差在 **t≈0（纯噪声）处最大、t≈1（干净数据）处次大**，中间时步最小；这与扩散模型 [[elucidating-edm]]（误差随接近干净数据单调增）相反，故"扩散调度不适配 flow"。提出两个参数化时间表：**Rational**（σ 参数，σ=1 退化为 uniform）与 **Sigmoid**（分段 sigmoid，两端步长大于中间）。全文采用 **sigmoid，µ=0.6, α=6, β=20**。该调度**零额外计算**。
 - **高阶 ODE 解算器**：Flow ODE 形式简单（`ẋ=vθ(x,t)`，无扩散的半线性结构），可直接套经典显式 Runge-Kutta。用 **midpoint（二阶 RK）+ sigmoid 调度**，论文 §3.2 / Fig.12 报告在 **10–20 NFE**（midpoint 每步 2 次网络评估，即 5–10 步）持续优于 SDXL/PixArt-α + DPM-Solver；摘要亦表述为"**5–10 步**出高质量图"。**无需任何蒸馏**（README：10 步出图、无 distillation）。
 - **Frequency-Aware Scaled RoPE**：诊断 NTK-Aware 在最低频分量做插值是次优——外推时许多维度遇到未见的重复周期 → 内容重复。先定位波长 = 训练序列长度的维度 `d_target = d_head·log_b(L/2π)`，按 `b' = b·s^(d_head/d_target)` 缩放 base，并对 d>d_target 取与 position interpolation 的较大值，显著抑制重复。
 - **Time-Aware Scaled RoPE**：结合扩散"先全局后局部"的特性——**去噪早期用 position interpolation 保全局结构、后期渐变到 NTK-Aware 保局部细节**。令频率 base 随时间 t 变：`b'_t = b·s^(d_head/d_t)`，`d_t=(d_head−1)·t+1`。这是全文 2K 外推默认策略。

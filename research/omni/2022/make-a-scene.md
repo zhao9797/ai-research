@@ -22,12 +22,12 @@ updated: 2026-06-25
 Make-A-Scene 是 Meta AI 2022 年的自回归 token-based 文生图模型（4B 参数 GPT-3 式 transformer），核心创新是把**语义分割图（"场景"）当作可选的隐式控制条件**与文本并列输入，并对 VQ tokenizer 注入"人脸/显著物体"的人类先验感知损失，再把无分类器引导（CFG）从扩散模型迁移到自回归 transformer——在 MS-COCO 零样本 FID 上达到 **7.55**（256×256 模型、含 MS-COCO 训练集设定；不含 MS-COCO 训练集的 filtered 设定为 11.84，仍是同组最低），并能直出 **512×512** 高分辨率图像，同时人评在画质/真实感/文本对齐三项上全面超过自家复现的 DALL-E 与 CogView。
 
 ## 背景与定位
-2022 年初的文生图主流是自回归 token 模型（[[dall-e]]、[[cogview]]）与扩散模型（[[glide]]），但论文指出三个关键短板：
+2022 年初的文生图主流是自回归 token 模型（[[dall-e-1]]、[[cogview]]）与扩散模型（[[glide]]），但论文指出三个关键短板：
 1. **可控性（Controllability）**——只接受文本输入，结构/形态/排布等空间信息只能"勉强用文字描述"，用户对画面缺乏掌控感；既有的额外控制（如 bounding box）只能给出粗糙、低分辨率结果。
 2. **人类感知（Human perception）**——生成损失对全图均匀施加，与人类注意力（尤其是人脸像素的重要性）不匹配，导致人脸/显著物体生成质量差。
 3. **画质与分辨率**——前序 SOTA（DALL-E/GLIDE）受限于 256×256，超分网络会进一步劣化质量。
 
-Make-A-Scene 沿用 [[dall-e]] / [[cogview]] 的"两阶段 + 自回归 transformer"范式（先训 VQ tokenizer，再在离散 token 空间上自回归建模），但在三处做出改进：(i) 新增**场景 token（分割图）作为隐式条件**，(ii) 给 tokenizer 加**人脸/物体感知损失**提升重建上界，(iii) 把 [[classifier-free-guidance]]（Ho & Salimans 提出、由 GLIDE 用于扩散）适配到 transformer logits 上。技术谱系上它属于 VQGAN([[taming-transformers-vqgan]])+自回归一脉，是扩散全面接管 T2I（[[latent-diffusion-ldm]]/[[imagen]]/[[dalle-2]]）之前 Meta 的代表性 T2I 工作。
+Make-A-Scene 沿用 [[dall-e-1]] / [[cogview]] 的"两阶段 + 自回归 transformer"范式（先训 VQ tokenizer，再在离散 token 空间上自回归建模），但在三处做出改进：(i) 新增**场景 token（分割图）作为隐式条件**，(ii) 给 tokenizer 加**人脸/物体感知损失**提升重建上界，(iii) 把 [[classifier-free-guidance]]（Ho & Salimans 提出、由 GLIDE 用于扩散）适配到 transformer logits 上。技术谱系上它属于 VQGAN([[taming-transformers-vqgan]])+自回归一脉，是扩散全面接管 T2I（[[latent-diffusion-ldm]]/[[imagen]]/[[dall-e-2]]）之前 Meta 的代表性 T2I 工作。
 
 ## 模型架构
 整体为**三段式自回归 transformer**（基于 GPT-3 架构），token 序列依次为 `[text tokens → scene tokens → image tokens]`，三个 token 空间相互独立、按顺序自回归生成：
@@ -107,7 +107,7 @@ Make-A-Scene 沿用 [[dall-e]] / [[cogview]] 的"两阶段 + 自回归 transform
 2. **人类先验的 tokenizer 感知损失**：在 VQ tokenizer 阶段对人脸（VGGFace2 特征匹配 + 加权 BCE）与显著物体（VGG/LPIPS 特征匹配）施加 region-aware 感知损失，抬高重建上界、并把分辨率推到 **512×512** 而无需级联超分。
 3. **Transformer 版 Classifier-Free Guidance**：把 CFG 从扩散迁移到自回归 transformer 的 logit 层面，**省掉 CLIP re-ranking 的生成后过滤**，是涨点最大的单项。
 
-**影响**：Make-A-Scene 是扩散方法（[[latent-diffusion-ldm]]/[[dalle-2]]/[[imagen]]）接管 T2I 之前、自回归 token 路线上"可控生成 + 人类偏好对齐 + 高分辨率"的代表作，其"分割/草图条件 + 隐式注入 + transformer CFG"思路对后续可控生成（ControlNet 类布局控制、token 化统一多模态生成）有铺垫意义；它也是 Meta 后续 [[emu]] / Make-A-Video 等生成线的早期积累。
+**影响**：Make-A-Scene 是扩散方法（[[latent-diffusion-ldm]]/[[dall-e-2]]/[[imagen]]）接管 T2I 之前、自回归 token 路线上"可控生成 + 人类偏好对齐 + 高分辨率"的代表作，其"分割/草图条件 + 隐式注入 + transformer CFG"思路对后续可控生成（ControlNet 类布局控制、token 化统一多模态生成）有铺垫意义；它也是 Meta 后续 [[emu]] / Make-A-Video 等生成线的早期积累。
 
 **已知局限**：
 - 仍是自回归逐 token 解码，推理不如扩散/蒸馏快；

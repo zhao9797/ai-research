@@ -27,7 +27,7 @@ Kosmos-G（Microsoft Research，ICLR 2024）用一个 1.6B 的多模态大语言
 - **测试时微调派**（Textual Inversion、[[dreambooth]]、Custom Diffusion、Break-A-Scene 等）：每个新主体都要在参考图上重新微调，慢、不可零样本、难扩展到多主体。
 - **特征注入派**（ELITE、FastComposer、Re-Imagen、[[blip-diffusion]] 等）：把图像特征注入 U-Net，但**把图、文引导割裂**，难以联合建模图文，更难扩展到多个实体。BLIP-Diffusion 虽能零样本，但其输入模板与训练数据设计限制了它向多实体的扩展。
 
-Kosmos-G 的核心主张是"**image as a foreign language in image generation**"（把图像当作一门外语喂进生成）。它不去改 CLIP 文本编码器，而是直接用一个**预训练 MLLM** 替换 CLIP：理由有三——(1) 复用 MLLM 内部已对齐的视觉-语言表征；(2) MLLM 架构天然支持交错多图+文本输入；(3) 预训练 MLLM 能在上下文中建模多模态输入。技术脉络上它处在 [[latent-diffusion-ldm]] / [[stable-diffusion]] 之上、与 [[gill]]、[[emu-multimodal]]、[[dreamllm]] 等"MLLM 接图像解码器"的统一生成工作同期，但 Kosmos-G 专注于**主体保真的条件生成**而非自回归出图像 token。
+Kosmos-G 的核心主张是"**image as a foreign language in image generation**"（把图像当作一门外语喂进生成）。它不去改 CLIP 文本编码器，而是直接用一个**预训练 MLLM** 替换 CLIP：理由有三——(1) 复用 MLLM 内部已对齐的视觉-语言表征；(2) MLLM 架构天然支持交错多图+文本输入；(3) 预训练 MLLM 能在上下文中建模多模态输入。技术脉络上它处在 [[latent-diffusion-ldm]] / [[stable-diffusion-1]] 之上、与 [[gill]]、[[emu-multimodal]]、[[dreamllm]] 等"MLLM 接图像解码器"的统一生成工作同期，但 Kosmos-G 专注于**主体保真的条件生成**而非自回归出图像 token。
 
 ## 模型架构
 整体由三部分组成（橙=可训练，蓝=冻结）：

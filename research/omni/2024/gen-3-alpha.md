@@ -46,7 +46,7 @@ Gen-3 Alpha 是 Runway 2024-06-17 发布的**新一代视频基础模型**，在
 **规模、来源、配比、清洗过滤、合成数据等均未披露。** 官方仅给出两条与数据/标注相关的确定信息：
 
 1. **视频+图像联合数据**：模型「jointly trained on videos and images」，但具体图文/视频对数量、数据来源与采集方式**未公开**（Runway 因训练数据来源问题长期受外界争议，官方始终未披露语料构成）。
-2. **时间密集字幕（核心数据工程）**：Gen-3 Alpha「以**高度描述性、时间上密集的字幕（highly descriptive, temporally dense captions）**训练」，正是这一标注方式带来了「富有想象力的转场」与「场景中元素的精确关键帧化（precise key-framing）」——即模型能理解 prompt 中「先……然后……」的时序描述。这与 [[dalle-3]]、Sora 等「用合成 re-caption 提升 prompt 跟随」的思路同源，但 Runway 未公开 caption 的生成模型、长度或覆盖率。
+2. **时间密集字幕（核心数据工程）**：Gen-3 Alpha「以**高度描述性、时间上密集的字幕（highly descriptive, temporally dense captions）**训练」，正是这一标注方式带来了「富有想象力的转场」与「场景中元素的精确关键帧化（precise key-framing）」——即模型能理解 prompt 中「先……然后……」的时序描述。这与 [[dall-e-3]]、Sora 等「用合成 re-caption 提升 prompt 跟随」的思路同源，但 Runway 未公开 caption 的生成模型、长度或覆盖率。
 
 美学过滤、安全过滤、去重等数据处理细节**官方未报告**。
 

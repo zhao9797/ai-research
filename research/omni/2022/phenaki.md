@@ -22,7 +22,7 @@ updated: 2026-06-25
 Phenaki 是 Google Brain 2022 年 10 月提出的开放域文生视频模型：用全新的 **C-ViViT**（causal ViViT）时空因果 tokenizer 把视频压成离散 token，再用 **MaskGIT 风格的双向掩码 Transformer** 由文本（T5X embedding）并行生成视频 token，最关键的创新是**可被一串随时间变化的文本提示（剧本/story）条件化、自回归续帧生成任意长（可达数分钟）的连贯视频**——这是论文声称的"首个研究 time-variable prompt 生成视频"的工作。最亮眼结果：1.8B 参数模型生成 1024 帧视频仅需 ~4.1 分钟（TATS-base 需 30 分钟），C-ViViT 在 Moments-in-Time 重建上 FVD=65.78 远超 per-frame 基线（ViT-VQGAN 166.6）且 token 数从 2560 降到 1536。
 
 ## 背景与定位
-2022 年文生图已能从描述生成高分辨率图像（[[dall-e]]、Parti、Imagen、GLIDE），但文生视频仍难，论文点明三大障碍：
+2022 年文生图已能从描述生成高分辨率图像（[[dall-e-1]]、Parti、Imagen、GLIDE），但文生视频仍难，论文点明三大障碍：
 1. **数据稀缺**：图文对有 LAION-5B/JFT4B 这种十亿级，而文本-视频数据集小得多（WebVid ~10M），不足以覆盖开放域视频的复杂度；
 2. **算力**：当时训 SOTA 文生图模型已逼近算力上限，留给视频（尤其变长视频）的空间极小；
 3. **变长 + 故事性**：一句短 prompt 不足以描述一段长视频，理想的视频模型应能被"一串随时间变化的 prompt（story）"条件化，且能生成任意长度。

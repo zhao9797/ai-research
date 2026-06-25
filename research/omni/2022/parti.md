@@ -19,12 +19,12 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-Parti（Pathways Autoregressive Text-to-Image）是 Google Research 2022 年的自回归文生图代表作：用 **ViT-VQGAN** 把图像离散化成 token，再用一个标准 **encoder-decoder Transformer** 像做"机器翻译"一样从文本 token **自回归预测图像 token**，把模型 scale 到 **20B 参数**，在 MS-COCO 上拿到 **zero-shot FID 7.23 / finetuned FID 3.22**（彼时 AR 模型新 SOTA），并证明 AR 路线在 content-rich、强组合泛化与世界知识上能与扩散模型（[[imagen]]/[[dalle-2]]）并驾齐驱。
+Parti（Pathways Autoregressive Text-to-Image）是 Google Research 2022 年的自回归文生图代表作：用 **ViT-VQGAN** 把图像离散化成 token，再用一个标准 **encoder-decoder Transformer** 像做"机器翻译"一样从文本 token **自回归预测图像 token**，把模型 scale 到 **20B 参数**，在 MS-COCO 上拿到 **zero-shot FID 7.23 / finetuned FID 3.22**（彼时 AR 模型新 SOTA），并证明 AR 路线在 content-rich、强组合泛化与世界知识上能与扩散模型（[[imagen]]/[[dall-e-2]]）并驾齐驱。
 
 ## 背景与定位
 2022 年文生图有两条主线：
 - **自回归（AR）/ 语言建模路线**：[[dalle]]（DALL-E 1）、CogView、Make-A-Scene——把图像经 dVAE/VQ-VAE 离散成"视觉词"，再用 GPT 式 decoder-only LM 自回归生成。
-- **扩散路线**：GLIDE、[[dalle-2]]（unCLIP）、[[imagen]]——抛弃离散 token，直接在像素/latent 上做迭代去噪。彼时扩散刚在 MS-COCO zero-shot FID 与美学上反超 AR。
+- **扩散路线**：GLIDE、[[dall-e-2]]（unCLIP）、[[imagen]]——抛弃离散 token，直接在像素/latent 上做迭代去噪。彼时扩散刚在 MS-COCO zero-shot FID 与美学上反超 AR。
 
 Parti 的论点是：**AR 路线并未过时**——它能直接复用大语言模型 scaling 的全部经验（数据/模型一起放大、infra 成熟），只要把 tokenizer 与 Transformer 都做扎实，AR 同样能到 SOTA。论文与官方页面反复强调 Parti 与同门 Imagen "互补"（AR vs diffusion 两个家族），并为未来两者结合留口子。相对前作的关键改进：
 - 把 DALL-E/CogView 的 **decoder-only** 换成 **encoder-decoder**（seq2seq），实验证明 350M–750M 量级 encoder-decoder 在训练 loss 与生成质量上都优于 decoder-only，故全程聚焦 encoder-decoder 扩展。

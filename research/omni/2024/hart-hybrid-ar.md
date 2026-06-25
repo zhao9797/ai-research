@@ -22,24 +22,24 @@ updated: 2026-06-25
 HART 用「混合 tokenizer + 残差扩散」把连续 latent 拆成「离散 token（大结构）+ 连续残差 token（细节）」，前者由可变分辨率的下一尺度自回归 transformer 建模、后者由仅 37M 参数 8 步的轻量残差扩散 MLP 补全，是**能直接生成 1024×1024 图像、质量逼平扩散模型的（早期）自回归模型**（论文自述 "early autoregressive model"，非"首个"——同期 Lumina-mGPT 亦做 1024px AR，HART 主打效率优势）：相对 VAR 把 1024px 重建 FID 从 2.11 砍到 0.30、生成 FID 从 7.85 降到 5.38（-31%），并比 SOTA 扩散模型快 3.1–5.9× 延迟、4.5–7.7× 吞吐、省 6.9–13.4× MACs（A100）。
 
 ## 背景与定位
-视觉生成两大主流：扩散模型（[[ddpm]] [[latent-diffusion-ldm]] / DiT / [[sd3-mmdit]]）质量高但推理贵（DiT-XL/2 用 DPM-Solver 仍需 20 步、1024px 下 86.2T MACs）；自回归（AR）模型借 LLM 范式（VQGAN→[[var-next-scale]] / LlamaGen / Emu3 / Show-o）推理可并行更省算力（VAR 同分辨率仅 10.1T MACs，省 8.5×），但落后扩散两点：
+视觉生成两大主流：扩散模型（[[ddpm]] [[latent-diffusion-ldm]] / DiT / [[stable-diffusion-3]]）质量高但推理贵（DiT-XL/2 用 DPM-Solver 仍需 20 步、1024px 下 86.2T MACs）；自回归（AR）模型借 LLM 范式（VQGAN→[[var]] / LlamaGen / Emu3 / Show-o）推理可并行更省算力（VAR 同分辨率仅 10.1T MACs，省 8.5×），但落后扩散两点：
 
 1. **离散 tokenizer 重建上限低**——有限 VQ 码本难以还原人脸等高频细节，直接锁死了生成质量天花板；
 2. **没有 AR 模型能高效直接产出 1024px**——以往要么靠超分（Parti/RQ-style），要么 one-token-per-step（Lumina-mGPT），代价高。
 
-HART 的核心定位是**弥合 AR 与扩散的质量差，同时保住 AR 的效率**。它直接建在 [[var-next-scale]]（next-scale prediction）之上，把 VAR 的「纯离散」改造成「离散主干 + 连续残差」的混合表示。与同期混合工作相比：MAR（Li et al. 2024b）用 AR 先验给扩散 MLP 当条件、但建模**全量**连续 token 且无离散码本、无 KV cache（基于 MaskGIT）；HART 只让扩散建模**残差**、AR 主干同时产离散 token 与扩散条件，因此残差远比全量 token 好学（8 步 vs MAR 的 30–50 步）。与 Transfusion / DART / LaVIT / SEED-X（用完整 1B/20 步扩散）相比，HART 用 37M/8 步的「微型」扩散 MLP 取得显著效率优势。
+HART 的核心定位是**弥合 AR 与扩散的质量差，同时保住 AR 的效率**。它直接建在 [[var]]（next-scale prediction）之上，把 VAR 的「纯离散」改造成「离散主干 + 连续残差」的混合表示。与同期混合工作相比：MAR（Li et al. 2024b）用 AR 先验给扩散 MLP 当条件、但建模**全量**连续 token 且无离散码本、无 KV cache（基于 MaskGIT）；HART 只让扩散建模**残差**、AR 主干同时产离散 token 与扩散条件，因此残差远比全量 token 好学（8 步 vs MAR 的 30–50 步）。与 Transfusion / DART / LaVIT / SEED-X（用完整 1B/20 步扩散）相比，HART 用 37M/8 步的「微型」扩散 MLP 取得显著效率优势。
 
 ## 模型架构
 HART = **混合 tokenizer** + **混合 transformer（可变分辨率 AR + 残差扩散）** 两大件，统一在一个 transformer 里同时建模离散与连续 token。
 
 **1) 混合 tokenizer（Hybrid Visual Tokenization）**
-- CNN 视觉编码器把图像编成连续 latent，再按 [[var-next-scale]] 做多尺度向量量化得到离散 token；
+- CNN 视觉编码器把图像编成连续 latent，再按 [[var]] 做多尺度向量量化得到离散 token；
 - 累加后的离散特征与原连续特征之差 = **残差 token**（VQ 码本表达不了的部分），交给残差扩散建模；
 - 训练时**解码器同时学会解离散与连续两条路**（见「训练方法」的交替训练），推理时只解连续 token = 离散 token 之和 + 残差 token；
 - 直觉（Fig 3）：离散 token 抓整体结构，残差 token 补细节（眼睛、眉毛、头发等高频）。
 
 **2) 可变分辨率自回归 transformer（Scalable-Resolution AR Transformer）**
-- 在 [[var-next-scale]] 基础上扩到 T2I，并把 VAR 单个 class token 换成**文本 token 序列**，文本 token 对所有视觉 token 可见（concat 而非 cross-attention，比 STAR 的 cross-attn 方案省 25% 参数）；
+- 在 [[var]] 基础上扩到 T2I，并把 VAR 单个 class token 换成**文本 token 序列**，文本 token 对所有视觉 token 可见（concat 而非 cross-attention，比 STAR 的 cross-attn 方案省 25% 参数）；
 - 用 Llama 风格 block 替换 VAR 的 attention/FFN；
 - **关键：把 VAR 所有绝对位置编码换成可插值的相对编码**——step embedding（标识 token 属哪个分辨率尺度）用 sinusoidal（天然适配 256/512px 用 10 步、1024px 用 14 步的可变步数）；token index embedding 用混合方案：文本 token 用 1D RoPE、视觉 token 用 2D RoPE，视觉 token 位置索引直接接在文本 token 之后。这套相对编码让从低分辨率 checkpoint finetune 到高分辨率时收敛**显著加快**（Fig 8）。
 

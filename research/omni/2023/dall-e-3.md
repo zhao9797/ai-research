@@ -22,7 +22,7 @@ updated: 2026-06-25
 DALL·E 3 是 OpenAI 第三代文生图系统，核心创新不在模型结构而在**数据**：用一个定制图像 captioner 把训练集**全量重写成高描述性合成 caption**（95% 合成 + 5% 原始 alt-text 混训），再深度集成 ChatGPT/GPT-4 在推理时把用户短 prompt"上采样"成长描述，从而把长 prompt 遵循度、组合性与文字渲染拉到当时 SOTA——人评 prompt-following ELO 153.3，远超 Midjourney 5.2（-104.8）与 SDXL（-189.5）。
 
 ## 背景与定位
-彼时文生图模型（[[dall-e-2]]、[[stable-diffusion]]、[[sdxl]]、Imagen、Parti）的通病是 **prompt following 差**：忽略词序、漏掉物体、混淆关系、数不清个数、画不对文字。前人给的药方各不相同——Imagen 靠更强的预训练语言模型（T5）做条件、并提出 DrawBench；Parti 靠把自回归生成器 scaling 上去；Rassin 等指出 DALL·E 2 存在"一词多义不约束"的缺陷。
+彼时文生图模型（[[dall-e-2]]、[[stable-diffusion-1]]、[[sdxl]]、Imagen、Parti）的通病是 **prompt following 差**：忽略词序、漏掉物体、混淆关系、数不清个数、画不对文字。前人给的药方各不相同——Imagen 靠更强的预训练语言模型（T5）做条件、并提出 DrawBench；Parti 靠把自回归生成器 scaling 上去；Rassin 等指出 DALL·E 2 存在"一词多义不约束"的缺陷。
 
 DALL·E 3 论文（标题 *Improving Image Generation with Better Captions*，James Betker、Gabriel Goh、Li Jing、Aditya Ramesh 等）提出一条正交路线：**问题出在训练数据的图文对质量**。互联网 alt-text 往往只描述主体、漏掉背景/数量/位置/颜色/图中文字，甚至直接错误（广告、meme 混进 alt-text）。既然 caption 噪声大，那就**用模型重新生成准确而详尽的 caption** 来训练，把"averaging operation"般的噪声抹平。这是把"合成数据训练"（Parti 也提过）做成系统化方法并量化其收益的工作。
 

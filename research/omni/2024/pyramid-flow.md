@@ -26,7 +26,7 @@ Pyramid Flow（金字塔式流匹配，ICLR 2025）用**单个统一 DiT**把视
 
 作者的核心观察（论文 Fig.1a）：扩散/流模型**早期时间步非常嘈杂且信息量低**，全程都在全分辨率上算是浪费。于是把生成轨迹重新解释为一系列在不同尺度压缩表示上运行的金字塔阶段——只有最后一阶段全分辨率，早期阶段低分辨率，大幅削减冗余计算。相比级联模型有两点本质改进：(1) 各阶段轨迹**互相衔接**，后一阶段从前一阶段的结果继续生成，而非每阶段都从纯噪声重生；(2) 用**单一统一模型**端到端联合优化所有金字塔阶段，而非每个分辨率一个模型。
 
-技术脉络上它站在 [[flow-matching]]（Lipman / Liu rectified flow）、[[dit]]、[[stable-diffusion-3]]（MM-DiT）、[[flux]] 与自回归长视频（Diffusion Forcing、GameNGen）的交叉点上，把"图像金字塔"思想（FPN、image pyramid）首次以纯流匹配目标统一进单 DiT。机构为北京大学 + 快手 + 北邮，第一作者 Yang Jin，通讯 Yadong Mu / Zhouchen Lin。
+技术脉络上它站在 [[flow-matching]]（Lipman / Liu rectified flow）、[[dit]]、[[stable-diffusion-3]]（MM-DiT）、[[flux-1]] 与自回归长视频（Diffusion Forcing、GameNGen）的交叉点上，把"图像金字塔"思想（FPN、image pyramid）首次以纯流匹配目标统一进单 DiT。机构为北京大学 + 快手 + 北邮，第一作者 Yang Jin，通讯 Yadong Mu / Zhouchen Lin。
 
 ## 模型架构
 - **Backbone**：MM-DiT，基于 **SD3 Medium**，24 层 Transformer，总参数 **2B**；权重由 SD3 Medium 初始化（后续 miniFLUX 版本改为 FLUX 结构从头训，见下）。空间维用正弦位置编码，时间维加 **1D RoPE** 以支持不同时长的弹性训练。

@@ -22,7 +22,7 @@ updated: 2026-06-25
 eDiff-I 是 NVIDIA 2022.11 的级联文生图扩散模型，核心创新是**按去噪阶段切换的"专家去噪器集成"（Ensemble of Expert Denoisers）**——在不增加单步推理算力的前提下扩容模型，并在同一模型内**同时使用 T5-XXL + CLIP 双文本编码器 + CLIP 图像编码器**（论文列为三大贡献之一），外加 training-free 的 **paint-with-words** 空间控制。在 MS-COCO 256×256 zero-shot FID-30K 上达到 **6.95**（Config-D），优于同期 [[imagen]]（7.27）与 Parti（7.23）。
 
 ## 背景与定位
-2022 年大规模文生图扩散模型（[[glide]]、[[dalle-2]]、[[imagen]]、[[latent-diffusion-ldm]] / Stable Diffusion）已证明扩散模型在文本对齐与零样本泛化上的统治力，业界共识是"scale 即正义"（论文引用 Sutton 的 bitter lesson）。但单纯加深/加宽去噪网络会**线性放大采样开销**——因为采样要解一个反向 ODE/SDE，去噪网络要被调用很多次（NFE 很高）。eDiff-I 要解决的核心问题是：**如何在不增加测试时单步算力的前提下扩容文生图扩散模型**。
+2022 年大规模文生图扩散模型（[[glide]]、[[dall-e-2]]、[[imagen]]、[[latent-diffusion-ldm]] / Stable Diffusion）已证明扩散模型在文本对齐与零样本泛化上的统治力，业界共识是"scale 即正义"（论文引用 Sutton 的 bitter lesson）。但单纯加深/加宽去噪网络会**线性放大采样开销**——因为采样要解一个反向 ODE/SDE，去噪网络要被调用很多次（NFE 很高）。eDiff-I 要解决的核心问题是：**如何在不增加测试时单步算力的前提下扩容文生图扩散模型**。
 
 论文的关键经验观察（它的立论基石）：**文生图扩散的去噪行为随噪声尺度 σ 发生质变**。
 - 采样早期（σ 大、输入近纯噪声）：模型主要**依赖文本提示**来确定文本对齐的全局内容；

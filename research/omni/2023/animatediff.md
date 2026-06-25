@@ -19,10 +19,10 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-AnimateDiff 是一个**即插即用的运动模块（motion module）**：在 [[stable-diffusion]] / [[latent-diffusion-ldm]] 的冻结 U-Net 上插入一支"时序 Transformer"，只在视频数据上训练这支模块一次，就能把社区里**任意个性化 T2I 模型**（DreamBooth / LoRA、Civitai 上的 ToonYou / RealisticVision 等）**无需再训练**地变成动画生成器，同时保留其画风与画质。配套提出 **MotionLoRA**（仅约 20~50 段参考视频、~30M 存储即可学一种镜头运动），并在用户研究与 CLIP 指标上优于 Text2Video-Zero / Tune-a-Video。ICLR 2024 Spotlight，是开源文生视频/图生视频生态（ComfyUI、WebUI）影响最深远的工作之一。
+AnimateDiff 是一个**即插即用的运动模块（motion module）**：在 [[stable-diffusion-1]] / [[latent-diffusion-ldm]] 的冻结 U-Net 上插入一支"时序 Transformer"，只在视频数据上训练这支模块一次，就能把社区里**任意个性化 T2I 模型**（DreamBooth / LoRA、Civitai 上的 ToonYou / RealisticVision 等）**无需再训练**地变成动画生成器，同时保留其画风与画质。配套提出 **MotionLoRA**（仅约 20~50 段参考视频、~30M 存储即可学一种镜头运动），并在用户研究与 CLIP 指标上优于 Text2Video-Zero / Tune-a-Video。ICLR 2024 Spotlight，是开源文生视频/图生视频生态（ComfyUI、WebUI）影响最深远的工作之一。
 
 ## 背景与定位
-2023 年中，T2I 扩散模型（[[stable-diffusion]]）加上 DreamBooth、LoRA、Textual Inversion 等轻量个性化方法，已经让普通人能在消费级显卡上把基座模型适配到任意画风/主体。Civitai、HuggingFace 上沉淀了海量个性化 T2I，但它们**只能出静态图**。
+2023 年中，T2I 扩散模型（[[stable-diffusion-1]]）加上 DreamBooth、LoRA、Textual Inversion 等轻量个性化方法，已经让普通人能在消费级显卡上把基座模型适配到任意画风/主体。Civitai、HuggingFace 上沉淀了海量个性化 T2I，但它们**只能出静态图**。
 
 当时给个性化 T2I 加运动有两条路，都不理想：
 - **整模型改造的视频生成**（Make-A-Video、Imagen Video、VideoLDM/Align-Your-Latents、MagicVideo 等）会**更新全部参数、改变原 T2I 的特征空间**，因而与现成的个性化权重不兼容——你没法把社区里某个二次元 LoRA 直接拿来出视频。

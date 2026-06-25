@@ -29,7 +29,7 @@ BAGEL 是字节 Seed 开源的 **统一多模态基础模型**（7B 激活 / 14B
 - **Quantized AR**（离散视觉 token 的 next-token，如 [[emu3]]、Janus）——生成质量与延迟差；
 - **External Diffuser**（LLM + 外挂扩散模块经轻量 adapter，如 MetaQuery、SEED-X）——把 LLM 上下文压成少量 latent token，**存在显式瓶颈**、长上下文推理易丢信息。
 
-作者选 Integrated Transformer 的理由：**bottleneck-free**，全层都能让理解/生成无损交互，更利于 scale、更适合后续 RL。生成走 Rectified Flow（对标 SD3 [[sd3]] / FLUX [[flux-1]]），理解走 next-token（沿用 AR LLM 强项）。
+作者选 Integrated Transformer 的理由：**bottleneck-free**，全层都能让理解/生成无损交互，更利于 scale、更适合后续 RL。生成走 Rectified Flow（对标 SD3 [[stable-diffusion-3]] / FLUX [[flux-1]]），理解走 next-token（沿用 AR LLM 强项）。
 
 ## 模型架构
 **Backbone：MoT（Mixture-of-Transformer-Experts）**，由 Qwen2.5 LLM 初始化的 decoder-only transformer。两个 transformer expert：

@@ -19,7 +19,7 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-DDPM 是把 [[diffusion-sohl-dickstein-2015]]（非平衡热力学扩散）真正做到 GAN 级图像质量的奠基工作：通过将扩散模型重参数化为「预测噪声 ε」并配合一个去掉权重的简化 MSE 目标（L_simple），把训练目标化简成一行均方误差，同时揭示其与去噪分数匹配 + 退火 Langevin 动力学的等价性；在无条件 CIFAR10 上取得 IS=9.46、FID=3.17（当时 SOTA，优于多数有条件模型），256×256 LSUN 质量与 ProgressiveGAN 相当。它是后续所有 T2I 扩散模型（[[ddim]] [[improved-ddpm]] [[adm-guided-diffusion]] [[latent-diffusion-ldm]] [[imagen]] [[stable-diffusion]]）的直接源头。
+DDPM 是把 [[diffusion-sohl-dickstein-2015]]（非平衡热力学扩散）真正做到 GAN 级图像质量的奠基工作：通过将扩散模型重参数化为「预测噪声 ε」并配合一个去掉权重的简化 MSE 目标（L_simple），把训练目标化简成一行均方误差，同时揭示其与去噪分数匹配 + 退火 Langevin 动力学的等价性；在无条件 CIFAR10 上取得 IS=9.46、FID=3.17（当时 SOTA，优于多数有条件模型），256×256 LSUN 质量与 ProgressiveGAN 相当。它是后续所有 T2I 扩散模型（[[ddim]] [[improved-ddpm]] [[diffusion-models-beat-gans]] [[latent-diffusion-ldm]] [[imagen]] [[stable-diffusion-1]]）的直接源头。
 
 ## 背景与定位
 2020 年前，高质量图像生成由 GAN（BigGAN、StyleGAN2）和自回归/流模型主导；扩散模型（diffusion probabilistic models，Sohl-Dickstein 2015，ref.[53]）理论优雅但「从未被证明能生成高质量样本」。与此并行的另一条线是 Song & Ermon 的 NCSN（score-based，ref.[55,56]）——用去噪分数匹配在多噪声尺度上训练，再用退火 Langevin 采样。
@@ -120,8 +120,8 @@ DDPM 是无条件图像生成，使用标准学术数据集，无大规模图文
 4. 提出固定方差、√(1−β_t) 数据缩放、每层时间嵌入注入等一系列让扩散训练稳定的工程选择。
 
 **对后续工作的影响（直接源头）：**
-- [[ddim]]（确定性、少步采样）、[[improved-ddpm]]（学习方差 + cosine schedule）、[[adm-guided-diffusion]]（classifier guidance，"diffusion beats GANs"）。
-- 潜空间化与文本条件：[[latent-diffusion-ldm]] / [[stable-diffusion]]（在 VAE latent 上做 DDPM + cross-attention 文本条件）、[[imagen]]、[[dalle-2]]。
+- [[ddim]]（确定性、少步采样）、[[improved-ddpm]]（学习方差 + cosine schedule）、[[diffusion-models-beat-gans]]（classifier guidance，"diffusion beats GANs"）。
+- 潜空间化与文本条件：[[latent-diffusion-ldm]] / [[stable-diffusion-1]]（在 VAE latent 上做 DDPM + cross-attention 文本条件）、[[imagen]]、[[dall-e-2]]。
 - 几乎所有现代 T2I/视频/音频扩散生成模型的训练目标与采样框架都可追溯到本文。
 
 **已知局限（论文自述）：**

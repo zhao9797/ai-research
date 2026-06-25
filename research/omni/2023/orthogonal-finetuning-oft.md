@@ -23,7 +23,7 @@ reviewed: 2026-06-25
 OFT（Orthogonal Finetuning）是一种 PEFT（参数高效微调）方法：用一个**层共享的正交矩阵 R 左乘**预训练权重（`W = R·W⁰`），在适配下游任务的同时**可证明地保持「超球能量」（hyperspherical energy，即同层神经元两两夹角结构）不变**，从而比 [[lora]]/[[dreambooth]]/[[controlnet]] 更稳、收敛更快、样本效率更高。最亮眼结果：在 controllable generation 上**仅用 5% 数据即收敛**（LoRA/ControlNet 需要 50%），且第 8 epoch 即达到 LoRA 第 20 epoch 的水平；10000 步主体驱动微调时人评对 OFT 的「整体质量」偏好达 **87.6%**（DreamBooth 11.6% / LoRA 0.8%）。NeurIPS 2023，是后续 [[boft]]（Butterfly OFT）的方法基础。
 
 ## 背景与定位
-大模型文生图扩散（[[stable-diffusion]]、[[imagen]]、[[dalle-2]]）已能高保真生成，但纯文本引导对**细粒度可控**仍不够，论文聚焦两个下游微调任务：
+大模型文生图扩散（[[stable-diffusion-1]]、[[imagen]]、[[dall-e-2]]）已能高保真生成，但纯文本引导对**细粒度可控**仍不够，论文聚焦两个下游微调任务：
 - **Subject-driven generation（主体驱动）**：给几张主体图 + 文本，生成同一主体的新场景图（DreamBooth 设定）。
 - **Controllable generation（可控生成）**：给额外控制信号（canny 边缘、分割图、人脸关键点等），按信号 + 文本生成（ControlNet/T2I-Adapter 设定）。
 

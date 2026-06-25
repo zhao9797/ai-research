@@ -29,7 +29,7 @@ LLM 走的是"预训练 → 对齐（SFT + RLHF）"两段式，而 2023 年的 t
 - **奖励回传类（DRaFT、AlignProp）**：把奖励模型梯度直接回传到扩散链，过训会 mode collapse，且只能优化可微奖励；DRaFT 明确报告无法用 CLIP 提升图文对齐。
 - **推理期优化（DOODL）**：不学新参数，但单次推理成本上升一个数量级以上。
 
-Diffusion-DPO 是唯一同时满足 **开放词表泛化 + 推理成本不变 + 有分布控制（β）+ 能提升通用图文对齐**的方法。技术血缘上它继承 [[ddpm]]/[[ldm]] 的扩散框架与 Rafailov 等的 LLM-DPO，把"reparameterize 奖励 → 直接对策略做二分类"的思路搬到扩散链。
+Diffusion-DPO 是唯一同时满足 **开放词表泛化 + 推理成本不变 + 有分布控制（β）+ 能提升通用图文对齐**的方法。技术血缘上它继承 [[ddpm]]/[[latent-diffusion-ldm]] 的扩散框架与 Rafailov 等的 LLM-DPO，把"reparameterize 奖励 → 直接对策略做二分类"的思路搬到扩散链。
 
 ## 模型架构
 Diffusion-DPO 是**训练方法（method），不引入新架构**，直接复用被对齐模型的全部组件：

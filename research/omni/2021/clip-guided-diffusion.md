@@ -20,7 +20,7 @@ reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-CLIP-Guided Diffusion 是 Katherine Crowson(RiversHaveWings)2021 年放出的一套**训练免费(training-free)**文生图方法：把 [[diffusion-models-beat-gans]](Dhariwal & Nichol)的"分类器引导(classifier guidance)"中的 ImageNet 分类器梯度,替换成 **CLIP 图文相似度的梯度**,从而用任意文本 prompt 去引导一个**无条件 ImageNet 扩散模型**生成与文字相符的图像。它本身不训练任何新模型、不发论文,只是一份 Colab notebook + 一份 512×512 无条件扩散权重,却是 [[glide]] / [[stable-diffusion]] 之前社区跑通"扩散 + CLIP = 文生图"的关键实践,直接催生了后来的 Disco Diffusion 等一系列民间生成工具。
+CLIP-Guided Diffusion 是 Katherine Crowson(RiversHaveWings)2021 年放出的一套**训练免费(training-free)**文生图方法：把 [[diffusion-models-beat-gans]](Dhariwal & Nichol)的"分类器引导(classifier guidance)"中的 ImageNet 分类器梯度,替换成 **CLIP 图文相似度的梯度**,从而用任意文本 prompt 去引导一个**无条件 ImageNet 扩散模型**生成与文字相符的图像。它本身不训练任何新模型、不发论文,只是一份 Colab notebook + 一份 512×512 无条件扩散权重,却是 [[glide]] / [[stable-diffusion-1]] 之前社区跑通"扩散 + CLIP = 文生图"的关键实践,直接催生了后来的 Disco Diffusion 等一系列民间生成工具。
 
 ## 背景与定位
 2021 年初文生图的两条主线:一是自回归 token 路线([[dall-e-1]] / [[cogview]] / [[godiva]]),需要海量算力从头训练;二是 [[clip]](OpenAI 2021-02)发布后兴起的"**CLIP 引导优化**"路线——用 CLIP 当可微的"图文打分器",反向传播去优化一个图像生成器,代表作是 Crowson 等人更早的 **VQGAN+CLIP**(把 CLIP 梯度回传到 VQGAN 的 latent)。
@@ -29,7 +29,7 @@ CLIP-Guided Diffusion 是 Katherine Crowson(RiversHaveWings)2021 年放出的一
 
 Crowson 的关键洞察:**分类器引导里的"类别梯度",可以换成 CLIP 的"图文对齐梯度"**。CLIP 本质上就是一个开放词表的零样本分类器/打分器,把 `log p_φ(y|x_t)` 换成"图像 CLIP 嵌入与文本 CLIP 嵌入的相似度",`y` 就从 1000 个 ImageNet 类标签变成了**任意一句自然语言 prompt**。于是无需重新训练扩散模型,就能做开放词表文生图。值得一提的是,OpenAI 自己在该模型的 model card 里也"探测"过这个用法(把去噪预测喂给 CLIP 并对全过程求导),但结论是"难以从 CLIP 提取信息";而 Crowson 用 **多裁剪(cutouts)+ 辅助正则项** 的工程手法把它真正跑成了可用的文生图——这正是社区版相对官方探测的价值所在。
 
-技术脉络中的位置:VQGAN+CLIP(latent 优化)→ **CLIP-Guided Diffusion(扩散采样引导)**→ [[glide](OpenAI,把文本条件直接训进扩散模型 + classifier-free guidance)] → [[stable-diffusion]]。它是"CLIP 当外挂打分器"范式在扩散模型上的落地,也是"扩散文生图民间化"的起点。
+技术脉络中的位置:VQGAN+CLIP(latent 优化)→ **CLIP-Guided Diffusion(扩散采样引导)**→ [[glide](OpenAI,把文本条件直接训进扩散模型 + classifier-free guidance)] → [[stable-diffusion-1]]。它是"CLIP 当外挂打分器"范式在扩散模型上的落地,也是"扩散文生图民间化"的起点。
 
 ## 模型架构
 本方法**不引入新网络**,而是把两个现成模型组合到采样回路里:
@@ -90,7 +90,7 @@ Crowson 的关键洞察:**分类器引导里的"类别梯度",可以换成 CLIP 
 
 **影响**
 - 直接催生 **Disco Diffusion**(在此 notebook 基础上加多模型集成、3D 动画、调度器),成为 2021–2022 AI 艺术浪潮的核心工具之一;与 VQGAN+CLIP 一起把"输入一句话出图"带进大众视野。
-- 在范式上为 [[glide]] / [[stable-diffusion]] 铺路:验证了"扩散 + CLIP 文本对齐"的可行性,也暴露了"外挂 CLIP 引导"的上限(分布不匹配、需大量 hack、慢),促使后续把文本条件**直接训进**扩散模型(GLIDE 的 classifier-free guidance、SD 的 cross-attention text-conditioning)。
+- 在范式上为 [[glide]] / [[stable-diffusion-1]] 铺路:验证了"扩散 + CLIP 文本对齐"的可行性,也暴露了"外挂 CLIP 引导"的上限(分布不匹配、需大量 hack、慢),促使后续把文本条件**直接训进**扩散模型(GLIDE 的 classifier-free guidance、SD 的 cross-attention text-conditioning)。
 - 让 Katherine Crowson 成为开源扩散生态的关键人物(后续 k-diffusion 采样器库、HDiT 等)。
 
 **已知局限**

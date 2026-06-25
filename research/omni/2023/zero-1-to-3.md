@@ -20,7 +20,7 @@ reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-Zero-1-to-3（Zero123）通过在合成多视图数据上微调 [[stable-diffusion]]，把"相对相机视角变换"作为一个可控条件"螺栓"挂载到大规模扩散模型上，从而用**单张 RGB 图**做零样本新视角合成（NVS）与单图 3D 重建。其核心论点：大规模 2D 扩散模型在仅看 2D 图像的情况下已隐含学到丰富的 3D 几何先验，只需学一个视角控制机制即可"解锁"。在 Google Scanned Objects 上 NVS 的 PSNR 18.378 / LPIPS 0.088 / FID 0.027，全面碾压 DietNeRF、Image Variation、SJC-I 等基线，开启了"2D 扩散 → image-to-3D"的范式。
+Zero-1-to-3（Zero123）通过在合成多视图数据上微调 [[stable-diffusion-1]]，把"相对相机视角变换"作为一个可控条件"螺栓"挂载到大规模扩散模型上，从而用**单张 RGB 图**做零样本新视角合成（NVS）与单图 3D 重建。其核心论点：大规模 2D 扩散模型在仅看 2D 图像的情况下已隐含学到丰富的 3D 几何先验，只需学一个视角控制机制即可"解锁"。在 Google Scanned Objects 上 NVS 的 PSNR 18.378 / LPIPS 0.088 / FID 0.027，全面碾压 DietNeRF、Image Variation、SJC-I 等基线，开启了"2D 扩散 → image-to-3D"的范式。
 
 ## 背景与定位
 单图 3D 重建与新视角合成是高度欠约束（under-constrained）问题，需要极强的先验。此前主流路线有两类局限：

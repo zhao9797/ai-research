@@ -26,7 +26,7 @@ GILL（论文题为 *Generating Images with Multimodal Language Models*，但正
 2022–2023 年「冻结 LLM + 视觉适配」一脉（[[frozen]] / Flamingo / [[blip-2]] / LLaVA）证明了只训练少量翻译参数就能让文本 LLM **读图**（图→文 embedding）。但这些模型只能**输出文本**。同期作者自己的前作 **FROMAGe**（Koh et al., ICML 2023）首次让冻结 LLM 在图文交错输入下**输出检索图像**，但只能从候选库里**检索**，无法生成库外的新图，且只用单个 `[RET]` token。
 
 GILL 的定位就是补上「生成」这一环：它是**第一个**能在任意交错图文输入下同时产出「检索图 + 新生成图 + 文本」并交织成连贯多模态对话的模型。相对前置工作的核心改进有三点：
-1. **生成而非只检索**——把冻结 LLM 接到现成的文生图扩散模型（[[stable-diffusion]] / [[latent-diffusion-ldm]]），突破检索候选集的天花板；
+1. **生成而非只检索**——把冻结 LLM 接到现成的文生图扩散模型（[[stable-diffusion-1]] / [[latent-diffusion-ldm]]），突破检索候选集的天花板；
 2. **高效**——训练时**不需要跑图像生成模型**（蒸馏目标是 SD 文本编码器的输出，可预计算），也**不需要交错图文数据**（仅用图文对 CC3M），对比 Flamingo（1535 TPU×15 天）/ RA-CM3（256 GPU×5 天）只需 2 GPU×2 天；
 3. **检索 vs 生成的自动决策**——学一个决策分类器，按 prompt 决定该检索还是生成。
 

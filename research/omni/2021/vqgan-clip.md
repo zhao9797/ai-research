@@ -19,14 +19,14 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-VQGAN-CLIP 是一种**无需任何额外训练**的开放域文本生图与图像编辑方法：用预训练 [[clip]] 计算"候选图—文本"的相似度作为损失，反向传播到预训练 [[vqgan]]（VQGAN，即 [[taming-transformers]] 的离散自编码器）的隐码（z-vector）上做迭代优化。仅 ~2.27 亿参数、单张 11 GB 消费级 GPU（甚至免费 Colab K80）即可运行，人评对齐度大幅超过同期 minDALL-E 与 GLIDE，直接点燃了 2021 年"CLIP+VQGAN" AI 艺术社区浪潮（论文统计全网调用超 1000 万次）。
+VQGAN-CLIP 是一种**无需任何额外训练**的开放域文本生图与图像编辑方法：用预训练 [[clip]] 计算"候选图—文本"的相似度作为损失，反向传播到预训练 [[taming-transformers-vqgan]]（VQGAN，即 [[taming-transformers-vqgan]] 的离散自编码器）的隐码（z-vector）上做迭代优化。仅 ~2.27 亿参数、单张 11 GB 消费级 GPU（甚至免费 Colab K80）即可运行，人评对齐度大幅超过同期 minDALL-E 与 GLIDE，直接点燃了 2021 年"CLIP+VQGAN" AI 艺术社区浪潮（论文统计全网调用超 1000 万次）。
 
 ## 背景与定位
 2021 年初的开放域文生图/图像编辑高度依赖"昂贵且专门训练"的大模型：
 - **生成**侧：[[dall-e-1]]（号称 12B 参数）、[[glide]]（号称 5B）能从任意文本生成/补全图像，但**不支持对已有图像做语义编辑**，且需从头训练巨型模型。
 - **编辑**侧：Open-Edit（ECCV 2020）首次提出开放域语义图像编辑，但只能做"红苹果→绿苹果"这类语义简单的变换，**不能生成图像**，且依赖 edge-map 维持结构、易破坏图像内容。
 
-VQGAN-CLIP 的核心定位是**"首个统一开放域语义生成与编辑的方法"**，且把"训练成本"彻底转移到"推理时的少量优化"。它建立在两个已有的预训练组件之上：用 [[clip]]（Radford et al. 2021，对比学习的联合图文编码器）做文本对齐打分，用 VQGAN（Esser/Rombach/Ommer 2021，[[taming-transformers]]）做图像生成器。生成与编辑的唯一区别是初始图像：生成从随机噪声起步，编辑则用待编辑图像起步——架构层面完全一致。
+VQGAN-CLIP 的核心定位是**"首个统一开放域语义生成与编辑的方法"**，且把"训练成本"彻底转移到"推理时的少量优化"。它建立在两个已有的预训练组件之上：用 [[clip]]（Radford et al. 2021，对比学习的联合图文编码器）做文本对齐打分，用 VQGAN（Esser/Rombach/Ommer 2021，[[taming-transformers-vqgan]]）做图像生成器。生成与编辑的唯一区别是初始图像：生成从随机噪声起步，编辑则用待编辑图像起步——架构层面完全一致。
 
 方法论上它与更早的 CNN 可视化/可解释性工作（DeepDream、Grad-CAM、saliency map）一脉相承——都是"固定网络、迭代更新输入图像以匹配某个目标"。作者也致谢 Ryan Murdock（advadnoun），他几乎同时独立做出了非常相似的 VQGAN+CLIP 技术但未公开发布。
 
@@ -35,7 +35,7 @@ VQGAN-CLIP 的核心定位是**"首个统一开放域语义生成与编辑的方
 ## 模型架构
 不是一个"新模型"，而是一套**推理时优化（test-time optimization）框架**，把两个冻结的预训练网络拼起来：
 
-- **图像生成器（backbone）= VQGAN**（[[taming-transformers]] 的离散隐变量自编码器部分）。基于 VQVAE（Oord et al. 2017）思想：用编码器 E 把图像 x 映射到隐变量 z=E(x)，再以最近邻方式量化到一个**码本（codebook）** Z={z_i}，码本词表大小 K、嵌入维度 n_k；量化步用 **straight-through estimator** 让 CNN 与码本端到端可训。论文正文只说用"the popular VQGAN [12]"，未指明具体检查点；社区参考实现（nerdyrodent / EleutherAI README）默认下载 ImageNet 上预训练的 `vqgan_imagenet_f16_16384`（下采样因子 f=16、码本 16384，托管在 Heidelberg）。生成时**被优化的不是网络权重，而是连续隐码 z-vector**（论文沿用 VQVAE 术语称之为 z-vector），把它解码为图像。
+- **图像生成器（backbone）= VQGAN**（[[taming-transformers-vqgan]] 的离散隐变量自编码器部分）。基于 VQVAE（Oord et al. 2017）思想：用编码器 E 把图像 x 映射到隐变量 z=E(x)，再以最近邻方式量化到一个**码本（codebook）** Z={z_i}，码本词表大小 K、嵌入维度 n_k；量化步用 **straight-through estimator** 让 CNN 与码本端到端可训。论文正文只说用"the popular VQGAN [12]"，未指明具体检查点；社区参考实现（nerdyrodent / EleutherAI README）默认下载 ImageNet 上预训练的 `vqgan_imagenet_f16_16384`（下采样因子 f=16、码本 16384，托管在 Heidelberg）。生成时**被优化的不是网络权重，而是连续隐码 z-vector**（论文沿用 VQVAE 术语称之为 z-vector），把它解码为图像。
 - **打分器 = CLIP**：把文本 prompt 和候选图像分别编码到联合空间，取嵌入间的**球面距离/余弦相似度**作为损失。代码实现支持多种 CLIP 视觉骨干（`ViT-B/32`、`ViT-B/16` 等）。
 - **条件注入方式**：没有传统意义的"条件注入"——文本条件**完全通过 CLIP 损失的梯度**回流到 z-vector 实现。生成 vs 编辑只切换初始图像（随机噪声 vs 待编辑图）。
 - **参数量**：VQGAN+CLIP 合计约 **2.27 亿参数**，作者刻意强调比 minDALL-E（1.3B）、GLIDE（783M 无 CLIP / 941M 带 CLIP）、号称的 DALL-E（12B）、GLIDE（5B）都小得多。
@@ -48,7 +48,7 @@ VQGAN-CLIP 的核心定位是**"首个统一开放域语义生成与编辑的方
 
 ## 数据
 **本方法本身不做任何训练，因此没有训练数据集。** 所用数据全部是**别人预训练好的权重**：
-- VQGAN：论文未点名具体检查点（仅称"popular VQGAN"）；社区实现默认用在 ImageNet 上预训练的 `vqgan_imagenet_f16_16384` 检查点（来自 [[taming-transformers]] / CompVis，由 Heidelberg 托管）。
+- VQGAN：论文未点名具体检查点（仅称"popular VQGAN"）；社区实现默认用在 ImageNet 上预训练的 `vqgan_imagenet_f16_16384` 检查点（来自 [[taming-transformers-vqgan]] / CompVis，由 Heidelberg 托管）。
 - CLIP：OpenAI 公开的 CLIP（在 4 亿网络图文对上对比训练，本工作未涉及其数据细节）。
 
 唯一与"数据"相关的人评实验：作者招募人类对 (文本, 图像) 对的对齐度打 1–5 分；prompts 基于使用经验挑选，但在不预知模型行为的前提下选定。**未涉及任何图文配对训练数据、清洗过滤、re-captioning 或合成数据**——这正是其"training-free"卖点。

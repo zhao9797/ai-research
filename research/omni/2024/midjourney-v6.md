@@ -22,7 +22,7 @@ updated: 2026-06-25
 Midjourney V6（2023-12-20 发布）与 V6.1（2024-07-30 发布）是当年**美学标杆级闭源文生图模型**：相比 V5.2 显著提升了长 prompt 的指令遵循、画面连贯性（手/肢体/远景细节）、模型世界知识，并**首次支持用双引号在画面中渲染文字**；V6.1 在此基础上把连贯性与画质再推一档、出图速度提升约 25%。**无论文、无技术报告、无开源权重**，全部信息以官方文档与发布公告为准，几乎所有训练/架构/数据/infra 细节均**未披露**。
 
 ## 背景与定位
-Midjourney 是一家自筹资金的小型研究实验室（David Holz 创立），产品长期以 Discord bot 形态分发，2024 年起迁移至网页端。其模型谱系 V1→V5.2→**V6（2023-12）→V6.1（2024-07）**→V7（2025-04）→V8/V8.1（2026），核心卖点始终是**默认美学（aesthetic）**而非可控性——历代模型自带一套"漂亮"的默认风格化，与同期 [[stable-diffusion]] / [[dall-e-3]] / [[sdxl]] 走"中性写实+强指令遵循"的路线形成差异化。
+Midjourney 是一家自筹资金的小型研究实验室（David Holz 创立），产品长期以 Discord bot 形态分发，2024 年起迁移至网页端。其模型谱系 V1→V5.2→**V6（2023-12）→V6.1（2024-07）**→V7（2025-04）→V8/V8.1（2026），核心卖点始终是**默认美学（aesthetic）**而非可控性——历代模型自带一套"漂亮"的默认风格化，与同期 [[stable-diffusion-1]] / [[dall-e-3]] / [[sdxl]] 走"中性写实+强指令遵循"的路线形成差异化。
 
 V6 解决的核心痛点是 V5.2 时代的两大短板：(1) **长 prompt 失效**——复杂多对象描述容易丢信息；(2) **无法画字**。官方文档原文将 V6 定位为"enhanced prompt accuracy for longer inputs, improved coherence and knowledge, and advanced image prompting and remixing capabilities"。在技术脉络上 V6 属于 [[latent-diffusion-ldm]] 范式的产品化迭代，与 [[sdxl]]、[[dall-e-3]]、[[ideogram]]（同期主打文字渲染）处于同一竞争位面，但 Midjourney 因不公开任何架构细节而无法归类到具体 backbone。
 

@@ -33,7 +33,7 @@ DMD 本身**不是一个新架构，而是一套蒸馏算法**，复用教师的
 - **两个 score 网络（critic 角色）**：
   - **real score** `s_real`：固定不动的教师扩散模型 `µ_base` 拷贝，给出真实分布在各噪声尺度下的 score（`s_real = -(x_t - α_t·µ_base)/σ_t²`，mean-prediction 形式，ε-prediction 经变量替换等价）。
   - **fake score** `s_fake`：从教师初始化、**训练中动态更新**的扩散模型 `µ_fake^φ`，追踪生成器当前输出的分布（随训练漂移）。
-- **教师/底座**：ImageNet/CIFAR 用 [[edm]]（Karras 2022）的预训练模型；文生图用 **Stable Diffusion v1.5**（[[latent-diffusion-ldm]]，潜空间扩散 + VAE + CLIP 文本编码器）。因此文生图版的 text encoder / VAE / 潜空间设计都直接继承 SD v1.5，DMD 不改这些组件。
+- **教师/底座**：ImageNet/CIFAR 用 [[elucidating-edm]]（Karras 2022）的预训练模型；文生图用 **Stable Diffusion v1.5**（[[latent-diffusion-ldm]]，潜空间扩散 + VAE + CLIP 文本编码器）。因此文生图版的 text encoder / VAE / 潜空间设计都直接继承 SD v1.5，DMD 不改这些组件。
 - **分辨率**：CIFAR-10 32×32、ImageNet 64×64、文生图 512×512（SD 潜空间）。
 - 适用范围：作者声称该法**对任何带确定性采样的扩散模型通用**。
 

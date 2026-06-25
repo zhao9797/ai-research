@@ -26,7 +26,7 @@ T2I 生成长期分两派：扩散模型（连续去噪，质量/细节强）与
 
 [[var-next-scale-prediction]]（VAR，NeurIPS 2024 Best Paper）把图像自回归重定义为「由粗到细的 next-scale 预测」，兼具 LLM 的可扩展性与扩散式逐级 refine 的优点。但 VAR 仍沿用 index-wise 离散 tokenizer，受限于词表大小：单纯把现有 tokenizer 词表放大会带来内存/算力的指数爆炸，且大整数索引的监督"模糊"（near-zero 特征的微小扰动会让索引标签完全跳变），难以优化。
 
-Infinity 的定位即：**用比特级建模（bitwise modeling）把整条链路从 index-wise 换成 bitwise**，从而把词表理论扩到无限，同时解决"大词表分类器算不动"与"index 监督模糊"两个问题，再用自纠正补上 VAR 继承自 LLM 的 teacher-forcing 缺陷。相关脉络：[[ldm-stable-diffusion]]、[[sd3-mmdit]]（rectified flow 扩散对手）、[[llamagen]]/[[emu3]]（VQ 自回归）、[[hart-hybrid-tokenizer]]（VAR 上的混合 tokenizer）、[[maskgit]]（masked 生成）。
+Infinity 的定位即：**用比特级建模（bitwise modeling）把整条链路从 index-wise 换成 bitwise**，从而把词表理论扩到无限，同时解决"大词表分类器算不动"与"index 监督模糊"两个问题，再用自纠正补上 VAR 继承自 LLM 的 teacher-forcing 缺陷。相关脉络：[[ldm-stable-diffusion]]、[[stable-diffusion-3]]（rectified flow 扩散对手）、[[llamagen]]/[[emu3]]（VQ 自回归）、[[hart-hybrid-tokenizer]]（VAR 上的混合 tokenizer）、[[maskgit]]（masked 生成）。
 
 ## 模型架构
 整体 = **比特级多尺度视觉 tokenizer** + **带 cross-attention 的因果 VAR transformer**，三大核心组件：比特级 tokenizer、无限词表分类器 IVC、比特级自纠正 BSC。

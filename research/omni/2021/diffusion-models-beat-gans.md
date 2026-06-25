@@ -24,7 +24,7 @@ OpenAI（Dhariwal & Nichol, 2021-05）通过一系列架构消融得到改进的
 ## 背景与定位
 2021 年初，GAN（尤其 BigGAN-deep）在 FID/IS/Precision 上仍是图像生成 SOTA，但训练不稳定、多样性差（recall 低）。扩散模型（[[ddpm]] Ho et al. 2020 + [[improved-ddpm]] Nichol & Dhariwal 2021）已在 CIFAR-10 上 SOTA，且具备「稳定训练目标 + 分布覆盖好 + 易扩展」的优点，但在 LSUN / ImageNet 这类困难数据集上仍落后 GAN。
 
-作者把差距归因于两点：(1) GAN 的网络架构被反复打磨、扩散用的 U-Net 还很「原始」；(2) GAN 有 truncation trick 这种「牺牲多样性换保真度」的旋钮，扩散没有。本文对症下药：**先改架构（→ ADM），再发明引导旋钮（→ classifier guidance）**。这是「guidance（引导）」思想的源头——它直接催生了同年稍晚的 [[classifier-free-guidance]]（无需单独分类器），并为后续所有 text-to-image（[[glide]] / [[dalle-2]] / [[latent-diffusion-ldm]] / [[imagen]]）确立了「扩散 + 引导」的统治性范式。模型代码与权重在 `openai/guided-diffusion` 开源。
+作者把差距归因于两点：(1) GAN 的网络架构被反复打磨、扩散用的 U-Net 还很「原始」；(2) GAN 有 truncation trick 这种「牺牲多样性换保真度」的旋钮，扩散没有。本文对症下药：**先改架构（→ ADM），再发明引导旋钮（→ classifier guidance）**。这是「guidance（引导）」思想的源头——它直接催生了同年稍晚的 [[classifier-free-guidance]]（无需单独分类器），并为后续所有 text-to-image（[[glide]] / [[dall-e-2]] / [[latent-diffusion-ldm]] / [[imagen]]）确立了「扩散 + 引导」的统治性范式。模型代码与权重在 `openai/guided-diffusion` 开源。
 
 ## 模型架构
 **Backbone：改进版 U-Net（论文称 ADM = Ablated Diffusion Model）。** 在 Ho et al. 的 U-Net（残差块栈 + 下采样卷积 + 对称上采样 + skip 连接 + 单头 16×16 全局注意力 + 时间步嵌入注入每个残差块）基础上，做了一组消融并保留以下改动：
@@ -82,7 +82,7 @@ OpenAI（Dhariwal & Nichol, 2021-05）通过一系列架构消融得到改进的
 
 ## 创新点与影响
 - **核心贡献**：(1) 系统化的 U-Net 架构消融 → ADM，单凭架构就在 LSUN / ImageNet 64² 拿到无条件 SOTA；(2) **classifier guidance**——首个给扩散模型的「多样性↔保真度」旋钮，且理论上对应锐化分类器分布 $p(y|x)^s$；(3) 证明扩散 + 引导可在 ImageNet 全分辨率超越 BigGAN，且 recall（覆盖）显著更好、25 步即可竞争。
-- **影响**：直接确立「扩散是图像生成 SOTA 范式」；guidance 思想是后续一切的源头——同年 Ho & Salimans 的 [[classifier-free-guidance]] 去掉独立分类器（成为今日标配），model-card 里的「CLIP 引导探针」预告了文本条件，催生 [[glide]] / [[dalle-2]] / [[latent-diffusion-ldm]] / [[imagen]]。ADM 的 U-Net 也成为 LDM/SD 的默认骨干雏形。
+- **影响**：直接确立「扩散是图像生成 SOTA 范式」；guidance 思想是后续一切的源头——同年 Ho & Salimans 的 [[classifier-free-guidance]] 去掉独立分类器（成为今日标配），model-card 里的「CLIP 引导探针」预告了文本条件，催生 [[glide]] / [[dall-e-2]] / [[latent-diffusion-ldm]] / [[imagen]]。ADM 的 U-Net 也成为 LDM/SD 的默认骨干雏形。
 - **已知局限**（论文 + model-card）：采样慢（多步前向，仍慢于 GAN，未做蒸馏）；classifier guidance 需带标签数据、对无标签数据无现成旋钮；引导降多样性会放大数据集偏见（性别/种族）；生成人脸常不真实（ImageNet 偏非人物体）；可能记忆训练图（但作者认为泄露风险与既有 GAN 相当）。模型仅供研究、不供商用。
 
 ## 原始链接

@@ -20,7 +20,7 @@ updated: 2026-06-25
 
 ## 一句话定位
 
-Rectified Flow（整流流）由 UT Austin 的 Liu、Gong、Liu 提出，用一个极简的最小二乘回归（学一条 ODE 去拟合两分布间样本对的直线方向 `X1−X0`），把生成建模与域迁移统一成"分布间运输映射"问题；配合 **reflow** 迭代把 ODE 轨迹拉直、再加 **distillation** 蒸馏，实现 **单步（1-NFE）生成**：CIFAR-10 上蒸馏后的 2-rectified flow 取得 **FID 4.85 / recall 0.50**，是当时 U-Net 类一步生成模型的 SOTA（击败 TDPM 的 8.91），而 1-rectified flow 全步求解（RK45）达 **FID 2.58 / recall 0.57**，recall 显著优于已有 ODE 与 GAN 方法。它是后来 [[sd3]] / [[flux]] 采用整流流路线的核心方法之一。
+Rectified Flow（整流流）由 UT Austin 的 Liu、Gong、Liu 提出，用一个极简的最小二乘回归（学一条 ODE 去拟合两分布间样本对的直线方向 `X1−X0`），把生成建模与域迁移统一成"分布间运输映射"问题；配合 **reflow** 迭代把 ODE 轨迹拉直、再加 **distillation** 蒸馏，实现 **单步（1-NFE）生成**：CIFAR-10 上蒸馏后的 2-rectified flow 取得 **FID 4.85 / recall 0.50**，是当时 U-Net 类一步生成模型的 SOTA（击败 TDPM 的 8.91），而 1-rectified flow 全步求解（RK45）达 **FID 2.58 / recall 0.57**，recall 显著优于已有 ODE 与 GAN 方法。它是后来 [[stable-diffusion-3]] / [[flux-1]] 采用整流流路线的核心方法之一。
 
 ## 背景与定位
 
@@ -122,7 +122,7 @@ min_v ∫_0^1 E[ || (X1 − X0) − v(Xt, t) ||^2 ] dt,   Xt = t·X1 + (1−t)·
 
 - **少步 / 单步生成路线**：与同期 Flow Matching、Stochastic Interpolants 共同确立"线性插值 / conditional flow"范式，成为 diffusion 之外的主流训练目标。
 - **InstaFlow**（同作者）把 rectified flow + reflow 套到 Stable Diffusion，实现**一步文生图**。
-- **整流流进入旗舰 T2I**：**Stable Diffusion 3（[[sd3]]）与 FLUX（[[flux]]）采用 rectified flow / flow matching 目标**（结合 logit-normal 时间采样等改良）作为核心训练目标，使本文从学术方法升级为产业基座——这正是它入选本调研的原因。
+- **整流流进入旗舰 T2I**：**Stable Diffusion 3（[[stable-diffusion-3]]）与 FLUX（[[flux-1]]）采用 rectified flow / flow matching 目标**（结合 logit-normal 时间采样等改良）作为核心训练目标，使本文从学术方法升级为产业基座——这正是它入选本调研的原因。
 - 配套理论续作《Rectified Flow: A Marginal Preserving Approach to Optimal Transport》(arXiv 2209.14577) 深化与 OT 的关系。
 
 **已知局限：**

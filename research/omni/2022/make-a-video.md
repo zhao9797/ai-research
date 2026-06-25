@@ -22,7 +22,7 @@ updated: 2026-06-25
 Make-A-Video（Meta AI，2022-09）是最早的开放域文生视频（T2V）扩散方法之一：核心思想是"从配对图文学世界长什么样、从无标注视频学世界怎么动"——**完全不需要配对的文本-视频数据**，通过把一个 DALL·E-2 式的 T2I 扩散模型用 **伪 3D（Pseudo-3D）时空因子化卷积/注意力** 扩展到时间维度，再叠加帧插值与时空超分级联，生成 768×768、76 帧的视频（具体秒数取决于推理时所选 fps，论文未给定时长）。零样本在 MSR-VTT 上 FID 13.17 / CLIPSIM 0.3049、UCF-101 零样本 FVD 367.23，均大幅超过同期 CogVideo / VDM，并在人评质量/忠实度上以 73–84% 偏好率领先。
 
 ## 背景与定位
-2022 年 T2I 已经爆发（[[dalle-2]]、[[imagen]]、[[latent-diffusion-ldm]] / Stable Diffusion、Parti），靠的是互联网上数十亿 (alt-text, image) 配对。但视频无法廉价收集到同等规模的高质量 (text, video) 配对，且视频是更高维数据，建模更难。同期 T2V 工作要么局限在窄域（移动数字、特定动作），要么依赖自建的私有配对数据：CogVideo（Hong et al., 2022）和 VDM（Video Diffusion Models, Ho et al., 2022）都各自收集了 1000 万条私有文本-视频对。
+2022 年 T2I 已经爆发（[[dall-e-2]]、[[imagen]]、[[latent-diffusion-ldm]] / Stable Diffusion、Parti），靠的是互联网上数十亿 (alt-text, image) 配对。但视频无法廉价收集到同等规模的高质量 (text, video) 配对，且视频是更高维数据，建模更难。同期 T2V 工作要么局限在窄域（移动数字、特定动作），要么依赖自建的私有配对数据：CogVideo（Hong et al., 2022）和 VDM（Video Diffusion Models, Ho et al., 2022）都各自收集了 1000 万条私有文本-视频对。
 
 Make-A-Video 的核心命题：**既然已有强大的 T2I 模型，从零训 T2V 是浪费**。论文主张：
 - 文本-图像配对教会模型"世界长什么样、如何被语言描述"；

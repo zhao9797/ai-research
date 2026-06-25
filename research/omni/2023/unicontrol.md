@@ -23,7 +23,7 @@ reviewed: 2026-06-25
 UniControl 是一个**单模型统一多种视觉条件可控生成（C2I）**的扩散基座模型：在 [[controlnet]] 之上引入 **MOE-style Adapter** 与 **task-aware HyperNet**，把 9 类视觉条件（Canny/HED/Sketch/Seg/Bbox/Pose/Depth/Normal/Outpainting）压进**一个 ~1.5B 参数模型**，等价于把 SD + 9 个 ControlNet（~4.3B）的能力压缩近 3 倍，且在 FID/感知距离/用户研究上多数任务**超过单任务 ControlNet**，并具备对未训练任务（去模糊、上色、修复、条件组合）的 **zero-shot 泛化**。NeurIPS 2023 收录。
 
 ## 背景与定位
-[[stable-diffusion]] 用文本提示提供灵活语义控制，但对空间/结构/几何的像素级精确控制能力不足。[[controlnet]] 通过给 SD 增加可训练分支注入视觉条件（边缘图、深度图等）解决了这一点，但**每种条件需训练一个独立 ControlNet**，要处理 N 种模态就得部署 N 个模型（参数与时间成本随任务线性增长，且无法在模态间共享知识）。
+[[stable-diffusion-1]] 用文本提示提供灵活语义控制，但对空间/结构/几何的像素级精确控制能力不足。[[controlnet]] 通过给 SD 增加可训练分支注入视觉条件（边缘图、深度图等）解决了这一点，但**每种条件需训练一个独立 ControlNet**，要处理 N 种模态就得部署 N 个模型（参数与时间成本随任务线性增长，且无法在模态间共享知识）。
 
 UniControl 的核心观点：NLP 中的生成基座（InstructGPT/GPT-4）能在**单一统一模型**里多任务并 zero-shot 泛化，而视觉可控生成缺这种"统一基座"。它把多种 C2I 任务统一进一个模型，让不同视觉条件**编码到统一表示空间**，既享受参数/推理效率（模型大小不随任务数显著增长），又能利用条件之间的内在关联（如 depth 与 segmentation 共享几何信息）相互增强。相对并发工作 Prompt Diffusion（需两对额外 in-context 图像示例）的差异：UniControl **只需单张视觉条件**即可同时做多任务和 zero-shot。技术脉络上承 [[ddpm]] / [[ddim]] / [[latent-diffusion-ldm]]，直接基线是 ControlNet 与 Multi-ControlNet，并对比 GLIGEN、T2I-Adapter。
 

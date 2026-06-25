@@ -27,7 +27,7 @@ Liquid 把图像用 VQGAN 离散成与文本同一词表/同一嵌入空间的 t
 - **(b)-(e) 半统一**：Transfusion/Show-o 引入 diffusion 建模导致视觉/文本目标不一致；Janus/Janus-Pro 用独立视觉编码 + 分离 head；VILA-U/TokenFlow/SynerGen-VL 需要额外的语义对齐预训练或 token 折叠等前后处理。
 - **(f) 纯离散 next-token**：LWM、Chameleon 用 VQVAE 把图像变成离散码，与文本共用 next-token-prediction loss，是最干净的统一形态——但它们都**从头训练**，代价极高（Chameleon 数 T token），且理解/生成质量偏弱。
 
-Liquid 站在 (f) 这一脉，核心主张是：**不必从头训，现成 LLM 已是极强起点**，只要扩 8192 个图像 token、用少量高质量数据 continue-train，即可获得生成+理解能力，省下约 100× 训练成本，同时语言能力不退化。它进一步做了 Chameleon/LWM 都没做的事——把"统一"本身当研究对象，量化 scaling、冲突、协同三件事。相关脉络见 [[chameleon]] [[emu3]] [[janus]] [[show-o]] [[var]] [[llamagen]] [[vqgan]]。
+Liquid 站在 (f) 这一脉，核心主张是：**不必从头训，现成 LLM 已是极强起点**，只要扩 8192 个图像 token、用少量高质量数据 continue-train，即可获得生成+理解能力，省下约 100× 训练成本，同时语言能力不退化。它进一步做了 Chameleon/LWM 都没做的事——把"统一"本身当研究对象，量化 scaling、冲突、协同三件事。相关脉络见 [[chameleon]] [[emu3]] [[janus]] [[show-o]] [[var]] [[llamagen]] [[taming-transformers-vqgan]]。
 
 ## 模型架构
 **总体**：decoder-only 自回归 Transformer，直接基于现成 LLM，**不改任何内部结构**，唯一改动是嵌入层与 LM head 各扩 8192 维。

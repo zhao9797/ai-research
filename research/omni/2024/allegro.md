@@ -22,9 +22,9 @@ updated: 2026-06-25
 Allegro 是 Rhymes AI 2024 年 10 月开源（Apache 2.0）的"商用级"文生视频模型，把 VideoVAE + VideoDiT 的**数据/架构/训练/工程全链路黑盒彻底披露**：用 175M 参数 VideoVAE（4×8×8 压缩）+ 2.8B 参数 VideoDiT（32 层、T5 文本编码器、3D RoPE + 3D 全注意力）在 256×H100 上三阶段训练，生成 88 帧 / 720p / 15 FPS（约 6 秒）视频；用户研究中**全维度超越当时所有开源模型**，并在"视频-文本相关性"上**超过所有商用模型**，整体质量仅次于 Hailuo 与 Kling。
 
 ## 背景与定位
-2024 年文生视频已涌现大量商用系统（Runway Gen-3、Luma Dream Machine、OpenAI Sora、快手 Kling、MiniMax Hailuo、Pika），但与文生图不同，**"如何训出商用级视频模型"的关键工程细节几乎全部闭源**——数据处理、文本-视频对齐、长上下文建模、训练基建都是黑盒。开源社区虽有 [[open-sora]]、Open-Sora-Plan 等复现项目，但报告称其"信息与资源仍不足以达到商用级性能"。
+2024 年文生视频已涌现大量商用系统（Runway Gen-3、Luma Dream Machine、OpenAI Sora、快手 Kling、MiniMax Hailuo、Pika），但与文生图不同，**"如何训出商用级视频模型"的关键工程细节几乎全部闭源**——数据处理、文本-视频对齐、长上下文建模、训练基建都是黑盒。开源社区虽有 [[open-sora-plan]]、Open-Sora-Plan 等复现项目，但报告称其"信息与资源仍不足以达到商用级性能"。
 
-Allegro 的定位不是刷新某个指标的 SOTA，而是**做一份"可复现的商用级配方"**：它直接基于 Open-Sora-Plan v1.2.0 的 VideoDiT 架构，做三处关键改造（换 T5 文本编码器、换自训 VideoVAE、大规模多阶段训练），完整公开 106M 图 + 48M 视频的数据筛选阈值、各阶段 GPU/batch/step、基建优化，并开放全部权重与训练代码。技术脉络上它属于 [[latent-diffusion-ldm]] → [[dit]] → Sora 式 DiT 视频生成一系，承接 [[open-sora]] / Open-Sora-Plan 的开源谱系，核心贡献是"开箱"而非新方法。
+Allegro 的定位不是刷新某个指标的 SOTA，而是**做一份"可复现的商用级配方"**：它直接基于 Open-Sora-Plan v1.2.0 的 VideoDiT 架构，做三处关键改造（换 T5 文本编码器、换自训 VideoVAE、大规模多阶段训练），完整公开 106M 图 + 48M 视频的数据筛选阈值、各阶段 GPU/batch/step、基建优化，并开放全部权重与训练代码。技术脉络上它属于 [[latent-diffusion-ldm]] → [[dit]] → Sora 式 DiT 视频生成一系，承接 [[open-sora-plan]] / Open-Sora-Plan 的开源谱系，核心贡献是"开箱"而非新方法。
 
 ## 模型架构
 整体为典型 VideoDiT 三件套：**T5 文本编码器 + VideoVAE（视觉 tokenizer）+ Video Transformer（DiT）**，在 VAE 压缩后的潜空间做扩散。

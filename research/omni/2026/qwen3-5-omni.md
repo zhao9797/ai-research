@@ -19,12 +19,12 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-Qwen3.5-Omni 是阿里 Qwen 的新一代「原生全模态」旗舰大模型——把 [[qwen3-omni]] 的 Thinker–Talker 架构从 30B-A3B 扩到数千亿参数（Plus/Flash/Light 三档）、上下文 32k→256k（>10 小时音频 / 400 秒 720P@1FPS 音视频），Thinker 与 Talker 双双换成 Hybrid-Attention MoE；最关键的两项创新是 **ARIA（Adaptive Rate Interleave Alignment）流式语音对齐** 与 **Hybrid-MoE 的 Gated Delta Net 长序列加速**。Qwen3.5-Omni-Plus 在 215 项音频/音视频子任务与 benchmark 上拿到 SOTA，通用音频理解/推理/识别/翻译/对话全面超越 Gemini-3.1 Pro、音视频理解整体追平 Gemini-3.1 Pro，同时文本/视觉不掉点（与同尺寸 Qwen3.5-Plus 持平）。
+Qwen3.5-Omni 是阿里 Qwen 的新一代「原生全模态」旗舰大模型——把 [[qwen3-5-omni]] 的 Thinker–Talker 架构从 30B-A3B 扩到数千亿参数（Plus/Flash/Light 三档）、上下文 32k→256k（>10 小时音频 / 400 秒 720P@1FPS 音视频），Thinker 与 Talker 双双换成 Hybrid-Attention MoE；最关键的两项创新是 **ARIA（Adaptive Rate Interleave Alignment）流式语音对齐** 与 **Hybrid-MoE 的 Gated Delta Net 长序列加速**。Qwen3.5-Omni-Plus 在 215 项音频/音视频子任务与 benchmark 上拿到 SOTA，通用音频理解/推理/识别/翻译/对话全面超越 Gemini-3.1 Pro、音视频理解整体追平 Gemini-3.1 Pro，同时文本/视觉不掉点（与同尺寸 Qwen3.5-Plus 持平）。
 
 ## 背景与定位
 人类与世界的交互天然是「全模态 + agentic」的：同时整合视觉、听觉、语言，并以文本、语音、工具动作作出回应。过去的多模态模型多停留在「被动感知—响应」范式，缺乏可扩展的 agentic 行为、实时交互、自主工具调用与跨模态推理。
 
-Qwen3.5-Omni 在 [[qwen2-5-omni]] 首创的 Thinker–Talker 框架、[[qwen3-omni]] 的工程化基础上，定位为「原生 omni agent 模型」——不仅跨模态感知与推理，还能自主拉起 WebSearch、执行复杂 FunctionCall、生成语音、做实时流式交互。相对 Qwen3-Omni 的五项关键升级（官方原文）：
+Qwen3.5-Omni 在 [[qwen2-5-omni]] 首创的 Thinker–Talker 框架、[[qwen3-5-omni]] 的工程化基础上，定位为「原生 omni agent 模型」——不仅跨模态感知与推理，还能自主拉起 WebSearch、执行复杂 FunctionCall、生成语音、做实时流式交互。相对 Qwen3-Omni 的五项关键升级（官方原文）：
 
 1. Thinker 与 Talker **均改为 Hybrid-Attention MoE**，长序列推理高效；
 2. 长上下文 **32k → 256k**（>10 小时音频 / 400 秒 720P@1FPS）；
@@ -34,7 +34,7 @@ Qwen3.5-Omni 在 [[qwen2-5-omni]] 首创的 Thinker–Talker 框架、[[qwen3-om
 
 由此衍生三项新能力：(1) 可控音视频 captioning（自动切片 + 时间戳打标 + 人物-音频关系的剧本级细粒度描述）；(2) 全面实时交互（语义打断 / turn-taking 意图识别、端到端语音控制音量·语速·情绪、用户样本音色克隆）；(3) 原生全模态 agentic 行为（自主 WebSearch、复杂 FunctionCall、以及涌现出的 **Audio-Visual Vibe Coding**——直接从音视频指令生成可执行代码）。
 
-> 说明：Qwen3.5-Omni 目前**仅通过 API 开放**（阿里云百炼 Offline/Realtime API），尚未开源权重；本页一手源为 arXiv 技术报告（2604.15804，2026-04-22）与官方博客（qwen.ai，2026-03-29）。开源的是上一代 [[qwen3-omni]]（30B-A3B，arXiv 2509.17765）。
+> 说明：Qwen3.5-Omni 目前**仅通过 API 开放**（阿里云百炼 Offline/Realtime API），尚未开源权重；本页一手源为 arXiv 技术报告（2604.15804，2026-04-22）与官方博客（qwen.ai，2026-03-29）。开源的是上一代 [[qwen3-5-omni]]（30B-A3B，arXiv 2509.17765）。
 
 ## 模型架构
 延续 **Thinker–Talker** 双模块架构（Thinker 出文本，Talker 出流式语音 token）。整体 backbone 为 **Hybrid Mixture-of-Experts（Hybrid-MoE）**，相比上一代纯 MoE 更好地平衡容量与效率。报告给出的模块清单（Table 1）：
@@ -54,7 +54,7 @@ Qwen3.5-Omni 在 [[qwen2-5-omni]] 首创的 Thinker–Talker 框架、[[qwen3-om
 - 文本用 Qwen3.5 tokenizer，**byte-level BPE，词表 150k→250k**，多数语言编解码效率提升 10–60%；
 - 音频 16 kHz、128 通道 mel（25 ms 窗 / 10 ms hop）经 AuT；
 - 视觉用 Qwen3.5 的 vision encoder（图像+视频混训），视频按**动态帧率**采样；
-- **音视频时间戳**：**仍沿用 [[qwen3-omni]] 的 TM-RoPE**（temporal ID 显式锚定绝对时间，做音视频同步）；但报告发现「直接把绝对时间编进 temporal position ID」对长视频会产生过稀疏索引、削弱长程时序建模、且要求大规模均匀帧率样本（抬高数据构造成本）。**改进做法**：在每个视频/音视频时间片**前置一个「秒为单位的格式化文本时间戳字符串」**让模型更自然地学习 timecode，音频序列还**随机间隔插入时间戳**对齐——是在 TM-RoPE 之上叠加文本 timecode，而非弃用 TM-RoPE。音频每 160 ms 一个时序 ID，视频帧按实际时间戳动态调整保持 160 ms/ID 的一致分辨率；多模态位置编号连续递增避免冲突。这一设计支持任意时长的流式输入。
+- **音视频时间戳**：**仍沿用 [[qwen3-5-omni]] 的 TM-RoPE**（temporal ID 显式锚定绝对时间，做音视频同步）；但报告发现「直接把绝对时间编进 temporal position ID」对长视频会产生过稀疏索引、削弱长程时序建模、且要求大规模均匀帧率样本（抬高数据构造成本）。**改进做法**：在每个视频/音视频时间片**前置一个「秒为单位的格式化文本时间戳字符串」**让模型更自然地学习 timecode，音频序列还**随机间隔插入时间戳**对齐——是在 TM-RoPE 之上叠加文本 timecode，而非弃用 TM-RoPE。音频每 160 ms 一个时序 ID，视频帧按实际时间戳动态调整保持 160 ms/ID 的一致分辨率；多模态位置编号连续递增避免冲突。这一设计支持任意时长的流式输入。
 
 **语音生成（Talker）**：直接在 Qwen3.5-Omni-Audio-Tokenizer 产生的 **RVQ tokens** 上工作（用 RVQ 替代繁重的 DiT 运算）；用 **MTP（multi-token prediction）模块** 建模残差码本（residual codebooks）做细粒度声学控制，配 **causal ConvNet（Code2Wav）** 逐帧增量合成波形，低延迟高保真。两点区别于 Qwen3-Omni：
 - 为 Talker 设**专用 system prompt** 指定目标音色，支持零样本音色克隆与可控语音生成（比传统 speaker embedding 能编码更丰富的文本描述+codec 序列线索）；

@@ -108,7 +108,7 @@ updated: 2026-06-25
 ## 创新点与影响
 **核心贡献**（论文自述四点）：(1) 首次把 text-to-image LDM 适配到局部文本编辑；(2) 提出逐图解码器微调解决 LDM 潜空间有损重建破坏背景的问题；(3) 提出渐进掩码收缩解决细掩码失效；(4) 提出 precision / diversity 两个局部文本编辑的定量评测指标。
 
-**影响**：本工作把"潜空间逐步掩码混合"确立为基于 [[latent-diffusion-ldm]] / [[stable-diffusion]] 的**高效局部编辑/inpainting 范式代表**，是后续大量训练-free 掩码编辑与 inpainting pipeline（包括 diffusers 生态的 blend/inpaint 思路）的直接前身；其"用 VAE 潜空间混合 + 仅对最终结果做背景修复"的设计被广泛沿用。被收录为 **SIGGRAPH 2023 / ACM TOG**（扩展版 v2，2023-04，27 页），原 arXiv v1 为 2022-06。开源实现持续维护，已扩展到 SD v2.1 / SDXL。
+**影响**：本工作把"潜空间逐步掩码混合"确立为基于 [[latent-diffusion-ldm]] / [[stable-diffusion-1]] 的**高效局部编辑/inpainting 范式代表**，是后续大量训练-free 掩码编辑与 inpainting pipeline（包括 diffusers 生态的 blend/inpaint 思路）的直接前身；其"用 VAE 潜空间混合 + 仅对最终结果做背景修复"的设计被广泛沿用。被收录为 **SIGGRAPH 2023 / ACM TOG**（扩展版 v2，2023-04，27 页），原 arXiv v1 为 2022-06。开源实现持续维护，已扩展到 SD v2.1 / SDXL。
 
 **已知局限**（同上"评测-局限"）：速度仍受扩散步数限制、CLIP 排序非全局、对输入敏感、可能触发 LDM 的"文字海报"偏置、继承 LAION-400M 的数据偏见与不良内容风险。
 
