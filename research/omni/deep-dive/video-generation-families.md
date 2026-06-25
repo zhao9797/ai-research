@@ -200,6 +200,6 @@ tags: [video-generation, text-to-video, image-to-video, diffusion-transformer, f
 
 ## 关联页
 
-- 上游使能方法：[[ddpm]] · [[latent-diffusion-ldm]] · [[dit]] · [[rectified-flow]] · [[flow-matching]] · [[classifier-free-guidance]] · [[stable-diffusion-3]]（MMDiT）· [[flux-1]]（双流→单流）
+- 上游使能方法：[[ddpm]] · [[latent-diffusion-ldm]] · [[dit-scalable-diffusion-transformers]] · [[rectified-flow]] · [[flow-matching]] · [[classifier-free-guidance]] · [[stable-diffusion-3]]（MMDiT）· [[flux-1]]（双流→单流）
 - 同期图像族横向：见 omni `deep-dive/` 下其它族综述
 - 全量来源索引：[[01-INDEX]]

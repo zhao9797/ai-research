@@ -27,7 +27,7 @@ Sora 是 OpenAI 2024-02-15 以技术报告《Video generation models as world si
 
 ## 背景与定位
 - **要解决什么问题。** 此前视频生成（RNN、GAN、自回归 transformer、早期视频扩散如 Imagen Video / Align-your-Latents / Photorealistic Video Generation）大多局限于**窄类别数据、短视频、固定尺寸**（论文原话："narrow category of visual data, on shorter videos, or on videos of a fixed size"，典型设定 4 秒 @ 256×256）。Sora 的目标是做一个**通用的视觉数据生成器（generalist model of visual data）**：同一个模型覆盖不同时长、宽高比、分辨率，直至 1 分钟高清。
-- **技术脉络中的位置。** Sora 把 LLM 的成功配方迁移到视觉：LLM 靠 internet-scale 数据 + 把代码/数学/多语种统一成 **token** 获得通才能力；Sora 则把视觉数据统一成 **patch**。它是 [[latent-diffusion-ldm]]（在压缩潜空间扩散）+ [[ddpm]]（去噪扩散目标）+ [[dit]]（Diffusion Transformer, Peebles & Xie 2023）+ DALL·E 3 recaptioning（[[dall-e-3]]）几条线的工程集成，并首次把它们推到"原生变长/变分辨率/变宽高比的视频"这一新规模。论文显式援引 NaViT（Patch n' Pack）作为"任意宽高比与分辨率"的 patch 化思想来源。
+- **技术脉络中的位置。** Sora 把 LLM 的成功配方迁移到视觉：LLM 靠 internet-scale 数据 + 把代码/数学/多语种统一成 **token** 获得通才能力；Sora 则把视觉数据统一成 **patch**。它是 [[latent-diffusion-ldm]]（在压缩潜空间扩散）+ [[ddpm]]（去噪扩散目标）+ [[dit-scalable-diffusion-transformers]]（Diffusion Transformer, Peebles & Xie 2023）+ DALL·E 3 recaptioning（[[dall-e-3]]）几条线的工程集成，并首次把它们推到"原生变长/变分辨率/变宽高比的视频"这一新规模。论文显式援引 NaViT（Patch n' Pack）作为"任意宽高比与分辨率"的 patch 化思想来源。
 - **相对前置工作的关键改进。**
   1. 放弃"把所有视频 crop/resize 成固定方形尺寸"的工业惯例，**用原生尺寸训练**，并实证这能提升构图与取景（framing/composition）。
   2. 验证 DiT 在**视频**上同样具备随训练算力扩展的 scaling 性质（base / 4× / 32× 算力的样本质量对比是报告核心实证）。

@@ -29,7 +29,7 @@ updated: 2026-06-25
 - **Open-Sora Plan（北大-兔展 PKU-YuanGroup，项目负责人 Li Yuan/袁粒）**：定位"复现一个强大的 Sora 式模型"，强调把整条管线拆成可替换组件（VAE / 去噪器 / 条件控制器），并在华为昇腾 NPU 上训练（v1.5 起"纯血昇腾"）。版本线：v1.0（2024.04，2+1D）→ v1.1（2024.05，加长加质）→ v1.2（2024.07，转 **Full 3D Attention**，720p）→ v1.3（2024.10，**WF-VAE + Skiparse 稀疏注意力 + prompt refiner**，arXiv 2412.00131）→ v1.5（2025.06，**SUV/Skiparse-3D + 更高压缩 WFVAE**，8B，对标开源 HunyuanVideo）→ Helios（2026，单 H100 19.5 FPS 分钟级长视频）。
 - **HPC-AI Tech Open-Sora（潞晨，Yang You/尤洋）**：定位"democratizing efficient video production"，强调低成本与完全可复现（数据/训练/推理全开源）。版本线：v1.0（2024.03，2s 512² 仅 3 天训练）→ v1.1（2024.04，**STDiT** 时空解耦，2–15s 多分辨率）→ v1.2（2024.06，**3D-VAE + rectified flow + score condition**，arXiv 2412.20404）→ v1.3（2025.02，shift-window attention + 统一时空 VAE，1B）→ **Open-Sora 2.0（2025.03，11B，$200K，arXiv 2503.09642）**。
 
-两线的共同贡献是把 Sora 报告里语焉不详的工程（数据清洗、causal 3D VAE、多分辨率分桶训练、长视频条件控制）做成可跑通的开源实现，并直接孵化了下游工作（如 rhymes-ai 的 [[allegro]] 其论文明言"builds upon the VideoDiT architecture introduced in OpenSora-Plan v1.2.0"，即沿用 OSP v1.2.0 的 VideoDiT 架构再自行三阶段 T2I→T2V 训练）。技术脉络承自 [[ddpm]] [[latent-diffusion-ldm]] [[dit]] [[pixart-alpha]]，与同期 [[cogvideox]] [[hunyuan-video]] [[gen-3-alpha]] [[ltx-video]] 并列。
+两线的共同贡献是把 Sora 报告里语焉不详的工程（数据清洗、causal 3D VAE、多分辨率分桶训练、长视频条件控制）做成可跑通的开源实现，并直接孵化了下游工作（如 rhymes-ai 的 [[allegro]] 其论文明言"builds upon the VideoDiT architecture introduced in OpenSora-Plan v1.2.0"，即沿用 OSP v1.2.0 的 VideoDiT 架构再自行三阶段 T2I→T2V 训练）。技术脉络承自 [[ddpm]] [[latent-diffusion-ldm]] [[dit-scalable-diffusion-transformers]] [[pixart-alpha]]，与同期 [[cogvideox]] [[hunyuan-video]] [[gen-3-alpha]] [[ltx-video]] 并列。
 
 ## 模型架构
 

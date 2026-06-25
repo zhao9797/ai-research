@@ -24,7 +24,7 @@ Lumina-Next 是 [[lumina-t2x]] 的下一代升级：把核心扩散变换器从 
 ## 背景与定位
 [[lumina-t2x]]（arXiv 2405.05945）提出 flow-based 大扩散变换器 Flag-DiT，主打"低训练资源 + 任意分辨率/宽高比/时长"的统一生成框架，但实测暴露三大短板：**图文对齐弱、推理慢、外推有重复/伪影**——根因是训练不足、数据不足、以及不合适的 1D RoPE 上下文扩展策略。
 
-作者来自 **Shanghai AI Laboratory + 香港中文大学（CUHK）**（论文署名）。Lumina-Next 不是新预训练范式，而是一套**架构 + 外推 + 采样**的系统性手术，目标"更强更快"。技术脉络上：它把 LLM 社区成熟的位置外推方法（[[position-interpolation]]、NTK-Aware Scaled RoPE、[[yarn]]）首次系统迁移到 **3D RoPE 的视觉扩散变换器**，并针对 flow 模型重新设计时间离散化（区别于 [[elucidating-edm]] 等扩散调度）。相对前置工作 [[sit]]、[[dit]]、[[pixart-alpha]]、[[sdxl]]，它在 ImageNet 上收敛更快，在 2K/全景外推与少步采样上质量更优。Next-DiT 这套骨干后来成为 **Lumina-Image 2.0** 的基础。
+作者来自 **Shanghai AI Laboratory + 香港中文大学（CUHK）**（论文署名）。Lumina-Next 不是新预训练范式，而是一套**架构 + 外推 + 采样**的系统性手术，目标"更强更快"。技术脉络上：它把 LLM 社区成熟的位置外推方法（[[position-interpolation]]、NTK-Aware Scaled RoPE、[[yarn]]）首次系统迁移到 **3D RoPE 的视觉扩散变换器**，并针对 flow 模型重新设计时间离散化（区别于 [[elucidating-edm]] 等扩散调度）。相对前置工作 [[sit]]、[[dit-scalable-diffusion-transformers]]、[[pixart-alpha]]、[[sdxl]]，它在 ImageNet 上收敛更快，在 2K/全景外推与少步采样上质量更优。Next-DiT 这套骨干后来成为 **Lumina-Image 2.0** 的基础。
 
 ## 模型架构
 **Backbone：Next-DiT（由 Flag-DiT 升级而来）**。Flag-DiT 本身是带 flow matching、RMSNorm、QK-Norm 的可扩展 DiT。Next-DiT 的关键改动（论文 Fig.2）：

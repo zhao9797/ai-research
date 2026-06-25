@@ -22,7 +22,7 @@ updated: 2026-06-25
 Playground v3（PGv3）是 Playground 推出的 24B 参数 DiT 文生图模型，核心创新是把一个冻结的 decoder-only LLM（Llama3-8B）以 **Deep-Fusion** 方式逐层"克隆并对接"进扩散主干——图像 Transformer 的每一层都从 LLM 对应层取 hidden states 做条件，彻底抛弃 T5/CLIP 文本编码器。配套自研 VLM 标注器（论文称 PG Captioner，产品名 Argus）做多级 re-caption，并发布细粒度图像描述评测 **CapsBench**。最亮眼结果：自建 DPG-bench Hard 上总分 **88.62%**（超 Flux-pro 78.69、Ideogram-2 80.12），文字合成准确率 **82%**，GenEval 0.76（>SD3 0.74），且在图形设计用户偏好上"超越人类设计师"。模型闭源（权重未发布），仅 CapsBench 评测集开源。
 
 ## 背景与定位
-2023 年以来文生图主干从 [[unet]]/[[latent-diffusion-ldm]] 的 U-Net 转向 Transformer（[[dit]]）。提升"提示词跟随（prompt-following）"的主流路线有二：(1) 用 LLM 替换 T5/CLIP 当文本编码器；(2) 用 LLM 改写/扩写提示词喂给基于 T5/CLIP 的模型（如 ELLA、DALL·E 3 的 re-caption）。PGv3 走第一条路并推到极致：**完全不用任何 NLP 编码器（无 T5、无 CLIP）**，从训练第一步起就只靠 Llama3-8B 提供文本条件。
+2023 年以来文生图主干从 [[unet]]/[[latent-diffusion-ldm]] 的 U-Net 转向 Transformer（[[dit-scalable-diffusion-transformers]]）。提升"提示词跟随（prompt-following）"的主流路线有二：(1) 用 LLM 替换 T5/CLIP 当文本编码器；(2) 用 LLM 改写/扩写提示词喂给基于 T5/CLIP 的模型（如 ELLA、DALL·E 3 的 re-caption）。PGv3 走第一条路并推到极致：**完全不用任何 NLP 编码器（无 T5、无 CLIP）**，从训练第一步起就只靠 Llama3-8B 提供文本条件。
 
 作者的论点是：T5/CLIP 通常只取最后一层（或倒数第二层）输出，但 Transformer 各层捕捉不同层级（词级/句级）的表征，"选哪几层做条件"在 decoder-only LLM 上尤其难调；而 LLM 的生成能力来自信息在**所有层**的连续流动，知识分散在全部层而非某一层。因此 PGv3 干脆复刻 LLM 的全部 Transformer block，让图像模型逐层吃 LLM 对应层的 hidden embedding，"完整利用 LLM 的思考过程"。这是相对 [[dall-e-3]]（re-caption）、[[stable-diffusion-3]]（MMDiT + T5/CLIP）、[[pixart-alpha]]/PixArt-Σ（T5）等同期工作的关键差异化。承接自家 [[playground-v2-5]]（PGv2.5）的美学/多宽高比经验。
 

@@ -25,7 +25,7 @@ Kandinsky 5.0 是 Sber AI（俄罗斯）开源的图像+视频生成基础模型
 解决的问题：高分辨率、长时长（10 秒）视频生成在训练与推理上的算力瓶颈——时空全注意力随分辨率/时长呈二次（乃至立方）增长。Kandinsky 5.0 用一套统一架构覆盖 T2I/编辑/T2V/I2V 全任务，强调「质量 × 效率」平衡与完整开源（代码+各训练阶段权重）。
 
 技术脉络中的位置：
-- 继承 [[latent-diffusion-ldm]] 的潜空间扩散思路，扩散主干用 [[dit]]（Diffusion Transformer），训练范式从扩散转向 Flow Matching（rectified flow）。
+- 继承 [[latent-diffusion-ldm]] 的潜空间扩散思路，扩散主干用 [[dit-scalable-diffusion-transformers]]（Diffusion Transformer），训练范式从扩散转向 Flow Matching（rectified flow）。
 - 是 Kandinsky 家族首个基于 Flow Matching 的模型；相比 Kandinsky 4.0（首个 DiT、MMDiT-like、2024/12）改用 **CrossDiT**（文本走 cross-attention 而非 MMDiT 的拼接 self-attention），消除了拖慢训练的 concatenation，且更兼容稀疏注意力。
 - Kandinsky 谱系：ruDALL-E/Malevich（2021，自回归）→ Kandinsky 1.0（2022.6, 12B 自回归）→ 2.0/2.1/2.2（2022–2023，首个扩散、多语言、image prior、MoVQ）→ 3.0/3.1（2023–2024，FLAN-UL2 编码器、Flash 蒸馏 ADD）→ Kandinsky 4.0（2024.12, 17.5B, MMDiT）→ 4.1（2025.6, 14B）→ **5.0**（2025.11）。
 - 对标对象：开源 Wan 2.1/2.2、HunyuanVideo、CogVideoX、Mochi、Sora（闭源）；图像侧对标 FLUX.1 dev、Qwen-Image；编辑侧对标 FLUX.1 Kontext、Qwen-Image-Edit-2509；视频闭源对标 Veo 3 / Veo 3 fast、Sora。

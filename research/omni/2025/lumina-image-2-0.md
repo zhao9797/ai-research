@@ -22,7 +22,7 @@ updated: 2026-06-25
 Lumina-Image 2.0 是上海AI实验室 Alpha-VLLM 团队推出的 **2.6B 参数统一、高效文生图框架**（ICCV 2025），核心创新是用 **Unified Next-DiT**（把文本与图像 token 拼成一条序列做单流 joint self-attention，彻底去掉 cross-attention）+ 专为 T2I 设计的 **统一重描述系统 UniCap**；仅 2.6B 参数即在 DPG 拿到 **87.2**、GenEval **0.73**，并在 Artificial Analysis / Rapidata / AGI-Eval 三个人评 Arena 上超过几乎所有开源模型和 DALL·E 3、SD3-Medium 等部分闭源系统，prompt 对齐仅次于 FLUX Pro。
 
 ## 背景与定位
-T2I 领域已公认两大关键因素：可扩展的文本条件 [[dit]] 架构 + 大规模高质量图文数据。作者指出现有工作在这两方面都有短板：
+T2I 领域已公认两大关键因素：可扩展的文本条件 [[dit-scalable-diffusion-transformers]] 架构 + 大规模高质量图文数据。作者指出现有工作在这两方面都有短板：
 
 1. **架构**：多数文本条件 DiT（PixArt、SD3、FLUX、Lumina-Next）仍用 **cross-attention** 注入文本——把文本 embedding 当作固定外部特征，多模态融合效率低；尤其当文本编码器是因果 LLM（causal LLM）时，固定注入还会带来单向位置偏置（uni-directional bias）。而且扩展到新任务往往要改架构。
 2. **数据**：业界都知道高质量 caption 重要，但缺少**专为 T2I 任务设计的 captioner**，通用 VLM（LLaVA / ShareGPT4V / Florence / Qwen-VL）产出的描述粒度单一、有领域偏置、固定低分辨率输入，导致图文对齐不足。

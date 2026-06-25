@@ -28,7 +28,7 @@ Stability AI 的对抗式扩散蒸馏家族——先有 **ADD**（pixel 域，DI
 - **LADD（本页主角，arXiv 2403.12015，2024.03）**：把对抗蒸馏整体搬进 **latent 空间**，用预训练**扩散模型（教师）自身的生成式特征**替代 DINOv2 判别特征，从而支持多宽高比（MAR）、百万像素、可控反馈层级，且训练更简单、可规模化，把 SD3（8B）蒸成 SD3-Turbo。
 - **产品化（SD3.5，2024.10.22）**：开源发布 SD3.5 Large（8.1B 基座）、**SD3.5 Large Turbo**（ADD 蒸馏、4 步）、SD3.5 Medium（2.5B，MMDiT-X）。Turbo 是 ADD 蒸馏方法在 SD3.5 Large 上的工程落地，使「少步实时出图」可在消费级硬件上跑。
 
-技术脉络：[[ddpm]]/[[latent-diffusion-ldm]] → [[sdxl]] → [[stable-diffusion-3]]（rectified flow + MMDiT）→ **ADD（SDXL-Turbo）→ LADD（SD3-Turbo）→ SD3.5 Large Turbo**；可与 [[lcm-latent-consistency-models]]、[[flux-1-schnell]] 等少步方案对照。
+技术脉络：[[ddpm]]/[[latent-diffusion-ldm]] → [[sdxl]] → [[stable-diffusion-3]]（rectified flow + MMDiT）→ **ADD（SDXL-Turbo）→ LADD（SD3-Turbo）→ SD3.5 Large Turbo**；可与 [[latent-consistency-models]]、[[flux-1-schnell]] 等少步方案对照。
 
 ## 模型架构
 **学生/教师 backbone**：SD3-Turbo 与 SD3.5 Large Turbo 都基于 **MMDiT（Multimodal Diffusion Transformer，[[stable-diffusion-3]]）**，并非 U-Net；学生由教师权重初始化，蒸馏前后 backbone 同构。

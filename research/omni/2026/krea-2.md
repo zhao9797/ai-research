@@ -19,12 +19,12 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-Krea 2 是创意工具公司 Krea 从零自研的首个图像基础模型系列：一个 12B 稠密 [[dit]] 扩散 Transformer + Qwen3-VL 文本编码器 + Qwen Image/FLUX 2 VAE，用 rectified-flow 训练，覆盖"预训练→midtraining→SFT→偏好优化(STPO)→多奖励 GRPO RL→步数蒸馏(TDM)"完整后训练栈，主打**美学多样性与创作可控性**（风格参考 + moodboard + prompt 扩写）。开源 RAW(52 步 1K)与 Turbo(8 步、1K–2K、CFG=0)双权重，在 Artificial Analysis 文生图榜上是**独立实验室中排名第一的开源模型**、整体进前十。
+Krea 2 是创意工具公司 Krea 从零自研的首个图像基础模型系列：一个 12B 稠密 [[dit-scalable-diffusion-transformers]] 扩散 Transformer + Qwen3-VL 文本编码器 + Qwen Image/FLUX 2 VAE，用 rectified-flow 训练，覆盖"预训练→midtraining→SFT→偏好优化(STPO)→多奖励 GRPO RL→步数蒸馏(TDM)"完整后训练栈，主打**美学多样性与创作可控性**（风格参考 + moodboard + prompt 扩写）。开源 RAW(52 步 1K)与 Turbo(8 步、1K–2K、CFG=0)双权重，在 Artificial Analysis 文生图榜上是**独立实验室中排名第一的开源模型**、整体进前十。
 
 ## 背景与定位
 2026 年的文生图领域已在高分辨率、锐利写实、稠密文字渲染、世界知识、精确 prompt-following 上趋于成熟，但 Krea 团队指出一个副作用：为追求这些可靠能力，主流系统"收敛到一组狭窄的默认美学"，作为生产工具有效，作为**创意探索引擎**却乏力——创作者往往需要在风格、情绪、构图、视觉方向间搜索，而非接受单一打磨过的默认输出。Krea 2 的核心命题就是把图像生成当作"探索性媒介"：足够表达以覆盖多种美学、足够可控以让创作者在其中导航。
 
-Krea 此前的实践是与 [[black-forest-labs]] 合作的 FLUX.1 Krea [dev]（基于 FLUX 蒸馏/微调）；Krea 2 则是其**首个完全从零训练**的基础模型（含自建大规模数据基础设施与分布式训练框架）。技术脉络上承 [[ddpm]] / [[latent-diffusion-ldm]] / [[dit]] / rectified flow（[[stable-diffusion-3]] 的 [[mmdit]] 路线），并大量借鉴 LLM 架构与训练范式（GQA、SwiGLU、RMSNorm、Muon、midtraining、DPO/GRPO、model merging）。技术报告把 FLUX.2、[[qwen-image]]、Z-Image、Seedream 2/3/4、HunyuanImage 2.1/3.0、LongCat-Image、GPT Image 1.5、Nano Banana Pro 等同期工作列为相关工作/参考脉络（引用计 84 篇），但**未在报告正文做逐项头对头数值对比**——唯一对外定位口径是 Artificial Analysis 榜排名。
+Krea 此前的实践是与 [[black-forest-labs]] 合作的 FLUX.1 Krea [dev]（基于 FLUX 蒸馏/微调）；Krea 2 则是其**首个完全从零训练**的基础模型（含自建大规模数据基础设施与分布式训练框架）。技术脉络上承 [[ddpm]] / [[latent-diffusion-ldm]] / [[dit-scalable-diffusion-transformers]] / rectified flow（[[stable-diffusion-3]] 的 [[mmdit]] 路线），并大量借鉴 LLM 架构与训练范式（GQA、SwiGLU、RMSNorm、Muon、midtraining、DPO/GRPO、model merging）。技术报告把 FLUX.2、[[qwen-image]]、Z-Image、Seedream 2/3/4、HunyuanImage 2.1/3.0、LongCat-Image、GPT Image 1.5、Nano Banana Pro 等同期工作列为相关工作/参考脉络（引用计 84 篇），但**未在报告正文做逐项头对头数值对比**——唯一对外定位口径是 Artificial Analysis 榜排名。
 
 时间线：2026-05-12 产品端首发（krea.ai 平台内 K2 工具）；2026-06-22 开源 RAW/Turbo 权重；2026-06-23 发布 58 分钟长技术报告。本页以技术报告 + 开源材料为主。
 

@@ -22,7 +22,7 @@ updated: 2026-06-25
 Hunyuan-DiT 是腾讯混元 2024 年 5 月开源的中英双语文生图 **Diffusion Transformer**，靠"双文本编码器（双语 CLIP + 多语 mT5）+ 2D RoPE 多分辨率 + cross-attention 注入 + MLLM 改写 caption + 多轮对话"实现细粒度中文理解；1.5B 参数在 ≥50 人专业人评下成为当时开源模型里**中文文生图 SOTA**（综合通过率 59.0%，超 SDXL/PixArt-α/Playground 2.5，并在主体清晰度/美学上接近 DALL·E 3、MidJourney v6）。
 
 ## 背景与定位
-DALL·E、Stable Diffusion、PixArt-α 等主流文生图模型缺乏对中文 prompt 的直接理解；当时的中文方案（AltDiffusion、PAI-Diffusion、Taiyi）生成质量仍不足。Hunyuan-DiT 的定位是补上"既懂中文又达到强生成质量"的开源空白：它把 [[pixart-alpha]] 开创的 DiT-as-T2I 路线（用 transformer 替换 U-Net 做扩散 backbone，见 [[dit]]、[[latent-diffusion-ldm]]）与双语理解、工业级数据流水线、多轮交互式生成结合，构成腾讯首个完整开源的 DiT 文生图全栈（模型 + 训练码 + 蒸馏/加速 + ControlNet/LoRA/IP-Adapter + captioner + 对话增强）。它是国产开源 T2I 的标志性工作，发布时已对标闭源 [[dall-e-3]]、MidJourney v6 与 [[stable-diffusion-3]]。
+DALL·E、Stable Diffusion、PixArt-α 等主流文生图模型缺乏对中文 prompt 的直接理解；当时的中文方案（AltDiffusion、PAI-Diffusion、Taiyi）生成质量仍不足。Hunyuan-DiT 的定位是补上"既懂中文又达到强生成质量"的开源空白：它把 [[pixart-alpha]] 开创的 DiT-as-T2I 路线（用 transformer 替换 U-Net 做扩散 backbone，见 [[dit-scalable-diffusion-transformers]]、[[latent-diffusion-ldm]]）与双语理解、工业级数据流水线、多轮交互式生成结合，构成腾讯首个完整开源的 DiT 文生图全栈（模型 + 训练码 + 蒸馏/加速 + ControlNet/LoRA/IP-Adapter + captioner + 对话增强）。它是国产开源 T2I 的标志性工作，发布时已对标闭源 [[dall-e-3]]、MidJourney v6 与 [[stable-diffusion-3]]。
 
 ## 模型架构
 **总体**：latent-space 扩散模型。先用预训练 VAE 把图像压到低维 latent，再用 transformer 参数化的扩散模型学分布。

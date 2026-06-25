@@ -22,7 +22,7 @@ updated: 2026-06-25
 Hunyuan3D 2.1 是腾讯混元于 2025-06 开源的**生产级单图到带 PBR 材质 3D 资产生成系统**，把流程拆成"形状生成 + 纹理合成"两段：形状段用 mesh VAE（[[3dshape2vecset]] 向量集表征）+ 流匹配 DiT（Hunyuan3D-DiT，3.3B）出几何，纹理段用多视图 PBR diffusion（Hunyuan3D-Paint，2B）出 albedo/metallic/roughness 三套材质图。最大卖点是**首个完整开源权重 + 训练代码 + 数据处理流程的 PBR 纹理 3D 大模型**。最亮眼数字：形状 ULIP-I **0.1395**、Uni3D-I **0.3213** 全面领先 TripoSG / Trellis / Step1X-3D / Direct3D-S2；纹理 CLIP-FID **24.78**、LPIPS **0.1211**，显著优于自家上一代 Hunyuan3D-2.0（26.44 / 0.1261）。
 
 ## 背景与定位
-2D 图像/视频生成已有 Stable Diffusion、[[hunyuanvideo]]、[[wan]] 等繁荣开源生态，但 3D 生成长期碎片化、缺一个可扩展的开源 foundation。CLAY（SIGGRAPH 2024）首次验证 diffusion 做高质量 3D 生成可行，但权重/代码不开放。本作把自己定位为"**填补 3D 领域开源空白**"，并以"tutorial（手把手教程）"的姿态把数据处理、模型架构、训练策略、评测一次性讲透，让社区能直接微调/扩展。
+2D 图像/视频生成已有 Stable Diffusion、[[hunyuan-video]]、[[wan]] 等繁荣开源生态，但 3D 生成长期碎片化、缺一个可扩展的开源 foundation。CLAY（SIGGRAPH 2024）首次验证 diffusion 做高质量 3D 生成可行，但权重/代码不开放。本作把自己定位为"**填补 3D 领域开源空白**"，并以"tutorial（手把手教程）"的姿态把数据处理、模型架构、训练策略、评测一次性讲透，让社区能直接微调/扩展。
 
 技术脉络上它是 Hunyuan3D 系列的第三代：
 - **Hunyuan3D 1.0**（2024-11，arXiv:2411.02293）：多视图扩散 + 重建的统一 text/image-to-3D 框架。

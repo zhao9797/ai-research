@@ -45,7 +45,7 @@ Show-o2 是 [[show-o]] 的升级版"原生统一多模态模型"：在 **Wan2.1 
 
 **双输出头**：
 - **LM head**：因果注意力 + next-token prediction，做文本生成。
-- **Flow head**：几层 transformer + adaLN-Zero 时间步调制（同 [[dit]]），full attention，用流匹配预测速度场 v_t = dx_t/dt 做图像/视频生成。
+- **Flow head**：几层 transformer + adaLN-Zero 时间步调制（同 [[dit-scalable-diffusion-transformers]]），full attention，用流匹配预测速度场 v_t = dx_t/dt 做图像/视频生成。
 
 **参数与发布**：1.5B / 7B 两档；HF 上有 show-o2-1.5B、1.5B-HQ、7B，以及额外做过视频理解微调的 1.5B/7B-w-video-und。
 

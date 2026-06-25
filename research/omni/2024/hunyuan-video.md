@@ -24,7 +24,7 @@ HunyuanVideo 是腾讯混元 2024 年 12 月开源的 **13B 参数**文生视频
 ## 背景与定位
 2024 年视频生成领域的强模型（Sora、Gen-3、Luma、MovieGen 等）几乎全是闭源，开源社区缺乏一个像 [[stable-diffusion-1]] / [[flux-1]] 之于 T2I 那样的强基础模型，导致视频生成方向的算法创新停滞。HunyuanVideo 的目标就是「弥合开源与闭源视频基础模型的差距」（报告副标题），把数据管线、架构、scaling、训练、infra 一整套系统全部开源开放，让社区能在强 base 上做下游探索。
 
-技术脉络上它沿用了图像生成成熟范式并迁移到视频：[[latent-diffusion-ldm]] 的隐空间扩散思想 → [[dit]] 的 Transformer backbone → [[flux-1]] 的「双流到单流」MMDiT 设计 → [[stable-diffusion-3]] 的 Flow Matching / logit-normal 时间步采样。相对前置工作的关键改进：（1）从零训练 Causal 3D VAE（不复用预训练图像 VAE），重建质量超过 FLUX-VAE / CogVideoX-1.5 / Cosmos-VAE；（2）系统性建立 **T2I→T2V 两段式扩散 scaling law**，把「随机堆数据/算力/参数」的成本降低最多 **5×**；（3）用 **MLLM（decoder-only）替代 T5/CLIP** 作主文本编码器。
+技术脉络上它沿用了图像生成成熟范式并迁移到视频：[[latent-diffusion-ldm]] 的隐空间扩散思想 → [[dit-scalable-diffusion-transformers]] 的 Transformer backbone → [[flux-1]] 的「双流到单流」MMDiT 设计 → [[stable-diffusion-3]] 的 Flow Matching / logit-normal 时间步采样。相对前置工作的关键改进：（1）从零训练 Causal 3D VAE（不复用预训练图像 VAE），重建质量超过 FLUX-VAE / CogVideoX-1.5 / Cosmos-VAE；（2）系统性建立 **T2I→T2V 两段式扩散 scaling law**，把「随机堆数据/算力/参数」的成本降低最多 **5×**；（3）用 **MLLM（decoder-only）替代 T5/CLIP** 作主文本编码器。
 
 ## 模型架构
 **整体管线**：像素视频/图像 → Causal 3D VAE 压到隐空间 → patchify 成 1D token 序列 → DiT backbone（文本作条件）→ 输出隐变量 → 3D VAE 解码回视频。

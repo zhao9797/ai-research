@@ -22,7 +22,7 @@ updated: 2026-06-25
 ERNIE-Image 是百度文心团队开源的 **8B 单流 DiT 文生图模型**（LDM 框架，Apache-2.0），核心主张是「**用数据挖掘而非参数堆叠**」逼近闭源旗舰：预训练用「自底向上」细粒度数据挖掘 + 后训练用「自顶向下」高需求场景精修 + **稳定化 DPO**（anchor loss 抑制 reward hacking），并以 **MT-DMD（多教师分布匹配蒸馏）** 把模型蒸到 8-NFE 的 ERNIE-Image-Turbo。最亮结果：GenEval **0.8856 居开源/同台第一**，在人评 in-house 测试集上仅次于闭源 Nano Banana 2.0、**为开源最强**，且 24GB 消费级显卡可跑。
 
 ## 背景与定位
-论文直指当下文生图的两条路线困境：(1) 闭源旗舰（Google Nano Banana、字节 Seedream）效果领先但无法私有部署/垂域微调；(2) 开源侧要么靠**堆参数**（[[qwen-image]]、HunyuanImage）边际收益递减且算力门槛高，要么是 6B Z-Image 这类小而高效模型在「复杂指令遵循 + 中文文字渲染」等硬任务上仍有明显短板。ERNIE-Image 的定位是「**开源、强、人人可用**」——在 8B 这个可在 24GB 显存上部署的规模上，把三项开源模型最欠缺的能力做到 SOTA：**复杂指令遵循、文字渲染、美学生成**。它建立在 [[latent-diffusion-ldm]] 的潜空间扩散范式与 [[dit]] 的单流 Transformer 架构之上，是 2026 年「小模型 + 数据/后训练工程」对抗「大模型 scaling」路线的代表作之一。
+论文直指当下文生图的两条路线困境：(1) 闭源旗舰（Google Nano Banana、字节 Seedream）效果领先但无法私有部署/垂域微调；(2) 开源侧要么靠**堆参数**（[[qwen-image]]、HunyuanImage）边际收益递减且算力门槛高，要么是 6B Z-Image 这类小而高效模型在「复杂指令遵循 + 中文文字渲染」等硬任务上仍有明显短板。ERNIE-Image 的定位是「**开源、强、人人可用**」——在 8B 这个可在 24GB 显存上部署的规模上，把三项开源模型最欠缺的能力做到 SOTA：**复杂指令遵循、文字渲染、美学生成**。它建立在 [[latent-diffusion-ldm]] 的潜空间扩散范式与 [[dit-scalable-diffusion-transformers]] 的单流 Transformer 架构之上，是 2026 年「小模型 + 数据/后训练工程」对抗「大模型 scaling」路线的代表作之一。
 
 ## 模型架构
 - **Backbone：单流 DiT（single-stream Diffusion Transformer）**，8B 参数（HF tag 标 8B；ERNIE-Image / ERNIE-Image-Turbo 同属一个 DiT 家族，Turbo 为蒸馏版）。「单流」即图像 latent token 与文本条件在同一 Transformer 流中处理（区别于 MMDiT 的双流），架构上更紧凑。

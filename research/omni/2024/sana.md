@@ -22,9 +22,9 @@ updated: 2026-06-25
 Sana 是 NVIDIA+MIT 提出的「极致高效」文生图框架：用 **32× 深度压缩自编码器（DC-AE F32C32P1）+ 线性注意力 DiT（Linear DiT）+ 仅 decoder 的小 LLM（Gemma-2-2B）做文本编码 + Flow-DPM-Solver 少步采样**，把 4K 生成做到比 FLUX-12B **快 100+ 倍、模型小 20 倍**，0.6B 模型可在 16GB 笔记本 GPU 上 <1s 出 1024px 图（量化后 0.37s/张），同时 GenEval 0.64 / DPG 84.3 仍有竞争力。
 
 ## 背景与定位
-2023–2024 年文生图主流走向四点共识：U-Net→Transformer（[[dit]]→[[pixart-alpha]]/[[stable-diffusion-3]]/[[flux-1]]）、用 VLM 自动打标、改进 VAE 与文本编码器、冲击超高分辨率（[[pixart-sigma]] 是首个能直接出近 4K 图的模型）。但产业模型参数越滚越大：PixArt 0.6B → SD3 8B → LiDiT 10B → Flux 12B → Playground v3 24B，训练/推理成本对普通用户极不友好。
+2023–2024 年文生图主流走向四点共识：U-Net→Transformer（[[dit-scalable-diffusion-transformers]]→[[pixart-alpha]]/[[stable-diffusion-3]]/[[flux-1]]）、用 VLM 自动打标、改进 VAE 与文本编码器、冲击超高分辨率（[[pixart-sigma]] 是首个能直接出近 4K 图的模型）。但产业模型参数越滚越大：PixArt 0.6B → SD3 8B → LiDiT 10B → Flux 12B → Playground v3 24B，训练/推理成本对普通用户极不友好。
 
-Sana 直面这个矛盾，问"能否做出又快又便宜、云端与边缘都能跑的高分辨率生成器"。它不追求新增能力，而是**系统级地把效率拉满**：算法（DC-AE、Linear DiT、NoPE、Flow-DPM-Solver）与系统（Triton 核融合、W8A8 量化）协同，把 4096×4096 生成延迟从 baseline 469s 一路压到 9.6s（106× 加速）。技术脉络上它站在 [[latent-diffusion-ldm]] → [[dit]] → [[pixart-alpha]]/[[pixart-sigma]] 这条 DiT 文生图谱系上，是「效率派」分支的代表作，并直接催生了 SANA-1.5（训练/推理缩放）、SANA-Sprint（一步蒸馏）、SANA-Video 等后续家族。
+Sana 直面这个矛盾，问"能否做出又快又便宜、云端与边缘都能跑的高分辨率生成器"。它不追求新增能力，而是**系统级地把效率拉满**：算法（DC-AE、Linear DiT、NoPE、Flow-DPM-Solver）与系统（Triton 核融合、W8A8 量化）协同，把 4096×4096 生成延迟从 baseline 469s 一路压到 9.6s（106× 加速）。技术脉络上它站在 [[latent-diffusion-ldm]] → [[dit-scalable-diffusion-transformers]] → [[pixart-alpha]]/[[pixart-sigma]] 这条 DiT 文生图谱系上，是「效率派」分支的代表作，并直接催生了 SANA-1.5（训练/推理缩放）、SANA-Sprint（一步蒸馏）、SANA-Video 等后续家族。
 
 ## 模型架构
 Sana 的 pipeline 由三块自研组件构成（见论文 Fig.5），整体仍保持 DiT 的宏观骨架以保证简单与可扩展性。

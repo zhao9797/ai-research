@@ -24,7 +24,7 @@ SANA-1.5 是 NVIDIA/MIT/清华在线性注意力扩散 Transformer 上做"高效
 ## 背景与定位
 - T2I 模型一年内从 PixArt 的 0.6B 膨胀到 Playground v3 的 24B，训练/推理成本对大多数研究者已不可承受。[[sana]]（SANA-1.0）用**线性注意力 DiT + 32× 深度压缩自编码器 [[dc-ae]]**做到"小而快"（0.6B 比 FLUX-12B 小 20×、快 100×）。SANA-1.5 在此基础上回答两个问题：(i) 线性 DiT 的可扩展性如何？(ii) 如何把大线性 DiT 扩起来同时降训练成本？
 - 它不属于"把模型做大"路线，而是反其道：**用更好的优化轨迹（growth）+ 灵活部署（pruning）+ 用算力换容量（inference scaling）**，主张"thoughtful optimization > 单纯堆参数"。三个技术（生长/剪枝/推理缩放）构成一个连贯框架：生长先探索更大优化空间发现更好特征，剪枝识别并保留这些核心特征，推理缩放则在模型容量受限时用额外推理算力补回质量。
-- 技术脉络上承 [[latent-diffusion-ldm]] → [[dit]] → [[pixart-alpha]]（训练成本仅为 SD-v1.5 的 10.8%）→ [[sana]]；剪枝借鉴 LLM 的 Minitron，推理缩放借鉴 LLM 的 "Large Language Monkeys"（log-linear 重复采样规律）。
+- 技术脉络上承 [[latent-diffusion-ldm]] → [[dit-scalable-diffusion-transformers]] → [[pixart-alpha]]（训练成本仅为 SD-v1.5 的 10.8%）→ [[sana]]；剪枝借鉴 LLM 的 Minitron，推理缩放借鉴 LLM 的 "Large Language Monkeys"（log-linear 重复采样规律）。
 - 注：本工作 slug 名为 "pixart-and-sana-1-5"，但所抓一手源（arXiv 2501.18427、GitHub、官方页）全部是 **SANA-1.5**；PixArt 仅作为技术脉络前置工作（同一作者团队 Junsong Chen / Enze Xie）出现，本页以 SANA-1.5 为主体。SANA-1.5 被 ICML 2025 接收。
 
 ## 模型架构

@@ -19,14 +19,14 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-Infinity 是字节跳动在 [[var-next-scale-prediction]]（视觉自回归 next-scale prediction）基础上提出的**比特级（bitwise）视觉自回归 T2I 框架**：把离散 tokenizer 的词表理论扩到 2^64（"无限词表"），用「无限词表分类器 IVC」预测 d 个比特而非 2^d 个索引、用「比特级自纠正 BSC」消除 teacher-forcing 的训练-推理失配。Infinity-2B 把 GenEval 从 SD3-Medium 的 0.62 提到 0.73、ImageReward 0.87→0.96，人评胜率 66%，并以 0.8 秒生成 1024×1024（比 SD3-Medium 快 2.6×），成为当时最快的 T2I 模型，是首个在多项基准上超越主流扩散模型的离散自回归 T2I（CVPR 2025 Oral）。
+Infinity 是字节跳动在 [[var]]（视觉自回归 next-scale prediction）基础上提出的**比特级（bitwise）视觉自回归 T2I 框架**：把离散 tokenizer 的词表理论扩到 2^64（"无限词表"），用「无限词表分类器 IVC」预测 d 个比特而非 2^d 个索引、用「比特级自纠正 BSC」消除 teacher-forcing 的训练-推理失配。Infinity-2B 把 GenEval 从 SD3-Medium 的 0.62 提到 0.73、ImageReward 0.87→0.96，人评胜率 66%，并以 0.8 秒生成 1024×1024（比 SD3-Medium 快 2.6×），成为当时最快的 T2I 模型，是首个在多项基准上超越主流扩散模型的离散自回归 T2I（CVPR 2025 Oral）。
 
 ## 背景与定位
 T2I 生成长期分两派：扩散模型（连续去噪，质量/细节强）与自回归模型（借 LLM 的可扩展性，把图像离散成 token 做 next-token / next-scale 预测）。自回归路线的两大痛点：(1) **离散 tokenizer 量化误差大**——词表受限导致高分辨率细节重建质量远逊连续 VAE；(2) **teacher-forcing 训练带来的训练-推理失配**——前面尺度的错误会逐级传播放大，最终破坏整图。
 
-[[var-next-scale-prediction]]（VAR，NeurIPS 2024 Best Paper）把图像自回归重定义为「由粗到细的 next-scale 预测」，兼具 LLM 的可扩展性与扩散式逐级 refine 的优点。但 VAR 仍沿用 index-wise 离散 tokenizer，受限于词表大小：单纯把现有 tokenizer 词表放大会带来内存/算力的指数爆炸，且大整数索引的监督"模糊"（near-zero 特征的微小扰动会让索引标签完全跳变），难以优化。
+[[var]]（VAR，NeurIPS 2024 Best Paper）把图像自回归重定义为「由粗到细的 next-scale 预测」，兼具 LLM 的可扩展性与扩散式逐级 refine 的优点。但 VAR 仍沿用 index-wise 离散 tokenizer，受限于词表大小：单纯把现有 tokenizer 词表放大会带来内存/算力的指数爆炸，且大整数索引的监督"模糊"（near-zero 特征的微小扰动会让索引标签完全跳变），难以优化。
 
-Infinity 的定位即：**用比特级建模（bitwise modeling）把整条链路从 index-wise 换成 bitwise**，从而把词表理论扩到无限，同时解决"大词表分类器算不动"与"index 监督模糊"两个问题，再用自纠正补上 VAR 继承自 LLM 的 teacher-forcing 缺陷。相关脉络：[[ldm-stable-diffusion]]、[[stable-diffusion-3]]（rectified flow 扩散对手）、[[llamagen]]/[[emu3]]（VQ 自回归）、[[hart-hybrid-tokenizer]]（VAR 上的混合 tokenizer）、[[maskgit]]（masked 生成）。
+Infinity 的定位即：**用比特级建模（bitwise modeling）把整条链路从 index-wise 换成 bitwise**，从而把词表理论扩到无限，同时解决"大词表分类器算不动"与"index 监督模糊"两个问题，再用自纠正补上 VAR 继承自 LLM 的 teacher-forcing 缺陷。相关脉络：[[latent-diffusion-ldm]]、[[stable-diffusion-3]]（rectified flow 扩散对手）、[[llamagen]]/[[emu3]]（VQ 自回归）、[[hart-hybrid-tokenizer]]（VAR 上的混合 tokenizer）、[[maskgit]]（masked 生成）。
 
 ## 模型架构
 整体 = **比特级多尺度视觉 tokenizer** + **带 cross-attention 的因果 VAR transformer**，三大核心组件：比特级 tokenizer、无限词表分类器 IVC、比特级自纠正 BSC。

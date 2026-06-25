@@ -26,7 +26,7 @@ Sora 是 OpenAI 的文/图/视频→视频生成模型，2024-12-09 以 **Sora T
 
 ## 背景与定位
 - Sora 最初于 2024-02-15 以研究报告《Video generation models as world simulators》（[[sora]]）亮相，定位为"通往通用物理世界模拟器"的一步，而非单纯的文生视频玩具。2024-12 的发布是把该研究路线**产品化**：训练了一个比 2 月预览版"显著更快"的新版本 **Sora Turbo**，作为独立产品上线。
-- 技术脉络上，Sora 把 LLM 的"internet-scale 数据 + token 化 + transformer 可扩展性"范式迁移到视觉生成：LLM 用 text token，Sora 用 **visual patch**。它是 [[latent-diffusion-ldm]]（潜空间扩散）+ [[dit]]（Diffusion Transformer, Peebles & Xie）+ [[ddpm]]（去噪扩散）+ DALL·E 3 recaptioning（[[dall-e-3]]）几条线的工程化集成，并把它们推到"原生变长/变分辨率/变宽高比的视频"这一新规模。
+- 技术脉络上，Sora 把 LLM 的"internet-scale 数据 + token 化 + transformer 可扩展性"范式迁移到视觉生成：LLM 用 text token，Sora 用 **visual patch**。它是 [[latent-diffusion-ldm]]（潜空间扩散）+ [[dit-scalable-diffusion-transformers]]（Diffusion Transformer, Peebles & Xie）+ [[ddpm]]（去噪扩散）+ DALL·E 3 recaptioning（[[dall-e-3]]）几条线的工程化集成，并把它们推到"原生变长/变分辨率/变宽高比的视频"这一新规模。
 - 相对前置视频生成工作（RNN / GAN / 自回归 transformer / 早期视频扩散如 Imagen Video、Align-your-Latents）的最大改进：放弃"把视频统一 crop/resize 成固定尺寸（如 4s@256×256）"的做法，**用原生尺寸训练**，并验证 diffusion transformer 在视频上同样具备随算力扩展的 scaling 性质。
 - 产品意义：Sora 是首个被广泛使用的"长时长、高保真、商用"文生视频产品，引爆了 2024–2025 视频生成军备竞赛（Kling、Runway Gen-3、Veo、即梦/可灵等），是该赛道的标杆事件。
 

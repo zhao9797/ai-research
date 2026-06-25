@@ -23,9 +23,9 @@ reviewed: 2026-06-25
 Wan 2.2 是阿里 Wan（通义万相）团队 2025-07 开源的视频生成模型升级版，**首次把 Mixture-of-Experts（MoE）引入视频扩散模型**——按去噪时间步把网络拆成"高噪专家+低噪专家"两个 14B 专家（总 27B 参数，每步只激活 14B，推理成本与 14B 稠密模型持平）；同时放出一个 5B 稠密 TI2V 模型，配合 16×16×4 高压缩 Wan2.2-VAE，**可在单张 RTX 4090（24GB）上 9 分钟内生成 5 秒 720P@24fps 视频**，是当时最快的开源 720P@24fps 模型之一，官方在自建 Wan-Bench 2.0 上声称多维度超越主流闭源商业模型。
 
 ## 背景与定位
-- **前置工作**：Wan 2.2 建立在 [[wan-2-1]]（arXiv:2503.20314，"Wan: Open and Advanced Large-Scale Video Generative Models"）的基础架构之上。Wan2.1 已确立了基于 [[dit]] + [[flow-matching]] 的视频扩散范式：3D 因果 VAE（Wan-VAE）+ 视频 DiT + umT5 文本编码器，开源 1.3B/14B 两档，是当时开源视频生成的 SOTA。**注意：arXiv:2503.20314 是 Wan2.1 技术报告，并不覆盖 Wan2.2 的 MoE/新 VAE**；Wan2.2 截至发布没有独立的 arXiv 技术报告，其 Wan2.2 专属方法披露集中在 GitHub README 与 HF model card 的"Introduction of Wan2.2"章节（含 MoE 架构、高压缩 VAE、Wan-Bench 2.0 对比；本页据此摘录）。（落盘的 `wan-2-2--blog.md` 是 wan.video 产品落地页，无技术内容，不作为方法来源。）
+- **前置工作**：Wan 2.2 建立在 [[wan-2-1]]（arXiv:2503.20314，"Wan: Open and Advanced Large-Scale Video Generative Models"）的基础架构之上。Wan2.1 已确立了基于 [[dit-scalable-diffusion-transformers]] + [[flow-matching]] 的视频扩散范式：3D 因果 VAE（Wan-VAE）+ 视频 DiT + umT5 文本编码器，开源 1.3B/14B 两档，是当时开源视频生成的 SOTA。**注意：arXiv:2503.20314 是 Wan2.1 技术报告，并不覆盖 Wan2.2 的 MoE/新 VAE**；Wan2.2 截至发布没有独立的 arXiv 技术报告，其 Wan2.2 专属方法披露集中在 GitHub README 与 HF model card 的"Introduction of Wan2.2"章节（含 MoE 架构、高压缩 VAE、Wan-Bench 2.0 对比；本页据此摘录）。（落盘的 `wan-2-2--blog.md` 是 wan.video 产品落地页，无技术内容，不作为方法来源。）
 - **要解决的问题**：(1) 扩大模型容量但不增加推理成本——LLM 里 MoE 已验证可"涨参数不涨推理算力"，Wan2.2 把这一思路迁移到扩散去噪过程；(2) 让视频生成"上消费级显卡"——通过高压缩 VAE + 5B 稠密模型把 720P 生成拉到 4090 可跑；(3) 电影级美学可控——引入带光照/构图/对比度/色调标注的精选美学数据。
-- **技术脉络中的位置**：与 [[hunyuanvideo]]、[[mochi]]、[[cogvideox]] 等同期开源视频模型同属 DiT+流匹配阵营；Wan2.2 的差异化在于**MoE 时序专家**（区别于 LLM 的 token 级路由 MoE）与**高压缩比 VAE 下的消费级部署**。
+- **技术脉络中的位置**：与 [[hunyuan-video]]、[[mochi]]、[[cogvideox]] 等同期开源视频模型同属 DiT+流匹配阵营；Wan2.2 的差异化在于**MoE 时序专家**（区别于 LLM 的 token 级路由 MoE）与**高压缩比 VAE 下的消费级部署**。
 
 ## 模型架构
 **整体三段式（沿用 Wan2.1）**：Wan-VAE 把像素视频编码到 latent → 视频 Diffusion Transformer 去噪 → unpatchify 解码。

@@ -22,7 +22,7 @@ updated: 2026-06-25
 HunyuanImage 3.0 是腾讯混元基于自研 80B 总参 / 13B 激活 MoE 大语言模型 [[hunyuan-a13b]] 扩展而成的「原生多模态」统一理解+生成模型——文本走自回归 next-token、图像走扩散预测（[[transfusion]] / [[janusflow]] 路线），把 native Chain-of-Thought「先想后画」内置进生成流程；它是迄今**最大的开源图像生成模型**，人评 GSB 上相对 HunyuanImage 2.1 胜率 +14.1%，相对闭源 Seedream 4.0 / Nano Banana / GPT-Image 也分别取得 +1.17% / +2.64% / +5.00% 的正向胜率。
 
 ## 背景与定位
-2024–2025 年顶尖图像生成系统（Seedream 4.0、Nano Banana、GPT-Image、Qwen-Image、HunyuanImage 2.1）大多走两条路：DiT 扩散主干（[[latent-diffusion-ldm]] → [[dit]] → [[mmdit-sd3]]）或闭源 native 多模态。它们的共同问题是**多数闭源、不可复现**，且理解管线与生成管线常常割裂。HunyuanImage 3.0 的定位是：
+2024–2025 年顶尖图像生成系统（Seedream 4.0、Nano Banana、GPT-Image、Qwen-Image、HunyuanImage 2.1）大多走两条路：DiT 扩散主干（[[latent-diffusion-ldm]] → [[dit-scalable-diffusion-transformers]] → [[stable-diffusion-3]]）或闭源 native 多模态。它们的共同问题是**多数闭源、不可复现**，且理解管线与生成管线常常割裂。HunyuanImage 3.0 的定位是：
 
 - **用一个 LLM 主干统一理解与生成**：摒弃主流 DiT 架构，直接在预训练 MoE LLM 上扩出视觉理解 + 视觉生成两条通路，使「交错文本对话 / 图像生成 / 图像理解 / 图像编辑」能在同一连续上下文里完成，无需在两套 pipeline 间切换。
 - **把 LLM 的世界知识与推理能力带进 T2I**：借 native CoT，让模型在生成前先做一段「思考/改写」，把稀疏提示自动扩写为细节充分的视觉规格，从而提升复杂指令遵循、文字渲染与概念泛化。

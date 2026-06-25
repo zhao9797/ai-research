@@ -29,7 +29,7 @@ updated: 2026-06-25
 - **2.1（2025-06-04）**：主打"高质量 × 高性价比 × 高速度"，大幅降价提速。
 - **2.5 Turbo（2025-09-23 上线，09-26 公告）**：再一次质量跃迁 + 再降价约 30%，并对标字节 Seedance 1.0 与 Google Veo3。
 
-技术脉络上，可灵属于潜空间扩散视频生成路线，与 [[latent-diffusion-ldm]]、[[ddpm]]、Sora 类 [[dit]] 视频模型同源，但走的是闭源产品化 + 强工程迭代 + 强编辑/可控性路线，而非发表论文。它与同期 Veo（Google）、Runway Gen-3/4、Seedance/Seaweed（字节）、Hailuo/MiniMax、Wan（阿里）正面竞争。
+技术脉络上，可灵属于潜空间扩散视频生成路线，与 [[latent-diffusion-ldm]]、[[ddpm]]、Sora 类 [[dit-scalable-diffusion-transformers]] 视频模型同源，但走的是闭源产品化 + 强工程迭代 + 强编辑/可控性路线，而非发表论文。它与同期 Veo（Google）、Runway Gen-3/4、Seedance/Seaweed（字节）、Hailuo/MiniMax、Wan（阿里）正面竞争。
 
 > 注意边界：本页覆盖到 2.5 Turbo。2025 年 12 月初"Omni Launch Week"发布的 Kling Video O1（首个统一多模态视频模型）、Kling Image O1、Kling Video 2.6（音画同生）、可灵数字人 2.0 属下一代统一/全模态工作，归入 [[kling-omni]] 等独立条目，本页不展开。
 

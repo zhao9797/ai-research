@@ -23,7 +23,7 @@ Lumina-T2X 是上海 AI Lab 提出的统一 **flow-based 大 DiT（Flag-DiT）**
 
 ## 背景与定位
 2024 年初 Sora 展示了把 DiT 扩到任意分辨率/时长生成图像视频的潜力，但闭源、无实现细节；SD3、PixArt-α/Σ 也证明 transformer + flow matching 路线优于 U-Net，但都局限单一任务、单一分辨率，且实现/权重不全开放。本工作的定位就是**做开源版的"Sora 式统一可扩展生成框架"**：
-- 相对 [[dit]]：原版 DiT 最大只到 600M、需全精度训练、用 APE 只能定分辨率单图、用 DDPM 公式。Flag-DiT 通过借鉴 LLM 的工程（RoPE/RMSNorm/KQ-Norm + 混合精度 + FSDP/序列并行）把 DiT 稳定扩到 **7B 参数、128K token 上下文**。
+- 相对 [[dit-scalable-diffusion-transformers]]：原版 DiT 最大只到 600M、需全精度训练、用 APE 只能定分辨率单图、用 DDPM 公式。Flag-DiT 通过借鉴 LLM 的工程（RoPE/RMSNorm/KQ-Norm + 混合精度 + FSDP/序列并行）把 DiT 稳定扩到 **7B 参数、128K token 上下文**。
 - 相对 [[sit]]（Scalable Interpolant Transformer，flow matching 版 DiT）：Flag-DiT 在同等 600M 下 FID 更低，作者归因于 RMSNorm/RoPE/KQ-Norm 这些 meta-architecture 改动既稳训练又涨点。
 - 相对 [[pixart-alpha]]：Lumina-T2I 受其多阶段训练 + 高美学数据启发，但有三点关键差异——backbone 大 8.3 倍（5B vs 0.6B）、**直接在高美学合成数据上训练（不经 ImageNet/SAM 预训练，避免域 gap）**、靠 RoPE+[nextline] 获得 PixArt 没有的分辨率外推能力。
 这是 **Lumina 系列的开山之作**，后续衍生 Lumina-Next（Next-DiT + Gemma-2B 文本编码器，2K 生成）、Lumina-mGPT（自回归路线）、Lumina-Image 2.0 等。

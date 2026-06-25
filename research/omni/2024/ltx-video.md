@@ -29,7 +29,7 @@ LTX-Video 的核心论点是 **"holistic（整体化）"latent diffusion**：不
 1. **把压缩做到极致**（受同期 DC-VAE 启发——高空间压缩+高维 latent 对 transformer 扩散更有利），用 1:192 总压缩 + 1:8192 像素-token 比（是同类的 2 倍压缩、4 倍 token 比），让 transformer 在极小 token 集上跑全时空注意力。
 2. **把"最后一步去噪"交给 VAE 解码器**，在 latent→pixel 解码的同时补回高压缩丢失的高频细节，省掉 Sora/MovieGen 那种额外的二级 upsampling/超分模型。
 
-相对前置工作：架构 backbone 基于 [[pixart-alpha]]（把 [[dit]] 扩展为开放文本条件），训练范式用 [[rectified-flow]]（同 [[stable-diffusion-3]] / [[flux-1]]），定位是"效率优先 + 消费级 GPU 可跑 + 全开源"的视频生成，对标的是 [[cogvideox]] / [[hunyuanvideo]] / [[open-sora-plan]] 这条开源线。
+相对前置工作：架构 backbone 基于 [[pixart-alpha]]（把 [[dit-scalable-diffusion-transformers]] 扩展为开放文本条件），训练范式用 [[rectified-flow]]（同 [[stable-diffusion-3]] / [[flux-1]]），定位是"效率优先 + 消费级 GPU 可跑 + 全开源"的视频生成，对标的是 [[cogvideox]] / [[hunyuan-video]] / [[open-sora-plan]] 这条开源线。
 
 ## 模型架构
 

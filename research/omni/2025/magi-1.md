@@ -30,7 +30,7 @@ MAGI-1 沿着**自回归 + 因果建模**这条线（[[diffusion-forcing]]、FVD
 - **流式 / 实时**：chunk 流水线 + KV cache，**峰值推理开销与视频总长无关**（恒定显存足迹），可做实时流式生成。
 - **可控性**：chunk-wise prompting（逐秒文本控制）、通过调 KV range 实现可控镜头转场、长视频（近 30 秒叙事级 demo）。
 
-技术谱系上，它建立在 [[latent-diffusion-ldm]]（潜空间去噪）、[[dit]]（DiT backbone）与 flow-matching / rectified flow 之上，并大量借鉴 LLM 工程（GQA、SwiGLU、QK-Norm、KV cache、Ulysses 序列并行）。
+技术谱系上，它建立在 [[latent-diffusion-ldm]]（潜空间去噪）、[[dit-scalable-diffusion-transformers]]（DiT backbone）与 flow-matching / rectified flow 之上，并大量借鉴 LLM 工程（GQA、SwiGLU、QK-Norm、KV cache、Ulysses 序列并行）。
 
 ## 模型架构
 
