@@ -16,6 +16,7 @@ project_url: https://mv-dream.github.io/
 downloaded: [arxiv-2308.16512.pdf, mvdream--readme.md, mvdream--project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -29,7 +30,7 @@ MVDream 是首个文生「多视角一致图像」的扩散模型：把 Stable D
 
 作者的核心判断：**单纯给 2D 模型加相机条件不够**——即便相机完美对齐，不同视角的内容仍可能错位（鹰可能正面朝前、背面又朝右，只有身体遵守相机）。其灵感来自视频扩散模型（人靠绕一圈看物体来感知 3D，类似转盘视频），但直接套用视频模型也不行：几何一致性比时间一致性更精细，大视角变化下视频模型仍漂移，且视频模型在动态场景上训练、对静态物体有 domain gap。
 
-因此 MVDream 选择**直接训练一个多视角扩散模型**：用 3D 资产渲染出精确相机参数的静态多视角图来监督。它在技术脉络上承接 [[latent-diffusion-ldm]]（基座是 [[stable-diffusion]] 2.1）与 DreamFusion 的 SDS 框架，定位是"给 SDS 换一个自带 3D 一致性的更强先验"，是文生 3D 一致性问题的关键转折工作（后续 Wonder3D、SyncDreamer、ImageDream 等多视角扩散路线均受其影响）。
+因此 MVDream 选择**直接训练一个多视角扩散模型**：用 3D 资产渲染出精确相机参数的静态多视角图来监督。它在技术脉络上承接 [[latent-diffusion-ldm]]（基座是 [[stable-diffusion-2]] 的 v2.1-base）与 DreamFusion 的 SDS 框架，定位是"给 SDS 换一个自带 3D 一致性的更强先验"，是文生 3D 一致性问题的关键转折工作（后续 Wonder3D、SyncDreamer、ImageDream 等多视角扩散路线均受其影响）。
 
 ## 模型架构
 **Backbone**：完整沿用 Stable Diffusion v2.1-base 的 latent-diffusion U-Net（ε-prediction，VAE 8× 下采样），仅做两处"轻改动"，以最大化继承 2D 基座权重与泛化性：
@@ -42,7 +43,7 @@ MVDream 是首个文生「多视角一致图像」的扩散模型：把 Stable D
 2. **相机嵌入（Camera Embeddings）**——用 **2 层 MLP** 编码每个视角的相机外参（4×4，归一化到单位球面只保留旋转，即 `c ∈ R^{F×16}`）。对比过相对位置编码、旋转位置编码（RoPE）与绝对相机参数，发现 2 层 MLP 编码绝对相机参数效果最好。注入方式两种都可行，但**把相机嵌入作为残差加到 time embedding**（而非拼到 text embedding 走 cross-attention）更鲁棒——推测因为这样相机与文本解耦得更干净。
 
 - **Text encoder**：沿用 SD 2.1 的 OpenCLIP ViT-H 文本编码器（cross-attention 注入）。
-- **参数量**：论文未单独报告新增参数量（膨胀注意力近乎零新增 + 一个 2 层 MLP），整体规模即 SD 2.1-base U-Net（约 0.87B 量级，论文未明确给数）。
+- **参数量**：论文**全程未报告任何参数量**（新增亦未给）；膨胀注意力复用原层近乎零新增 + 一个 2 层 MLP，整体规模即 SD 2.1-base 的 U-Net（其公开已知量级约 0.86–0.87B，此数来自 SD 2.1 而非本文，本文未提）。
 - **分辨率/视角策略**：默认生成 **4 个正交视角、同一仰角**、每视角 **256×256**（latent 32×32×4）；论文做过 8 视角 / 90° 的视频式设置（512×512）做消融。Discussion 还发现：若改在随机视角上训练，模型能从 4 视角训练泛化到推理时生成 **64 视角甚至更多**。
 
 ## 数据
@@ -71,7 +72,7 @@ MVDream 是首个文生「多视角一致图像」的扩散模型：把 Stable D
 - **3D 生成（SDS）端**：在 **threestudio** 框架内实现多视角 SDS guidance；3D 表示用 threestudio 的 implicit-volume（多分辨率 hash-grid + MLP 预测 density/RGB）。3D 模型用 AdamW 优化 **10,000 步**、lr=0.01；渲染分辨率从 64×64 在 5000 步后升到 256×256；5000 步后开软阴影。
 - **单次文生 3D 耗时**：约 **1.5 小时 / 单张 V100**（带 shading）、1 小时（不带）。对比同框架基线：DreamFusion-IF / Text2Mesh-IF ≈ 2h、Magic3D-IF-SD ≈ 3.5h、ProlificDreamer > 10h（V100）。
 - **DreamBooth 微调**：约 600 步（轻量）。
-- **部署形态**：开源代码（MIT，含 2D 多视角图像生成 + gradio demo），模型权重在 HuggingFace（OpenRAIL）；3D 生成代码单独在 `bytedance/MVDream-threestudio`。
+- **部署形态**：开源代码（MIT，含 2D 多视角图像生成 + gradio demo），模型权重在 HuggingFace（OpenRAIL）；官方放出两个 checkpoint：`sd-v2.1-base-4view`（默认）与 `sd-v1.5-4view`，均为 **4×256×256**（README Model Card）。3D 生成代码单独在 `bytedance/MVDream-threestudio`。
 
 ## 评测 benchmark（把效果讲清楚）
 **多视角图像质量（Table 1，1000 held-out 主体、4 视角、DDIM 采样）**：
