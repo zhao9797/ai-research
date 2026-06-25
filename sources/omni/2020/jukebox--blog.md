@@ -1,0 +1,478 @@
+# Jukebox | OpenAI
+Source: https://openai.com/index/jukebox/
+Jukebox | OpenAI
+
+[Skip to main content](#main)
+
+* [Research](/research/index/)
+* Products
+* [Business](/business/)
+* [Developers](/api/)
+* [Company](/about/)
+* [Foundation(opens in a new window)](https://openaifoundation.org/)
+
+Log in[Try ChatGPT(opens in a new window)](https://chatgpt.com/?openaicom-did=d365bcc5-a492-4ac4-80df-5dac452064a2&openaicom_referred=true)
+
+* Research
+* Products
+* Business
+* Developers
+* Company
+* [Foundation(opens in a new window)](https://openaifoundation.org/)
+
+Jukebox | OpenAI
+
+April 30, 2020
+
+[Release](/research/index/release/)
+
+# Jukebox
+
+[Read paper(opens in a new window)](https://arxiv.org/abs/2005.00341)[(opens in a new window)](https://github.com/openai/jukebox/)
+
+![Jukebox](https://images.ctfassets.net/kftzwdyauwt9/1f223ed0-8e6b-4add-283f1d99d604/97cb057c8dee1a92cb2c85623620fbf5/image-4.webp?w=3840&q=90&fm=webp)
+
+Illustration: Ben Barry
+
+Listen to article
+
+10:28
+
+Share
+
+Curated samples
+
+* [Curated samples](#curated-samples)
+* [Motivation and prior work](#motivation-and-prior-work)
+* [Approach](#approach)
+
+  + [Compressing music to discrete codes](#compressing-music-to-discrete-codes)
+  + [Generating codes using transformers](#generating-codes-using-transformers)
+  + [Dataset](#dataset)
+  + [Artist and genre conditioning](#artist-and-genre-conditioning)
+  + [Lyrics conditioning](#lyrics-conditioning)
+* [Limitations](#limitations)
+* [Future directions](#future-directions)
+
+Table of contents
+
+* [Curated samples](#curated-samples)
+* [Motivation and prior work](#motivation-and-prior-work)
+* [Approach](#approach)
+
+  + [Compressing music to discrete codes](#compressing-music-to-discrete-codes)
+  + [Generating codes using transformers](#generating-codes-using-transformers)
+  + [Dataset](#dataset)
+  + [Artist and genre conditioning](#artist-and-genre-conditioning)
+  + [Lyrics conditioning](#lyrics-conditioning)
+* [Limitations](#limitations)
+* [Future directions](#future-directions)
+
+We’re introducing Jukebox, a neural net that generates music, including rudimentary singing, as raw audio in a variety of genres and artist styles. We’re releasing the model weights and code, along with a tool to explore the generated samples.
+
+## Curated samples
+
+Provided with genre, artist, and lyrics as input, Jukebox outputs a new music sample produced from scratch. Below, we show some of our favorite samples.
+
+* [Unseen lyrics](#)
+* [Re-renditions](#)
+* [Completions](#)
+* [Fun songs](#)
+
+Unseen lyrics
+
+Re-renditions
+
+Completions
+
+Fun songs
+
+---
+
+Jukebox produces a wide range of music and singing styles, and generalizes to lyrics not seen during training. All the lyrics below have been co-written by a language model and OpenAI researchers.
+
+When conditioned on lyrics seen during training, Jukebox produces songs very different from the original songs it was trained on.
+
+We provide 12 seconds of audio to condition on and Jukebox completes the rest in a specified style. In the first sample, the model continues OpenAI musician Will Guss’s intro by blending polyrhythms and hip hop in a genre-bending way.
+
+We sample a duet, popular song lyrics, songs about deep learning, and children’s music.
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+Lyric animation shows which text Jukebox is paying attention to at any moment.
+
+To hear all uncurated samples, check out our sample explorer.
+
+Explore all samples
+
+## Motivation and prior work
+
+Automatic music generation dates back to more than half a century.[1](#citation-bottom-1), [2](#citation-bottom-2), [3](#citation-bottom-3), [4](#citation-bottom-4) A prominent approach is to generate music symbolically in the form of a piano roll, which specifies the timing, pitch, velocity, and instrument of each note to be played. This has led to impressive results like producing Bach chorals,[5](#citation-bottom-5), [6](#citation-bottom-6) polyphonic music with multiple instruments,[7](#citation-bottom-7), [8](#citation-bottom-8), [9](#citation-bottom-9) as well as minute long musical pieces.[10](#citation-bottom-10), [11](#citation-bottom-11), [12](#citation-bottom-12)
+
+But symbolic generators have limitations—they cannot capture human voices or many of the more subtle timbres, dynamics, and expressivity that are essential to music. A different approach[A](#citation-bottom-A) is to model music directly as raw audio.[13](#citation-bottom-13), [14](#citation-bottom-14), [15](#citation-bottom-15), [16](#citation-bottom-16) Generating music at the audio level is challenging since the sequences are very long.[17](#citation-bottom-17) A typical 4-minute song at CD quality (44 kHz, 16-bit) has over 10 million timesteps. For comparison, GPT‑2 had 1,000 timesteps and [OpenAI Five⁠](/five/) took tens of thousands of timesteps per game. Thus, to learn the high level semantics of music, a model would have to deal with extremely long-range dependencies.
+
+One way of addressing the long input problem is to use an autoencoder that compresses raw audio to a lower-dimensional space by discarding some of the perceptually irrelevant bits of information. We can then train a model to generate audio in this compressed space, and upsample back to the raw audio space.[25](#citation-bottom-25), [17](#citation-bottom-17)
+
+We chose to work on music because we want to continue to push the boundaries of generative models. Our previous work on [MuseNet⁠](/index/musenet/) explored synthesizing music based on large amounts of MIDI data. Now in raw audio, our models must learn to tackle high diversity as well as very long range structure, and the raw audio domain is particularly unforgiving of errors in short, medium, or long term timing.
+
+![](https://cdn.openai.com/jukebox/assets/waveforms/1-original.png)
+
+**Raw audio** 44.1k samples per second, where each sample is a float that represents the amplitude of sound at that moment in time
+
+![](https://cdn.openai.com/jukebox/assets/overview-arrow.svg)
+
+Encode using CNNs (convolutional neural networks)
+
+![](https://cdn.openai.com/jukebox/assets/overview-2.svg)
+
+**Compressed audio** 344 samples per second, where each sample is 1 of 2048 possible vocab tokens
+
+![](https://cdn.openai.com/jukebox/assets/overview-arrow.svg)
+
+Generate novel patterns from trained transformer conditioned on lyrics
+
+**Novel compressed audio** 344 samples per second
+
+![](https://cdn.openai.com/jukebox/assets/overview-arrow.svg)
+
+Upsample using transformers and decode using CNNs
+
+![](https://cdn.openai.com/jukebox/assets/waveforms/1-novel.png)
+
+**Novel raw audio** 44.1k samples per second
+
+## Approach
+
+### Compressing music to discrete codes
+
+Jukebox’s autoencoder model compresses audio to a discrete space, using a quantization-based approach called VQ-VAE.[25](#citation-bottom-25) Hierarchical VQ-VAEs[17](#citation-bottom-17) can generate short instrumental pieces from a few sets of instruments, however they suffer from hierarchy collapse due to use of successive encoders coupled with autoregressive decoders. A simplified variant called VQ-VAE-2[26](#citation-bottom-26) avoids these issues by using feedforward encoders and decoders only, and they show impressive results at generating high-fidelity images.
+
+We draw inspiration from VQ-VAE-2 and apply their approach to music. We modify their architecture as follows:
+
+* To alleviate codebook collapse common to VQ-VAE models, we use random restarts where we randomly reset a codebook vector to one of the encoded hidden states whenever its usage falls below a threshold.
+* To maximize the use of the upper levels, we use separate decoders and independently reconstruct the input from the codes of each level.
+* To allow the model to reconstruct higher frequencies easily, we add a spectral loss[27](#citation-bottom-27), [28](#citation-bottom-28) that penalizes the norm of the difference of input and reconstructed spectrograms.
+
+We use three levels in our VQ-VAE, shown below, which compress the 44kHz raw audio by 8x, 32x, and 128x, respectively, with a codebook size of 2048 for each level. This downsampling loses much of the audio detail, and sounds noticeably noisy as we go further down the levels. However, it retains essential information about the pitch, timbre, and volume of the audio.
+
+* [Compress](#)
+* [Generate](#)
+
+Each VQ-VAE level independently encodes the input. The bottom level encoding produces the highest quality reconstruction, while the top level encoding retains only the essential musical information.
+
+![](https://cdn.openai.com/jukebox/assets/vqvae-1.svg)
+
+![](https://cdn.openai.com/jukebox/assets/vqvae-2.svg)
+
+### Generating codes using transformers
+
+Next, we train the prior models whose goal is to learn the distribution of music codes encoded by VQ-VAE and to generate music in this compressed discrete space. Like the VQ-VAE, we have three levels of priors: a top-level prior that generates the most compressed codes, and two upsampling priors that generate less compressed codes conditioned on above.
+
+The top-level prior models the long-range structure of music, and samples decoded from this level have lower audio quality but capture high-level semantics like singing and melodies. The middle and bottom upsampling priors add local musical structures like timbre, significantly improving the audio quality.
+
+We train these as autoregressive models using a simplified variant of Sparse Transformers.[29](#citation-bottom-29), [30](#citation-bottom-30) Each of these models has 72 layers of factorized self-attention on a context of 8192 codes, which corresponds to approximately 24 seconds, 6 seconds, and 1.5 seconds of raw audio at the top, middle and bottom levels, respectively.
+
+Once all of the priors are trained, we can generate codes from the top level, upsample them using the upsamplers, and decode them back to the raw audio space using the VQ-VAE decoder to sample novel songs.
+
+### Dataset
+
+To train this model, we crawled the web to curate a new dataset of 1.2 million songs (600,000 of which are in English), paired with the corresponding lyrics and metadata from [LyricWiki⁠(opens in a new window)](https://lyrics.fandom.com/wiki/LyricWiki). The metadata includes artist, album genre, and year of the songs, along with common moods or playlist keywords associated with each song. We train on 32-bit, 44.1 kHz raw audio, and perform data augmentation by randomly downmixing the right and left channels to produce mono audio.
+
+### Artist and genre conditioning
+
+The top-level transformer is trained on the task of predicting compressed audio tokens. We can provide additional information, such as the artist and genre for each song. This has two advantages: first, it reduces the entropy of the audio prediction, so the model is able to achieve better quality in any particular style; second, at generation time, we are able to steer the model to generate in a style of our choosing.
+
+This t-SNE[31](#citation-bottom-31) below shows how the model learns, in an unsupervised way, to cluster similar artists and genres close together, and also makes some surprising associations like Jennifer Lopez being so close to Dolly Parton!
+
+### Lyrics conditioning
+
+In addition to conditioning on artist and genre, we can provide more context at training time by conditioning the model on the lyrics for a song. A significant challenge is the lack of a well-aligned dataset: we only have lyrics at a song level without alignment to the music, and thus for a given chunk of audio we don’t know precisely which portion of the lyrics (if any) appear. We also may have song versions that don’t match the lyric versions, as might occur if a given song is performed by several different artists in slightly different ways. Additionally, singers frequently repeat phrases, or otherwise vary the lyrics, in ways that are not always captured in the written lyrics.
+
+To match audio portions to their corresponding lyrics, we begin with a simple heuristic that aligns the characters of the lyrics to linearly span the duration of each song, and pass a fixed-size window of characters centered around the current segment during training. While this simple strategy of linear alignment worked surprisingly well, we found that it fails for certain genres with fast lyrics, such as hip hop. To address this, we use Spleeter[32](#citation-bottom-32) to extract vocals from each song and run NUS AutoLyricsAlign[[⁠](/index/jukebox/#rf33)^reference-33] on the extracted vocals to obtain precise word-level alignments of the lyrics. We chose a large enough window so that the actual lyrics have a high probability of being inside the window.
+
+To attend to the lyrics, we add an encoder to produce a representation for the lyrics, and add attention layers that use queries from the music decoder to attend to keys and values from the lyrics encoder. After training, the model learns a more precise alignment.
+
+![Lyrics Attention](https://images.ctfassets.net/kftzwdyauwt9/0aadc876-c342-4382-38e1b35fbec1/62eeab4ca1b9261bd5b25f29403e9963/lyrics-attention.svg?w=3840&q=90)
+
+**Lyric–music alignment learned by encoder–decoder attention layer**Attention progresses from one lyric token to the next as the music progresses, with a few moments of uncertainty.
+
+## Limitations
+
+While Jukebox represents a step forward in musical quality, coherence, length of audio sample, and ability to condition on artist, genre, and lyrics, there is a significant gap between these generations and human-created music.
+
+For example, while the generated songs show local musical coherence, follow traditional chord patterns, and can even feature impressive solos, we do not hear familiar larger musical structures such as choruses that repeat. Our downsampling and upsampling process introduces discernable noise. Improving the VQ-VAE so its codes capture more musical information would help reduce this. Our models are also slow to sample from, because of the autoregressive nature of sampling. It takes approximately 9 hours to fully render one minute of audio through our models, and thus they cannot yet be used in interactive applications. Using techniques[27](#citation-bottom-27), [34](#citation-bottom-34) that distill the model into a parallel sampler can significantly speed up the sampling speed. Finally, we currently train on English lyrics and mostly Western music, but in the future we hope to include songs from other languages and parts of the world.
+
+## Future directions
+
+Our audio team is continuing to work on generating audio samples conditioned on different kinds of priming information. In particular, we’ve seen early success conditioning on MIDI files and stem files. Here’s an example of a [raw audio sample⁠(opens in a new window)](https://soundcloud.com/openai_audio/generated-raw) conditioned on [MIDI tokens⁠(opens in a new window)](https://soundcloud.com/openai_audio/midi-input-given-to-model-as-midi-tokens-rendered-here-by-timidity). We hope this will improve the musicality of samples (in the way conditioning on lyrics improved the singing), and this would also be a way of giving musicians more control over the generations. We expect human and model collaborations to be an increasingly exciting creative space. If you’re excited to work on these problems with us, [we’re hiring⁠](/careers/).
+
+As generative modeling across various domains continues to advance, we are also conducting research into issues like [bias⁠(opens in a new window)](https://arxiv.org/abs/1908.09203) and [intellectual property rights⁠(opens in a new window)](https://cdn.openai.com/policy-submissions/OpenAI%20Comments%20on%20Intellectual%20Property%20Protection%20for%20Artificial%20Intelligence%20Innovation.pdf), and are engaging with people who work in the domains where we develop tools. To better understand future implications for the music community, we shared Jukebox with an initial set of 10 musicians from various genres to discuss their feedback on this work. While Jukebox is an interesting research result, these musicians did not find it immediately applicable to their creative process given some of its current [limitations⁠](/index/jukebox/#limitations). We are connecting with the wider creative community as we think generative work across text, images, and audio will continue to improve. If you’re interested in being a creative collaborator to help us build [useful tools⁠](/index/musenet/) or new works of art in these domains, please [let us know⁠(opens in a new window)](https://forms.gle/8npHSMnE5hfSxkkU9)!
+
+*To connect with the corresponding authors, please email* [*jukebox@openai.com*⁠](mailto:jukebox@openai.com)*.*
+
+* [Creative collaborator sign-up(opens in a new window)](https://forms.gle/8npHSMnE5hfSxkkU9)
+
+### Timeline
+
+* **July 2019**
+
+  Our first raw audio model, which learns to recreate instruments like Piano and Violin. We try a dataset of rock and pop songs, and surprisingly it works.
+* **September 2019**
+
+  We collect a larger and more diverse dataset of songs, with labels for genres and artists. Model picks up artist and genre styles more consistently with diversity, and at convergence can also produce full-length songs with long-range coherence.
+* **January 2020**
+
+  We scale our VQ-VAE from 22 to 44kHz to achieve higher quality audio. We also scale top-level prior from 1B to 5B to capture the increased information. We see better musical quality, clear singing, and long-range coherence. We also make novel completions of real songs.
+* **January 2020**
+
+  We start training models conditioned on lyrics to incorporate further conditioning information. We only have unaligned lyrics, so model has to learn alignment and pronunciation, as well as singing.
+
+* [Community & Collaboration](/research/index/?tags=community-collaboration)
+* [Generative Models](/research/index/?tags=generative-models)
+* [Transformers](/research/index/?tags=transformers)
+* [Software & Engineering](/research/index/?tags=software-engineering)
+
+## Footnotes
+
+1. 18
+
+   One can also use a hybrid approach—first generate the symbolic music, then render it to raw audio using a wavenet conditioned on piano rolls, an autoencoder, or a GAN—or do music style transfer, to transfer styles between classical and jazz music, generate chiptune music, or disentangle musical style and content. For a deeper dive into raw audio modelling, we recommend this excellent [overview⁠(opens in a new window)](https://benanne.github.io/2020/03/24/audio-generation.html).
+
+## References
+
+1. 1
+
+   Hiller Jr, L. A., and L. M. Isaacson. “[Musical Composition with a High-Speed Digital Computer⁠(opens in a new window)](http://www.aes.org/e-lib/browse.cfm?elib=231).” Journal of the Audio Engineering Society 6.3 (1958): 154-160.
+2. 2
+
+   Moorer, James Anderson. “[Music and computer composition⁠(opens in a new window)](https://dl.acm.org/doi/10.1145/361254.361265).” Communications of the ACM 15.2 (1972): 104-113.
+3. 3
+
+   Beyls, Peter. “[The musical universe of cellular automata⁠(opens in a new window)](https://quod.lib.umich.edu/i/icmc/bbp2372.1989.009/--musical-universe-of-cellular-automata).” Proceedings of international computer music conference. 1989.
+4. 4
+
+   Conklin, Darrell. “[Music generation from statistical models⁠(opens in a new window)](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.3.2086&rep=rep1&type=pdf).” Proceedings of the AISB 2003 Symposium on Artificial Intelligence and Creativity in the Arts and Sciences. 2003.
+5. 5
+
+   Hadjeres, Gaëtan, François Pachet, and Frank Nielsen. “[Deepbach: a steerable model for bach chorales generation⁠(opens in a new window)](https://dl.acm.org/doi/10.5555/3305381.3305522).” Proceedings of the 34th International Conference on Machine Learning-Volume 70. JMLR. org, 2017.
+6. 6
+
+   Huang, Cheng-Zhi Anna, et al. “[Counterpoint by convolution⁠(opens in a new window)](https://arxiv.org/abs/1903.07227).” arXiv preprint arXiv:1903.07227 (2019).
+7. 7
+
+   Dong, Hao-Wen, et al. “[Musegan: Multi-track sequential generative adversarial networks for symbolic music generation and accompaniment⁠(opens in a new window)](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/viewPaper/17286).” Thirty-Second AAAI Conference on Artificial Intelligence. 2018.
+8. 8
+
+   Yang, Li-Chia, Szu-Yu Chou, and Yi-Hsuan Yang. “[MidiNet: A convolutional generative adversarial network for symbolic-domain music generation⁠(opens in a new window)](https://arxiv.org/abs/1703.10847).” arXiv preprint arXiv:1703.10847 (2017).
+9. 9
+
+   Roberts, Adam, et al. “[A hierarchical latent vector model for learning long-term structure in music⁠(opens in a new window)](https://arxiv.org/abs/1803.05428).” arXiv preprint arXiv:1803.05428 (2018).
+10. 10
+
+    Huang, Cheng-Zhi Anna, et al. “[Music transformer⁠(opens in a new window)](https://arxiv.org/abs/1809.04281).” arXiv preprint arXiv:1809.04281 (2018).
+11. 11
+
+    Payne, Christine. “[MuseNet, 2019.⁠](/index/musenet/)” URL openai.com/blog/musenet (2019).
+12. 12
+
+    Wu, Jian, et al. “[A hierarchical recurrent neural network for symbolic melody generation⁠(opens in a new window)](https://ieeexplore.ieee.org/abstract/document/8918424).” IEEE Transactions on Cybernetics (2019).
+13. 13
+
+    Oord, Aaron van den, et al. “[Wavenet: A generative model for raw audio⁠(opens in a new window)](https://arxiv.org/abs/1609.03499).” arXiv preprint arXiv:1609.03499 (2016).
+14. 14
+
+    Mehri, Soroush, et al. “[SampleRNN: An unconditional end-to-end neural audio generation model⁠(opens in a new window)](https://arxiv.org/abs/1612.07837).” arXiv preprint arXiv:1612.07837 (2016).
+15. 15
+
+    Yamamoto, Ryuichi, Eunwoo Song, and Jae-Min Kim. “[Parallel WaveGAN: A fast waveform generation model based on generative adversarial networks with multi-resolution spectrogram⁠(opens in a new window)](https://ieeexplore.ieee.org/abstract/document/9053795/).” ICASSP 2020-2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2020.
+16. 16
+
+    Vasquez, Sean, and Mike Lewis. “[Melnet: A generative model for audio in the frequency domain⁠(opens in a new window)](https://arxiv.org/abs/1906.01083).” arXiv preprint arXiv:1906.01083 (2019).
+17. 17
+
+    Dieleman, Sander, Aaron van den Oord, and Karen Simonyan. “[The challenge of realistic music generation: modelling raw audio at scale⁠(opens in a new window)](http://papers.nips.cc/paper/8023-the-challenge-of-realistic-music-generation-modelling-raw-audio-at-scale).” Advances in Neural Information Processing Systems. 2018.
+18. 18
+
+    Kim, Jong Wook, et al. “[Neural music synthesis for flexible timbre control⁠(opens in a new window)](https://neural-music-synthesis.github.io/).” ICASSP 2019-2019 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2019.
+19. 19
+
+    Hawthorne, Curtis, et al. “[Enabling factorized piano music modeling and generation with the MAESTRO dataset⁠(opens in a new window)](https://arxiv.org/abs/1810.12247).” arXiv preprint arXiv:1810.12247 (2018).
+20. 20
+
+    Engel, Jesse, et al. “[Neural audio synthesis of musical notes with wavenet autoencoders⁠(opens in a new window)](https://magenta.tensorflow.org/nsynth).” Proceedings of the 34th International Conference on Machine Learning-Volume 70. JMLR. org, 2017.
+21. 21
+
+    Engel, Jesse, et al. “[Gansynth: Adversarial neural audio synthesis⁠(opens in a new window)](https://magenta.tensorflow.org/gansynth).” arXiv preprint arXiv:1902.08710 (2019).
+22. 22
+
+    Brunner, Gino, et al. “[MIDI-VAE: Modeling dynamics and instrumentation of music with applications to style transfer⁠(opens in a new window)](https://arxiv.org/abs/1809.07600).” arXiv preprint arXiv:1809.07600 (2018).
+23. 23
+
+    Donahue, Chris, et al. “[LakhNES: Improving multi-instrumental music generation with cross-domain pre-training⁠(opens in a new window)](https://arxiv.org/abs/1907.04868).” arXiv preprint arXiv:1907.04868 (2019).
+24. 24
+
+    Mor, Noam, et al. “[A universal music translation network⁠(opens in a new window)](https://arxiv.org/abs/1805.07848).” arXiv preprint arXiv:1805.07848 (2018).
+25. 25
+
+    van den Oord, Aaron, and Oriol Vinyals. “[Neural discrete representation learning⁠(opens in a new window)](http://papers.nips.cc/paper/7210-neural-discrete-representation-learning).” Advances in Neural Information Processing Systems. 2017.
+26. 26
+
+    Razavi, Ali, Aaron van den Oord, and Oriol Vinyals. “[Generating diverse high-fidelity images with VQ-VAE-2⁠(opens in a new window)](http://papers.nips.cc/paper/9625-generating-diverse-high-fidelity-images-with-vq-vae-2).” Advances in Neural Information Processing Systems. 2019.
+27. 27
+
+    Oord, Aaron van den, et al. “[Parallel wavenet: Fast high-fidelity speech synthesis⁠(opens in a new window)](https://arxiv.org/abs/1711.10433).” arXiv preprint arXiv:1711.10433 (2017).
+28. 28
+
+    Arık, Sercan Ö., Heewoo Jun, and Gregory Diamos. “[Fast spectrogram inversion using multi-head convolutional neural networks⁠(opens in a new window)](https://arxiv.org/abs/1808.06719).” IEEE Signal Processing Letters 26.1 (2018): 94-98.
+29. 29
+
+    Child, Rewon, et al. “[Generating long sequences with sparse transformers⁠(opens in a new window)](https://arxiv.org/abs/1904.10509).” arXiv preprint arXiv:1904.10509 (2019).
+30. 30
+
+    Vaswani, Ashish, et al. “[Attention is all you need⁠(opens in a new window)](https://arxiv.org/abs/1706.03762).” Advances in neural information processing systems. 2017.
+31. 31
+
+    Maaten, Laurens van der, and Geoffrey Hinton. “[Visualizing data using t-SNE⁠(opens in a new window)](https://lvdmaaten.github.io/tsne/).” Journal of machine learning research 9.Nov (2008): 2579-2605.
+32. 32
+
+    Hennequin, Romain, et al. “[Spleeter: A fast and state-of-the art music source separation tool with pre-trained models⁠(opens in a new window)](https://github.com/deezer/spleeter).” Proc. International Society for Music Information Retrieval Conference. 2019.
+33. 33
+
+    Gupta, Chitralekha, Emre Yılmaz, and Haizhou Li. “[Lyrics-to-Audio Alignment with Music-aware Acoustic Models⁠(opens in a new window)](https://autolyrixalign.hltnus.org/).”
+34. 34
+
+    Kingma, Durk P., et al. “[Improved variational inference with inverse autoregressive flow⁠(opens in a new window)](http://papers.nips.cc/paper/6581-improved-variational-inference-with-inverse-autoregressive-flow).” Advances in neural information processing systems. 2016.
+
+## Equal contributos
+
+Prafulla Dhariwal, Heewoo Jun, Christine McLeavey Payne
+
+## Contributos
+
+Jong Wook Kim, Alec Radford, Ilya Sutskever
+
+## Acknowledgments
+
+Thank you to the following for their feedback on this work and contributions to this release: Jack Clark, Gretchen Krueger, Miles Brundage, Jeff Clune, Jakub Pachocki, Ryan Lowe, Shan Carter, David Luan, Vedant Misra, Daniela Amodei, Greg Brockman, Kelly Sims, Karson Elmgren, Bianca Martin, Rewon Child, Will Guss, Rob Laidlow, Rachel White, Delwin Campbell, Tasso Smith, Matthew Suttor, Konrad Kaczmarek, Scott Petersen, Dakota Stipp, Jena Ezzeddine
+
+## Acknowledgments
+
+Editor: Ashley Pilipiszyn
+
+Design & Development: Justin Jay Wang & Brooke Chan
+
+## Related articles
+
+[View all](/news/)
+
+![Whisper](https://images.ctfassets.net/kftzwdyauwt9/13c810cb-0592-442d-190ab7378bef/a7cb2299d034abe93023f662f8d32263/Speech_Rec_16_9.png?w=3840&q=90&fm=webp)
+
+[Introducing Whisper
+
+ReleaseSep 21, 2022](/index/whisper/)
+
+![Hierarchical Text Conditional Image Generation With Clip Latents](https://images.ctfassets.net/kftzwdyauwt9/7c44eedc-3563-4438-c613706c52b1/fcfc38b26fd4878a3c6b4ca8d1d73b17/hierarchical-text-conditional-image-generation-with-clip-latents.jpg?w=3840&q=90&fm=webp)
+
+[Hierarchical text-conditional image generation with CLIP latents
+
+PublicationApr 13, 2022](/index/hierarchical-text-conditional-image-generation-with-clip-latents/)
+
+![Solving Some Formal Math Olympiad Problems](https://images.ctfassets.net/kftzwdyauwt9/107bb1e1-daad-40bf-85975dfa741c/57d987d185a7a46828ea203bb0132867/image-12_copy.png?w=3840&q=90&fm=webp)
+
+[Solving (some) formal math olympiad problems
+
+MilestoneFeb 2, 2022](/index/formal-math/)
+
+Research
+
+* [Research Index](/research/index/)
+* [Research Overview](/research/)
+* [Economic Research](/signals/)
+
+Latest Advancements
+
+* [GPT-5.5](/index/introducing-gpt-5-5/)
+* [GPT-5.4](/index/introducing-gpt-5-4/)
+* [GPT-5.3 Instant](/index/gpt-5-3-instant/)
+
+Safety
+
+* [Safety Approach](/safety/)
+* [Deployment Safety(opens in a new window)](https://deploymentsafety.openai.com/)
+* [Security & Privacy](/security-and-privacy/)
+* [Trust & Transparency](/trust-and-transparency/)
+
+Products
+
+* [ChatGPT(opens in a new window)](https://chatgpt.com/?openaicom-did=d365bcc5-a492-4ac4-80df-5dac452064a2&openaicom_referred=true)
+* [ChatGPT Business(opens in a new window)](https://chatgpt.com/business/?openaicom-did=d365bcc5-a492-4ac4-80df-5dac452064a2&openaicom_referred=true)
+* [ChatGPT Enterprise(opens in a new window)](https://chatgpt.com/business/enterprise/?openaicom-did=d365bcc5-a492-4ac4-80df-5dac452064a2&openaicom_referred=true)
+* [ChatGPT for Education(opens in a new window)](https://chatgpt.com/business/education/?openaicom-did=d365bcc5-a492-4ac4-80df-5dac452064a2&openaicom_referred=true)
+* [Codex](/codex/)
+* [Release Notes](/products/release-notes/)
+
+API Platform
+
+* [Overview](/api/)
+* [API Log In(opens in a new window)](https://platform.openai.com/login)
+* [Docs(opens in a new window)](https://developers.openai.com/api/docs)
+
+Business
+
+* [Overview](/business/)
+* [Solutions](/solutions/)
+* [Resources](/business/learn/)
+* [Contact Sales](/contact-sales/)
+
+Developers
+
+* [Apps SDK(opens in a new window)](https://developers.openai.com/apps-sdk)
+* [Open Models](/open-models/)
+* [Docs(opens in a new window)](https://developers.openai.com/)
+* [Resources(opens in a new window)](https://developers.openai.com/learn)
+* [Developer Forum(opens in a new window)](https://community.openai.com/)
+
+Company
+
+* [About Us](/about/)
+* [Our Charter](/charter/)
+* [Careers](/careers/)
+* [News](/news/)
+
+Support
+
+* [Help Center(opens in a new window)](https://help.openai.com/)
+
+More
+
+* [Stories](/stories/)
+* [Academy](/academy/)
+* [Livestreams](/live/)
+* [Podcast](/podcast/)
+* [RSS](/news/rss.xml)
+
+Terms & Policies
+
+* [Terms of Use](/policies/terms-of-use/)
+* [Privacy Policy](/policies/privacy-policy/)
+* [Other Policies](/policies/)
+
+[(opens in a new window)](https://x.com/OpenAI)[(opens in a new window)](https://www.youtube.com/OpenAI)[(opens in a new window)](https://www.linkedin.com/company/openai)[(opens in a new window)](https://github.com/openai)[(opens in a new window)](https://www.instagram.com/openai/)[(opens in a new window)](https://www.tiktok.com/@openai)[(opens in a new window)](https://discord.gg/openai)
+
+OpenAI © 2015–2026Your privacy choices
+
+EnglishUnited States
+
+![](https://bat.bing.com/action/0?ti=187204252&Ver=2&mid=32def9ce-5b59-4f99-a4ff-198bc73a3301&bo=1&sid=eb5762e0709211f188f10df81d5f902b&vid=eb577d60709211f19e591539c9ca0a02&vids=1&msclkid=N&pi=918639831&lg=zh-CN&sw=1440&sh=900&sc=24&tl=Jukebox%20%7C%20OpenAI&p=https%3A%2F%2Fopenai.com%2Findex%2Fjukebox%2F&r=&lt=1960&evt=pageLoad&sv=2&cdb=AQAQ&rn=962839)

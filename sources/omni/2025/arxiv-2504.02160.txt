@@ -1,0 +1,1887 @@
+Less-to-More Generalization:
+Unlocking More Controllability by In-Context Generation
+Shaojin Wu Mengqi Huang∗ Wenxu Wu Yufeng Cheng Fei Ding†
+Intelligent Creation Team, ByteDance
+
+Qian He
+
+arXiv:2504.02160v1 [cs.CV] 2 Apr 2025
+
+{wushaojin, huangmengqi.98, wuwenxu.01, chengyufeng.cb1, dingfei.212, heqian}@bytedance.com
+
+Project Page: https://bytedance.github.io/UNO
+
+One2One
+
+Two2One
+
+Stylized Generation
+
+Virtual Try-on
+
+Many2One
+
+👦
+
+👨
+
+👦👨
+
+👦👨
+🏛
+
+Story Generation
+
+Product Design
+
+Identity-preservation
+
+Figure 1. Our UNO evolves as an universal customization from single to multi-subject.
+
+1
+
+Abstract
+Although subject-driven generation has been extensively explored in image generation due to its wide applications,
+it still has challenges in data scalability and subject expansibility. For the first challenge, moving from curating
+single-subject datasets to multiple-subject ones and scaling them is particularly difficult. For the second, most recent methods center on single-subject generation, making
+it hard to apply when dealing with multi-subject scenarios.
+In this study, we propose a highly-consistent data synthesis
+pipeline to tackle this challenge. This pipeline harnesses
+the intrinsic in-context generation capabilities of diffusion
+transformers and generates high-consistency multi-subject
+paired data. Additionally, we introduce UNO, which consists of progressive cross-modal alignment and universal rotary position embedding. It is a multi-image conditioned
+subject-to-image model iteratively trained from a text-toimage model. Extensive experiments show that our method
+can achieve high consistency while ensuring controllability
+in both single-subject and multi-subject driven generation.
+Code and model: https://github.com/bytedance/UNO.
+
+Figure 2. The illustration of our motivation. We propose a novel
+model-data co-evolution paradigm, where less-controllable preceding models systematically synthesize better customization data
+for successive more-controllable variants, enabling persistent coevolution between enhanced model and enriched data.
+
+Existing customized generation methods can be categorized into two streams based on how they utilize the
+data to design the model, i.e., few-data fine-tuning and
+large-data training stream. Early few-data fine-tuning approaches [8, 33] primarily employ per-subject optimization through model fine-tuning [16, 33] or textual inversion
+[8], incurring substantial computational overhead and timeconsuming during inference, which hinders real-world deployment. Therefore, more recent researches focus on the
+latter stream, which train adapters or image encoders on a
+large set of visual subjects to achieve real-time customization. Their corresponding data used for training are either
+real images with diversity limitations (eg, restricted subject
+variations [45, 47]), or synthetic data with limited image
+quality (typically, ≤ 512 × 512) and narrow domain coverage. Therefore, these methods often exhibit a trade-off between subject similarity and text controllability [45], or unstable generation [14]. Essentially, the existing customized
+models are designed based on their corresponding available
+customized data, resulting in limited scalability due to their
+data bottleneck.
+Diverging from the existing data-driven model design, research on large language models (LLMs) demonstrates their capacity for strategic synthetic data generation toward model self-enhancement. Their bidirectional
+data-model knowledge transfer manifests through either
+high-performance models providing supervisory signals for
+weaker counterparts[1, 9], or conversely, less capable models could provide supervision to elicit higher capabilities leading to a stronger variant[3, 23, 35]. Inspired by
+
+1. Introduction
+As the material medium for abstract linguistic semantics
+and spatial embodiments of concrete visual subjects, images constitute the foundational modality in intelligent content generation. In recent years, customized image generation, which aims to create images that align with both the
+text semantics and the subjects in the reference images, has
+garnered significant interest across academic and industrial
+communities. This task unifies the flexibility of text control and the accuracy of visual controls, providing foundational infrastructure for diverse real-world applications
+ranging from film production to industrial design. As the
+field advances, the research challenge in customized image
+generation now centers on developing a stable and scalable
+paradigm for unlocking more controllability, i.e., continuously increasing the amount of visual subject control without compromising the original text controllability.
+Data, while serving as the foundation for training generative models, has long been the bottleneck in customized
+generation. An ideal model should be capable of generating visual subjects in diverse poses, locations, sizes, and
+other attributes based on text prompts. This necessitates
+data that encompasses multi-perspective subject variations,
+a requirement hindered by the impracticality of acquiring
+such comprehensive real paired datasets.
+∗Corresponding author
+† Project lead
+
+2
+
+this LLMs’ synthetic data-driven self-improvement, this
+study proposes that achieving stable and scalable customized generation necessitates an analogous model-data
+co-evolution paradigm, where less-controllable preceding
+customized models systematically synthesize better customization data for successive more-controllable variants,
+enabling persistent co-evolution between enhanced customized models and enriched customization data, as illustrated in Figure. 2.
+Technically, to achieve the model-data co-evolution, this
+study addresses two fundamental challenges, i.e., (1) how
+to establish a systematic synthetic data curation framework
+that reliably harnesses knowledge distillation from lesscontrollable models; and (2) how to develop a generalized customization model framework capable of hierarchical controllability adaptation, ensuring seamless scalability
+across varying degrees of controllability. To be specific, as
+for the synthetic data curation framework, we introduce a
+progressive synthesis pipeline that transitions from singlesubject to multi-subject in-context generation, combined
+with a multi-stage filtration mechanism to curate unprecedented high-resolution, high-quality paired customization
+data through fine-grained ensembled filtering. As for the
+customization model framework, we develop UNO to fully
+unlock the multi-condition contextual capabilities of Diffusion Transformers (DiT) through iterative simple-to-hard
+training, preserving the base architecture’s scalability with
+minimal modifications. Moreover, we propose universal
+Rotary Position Embedding (UnoPE) to effectively equip
+UNO with the capability of mitigating the attribute confusion issue when scaling visual subject controls.
+Our contributions are summarized as:
+Conceptual Contribution. We identify that current
+data-driven approaches in customized model design inherently suffer from scalability constraints rooted in fundamental data bottlenecks. To address this limitation, we pioneer a model-data co-evolution paradigm that achieves enhanced controllability while enabling stable and scalable
+customized generation.
+Technical Contribution. (1) We develop a systematic framework for synthetic data curation that produces
+high-fidelity, high-resolution paired customization datasets
+through progressive in-context synthesis and multi-stage filtering. (2) We propose UNO, a universal customization
+architecture that enables seamless scalability across multicondition control through minimal yet effective modification of DiT.
+Experimental Contribution.We conduct extensive experiments on DreamBench [33] and multi-subject driven
+generation benchmarks. Our UNO achieve the highest
+DINO and CLIP-I scores among these two tasks. This
+demonstrates its strong subject similarity and text controllability, showcasing its capability to deliver state-of-the-art
+
+(SOTA) results.
+
+2. Related Work
+2.1. Text-to-image generation
+Recent years have witnessed explosive growth in text-toimage (T2I) models [6, 7, 17, 25, 28, 30, 31, 44, 46].
+Apart from some work that chooses the GAN or autoregressive paradigm, most of current text-to-image work chose
+the denoising diffuison [11, 37] as their image generation
+framework. Early exploratory work [21, 29, 34] have validated the feasibility of using diffusion models for text-toimage generation and demonstrated their superior performance compared to other methods. The efficiency, quality, and capacity for T2I diffusion models are keeping improved in the following work. LDM [31] suggests training
+the diffusion model in latent space significantly improves
+the efficiency and output resolution, which become the default choice for many subsequent works such as Stable Diffusion series [7, 25], Imagen3 [2] and Flux [17]. Recent
+work [7, 17, 24] replaces the unet [32] to transformer and
+shows the impressive quality and scalability of the transformer backbone.
+
+2.2. Subject-driven generation
+Subject-driven generation has been widely studied in the
+context of diffusion models. Dreambooth [33], textual inversion [8] and LoRA [12] introduce the subject-driven generation capability by introducing lightweight new parameters and perform parameter efficiency tuning for each subject. The major drawback of those methods is the cumbersome fine-tuning process for each new-coming subject.
+IP-adapter [45], BLIP Diffusion [18] use an extra image
+encoder and new layers to encode the reference image of
+the subject and inject it into the diffusion model, achieving a subject-driven generation without further finetuning
+for a new concept. For DiT, IC LoRA [13] and Ominicontrol [38] have explored the inherent image reference capability in the transformer, pointing that the DiT itself can
+be used as the image encoder for the subject reference.
+Many further works follow this reference image injection
+approach and have made improvements in various aspects
+like facial identity [10, 40], image-text joint controlability [14], multiple reference subject support [20, 41]. Despite these advances, the aforementioned work heavily relies on paired images, which are hard to collect, especially
+for multi-subject scenes.
+
+3. Methodology
+This section introduces our proposed model-data coevolution paradigm, encompassing the systematic synthetic
+data curation framework detailed in Sec. 3.2 and the generalized customization model framework (i.e., UNO) ex3
+
+(a) Single-Subject In-Context Generation
+
+Generated
+Subject and Scene Set
+
+T2I
+Model
+
+VLM-based
+Filter
+
+𝐼$!"#
+
+𝐼'
+!"#
+
+𝐼%&%
+
+An elderly woman with gray hair wearing
+a brown coat and a scarf, holding a globe.
+
+Text Template
+
+𝐼$!"# + 𝐼%&%
+
+…
+
+pitcher
+
+Cropped Subject
+
+S2I
+Model
+
+…
+
+(b) Multi-Subject In-Context Generation
+
+OVD
+
+…
+
+'A diptych with two side-byside images of same <\subject1>.
+Left: <\subject1> in <\scene1>.
+Right: <\subject1> together
+with <\subject2> in <\scene2>’
+
+ing. As depicted in Fig. 3, we introduce a high-resolution,
+highly-consistent data synthesis pipeline to tackle this challenge, capitalizing on the intrinsic in-context generation capabilities of DiT-based models. Through the utilization of
+meticulously crafted text inputs, DiT models exhibit the capacity to generate subject-consistent grid outcomes. In contrast to prior methodologies like OminiControl [38], which
+generate single-subject consistent data at a resolution of
+512 × 512, our approach establishes a more comprehensive pipeline that progresses from single-subject to multisubject data generation. This advancement enables the direct production of three distinct high-resolution image pairs
+(i.e., 1024 × 1024, 1024 × 768, and 768 × 1024), significantly broadening the application spectrum and diversity of
+the synthesized data.
+We emphasize that the superior quality of the synthesized data can significantly enhance model performance. To
+substantiate this assertion, we developed a filtering mechanism based on the Vision-Language Model (VLM) to evaluate the quality of the generated image pairs. Subsequently,
+we conducted experiments utilizing synthesized data across
+various quality score levels. As depicted in Fig. 5, highquality scores image pairs can significantly enhance the
+subject similarity of the results with higher DINO [22] and
+CLIP-I score, which verifies that our automated data curation framework can continuously supplement high-quality
+data and improve model performance.
+Single-Subject In-Context Generation. In order to increase dataset diversity, we initially formulated a taxonomy
+tree comprising 365 overarching classes sourced from Object365 [36], alongside finer-grained categories encompassing distinctions in age, profession, and attire styles. Within
+each category, we leverage the capabilities of a Large Language Model (LLM) to generate an extensive array of subjects and varied settings. Through the amalgamation of
+these outputs with predefined text templates, we are able
+to derive millions of text prompts for the T2I model, facilitating the generation of subject-consistent image pairs.
+Initially generated image pairs often encounter several
+issues, such as subject inconsistency and missing subjects.
+To efficiently filter the data, we first split the image pair into
+1
+the reference image Iref
+and the target image Itgt , then calculate the DINOv2 [22] between the two images. This method
+is effective in filtering out images with significantly lower
+consistency. Subsequently, VLM will be further employed
+to provide a score list evaluating different aspects (i.e., appearance, details, and attributes), which can be represented
+by the following equation:
+
+Training Pairs
+
+Taxonomy Tree
+
+Training
+
+VLM-based
+Filter
+$
+𝐼!"#
+
+globe
+
+'
+𝐼!"#
+
+𝐼%&%
+
+A European Robin perched on the
+edge of a white ceramic pitcher.
+
+Subject Prompts
+
+'
+𝐼!"#
+
+Figure 3. Illustration of our proposed synthetic data curation
+framework based on in-context data generation.
+
+pounded upon in Sec. 3.3. Specifically, the foundational
+work of DiT [24] is elucidated in Sec. 3.1. Section 3.2
+provides an in-depth exploration of the construction of our
+innovative subject-consistent dataset, comprising meticulously curated single-subject and multi-subject image pairs.
+Furthermore, Sec. 3.3 outlines our methodology for transforming a Text-toImage (T2I) DiT model into a Subjectto-Image (S2I) model, showcasing its contextual generation
+capabilities. This adaptation involves an iterative training
+framework designed to facilitate multi-image perception,
+textual comprehension, and condition generation conducive
+to subject-driven synthesis.
+
+3.1. Preliminary
+The original DiT architecture focuses solely on classconditional image generation. It departs from the commonly used U-Net backbone, instead employing full transformer layers that operate on latent patches. More recently, image generators such as Stable Diffusion 3 [7] and
+FLUX.1 [17] are built upon MM-DiT, which incorporates
+a multi-modal attention mechanism and takes as input the
+concatenation of the embeddings of text and image inputs.
+The multi-modal attention operation projects positionencoded tokens into query Q, key K, and value V representations, enabling attention computation across all tokens:
+
+
+QK⊤
+√
+Attention ([zt , c]) = softmax
+V,
+(1)
+d
+where Z = [zt , c] denotes the concatenation of image and
+text tokens. This allows both representations to function
+within their own respective spaces while still taking the
+other into account.
+
+3.2. Synthetic Data Curation Framework
+The paucity of high-quality, subject-consistent datasets has
+long presented a formidable obstacle for subject-driven generation, severely constraining the scalability of model train-
+
+S = VLM(Iref , Itgt , cy ) ∈ RN ×1 ,
+
+(2)
+
+score = Average(S),
+
+(3)
+
+where cy represents the input text to VLM, N denotes the
+number of evaluated dimensions that are automatically gen4
+
+Target Image 𝐼$%$
+
+Text Prompt
+
+Reference Images 𝐼!"#
+
+$
+𝐼!"#
+
+𝐼%
+!"#
+
+A soccer ball next to a
+retro-style microphone
+on a wooden floor.
+
+Stage Ⅰ Input
+
+Learnable
+
+Stage Ⅱ Input
+
+N× …
+
+Universal Rotary Position
+Embedding (UnoPE)
+Width
+
+FFN
+VAE Encoder
++ Noise
+
+MM-Attention
+UnoPE
+
+UNO
+
+…
+
+…
+
+Height
+
+T5 Text Encoder
+
+Frozen
+
+Sa
+m
+pl
+
+es
+
+UNO-DiT Blocks
+
+Position index
+
+Figure 4. Illustration of the training framework of UNO. It introduces two pivotal enhancements to the model: progressive cross-modal
+alignment and universal rotary position embedding(UnoPE). The progressive cross-modal alignment is divided into two stages. In the Stage
+I, we use single-subject in-context generated data to finetune the pretrained T2I model into an S2I model. In the Stage II, we continue
+training on generated multiple-subject data pairs. The UnoPE can effectively equip UNO with the capability of mitigating the attribute
+confusion issue when scaling visual subject controls.
+
+0.33
+
+0.65
+0.60
+0.55
+
+CLIP-T
+
+0.80
+CLIP-I
+
+DINO
+
+0.34
+
+0.82
+
+0.70
+
+0.78
+0.76
+0.74
+
+0.50
+
+1 2 3 4 5 6 7 8
+step(×1000)
+
+0.32
+
+image onto the resulting image. Our proposed pipeline effectively mitigates this concern.
+
+Data quality
+2.5-3
+3.5-4
+4
+
+0.31
+
+3.3. Customization Model Framework (UNO)
+
+0.30
+
+0.72
+1 2 3 4 5 6 7 8
+step(×1000)
+
+0.29
+
+1 2 3 4 5 6 7 8
+step(×1000)
+
+In this section, we will provide a detailed explanation
+of how to iteratively train a multi-image conditioned S2I
+model from a DiT-based T2I model. It should be noted that
+all the training data we used originate from images generated by our in-context data generation method proposed in
+the previous chapter.
+Progressive cross-modal alignment. Original T2I models
+gradually transform pure Gaussian noise into text-adherent
+images through an iterative denoising process. During this
+process, the VAE encoder E(·) first encodes the target image
+Itgt into a noisy latent zt = E(Itgt ). zt is then concatenated
+with the encoded text token c, forming the input z for the
+DiT model. This process can be formulated as:
+
+Figure 5. Model performance on Dreambench [33]. We conduct
+experiments under different quality score levels.
+
+erated by VLM, S signifies the output which is parsed into
+a score list, and score indicates the final consistency score
+of generated image pairs.
+Multi-Subject In-Context Generation. The comprehensive dataset from the preceding phase will be utilized to
+train a S2I model, which is conditioned on both singleimage and text inputs. Subsequently, this trained S2I model,
+along with the dataset, will be employed to generate multisubject consistent data in the current stage. Illustrated in
+Fig. 3(b), we will initially employ an open-vocabulary detector (OVD) to identify subjects beyond those present in
+1
+Iref
+. The extracted cropped images and their corresponding subject prompts will then be input into our trained S2I
+2
+model to derive new results for Iref
+. Traditional approaches
+often encountered significant failure rates as models struggled to preserve the original subject’s identity. However, models trained using our proposed in-context training
+methodology can effectively surmount this challenge, yielding highly consistent outcomes with ease. Further elaboration on this topic will be provided in the subsequent section.
+Some may question the necessity of generating new data,
+suggesting that the cropped part could be treated simply as
+2
+Iref
+. However, we contend that relying solely on cropped
+images as the training dataset may introduce copy-paste issues. This scenario arises when the model fails to adhere to
+the textual prompt and merely “pastes" the input reference
+
+z = Concatenate(c, zt ),
+
+(4)
+
+To incorporate multi-image conditions Iref
+=
+1
+2
+N
+[Iref
+, Iref
+, . . . , Iref
+], we introduce a progressive training
+paradigm that progresses from simpler to more complex
+scenarios. We view the training phase with single-image
+conditions as the initial phase for cross-modal alignment.
+Given that the original input comprises solely text tokens
+and noisy latents, the introduction of noise-free reference
+image tokens could potentially disrupt the original convergence distribution. Such disruption may result in training
+instability or suboptimal outcomes. Hence, we opt for a
+gradual complexity approach rather than directly exposing
+the model to multiple reference image inputs. In Stage
+I, depicted in Fig. 4, only a single image serves as the
+reference image. We utilize z1 as the input multi-modal
+tokens for the DiT model:
+1
+z1 = Concatenate(c, zt , E(Iref
+)),
+
+5
+
+(5)
+
+Reference Image Prompt
+
+UNO(Ours)
+
+OminiControl FLUX IP-Adapter
+
+OmniGen
+
+RealCustom++
+
+SSR-Encoder
+
+A clock on
+top of green
+grass with
+sunflowers
+around it.
+A sneaker
+with the
+Eiffel Tower
+in the
+background.
+
+A purple toy.
+
+A red toy.
+
+Figure 6. Qualitative comparison with different methods on single-subject driven generation.
+
+Reference Images
+
+Prompt
+
+UNO(Ours)
+
+OmniGen
+
+MS-Diffusion
+
+MIP-Adapter
+
+A candle and
+a clock on top
+of a purple
+rug in a forest.
+
+A bowl and a
+can on top of
+a white rug
+
+A sneaker
+and a teapot
+on top of
+pink fabric
+A vase and
+a stuffed
+animal with
+a mountain
+in the
+background
+
+Figure 7. Qualitative comparison with different methods on multi-subject driven generation.
+
+6
+
+SSR-Encoder
+
+4. Experiments
+
+After Stage I training, the model is capable of processing
+single-subject driven generation tasks. We then train the
+model with multi-image conditions to tackle more complex
+multi-subject driven generation scenarios. z2 can be described as follows:
+i
+i
+zref
+= E(Iref
+),
+
+i = 1, . . . , N,
+
+1
+2
+N
+z2 = Concatenate(c, zt , zref
+, zref
+, . . . , zref
+),
+
+4.1. Experiments Setting
+Implementation Details. To self-evolution our base DiTbased T2I model, we firstly take the FLUX.1 dev [17] as
+the pretrained model. We train the model with a learning
+rate of 10−5 and a total batch size of 16. For the progressive cross-modal alignment, we first train the model using
+single-subject pair-data for 5, 000 steps. Then, we continue
+training on multi-subject pair-data for another 5, 000 steps.
+Specifically, we generated 230k and 15k data pairs for these
+two stages respectively using the in-context data generation
+method mentioned above. We conduct the entire experiment on 8 NVIDIA A100 GPUs and trained the model using
+a LoRA [12] rank of 512 throughout the training process.
+Comparative Methods. As a tuning-free method, our
+model is capable of handling both single-subject and multisubject driven generation. We compare it with some leading
+methods in these two tasks respectively, including Omnigen [44], Ominicontrol [38], FLUX IPAdapter v2 [39], Msdiffusion [41], MIP-Adapter [15], RealCustom++ [20], and
+SSR-Encoder [48].
+Evaluation Metrics. Following previous works, we use
+standard automatic metrics to evaluate both subject similarity and text fidelity. Specifically, we employ cosine similarity measures between generated images and reference
+images within CLIP [27] and DINO [22] spaces, referred
+to as CLIP-I and DINO scores, respectively, to assess subject similarity. Additionally, we calculate the cosine similarity between the prompt and the image CLIP embeddings
+(CLIP-T) to evaluate text fidelity. For single-subject driven
+generation, we measure all methods on DreamBench [33]
+for fairness. For multi-subject driven generation, we follow
+previous studies [15, 19] that involve 30 different combinations of two subjects from DreamBench, including combinations of non-live and live objects. For each combination, we generate 6 images per prompt using 25 text prompts
+from DreamBench, resulting in 4, 500 image groups for all
+subjects.
+
+(6)
+(7)
+
+where N is set to 2 in our paper. During Stage I, the
+T2I model is trained to refer to the input reference image and prompt, with the goal of generating single subjectconsistent results. Stage II is designed to enable the S2I
+model to refer to multiple input images and inject information into corresponding latent spaces. Through iterative
+training, the inherent in-context generation capability of T2I
+model is unlocked, eliciting more controllability from single text-to-image models.
+Universal rotary position embedding(UnoPE). An important consideration for incorporating multi-image conditions into a DiT-based T2I model pertains to the aspect of
+position encoding. In the context of FLUX.1 [17], the utilization of Rotary Position Embedding (RoPE) necessitates
+the assignment of position indices (i, j) to both text and
+image tokens, thereby influencing the interaction among
+multimodal tokens. Within the original model architecture, text tokens are assigned a consistent position index of
+(0, 0), while noisy image tokens are allocated position indices (i, j) where i ∈ [0, w − 1] and j ∈ [0, h − 1]. Here,
+h and w denote the height and width of the noisy latent,
+respectively.
+Our newly introduced image conditions reuse the same
+format to inherit the implicit position correspondence of
+the original model. However, we start from the maximum
+height and width of the noisy image tokens, as shown in
+Fig. 4, which begins with the diagonal position. The posiN
+tion index for the latent zref
+is defined as:
+(i′ , j ′ ) = (i + w(N −1) , j + h(N −1) ),
+
+(8)
+
+4.2. Qualitative Analyses
+
+where i ∈ [0, wN ), j ∈ [0, hN ), with wN and hN repreN
+senting the width and height of the latent zref
+, respectively.
+′
+′
+Here, i and j are the adjusted position indices. To prevent
+the generated image from over-referencing the spatial structure of the reference image, we adjust the position indices
+within a certain range. In the scenario of multi-image conditions, different reference images inherently have a semantic
+gap. Our proposed UnoPE can further prevent the model
+from learning the original spatial distribution of reference
+images, thereby focusing on obtaining layout information
+from text features. This enables the model to improve its
+performance in subject similarity while maintaining good
+text controllability.
+
+We compare with various state-of-the-art methods to verify the effectiveness of our proposed UNO. We show the
+comparison of single-image condition generation results in
+Fig. 6. In the first two rows, our UNO nearly perfectly
+keeps the subject detail (e.g., the numbers on the dial of the
+clock) in the reference image, while other methods struggle to maintain the details. In the following two rows, we
+demonstrate the editability. UNO can maintain subject similarity while editing attributes, specifically colors, whereas
+other methods either fail to maintain subject similarity or do
+not follow the text edit instructions. As a contrast, OminiControl [38] has good retention ability but may encounter
+7
+
+Method
+
+DINO ↑
+
+CLIP-I ↑
+
+CLIP-T ↑
+
+Oracle(reference images)
+Textual Inversion [8]
+DreamBooth [33]
+BLIP-Diffusion [18]
+ELITE [43]
+Re-Imagen [5]
+BootPIG[26]
+SSR-Encoder[48]
+RealCustom++ [14, 20]
+OmniGen [44]
+OminiControl [38]
+FLUX.1 IP-Adapter
+UNO (Ours)
+
+0.774
+0.569
+0.668
+0.670
+0.647
+0.600
+0.674
+0.612
+0.702
+0.693
+0.684
+0.582
+0.760
+
+0.885
+0.780
+0.803
+0.805
+0.772
+0.740
+0.797
+0.821
+0.794
+0.801
+0.799
+0.820
+0.835
+
+0.255
+0.305
+0.302
+0.296
+0.270
+0.311
+0.308
+0.318
+0.315
+0.312
+0.288
+0.304
+
+User Evaluations of Single-subject Driven Generation
+
+visual
+appeal
+
+DINO ↑
+
+CLIP-I ↑
+
+CLIP-T ↑
+
+DreamBooth [33]
+BLIP-Diffusion [18]
+Subject Diffusion [19]
+MIP-Adapter [15]
+MS-Diffusion [41]
+OmniGen [44]
+UNO (Ours)
+
+0.430
+0.464
+0.506
+0.482
+0.525
+0.511
+0.542
+
+0.695
+0.698
+0.696
+0.726
+0.726
+0.722
+0.733
+
+0.308
+0.300
+0.310
+0.311
+0.319
+0.331
+0.322
+
+text fidelity
+(subject)
+
+5
+
+5
+
+text fidelity
+(background)
+
+3
+
+visual
+appeal
+
+1
+
+subject
+similarity
+
+composition
+UNO
+(ours)
+
+OmniControl
+
+text fidelity
+(background)
+
+3
+
+1
+
+Flux
+IP-Adapter
+
+subject
+similarity
+
+composition
+
+OmniGen
+
+RealCustom++
+
+MSDiffusion
+
+MIPAdapter
+
+SSREncoder
+
+Figure 8. Radar charts of user evaluation of methods for singlesubject driven and multi-subject driven generation on different dimensions
+
+Table 1. Quantitative results for single-subject driven generation on Dreambench. We present the oracle results in the first
+row and compare both tuning methods and tuning-free methods.
+We highlight the best and second-best values for each metric.
+Method
+
+User Evaluations of Multi-subject Driven Generation
+
+text fidelity
+(subject)
+
+Method
+2
+w/o generated Iref
+w/o cross-modal alignment
+w/o UnoPE
+UNO (Ours)
+
+DINO ↑
+
+CLIP-I ↑
+
+CLIP-T ↑
+
+0.529
+0.511
+0.386
+0.542
+
+0.730
+0.721
+0.674
+0.733
+
+0.308
+0.322
+0.323
+0.322
+
+Table 3. Ablation Study of our proposed in-context data generation and in-context training method. We report the results on
+the multi-subject driven generation benchmark.
+Method
+
+DINO ↑
+
+CLIP-I ↑
+
+CLIP-T ↑
+
+w/ single subject pair-data
+w/ cross-modal alignment
+
+0.730
+0.760
+
+0.821
+0.835
+
+0.309
+0.304
+
+Table 4. Effect of progressive cross-modal alignment. The
+model exhibits superior performance on DreamBench [33] after
+undergoing progressive cross-modal alignment, in contrast to being trained exclusively on single-subject pair-data, despite both
+models undergoing an identical number of training steps.
+
+Table 2. Quantitative results for multi-subject driven generation. Our method achieves state-of-the-art performance among
+both tuning methods and tuning-free methods.
+
+copy-paste risks, e.g., a red robot in the last row of Fig. 6.
+We show the comparison results of multi-image condition
+generation in Fig. 7. Our method can keep all reference images while adhering to text responses, whereas other methods either fail to maintain subject consistency or miss the
+input text editing instructions.
+
+questionnaires to showcase the superiority of UNO. For
+subjective assessment, 30 evaluators including both domain
+experts and non-experts, assessed 300 image combinations
+covering both single-subject and multi-subject driven generation tasks. For each case, evaluators rank the best results
+across five dimensions, including text fidelity at the subject
+level, text fidelity at the background level, subject similarity, composition quality, and visual appeal. As shown in
+Fig. 8, the results reveal that our UNO not only excels in
+subject similarity and text fidelity but also achieves strong
+performance in other dimensions.
+
+4.3. Quantitative Evaluations
+Automatic scores. Tab. 1 compares our UNO on DreamBench [33] against both tuning-based and tuning-free methods. UNO has a significant lead over previous methods with
+the highest DINO and CLIP-I scores of 0.760 and 0.835
+respectively in zero-shot scenarios, and a leading CLIP-I
+score of 0.304. We also compare our method in the multiimage condition scenario in Tab. 2. UNO achieves the highest DINO and CLIP-I scores and has competitive CLIP-T
+scores compared to existing leading methods. This shows
+that UNO can greatly improve subject similarity while adhering to text descriptions.
+User study. We further conduct a user study via online
+
+4.4. Ablation Study
+Effect of synthetic data curation framework. Tab. 3
+shows the effects of different modules of UNO. When using augmented cropped part images from the target image
+2
+instead of generated Iref
+, we observe a significant decline in
+all metrics in Tab. 3. In Fig. 9, the results tend to merely
+8
+
+Method
+
+DINO ↑
+
+CLIP-I ↑
+
+CLIP-T ↑
+
+Reference Images&Prompt
+
+w/o offset
+w/ width-offset
+w/ height-offset
+UNO (Ours)
+
+0.470
+0.717
+0.678
+0.730
+
+0.722
+0.813
+0.797
+0.821
+
+0.308
+0.304
+0.308
+0.309
+
+A backpack and a stuffed
+animal floating on top of water
+
+Table 5. Comparison with different forms of position index offsets.
+We report the results on DreamBench[33].
+Method
+
+DINO ↑
+
+CLIP-I ↑
+
+CLIP-T ↑
+
+w/o offset
+w/ width-offset
+w/ height-offset
+UNO (Ours)
+
+0.386
+0.508
+0.501
+0.542
+
+0.674
+0.724
+0.719
+0.733
+
+0.323
+0.321
+0.306
+0.322
+
+UNO(Ours)
+
+$
+w/o generated 𝐼!"#
+
+w/o cross-modal
+alignment
+
+w/o UnoPE
+
+A dog and
+a toy on the beach
+
+Figure 9. Ablation study of UNO. Zoom in for details.
+
+effectively reducing the copy-paste phenomenon. Extensive
+experiments show that UNO achieves high-quality similarity and controllability in both single-subject and multiplesubject customization.
+
+Table 6. Comparison with different forms of position index offsets. We report the results on the multi-subject driven generation
+benchmark.
+
+References
+[1] Yuntao Bai, Andy Jones, Kamal Ndousse, Amanda Askell,
+Anna Chen, Nova DasSarma, Dawn Drain, Stanislav Fort,
+Deep Ganguli, Tom Henighan, et al. Training a helpful and
+harmless assistant with reinforcement learning from human
+feedback. arXiv preprint arXiv:2204.05862, 2022. 2
+[2] Jason Baldridge, Jakob Bauer, Mukul Bhutani, Nicole
+Brichtova, Andrew Bunner, Lluis Castrejon, Kelvin Chan,
+Yichang Chen, Sander Dieleman, Yuqing Du, et al. Imagen
+3. arXiv preprint arXiv:2408.07009, 2024. 3
+[3] Collin Burns, Pavel Izmailov, Jan Hendrik Kirchner, Bowen
+Baker, Leo Gao, Leopold Aschenbrenner, Yining Chen,
+Adrien Ecoffet, Manas Joglekar, Jan Leike, et al. Weak-tostrong generalization: Eliciting strong capabilities with weak
+supervision. arXiv preprint arXiv:2312.09390, 2023. 2
+[4] Shengqu Cai, Eric Chan, Yunzhi Zhang, Leonidas Guibas,
+Jiajun Wu, and Gordon Wetzstein. Diffusion self-distillation
+for zero-shot customized image generation. arXiv preprint
+arXiv:2411.18616, 2024. 13
+[5] Wenhu Chen, Hexiang Hu, Chitwan Saharia, and William W
+Cohen. Re-imagen: Retrieval-augmented text-to-image generator. arXiv preprint arXiv:2209.14491, 2022. 8
+[6] Ming Ding, Zhuoyi Yang, Wenyi Hong, Wendi Zheng,
+Chang Zhou, Da Yin, Junyang Lin, Xu Zou, Zhou Shao,
+Hongxia Yang, et al. Cogview: Mastering text-to-image generation via transformers. NIPS, 34:19822–19835, 2021. 3
+[7] Patrick Esser, Sumith Kulal, Andreas Blattmann, Rahim
+Entezari, Jonas Müller, Harry Saini, Yam Levi, Dominik
+Lorenz, Axel Sauer, Frederic Boesel, et al. Scaling rectified flow transformers for high-resolution image synthesis.
+In ICML, 2024. 3, 4
+[8] Rinon Gal, Yuval Alaluf, Yuval Atzmon, Or Patashnik, Amit H Bermano, Gal Chechik, and Daniel CohenOr. An image is worth one word: Personalizing text-toimage generation using textual inversion. arXiv preprint
+arXiv:2208.01618, 2022. 2, 3, 8
+[9] Amelia Glaese, Nat McAleese, Maja Tr˛ebacz, John
+Aslanides, Vlad Firoiu, Timo Ewalds, Maribeth Rauh,
+Laura Weidinger, Martin Chadwick, Phoebe Thacker,
+
+copy-paste the subjects and almost do not respond to the
+text prompt description.
+Effect of progressive cross-modal alignment. As shown
+in Tab. 3 and Fig. 9, there is a significant drop in both DINO
+and CLIP-I scores, as well as in subject similarity, when the
+model is directly exposed to multiple reference image inputs without progressive cross-modal alignment. Furthermore, as shown in Tab. 4, progressive cross-modal alignment can increase the upper limit of the model in singleimage condition scenarios.
+Effect of UnoPE. As shown in Tab. 3, there is a significant drop in both DINO and CLIP-I scores when cloning
+the position index from the target image without using UnoPE. In Fig. 9, the generated images can follow the text descriptions but hardly reference the input images. We further
+compared with different forms of position index offsets, as
+shown in Tabs. 5 and 6, and our method achieves the best
+results, which demonstrates the superiority of our proposed
+UnoPE.
+
+5. Conclusion
+In this paper, we present UNO, a universal customization
+architecture that unlock the multi-condition contextual capabilities of diffusion transformer. This is achieved through
+progressive cross-modal alignment and universal rotary position embedding. The training of UNO consists of two
+steps. The first step uses single-image input to elicit the
+subject-to-image capabilities in diffusion transformers. The
+next step involves further training on multiple-subject data
+pairs. Our proposed universal rotary position embedding
+can also significantly improves subject similarity. Additionally, we present a progressive synthesis pipeline that
+evolves from single-subject to multi-subject in-context generation. This pipeline generates high-quality synthetic data,
+9
+
+Wen Li, Wojciech Galuba, Mike Rabbat, Mido Assran, Nicolas Ballas, Gabriel Synnaeve, Ishan Misra, Herve Jegou,
+Julien Mairal, Patrick Labatut, Armand Joulin, and Piotr Bojanowski. Dinov2: Learning robust visual features without
+supervision, 2023. 4, 7, 12, 13
+[23] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini
+Agarwal, Katarina Slama, Alex Ray, et al. Training language
+models to follow instructions with human feedback. Advances in neural information processing systems, 35:27730–
+27744, 2022. 2
+[24] William Peebles and Saining Xie. Scalable diffusion models
+with transformers. In ICCV, pages 4195–4205, 2023. 3, 4
+[25] Dustin Podell, Zion English, Kyle Lacey, Andreas
+Blattmann, Tim Dockhorn, Jonas Müller, Joe Penna, and
+Robin Rombach. SDXL: Improving latent diffusion models
+for high-resolution image synthesis. In ICLR, 2024. 3
+[26] Senthil Purushwalkam, Akash Gokul, Shafiq Joty, and Nikhil
+Naik. Bootpig: Bootstrapping zero-shot personalized image
+generation capabilities in pretrained diffusion models. arXiv
+preprint arXiv:2401.13974, 2024. 8
+[27] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya
+Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry,
+Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning transferable visual models from natural language supervision. In ICML, pages 8748–8763. PmLR, 2021. 7
+[28] Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray,
+Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever.
+Zero-shot text-to-image generation. In ICML, pages 8821–
+8831. Pmlr, 2021. 3
+[29] Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu,
+and Mark Chen. Hierarchical text-conditional image generation with clip latents. arXiv preprint arXiv:2204.06125, 1
+(2):3, 2022. 3
+[30] Scott Reed, Zeynep Akata, Xinchen Yan, Lajanugen Logeswaran, Bernt Schiele, and Honglak Lee. Generative adversarial text to image synthesis. In ICML, pages 1060–1069.
+PMLR, 2016. 3
+[31] Robin Rombach, Andreas Blattmann, Dominik Lorenz,
+Patrick Esser, and Björn Ommer. High-resolution image synthesis with latent diffusion models. In CVPR, pages 10684–
+10695, 2022. 3
+[32] Olaf Ronneberger, Philipp Fischer, and Thomas Brox. Unet: Convolutional networks for biomedical image segmentation. In Medical image computing and computer-assisted
+intervention–MICCAI 2015: 18th international conference,
+Munich, Germany, October 5-9, 2015, proceedings, part III
+18, pages 234–241. Springer, 2015. 3
+[33] Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch,
+Michael Rubinstein, and Kfir Aberman. Dreambooth: Fine
+tuning text-to-image diffusion models for subject-driven
+generation. In CVPR, pages 22500–22510, 2023. 2, 3, 5,
+7, 8, 9
+[34] Chitwan Saharia, William Chan, Saurabh Saxena, Lala
+Li, Jay Whang, Emily L Denton, Kamyar Ghasemipour,
+Raphael Gontijo Lopes, Burcu Karagol Ayan, Tim Salimans,
+et al. Photorealistic text-to-image diffusion models with deep
+language understanding. NIPS, 35:36479–36494, 2022. 3
+
+Lucy Campbell-Gillingham, Jonathan Uesato, Po-Sen
+Huang, Ramona Comanescu, Fan Yang, Abigail See,
+Sumanth Dathathri, Rory Greig, Charlie Chen, Doug Fritz,
+Jaume Sanchez Elias, Richard Green, Soňa Mokrá, Nicholas
+Fernando, Boxi Wu, Rachel Foley, Susannah Young, Iason
+Gabriel, William Isaac, John Mellor, Demis Hassabis, Koray Kavukcuoglu, Lisa Anne Hendricks, and Geoffrey Irving. Improving alignment of dialogue agents via targeted
+human judgements, 2022. 2
+[10] Zinan Guo, Yanze Wu, Zhuowei Chen, Lang Chen, Peng
+Zhang, and Qian He. Pulid: Pure and lightning id customization via contrastive alignment. In NIPS, 2024. 3
+[11] Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models. NIPS, 33:6840–6851, 2020. 3
+[12] Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan AllenZhu, Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen.
+Lora: Low-rank adaptation of large language models. arXiv
+preprint arXiv:2106.09685, 2021. 3, 7
+[13] Lianghua Huang, Wei Wang, Zhi-Fan Wu, Yupeng Shi,
+Huanzhang Dou, Chen Liang, Yutong Feng, Yu Liu, and Jingren Zhou. In-context lora for diffusion transformers. arXiv
+preprint arXiv:2410.23775, 2024. 3
+[14] Mengqi Huang, Zhendong Mao, Mingcong Liu, Qian He,
+and Yongdong Zhang. Realcustom: narrowing real text word
+for real-time open-domain text-to-image customization. In
+CVPR, pages 7476–7485, 2024. 2, 3, 8
+[15] Qihan Huang, Siming Fu, Jinlong Liu, Hao Jiang, Yipeng
+Yu, and Jie Song. Resolving multi-condition confusion
+for finetuning-free personalized image generation. arXiv
+preprint arXiv:2409.17920, 2024. 7, 8
+[16] Nupur Kumari, Bingliang Zhang, Richard Zhang, Eli
+Shechtman, and Jun-Yan Zhu. Multi-concept customization of text-to-image diffusion. In CVPR, pages 1931–1941,
+2023. 2
+[17] Black Forest Labs. Flux: Official inference repository for
+flux.1 models, 2024. Accessed: 2025-02-07. 3, 4, 7, 12, 13
+[18] Dongxu Li, Junnan Li, and Steven Hoi. Blip-diffusion: Pretrained subject representation for controllable text-to-image
+generation and editing. Advances in Neural Information Processing Systems, 36:30146–30166, 2023. 3, 8
+[19] Jian Ma, Junhao Liang, Chen Chen, and Haonan Lu. Subjectdiffusion: Open domain personalized text-to-image generation without test-time fine-tuning. In ACM SIGGRAPH 2024
+Conference Papers, pages 1–12, 2024. 7, 8
+[20] Zhendong Mao, Mengqi Huang, Fei Ding, Mingcong Liu,
+Qian He, and Yongdong Zhang. Realcustom++: Representing images as real-word for real-time customization. arXiv
+preprint arXiv:2408.09744, 2024. 3, 7, 8
+[21] Alex Nichol, Prafulla Dhariwal, Aditya Ramesh, Pranav
+Shyam, Pamela Mishkin, Bob McGrew, Ilya Sutskever, and
+Mark Chen. Glide: Towards photorealistic image generation
+and editing with text-guided diffusion models. arXiv preprint
+arXiv:2112.10741, 2021. 3
+[22] Maxime Oquab, Timothée Darcet, Theo Moutakanni, Huy V.
+Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez,
+Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, Russell Howes, Po-Yao Huang, Hu Xu, Vasu Sharma, Shang-
+
+10
+
+[35] William Saunders, Catherine Yeh, Jeff Wu, Steven Bills,
+Long Ouyang, Jonathan Ward, and Jan Leike. Self-critiquing
+models for assisting human evaluators. arXiv preprint
+arXiv:2206.05802, 2022. 2
+[36] Shuai Shao, Zeming Li, Tianyuan Zhang, Chao Peng, Gang
+Yu, Xiangyu Zhang, Jing Li, and Jian Sun. Objects365:
+A large-scale, high-quality dataset for object detection. In
+CVPR, pages 8430–8439, 2019. 4, 12
+[37] Jascha Sohl-Dickstein, Eric Weiss, Niru Maheswaranathan,
+and Surya Ganguli. Deep unsupervised learning using
+nonequilibrium thermodynamics. In ICML, pages 2256–
+2265. pmlr, 2015. 3
+[38] Zhenxiong Tan, Songhua Liu, Xingyi Yang, Qiaochu Xue,
+and Xinchao Wang. Ominicontrol: Minimal and universal control for diffusion transformer. arXiv preprint
+arXiv:2411.15098, 3, 2024. 3, 4, 7, 8, 12
+[39] XLabs AI team. x-flux, 2025. Accessed: 2025-02-07. 7
+[40] Qixun Wang, Xu Bai, Haofan Wang, Zekui Qin, and Anthony Chen. Instantid: Zero-shot identity-preserving generation in seconds. arXiv preprint arXiv:2401.07519, 2024.
+3
+[41] Xierui Wang, Siming Fu, Qihan Huang, Wanggui He, and
+Hao Jiang. MS-diffusion: Multi-subject zero-shot image personalization with layout guidance. In ICLR, 2025. 3, 7, 8
+[42] Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten
+Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou, et al.
+Chain-of-thought prompting elicits reasoning in large language models. Advances in neural information processing
+systems, 35:24824–24837, 2022. 12, 13
+[43] Yuxiang Wei, Yabo Zhang, Zhilong Ji, Jinfeng Bai, Lei
+Zhang, and Wangmeng Zuo. Elite: Encoding visual concepts into textual embeddings for customized text-to-image
+generation. In CVPR, pages 15943–15953, 2023. 8
+[44] Shitao Xiao, Yueze Wang, Junjie Zhou, Huaying Yuan, Xingrun Xing, Ruiran Yan, Shuting Wang, Tiejun Huang, and
+Zheng Liu. Omnigen: Unified image generation. arXiv
+preprint arXiv:2409.11340, 2024. 3, 7, 8
+[45] Hu Ye, Jun Zhang, Sibo Liu, Xiao Han, and Wei Yang. Ipadapter: Text compatible image prompt adapter for text-toimage diffusion models. arXiv preprint arXiv:2308.06721,
+2023. 2, 3
+[46] Jiahui Yu, Yuanzhong Xu, Jing Yu Koh, Thang Luong, Gunjan Baid, Zirui Wang, Vijay Vasudevan, Alexander Ku, Yinfei Yang, Burcu Karagol Ayan, et al. Scaling autoregressive models for content-rich text-to-image generation. arXiv
+preprint arXiv:2206.10789, 2(3):5, 2022. 3
+[47] Xianggang Yu, Mutian Xu, Yidan Zhang, Haolin Liu,
+Chongjie Ye, Yushuang Wu, Zizheng Yan, Chenming Zhu,
+Zhangyang Xiong, Tianyou Liang, et al. Mvimgnet: A largescale dataset of multi-view images. In CVPR, pages 9150–
+9161, 2023. 2
+[48] Yuxuan Zhang, Yiren Song, Jiaming Liu, Rui Wang, Jinpeng Yu, Hao Tang, Huaxia Li, Xu Tang, Yao Hu, Han Pan,
+et al. Ssr-encoder: Encoding selective subject representation
+for subject-driven generation. In CVPR, pages 8069–8078,
+2024. 7, 8
+
+11
+
+Less-to-More Generalization:
+Unlocking More Controllability by In-Context Generation
+Supplementary Material
+F. In-Context Data Generation Pipeline
+In this section, we give a detailed description of our in-context data generation pipeline. We first build a taxonomy tree
+in Sec. F.1 to obtain various subject instances and scenes. Then we generate subject-consistent image-pair data with the incontext ability of pretrained Text-to-Image (T2I) model and utilize Chain-of-Thought (CoT) [42] to filter the synthesized data
+in Sec. F.2. Finally, for multi-subject data, we train a Subject-to-Image (S2I) model to generate subject-consistent reference
+image instead of the cropped one to avoid the copy-paste issue in Sec. F.3.
+
+F.1. Taxonomy Tree Generation
+To ensure the diversity of the generated dataset, we first construct a taxonomy tree that includes common categories of people
+and objects, as shown in Fig. 10. Specifically, we use the 365 general classes from Object365 [36] as the basis for our
+taxonomy tree. To obtain more diverse categories, we employ Large Language Model (LLM) to generate various subject
+instances and diverse scenes. The instructions in Fig. 12 make LLM generate subject instances according to the given asset
+category in creative, realistic, and text-decorated ways. In addition, we instruct LLM to generate scene descriptions according
+to the given subject with system prompt in Fig. 13. Following the steps above, we build a taxonomy tree and get plenty of
+diverse subjects and scene descriptions.
+
+F.2. Single-Subject In-Context Data Generation
+In-context ability of T2I model has been proved in OminiControl [38] and we also utilize it to generate subject-consistent
+image-pair data as the basic part of our final in-context synthesized data in Sec. F.2.1. Moreover, we filter out low quality data
+with bad subject consistency according to the similarity from DINOv2 [22] and Vision-Language Model (VLM) in Sec. F.2.2.
+
+Class
+Generation
+
+Object365
+
+Speaker
+Person
+…
+Tricycle
+Hat
+…
+Lion
+Butterfly
+
+Instance
+Generation
+A hat with rainbow stripes
+A mushroom-shaped hat
+…
+Military officer's cap
+Realistic
+White panama hat
+…
+A fedora with "Jazz Time"
+Textstitched into the band.
+Decorated
+A bucket hat with "Stay Cool"
+on the rim.
+Creative
+
+Scene
+Generation
+
+Rich
+background
+
+Empty
+background
+
+The **white panama hat**
+rests on a sunlit beach chair,
+swaying gently in the ocean
+breeze with palm trees
+casting delicate shadows.
+…
+with a white background, a
+pure background, shot in a
+studio, very detailed.
+
+Figure 10. Illustration of the taxonomy tree.
+
+F.2.1. Subject-Consistent Image-Pair Generation
+Combining the constructed taxonomy tree with the predifined diptych text template in Fig. 11, we utilize the inherent incontext ability of FLUX.1 [17], one of the state-of-the-art T2I model, to generate subject-consistent image-pair. Since
+FLUX.1 [17] has multi-resolution generation ability, we directly produce three different high-resolution (i.e., 1024×1024,
+1024×768, 768×1024) image-pairs, with great balance of quality and efficiency.
+F.2.2. Subject-Consistent Image-Pair Filter
+Though FLUX.1 [17] shows great in-context generation ability, synthesized image-pairs suffer several issues, especially
+subject inconsistency and missing subjects. We highlight that the high quality of synthesized data can notably accelerate the
+convergence and improve the subject consistency. To efficiently filter synthesized data, we first split the diptych image-pair
+1
+1
+into reference image Iref
+and target image Itgt with Hough Transform. According to the template in Fig. 11, both Iref
+and Itgt
+12
+
+Template_1
+A diptych with two side-by-side images of same <\subject1>.
+Left: <\subject1> in <\scene1>.
+Right: <\subject1> together with <\subject2> in <\scene2>.
+Template_2
+A diptych with two side-by-side images of same <\subject1>.
+Top: <\subject1> in <\scene1>.
+Bottom: <\subject1> together with <\subject2> in <\scene2>.
+
+Figure 11. Diptych text template for generating subject-consistent image-pair with FLUX.1[17].
+
+1
+contain the same subject1 while Itgt has another subject2. To ensure Iref
+and Itgt have consistent subject1, we then calculate
+cosine similarity with DINOv2 [22] and set a threshold to filter out image-pairs with significantly low consistency.
+1
+However, since the reference image Iref
+and the target image Itgt have different scene settings, the subject1 in the imagepairs may not be spatially aligned, resulting in incorrect cosine similarity with feature from DINOv2 [22]. We further employ
+VLM to provide a fine-grained score list evaluating various aspects adaptively, i.e. appearance, details, and attributes. We
+only keep the data with highest VLM score, which indicating the highest quality and subject consistency in the synthesized
+1
+data. Specifically, inspired by [4], we utilize CoT [42] for better discrimination of the subject1 in Iref
+and Itgt , as shown in
+Fig. 14. To demonstrate the effectiveness of the CoT filter, we sample data from different VLM score intervals in Fig. 15.
+Image-pairs with low score suffer severe subject inconsistency while those with highest score (i.e. score is 4) show highly
+consistent subject in the reference image and the target image. We also count the amount of data in each score interval as
+shown in Fig. 17, indicating that around 35.43% data would be remained with the VLM CoT filter. Also, there are seldom of
+data with extremely low VLM score after DINOv2 filter, showing its effectiveness.
+
+Role:
+Please be very creative and generate 50 breif subject prompts for text-to-image generation.
+
+Follow these rules:
+1. You will be given an <asset category>, you need to create an asset(breif subject prompt) based on
+the <asset category>.
+2. These descriptions can refer only to appearance descriptions/or to certain brands. e.g. "Elon Musk
+in pajamas", "a tiger in a black hat", "A Mercedes sports car", "A blonde", "A door red on the left
+and green on the right"
+3. Do not repeat each asset, you need to use your imagination and common sense of life to create.
+3. No more than 12 words.
+
+Example1
+[asset category]: Book
+[asset1]: A book with a green cover
+[asset2]: commic book
+[asset3]: math book
+[asset4]: An open book
+[asset5]: Rotten books
+[asset6]: A book made of candy
+[asset7]: The book with "love and power" on the cover
+[asset8]: A book with a blue key on it
+[asset9]: Triangular book
+...
+(Up to [asset50])
+
+Role:
+Please be very careful and generate 50 breif subject prompts for text-to-image generation.
+
+Follow these rules:
+1. You will be given an <asset category>, you need to create an asset(breif subject prompt) based on
+the <asset category>.
+2. These descriptions can refer only to appearance descriptions/or to certain brands. But it has to be
+something that can exist in the real world. e.g. "Elon Musk in pajamas", "a white tiger", "A Mercedes
+sports car", "A blonde", "A rotten wooden door"
+3. Do not repeat each asset, you need to use common sense of life to create.
+3. No more than 12 words.
+
+Example1
+[asset category]: Book
+[asset1]: A book with a green cover
+[asset2]: commic book
+[asset3]: math book
+[asset4]: An open book
+[asset5]: Rotten books
+[asset6]: The book with "Harry Potter and the Sorcerer's Stone" on the cover
+...
+(Up to [asset50])
+
+Role:
+Please be very careful and generate 50 breif subject prompts for text-to-image generation.
+
+Follow these rules:
+1. You will be given an <asset category>, you need to create an asset(breif subject prompt) based on
+the <asset category>.
+2. Please add a text description in the breif subject. The text can appear anywhere.
+2. These descriptions can refer only to appearance descriptions/or to certain brands. e.g. "Elon Musk
+in his pajamas with the words' beat it.'", "a white tiger holding a sign that says' go '", "A Mercedes
+sports car with '101' written on it", "A blonde"
+3. Do not repeat each asset, you need to use common sense of life to create.
+3. No more than 12 words.
+
+Example1
+[asset category]: Person
+[asset1]: A surfer with "Catch the Waves" on a surfboard.
+[asset2]: A guitarist with "Rock On" on a t-shirt.
+[asset3]: A dancing ballerina with "Grace" written on her tutu.
+[asset4]: A chef wearing a hat that says "Cook Master."
+...
+(Up to [asset50])
+[asset category]:
+
+[asset category]:
+
+[asset category]:
+
+(a) System prompt of LLM used to generate
+subject instances in creative type.
+
+(b) System prompt of LLM used to generate
+subject instances in realistic type.
+
+(c) System prompt of LLM used to generate
+subject instances in text-decorated type.
+
+Figure 12. System prompt of LLM used to generate subject instances.
+
+F.3. Multi-Subject In-Context Data Generation
+1
+Following the above pipeline, we construct single-subject in-context data containing subject-consistent image-pairs (Iref
+, Itgt ).
+Both the reference image and the target image have subject1 while only the target image contain subject2. Since Itgt has multisubject, the simplest way to build multi-subject in-context data is utilizing open-vocabulary detector (OVD) to identify and
+2
+2
+crop the subject2 in Itgt as the second reference image I¯ref
+. However, we find that the cropped I¯ref
+would make severe copypaste issue. To alleviate the issue, a S2I model is trained with the single-subject in-context data and then used to generate
+2
+2
+new reference image Iref
+, which has the consistent subject with the cropped I¯ref
+but different scenes. Thus we have high
+1
+2
+, Itgt ) after very similar filter pipeline for
+quality multi-subject in-context data with subject-consistent image-pairs (Iref , Iref
+2
+the synthesized Iref
+. There are some case randomly sample from our final data in Fig. 16. Interestingly, we find that a small
+part of image-pairs have more than 2 reference images, due to the randomness of T2I generation and OVD, empowering
+generalization for more-subject generation.
+
+13
+
+Role:
+Please be very creative and generate 50 breif subject prompts for text-to-image generation.
+
+Follow these rules:
+1. Given a brief subject prompt of an asset, you need to generate 8 detailed Scene Description for the asset.
+2. Each Scene Description should be a detailed description, which describes the background area you imagine for an identical extracted asset, under different
+environments/camera views/lighting conditions, etc (please be very very creative here).
+3. Each Scene Description should be one line and be as short and precise as possible, do not exceed 77 tokens, Be very creative!
+
+Example1
+[asset]: Scientist with exploding beakers
+[SceneDescription1]: The scientist with exploding beakers stands in a futuristic laboratory with holographic equations swirling around them.
+[SceneDescription2]: Amidst the chaos of a stormy outdoor field lab, the scientist with exploding beakers conducts dramatic experiments as lightning crashes overhead.
+[SceneDescription3]: In an ancient alchemist's den filled with dusty tomes, the scientist with exploding beakers looks surprised as colorful liquid bursts forth.
+[SceneDescription4]: The scientist with exploding beakers is immersed in a vibrant neon-lit urban laboratory, surrounded by robotic assistants.
+[SceneDescription5]: A desert makeshift tent serves as the lab where the scientist with exploding beakers creates a plume of shimmering dust.
+[SceneDescription6]: On an alien planet bathed in ethereal light, the scientist with exploding beakers observes bioluminescent reactions in awe.
+[SceneDescription7]: In a steampunk inspired workshop, the scientist with exploding beakers wears goggles and smiles amidst gears and steam as an experiment erupts.
+[SceneDescription8]: The scientist with exploding beakers stands on a floating platform in the clouds, conducting experiments as colorful bursts light up the sky.
+[asset]:
+
+Figure 13. System prompt of LLM used to generate scene descriptions.
+
+Step 1:
+Briefly describe these two images, as well as the most prominent subject that exist. Think carefully about which parts of the subject you need to
+break down in order to make an objective and thoroughly evaluation. Don't make evaluations at this step.
+
+Role
+
+Important Notes
+- Focus solely on the subject itself.
+- If there is text on the subject, each text itself should be considered as an important separate part.
+- Ignore the difference of subject's background, environment, position, size, etc.
+- Ignore the difference of subject's actions, poses, expressions, viewpoints, lightning, etc.
+
+You are an expert AI assistant specializing in the objective evaluation of the consistency of subjects in two images.
+
+Input Format
+You will receive two images. You need to describe two pictures and determine whether the subject in the first picture is in the second picture.
+
+Output Format
+[subject]: [subject in IMG1, e.g., a man in a white shirt and black pants]
+[caption1]: [IMG1 caption, e.g., a man in a white shirt and black pants]
+[caption2]: [IMG2 caption, e.g., a man in a white shirt and black pants holds a blue cup, butterflies and flowers swirled around him]
+[Break down]: [Break down the evaluation parts of the subject in IMG1]
+
+(a) System prompt of the filter VLM.
+
+(b) Prompt for the first round CoT of the filter VLM.
+Step 3:
+Based on the differences analyzed in Step 2, assign a specific integer score to each part. More and larger differences result in a lower score. The
+score ranges from 0 to 4:
+
+Step 2:
+For each part you have identified, compare this aspect of the subject in the two images and describe the differences in extreme extreme extreme
+extreme extreme extreme extreme detail. You need to be meticulous and precise, noting every tiny detail.
+
+- Very Poor (0): No resemblance. This subject part in the second image has no relation to the part in the first image.
+- Poor (1): Minimal resemblance. This subject part in the second image has significant differences from the part in the first image.
+- Fair (2): Moderate resemblance. This subject part in the second image has modest differences from the part in the first image.
+- Good (3): Strong resemblance. This subject part in the second image has minor but noticeable differences from the part in the first image.
+- Excellent (4): Near-identical. This subject part in the second image is virtually indistinguishable from the part in the first image.
+
+Important Notes
+- Provide quantitative differences whenever possible. For example, "The subject's chest in the first image has 3 blue circular lights, while the
+subject's chest in the second image has only one blue light and it is not circular."
+- Ignore differences in the subject's background, environment, position, size, etc.
+- Ignore differences in the subject's actions, poses, expressions, viewpoints, additional accessories, etc.
+- Ignore the extra accessory of the subject in the second image, such as hat, glasses, etc.
+- Consider that when the subject has a large perspective change, the part may not appear in the new perspective, and no judgment is needed at this
+time. For example, if the subject in the first image is the back of the sofa, and the subject in the second image is the front of the sofa, determine the
+similarity of the two sofas based on your association ability.
+
+Output Format
+[Part 1]: [Part 1 Score]
+[Part 2]: [Part 2 Score]
+[Part 3]: [Part 3 Score]
+...
+[Part N]: [Part N Score]
+You must adhere to the output format strictly. Each part name and its score must be separated by a colon and a space.
+
+(c) Prompt for the second round CoT of the filter VLM.
+
+(d) Prompt for the third round CoT of the filter VLM.
+
+Figure 14. CoT prompt of the filter VLM.
+
+G. Analysis on LoRA Rank
+In this section, we further conduct an ablation study on the LoRA rank. Since training parameters are strongly related to the
+final performance, we scale the rank from 4 to 512. As shown in the Fig. 18, increasing the rank gradually brings sustained
+gains, but when the rank reaches 128, the performance improvement slows down. Finally, considering both performance and
+resource consumption, we set UNO to a rank of 512.
+
+H. More Qualitative Results
+H.1. Qualitative Results on Multi-Subject Driven Generation
+We show a more qualitative comparison of multi-subject driven generation in Fig. 19. It is clear that UNO generate images
+with best multi-subject consistency, following edit instructions to the subject and background.
+14
+
+score 0~1
+
+score 2~3
+
+score 4
+
+Figure 15. Sampled data from different VLM score intervals.
+
+H.2. Application Scenarios
+We evaluated our UNO model across diverse multi-image conditional scenarios, such as identity preservation, virtual tryon, and stylized generation. We found that UNO demonstrated exceptional generalization capabilities, even with minimal
+exposure to such data during training.
+Multi-subject Driven Generation: we have showcased additional results from our UNO model in Fig. 20. Beyond effectively handling multi-subject scenarios, UNO excels in complex applications like logo design and the integration of virtual
+and real elements, demonstrating its strong generalization capabilities. Virtual Try-on: as shown in Fig. 21, UNO performs
+exceptionally well in virtual try-on scenarios, despite the absence of specialized training on such datasets. This demonstrates
+that UNO has learned to understand relationships between objects rather than simply performing copy-paste operations. It
+also suggests that UNO could provide novel optimization strategies for virtual try-on applications, a promising direction we
+leave to further exploration. Identity Preservation: another notable observation is that UNO performs well in both pure ID
+scenarios and ID-subject combinations in Fig. 22. This flexibility reduces reliance on additional ID plugins, fostering opensource community development. We attribute this capability to our systematic training data construction. As mentioned
+in Sec. F.1, our taxonomy tree covers extensive human-object combinations, enabling this versatile performance. Stylized
+Generation: as depicted in Fig. 23, UNO has inherited stylization ability inherited from the original DiT model, despite the
+lack of specific paired data in our training set. This stems from our training approach, which smoothly transitions from T2I
+to S2I, allowing the model to evolve multi-condition control while maintaining strong semantic alignment.
+
+I. Limitation and Discussion
+Although we have established an automated data curation framework, this paper primarily focuses on subject-driven generation. Our dataset currently contains limited editing and stylization data. While UNO is a unified and customizable framework
+15
+
+reference images
+
+target image
+
+reference images
+
+target image
+
+Figure 16. Sampled data from our final multi-subject in-context data.
+[2.5, 3.0)
+13.02%
+[2.0, 2.5)
+8.67%
+
+[3.0, 3.5)
+23.51%
+
+4.0
+2.0
+0.0
+
+[3.5, 4.0)
+12.66%
+
+[4.0, 4.0]
+35.43%
+
+Figure 17. Amount of data in each VLM score interval.
+0.34
+
+0.82
+
+rank=4
+rank=16
+rank=64
+rank=128
+rank=512
+
+0.70
+0.80
+
+0.33
+
+0.78
+0.32
+0.76
+
+CLIP-T
+
+0.60
+
+CLIP-I
+
+DINO
+
+0.65
+
+0.31
+
+0.74
+
+0.55
+
+0.72
+
+0.50
+
+0.30
+
+0.70
+0.45
+1000
+
+2000
+
+3000
+
+4000
+
+5000
+step
+
+6000
+
+7000
+
+8000
+
+1000
+
+2000
+
+3000
+
+4000
+
+5000
+
+6000
+
+step
+
+7000
+
+8000
+
+0.29
+
+1000
+
+2000
+
+3000
+
+4000
+
+5000
+
+6000
+
+7000
+
+8000
+
+step
+
+Figure 18. Analysis of model performance under different LoRA ranks.
+
+with sufficient generalization capabilities, the types of synthetic data may somewhat restrict its abilities. In the future, we
+plan to expand our data types to further unlock UNO’s potential and cover a broader range of tasks.
+
+16
+
+Reference Images
+
+Prompt
+
+UNO (Ours)
+
+OmniGen
+
+MS-Diffusion
+
+MIP-Adapter
+
+SSR-Encoder
+
+a toy and a
+toy on top of a
+white rug
+
+a purple
+sneaker and a
+purple toy
+a boot and a
+stuffed animal
+with a city in
+the
+background
+a cartoon and
+a toy with a
+wheat field in
+the
+background
+a dog in a
+purple wizard
+outfit, next to
+it is a can
+a dog in a
+police outfit,
+next to it is a
+glasses
+a dog in a
+firefighter
+outfit, next to
+it is a teapot
+a cat wearing
+pink glasses,
+next to it is a
+cat
+
+Figure 19. More comparison with different methods on multi-subject driven generation. We italicize the subject-related editing part of the
+prompts.
+
+17
+
+Output
+
+Input
+
+Output
+
+Input
+
+“A vase is next to the case, in the desert”
+
+“A colorful block on top of the toy car”
+
+“A black cat wearing a black hat is riding a
+little yellow duck, in the forest”
+
+“A little bear carries a blue bag”
+
+“The girl wears a clothes with the red logo”
+
+“The logo is printed on the clothes”
+
+“”
+
+“”
+
+Figure 20. More multi-subject generation results from our UNO model.
+
+18
+
+Input
+
+Output
+near the sea
+
+in the flowers
+
+A pretty woman wears a flower petal dress,
+
+A girl is wearing a white blouse and a blue skirt,
+
+A man wears a blue tank top and black shorts,
+
+A woman wears the dress and holds a bag,
+Figure 21. More virtual try-on results from our UNO model.
+
+19
+
+in the street
+
+Input
+
+Output
+
+1.The girl stands before a large painting in an art gallery. Her dark eyes reflect curiosity and appreciation as she studies the brushstrokes up close.
+She wears a tailored black blazer over a simple white blouse, exuding an air of sophistication. Around her, other patrons whisper in admiration,
+but she remains lost in her own artistic contemplation. 2. The girl poses in a botanical garden. She wears a floral dress, holding a bouquet,
+blending natural and artistic beauty. 3. The girl navigates busy city streets. She wears a trench coat and trousers, exploring the urban landscape.
+
+1. The woman sits on a park bench, a brown leather handbag by her side. She wears a floral dress, enjoying the sunshine. The bag rests on her lap,
+a small umbrella tucked inside. She occasionally rummages through it for snacks. 2. The woman walks at dusk, a brown velvet evening bag in
+hand. 3. The woman is sitting in a cafe, with a brown bag on the chair.
+
+1. The man was lecturing on the podium, and the blackboard was full of mathematical formulas. 2. The man stands in a futuristic laboratory,
+wearing a sleek silver jumpsuit. He adjusts the settings on a bizarre machine, its glowing panels and wires humming with energy. 3. The man plays
+chess.
+
+1. The man is sitting in a cafe, with a violin on the chair. 2. The man wears a suit and played the violin on the stage. 3. This man has fairy ears and
+plays the violin in the forest.
+
+Figure 22. More identity preservation results from our UNO model.
+
+20
+
+Output
+
+Input
+Ghibli style,
+
+Comic style,
+
+3D cartoon style,
+
+a woman
+
+a man
+Figure 23. More stylized generation results from our UNO model.
+
+Scenarios
+
+Prompt
+
+One2One
+
+“A clock on the beach is under a red sun umbrella"
+“A doll holds a ‘UNO’ sign under the rainbow on the grass"
+
+Two2One
+
+“The figurine is in the crystal ball"
+“The boy and girl are walking in the street"
+
+Many2One
+
+“A penguin doll, a car and a pillow are scattered on the bed"
+“A boy in a red hat wear a sunglasses"
+
+Stylized Generation
+
+“Ghibli style, a woman"
+“Ghibli style, a man"
+
+Virtual Try-on
+
+“A man wears the black hoodie and pants"
+“A girl wears the blue dress in the snow"
+
+Product Design
+
+“The logo and words ‘Let us unlock!’ are printed on the clothes"
+“The logo is printed on the cup"
+
+Identity-preservation
+Story Generation
+
+“The figurine is in the crystal ball"
+“A penguin doll, a car and a pillow are scattered on the bed"
+“A boy in green is in the arcade"
+“A man strolls down a bustling city street under moonlight"
+“The man and a boy in green clothes are standing among the flowers by the lake"
+“The man met a boy dressed in green at the foot of the tower"
+Table 7. Text prompts used in Fig. 1.
+
+21
+
+
