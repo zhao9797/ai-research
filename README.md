@@ -1,5 +1,7 @@
 # ai-research
 
+> 🌐 **English**: [README.en.md](README.en.md)　·　🔗 **在线网站 / Site**: https://zhao9797.github.io/ai-research/
+
 个人 AI 技术调研仓库 —— **只收一手官方资料**（arXiv 原文 / 官方技术报告 / system card / 官方博客 / 官方 GitHub·HF·ModelScope model card），不含任何第三方解读、翻译或二手聚合。
 
 每个工作都按统一维度精读（**数据 · 训练方法 · 模型架构 · 评测 benchmark · Infra** + 创新影响），**所有数字均经对抗式核查逐条对照一手源**（删串列 / 张冠李戴 / 杜撰）。

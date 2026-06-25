@@ -8,6 +8,8 @@ updated: 2026-06-18
 
 # 大模型技术演进调研 · 主汇总（GPT-3 2020-05 → 2026-06）
 
+> 🌐 **English**: [00-SUMMARY.en.md](00-SUMMARY.en.md)
+
 > 只收**一手官方来源**：arXiv 原文、官方技术报告/system card、官方博客、官方 GitHub/model card/HF 组织页。
 > **不含任何第三方解读/翻译/二手总结/评测聚合**。
 > 五大分类：`预训练数据` · `架构` · `AI infra` · `后训练` · `agentic训练`（每条至少命中其一，可多标）。

@@ -7,3 +7,8 @@
 *.png
 *.jpg
 *.jpeg
+
+# Quartz local build artifacts
+node_modules/
+.quartz/
+public/

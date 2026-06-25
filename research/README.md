@@ -1,5 +1,7 @@
 # research/ — 调研分析
 
+> 🌐 **English**: [README.en.md](README.en.md)
+
 两个独立 scope，**同构组织**（都遵循下面的"四层阅读模型"）。这里是导航；具体内容进各 scope 的 `00-SUMMARY.md`。
 
 | scope | 主题 | 跨度 | 规模 | 入口 |
