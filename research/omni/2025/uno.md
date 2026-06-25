@@ -19,7 +19,7 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-UNO 是字节跳动 Intelligent Creation 团队提出的「单主体→多主体」统一的 subject-to-image（主体驱动）定制生成模型：它从 T2I 的 [[flux]] (FLUX.1-dev) DiT 出发，用一条「模型-数据协同进化」(model-data co-evolution) 的高一致性合成数据流水线把模型迭代训练成 S2I 模型，核心创新是**渐进式跨模态对齐 (progressive cross-modal alignment)** + **通用旋转位置编码 UnoPE**。在 DreamBench 单主体上以零样本拿到 **DINO 0.760 / CLIP-I 0.835** 的最高分，是 2025 年被广泛采用的开源 subject-driven 基线（ICCV 2025 接收）。
+UNO 是字节跳动 Intelligent Creation 团队提出的「单主体→多主体」统一的 subject-to-image（主体驱动）定制生成模型：它从 T2I 的 [[flux-1]] (FLUX.1-dev) DiT 出发，用一条「模型-数据协同进化」(model-data co-evolution) 的高一致性合成数据流水线把模型迭代训练成 S2I 模型，核心创新是**渐进式跨模态对齐 (progressive cross-modal alignment)** + **通用旋转位置编码 UnoPE**。在 DreamBench 单主体上以零样本拿到 **DINO 0.760 / CLIP-I 0.835** 的最高分，是 2025 年被广泛采用的开源 subject-driven 基线（ICCV 2025 接收）。
 
 ## 背景与定位
 主体驱动生成（给定一张/多张参考主体图，按文本生成包含该主体的新图）长期受两个瓶颈制约：
@@ -28,10 +28,10 @@ UNO 是字节跳动 Intelligent Creation 团队提出的「单主体→多主体
 
 早期 per-subject 微调流派（[[dreambooth]]、Textual Inversion、LoRA）需对每个新主体逐一微调，推理慢、不可部署；后续大数据训练流派（IP-Adapter、BLIP-Diffusion）用额外 image encoder 注入参考图，实现免微调实时定制，但受限于训练数据，常在「主体相似度 vs 文本可控性」间权衡或生成不稳定。
 
-UNO 的关键洞察借鉴 LLM 的「合成数据自我增强」：弱（less-controllable）的前代模型可以系统性合成更好的定制数据，去训练出更强（more-controllable）的后代模型，形成模型与数据的持续协同进化。技术上它沿着 DiT in-context 生成这条线（[[in-context-lora]]、OminiControl 已证明 DiT 自身可作 image encoder / 参考图引擎），把单主体扩展到多主体，并以最小架构改动保留 DiT 的可扩展性。相关前置工作：[[latent-diffusion-ldm]]、[[dit]]、[[sd3]](MM-DiT)、[[flux]]。
+UNO 的关键洞察借鉴 LLM 的「合成数据自我增强」：弱（less-controllable）的前代模型可以系统性合成更好的定制数据，去训练出更强（more-controllable）的后代模型，形成模型与数据的持续协同进化。技术上它沿着 DiT in-context 生成这条线（[[in-context-lora]]、OminiControl 已证明 DiT 自身可作 image encoder / 参考图引擎），把单主体扩展到多主体，并以最小架构改动保留 DiT 的可扩展性。相关前置工作：[[latent-diffusion-ldm]]、[[dit-scalable-diffusion-transformers]]、[[stable-diffusion-3]](MM-DiT)、[[flux-1]]。
 
 ## 模型架构
-- **Backbone**：基于 MM-DiT 的 **FLUX.1-dev**（[[flux]]）。MM-DiT 把文本 token 与图像 token 拼接后做多模态注意力（Q/K/V 在全部 token 上计算 attention，Z=[z_t, c]），文本与图像各自在自己空间内表达又互相感知。
+- **Backbone**：基于 MM-DiT 的 **FLUX.1-dev**（[[flux-1]]）。MM-DiT 把文本 token 与图像 token 拼接后做多模态注意力（Q/K/V 在全部 token 上计算 attention，Z=[z_t, c]），文本与图像各自在自己空间内表达又互相感知。
 - **Text encoder**：T5（FLUX 原生），训练中冻结；推理代码另需 CLIP-ViT-L/14（来自 FLUX 文本侧）。
 - **Tokenizer / VAE**：沿用 FLUX 的 VAE，目标图 I_tgt 由 VAE 编码为 noisy latent z_t；参考图 I_ref^i 同样过 VAE 编码为 z_ref^i。
 - **条件注入（核心）**：UNO 不引入额外 image encoder 或 adapter，而是**把参考图的 VAE latent 直接拼到 DiT 输入序列里**，复用 DiT 的 in-context 注意力做条件感知。

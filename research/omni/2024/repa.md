@@ -25,9 +25,9 @@ REPA（REPresentation Alignment）是一个**极简的正则项**：训练扩散
 论文的核心观察是：**扩散模型训练大模型的主要瓶颈，其实是"学不好表征"**。
 - 已有工作（Xiang et al. 2023 等）发现扩散 transformer 的隐状态里确实存在判别性表征（线性探测 acc 在中间层达到峰值），"更好的扩散模型学到更好的表征"。但作者用 **CKNNA**（一种基于互近邻的核对齐指标，Huh et al. 2024 提出，与 CKA 相关）量化后发现：SiT 学到的表征与 SOTA 自监督编码器 DINOv2 之间存在**显著语义鸿沟**，且二者对齐度**很弱**——即便训练到 7M 步、放大模型，对齐度提升仍缓慢、远低于其它自监督方法（如 MoCov3 vs DINOv2）之间的对齐水平。
 - 由此引出动机：与其让扩散模型**独立地**慢慢学表征，不如**直接把高质量外部表征"喂"进去**。这接续了把扩散/去噪当作自监督表征学习（denoising score matching，Vincent 2011；Bengio et al. 2013）的视角，但指出"重建像素"这个任务本身不利于学好表征（无法剔除冗余细节，呼应 LeCun 2022 / JEPA 思路）。
-- 在技术脉络中，REPA 站在 [[dit]]（Peebles & Xie 2023）和 SiT（Ma et al. 2024，[[stochastic-interpolants]] 视角统一 flow/diffusion）之上，与"用外部表征加速扩散"的 Würstchen、RCG 等同属一脉，但**不需要额外再训练一个表征生成模型**——只是一个训练期正则，推理时投影头可丢弃。它也是后续 REPA-E（端到端联合训 VAE+对齐）以及 RAE（Representation Autoencoders）等工作的概念母版。
+- 在技术脉络中，REPA 站在 [[dit-scalable-diffusion-transformers]]（Peebles & Xie 2023）和 SiT（Ma et al. 2024，[[stochastic-interpolants]] 视角统一 flow/diffusion）之上，与"用外部表征加速扩散"的 Würstchen、RCG 等同属一脉，但**不需要额外再训练一个表征生成模型**——只是一个训练期正则，推理时投影头可丢弃。它也是后续 REPA-E（端到端联合训 VAE+对齐）以及 RAE（Representation Autoencoders）等工作的概念母版。
 
-直接对接前置工作：[[ddpm]]、[[latent-diffusion-ldm]]（用其 SD-VAE 做 latent 压缩）、[[dit]]、[[dinov2]]。
+直接对接前置工作：[[ddpm]]、[[latent-diffusion-ldm]]（用其 SD-VAE 做 latent 压缩）、[[dit-scalable-diffusion-transformers]]、[[dinov2]]。
 
 ## 模型架构
 REPA **不改 backbone 架构**，严格沿用 DiT/SiT 的结构，只外挂一个对齐分支：

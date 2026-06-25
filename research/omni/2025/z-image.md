@@ -24,7 +24,7 @@ Z-Image 是阿里通义 MAI 实验室 2025-11 开源的 **6.15B 单流扩散 Tra
 ## 背景与定位
 高性能文生图当前被两类范式割裂：一边是 Nano Banana Pro、Seedream 4.0 这类闭源「黑箱」，性能强但不可复现；另一边是开源模型走「无止境扩参数」路线（Qwen-Image 20B、FLUX.2 32B、HunyuanImage-3.0 80B），训练/推理/微调对消费级硬件极不友好。还有一条捷径是从闭源模型蒸馏合成数据，但作者批评这会造成「闭环反馈→误差累积→数据同质化」，抑制新视觉能力涌现。
 
-Z-Image 的立意是**用 6B 体量、纯真实世界数据（不蒸馏其它模型）、极低算力**，做出对标顶级模型的端到端方案。它在技术脉络上属于 [[mmdit]] / [[stable-diffusion-3]] 的 MM-DiT 谱系，但把双流改成**单流早融合**（借鉴 decoder-only LLM 的可扩展性），并在推理侧用自研 [[decoupled-dmd]] 与 [[dmdr]] 两套 DMD 改进做少步蒸馏。它是「小模型对抗 scaling」叙事的代表作，与 [[qwen-image]]、[[flux-2]]、[[hunyuanimage-3]] 形成「效率派 vs 规模派」对照。
+Z-Image 的立意是**用 6B 体量、纯真实世界数据（不蒸馏其它模型）、极低算力**，做出对标顶级模型的端到端方案。它在技术脉络上属于 [[mmdit]] / [[stable-diffusion-3]] 的 MM-DiT 谱系，但把双流改成**单流早融合**（借鉴 decoder-only LLM 的可扩展性），并在推理侧用自研 [[decoupled-dmd]] 与 [[dmdr]] 两套 DMD 改进做少步蒸馏。它是「小模型对抗 scaling」叙事的代表作，与 [[qwen-image]]、[[flux-2]]、[[hunyuanimage-3-0]] 形成「效率派 vs 规模派」对照。
 
 模型家族共四个变体（HF 已开 Z-Image / Z-Image-Turbo，Omni-Base 与 Edit 标注 To be released）：
 - **Z-Image-Omni-Base**：仅预训练、未 SFT/RL，生成+编辑通用底座，定位最「raw」的社区微调起点（50 步 + CFG）。

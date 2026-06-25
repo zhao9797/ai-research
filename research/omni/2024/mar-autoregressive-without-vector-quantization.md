@@ -22,11 +22,11 @@ updated: 2026-06-25
 MAR（Masked Autoregressive）用一个**小 MLP 上的逐 token 扩散过程（Diffusion Loss）**取代了自回归图像生成里的 VQ 量化器与 cross-entropy 分类头，证明"自回归 ≠ 必须离散 token"，在**连续值 token 空间**做"下一组 token 预测"，于 ImageNet 256×256 达到 **FID 1.55（MAR-H, w/ CFG）**、并能 **<0.3 秒/张** 且 **FID <2.0**，开创了"连续 token 自回归"范式。
 
 ## 背景与定位
-长期以来主流认知是：把语言模型那套自回归（next-token prediction）搬到图像，必须先用向量量化（VQ）把图像离散成有限词表的 token（VQ-VAE/VQ-GAN，[[vq-vae]] [[vqgan]]），才能用 categorical 分布 + 交叉熵建模。但 VQ tokenizer **难训、对梯度近似策略敏感、重建质量逊于连续值 tokenizer**（如 [[latent-diffusion-ldm]] 的 KL-16）。
+长期以来主流认知是：把语言模型那套自回归（next-token prediction）搬到图像，必须先用向量量化（VQ）把图像离散成有限词表的 token（VQ-VAE/VQ-GAN，[[vq-vae]] [[taming-transformers-vqgan]]），才能用 categorical 分布 + 交叉熵建模。但 VQ tokenizer **难训、对梯度近似策略敏感、重建质量逊于连续值 tokenizer**（如 [[latent-diffusion-ldm]] 的 KL-16）。
 
 本文提出的核心问题：**自回归是否必须绑定向量量化？** 作者指出自回归的本质是"基于已知 token 预测下一个 token 的概率分布"，这与 token 取值是离散还是连续**正交**。需要的只是两件事——(i) 一个能度量预测分布与真实分布差异的损失函数；(ii) 一个能从该分布采样的采样器。离散 token 用 categorical 分布天然满足这两点，但并非概念上必需。
 
-作者的答案：用**扩散过程**来建模**每个 token 的条件分布 p(x|z)**，从而把自回归直接搬到连续值域，彻底去掉 VQ。这与 [[latent-diffusion-ldm]]/[[dit]] 这类"用一个扩散过程建模所有 token 的联合分布"形成鲜明对照——MAR 把"token 之间的依赖"交给自回归、把"每个 token 自身的分布"交给扩散，二者分工。相关同期工作 GIVT 也做连续 token 序列模型，但用固定数目的高斯混合（GMM）建分布，表达力受限；MAR 用扩散建任意分布。技术脉络上 MAR 是 MAE/MAGE（掩码生成，作者前作）与 DDPM/DiT（扩散）的合流。
+作者的答案：用**扩散过程**来建模**每个 token 的条件分布 p(x|z)**，从而把自回归直接搬到连续值域，彻底去掉 VQ。这与 [[latent-diffusion-ldm]]/[[dit-scalable-diffusion-transformers]] 这类"用一个扩散过程建模所有 token 的联合分布"形成鲜明对照——MAR 把"token 之间的依赖"交给自回归、把"每个 token 自身的分布"交给扩散，二者分工。相关同期工作 GIVT 也做连续 token 序列模型，但用固定数目的高斯混合（GMM）建分布，表达力受限；MAR 用扩散建任意分布。技术脉络上 MAR 是 MAE/MAGE（掩码生成，作者前作）与 DDPM/DiT（扩散）的合流。
 
 ## 模型架构
 **三件套：连续值 tokenizer + 自回归/掩码自回归 Transformer + 小扩散 MLP（Diffusion Loss head）。**

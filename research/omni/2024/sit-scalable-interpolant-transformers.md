@@ -19,10 +19,10 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-SiT（Scalable Interpolant Transformers）把 [[dit]] 的 transformer 主干放进**随机插值（stochastic interpolant）**理论框架，让**同一套架构**可在「离散/连续时间 × score/velocity 目标 × VP/Linear/GVP 插值 × ODE/SDE 采样」之间自由切换，做了一次彻底的设计空间消融；在**完全相同的参数量、结构与 GFLOPs** 下逐尺寸碾压 DiT，ImageNet 256×256 取得 **FID-50K 2.06**、512×512 **FID 2.62**（均 cfg=1.5）。它由此成为后续 REPA / RAE 这条「表征对齐」研究线的**标准 backbone 与 baseline**。
+SiT（Scalable Interpolant Transformers）把 [[dit-scalable-diffusion-transformers]] 的 transformer 主干放进**随机插值（stochastic interpolant）**理论框架，让**同一套架构**可在「离散/连续时间 × score/velocity 目标 × VP/Linear/GVP 插值 × ODE/SDE 采样」之间自由切换，做了一次彻底的设计空间消融；在**完全相同的参数量、结构与 GFLOPs** 下逐尺寸碾压 DiT，ImageNet 256×256 取得 **FID-50K 2.06**、512×512 **FID 2.62**（均 cfg=1.5）。它由此成为后续 REPA / RAE 这条「表征对齐」研究线的**标准 backbone 与 baseline**。
 
 ## 背景与定位
-2023 年 [[dit]]（Peebles & Xie）证明了「把 U-Net 换成纯 transformer」可使扩散模型随算力良好 scaling。SiT 想回答一个更基础的问题：**DiT 相对早期扩散模型的性能增益，究竟来自哪一部分设计？** 论文把生成模型拆成四个**正交**的设计旋钮，逐一从「典型 DDPM」过渡到「插值模型」：
+2023 年 [[dit-scalable-diffusion-transformers]]（Peebles & Xie）证明了「把 U-Net 换成纯 transformer」可使扩散模型随算力良好 scaling。SiT 想回答一个更基础的问题：**DiT 相对早期扩散模型的性能增益，究竟来自哪一部分设计？** 论文把生成模型拆成四个**正交**的设计旋钮，逐一从「典型 DDPM」过渡到「插值模型」：
 
 1. **时间离散化**：离散时间（DDPM 把训练时间网格与采样网格绑死）→ 连续时间；
 2. **学习对象（model prediction）**：预测噪声 / score `s(x,t)` / 速度场 `v(x,t)`；

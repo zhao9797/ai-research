@@ -24,7 +24,7 @@ VACE 是阿里通义实验室 Wan 团队基于视频 DiT（Wan2.1 / LTX-Video）
 ## 背景与定位
 图像域的「生成+编辑统一」已较成熟——[[acepp]] (ACE/ACE++)、OmniGen、UniReal、OmniControl 等把 ControlNet 式可控生成、局部编辑、参考生成揉进一个图像模型。视频域因为要同时维持**时间和空间**一致性，长期停留在「单任务单模型」：Video-P2P、MagicEdit 做编辑，MotionCtrl 做运动控制，Phantom 做主体一致，各自为政，部署成本高、无法组合。
 
-VACE 的定位就是把图像域 ACE/ACE++ 那套「统一创作+编辑」搬到视频域。它没有从零训基模型，而是站在主流视频 DiT 之上（[[wan]] Wan2.1-T2V 与 LTX-Video），把各类任务的复杂多模态输入抽象成统一格式，再用一个可插拔结构注入到冻结的 DiT 主干上。核心价值：一次推理、一个模型完成绝大多数视频 AI 创作任务，并支持基础任务的**组合扩展**（如长视频重渲染、scribble→视频扩展、参考+inpaint 的换装）。技术脉络上承 [[latent-diffusion-ldm]] / DiT（Peebles & Xie）/ rectified flow（[[sd3]] 系列的 flow matching），与 ACE++ 同源（同一作者团队的 Res-Tuning、SCEdit 思路一脉相承）。
+VACE 的定位就是把图像域 ACE/ACE++ 那套「统一创作+编辑」搬到视频域。它没有从零训基模型，而是站在主流视频 DiT 之上（[[wan]] Wan2.1-T2V 与 LTX-Video），把各类任务的复杂多模态输入抽象成统一格式，再用一个可插拔结构注入到冻结的 DiT 主干上。核心价值：一次推理、一个模型完成绝大多数视频 AI 创作任务，并支持基础任务的**组合扩展**（如长视频重渲染、scribble→视频扩展、参考+inpaint 的换装）。技术脉络上承 [[latent-diffusion-ldm]] / DiT（Peebles & Xie）/ rectified flow（[[stable-diffusion-3]] 系列的 flow matching），与 ACE++ 同源（同一作者团队的 Res-Tuning、SCEdit 思路一脉相承）。
 
 ## 模型架构
 **Backbone：视频 Diffusion Transformer（DiT）**，不自训基模型，直接复用两套预训练 T2V：

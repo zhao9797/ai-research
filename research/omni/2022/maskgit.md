@@ -22,11 +22,11 @@ updated: 2026-06-25
 MaskGIT 提出"掩码视觉 token 建模 + 调度并行解码"（predict-all-then-resample）的图像合成范式：用双向 transformer 一次性预测全部 token、只保留最自信的、迭代细化，在 ImageNet 上把自回归 VQ transformer（VQGAN）的解码加速 **30–64x**（256×256 只需 8 步、512×512 只需 12 步而非 256/1024 步），并把 512×512 的 FID 从 26.52 刷到 **7.32**（创当时新 SOTA），256×256 FID 6.18 vs VQGAN 15.78。
 
 ## 背景与定位
-两阶段生成（VQVAE/VQGAN/[[dalle-1]]）此前都把图像当作一维 token 序列、按光栅扫描（raster scan）逐 token 自回归解码，借用 NLP 的自回归范式。作者指出这"既非最优也低效"：
+两阶段生成（VQVAE/VQGAN/[[dall-e-1]]）此前都把图像当作一维 token 序列、按光栅扫描（raster scan）逐 token 自回归解码，借用 NLP 的自回归范式。作者指出这"既非最优也低效"：
 - **图像非序列**——画家是先打草稿再整体细化（less-to-more），而非逐行打印；
 - **序列过长**——token 数随分辨率二次增长（256 或 1024 token，远长于自然语言句子），长程相关难建模、解码不可并行（32×32 token 自回归在 GPU 上要约 30 秒/张）。
 
-MaskGIT 受 BERT 的掩码语言建模（MLM）和 NMT 的非自回归 / mask-predict 解码启发，把第二阶段从"单向自回归"换成"双向掩码 + 并行迭代解码"。论文自称是首个在标准 ImageNet 基准上验证掩码建模用于图像生成有效性的工作。第一阶段 tokenizer 直接沿用 [[vqgan]] 设置，不做改动（把 tokenizer 改进留给未来工作）。这条线后续直接孵化了文生图的 [[muse]]、视频的 [[magvit]] / MAGVIT-v2 与 [[phenaki]] 的掩码解码。
+MaskGIT 受 BERT 的掩码语言建模（MLM）和 NMT 的非自回归 / mask-predict 解码启发，把第二阶段从"单向自回归"换成"双向掩码 + 并行迭代解码"。论文自称是首个在标准 ImageNet 基准上验证掩码建模用于图像生成有效性的工作。第一阶段 tokenizer 直接沿用 [[taming-transformers-vqgan]] 设置，不做改动（把 tokenizer 改进留给未来工作）。这条线后续直接孵化了文生图的 [[muse]]、视频的 [[magvit]] / MAGVIT-v2 与 [[phenaki]] 的掩码解码。
 
 ## 模型架构
 两阶段设计（图 3 Pipeline）：

@@ -19,7 +19,7 @@ updated: 2026-06-25
 ---
 
 ## 一句话定位
-DreamO 是字节跳动 Intelligent Creation Team 基于 [[flux]]（FLUX.1-dev）的**统一图像定制框架**：只训练一组 LoRA（约 478M 参数），用「**特征路由约束（feature routing constraint）+ 占位符（placeholder）策略 + 三阶段渐进训练**」把主体（subject/IP）、人脸身份（ID）、虚拟试穿（try-on）、风格（style）四类定制任务以及它们的多条件组合塞进**单一模型**，在 DreamBench、Unsplash-50、VITON-HD 等基准上 subject/ID/try-on 一致性与文本对齐均优于 OmniGen、OminiControl、PuLID、MS-Diffusion 等同期方法（如单主体 CLIP-sim 0.9150 / DINO-sim 0.8056、人脸 Face-sim 0.607）。已被 SIGGRAPH Asia 2025 接收。
+DreamO 是字节跳动 Intelligent Creation Team 基于 [[flux-1]]（FLUX.1-dev）的**统一图像定制框架**：只训练一组 LoRA（约 478M 参数），用「**特征路由约束（feature routing constraint）+ 占位符（placeholder）策略 + 三阶段渐进训练**」把主体（subject/IP）、人脸身份（ID）、虚拟试穿（try-on）、风格（style）四类定制任务以及它们的多条件组合塞进**单一模型**，在 DreamBench、Unsplash-50、VITON-HD 等基准上 subject/ID/try-on 一致性与文本对齐均优于 OmniGen、OminiControl、PuLID、MS-Diffusion 等同期方法（如单主体 CLIP-sim 0.9150 / DINO-sim 0.8056、人脸 Face-sim 0.607）。已被 SIGGRAPH Asia 2025 接收。
 
 ## 背景与定位
 图像定制（image customization）要让生成结果在**特定属性**上与参考图保持一致——身份、主体外观、虚拟试穿、风格等。此前工作几乎都是**单任务专用**：[[ip-adapter]] 系（IP-Adapter）走 cross-attention 注入、InstantID/PuLID 专攻人脸、StyleShot/InstantStyle 专攻风格、MagicClothing/IMAGDressing 专攻试穿。问题是无法把不同条件**自由组合**，做一个统一框架仍是开放难题。
@@ -28,7 +28,7 @@ DreamO 的技术脉络承接 DiT 时代的统一可控生成路线：
 - **OminiControl**（Tan et al. 2024）：把 text/image/condition token 沿序列维拼接喂进 DiT，训 task-specific LoRA——但**分任务单独训练**，处理多条件吃力。DreamO 沿用其「统一序列条件 + 对角非重叠位置编码 + LoRA」的范式。
 - **OmniGen**（Xiao et al. 2024）：基于大语言模型（Phi-3）做通用生成；**UniReal**（Chen et al. 2024）：视频生成预训练 + 全模型后训练。
 
-DreamO 的核心论点（也是其立场）：**高质量、多概念的图像定制不能只靠 LLM 或视频模型的通用能力（如 OmniGen / UniReal）堆出来，而需要专门的架构设计**。它的差异化贡献正是这套「routing 约束 + placeholder + 渐进训练」的专用设计，且**只在冻结的预训练 DiT 上训少量 LoRA 参数**，训练成本低。相关前置工作：[[latent-diffusion-ldm]]、[[dit]]、[[ddpm]]、[[ip-adapter]]、[[controlnet]]。路由思想直接借鉴 UniPortrait、AnyStory（同组/同领域的 cross-attention 区域约束工作）。
+DreamO 的核心论点（也是其立场）：**高质量、多概念的图像定制不能只靠 LLM 或视频模型的通用能力（如 OmniGen / UniReal）堆出来，而需要专门的架构设计**。它的差异化贡献正是这套「routing 约束 + placeholder + 渐进训练」的专用设计，且**只在冻结的预训练 DiT 上训少量 LoRA 参数**，训练成本低。相关前置工作：[[latent-diffusion-ldm]]、[[dit-scalable-diffusion-transformers]]、[[ddpm]]、[[ip-adapter]]、[[controlnet]]。路由思想直接借鉴 UniPortrait、AnyStory（同组/同领域的 cross-attention 区域约束工作）。
 
 ## 模型架构
 **Backbone：MMDiT（FLUX.1-dev）冻结 + LoRA。** 不改 backbone 权重，只插入 LoRA（rank=128，总增参 **478M**）。
