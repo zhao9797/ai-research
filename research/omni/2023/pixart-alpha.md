@@ -16,10 +16,11 @@ project_url: "https://pixart-alpha.github.io/"
 downloaded: [pixart-alpha--paper-ar5iv.md, pixart-alpha--readme.md, pixart-alpha--project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-PixArt-α 是首个把 **DiT（Diffusion Transformer）成功用于文生图**、且做到“接近商用质量”的开源工作：在 DiT 中插入 **cross-attention 注入 T5 文本条件**，配合“**三阶段训练分解 + adaLN-single 参数瘦身 + LLaVA 高密度 re-caption**”三招，仅用 **753 A100 GPU-days / 约 25M 图、~2.8 万美元**就训出 1024px T2I 模型——训练算力约为 Stable Diffusion v1.5 的 **10.8%（675 vs 6250 A100 days）**、RAPHAEL 的 **~1%**，COCO 零样本 **FID-30K = 7.32**，在 T2I-CompBench 上 6 项中 5 项超 SDXL。ICLR 2024 Spotlight。
+PixArt-α 是首个把 **DiT（Diffusion Transformer）成功用于文生图**、且做到“接近商用质量”的开源工作：在 DiT 中插入 **cross-attention 注入 T5 文本条件**，配合“**三阶段训练分解 + adaLN-single 参数瘦身 + LLaVA 高密度 re-caption**”三招，仅用 **753 A100 GPU-days / 约 25M 图、约 2.6–2.8 万美元**就训出 1024px T2I 模型——训练算力约为 Stable Diffusion v1.5 的 **~12%（753 vs 6250 A100 days，论文口径；README/项目页另给 675 days = 10.8% 的圆整口径）**、RAPHAEL 的 **~1%**，COCO 零样本 **FID-30K = 7.32**，在 T2I-CompBench 6 个子项上 **5 项取全表最优**（Color/Shape/Texture/Spatial/Complex；仅 Non-Spatial 略逊 GORS），且对 SDXL 6 项全胜。ICLR 2024 Spotlight。
 
 ## 背景与定位
 2023 年的主流文生图（SD、Imagen、DALL·E 2、RAPHAEL）训练成本极高：RAPHAEL 60000 A100 days、约 308 万美元、排放 35 吨 CO2，对学术界和创业者构成门槛。论文的核心命题是“**能不能把 T2I 训练成本压到 ~1%**”。

@@ -16,6 +16,7 @@ project_url: "https://www.microsoft.com/en-us/research/project/vall-e-x/"
 downloaded: [arxiv-2301.02111.pdf, arxiv-2301.02111.txt, vall-e--unilm-readme.md, vall-e--msr-project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -89,11 +90,21 @@ VALL-E 在鲁棒性（WER 5.9 vs YourTTS 7.7）和相似度（SPK 0.580 vs 0.337
 - SMOS：YourTTS 3.45 / **VALL-E 4.38** / GroundTruth 4.5 —— VALL-E 比 baseline **+0.93 SMOS**，已非常接近真值。
 - CMOS（相对 VALL-E）：YourTTS −0.12（即 VALL-E **+0.12** 自然度优于 YourTTS），GroundTruth +0.17。
 
-**VCTK 客观（Table 6，SPK，108 全说话人 / 11 未见说话人，3s/5s/10s 提示）**：VALL-E 全面优于 YourTTS——**即便 YourTTS 训练时见过 VCTK 的 97 个说话人，而 VALL-E 一个都没见过**。例：11 未见说话人 3s 提示下 VALL-E 0.389 vs YourTTS 0.331；提示越长相似度越高（VALL-E 11 unseen：3s 0.389 → 5s 0.528... 注：原表 5s/10s 数字随提示增长上升），符合直觉。
+**VCTK 客观（Table 6，SPK，108 全说话人 / 11 未见说话人，3s/5s/10s 提示）**：VALL-E 全面优于 YourTTS——**即便 YourTTS 训练时见过 VCTK 的 97 个说话人，而 VALL-E 一个都没见过**（公平对照取 11 个双方都未见的说话人）。原表关键数值（SPK↑）：
+| 说话人集 | 模型 | 3s | 5s | 10s |
+|---|---|---|---|---|
+| 108 full | YourTTS* | 0.357 | 0.377 | 0.394 |
+| 108 full | **VALL-E** | **0.382** | **0.423** | **0.484** |
+| 108 full | GroundTruth | 0.546 | 0.591 | 0.620 |
+| 11 unseen | YourTTS | 0.331 | 0.337 | 0.344 |
+| 11 unseen | **VALL-E** | **0.389** | **0.380** | **0.414** |
+| 11 unseen | GroundTruth | 0.528 | 0.556 | 0.586 |
+
+即 11 未见说话人 3s 提示下 VALL-E 0.389 vs YourTTS 0.331，公平设置下差距更大。作者结论是「提示越长相似度越高」，这在 108-full 全集上单调成立（VALL-E 0.382→0.423→0.484）；11-unseen 子集上 VALL-E 为 0.389→0.380→0.414（5s 略低于 3s，非严格单调，样本仅 11 人）。
 **VCTK 人评（Table 7，60 说话人，3 秒提示）**：SMOS YourTTS 3.70 / **VALL-E 3.81** / GroundTruth 4.29；CMOS（相对 VALL-E）YourTTS **−0.23**（VALL-E +0.23 优于 baseline）、GroundTruth **−0.04**——即 VALL-E 自然度与真人录音**无统计显著差异**（在 VCTK 上）。
 
 **消融**：
-- NAR prompt 消融（Table 4，输入用真值第 1 层 token）：无任何 prompt WER 19.6 / SPK 0.518 → 加 phoneme prompt WER 骤降到 3.0（phoneme 主要贡献内容）→ 双 prompt（phoneme+声学）SPK 升到 0.732（声学 prompt 贡献说话人身份）。
+- NAR prompt 消融（Table 4，输入用真值第 1 层 token）：no-prompt WER 19.6 / SPK 0.518 → phn-prompt WER 骤降到 3.0 / SPK 0.541（phoneme 主要贡献内容）→ 2-prompts（phoneme+声学）WER 2.8 / SPK 升到 0.732（声学 prompt 贡献说话人身份）。
 - AR prompt 消融（Table 5）：去掉 AR 的声学 prompt，SPK 从 0.585 跌到 0.236（WER 不变 5.9）——说明即便 NAR 能看到 prompt，AR 的声学 prompt 对说话人相似度仍极关键。
 
 **定性发现**：(1) 多样性——采样解码使同一文本+说话人两次推理产出不同语速/重音/时长（传统 mel 回归 TTS 是确定性一对一映射），可用于为 ASR 造伪数据；(2) **声学环境保持**——提示有混响时合成也带混响（baseline 输出干净语音）；(3) **情绪保持**——用 EmoV-DB 含 5 种情绪的提示，零样本保留提示情绪，无需在情绪 TTS 数据上微调。

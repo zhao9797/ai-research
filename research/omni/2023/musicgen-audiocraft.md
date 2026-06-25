@@ -16,6 +16,7 @@ project_url: "https://ai.meta.com/blog/audiocraft-musicgen-audiogen-encodec-gene
 downloaded: [arxiv-2306.05284.pdf, musicgen-audiocraft--readme.md, musicgen-audiocraft--musicgen-doc.md, musicgen-audiocraft--hf-model-card.md, musicgen-audiocraft--meta-blog.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

@@ -16,6 +16,7 @@ project_url: "https://huggingface.co/blog/t2i-sdxl-adapters"
 downloaded: [arxiv-2302.08453.pdf, t2i-adapter--readme.md, t2i-adapter--hf-sdxl-blog.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -36,7 +37,7 @@ T2I-Adapter 是与 [[controlnet]] 同期（2023-02）提出的轻量级可控生
   - **不引入 time embedding**：作者发现给 adapter 加 time embedding 能增强引导，但会要求 adapter 参与每一步迭代，违背"简单/小"的初衷；改用训练采样策略（见训练方法）规避。
 - **空间颜色调色板（spatial color palette）**：为控制色调（hue）与颜色空间分布，用 64× 双三次下采样去掉语义/结构信息、只保留颜色，再用最近邻上采样还原尺寸，得到"色块排布"作为颜色条件图。
 - **多 adapter 组合**：Fc = Σ_k ω_k · F_AD^k(C_k)，ω_k 为可调权重，**无需任何额外训练**即可叠加多条件（如 sketch 控结构 + color 控颜色，depth + keypose 等）。
-- **模型规模档位（消融）**：base 77M / 72M存储（其它结构条件用）、small 18M / 72M存储（×4 压缩，颜色这种粗粒度条件用）、tiny 5M / 20M存储（×8 压缩）。tiny 版在 sketch 引导上仍有可观控制力。（注：README 又给出 color adapter 仅 17M、style/canny/openpose 等 Adapter Zoo 系列。）
+- **模型规模档位（消融，论文 Fig.12）**：base 77M / 300M存储（其它结构条件用）、small 18M / 72M存储（×4 压缩，颜色这种粗粒度条件用）、tiny 5M / 20M存储（×8 压缩）。tiny 版在 sketch 引导上仍有可观控制力。（注：README 又给出 color adapter 仅 17M、style/canny/openpose 等 Adapter Zoo 系列。）
 - **SDXL 版（2023-08~09，与 HF diffusers 合作）**：沿用**同一配方**，用 79M（部分 77M）adapter 驱动 2.6B 的 [[sdxl]]，分辨率提到 1024×1024，依然单次前向。
 
 ## 数据

@@ -16,6 +16,7 @@ project_url: "https://ml.cs.tsinghua.edu.cn/prolificdreamer/"
 downloaded: [arxiv-2305.16213.pdf, arxiv-2305.16213.txt, prolificdreamer--project-page.md, prolificdreamer--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

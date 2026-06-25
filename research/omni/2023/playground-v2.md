@@ -13,9 +13,10 @@ github_url: ""
 hf_url: "https://huggingface.co/playgroundai/playground-v2-1024px-aesthetic"
 modelscope_url: ""
 project_url: "https://playground.com"
-downloaded: [playground-v2--hf-card.md, playground-v2--mjhq30k-dataset-card.md, playground-v2.5--arxiv-2402.17245-html.md]
+downloaded: [playground-v2--hf-card.md, playground-v2--mjhq30k-dataset-card.md, playground-v2--official-blog.md, playground-v2.5--arxiv-2402.17245-html.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -32,7 +33,7 @@ Playground v2 是 Playground 团队 2023 年 12 月开源的文生图模型：**
 **与 SDXL 完全相同的潜在扩散模型（Latent Diffusion Model）**，HF model card 明确写"It follows the same architecture as Stable Diffusion XL"：
 
 - **Backbone**：SDXL 式 U-Net（卷积 + 自/交叉注意力的 UNet，非 DiT）。Diffusers 中通过 `StableDiffusionXLPipeline` 加载，pipeline tag = StableDiffusionXLPipeline。
-- **文本编码器（双塔，固定/预训练，不微调）**：OpenCLIP-ViT/bigG（OpenCLIP）+ CLIP-ViT/L（OpenAI CLIP）。两路文本特征拼接后做交叉注意力条件注入——与 SDXL 一致。
+- **文本编码器（双塔，固定/预训练，不微调）**：OpenCLIP-ViT/G（OpenCLIP）+ CLIP-ViT/L（OpenAI CLIP）——card 与 v2.5 报告均如此表述；SDXL 实际用的是 ViT-bigG/14，二者指同一编码器，本页统一沿用 card 写法 "ViT/G"。两路文本特征拼接后做交叉注意力条件注入——与 SDXL 一致。
 - **VAE / latent**：沿用 SDXL 的潜在空间（card 未单独披露是否换 VAE，按"same architecture"理解为 SDXL VAE）。
 - **分辨率策略**：原生 1024×1024 输出。团队还公开了两个**中间分辨率基座 checkpoint**：playground-v2-256px-base、playground-v2-512px-base（用于研究像素基础模型的训练曲线）。
 - **条件注入**：与 SDXL 一致的尺寸/裁剪条件（size/crop conditioning）+ 双 CLIP 文本条件（card 未对此做额外披露，按同构理解）。
@@ -48,6 +49,8 @@ Playground v2 是 Playground 团队 2023 年 12 月开源的文生图模型：**
 - v2.5 报告回溯提到 v2 已在"最后阶段加 offset noise"训练（见训练方法），但未涉及数据本身。
 
 > 数据来源 / 规模 / 配比 / 美学过滤 / 安全过滤：**均未披露**（一手源中无任何数字）。
+
+许可与可商用：官方博客明确 "We're providing **open weights**... **Commercial use is permitted**"，HF 上以 `playground-v2-community` 许可发布——这是 v2 区别于纯研究权重的一点（与 SDXL 社区生态位对标）。
 
 ## 训练方法
 **"从零训练"的 SDXL 同构模型，训练目标与 SDXL 一致（DDPM/ε-prediction 式扩散）。** 关键可确证细节（部分由后继 v2.5 报告反向披露）：
@@ -115,7 +118,7 @@ Playground v2 是 Playground 团队 2023 年 12 月开源的文生图模型：**
 ## 原始链接
 - hf (model card, 一手主源): https://huggingface.co/playgroundai/playground-v2-1024px-aesthetic
 - hf (MJHQ-30K 数据集卡, 一手): https://huggingface.co/datasets/playgroundai/MJHQ-30K
-- blog (官方原博客, 已失效): https://blog.playgroundai.com/playground-v2/ （= worklist 中的 https://playground.com/blog/playground-v2，二者均已下线，archive.org 在本环境不可达，**未能获取**）
+- blog (官方原博客, 一手, 在线): https://blog.playgroundai.com/playground-v2/ （HTTP 200，发布于 2023-12-05，全文已抓取落盘；内容含 2.5x 偏好、PartiPrompts、MJHQ-30K 介绍、"open weights / commercial use permitted"、256px/512px 预训练权重发布、团队署名）。注意 worklist 中给的 https://playground.com/blog/playground-v2 现已 **404**，正确可用地址是 blog.playgroundai.com 这个。
 - arxiv (后继 v2.5 技术报告，反向披露 v2 细节): https://arxiv.org/abs/2402.17245
 - project: https://playground.com
 - intermediate base models: https://huggingface.co/playgroundai/playground-v2-256px-base ; https://huggingface.co/playgroundai/playground-v2-512px-base
@@ -123,4 +126,5 @@ Playground v2 是 Playground 团队 2023 年 12 月开源的文生图模型：**
 ## 本地落盘文件
 - ../../../sources/omni/2023/playground-v2--hf-card.md
 - ../../../sources/omni/2023/playground-v2--mjhq30k-dataset-card.md
+- ../../../sources/omni/2023/playground-v2--official-blog.md
 - ../../../sources/omni/2023/playground-v2.5--arxiv-2402.17245-html.md

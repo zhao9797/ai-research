@@ -16,6 +16,7 @@ project_url: "https://stability.ai/research/adversarial-diffusion-distillation"
 downloaded: [arxiv-2311.17042.pdf, sdxl-turbo-add--hf-readme.md, sdxl-turbo-add--blog.md, sdxl-turbo-add--research-page.md, sdxl-turbo-add--github-readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -62,9 +63,9 @@ ADD 的定位：**保留扩散模型的样本质量与组合性、又拿到 GAN 
 
 **消融关键数字（Table 1，单步，COCO FID5k / CLIP）**：
 - 判别器特征网（1a）：DINOv2 ViT-S 最佳（FID 20.6 / CS 0.319），优于 DINOv1 ViT-S（21.5/0.312）、DINOv2 ViT-L（24.0/0.302）、CLIP ViT-L（23.3/0.308）。
-- 判别器条件（1b）：text+image 双条件最好（FID 20.6 / CS 0.325），优于无条件（21.2/0.315）、仅 text（21.1/0.319）。
+- 判别器条件（1b）：text+image 双条件最好（FID 20.6 / CS 0.319），优于无条件（21.2/0.302）、仅 text（21.2/0.307）、仅 image（21.1/0.316）——图像条件单独已优于文本条件。
 - 学生初始化（1c）：预训练 20.6/0.319 vs 随机 293.6/0.065（坍塌）。
-- 损失项（1d）：仅 L_adv 20.8/0.302；仅 L_distill 315.6/0.076（失效）；L_adv+λL_distill,exp 20.6/0.316；+sds 22.3/0.319；+nfsd 21.8/0.327。
+- 损失项（1d）：仅 L_adv 20.8/0.315；仅 L_distill 315.6/0.076（失效）；L_adv+λL_distill,exp 20.6/0.319；+sds 22.3/0.325；+nfsd 21.8/0.327（exp 偏 FID/多样性，sds/nfsd 偏质量与文本对齐）。
 - 教师类型（1e）：学生会"继承"教师特性——SDXL 教师 FID 偏高但 CLIP 更高（student SDXL/teacher SDXL：28.41/0.325）。
 - 教师步数（1f）：1 步即足够（FID 20.6），2/4 步无明显增益。
 

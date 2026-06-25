@@ -16,6 +16,7 @@ project_url: "https://www.xxlong.site/Wonder3D/"
 downloaded: [arxiv-2310.15008.pdf, wonder3d--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

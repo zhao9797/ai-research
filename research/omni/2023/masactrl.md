@@ -1,7 +1,8 @@
 ---
 title: "MasaCtrl: Tuning-Free Mutual Self-Attention Control for Consistent Image Synthesis and Editing"
-org: "CAS / Tencent ARC Lab (PCG) / University of Tokyo"
+org: "The University of Tokyo / Tencent PCG (ARC Lab)"
 country: China
+reviewed: 2026-06-25
 date: "2023-04"
 type: paper
 category: edit
@@ -37,7 +38,7 @@ MasaCtrl **本身不是一个模型，而是一个推理期的注意力替换算
 - **核心算子——互注意力（Mutual Self-Attention）**：
   - 标准自注意力 `Attention(Q,K,V)=Softmax(QKᵀ/√d)·V`，Q/K/V 均来自同一图的空间特征。
   - 互注意力**保留目标图的 Query `Q`，但把 Key/Value 替换为源图重建过程对应自注意力层的 `Kₛ, Vₛ`**——即"把自注意力变成跨两个扩散过程的交叉注意力"。这样目标图就能从源图里"取材"（查询纹理、颜色、身份），同时自身布局由目标 prompt 决定。
-  - **关键：不是所有步/所有层都替换。** 直接全程全层替换会得到与源图几乎一样的结果、无视目标 prompt。EDIT 函数定义为：`当 t > S 且 l > L 时用 {Q, Kₛ, Vₛ}，否则用原始 {Q,K,V}`。即**只在去噪若干步之后、且只在 U-Net 解码器（decoder）部分**做互注意力控制。默认 **S=4 步、L=10 层**（DDIM 50 步采样，CFG=7.5）。消融表明：早期步骤需让目标布局先成形；解码器高分辨率层才承载内容，编码器/低分辨率层做控制会丢内容或丢布局。
+  - **关键：不是所有步/所有层都替换。** 直接全程全层替换会得到与源图几乎一样的结果、无视目标 prompt。EDIT 函数定义为（论文 Eq.2）：`当 T−t > S 且 l > L 时用 {Q, Kₛ, Vₛ}，否则用原始 {Q,K,V}`（T 为总去噪步数，故 `T−t > S` 表示已去噪 S 步之后才开始控制）。即**只在去噪若干步之后、且只在 U-Net 解码器（decoder）部分**做互注意力控制。默认 **S=4 步、L=10 层**（DDIM 50 步采样，CFG=7.5）。消融表明：早期步骤需让目标布局先成形；解码器高分辨率层才承载内容，编码器/低分辨率层做控制会丢内容或丢布局。
 - **掩码引导互注意力（Mask-Guided Mutual Self-Attention）**：当前景与背景颜色/纹理相似时，互注意力会"前后景串味"产生混乱。解决办法是**从交叉注意力图免费提取掩码**：在 step t 用源/目标 prompt 各前向一遍，取前景物体 token 的交叉注意力图，在 16×16 分辨率上跨所有 head 与层平均，得到源掩码 `Mₛ` 与目标掩码 `M`。然后前景特征只查询源图前景、背景只查询源图背景：`f̄ = f_o·M + f_b·(1−M)`，其中 `f_o = Attention(Q, Kₛ, Vₛ; Mₛ)`、`f_b = Attention(Q, Kₛ, Vₛ; 1−Mₛ)`。掩码全自动、零额外标注/分割网络。
 - **可控扩散集成**：可直接套在 [[t2i-adapter]] / [[controlnet]] 之上——用 Adapter/ControlNet（pose/sketch/seg）强约束目标布局，再用 MasaCtrl 从源图查内容。此时因布局被强引导，可把控制提前（实验用 **S=2, L=8**）。
 
@@ -48,7 +49,7 @@ MasaCtrl **本身不是一个模型，而是一个推理期的注意力替换算
 **不适用——本方法零训练、零微调、零优化。** 这正是其相对 Imagic（需逐图微调全模型 + 优化文本嵌入）的核心卖点。所有"方法"都发生在**推理期的去噪循环里**（见 Algorithm 1）：
 1. 对每个去噪步 `t = T … 1`：先用源 prompt `Pₛ` 跑一遍 SD 得到源图的 `εₛ` 与 `{Qₛ,Kₛ,Vₛ}`，采样得 `z_{t−1}ˢ`；
 2. 再用目标 prompt `P` 跑目标图，得到 `{Q,K,V}`；
-3. 经 EDIT 函数把目标图自注意力的 K/V 换成源图的 `Kₛ,Vₛ`（满足 t>S, l>L 时），算出 `{Q*,K*,V*}`，重新前向得 `ε`，采样得 `z_{t−1}`。
+3. 经 EDIT 函数把目标图自注意力的 K/V 换成源图的 `Kₛ,Vₛ`（满足 T−t>S, l>L 时），算出 `{Q*,K*,V*}`，重新前向得 `ε`，采样得 `z_{t−1}`。
 
 不涉及 diffusion/flow-matching 的重新训练，不涉及 SFT/RLHF/DPO，不涉及一致性蒸馏/LCM/ADD 等加速训练。唯一的"超参"是控制起始步 **S** 与起始层 **L**（默认 S=4/L=10；接 Adapter 时 S=2/L=8），以及标准 SD 采样参数（DDIM 50 步、CFG 7.5）。
 

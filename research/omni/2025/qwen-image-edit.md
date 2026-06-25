@@ -16,6 +16,7 @@ project_url: "https://qwenlm.github.io/blog/qwen-image-edit/"
 downloaded: [arxiv-2508.02324.pdf, qwen-image-edit--hf-card.md, qwen-image-edit-2509--hf-card.md, qwen-image-edit--blog.md, qwen-image--github-readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

@@ -16,13 +16,14 @@ project_url: "https://muse-model.github.io/"
 downloaded: [arxiv-2301.00704.pdf, muse--project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
 Muse 是 Google Research 提出的文生图模型，用**掩码生成式 Transformer 在离散 VQGAN token 空间**上做**并行解码**（一次前向预测多个 token，base 仅 24 步、super-res 仅 8 步），在效率上碾压扩散/自回归路线——3B 模型生成 512×512 单图仅 1.3s（TPUv4），比 Imagen-3B / Parti-3B 快 >10×、比 Stable Diffusion v1.4 快 3×；质量上 zero-shot COCO FID 7.88、CLIP 0.32（CLIP 高于 Imagen 的 0.27），CC3M 上 900M 模型 FID 6.06 创当时 SOTA，且天然支持零样本 inpainting / outpainting / mask-free 编辑（无需微调或反演）。
 
 ## 背景与定位
-2022 年文生图被两条路线主导：像素空间级联扩散（[[imagen]]、DALL-E 2 / [[dalle-2-unclip]]）与离散 token 自回归（[[parti]]、DALL-E）。前者推理需上百步去噪，后者需逐 token 串行解码（256 或 4096 步），都很慢。Muse 走第三条路——把 [[maskgit]]（Chang et al., CVPR 2022，同一作者）的**掩码生成式建模（masked generative modeling）**从类条件扩展到大规模文生图：在 VQGAN 离散 token 上训练一个 BERT 式掩码预测器，推理时按置信度并行解码，可视为以 `[MASK]` 为吸收态（absorbing state）的**离散扩散过程**（Austin et al., 2021）。
+2022 年文生图被两条路线主导：像素空间级联扩散（[[imagen]]、DALL-E 2 / [[dall-e-2]]）与离散 token 自回归（[[parti]]、DALL-E）。前者推理需上百步去噪，后者需逐 token 串行解码（256 或 4096 步），都很慢。Muse 走第三条路——把 [[maskgit]]（Chang et al., CVPR 2022，同一作者）的**掩码生成式建模（masked generative modeling）**从类条件扩展到大规模文生图：在 VQGAN 离散 token 上训练一个 BERT 式掩码预测器，推理时按置信度并行解码，可视为以 `[MASK]` 为吸收态（absorbing state）的**离散扩散过程**（Austin et al., 2021）。
 
 相对前置工作的关键改进与继承：
 - 继承 [[imagen]] 的核心发现——**冻结的预训练 LLM（T5-XXL）作为文本编码器**对高质量、强语义对齐至关重要；论文初期实验中"从训练数据从头学语言模型"在长 prompt / 罕见词上显著更差。

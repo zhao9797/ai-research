@@ -16,6 +16,7 @@ project_url: "https://marigoldmonodepth.github.io"
 downloaded: [arxiv-2312.02145.pdf, marigold--readme.md, marigold--hf-depth-v1-1-card.md, marigold--hf-lcm-card.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -78,11 +79,11 @@ Marigold 换了一条路：**不再自己攒大数据集，而是复用文生图
 | 数据集 | Marigold AbsRel↓ | Marigold δ1↑ | 前 SOTA 对比 |
 |---|---|---|---|
 | NYUv2 | **5.5** | **96.4** | 此前最好 Omnidata 7.4 / 94.5、HDN 6.9 / 94.8 |
-| KITTI | 9.9 | 91.6 | DPT 10.0 / 90.1（Marigold AbsRel 略胜、δ1 更高） |
+| KITTI | **9.9** | **91.6** | DPT 10.0 / 90.1（论文表中 Marigold 此处 AbsRel 与 δ1 均为加粗最优） |
 | ETH3D | **6.5** | **96.0** | DPT 7.8 / 94.6 |
 | ScanNet | **6.4** | **95.1** | HDN 8.0 / 93.9、DPT 8.2 / 93.4 |
 | DIODE | 30.8 | 77.3 | DPT 18.2 / 75.8（DIODE 上 AbsRel 不占优，但 δ1 最高） |
-| **Avg. Rank** | **1.4** | — | 第二名 HDN 3.2、DPT 3.9 |
+| **Avg. Rank** | **1.4** | — | Ours w/o ensemble 2.5；最佳竞品 HDN 3.2、DPT 3.9 |
 
 要点：**平均排名 1.4 全场第一**；NYUv2/ETH3D/ScanNet 三个数据集 AbsRel 与 δ1 双双 SOTA；而且训练样本仅 74K（合成），对手用 30 万~1190 万（多为真实）样本——**用最少且零真实深度的数据拿到最好综合表现**。摘要所称">20% 提升"指个别场景/指标的相对降幅。注：DIODE 上 AbsRel 不如 DPT，论文将"远景/远处场景处理"列为已知局限。
 

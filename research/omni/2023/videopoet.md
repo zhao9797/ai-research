@@ -16,6 +16,7 @@ project_url: "https://sites.research.google/videopoet/"
 downloaded: [arxiv-2312.14125.pdf, videopoet--blog.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -24,7 +25,7 @@ VideoPoet 是 Google 提出的**纯自回归 decoder-only LLM 视频生成模型
 ## 背景与定位
 2023 年视频生成几乎被扩散模型垄断（Make-A-Video、Video LDM、ModelScopeT2V、Show-1、Pika、Gen2、Lumiere 等），它们多由文生图扩散模型派生，靠推理 trick、结构改造、adapter 层逐个堆叠新任务/新模态，**并非端到端统一训练**。语言模型路线（[[parti]]/DALL-E 式自回归、[[muse]]/MAGVIT 式掩码生成）虽在文生图上验证可行，但在文生视频上一直被认为质量不及扩散（Phenaki、[[cogvideo]] 等）。
 
-VideoPoet 的论点是：**LLM 范式真正的价值不在"文生视频单任务"，而在"大规模多任务预训练学一个 foundation"**——正如 GPT-3/PaLM 通过多样任务获得 zero/few-shot 泛化。作者由此把视频生成完全纳入 LLM 工具链（复用 LLM 的 scaling recipe、训练/推理基础设施、硬件优化），并用一个 transformer + 一个统一词表承载所有任务，与扩散模型"改架构 + 加 adapter"形成鲜明对照。它是 2023 年末**自回归视频生成的代表作**，技术血脉上承 [[magvit]]/MAGVIT-v2 tokenizer、Phenaki、Parti，是后续 Loong、Emu3、统一多模态自回归路线的重要先声。
+VideoPoet 的论点是：**LLM 范式真正的价值不在"文生视频单任务"，而在"大规模多任务预训练学一个 foundation"**——正如 GPT-3/PaLM 通过多样任务获得 zero/few-shot 泛化。作者由此把视频生成完全纳入 LLM 工具链（复用 LLM 的 scaling recipe、训练/推理基础设施、硬件优化），并用一个 transformer + 一个统一词表承载所有任务，与扩散模型"改架构 + 加 adapter"形成鲜明对照。它是 2023 年末**自回归视频生成的代表作**，技术血脉上承 [[magvit-v2]] tokenizer、[[phenaki]]、[[parti]]，是后续 Loong、[[emu3]]、统一多模态自回归路线的重要先声。
 
 ## 模型架构
 三大组件：(1) 模态专用 tokenizer，(2) decoder-only LLM 主干，(3) 非自回归超分模块。
@@ -65,7 +66,7 @@ VideoPoet 的论点是：**LLM 范式真正的价值不在"文生视频单任务
 全部为 **zero-shot**（模型未在评测集训练集上训练）。
 
 **零样本文生视频（Table 2，VideoPoet 为 8B）**
-- MSR-VTT：**CLIPSIM 0.3049**（pretrain）→ **0.3123**（task-adapt），**FVD 213**（pretrain）。对比 Show-1 0.3072、Make-A-Video 0.3049/FVD 367、VideoFactory 0.3049/FVD 410、CogVideo(EN) 0.2631/FVD 1294。
+- MSR-VTT（CLIPSIM↑ / FVD↓，同列对比）：**CLIPSIM 0.3049**（pretrain）→ **0.3123**（task-adapt），**FVD 213**（pretrain，全表最低）。CLIPSIM 对比 Show-1 0.3072、Make-A-Video 0.3049、VideoFactory 0.3005、ModelScopeT2V 0.2930、CogVideo(EN) 0.2631；MSR-VTT FVD 对比 Show-1 538、ModelScopeT2V 550、MagicVideo 998、CogVideo(EN) 1294（Make-A-Video / VideoFactory 的 MSR-VTT FVD 论文未报告）。
 - UCF-101：**FVD 355、IS 38.44**（pretrain）。对比 Show-1 FVD 394/IS 35.42、Make-A-Video FVD 367/IS 33.00。
 - VideoPoet 在 CLIPSIM 与 FVD 上整体居前列；pretrain foundation 未微调即有竞争力，T2V 微调进一步提升 CLIPSIM。
 
@@ -78,7 +79,7 @@ VideoPoet 的论点是：**LLM 范式真正的价值不在"文生视频单任务
 
 **视频风格化（Table 3，对比 Control-A-Video[depth]，DAVIS 2016 20 视频×2 prompt）**：VideoPoet CLIPSIM **0.3417** vs Control-A-Video 0.3246；人评 text fidelity 70% / video quality 77.5% 偏好 VideoPoet。
 
-**音频**：FAD 随规模下降（图 8b，具体数值以曲线形式给出，正文未列表化精确数字——**未报告**逐模型 FAD 表）。
+**音频**：FAD 仅以 VideoPoet 自身 300M/1B/8B 三档的 scaling 曲线呈现（图 8b，log-log，随模型与数据规模下降），**论文未给出精确数值，也无音频生成的对比基线表**。
 
 **其他评测细节**：MSR-VTT 用全部 59,794 caption 算 CLIP（ViT-B/16；ViT-B/32 下为 30.01），FVD 在 2048 视频×20 repeat 上用 I3D(K400)；UCF-101 采 10,000 视频；SSv2 用 50,000 样本、K600 用 50,000×4。
 
@@ -98,6 +99,10 @@ VideoPoet 的论点是：**LLM 范式真正的价值不在"文生视频单任务
 - 推理偏慢（约 5s 计算/秒视频，未优化），自回归长序列代价高。
 - 公平性：默认 prompt 输出分布偏 "Young Adults/Male/Light Skin Tone"，但可通过改 prompt 调节。
 - **未开源**（无 GitHub/HF/权重发布），为 Google 内部研究模型；生成视频使用数字水印以便溯源。
+
+## 相关页面（内链）
+- 共用/上承技术：[[magvit-v2]]（视觉 tokenizer）、[[phenaki]]、[[parti]]、[[muse]]、[[cogvideo]]（自回归/掩码生成前驱）
+- 后续路线：[[emu3]]（统一多模态自回归）
 
 ## 原始链接
 - arxiv_abs: https://arxiv.org/abs/2312.14125

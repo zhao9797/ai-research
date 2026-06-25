@@ -16,6 +16,7 @@ project_url: "https://lucaria-academy.github.io/Ming-Omni/"
 downloaded: [arxiv-2506.09344.pdf, ming-omni--hf-modelcard.md, ming-omni--github-readme.md, ming-omni--project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -144,4 +145,4 @@ Ming-Omni 是蚂蚁 Inclusion AI 的统一全模态模型：以 MoE LLM [[ling]]
 - ../../../sources/omni/2025/ming-omni--hf-modelcard.md （HF Ming-Lite-Omni 模型卡，含完整 benchmark 表 + 用法）
 - ../../../sources/omni/2025/ming-omni--github-readme.md （inclusionAI/Ming 仓库 README，现为 Ming-flash-omni 2.0，含版本时间线）
 - ../../../sources/omni/2025/ming-omni--project-page.md （项目主页快照）
-- /tmp/ming-config.json 中提取的 HF config.json MoE 结构（hidden 2048/28层/64+2 experts/top-6；vision qwen2_5_vit）——结论已写入正文
+- HF `inclusionAI/Ming-Lite-Omni` 的 `config.json`（直接拉取自 https://huggingface.co/inclusionAI/Ming-Lite-Omni/resolve/main/config.json 核对）：`llm_config` = `bailing_moe`，hidden 2048 / 28 层 / 16 头 / vocab 126464 / num_experts 64 / num_shared_experts 2 / num_experts_per_tok 6 / first_k_dense_replace 0；`vision_config` = `qwen2_5_vit`（hidden 1280）——结论已写入正文（未单独落盘，可按上述 URL 复现）

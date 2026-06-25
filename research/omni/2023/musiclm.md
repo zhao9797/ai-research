@@ -13,9 +13,10 @@ github_url: ""
 hf_url: ""
 modelscope_url: ""
 project_url: "https://google-research.github.io/seanet/musiclm/examples/"
-downloaded: [musiclm--paper-fulltext.md, musiclm--project-page.md]
+downloaded: [musiclm--paper-fulltext.md, musiclm--project-page.md, arxiv-2301.11325.pdf]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -83,7 +84,7 @@ MusicLM 把文生音乐建模成**层级离散 token 的多阶段自回归序列
 **关键消融**：
 - **语义 token 的作用**：去掉语义阶段、直接由 MuLan token 预测粗声学 token，FAD 基本不变（0.42 / 4.0），但 **KLD 从 1.01 升到 1.05、MCC 从 0.51 降到 0.49**，且长程结构退化——说明语义 token 主要贡献"文本贴合 + 长程一致"。
 - **token 信息分工**：固定文本 token + 语义 token、只重采声学阶段 → 样本同流派/节奏/主旋律，仅在混响/失真/相近音色乐器上有差异；只固定文本 token、重采语义+声学 → 旋律与节奏多样性大增但仍贴合文本。
-- **记忆化分析**（对语义阶段，借鉴 Carlini et al. 2022）：即使用 10 秒 prompt 续 5 秒，**精确匹配始终 <0.2%**；用 Sinkhorn 最优传输做近似匹配（阈值 τ=0.85，假阳<0.01%），近似匹配比例随 prompt 变长而升，约 **1%** 样本可找到近似匹配，且这些多是 token 多样性极低的片段（125 个语义 token 平均熵 4.6 bits，近似匹配样本降到 ~1.0 bit）。
+- **记忆化分析**（对语义阶段，借鉴 Carlini et al. 2022）：即使用 10 秒 prompt 续 5 秒，**精确匹配始终 <0.2%**；用 Sinkhorn 最优传输做近似匹配（阈值 τ=0.85，假阳<0.01%），近似匹配比例随 prompt 变长而升，约 **1%** 样本可找到近似匹配，且这些多是 token 多样性极低的片段（125 个语义 token 平均熵 4.6 bits，而匹配分数<0.5 的近似匹配样本熵降到 ~1.0 bit）。
 
 ## 创新点与影响
 - **核心贡献**：(1) 文生音乐的**层级离散 token 多阶段自回归**范式——把 [[audiolm]] 的语义/声学双级 token 框架嵌入文本条件，首个能从复杂自由文本生成 24 kHz、连续数分钟、多声部音乐的系统；(2) 用 [[mulan]] 联合嵌入**绕开配对数据稀缺**（训练纯音频、推理换文本 embedding，省掉 text→audio prior），使训练可 scale 到 280k 小时；(3) 发布 **MusicCaps**（5.5k 专家标注音乐-文本对），成为文生音乐领域长期的标准评测集；(4) 把条件扩展到**旋律**（哼唱/口哨）并演示 5 分钟长生成与 story mode；(5) 系统化的音乐生成**记忆化/版权风险研究**方法（精确+近似匹配 via 最优传输）。
@@ -99,4 +100,4 @@ MusicLM 把文生音乐建模成**层级离散 token 的多阶段自回归序列
 ## 本地落盘文件
 - ../../../sources/omni/2023/musiclm--paper-fulltext.md  （ar5iv 全文 HTML→markdown，含正文+附录 A/B/C，精读所用）
 - ../../../sources/omni/2023/musiclm--project-page.md  （官方 demo 页快照）
-- 注：arXiv PDF（arxiv-2301.11325.pdf）因本沙箱出站 HTTPS 被网络层阻断（curl/urllib TLS 握手被终止）**未能下载二进制**；全文内容已由 ar5iv HTML 渲染完整获取并精读，PDF 本身按规则也不入 git。
+- ../../../sources/omni/2023/arxiv-2301.11325.pdf  （arXiv 官方 PDF v1，6 页；已直连 curl 下载校验，PDF 按规则不入 git、备份 HF bucket）

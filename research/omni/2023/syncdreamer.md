@@ -16,16 +16,17 @@ project_url: "https://liuyuan-pal.github.io/SyncDreamer/"
 downloaded: [arxiv-2309.03453.pdf, syncdreamer.txt, syncdreamer--readme.md, syncdreamer--project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-SyncDreamer 是一个「同步多视角扩散」模型：从单张图出发，在**一次反向扩散过程**里同时生成 16 张几何/颜色一致的固定视角图，使得后续可直接用 vanilla NeuS/NeRF（无需 SDS loss）做单图三维重建。核心创新是用 **3D-aware feature attention（深度向 attention + 共享空间特征体）** 把 N 个噪声预测器在每一步去噪时同步起来，把 [[zero123]] 各视角独立生成造成的「不一致」问题压下去。在 GSO 数据集上 NVS 的 COLMAP 可重建点数从 Zero123 的 95 暴涨到 1123（一致性指标），SVR 的 Chamfer Distance 0.0261 / Volume IoU 0.5421 均优于 Zero123、Magic123、One-2-3-45、Point-E、Shap-E。ICLR 2024 Spotlight。
+SyncDreamer 是一个「同步多视角扩散」模型：从单张图出发，在**一次反向扩散过程**里同时生成 16 张几何/颜色一致的固定视角图，使得后续可直接用 vanilla NeuS/NeRF（无需 SDS loss）做单图三维重建。核心创新是用 **3D-aware feature attention（深度向 attention + 共享空间特征体）** 把 N 个噪声预测器在每一步去噪时同步起来，把 [[zero-1-to-3|Zero123]] 各视角独立生成造成的「不一致」问题压下去。在 GSO 数据集上 NVS 的 COLMAP 可重建点数从 Zero123 的 95 暴涨到 1123（一致性指标），SVR 的 Chamfer Distance 0.0261 / Volume IoU 0.5421 均优于 Zero123、Magic123、One-2-3-45、Point-E、Shap-E。ICLR 2024 Spotlight。
 
 ## 背景与定位
 单图三维重建是高度欠定的 ill-posed 问题。2023 年的主流路线有两条：
 
 1. **蒸馏路线（distillation）**：[[dreamfusion]]/SJC 用 SDS loss 把 2D 文生图模型蒸馏成 3D；RealFusion/Magic123/One-2-3-45 把它扩展到单图重建。问题：需要 textual inversion 找输入图的文本描述 + 逐物体 NeRF 优化，**慢、要繁琐调参、结果不保证**，且单词嵌入难以准确表达图像的丰富细节，重建质量受损；蒸馏只能收敛到**单一**形状。
-2. **多视角生成路线**：直接用 2D 扩散模型生成多视角图再做重建。代表作 [[zero123]] 用相对位姿 ∆v 作条件，从单图生成新视角图，泛化性强（在 Objaverse 上微调 SD），但**各视角独立采样**，几何与颜色一致性差——这正是 SyncDreamer 要解决的痛点。
+2. **多视角生成路线**：直接用 2D 扩散模型生成多视角图再做重建。代表作 [[zero-1-to-3|Zero123]] 用相对位姿 ∆v 作条件，从单图生成新视角图，泛化性强（在 Objaverse 上微调 SD），但**各视角独立采样**，几何与颜色一致性差——这正是 SyncDreamer 要解决的痛点。
 
 SyncDreamer 的定位是「多视角生成路线」的一致性升级：不再蒸馏、不做 textual inversion，而是把扩散框架（[[ddpm]]）扩展为**联合分布建模** pθ(x₀⁽¹⁾,…,x₀⁽ᴺ⁾|y)，让 N 视角在每个去噪步互相交换信息。与同期并行工作的区分：
 

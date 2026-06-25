@@ -13,9 +13,10 @@ github_url: https://github.com/THUDM/ImageReward
 hf_url: https://huggingface.co/THUDM/ImageReward
 modelscope_url:
 project_url: https://huggingface.co/datasets/THUDM/ImageRewardDB
-downloaded: [arxiv-2304.05977.pdf, raft-reward-diffusion--readme.md, raft-reward-diffusion--hf-datasetcard.md]
+downloaded: [arxiv-2304.05977.pdf, raft-reward-diffusion--readme.md, raft-reward-diffusion--hf-datasetcard.md, raft-reward-diffusion--hf-modelcard.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -84,7 +85,9 @@ ImageReward 是**首个通用文生图人类偏好奖励模型（RM）**，用 1
 - 推理加速/量化/蒸馏：未涉及（RM 本身是轻量 BLIP+MLP 前向；ReFL 产出的是普通微调后 SD checkpoint，推理成本与原 SD 相同，省的是"生成多张再筛选"的开销）。
 
 ## 评测 benchmark（把效果讲清楚）
-**1) ImageReward 作为偏好预测器（test：466 prompt / 6,399 对比，Table 3）**
+**1) ImageReward 作为偏好预测器（Table 3）**
+> 注意（论文表注）：**Preference Acc. 列来自 466 prompt / 6,399 对比的 test set；Recall/Filter 列来自另一份 371 prompt × 每 prompt 8 图的 test set**，两组并非同一测试集，所有分数按 prompt 取平均。
+
 | 模型 | Preference Acc. | Recall@1/@2/@4 | Filter@1/@2/@4 |
 |---|---|---|---|
 | CLIP Score | 54.82 | 27.22 / 48.52 / 78.17 | 29.65 / 51.75 / 76.82 |
@@ -133,12 +136,13 @@ ImageReward 是**首个通用文生图人类偏好奖励模型（RM）**，用 1
 - arxiv_abs: https://arxiv.org/abs/2304.05977
 - arxiv_pdf: https://arxiv.org/pdf/2304.05977
 - github: https://github.com/THUDM/ImageReward
-- hf_model: https://huggingface.co/THUDM/ImageReward （README 镜像 GitHub；本次因 SSL 抖动未单独抓到 raw，内容已被 GitHub README 覆盖）
+- hf_model: https://huggingface.co/THUDM/ImageReward （已抓到 raw README，是 GitHub README 的严格子集，无独有信息）
 - hf_dataset (ImageRewardDB): https://huggingface.co/datasets/THUDM/ImageRewardDB
-- 中文博客（官方）: https://zhuanlan.zhihu.com/p/639494251 （README 列出，未单独抓取）
+- 中文博客（官方）: https://zhuanlan.zhihu.com/p/639494251 （知乎 JS 反爬，curl 直连/代理均返回挑战页，**未能获取**；需交互式无头浏览器。其为论文同内容的中文科普，无新数字）
 - 下一代: https://github.com/THUDM/VisionReward
 
 ## 本地落盘文件
 - ../../../sources/omni/2023/arxiv-2304.05977.pdf
 - ../../../sources/omni/2023/raft-reward-diffusion--readme.md
 - ../../../sources/omni/2023/raft-reward-diffusion--hf-datasetcard.md
+- ../../../sources/omni/2023/raft-reward-diffusion--hf-modelcard.md

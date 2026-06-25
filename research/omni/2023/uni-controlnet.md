@@ -1,6 +1,6 @@
 ---
 title: "Uni-ControlNet: All-in-One Control to Text-to-Image Diffusion Models"
-org: "HKUST / Microsoft"
+org: "HKU / Microsoft"
 country: China
 date: "2023-05"
 type: paper
@@ -16,6 +16,7 @@ project_url: "https://shihaozhaozsh.github.io/unicontrolnet/"
 downloaded: [arxiv-2305.16322.pdf, uni-controlnet--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -27,7 +28,7 @@ T2I 扩散模型（[[latent-diffusion-ldm]]、Stable Diffusion）虽强，但纯
 - **从头训练**：Composer（Huang et al. 2023）在十亿级数据上训练一个大扩散模型，可控性强但 GPU 成本巨大，研究者难以复现。
 - **微调轻量 adapter**：[[controlnet]]、[[gligen]]、[[t2i-adapter]] 在冻结 SD 上挂轻量模块。问题是它们 **每个条件一个独立 adapter**——条件数 N 增加时微调成本与模型体积线性增长，且不同 adapter 彼此隔离，**可组合性（composability）差**。论文实测 Multi-ControlNet 与 CoAdapter（联合训练的 T2I-Adapter）在双条件融合时仍表现不佳。GLIGEN 干脆不支持多条件组合。
 
-Uni-ControlNet 走第二条路线但解决上述痛点：把所有条件归为 **局部条件（local，有空间结构）** 与 **全局条件（global，无空间结构，类似文本的整体语义控制）** 两大类，对应只加两个共享 adapter，无论条件多少。论文用 Table 1 总结：唯有 Uni-ControlNet 同时满足"微调"+"可组合"+"微调成本=2"+"adapter 数=2"。技术上它直接 build upon [[controlnet]]（局部 adapter 复制 SD encoder 的思路来自 ControlNet），全局 adapter 把 CLIP 图像 embedding 当作扩展文本 token，与 [[ip-adapter]] 同期、思路相邻（都把参考图注入 cross-attention，但注入方式不同）。
+Uni-ControlNet 走第二条路线但解决上述痛点：把所有条件归为 **局部条件（local，有空间结构）** 与 **全局条件（global，无空间结构，类似文本的整体语义控制）** 两大类，对应只加两个共享 adapter，无论条件多少。论文用 Table 1 总结：唯有 Uni-ControlNet 同时满足"微调"+"可组合"+"微调成本=2"+"adapter 数=2"。技术上它直接 build upon [[controlnet]]（局部 adapter 复制 SD encoder 的思路来自 ControlNet），全局 adapter 把 CLIP 图像 embedding 当作扩展文本 token，与稍晚（2023-08）的 [[ip-adapter]] 思路相邻（都把参考图 CLIP embedding 注入 cross-attention，但注入方式不同：Uni 把图像 token 直接 concat 进扩展 prompt 喂所有 cross-attn，IP-Adapter 用解耦的独立 cross-attn 分支）。
 
 ## 模型架构
 基座是 **Stable Diffusion** 的 U-Net 去噪网络（encoder F + middle block M + decoder G，encoder/decoder 各 12 个 block，带 skip-connection）。README 明确**发布的预训练权重基于 Stable Diffusion v1.5**。SD 主体全程**冻结**，只训练两个 adapter。
@@ -81,17 +82,21 @@ Uni-ControlNet 走第二条路线但解决上述痛点：把所有条件归为 *
 | T2I-Adapter | 18.98 | – | – | 18.83 | 29.57 | 21.35 | 23.84 | 28.86 |
 | **Uni-ControlNet** | **17.79** | **26.18** | **17.86** | 20.11 | **26.61** | **21.20** | **23.40** | **23.98** |
 
-**可控性（Table 3）**——按条件类型用不同指标，Uni-ControlNet 在 8 项中赢 4 项（ControlNet 赢 3，T2I-Adapter 赢 1）：
-- Canny/HED/MLSD/Sketch 用 **SSIM**（越高越好）：Uni 的 Canny 0.4911（最优）、HED 0.5197（最优）、Sketch 0.5923（最优）、MLSD 0.6773（ControlNet 0.7455 更高）。
-- Pose 用 **mAP(OKS)**：Uni 0.2164（T2I-Adapter 0.5283 更高，是弱项）。
-- Depth 用 **MSE**：Uni 91.05（注：表中数值越大方法越优的口径，Uni 最高）。
-- Seg 用 **mIoU**：Uni 0.3160（ControlNet 0.4431 更高）。
-- Content 用 **CLIP Score**：Uni 0.7753（最优）。
+**可控性（Table 3）**——按条件类型用不同指标，论文称 Uni-ControlNet 在 8 项中赢 4 项（ControlNet 赢 3，T2I-Adapter 赢 1）。Uni 拿下的 4 项是 Canny/HED/Sketch 的 SSIM 与 Content 的 CLIP Score：
+- Canny/HED/MLSD/Sketch 用 **SSIM**（越高越好）：Uni 的 Canny 0.4911（最优，ControlNet 0.4828）、HED 0.5197（最优，ControlNet 0.4719）、Sketch 0.5923（最优，T2I-Adapter 0.5148）；MLSD 0.6773 < ControlNet 0.7455（ControlNet 更优）。
+- Pose 用 **mAP(OKS)**：Uni 0.2164，T2I-Adapter 0.5283 更高（Uni 弱项）。
+- Depth 用 **MSE**（常规越低越好）：Uni 91.05，是三家里最高的（ControlNet 87.57 / GLIGEN 88.22 / T2I 89.82）；论文 Table 3 把 Uni 的 91.05 加粗为"best"与 MSE 越低越好的常识及"4/8"口径冲突，按越低越好读则该项归 ControlNet（**原文存在排版/口径不一致，此处按越低越好计**）。
+- Seg 用 **mIoU**（越高越好）：Uni 0.3160 < ControlNet 0.4431（ControlNet 更优）。
+- Content 用 **CLIP Score**（越高越好）：Uni 0.7753（最优）。
+- 即 ControlNet 赢 MLSD-SSIM / Depth-MSE / Seg-mIoU 共 3 项，T2I-Adapter 赢 Pose 1 项。
 - 关键背景：ControlNet/GLIGEN/T2I-Adapter **每条件各训一个专用模型**，而 Uni-ControlNet **单模型** 就达到整体更优。
 
 **CLIP Score（Table 7，越高越好）**——Uni-ControlNet 多数条件领先（如 Canny 0.2539、MLSD 0.2485、Sketch 0.2542、Content 0.2402 等），与质量/可控性结论一致。
 
-**与 SD2.1 原生条件版对比（Table 5/6）**：SD2-depth（FID 17.76 / CLIP 0.2516）与 SD2-unclip 是**整模型微调**，故 depth/content 上略优于 Uni（FID 21.20 / 23.98），但这两者各自只支持一种条件且代价是全模型微调；Uni 单模型支持全部条件。
+**与 SD2.1 原生条件版对比（Table 5/6）**：SD2-depth、SD2-unclip 是**整模型微调**（非冻结 adapter），各自只支持一种条件。
+- **Depth**：仅 **depth-FID** SD2-depth 更优（17.76 < Uni 21.20）；**depth-CLIP** 反而 Uni 0.2561 > SD2-depth 0.2516（Uni 更优）。即整模型微调的 SD2-depth 只在 FID 上压过 Uni，CLIP 维度 Uni 反超。
+- **Content**：结果互有胜负——content-FID **Uni 23.98 反而更优**（< SD2-unclip 24.12，Table 5 把 Uni 加粗为 best）；content-CLIP SD2-unclip 0.2497 > Uni 0.2402（SD2-unclip 更优）。
+- 结论：整模型微调在单一条件（尤其 depth-FID）上仍可领先，但代价是全模型微调且只支持一种条件；Uni 单模型支持全部条件，content 维度甚至 FID 反超 SD2-unclip。
 
 **用户研究（附录 G，20 用户 ×20 案例 ×单/多条件）**：在"生成质量/与文本匹配/与条件对齐"三指标上，单条件设置 Uni-ControlNet 得票均居首（如生成质量 30.2%/121 票，对条件匹配 34.5%/138 票）；多条件设置同样显著优于 Multi-ControlNet 与 CoAdapter。
 
@@ -99,13 +104,13 @@ Uni-ControlNet 走第二条路线但解决上述痛点：把所有条件归为 *
 - **局部注入策略**：本文多尺度 FDN 注入 > Injection-S1（直接插值后 SPADE，破坏条件信息）> Injection-S2（仅输入层注入，类似 ControlNet/T2I-Adapter，深层丢信息、组合不和谐），FID/CLIP 多数条件本文最优。
 - **全局注入**：必须把扩展 prompt 同时注入主干 SD（Injection-S3 仅注入 adapter 不注入主干 → 全局条件根本无法体现在结果里）。
 - **训练策略**：分训（默认）≈ 分训后再联合微调 ≫ 直接联合训练（联合训练让全局条件欠学）。
-- **条件冲突分析**（附录 D，仅分析用途）：条件"强度"排序为 HED > Canny > sketch > depth > MLSD > segmentation > Openpose（Openpose 最弱，冲突时常被忽略）。
+- **条件冲突分析**（附录 B，仅分析用途）：条件"强度"排序为 HED > Canny > sketch > depth > MLSD > segmentation > Openpose（Openpose 最弱，冲突时常被忽略）。
 
 ## 创新点与影响
 - **核心贡献**：把可控生成的条件**二分为 local/global 两类**，对应只需 **2 个共享 adapter**（恒定，不随条件数 N 增长），首个在单模型内统一多种局部+全局条件且**真正可组合**的微调式框架；同时大幅省微调成本与模型体积。
 - **方法创新**：① 局部条件的**多尺度 FDN（SPADE 式）注入**，比 ControlNet 的单点注入对齐更好、组合更和谐；② 全局条件作为**扩展文本 token** 注入所有 cross-attention；③ **分开训练即可组合**的反直觉发现，免去联合训练成本；④ **只重训特征提取器首层卷积**即可扩展新条件。
 - **影响**：与 ControlNet/T2I-Adapter/[[ip-adapter]] 一起成为 2023 年"冻结 SD + adapter 可控生成"范式的代表作，证明了"统一多条件 + 可组合"在轻量微调路线上可行，为后续统一可控/多条件融合工作提供了 local/global 二分与共享 adapter 的设计参考。开源（NeurIPS 2023，代码+预训练权重已放出，基座 SD v1.5）。
-- **已知局限**：① 工程数字（参数量、GPU·时、推理耗时）**几乎未披露**；② Pose/Seg 等指标弱于专用 ControlNet（单模型通才 vs 专才的权衡）；③ 条件冲突时强弱不均（Openpose 最易被忽略）；④ 整模型微调的 SD2-depth/unclip 在单一条件上仍更强，说明冻结 adapter 路线有上限；⑤ sketch 训练用 HED+简化合成、与真实手绘有分布差（实测泛化尚可但存在 gap）。
+- **已知局限**：① 工程数字（参数量、GPU·时、推理耗时）**几乎未披露**；② Pose/Seg 等指标弱于专用 ControlNet（单模型通才 vs 专才的权衡）；③ 条件冲突时强弱不均（Openpose 最易被忽略）；④ 整模型微调的 SD2-depth 在 depth-FID 上仍领先 Uni（17.76 vs 21.20），说明冻结 adapter 路线相对全模型微调有上限（但仅限部分指标，content-FID 与 depth-CLIP 上 Uni 反而占优）；⑤ sketch 训练用 HED+简化合成、与真实手绘有分布差（实测泛化尚可但存在 gap）。
 
 ## 原始链接
 - arxiv_abs: https://arxiv.org/abs/2305.16322

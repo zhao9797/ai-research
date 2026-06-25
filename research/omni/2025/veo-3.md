@@ -16,6 +16,7 @@ project_url: "https://deepmind.google/models/veo/"
 downloaded: [veo-3--blog-generative-media-io2025.md, veo-3--vertex-ai-announce.md, veo-3--deepmind-model.md, veo-3--deepmind-evals.md, veo-3--gemini-api-video-docs.md, veo-3--vertex-model-reference.md, veo-3-1--blog-veo-updates-flow.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -61,12 +62,12 @@ Veo 3 / Veo 3.1 是**完全闭源的商用产品**，Google **未发布技术报
 - **安全过滤**：输入提示与输出内容均经一组安全过滤器（Vertex 上过滤强度与"人物生成"控制可配置）。
 
 ## 评测 benchmark（把效果讲清楚）
-**这是本工作披露最薄弱的一环。** Google 没有发布带数值表的技术报告；DeepMind 官网设有 Veo evals 页（`deepmind.google/models/veo/evals/`，本页已抓取快照），但其 MovieGenBench/人评胜率等对比**以 JS 图表/SVG 形式渲染，无法以文本形式抽取到具体百分比数字**，故本页**不给出胜率数值以免编造**。可确证的定性/规模数据：
+**这是本工作披露最薄弱的一环。** Google 没有发布带数值表的技术报告；DeepMind 官网 Veo 页设有 "Performance" 评测板块（`deepmind.google/models/veo/evals/`，本页已抓取快照），但其对比图表**以 JS/SVG 形式渲染，落盘快照只抓到 prompt 画廊与板块标题，未能抽取到任何具体百分比数字或所用基准名称**（快照中**未出现** MovieGenBench/VBench 等基准名，故本页**不指认具体基准、不给出胜率数值以免编造**）。可确证的定性/规模数据：
 
 - **核心定性卖点**（官方反复强调，属对比 Veo 2 的相对改进，非绝对分数）：更强真实感与保真度、真实世界物理、**精准对口型**、跨文本/图像提示的更好质量、显著更强的**提示词遵循（prompt adherence）**。
 - **首创性主张**："for the first time, can also generate videos with audio"——旗舰模型中首个原生同步出音频（对白/音效/环境音）。
-- **采用度 / 规模指标**（一手）：截至 Veo 3.1 发布（2025-10-15），AI 影视工具 **Flow 内累计生成超 2.75 亿（275 million）个视频**（官方脚注明确：该数含 Veo 2 与 Veo 3 两代生成量，非 Veo 3 单独）；企业客户案例中 Kraft Heinz 称创意流程从"8 周缩到 8 小时"，Brandtech/Jellyfish（David Jones）称试点平均降本 / 缩短上市约 **50%**（均为客户自述营销数据，非模型基准；另有 Klarna、Envato 等案例）。
-- **第三方基准（FID/VBench/MovieGenBench 胜率、与 [[kling-2]]/[[sora-2]]/Runway 等的 head-to-head 数字）**：官方一手源**未以文本形式给出**，本页标注"未报告（仅图表形式）"。
+- **采用度 / 规模指标**（一手）：截至 Veo 3.1 发布博客发文时，AI 影视工具 **Flow 内累计生成超 2.75 亿（275 million）个视频**（官方脚注原文 "Includes Veo 2 and Veo 3 generations"，即含 Veo 2 与 Veo 3 两代生成量，非 Veo 3 单独）；企业客户案例中 Kraft Heinz 称创意流程"从八周缩到八小时（eight weeks → eight hours）"。注意：Vertex 发布博客里 Brandtech/Jellyfish（David Jones）所述试点平均降本 / 缩短上市约 **50%**，其引语明说是 "the addition of **Veo 2** in Pencil"——指 **Veo 2** 试点而非 Veo 3；Envato 的 VideoGen 案例同样用 **Veo 2**；这些均为客户自述营销数据、非模型基准，且部分并非 Veo 3 专属（另有 Klarna 等案例，未给量化数字）。
+- **第三方/学术基准（FID/VBench 等胜率、与 [[kling-2]]/[[sora-2]]/Runway 等的 head-to-head 数字）**：官方一手源**未以可抽取文本形式给出**（evals 页声称 Veo 3.1 "state-of-the-art" 但对比数据仅以图表呈现，落盘快照未能抽到数值、亦未注明所用基准），本页标注"未报告（仅图表形式，基准名未确证）"。
 
 > 说明：诸如 FID、VBench、CLIPScore 等学术指标在 Veo 3 的官方材料中均未出现——这是闭源旗舰产品的常态，Google 以"产品体验 + SynthID + 客户案例"替代了学术基准披露。
 
@@ -90,7 +91,7 @@ Veo 3 / Veo 3.1 是**完全闭源的商用产品**，Google **未发布技术报
 - blog (Veo 3.1 发布 + Flow 更新): https://blog.google/innovation-and-ai/products/veo-updates-flow/
 - blog (Vertex AI 企业侧发布，含能力清单/客户案例/安全): https://cloud.google.com/blog/products/ai-machine-learning/announcing-veo-3-imagen-4-and-lyria-2-on-vertex-ai
 - product (DeepMind Veo 模型页): https://deepmind.google/models/veo/
-- product (DeepMind Veo evals 页，含图表式人评对比，数值无法文本抽取): https://deepmind.google/models/veo/evals/
+- product (DeepMind Veo evals/Performance 页，对比以图表呈现，落盘快照未能抽取数值或基准名): https://deepmind.google/models/veo/evals/
 - docs (Gemini API 视频文档，含分辨率/时长/宽高比/模型ID 等硬规格): https://ai.google.dev/gemini-api/docs/video
 - docs (Vertex AI Veo 3 模型参考，含 4/6/8s · 720p/1080p · 24 FPS · GA 2025-07-29 等硬规格): https://cloud.google.com/vertex-ai/generative-ai/docs/models/veo/3-0-generate-001?hl=en
 

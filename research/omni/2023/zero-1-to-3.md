@@ -16,6 +16,7 @@ project_url: "https://zero123.cs.columbia.edu/"
 downloaded: [arxiv-2303.11328.pdf, zero-1-to-3--readme.md, zero-1-to-3--project.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

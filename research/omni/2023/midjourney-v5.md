@@ -16,6 +16,7 @@ project_url: "https://www.midjourney.com"
 downloaded: [midjourney-v5--docs-version.md, midjourney-v5--docs-legacy-features.md, midjourney-v5--docs-zoom-out.md, midjourney-v5--wayback-2023-03-v5-launch.md, midjourney-v5--wayback-2023-06-model-versions.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -65,7 +66,7 @@ Midjourney V5（2023-03-15 发布）及其迭代 V5.1（2023-05-04）/ V5.2（20
 ## 评测 benchmark（把效果讲清楚）
 **Midjourney 从未报告任何标准 benchmark 数字**——FID、CLIPScore、GenEval、T2I-CompBench、DPG-Bench、MJHQ-30K、HPSv2、ImageReward、PickScore、人评 ELO/Arena 等**一律未报告**。官方只有**定性效果描述**：
 
-- **V5（2023-03-15，官方原文）**："the newest and most advanced model... very high Coherency, excels at interpreting natural language prompts, is higher resolution, and supports advanced features like repeating patterns with `--tile`"；后续文档补充 V5"produces more photographic generations（更照片化）... closely match the prompt but may require longer prompts（更贴提示但可能需要更长提示词）"。
+- **V5（2023-03-15，官方原文）**："the newest and most advanced model... very high Coherency, excels at interpreting natural language prompts, is higher resolution, and supports advanced features like repeating patterns with `--tile`"；后续文档补充 V5"produces more photographic generations **than the V5.1 model**（比 V5.1 更照片化——V5.1 用默认美学换取了部分写实度）... closely match the prompt but may require longer prompts（更贴提示但可能需要更长提示词）"。
 - **V5.1（2023-05-04，官方原文）**："stronger default aesthetic（更强默认美学，简单提示也好用）... high coherency, excels at accurately interpreting natural language prompts, fewer unwanted artifacts and borders（更少伪影/黑边）, increased image sharpness（更锐）"，并支持 `--tile` 无缝平铺。
 - **V5.2（2023-06，官方原文）**："more detailed, sharper results with better colors, contrast, and compositions（更细、更锐、配色/对比/构图更好）... slightly better understanding of prompts... more responsive to the full range of the `--stylize` parameter（对 stylize 全范围更敏感）"。
 - **MJHQ-30K 这个 benchmark 反而是别人拿 Midjourney 当"标杆参照"**：后来 Playground/社区构建的 MJHQ-30K 数据集就是以 Midjourney 输出为高质量参照来评测其它模型——侧面印证 V5 时代 Midjourney 在主观图像质量上的标杆地位，但这**不是 Midjourney 官方发布的数字**。

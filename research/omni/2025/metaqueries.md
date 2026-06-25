@@ -16,6 +16,7 @@ project_url: "https://xichenpan.com/metaquery/"
 downloaded: [arxiv-2504.06256.pdf, arxiv-2504.06256.txt, metaqueries--project-page.md, metaqueries--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -61,7 +62,7 @@ MetaQuery 走相反的哲学——"**生成归扩散，理解归 LLM**"（Render
   1. **预训练**：25M 图文对，**8 个 epoch**，学习率 1e-4，全局 batch size 4096，cosine 衰减 + 4000 步 warmup 后降到 1e-5。
   2. **指令微调**：在 2.4M 自然图像对数据上对 Base 模型微调 **3 个 epoch**，沿用预训练学习率 schedule，batch size 2048。
 - **适配策略消融**（关键结论，Table 2）：冻结 MLLM（不训 LLM、不训 DiT）即可逼近全量调 MLLM 的效果，prompt alignment 略低但视觉质量略好；**额外训 DiT 能进一步涨点**（冻结 MLLM + 训 DiT：FID 6.06、GenEval 0.61）；端到端全调（E2E）最好（FID 6.28、GenEval 0.61、DPG 79.39）但代价高且会动 MLLM。
-- **条件来源消融**（Table 1）：可学习查询（64 token）≈ 用 LLM 末层 embedding；随机查询 FID 尚可但 prompt alignment 崩（GenEval 仅 0.35），证明"可学习"是关键；512 token 的可学习查询反超末层 embedding。
+- **条件来源消融**（Table 1）：可学习查询（64 token，FID 7.43 / GenEval 0.56 / DPG 75.35）≈ 用 LLM 末层 embedding（FID 7.49 / GenEval 0.55 / DPG 78.41）；随机查询（64 token）FID 退到 8.59、prompt alignment 崩（GenEval 仅 0.35、DPG 54.81），证明"可学习"是关键；512 token 的可学习查询（FID 7.34 / DPG 78.43）反超末层 embedding。
 - **下游能力转移**：
   - **图像重建**：可加入重建目标做对齐；纯重建目标 T2I 会退化（MJHQ FID 27.42），但**T2I + 重建混合训练**几乎不伤 T2I（FID 8.27 vs 纯 T2I 7.43），同时解锁重建能力。
   - **图像编辑**：从重建能力迁移而来，冻结 MLLM、对预训练 Base 仅微调 **1000 步**即可。

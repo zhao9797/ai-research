@@ -16,6 +16,7 @@ project_url: "https://vectorspacelab.github.io/OmniGen2"
 downloaded: [arxiv-2506.18871.pdf, arxiv-2506.18871.txt, omnigen2--readme.md, omnigen2--hf-modelcard.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -93,7 +94,7 @@ OmniGen2 是 [[omnigen]]（OmniGen v1，CVPR 2025 同组）的升级：v1 是单
 
 **图像编辑**（三基准）：
 - **Emu-Edit**：CLIP-Out **0.311**（所有对比模型中**最高**，最有效应用编辑）；CLIP-I **0.896**（第二）、DINO **0.876**（最高）→ 精确局部编辑且不扰动其余区域。
-- **GEdit-Bench-EN**：SC **7.58**（第二）、PQ **7.94**（最高）、Overall **7.21**——超过 Gemini-2.5-Flash-Image (7.10)，开源里仅次于 Qwen-Image-Edit-2509 (7.54)。（对照：GPT-4o 7.53、Gemini-2.5-Flash 7.10、Gemini-2.0-Flash 6.32）
+- **GEdit-Bench-EN**：SC **7.58**、PQ **7.94**、Overall **7.21**——Overall 超过 Gemini-2.5-Flash-Image (7.10)，开源里仅次于 Qwen-Image-Edit-2509 (7.54)。（对照：GPT-4o 7.53、Gemini-2.5-Flash-Image 7.10、Gemini-2.0-Flash-Image 6.32）注：论文正文称其 SC「第二高」、PQ「最高」，但与本文 Table 3 不符——SC 列 Qwen-Image-Edit-2509 8.15、GPT-4o 7.85 均高于 7.58（实为第三）；PQ 列 Gemini-2.5-Flash-Image 7.96 略高于 7.94（OmniGen2 为开源/对比下半区最高，非绝对最高）。
 - **ImgEdit-Bench 3.69**——超过 BAGEL (3.20) 等强开源模型（Qwen-Image-Edit-2509 4.41、Gemini-2.5-Flash-Image 4.28 更高）。
 
 **in-context 生成（OmniContext，本文新建基准）**：

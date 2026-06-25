@@ -16,6 +16,7 @@ project_url: "https://oft.wyliu.com/"
 downloaded: [arxiv-2306.07280.pdf, orthogonal-finetuning-oft--arxiv-html.md, orthogonal-finetuning-oft--project.md, orthogonal-finetuning-oft--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

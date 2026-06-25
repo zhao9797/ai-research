@@ -16,6 +16,7 @@ project_url: "https://canqin001.github.io/UniControl-Page/"
 downloaded: [arxiv-2305.11147.pdf, unicontrol--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -33,7 +34,7 @@ UniControl 的核心观点：NLP 中的生成基座（InstructGPT/GPT-4）能在
 |---|---|
 | Stable Diffusion（冻结） | 1065.7M |
 | ControlNet（可训练副本） | 361M |
-| MOE-Adapter | 0.06M（每任务 ~70K，共 9 个 ≈0.63M 量级，论文记 0.06M 为总注记口径） |
+| MOE-Adapter | 0.06M（Tab.1 原文记 0.06M；但附录 A.1 述"9 个 adapter 各 ~70K"→应为 0.63M，疑 Tab.1 笔误。无论取哪个，对合计 ~1.44B 无影响） |
 | Task-aware HyperNet | 12.7M |
 | **UniControl 合计** | **≈1.44B（实现描述 ~1.5B）** |
 | Multi-ControlNet（9 任务等价） | SD 1065.7M + 361M×9 ≈ **4.32B** |
@@ -78,7 +79,7 @@ UniControl 的核心观点：NLP 中的生成基座（InstructGPT/GPT-4）能在
 ## Infra（训练 / 推理工程）
 - **算力**：full-version 在 **16× NVIDIA A100-40G** 上训练，共约 **5,000 GPU 小时**——作者强调这与"分别训练各 ControlNet 的总成本相当"，即统一模型并未增加总训练开销。
 - **框架**：PyTorch + PyTorch Lightning，AdamW 优化器。
-- **推理/部署**：单模型即可切换 12 任务（README 给出每任务 `inference_demo.py --task xxx` 与 Gradio 全任务/单任务 demo）；提供 HuggingFace Space 在线 demo 与 safetensors 格式 checkpoint（unicontrol_v1.1.st）。checkpoint 体积 5.78GB（1.4B 参数）。
+- **推理/部署**：单模型即可切换 12 任务（README 给出每任务 `inference_demo.py --task xxx` 与 Gradio 全任务/单任务 demo）；提供 HuggingFace Space 在线 demo 与 safetensors 格式 checkpoint（unicontrol_v1.1.st）。原始 `unicontrol.ckpt` 体积 5.78GB（1.4B 参数，README 口径）。
 - **混合精度/并行细节**：论文未披露具体并行策略与吞吐数字（batch size 4 + 16 卡，未报 throughput）。
 
 ## 评测 benchmark（把效果讲清楚）

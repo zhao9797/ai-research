@@ -16,6 +16,7 @@ project_url: "https://modelscope.cn/studios/damo/text-to-video-synthesis/summary
 downloaded: [arxiv-2308.06571.pdf, modelscope-t2v--hf-card.md, modelscope-t2v--modelscope-card.md, modelscope-t2v--model-index.json, modelscope-t2v--unet-config.json]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

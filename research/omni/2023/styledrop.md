@@ -16,6 +16,7 @@ project_url: "https://styledrop.github.io/"
 downloaded: [styledrop--ar5iv.md, styledrop--project-page.md, arxiv-2306.00983.pdf]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -158,4 +159,4 @@ StyleDrop 本体**不训练新基座**，所有大规模数据来自冻结的 Mu
 ## 本地落盘文件
 - ../../../sources/omni/2023/styledrop--ar5iv.md （ar5iv 全文 markdown：正文 §1-5 + 附录 B，含 adapter 伪码/超参表/CFG 消融——主精读来源）
 - ../../../sources/omni/2023/styledrop--project-page.md （styledrop.github.io 项目页快照）
-- ../../../sources/omni/2023/arxiv-2306.00983.pdf （arXiv 官方 PDF；经代理下载中途 HTTP/2 中断，文件不完整/XRef 损坏，仅作存档；正文内容以 ar5iv 全文为准）
+- ../../../sources/omni/2023/arxiv-2306.00983.pdf （arXiv 官方 PDF，28 页完整版，已直连重抓修复，pdftotext 可正常提取；全文表格/超参数已逐一核对）
