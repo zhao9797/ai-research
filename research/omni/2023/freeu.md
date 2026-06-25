@@ -16,6 +16,7 @@ project_url: "https://chenyangsi.top/FreeU/"
 downloaded: [arxiv-2309.11497.pdf, freeu--project-page.md, freeu--github-readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

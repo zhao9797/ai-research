@@ -13,9 +13,10 @@ github_url: "https://github.com/nvidia-cosmos/cosmos-predict1"
 hf_url: "https://huggingface.co/collections/nvidia/cosmos-predict1-67c9d1b97678dbf7669c89a7"
 modelscope_url: ""
 project_url: "https://research.nvidia.com/labs/dir/cosmos-predict1"
-downloaded: [arxiv-2501.03575.pdf, cosmos-predict--predict1-readme.md, cosmos-predict--github-readme.md, cosmos-predict--nvidia-blog.md, cosmos-predict--hf-card-page.md]
+downloaded: [arxiv-2501.03575.pdf, cosmos-predict--predict1-readme.md, cosmos-predict--github-readme.md, cosmos-predict--nvidia-blog.md, cosmos-predict--hf-card-page.md, cosmos-predict--hf-diffusion-7b-t2w.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

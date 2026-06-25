@@ -16,6 +16,7 @@ project_url: ""
 downloaded: [arxiv-2112.10752.pdf, latent-diffusion-ldm--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -39,7 +40,7 @@ LDM 的核心洞察是把图像生成显式拆成两个阶段：
 - 基于 VQGAN（[[taming-transformers]]）的自编码器，编码器 E 把 `x ∈ R^{H×W×3}` 压成 `z = E(x) ∈ R^{h×w×c}`，下采样因子 `f = H/h = 2^m`，文中系统扫了 f ∈ {1,2,4,8,16,32}。
 - 训练目标 = 感知损失（LPIPS）+ patch-based 对抗损失（patch discriminator），避免纯 L2/L1 造成的模糊（公式 25）。
 - 两种潜空间正则：**KL-reg**（对潜变量施加极弱 KL 惩罚趋向标准正态，权重 ~1e-6，即一个低权重 VAE）或 **VQ-reg**（在解码器内放一个向量量化层，码本 |Z|，可看作"量化层被吸收进解码器的 VQGAN"）。两者都只用极小正则以保证高保真重建。
-- 关键设计：潜空间是**二维**的（保留空间结构），不像 VQGAN+AR 那样把 z 拉成 1D 序列，因此能保留更多结构、重建更好（附录 Tab 8 的 autoencoder zoo：f=4 KL R-FID 0.90、f=4 VQ R-FID 0.58，远优于 DALL·E f=8 的 R-FID 32.01、VQGAN f=16 的 4.98）。
+- 关键设计：潜空间是**二维**的（保留空间结构），不像 VQGAN+AR 那样把 z 拉成 1D 序列，因此能保留更多结构、重建更好（附录 Tab 8 的 autoencoder zoo，均在 OpenImages 训、ImageNet-val 评 R-FID↓：f=4 KL R-FID 0.27、f=4 VQ R-FID 0.58，远优于 DALL·E f=8 的 R-FID 32.01、VQGAN f=16 的 4.98）。
 - **此 VAE 训完即冻结**，后续多个扩散模型共享，无需重训。
 
 **第二阶段 — 潜空间扩散 U-Net（ε_θ）：**
@@ -83,7 +84,7 @@ LDM 的核心洞察是把图像生成显式拆成两个阶段：
   - LSUN-Churches LDM-8 仅 **18 V100-days**（vs StyleGAN2 的 64）；CelebA-HQ LDM-4 **14.4 V100-days**。
   - 论文摘要口径："相比像素扩散显著降低训练与推理成本"。
 - **吞吐**（附录 Tab 6 inpainting 效率）：潜空间相比像素扩散训练吞吐提升约 3×（LDM-1 像素 0.11 samples/s → LDM-4 0.32–0.35），且像素→潜空间至少 **2.7× 加速**、FID 至少改善 1.6×。
-- **推理加速**：(1) 在低维潜空间采样本身省算力；(2) DDIM 减步（50–250 步）；(3) U-Net 卷积特性支持一次前向卷积式生成大图。Tab 18 报推理吞吐（A100 samples/s），LDM-4 达 1.07 samples/s 量级，远高于 ADM 系。
+- **推理加速**：(1) 在低维潜空间采样本身省算力；(2) DDIM 减步（50–250 步）；(3) U-Net 卷积特性支持一次前向卷积式生成大图。Tab 18 推理吞吐（单 A100 samples/s，均 250 步 DDIM，含 VAE 解码）：ImageNet LDM-4(-G) 约 **0.4 samples/s**，与 ADM(250 步) 的 0.7 同量级——256² 这一档推理吞吐 LDM 并不显著占优（autoencoder 解码 + 256² 像素 U-Net 体量相近）；LDM 的真正成本优势在**训练算力**（271 vs 916 V100-days，见上）与**大分辨率卷积式生成**。FFHQ / LSUN-Bedrooms 等较简单数据集上 LDM-4 吞吐可达 **1.07 samples/s**。
 - **并行/混合精度/具体 GPU·时总账**：论文未给完整集群规模或分布式策略细节（重点强调"单卡可训"这一可达性论点）。
 - **部署形态**：开源 PyTorch 代码 + 预训练权重（conda 环境 `ldm`），后被集成进 HuggingFace Spaces（Gradio web demo）。
 

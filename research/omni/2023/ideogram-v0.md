@@ -16,10 +16,11 @@ project_url: "https://ideogram.ai/"
 downloaded: [ideogram-v0--launch-blog.md, ideogram-v0--venturebeat-launch.md, ideogram-v0--wikipedia.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-Ideogram 0.1 是前 Google Brain / Imagen 团队 2023-08-22 在多伦多创立 Ideogram AI 后、次日（08-23）以 beta web app + Discord 形式上线的首个商业 t2i 产品；**最核心卖点是在图像内可靠渲染清晰文字（typography）**——这正是当时 DALL·E 2 / Stable Diffusion / Midjourney 普遍翻车的痛点。产品随 1650 万美元种子轮（a16z + Index Ventures 领投）一同发布。**注意：0.1 是闭源商业产品，无论文 / 无技术报告 / 无模型权重，模型内部架构、数据与训练细节官方从未披露**，本页技术内部一节均明确标注"未披露"，不做编造。
+Ideogram 0.1 是前 Google Brain / Imagen 团队（公司 2022 年于多伦多成立，2023-08-22 官方公告 Ideogram AI 正式亮相）以 beta web app + Discord 形式上线的首个商业 t2i 产品；**最核心卖点是在图像内可靠渲染清晰文字（typography）**——这正是当时 DALL·E 2 / Stable Diffusion / Midjourney 普遍翻车的痛点。产品随 1650 万美元种子轮（a16z + Index Ventures 领投）一同发布。**注意：0.1 是闭源商业产品，无论文 / 无技术报告 / 无模型权重，模型内部架构、数据与训练细节官方从未披露**，本页技术内部一节均明确标注"未披露"，不做编造。
 
 ## 背景与定位
 2023 年中，t2i 已百花齐放（[[dall-e-2]]、[[stable-diffusion-1]] 系、[[midjourney-v1-v4]]），但有一个公认顽疾：**模型几乎无法在图里写出连贯、拼写正确的文字**——招牌、logo、海报上的字母往往糊成乱码。这一痛点既来自常用 CLIP 文本编码器对字符级信息编码弱，也来自 VAE/扩散在小尺度高频笔画上的重建困难。

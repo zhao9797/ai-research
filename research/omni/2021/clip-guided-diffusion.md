@@ -13,9 +13,10 @@ github_url: "https://github.com/crowsonkb/clip-guided-diffusion"
 hf_url: ""
 modelscope_url: ""
 project_url: "https://colab.research.google.com/drive/1QBsaDAZv8np29FPbvjffbE1eytoJcsgA"
-downloaded: [clip-guided-diffusion--2021-colab.md, clip-guided-diffusion--crowsonkb-readme.md, guided-diffusion--openai-readme.md, diffusion-models-beat-gans--arxiv-abs.md, diffusion-models-beat-gans--model-card.md, arxiv-2105.05233.pdf]
+downloaded: [clip-guided-diffusion--2021-colab.md, clip-guided-diffusion--crowsonkb-readme.md, guided-diffusion--openai-readme.md, diffusion-models-beat-gans--arxiv-abs.md, diffusion-models-beat-gans--model-card.md, arxiv-2105.05233.pdf, arxiv-2112.10741.pdf]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -78,7 +79,7 @@ Crowson 的关键洞察:**分类器引导里的"类别梯度",可以换成 CLIP 
 
 - [[diffusion-models-beat-gans]](已抓 `arxiv-2105.05233.pdf`)ImageNet 类条件 + 分类器引导 FID:128² 2.97、256² 4.59、512² 7.72;配合上采样栈进一步到 256² 3.94 / 512² 3.85。其无条件 256² 模型也是 SOTA 级。
 - 论文关于引导强度的关键结论(可类比 CLIP 引导尺度的作用):无条件模型上把分类器梯度尺度从 1.0 提到 10.0,Pembroke Welsh corgi 类 FID 从 33.0 降到 12.0——**说明"引导尺度"需 >1 才能让样本真正对上目标**,这与 Colab 里 `clip_guidance_scale=1000` 这种大尺度同理(尺度越大越贴 prompt、多样性越低)。
-- 本方法 vs 同期:相对 VQGAN+CLIP,扩散引导给出更自然的纹理/更少"CLIP 伪影";相对随后 [[glide]](其 MS-COCO 256² zero-shot FID 12.24 一数引自 [[glide]] 页/GLIDE 论文 Table 2,**本目录未单独落盘 GLIDE PDF**;GLIDE 把文本训进模型 + classifier-free guidance),本方法**质量与文本贴合度更弱**(CLIP 与扩散模型的分布不匹配、需大量裁剪/正则 hack),但**零训练、可即时换 backbone/CLIP**。本方法**自身从未在 MS-COCO 等标准 benchmark 上报告任何 FID/CLIPScore**。
+- 本方法 vs 同期:相对 VQGAN+CLIP,扩散引导给出更自然的纹理/更少"CLIP 伪影";相对随后 [[glide]](其 zero-shot MS-COCO 256² FID 12.24、对验证集去重子集为 12.89,见已落盘 `arxiv-2112.10741.pdf` Table 2;GLIDE 把文本训进模型 + classifier-free guidance),本方法**质量与文本贴合度更弱**(CLIP 与扩散模型的分布不匹配、需大量裁剪/正则 hack),但**零训练、可即时换 backbone/CLIP**。本方法**自身从未在 MS-COCO 等标准 benchmark 上报告任何 FID/CLIPScore**。值得注意:GLIDE 论文自己也对比了"CLIP guidance vs classifier-free guidance",人评更偏好 classifier-free——侧面印证外挂 CLIP 引导的上限。
 - 关键"消融"(来自 Colab 默认超参,非正式实验):`tv_scale=150` 控平滑、`range_scale=50` 控 RGB 越界、`cutn=32 / cut_pow=0.5` 控 CLIP 视角多样性、`skip_timesteps`≈200–500 用于 init-image 引导——这些是社区反复调出的经验值,**无量化消融表**。
 
 ## 创新点与影响
@@ -103,6 +104,7 @@ Crowson 的关键洞察:**分类器引导里的"类别梯度",可以换成 CLIP 
 - github (v2 重写版 + 指向 2021 Colab): https://github.com/crowsonkb/clip-guided-diffusion
 - github (扩散 backbone 来源,OpenAI guided-diffusion): https://github.com/openai/guided-diffusion
 - paper (理论基础,Diffusion Models Beat GANs / classifier guidance): https://arxiv.org/abs/2105.05233
+- paper (后继对照,GLIDE / text-conditional 扩散 + classifier-free guidance): https://arxiv.org/abs/2112.10741
 - model-card (backbone 数据与 CLIP-guidance 探测说明): https://github.com/openai/guided-diffusion/blob/main/model-card.md
 - 依赖 (CLIP): https://github.com/openai/CLIP  ·  k-diffusion(v2): https://github.com/crowsonkb/k-diffusion
 
@@ -113,3 +115,4 @@ Crowson 的关键洞察:**分类器引导里的"类别梯度",可以换成 CLIP 
 - ../../../sources/omni/2021/diffusion-models-beat-gans--arxiv-abs.md
 - ../../../sources/omni/2021/diffusion-models-beat-gans--model-card.md
 - ../../../sources/omni/2021/arxiv-2105.05233.pdf  (Diffusion Models Beat GANs 全文,40MB,.gitignore 排除不入 git)
+- ../../../sources/omni/2021/arxiv-2112.10741.pdf  (GLIDE 全文,用于 zero-shot MS-COCO FID 12.24 对照;.gitignore 排除不入 git)

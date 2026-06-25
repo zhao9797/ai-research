@@ -16,6 +16,7 @@ project_url: "https://dreamllm.github.io/"
 downloaded: [arxiv-2309.11499.pdf, dreamllm--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -86,7 +87,7 @@ DreamLLM 的两条核心原则把它和前作区分开：
 - Caption：COCO CIDEr **115.4**（`*`版 103.7）、Image2Paragraph 17.4。
 - VQA：VQAv2 **56.6**（`*`72.9）、OKVQA 44.3（`*`52.2）、VizWiz 45.8（`*`49.3）、TextVQA 34.9（`*`41.8）。**比 Emu 的 VQAv2 40.0 高 +16.6**（论文正文记作 Emu-13B、Table 1 表头记作 Emu-14B，指同一模型）。
 - 综合：MMBench **49.9**（`*`58.2；注：论文摘要写 49.1，正文 Table 1/Table 5 均为 49.9，此处采表值）、MM-Vet **35.9**（`*`36.6）——同期 7B 对手中 SOTA。MMBench 细分（Table 5）：RR 关系推理 60.9、AR 属性推理 53.7 等，论文归因于"图像合成学习带来更强空间/关系推理"。
-- **抗幻觉 POPE（Table 7，COCO val）**：DreamLLM-7B Accuracy **86.36** / Precision 85.92 / Recall 87.93 / F1 **86.91**，Yes 率 52.75（接近理想 50%）——匹配或超过 InstructBLIP-14B（82.77）等更大模型，论文认为是深层多模态理解的体现。
+- **抗幻觉 POPE（Table 7，COCO val，三种采样 split）**：以下为 **Random** split——DreamLLM-7B Accuracy **86.36** / Precision 85.92 / Recall 87.93 / F1 **86.91**，Yes 率 52.75（接近理想 50%）。论文口径是"匹配或超过 13B 量级对手"，但需按 split 对齐看：Random split 下 InstructBLIP-14B（Acc 88.57）实际仍**略高于** DreamLLM-7B（86.36）；DreamLLM 的真正优势在**最难的 Adversarial split**——DreamLLM-7B Acc **72.63** / F1 76.47 略胜 InstructBLIP-14B（72.10），取得论文所称"best or second-best"。整体 7B 体量能逼平 13/14B 对手，论文归因于图像合成学习带来的深层对象概念理解。
 
 **文本到图像（Table 2，zero-shot FID↓）**
 - **MS-COCO 30K：8.46**（仅 Stage I 对齐后 8.76；SDv2.1 基线 12.43 → 对齐后降 **3.67**，全流程预训练+SFT 后总降 **3.97**）。**比 Emu-13B（11.66）低 3.20 FID**；优于 GILL-8B(12.20)、CM3Leon-7B(10.82)；接近/优于部分专用 T2I（如 GLIDE 12.24）。

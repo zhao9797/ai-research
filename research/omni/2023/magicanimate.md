@@ -13,9 +13,10 @@ github_url: "https://github.com/magic-research/magic-animate"
 hf_url: "https://huggingface.co/zcxu-eric/MagicAnimate"
 modelscope_url: ""
 project_url: "https://showlab.github.io/magicanimate/"
-downloaded: [arxiv-2311.16498.pdf, magicanimate--preprint.pdf, magicanimate--readme.md, magicanimate--project-page.md, magicanimate--hf-modelcard.md]
+downloaded: [arxiv-2311.16498.pdf, magicanimate--preprint.pdf, magicanimate--readme.md, magicanimate--project-page.md, magicanimate--hf-modelcard.md, magicanimate--animation-yaml.txt, magicanimate--appearance-encoder-config.json, magicanimate--densepose-controlnet-config.json]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -33,9 +34,9 @@ MagicAnimate 三处针对性改进：把 2D 图扩散 inflate 成 **3D 时序 UN
 
 - **Backbone（去噪网络）**：把原始 2D SD1.5 UNet **inflate 成 3D 时序 UNet** `F_T(·;θ_T)`，方式是在 UNet block 中插入**时间注意力层**（AnimateDiff/Tune-a-Video 风格的 motion module）。特征张量在 `[N×C×K×H×W]`（K=帧数）和 `[(N·H·W)×K×C]`（时间维）之间 reshape；时间维加**正弦位置编码**后做标准自注意力，聚合相邻帧信息。仓库实测 motion module 即 `temporal_attention.ckpt`，段长 **K=16 帧**。
 
-- **Appearance Encoder `F_a`（核心创新）**：**再复制一份 base UNet**（`θ_a`，可训练；HF config 显示 `block_out=[320,640,1280,1280]`、`sample_size=64`、`cross_attention_dim=768`，即与 SD1.5 UNet 同构）。它对参考图 `I_ref` 在每个去噪步 t 计算条件特征 `y_a = F_a(z_t | I_ref, t, θ_a)`，`y_a` 是 middle/upsampling block 的一组归一化注意力隐状态。注入方式区别于 ControlNet 的「残差相加」：把 `y_a` **拼接进 UNet 的空间自注意力**——`K=W_K[z_t, y_a]`、`V=W_V[z_t, y_a]`（Q 仍只来自 `z_t`），形成「混合注意力」，让去噪过程能**从参考图 query 内容**（身份、衣着、配饰、背景）。这是相对 CLIP/IP-Adapter「语义 token 经 cross-attention」的根本差异，提供**密集像素级外观条件**。
+- **Appearance Encoder `F_a`（核心创新）**：**再复制一份 base UNet**（`θ_a`，可训练；HF config `_class_name=AppearanceEncoderModel`，`block_out_channels=[320,640,1280,1280]`、`sample_size=64`、`cross_attention_dim=768`、`in/out_channels=4`、`layers_per_block=2`，即与 SD1.5 UNet 同构）。它对参考图 `I_ref` 在每个去噪步 t 计算条件特征 `y_a = F_a(z_t | I_ref, t, θ_a)`，`y_a` 是 middle/upsampling block 的一组归一化注意力隐状态。注入方式区别于 ControlNet 的「残差相加」：把 `y_a` **拼接进 UNet 的空间自注意力**——`K=W_K[z_t, y_a]`、`V=W_V[z_t, y_a]`（Q 仍只来自 `z_t`），形成「混合注意力」，让去噪过程能**从参考图 query 内容**（身份、衣着、配饰、背景）。这是相对 CLIP/IP-Adapter「语义 token 经 cross-attention」的根本差异，提供**密集像素级外观条件**。
 
-- **Pose ControlNet `F_p`**：标准 ControlNet（HF config `_class_name=ControlNetModel`、`conditioning_channels=3`、`cross_attention_dim=768`），条件信号是 **DensePose**（而非 OpenPose 关键点）。论文论点：主要身体关键点稀疏、对旋转等运动不鲁棒；DensePose 提供稠密、鲁棒的姿态条件。`y_{p,i}=F_p(z_t|p_i,t,θ_p)`，作为残差加到 UNet 的 middle/upsampling block。
+- **Pose ControlNet `F_p`**：标准 ControlNet（HF config `_class_name=ControlNetModel`、`conditioning_channels=3`、`block_out_channels=[320,640,1280,1280]`、`cross_attention_dim=768`），条件信号是 **DensePose**（而非 OpenPose 关键点）。论文论点：主要身体关键点稀疏、对旋转等运动不鲁棒；DensePose 提供稠密、鲁棒的姿态条件。`y_{p,i}=F_p(z_t|p_i,t,θ_p)`，作为残差加到 UNet 的 middle/upsampling block。
 
 - **Text encoder**：沿用 SD1.5 的 CLIP text encoder（`cross_attention_dim=768`），但动画任务以图像条件为主，文本主要在「结合 T2I（DALL·E3）生成参考图」等下游应用中体现。
 
@@ -124,5 +125,8 @@ MagicAnimate 三处针对性改进：把 2D 图扩散 inflate 成 **3D 时序 UN
 - ../../../sources/omni/2023/arxiv-2311.16498.pdf （arXiv v1 正文，10 页，精读）
 - ../../../sources/omni/2023/magicanimate--preprint.pdf （仓库 preprint，10 页，与 arXiv v1 同，无补充材料）
 - ../../../sources/omni/2023/magicanimate--readme.md （GitHub README，基座/checkpoint 结构）
-- ../../../sources/omni/2023/magicanimate--project-page.md （项目页快照，确认 CVPR 2024）
-- ../../../sources/omni/2023/magicanimate--hf-modelcard.md （HF 模型卡，许可证）
+- ../../../sources/omni/2023/magicanimate--project-page.md （项目页快照，BibTeX 确认 CVPR 2024）
+- ../../../sources/omni/2023/magicanimate--hf-modelcard.md （HF 模型卡，license bsd-3-clause）
+- ../../../sources/omni/2023/magicanimate--animation-yaml.txt （仓库 `configs/prompts/animation.yaml`：size=512/L=16/steps=25/guidance_scale=7.5/fusion_blocks=midup）
+- ../../../sources/omni/2023/magicanimate--appearance-encoder-config.json （HF appearance_encoder config：`AppearanceEncoderModel`，UNet 同构）
+- ../../../sources/omni/2023/magicanimate--densepose-controlnet-config.json （HF densepose_controlnet config：`ControlNetModel`，conditioning_channels=3）

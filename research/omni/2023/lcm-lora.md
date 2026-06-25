@@ -16,6 +16,7 @@ project_url: "https://latent-consistency-models.github.io"
 downloaded: [arxiv-2311.05556.pdf, lcm-lora--hf-sdxl-readme.md, lcm-lora--hf-sdv1-5-readme.md, lcm-lora--github-readme.md, lcm-lora--hf-blog.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -80,7 +81,7 @@ LCM-LoRA 本身**不引入新的网络架构**，它是加在现成 SD 主干上
   即在消费级 GPU 上约 **5–10× 提速**；博客另称 M1 Mac 上 1024×1024 出图从 ~1 分钟降到 ~6s（4 步），4090 近乎实时（<1s）。
 - **质量结论（定性，博客 + 报告）**：1 步只出大致形状无纹理；4–6 步通常已令人满意；8 步偏过饱和/卡通化。作为对比，原版 SDXL（Euler 调度）约需 ~20 步才可用、50 步细节最佳——LCM-LoRA 用 4 步逼近其多步质量。
 - **泛化性（报告核心实验）**：同一 LCM-LoRA 直接套到 Dreambooth/风格微调模型（如 collage-diffusion、PaperCut LoRA、toy-face LoRA）均能 4 步出图，证明「universal acceleration module」的强泛化。
-- **未报告**：FID、CLIPScore、GenEval、T2I-CompBench、HPSv2、ImageReward、PickScore、人评 ELO 等标准生成指标，本工作的一手源**均未提供**——它定位为工程加速模块，质量评估留给定性图示。LCM 原作（arXiv:2310.04378）在 LAION-5B-Aesthetics 上有速度-FID 曲线（768×768、CFG w=8、batch 4、A800），但那是底模 LCM 的数字，非 LCM-LoRA 专属。
+- **未报告**：FID、CLIPScore、GenEval、T2I-CompBench、HPSv2、ImageReward、PickScore、人评 ELO 等标准生成指标，本工作的一手源**均未提供**——它定位为工程加速模块，质量评估留给定性图示。LCM 原作（arXiv:2310.04378）在 LAION-Aesthetics 子集（512 用 6+ 12M，768 用 6.5+ 650K）上有 FID/CLIPScore 定量表（Table 2，768×768、CFG ω=8，teacher 为 SD-V2.1），但那是底模 LCM 的数字，非 LCM-LoRA 专属。
 
 ## 创新点与影响
 **核心贡献**

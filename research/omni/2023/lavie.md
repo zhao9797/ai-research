@@ -16,6 +16,7 @@ project_url: "https://vchitect.github.io/LaVie-project/"
 downloaded: [arxiv-2309.15103.pdf, lavie--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -121,7 +122,7 @@ LaVie 的两点核心洞见：
 
 **消融结论**：联合图像-视频微调相比「整网视频微调」「只训时序模块」两种方案，在概念保持与画质上明显占优（图 9 定性对比）。
 
-**附加能力**：① 长视频生成——把上一段末帧作为条件递归生成，论文示例递归 3 次把 2s 扩到 6s，画质退化很小；② 个性化 T2V——对空间层做 LoRA 微调（冻结时序模块），可生成特定角色（如 "Misaka Mikoto"）的视频。
+**附加能力**：① 长视频生成——把上一段末帧作为条件自回归递归生成，Fig.10 caption 称自回归 3 次把 2s 扩到 6s（每段 +2s，画质退化很小）；注意论文正文 §5.6 写作 "applied five times"，与图注 "three times" 存在内部不一致，此处采用与 2s→6s 自洽的图注口径；② 个性化 T2V——对空间层做 LoRA 微调（冻结时序模块），可生成特定角色（如 "Misaka Mikoto"）的视频。
 
 ## 创新点与影响
 **核心贡献**
@@ -129,7 +130,7 @@ LaVie 的两点核心洞见：
 2. 提出并系统验证「**图像-视频联合微调**」克服灾难性遗忘、实现图→视频知识迁移；
 3. 设计「**base + 插帧 + 超分**」三级级联，达到 1280×2048 / 61 帧的 2K 长视频；
 4. 贡献并开源 **Vimeo25M**（25M 高清无水印文本-视频对，VideoChat 自动打标 + PySceneDetect 切镜 + 美学过滤）填补当时高质量 T2V 数据缺口；
-5. 模型权重 Apache-2.0、允许免费商用，是 2023 年开源 T2V 的标杆之一（Vchitect 体系主干）。
+5. **代码 Apache-2.0**；**模型权重**对学术研究完全开放并**允许免费商用**（README 原文：weights "fully open for academic research and also allow free commercial usage"，商用许可需联系作者），是 2023 年开源 T2V 的标杆之一（Vchitect 体系主干）。
 
 **影响**：成为后续开源 T2V/级联视频扩散工作的常被对比基线；Vimeo25M 的「网络视频→切镜→自动 caption→美学过滤」数据流水线是后续 T2V 数据构建的常见范式；图像-视频联合训练思路被广泛沿用。后续作者放出 LaVie-2（README 预告，本页未覆盖）。
 

@@ -16,6 +16,7 @@ project_url: "https://ajayj.com/dreamfields"
 downloaded: [arxiv-2112.01455.pdf, dreamfields--paper-html.md, dreamfields--project.md, dreamfields--readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -120,7 +121,7 @@ Dream Fields 用**冻结的预训练 CLIP（图文对比模型）作为引导信
 
 **其他对照（Appendix D）**：把 NeRF 换成显式 **128³ 体素网格** baseline → CLIP B/32 R-Prec 仅 **37.0±3.9**，而 NeRF **59.8±2.8**，且 NeRF 参数少 16×；2D 单图 RGBα 优化无法多视角一致。证明**神经隐式表示对一致性贡献显著**。
 
-定性：能从 COCO/艺术家手写/DALL·E 式组合 prompt 生成多视角一致的物体，支持"armchair/teapot in the shape of {avocado, pikachu, …}"这类**组合泛化**（材质/形状细粒度可控）。局限：几何细节不总真实（蜗牛眼柄长错位置、绿花瓶模糊），CLIP 对**空间关系编码差**所以不擅复杂多物体场景，且生成需迭代优化、较慢。
+定性：能从 COCO/艺术家手写/DALL·E 式组合 prompt 生成多视角一致的物体，支持论文 Figure 6 那类**组合泛化**——"armchair in the shape of an avocado"（变物体）、"a snail made of/with the texture of baguette"（变材质），形状/材质细粒度可控、非 cherry-pick。局限：几何细节不总真实（蜗牛眼柄长错在壳上而非身上、绿花瓶模糊——均为论文原文举例），CLIP 对**空间关系编码差**所以不擅复杂多物体场景，且生成需迭代优化、较慢。
 
 ## 创新点与影响
 **核心贡献**：

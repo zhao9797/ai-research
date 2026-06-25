@@ -16,6 +16,7 @@ project_url: "https://latent-consistency-models.github.io/"
 downloaded: [arxiv-2310.04378.pdf, arxiv-2311.05556.pdf, latent-consistency-models--readme.md, latent-consistency-models--project-page.md, lcm-lora--hf-blog.md, lcm-lora--hf-sdxl-readme.md, lcm-lora--hf-sdv1-5-readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -99,7 +100,7 @@ LCM 的定位就是补上这两块：把 CM 放进潜空间做高清文生图，
 4. **LCF** 让 LCM 不靠教师即可在定制数据集少步微调；
 5. **LCM-LoRA**：把蒸馏结果固化为「加速向量」，借任务算术**免训练**叠到任意 SD/SDXL 微调模型与风格 LoRA 上——一类可泛化的「神经 PF-ODE 求解器」。
 
-**影响：** LCM/LCM-LoRA 成为 2023 年底开源生图生态的**通用加速插件**，被 Diffusers/ComfyUI/SD-WebUI 等迅速原生集成，催生 Real-Time LCM、PixArt-α×LCM 等实时/低延迟应用，并直接推动了后续少步蒸馏研究线（与 [[adversarial-diffusion-distillation-sdxl-turbo|SDXL-Turbo (ADD)]]、后来的 LCM 改进版如 Hyper-SD / PCM / DMD 等同属一脉）。其「LoRA = 可叠加加速器」的范式深刻影响了开源社区的部署习惯。
+**影响：** LCM/LCM-LoRA 成为 2023 年底开源生图生态的**通用加速插件**，被 Diffusers/ComfyUI/SD-WebUI 等迅速原生集成，催生 Real-Time LCM、PixArt-α×LCM 等实时/低延迟应用，并直接推动了后续少步蒸馏研究线（与 [[sdxl-turbo-add|SDXL-Turbo (ADD)]]、[[dmd|DMD]]、后来的 LCM 改进版如 Hyper-SD / PCM 等同属一脉）。其「LoRA = 可叠加加速器」的范式深刻影响了开源社区的部署习惯。
 
 **已知局限：**
 - **1 步质量仍有明显 gap**（论文坦承一步存在改进空间）；

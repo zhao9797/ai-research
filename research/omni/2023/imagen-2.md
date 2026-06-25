@@ -16,6 +16,7 @@ project_url: "https://cloud.google.com/blog/products/ai-machine-learning/imagen-
 downloaded: [imagen-2--deepmind-original-page-wayback.md, imagen-2--vertex-ai-ga.md, imagen-2--imagefx-labs-blog.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -31,7 +32,7 @@ Imagen 2 是 Google DeepMind 2023 年 12 月发布的第二代闭源文生图扩
 - **text encoder**：未在 Imagen 2 文档中重申。前作 Imagen 使用冻结的 **T5-XXL**，Imagen 2 是否沿用未披露。
 - **visual tokenizer / VAE / VQ**：未披露。
 - **条件注入**：除文本条件外，官方披露了两类额外条件——**美学分数条件（aesthetics score conditioning）** 和**参考图风格条件（style reference image）**；编辑用 **mask 条件**（inpainting 给参考图+掩码、outpainting 向外扩展）。注入机制细节未公开。
-- **参数量与分辨率策略**：**参数量未披露**。分辨率方面，官方页面只说"高分辨率"；Vertex AI 上 Imagen 2 的默认输出为 **1024×1024**（官方文档/产品默认值），并支持多种宽高比，但训练分辨率与级联各级尺寸未披露。
+- **参数量与分辨率策略**：**参数量未披露**。分辨率方面，已落盘源只给定性表述——DeepMind 页称"高质量"，Vertex GA 博客称"high-resolution"（line 139），**均未给出具体像素数**；具体输出分辨率（业界常引的 1024×1024 默认值出自 Vertex 产品文档，但该文档页未落盘）与训练/级联各级尺寸**在本页已落盘源中未报告**。
 
 ## 数据
 - **核心做法——caption 增强 / re-captioning**：官方明说"我们给 Imagen 2 训练集的图像 caption **加了更多描述**，帮助模型学习不同的 captioning 风格、并泛化到更广的用户 prompt"，由此提升图文理解与上下文/细节把握。这与 DALL·E 3 的"训练专门的图像描述器重写 caption"是同一时代的同一思路，但 Imagen 2 **未公布**用什么模型生成描述、合成 caption 占比、原始/合成混合比例。
@@ -51,7 +52,7 @@ Imagen 2 是 Google DeepMind 2023 年 12 月发布的第二代闭源文生图扩
 - **算力 / GPU·时 / 并行 / 精度 / 吞吐**：**全部未披露**。Imagen 2 无技术报告、无 model card 级工程细节。
 - **部署形态（已披露）**：作为 Google 统一文生图引擎，2023 年 12 月同时上线——
   - **消费端**：Bard（生成图像）、Search Generative Experience、Google Labs 的 **ImageFX**（带"expressive chips"提示交互）、Google Arts & Culture 的 Cultural Icons 实验；
-  - **企业端**：**Vertex AI 的 Imagen API**（2023-12-13 对 allowlist 客户 GA），提供托管基础设施、内置隐私与安全、版权赔偿；
+  - **企业端**：**Vertex AI 的 Imagen API**（Vertex GA 博客日期 2023-12-14，对 allowlist 客户 GA），提供托管基础设施、内置隐私与安全、版权赔偿；
   - 早期客户：Snap（AI Camera Mode）、Shutterstock（站内 16,000+ 张 Imagen 图可授权）、Canva（170M+ 月活、已生成数百万张）。
 - **推理加速 / 量化 / 缓存 / 步数蒸馏**：未披露。
 

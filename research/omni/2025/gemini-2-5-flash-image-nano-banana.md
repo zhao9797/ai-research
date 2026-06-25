@@ -16,15 +16,16 @@ project_url: "https://ai.google.dev/gemini-api/docs/image-generation"
 downloaded: [gemini-2-5-flash-image-nano-banana--developers-blog.md, gemini-2-5-flash-image-nano-banana--blog-google.md, gemini-2-5-flash-image-nano-banana--model-page.md, gemini-2-5-flash-image-nano-banana--api-docs.md, gemini-2-5-flash-image-nano-banana--vertex-modelcard.md, gemini-2-5-flash-image-nano-banana--lmarena-image-edit.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
 Nano Banana（正式名 **Gemini 2.5 Flash Image**，模型代码 `gemini-2.5-flash-image`）是 Google DeepMind 2025-08-26 发布的**原生多模态图像生成/编辑模型**——把图像生成直接嵌进会"理解世界"的 Gemini LLM 里，主打**角色/对象一致性、多图融合、自然语言对话式局部编辑、世界知识驱动的编辑**，定价仅 **$0.039/图**（每图 1290 输出 token、$30/百万 token）。发布即登顶 LMArena 图像编辑竞技场（盲评 Elo）第一，成为 2025 年最现象级的闭源生成图像模型，并把"AI 图像编辑"推向大众消费级出圈。
 
 ## 背景与定位
-解决的问题：早前的 [[gemini-2-0-flash-native-image]]（Gemini 2.0 Flash 原生图像，2025 年初）证明了"把图像生成做进 LLM"在**低延迟、低成本、易用**上的价值，但用户反馈**画质不够高、创意控制力不足**。Nano Banana 是同一谱系的画质与可控性升级：在保持 Flash 档"快、便宜、对话式"的前提下，补齐**一致性（character consistency）、多图融合、精确局部编辑、世界知识**四大短板。
+解决的问题：早前的 [[gemini-2-0-flash-image]]（Gemini 2.0 Flash 原生图像，2025 年初）证明了"把图像生成做进 LLM"在**低延迟、低成本、易用**上的价值，但用户反馈**画质不够高、创意控制力不足**。Nano Banana 是同一谱系的画质与可控性升级：在保持 Flash 档"快、便宜、对话式"的前提下，补齐**一致性（character consistency）、多图融合、精确局部编辑、世界知识**四大短板。
 
-技术脉络上它属于 **Gemini 原生多模态生成**一支（[[gemini-2-0-flash-native-image]] → **Gemini 2.5 Flash Image** → [[gemini-3-pro-image-nano-banana-pro]]）。与纯扩散文生图（[[imagen-4]]、[[flux-2]]、ByteDance Seedream 系、Qwen-Image 系）的根本区别在于：**图像生成与文本理解共享同一个 Gemini 多模态 backbone**，因此能直接复用 LLM 的世界知识与指令遵循能力——官方反复强调的卖点不是"画质参数"，而是"模型真的懂这张图里发生了什么"（能读懂手绘草图、按真实世界常识补全、一步完成复杂编辑指令）。在编辑赛道上，它与同期的 [[flux-1-kontext]]（BFL 的指令编辑模型）、ByteDance SeedEdit、Qwen-Image-Edit 直接竞争，并在盲评中大幅领先。
+技术脉络上它属于 **Gemini 原生多模态生成**一支（[[gemini-2-0-flash-image]] → **Gemini 2.5 Flash Image** → [[gemini-3-pro-image-nano-banana-pro]]）。与纯扩散文生图（[[imagen-4]]、[[flux-2]]、ByteDance Seedream 系、Qwen-Image 系）的根本区别在于：**图像生成与文本理解共享同一个 Gemini 多模态 backbone**，因此能直接复用 LLM 的世界知识与指令遵循能力——官方反复强调的卖点不是"画质参数"，而是"模型真的懂这张图里发生了什么"（能读懂手绘草图、按真实世界常识补全、一步完成复杂编辑指令）。在编辑赛道上，它与同期的 [[flux-1-kontext]]（BFL 的指令编辑模型）、ByteDance SeedEdit、Qwen-Image-Edit 直接竞争，并在盲评中大幅领先。
 
 定位差异化：相对后来的 Pro 档 [[gemini-3-pro-image-nano-banana-pro]]，2.5 Flash Image 是**"快、便宜、好玩"的海量低延迟档**——官方明确建议高速量产/对话式编辑用本模型，最高质量专业产线才上 Pro 档。
 
@@ -33,7 +34,7 @@ Nano Banana（正式名 **Gemini 2.5 Flash Image**，模型代码 `gemini-2.5-fl
 
 - **底座**：本模型是 **Gemini 2.5 Flash 多模态大模型的原生图像生成/编辑能力**的产品化封装。图像生成与文本/图像理解共享同一模型，这正是它能"用 Gemini 的世界知识来生成与编辑图像"的根因（官方："the model benefits from Gemini's world knowledge"）。其内部生成范式（扩散 / 自回归视觉 token / 二者混合）**官方未披露**。
 - **I/O 与上下文**（来自 Gemini API model card）：模型代码 `gemini-2.5-flash-image`；**输入=图片+文本，输出=图片+文本**（原生交错多模态输出，一次响应里可同时返回文字解释与图片）；**输入 token 上限 65,536，输出 token 上限 32,768**；**知识截止 2025 年 6 月**；最后更新 2025 年 10 月（稳定版）。preview 版本 `gemini-2.5-flash-image-preview` 已弃用。
-- **输出图像规格**：发布时每张图固定计为 **1290 输出 token**，对应约 1024px 级（~1MP）原生分辨率。**注意：2K/4K 高分辨率、512(0.5K) 小分辨率、以及 1:4/4:1/1:8/8:1 等极端宽高比，均为后续 [[gemini-3-pro-image-nano-banana-pro]] / Gemini 3.1 Flash Image 才引入的能力，不属于本模型发布形态**——当前 Gemini API 文档已是 Gemini 3 时代的合并版，引用其 `imageSize=4K` 等参数时需注意不要误植到 2.5 Flash Image 头上。
+- **输出图像规格**：发布时每张图固定计为 **1290 输出 token**（发布博客确证的唯一硬数字）；官方发布材料**未直接给出**该 token 数对应的像素尺寸，业界普遍按 Gemini 后续文档的 "1K" 档（约 1MP / 1024px 级）反推，但这只是**推断、非官方报告值**。**注意：2K/4K 高分辨率、512(0.5K) 小分辨率、以及 1:4/4:1/1:8/8:1 等极端宽高比，均为后续 [[gemini-3-pro-image-nano-banana-pro]] / Gemini 3.1 Flash Image 才引入的能力（落盘的 api-docs 已明确将 2K/4K/512 与新宽高比归属于 Gemini 3.1 Flash Image），不属于本模型发布形态**——当前 Gemini API 文档已是 Gemini 3 时代的合并版，引用其 `imageSize=4K` 等参数时需注意不要误植到 2.5 Flash Image 头上。
 - **能力矩阵**（model card）：支持 图片生成 / 上下文缓存（Caching）/ 结构化输出 / Batch API / Flex 推理 / Priority 推理；**不支持** 函数调用、代码执行、File Search、URL 上下文、Live API、搜索接地、Maps 接地、思考（Thinking）、音频生成。即本模型**没有** Pro 档的"思考/想法图片"机制，也**没有** Google 搜索实时接地——这两项都是后续 Gemini 3 Pro Image 才加入的。
 - **四大原生能力**（官方博客明确列出）：
   1. **角色/对象一致性（character consistency）**：同一人物/宠物/产品在不同环境、姿态、年代、服装下保持"还是 ta 本人"的外观——官方强调消费者对"close but not quite"的人脸高度敏感，这是本次升级的核心攻坚点。
@@ -65,7 +66,7 @@ Nano Banana（正式名 **Gemini 2.5 Flash Image**，模型代码 `gemini-2.5-fl
 **官方口径（定性，无可机读学术分数）**：Google 博客**未公布** FID、GenEval、DPG-Bench、T2I-CompBench、HPSv2、ImageReward、PickScore 等任何标准学术指标，仅以"state-of-the-art image generation and editing model""top-rated image editing model in the world"等定性表述 + 一张引用 LMArena 的柱状图（图片形式，无可抠取数字）作为依据。因此本节标准学术指标**一律记为"官方未报告"，不臆造**。官方主张的能力优势集中在前述四点（一致性 / 多图融合 / 局部编辑 / 世界知识）。
 
 **第三方盲评基准（LMArena Image Edit Arena，盲评 Elo，用户在不知模型名下二选一投票）——本地落盘快照（2026-06 抓取）显示其当前长期表现**：
-- **`gemini-2.5-flash-image-preview` (nano-banana)：Elo 1296±2，累计票数 10,854,084** —— 这是整个图像编辑竞技场中**得票数遥遥领先的第一名**（次高的 SeedEdit-3.0 约 495 万票、Flux.1 Kontext Pro 约 642 万票），直接量化了它"现象级出圈"的真实使用规模。
+- **`gemini-2.5-flash-image-preview` (nano-banana)：Elo 1296±2，累计票数 10,854,084** —— 这是整个图像编辑竞技场中**得票数遥遥领先的第一名**（第二多的 Flux.1 Kontext Pro 约 642 万票、SeedEdit-3.0 约 495 万票，皆不及其六成），直接量化了它"现象级出圈"的真实使用规模。
 - 截至快照时点（已是 2026 年中、众多新模型上线后）该模型在 49 个模型中排名第 18；**发布当时（2025-08）它是该榜单第一名的图像编辑模型**（官方博客与发布期 LMArena 均如此），后被自家 [[gemini-3-pro-image-nano-banana-pro]]（nano-banana-pro，1385–1388）、Gemini 3.1 Flash Image（nano-banana-2，1387）、以及 gpt-image-2 / Seedream-4.5 / Qwen-Image-Edit 等新一代陆续超越。
 - 同框对照（同一快照）：上一代 `gemini-2.0-flash-preview-image-generation` 仅 1081±2（rank 47），印证 2.5 Flash Image 相对前代的巨大跃升（+215 Elo）；开源 BAGEL 1026、Step1X-Edit 998 垫底。
 

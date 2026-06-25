@@ -16,15 +16,16 @@ project_url: https://vcai.mpi-inf.mpg.de/projects/DragGAN/
 downloaded: [arxiv-2305.10973.pdf, arxiv-2306.14435.pdf, draggan--readme.md, dragdiffusion--readme.md, draggan--project-page.html]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-DragGAN（SIGGRAPH 2023，MPI/MIT/UPenn）开创"点对点拖拽"式交互编辑——用户在图上点几对 handle(红)→target(蓝) 点，模型把红点内容精确搬到蓝点，靠 **特征级 motion supervision + 基于 GAN 判别性特征的最近邻 point tracking** 两个零额外网络的组件在 StyleGAN2 latent 上做优化，单张 RTX 3090 几秒完成；后续 **DragDiffusion**（arXiv 2306.14435，NUS×字节，后中 CVPR 2024）把同一拖拽框架迁到 Stable Diffusion，**只优化单个扩散步 (t=35) 的 latent** 并配 LoRA 身份保持 + reference-latent-control，把适用性从单类别 GAN 扩展到任意真实/生成图像，并发布首个 drag 评测基准 **DragBench**（205 图 / 349 对点）。
+DragGAN（SIGGRAPH 2023，MPI/MIT/UPenn）开创"点对点拖拽"式交互编辑——用户在图上点几对 handle(红)→target(蓝) 点，模型把红点内容精确搬到蓝点，靠 **特征级 motion supervision + 基于 GAN 判别性特征的最近邻 point tracking** 两个零额外网络的组件在 StyleGAN2 latent 上做优化，单张 RTX 3090 几秒完成；后续 **DragDiffusion**（arXiv 2306.14435，NUS×字节，后中 CVPR 2024；落盘版即对应 CVPR 含逐类补充材料的版本）把同一拖拽框架迁到 Stable Diffusion，**只优化单个扩散步 (t=35) 的 latent** 并配 LoRA 身份保持 + reference-latent-control，把适用性从单类别 GAN 扩展到任意真实/生成图像，并发布首个 drag 评测基准 **DragBench**（205 图 / 349 对点）。
 
 ## 背景与定位
 可控图像合成长期靠"标注数据监督"或"先验 3D 模型"来获得 GAN 可控性，缺乏灵活性/精度/通用性；文本引导（[[dall-e-2]] [[imagen]] [[latent-diffusion-ldm]]）能改高层语义但**无法精确指定"把某点移动 N 个像素"**这种空间属性。DragGAN 把问题归结为：给定任意数量 (handle, target) 点，把 handle 精确驱动到 target。与最接近的前作 UserControllableLT（Endo 2022）相比，多解决两个难点：(1) 支持**多点**约束；(2) 要求 handle **精确到达** target（前作常到不了）。
 
-DragDiffusion 承接此框架，针对 DragGAN 的核心瓶颈——**受限于预训练 GAN 模型容量**（每个 StyleGAN 只覆盖一个类别，真实图像还要先做难度大的 GAN inversion）。同时区别于绝大多数扩散编辑方法（Prompt-to-Prompt、Imagic、[[pix2pix-zero]] 等只改 text embedding，限于高层语义/风格），DragDiffusion 是**首个用扩散模型做点级精确空间控制**的拖拽编辑方法。并发工作 DragonDiffusion（Mou et al. 2307.02421）走的是 classifier guidance 把编辑信号转梯度，路线不同。
+DragDiffusion 承接此框架，针对 DragGAN 的核心瓶颈——**受限于预训练 GAN 模型容量**（每个 StyleGAN 只覆盖一个类别，真实图像还要先做难度大的 GAN inversion）。同时区别于绝大多数扩散编辑方法（Prompt-to-Prompt、Imagic、[[pix2pix-zero]] 等只改 text embedding，限于高层语义/风格），DragDiffusion 是**首个用扩散模型做点级精确空间控制**的拖拽编辑方法。并发工作 DragonDiffusion（Mou et al. 2307.02421，DragDiffusion 论文 [30] 仅注明 "concurrent"、未细述其方法）走的是基于能量/score guidance 把编辑信号转梯度的路线，与本文"直接优化单步 latent"不同。
 
 整体处于"交互式精确编辑"技术脉络：从网格变形(as-rigid-as-possible) → GAN latent 编辑 → 点级拖拽（DragGAN）→ 扩散点级拖拽（DragDiffusion）→ 去 tracking 的 FreeDrag 等。
 

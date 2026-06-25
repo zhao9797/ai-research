@@ -16,10 +16,11 @@ project_url: "https://leditsplusplus-project.static.hf.space/index.html"
 downloaded: [arxiv-2311.16711.pdf, ledits-pp--project-page.md, ledits-pp--github-readme.md, ledits-pp--diffusers-doc.md, ledits-pp--tedbench-dataset.md, ledits-pp--space-readme.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-LEDITS++ 是一种**免微调、免优化、无需用户掩码**的真实图像文本编辑方法：核心创新是把"完美反演（perfect inversion，零重建误差）"从 DDPM 推广到高阶 SDE 求解器 **sde-dpm-solver++**，使整套编辑（反演+生成）仅需约 **20 步**完成；同时支持**多概念同时编辑**且通过**隐式掩码**把改动限制在相关区域。在 TEdBench++ 上以 SD-XL 取得 **87% 编辑成功率（SR）**、LPIPS 0.34，且单次编辑仅 **1.78 秒**（A100），比此前 DDPM 反演快约 6 倍、比 Imagic 快近 200 倍。CVPR 2024 收录。
+LEDITS++ 是一种**免微调、免优化、无需用户掩码**的真实图像文本编辑方法：核心创新是把"完美反演（perfect inversion，零重建误差）"从 DDPM 推广到高阶 SDE 求解器 **sde-dpm-solver++**，使整套编辑（反演+生成）仅需约 **20 步**完成；同时支持**多概念同时编辑**且通过**隐式掩码**把改动限制在相关区域。在 TEdBench++ 上以 SD-XL 取得 **87% 编辑成功率（SR）**、LPIPS 0.34，且单次编辑仅 **1.78 秒**（A100，"oilpainting" 代理任务），比此前 DDPM 反演快约 **6 倍**、比 DDIM 反演快 **21 倍**（论文明确数字）；相对 Imagic（349.98s）则快约两个数量级（按表 1 推算约 196×，论文原文仅称 "orders of magnitude faster"，未给具体倍数）。CVPR 2024 收录。
 
 ## 背景与定位
 真实图像编辑的难点：要在"忠实保留原图"与"按指令改动"之间取舍。论文指出此前方法的三类痛点：

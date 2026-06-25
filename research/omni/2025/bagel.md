@@ -13,9 +13,10 @@ github_url: "https://github.com/bytedance-seed/BAGEL"
 hf_url: "https://huggingface.co/ByteDance-Seed/BAGEL-7B-MoT"
 modelscope_url: ""
 project_url: "https://bagel-ai.org/"
-downloaded: [arxiv-2505.14683.pdf, arxiv-2505.14683.txt, bagel--readme.md, bagel--hf-modelcard.md]
+downloaded: [arxiv-2505.14683.pdf, arxiv-2505.14683.txt, bagel--readme.md, bagel--hf-modelcard.md, bagel--project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -130,3 +131,4 @@ BAGEL 是字节 Seed 开源的 **统一多模态基础模型**（7B 激活 / 14B
 - ../../../sources/omni/2025/arxiv-2505.14683.txt
 - ../../../sources/omni/2025/bagel--readme.md
 - ../../../sources/omni/2025/bagel--hf-modelcard.md
+- ../../../sources/omni/2025/bagel--project-page.md

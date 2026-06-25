@@ -16,6 +16,7 @@ project_url: "https://snap-research.github.io/HyperHuman/"
 downloaded: [arxiv-2310.08579.pdf, hyperhuman--readme.md, hyperhuman--project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

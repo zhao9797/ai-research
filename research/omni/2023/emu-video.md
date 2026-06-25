@@ -16,6 +16,7 @@ project_url: "https://emu-video.metademolab.com/"
 downloaded: [arxiv-2311.10709.pdf, emu-video--project.md, emu-video--blog.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -79,7 +80,7 @@ Emu Video 的核心假设：**强化条件信号**对高质量视频生成至关
 评测以**人评为主**（作者指出 FVD 等自动指标不能反映质量提升），并提出 **JUICE** 评测协议——要求标注者在二选一时**勾选理由**（质量维度：像素清晰度、运动平滑度、可辨识物体/场景、帧一致性、运动量；忠实度维度：空间/时间文本对齐），并提供训练样例统一理解，显著提升标注者一致性（complete agreement 提升约 28%/24%）。每对比较取 5 名评测者多数投票。
 
 **T2V 人评胜率（Emu Video vs 各方法，质量 Q / 忠实度 F，单位 %）**：
-- vs Make-A-Video：96.8 / 81.1（图 6 标注另给 96.8% / 81.8% 偏好）
+- vs Make-A-Video：96.8 / 85.1（质量/忠实度，图 2；图 6 另给质量偏好 MAV 96.8%、IV 81.8%——均为 Quality）
 - vs Imagen Video：81.8 / 56.4（忠实度领先 56%，IV 因要求生成文字字符——latent diffusion 已知弱项）
 - vs Align Your Latents：92.3 / 97.0
 - vs PYOCO：90.5 / 81.1

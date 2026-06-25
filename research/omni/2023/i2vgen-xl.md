@@ -16,6 +16,7 @@ project_url: "https://i2vgen-xl.github.io"
 downloaded: [arxiv-2311.04145.pdf, i2vgen-xl--readme.md, i2vgen-xl--hf-model-card.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位

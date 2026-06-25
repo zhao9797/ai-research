@@ -16,10 +16,11 @@ project_url: "https://xichenpan.github.io/kosmosg/"
 downloaded: [arxiv-2310.02992.pdf, kosmos-g--readme.md, kosmos-g--project-page.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
-Kosmos-G（Microsoft Research，ICLR 2024）用一个 1.6B 的多模态大语言模型（MLLM，承接 [[kosmos-1]]）感知**任意交错的多图+文本**输入，再通过一个 ~225M 的 **AlignerNet** 把 MLLM 输出空间对齐到冻结的 Stable Diffusion v1.5 的 CLIP 文本条件空间，从而实现**零样本、免测试时微调、可多主体（multi-entity）的主体驱动生成**——它是首个把零样本主体驱动生成扩展到多主体交错场景的模型；DreamBench 上 CLIP-I/CLIP-T 与 DreamBooth/BLIP-Diffusion 持平甚至略优（CLIP-I 0.847、CLIP-T 0.287），且因为只换 CLIP 不动 U-Net，可即插即用 ControlNet / LoRA。
+Kosmos-G（Microsoft Research，ICLR 2024）用一个 1.6B 的多模态大语言模型（MLLM，承接 [[kosmos-1]]）感知**任意交错的多图+文本**输入，再通过一个 ~225M 的 **AlignerNet** 把 MLLM 输出空间对齐到冻结的 Stable Diffusion v1.5 的 CLIP 文本条件空间，从而实现**零样本、免测试时微调、可多主体（multi-entity）的主体驱动生成**——它是首个把零样本主体驱动生成扩展到多主体交错场景的模型；DreamBench 上主体保真度 **CLIP-I 0.847** 甚至略优于微调版 DreamBooth/BLIP-Diffusion，但文本可控性 **CLIP-T 0.287 反而低于** DreamBooth(0.305)/BLIP-Diffusion(0.302)；且因为只换 CLIP 不动 U-Net，可即插即用 ControlNet / LoRA。
 
 ## 背景与定位
 主体驱动（subject-driven）/ 个性化生成此前两条主流路线都有硬伤：
@@ -35,7 +36,7 @@ Kosmos-G 的核心主张是"**image as a foreign language in image generation**"
 - 输入序列用特殊 token 统一编码：`<s>`/`</s>` 标记序列起止，`<image>`/`</image>` 标记图像嵌入的起止。文本 token 走 lookup table；图像走一个 **ViT 视觉编码器**（用预训练 **CLIP ViT-L/14**，1024 维特征，输入 224×224），再经 **Resampler**（Flamingo 式 attentive pooling）压缩图像 token 数量。
 - 解码器：**24 层、隐藏维 2048、FFN 中间维 8192、32 注意力头**，自回归处理序列，softmax 分类头预测下一个 token。训练损失**只对离散文本 token 计算**。
 - backbone 用 **MAGNETO**（Foundation Transformer 变体，与 Kosmos-1 一致）以保证大规模训练稳定。
-- **MLLM 总参数 ~1.6B**（论文表 1 里标的整体模型规模为 **1.9B**，即含 AlignerNet 等组件后的口径）。CLIP 除最后一层外其余冻结。
+- **MLLM 总参数 ~1.6B**（论文正文原话 "about 1.6B"）。论文表 1 里 COCO 行把模型记作 **KOSMOS-G-1.9B**——该整体口径推测为 MLLM(~1.6B) + AlignerNet(~225M) ≈ 1.8B 取整，但论文未明确拆解 1.9B 的构成。CLIP 除最后一层外其余冻结。
 
 **2) AlignerNet（~225M，本文新组件）**——把 MLLM 的输出空间 S 桥接到 CLIP 文本编码器目标空间 T（也即 SD U-Net 的条件输入空间）。由编码器 M 和解码器 N 组成，二者各是一个 **12 层 Transformer encoder + 12 层 Transformer decoder**，输入维 d=768、隐藏维 3072。
 - 因为 MLLM 对交错多图文本输出的是**变长嵌入**，GlueNet（GlueGen）那种 MLP 对齐不适用，所以 AlignerNet 用 Transformer 架构 + **变长可学习 latent query**（M 中 Q_M∈R^{l_t×d}，N 中 Q_N∈R^{l_s×d}）在 cross-attention 里匹配不同的序列长度与嵌入维度。

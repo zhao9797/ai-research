@@ -16,6 +16,7 @@ project_url: "https://gligen.github.io/"
 downloaded: [arxiv-2301.07093.pdf, gligen--readme.md, gligen--vs-controlnet.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -87,10 +88,10 @@ min_{θ'} L = E_{z,ε~N(0,I),t} [ ‖ ε − f_{θ,θ'}(z_t, t, y) ‖² ]
 
 ## 评测 benchmark（把效果讲清楚）
 **闭集 COCO2014 val（生成质量 FID + 布局对应 YOLO-score AP/AP50/AP75）**——表 1：
-- GLIGEN(COCO2014CD) **FID 5.82**，YOLO 21.7/39.0/21.7；GLIGEN(COCO2014D) **FID 5.61**（最佳画质）；GLIGEN(COCO2014G) FID 6.38。
+- GLIGEN(COCO2014CD) **FID 5.82**，YOLO 21.7/39.0/21.7；GLIGEN(COCO2014D) **FID 5.61 / YOLO 24.0/42.2/24.1**（画质与布局对应均最佳，因纯检测标注 box 最准）；GLIGEN(COCO2014G) FID 6.38 / YOLO 11.2/21.2/10.7（GLIP 伪标签训练，YOLO 偏低）。
 - 对照：LDM* (COCO 微调基线) FID 5.91；同期 SOTA 文生图 LAFITE FID 8.12、Make-a-Scene 7.55、Imagen 7.27（zero-shot 列）。GLIGEN 在加 box 条件的同时**画质不掉**，且 YOLO-AP 远超只能参考的微调 LDM。
 
-**COCO2017 layout2img val（表 2）**：GLIGEN-LDM **FID 21.04 / YOLO-AP 22.4**，超过 TwFA（FID 22.15）、LAMA（FID 31.12, AP 22.4 持平但 FID 大幅领先）、LostGAN-V2（FID 42.55, AP 9.1）。规模化预训练后（表 7）：zero-shot FID 27.03/AP 19.1，finetune 后 FID 21.58/AP 30.8。
+**COCO2017 layout2img val（表 2）**：GLIGEN-LDM **FID 21.04 / YOLO-AP 22.4（AP50/75 = 36.5/24.1）**，FID 超过 TwFA（22.15）、LAMA（31.12）、HCSS（33.68）、OCGAN（41.65）、LostGAN-V2（42.55，YOLO-AP 9.1）。注意：表 2 中 **LAMA、TwFA 未报告 YOLO-AP**（原表标"-"），OCGAN YOLO-AP 13.40、HCSS 仅给 AP50/75（28.20/20.12）；GLIGEN 的 22.4 是全表最高 YOLO-AP，不存在与 LAMA"持平"一说。规模化预训练后（表 7）：zero-shot FID 27.03/AP 19.1，finetune 后 FID 21.58/AP 30.8。
 
 **开放集 zero-shot LVIS（1203 长尾类，用 GLIP-score AP；表 3）**——核心卖点：
 - 仅用 COCO2014CD 训练就 zero-shot 迁移 LVIS：**AP 6.4**，已超**全监督**基线 LAMA（AP 2.0）3 倍多（LAMA 从零训练，难学 LVIS 大量样本极少的稀有类）。

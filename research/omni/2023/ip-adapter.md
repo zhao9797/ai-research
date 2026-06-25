@@ -16,6 +16,7 @@ project_url: "https://ip-adapter.github.io"
 downloaded: [arxiv-2308.06721.pdf, ip-adapter--readme.md, ip-adapter--hf-modelcard.md, ip-adapter--hf-faceid-card.md]
 created: 2026-06-25
 updated: 2026-06-25
+reviewed: 2026-06-25
 ---
 
 ## 一句话定位
@@ -50,9 +51,9 @@ IP-Adapter 是一个仅 **22M 参数** 的轻量适配器，用「**解耦交叉
 **Plus / 细粒度变体（来自论文消融 + 官方 README/模型卡）**
 - **IP-Adapter-Plus**：不用 global embedding，而用 CLIP **倒数第二层的 grid/patch 特征**；用一个轻量 transformer 的 **query 网络**（16 个 learnable token，类 Resampler/Perceiver 思路）从 grid 特征抽信息。更贴近参考图，但会学到空间结构信息，可能降低生成多样性。
 - **SDXL 版**：默认图像编码器为 **OpenCLIP ViT-bigG/14**（1.845B），另提供 `ip-adapter_sdxl_vit-h` 用 ViT-H；plus 系列在 SDXL 上统一用 ViT-H。
-- **Face / FaceID 系列**（实验性，2023-08 起逐步发布）：
-  - `plus-face`：用裁剪人脸图做条件（仍走 CLIP）。
-  - **FaceID**：弃用 CLIP 图像 embedding，改用 **InsightFace 人脸识别模型（buffalo_l）的 face ID embedding**，并叠加 **LoRA** 提升 ID 一致性，可仅凭文本 prompt 换风格。
+- **Face / FaceID 系列**（实验性，按官方 README 发布日志逐步发布）：
+  - `plus-face`（2023-08-30）：用裁剪人脸图做条件（仍走 CLIP）。
+  - **FaceID**（2023-12-20 起）：弃用 CLIP 图像 embedding，改用 **InsightFace 人脸识别模型（buffalo_l）的 face ID embedding**，并叠加 **LoRA** 提升 ID 一致性，可仅凭文本 prompt 换风格。
   - **FaceID-Plus**：face ID embedding（管身份）+ CLIP 图像 embedding（管脸部结构）双路。
   - **FaceID-PlusV2**：把 CLIP 结构 embedding 做成**可调权重**（s_scale）。
   - **FaceID-Portrait**：接受**多张人脸图（默认 5 张）增强相似度**，用 16 token、无 LoRA、无 ControlNet。
