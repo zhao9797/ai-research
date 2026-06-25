@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Skywork UniPic 3.0: Unified Multi-Image Composition with Sequence Modeling" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skywork UniPic 3.0: Unified Multi-Image Composition with Sequence Modeling</title>
+
+  <!-- FONTS & STYLES -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- <link rel="icon" href="static/images/logo.png"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  
+<section class="hero" style="background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%); padding: 4rem 0 2rem;">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1" style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Skywork UniPic 3.0</h1>
+    <p style="font-size: 1.5rem; color: #4a5568; margin-bottom: 0.5rem; font-weight: 500;">Unified Multi-Image Composition with Sequence Modeling</p>
+  
+
+    <!-- <p><em>Skywork Multimodality Team</em></p> -->
+     <p style="font-size: 1.1rem; color: #718096; margin-bottom: 2rem;">
+      <!-- <em>Skywork Robotics Team</em> -->
+      <em>Skywork</em>
+      </p>
+  
+    <p style="margin-top:1rem;">
+      <a href="https://arxiv.org/pdf/2601.15664" class="button is-dark is-small is-rounded">
+        <span class="icon"><i class="ai ai-arxiv"></i></span><span>Technical Report</span>
+      </a>
+      <a href="https://github.com/SkyworkAI/UniPic/tree/main/UniPic-3" class="button is-dark is-small is-rounded">
+        <span class="icon"><i class="fab fa-github"></i></span><span>GitHub</span>
+      </a>
+      <a href="https://huggingface.co/collections/Skywork/skywork-unipic3" class="button is-dark is-small is-rounded">
+        <span class="icon">🤗</span><span>Model</span>
+      </a>
+      <a href="https://huggingface.co/collections/Skywork/skywork-unipic3" class="button is-dark is-small is-rounded">
+        <span class="icon">🤗</span><span>Dataset</span>
+      </a>
+    </p>
+  </div>
+  <div class="container is-max-desktop" style="margin-top: 2rem;">
+    <div class="has-text-centered">
+      <div style="display: inline-block; padding: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); border-radius: 15px; box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1);">
+        <img src="static/imgs/unipic3_teaser.jpg" alt="Skywork UniPic 3.0 Teaser" style="width: 95%; max-width: 1200px; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15); display: block; margin: 0 auto; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- KEY FEATURES -->
+<section class="section" style="background: #ffffff; padding: 4rem 0;">
+  <div class="container" style="max-width: 1200px;">
+    <h2 class="title is-2 has-text-centered" style="margin-bottom: 3rem; font-size: 2.5rem; font-weight: 700;">Key Capabilities</h2>
+    
+    <div class="columns" style="display: flex; flex-wrap: nowrap; gap: 1.5rem;">
+      <div class="column" style="flex: 1; padding: 2rem; background: #f8f9fa; border-radius: 16px; transition: all 0.3s ease; border: 1px solid #e2e8f0; min-width: 0;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+        <h3 class="title is-4" style="margin-bottom: 1rem; font-weight: 600;">High-Quality Data Curation</h3>
+        <p style="color: #4a5568; line-height: 1.6;">A comprehensive data curation pipeline specifically tailored for multi-image composition, constructing 215K high-quality examples with multi-stage filtering to ensure semantic coherence, visual compatibility, and composition quality.</p>
+      </div>
+      
+      <div class="column" style="flex: 1; padding: 2rem; background: #f8f9fa; border-radius: 16px; transition: all 0.3s ease; border: 1px solid #e2e8f0; min-width: 0;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🔗</div>
+        <h3 class="title is-4" style="margin-bottom: 1rem; font-weight: 600;">Sequence Modeling Paradigm</h3>
+        <p style="color: #4a5568; line-height: 1.6;">A novel unified sequence structure that concatenates noisy latent variables of target output with all reference images, enabling simultaneous training on single-image editing and multi-image composition while maintaining architectural simplicity.</p>
+      </div>
+      
+      <div class="column" style="flex: 1; padding: 2rem; background: #f8f9fa; border-radius: 16px; transition: all 0.3s ease; border: 1px solid #e2e8f0; min-width: 0;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+        <h3 class="title is-4" style="margin-bottom: 1rem; font-weight: 600;">Fast Inference</h3>
+        <p style="color: #4a5568; line-height: 1.6;">Pioneered integration of trajectory mapping and distribution matching into distillation, producing high-fidelity results in just 8 inference steps with a remarkable 12.5× speedup over standard synthesis samplers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="section" style="background: #f8f9fa; padding: 4rem 0;">
+  <div class="container" style="max-width: 960px;">
+    <h2 class="title is-2 has-text-centered" style="margin-bottom: 2rem; font-size: 2.5rem; font-weight: 700;">Abstract</h2>
+    
+    <div class="content has-text-justified" style="font-size: 1.1rem; line-height: 1.8; color: #2d3748;">
+      The recent surge in popularity of Nano-Banana and Seedream 4.0 underscores the community's strong interest in multi-image composition tasks. Compared to single-image editing, multi-image composition presents significantly greater challenges in terms of consistency and quality, yet existing models have not disclosed specific methodological details for achieving high-quality fusion. Through statistical analysis, we identify Human-Object Interaction (HOI) as the most sought-after category by the community. We therefore systematically analyze and implement a state-of-the-art solution for multi-image composition with a primary focus on HOI-centric tasks. We present Skywork UniPic 3.0, a unified multimodal framework that integrates single-image editing and multi-image composition. Our model supports an arbitrary (1~6) number and resolution of input images, as well as arbitrary output resolutions (within a total pixel budget of 1024x1024). To address the challenges of multi-image composition, we design a comprehensive data collection, filtering, and synthesis pipeline, achieving strong performance with only 700K high-quality training samples. 
+      Furthermore, we introduce a novel training paradigm that formulates multi-image composition as a sequence-modeling problem, transforming conditional generation into unified sequence synthesis.
+      To accelerate inference, we integrate trajectory mapping and distribution matching into the post-training stage, enabling the model to produce high-fidelity samples in just 8 steps and achieve a 12.5x speedup over standard synthesis sampling. Skywork UniPic 3.0 achieves state-of-the-art performance on single-image editing benchmark and surpasses both Nano-Banana and Seedream 4.0 on multi-image composition benchmark, thereby validating the effectiveness of our data pipeline and training paradigm.
+    </div>
+  </div>
+</section>
+
+<!-- Method -->
+<section class="section" style="background: #ffffff; padding: 4rem 0;">
+    <div class="container" style="max-width: 800px;">
+
+    <h2 class="title is-2 has-text-centered" style="margin-bottom: 1rem; font-size: 2.5rem; font-weight: 700;">Data Pipeline</h2>
+    <p class="has-text-centered mb-5" style="font-size: 1.1rem; color: #4a5568; max-width: 800px; margin: 0 auto 3rem;"><strong>We propose a comprehensive data curation pipeline specifically tailored for multi-image composition. Recognizing that data quality outweighs quantity for this delicate task, we construct a high-quality dataset of 215K multi-image composition examples with a focus on challenging HOI scenarios. Our pipeline employs multi-stage filtering to ensure semantic coherence, visual compatibility, and composition quality, demonstrating that a carefully curated, moderately-sized dataset is sufficient to train a state-of-the-art model.</strong></p>
+    <div class="has-text-centered mb-6">
+      <div style="background: #f8f9fa; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <img src="static/imgs/data_pipeline.png" alt="Data Pipeline" style="width: 100%; height: auto; border-radius: 12px;">
+      </div>
+    </div>
+
+    <h2 class="title is-2 has-text-centered mt-6" style="margin-bottom: 1rem; font-size: 2.5rem; font-weight: 700; margin-top: 4rem;">Model Overview</h2>
+    <p class="has-text-centered mb-5" style="font-size: 1.1rem; color: #4a5568; max-width: 800px; margin: 0 auto 3rem;"><strong>We introduce a novel sequence modeling paradigm for multi-image composition. Specifically, we concatenate the noisy latent variables of the target output image with the latents of all reference images along the sequence dimension to form a unified long sequence. This formulation enables our model to simultaneously train on single-image editing and multi-image composition tasks while maintaining architectural simplicity. The unified sequence structure naturally accommodates variable numbers of input images and arbitrary output resolutions within a flexible pixel budget.</strong></p>
+    <div class="has-text-centered">
+      <div style="background: #f8f9fa; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <img src="static/imgs/pipeline.png" alt="Model Pipeline" style="width: 100%; height: auto; border-radius: 12px;">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Comparison -->
+<section class="section" style="background: #f8f9fa; padding: 4rem 0;">
+  <div class="container" style="max-width: 1200px;">
+    <h2 class="title is-2 has-text-centered" style="margin-bottom: 1rem; font-size: 2.5rem; font-weight: 700;">Performance Comparison</h2>
+
+    <p class="has-text-centered mb-5" style="font-size: 1.1rem; color: #4a5568; max-width: 800px; margin: 0 auto 3rem;"><strong>We compare the performance of Skywork UniPic 3.0 with the state-of-the-art models on the image editing tasks.</strong></p>
+    <div class="table-container" style="overflow-x: auto;">
+      <table class="table is-hoverable is-narrow" style="font-size: 0.85rem; margin: 0 auto; table-layout: fixed; width: 100%;">
+        <thead>
+          <tr>
+            <th rowspan="2" style="vertical-align: middle; padding: 0.5em 0.75em; width: 160px;">Model</th>
+            <th colspan="10" class="has-text-centered" style="padding: 0.5em 0.5em;">ImgEdit-Bench ↑</th>
+            <th colspan="3" class="has-text-centered" style="padding: 0.5em 0.5em;">GEdit-Bench ↑</th>
+          </tr>
+          <tr>
+            <th style="padding: 0.3em 0.25em; width: 50px;">Extract</th>
+            <th style="padding: 0.3em 0.25em; width: 50px;">Style</th>
+            <th style="padding: 0.3em 0.25em; width: 45px;">BG</th>
+            <th style="padding: 0.3em 0.25em; width: 45px;">Add</th>
+            <th style="padding: 0.3em 0.25em; width: 55px;">Remove</th>
+            <th style="padding: 0.3em 0.3em; width: 55px;">Replace</th>
+            <th style="padding: 0.3em 0.3em; width: 50px;">Adjust</th>
+            <th style="padding: 0.3em 0.3em; width: 60px;">Compose</th>
+            <th style="padding: 0.3em 0.3em; width: 50px;">Action</th>
+            <th style="padding: 0.3em 0.3em; width: 60px;">Overall</th>
+            <th style="padding: 0.3em 0.3em; width: 50px;">G_SC</th>
+            <th style="padding: 0.3em 0.3em; width: 50px;">G_PQ</th>
+            <th style="padding: 0.3em 0.3em; width: 45px;">G_O</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.4em 0.75em; width: 160px;">Qwen-Image-Edit</td>
+            <td style="width: 50px; text-align: center;">3.47</td><td style="width: 50px; text-align: center;">4.80</td><td style="width: 45px; text-align: center;">4.32</td><td style="width: 45px; text-align: center;">4.26</td><td style="width: 55px; text-align: center;">3.87</td><td style="width: 55px; text-align: center;">4.58</td><td style="width: 50px; text-align: center;">4.45</td><td style="width: 60px; text-align: center;">3.91</td><td style="width: 50px; text-align: center;">4.59</td><td style="width: 60px; text-align: center;">4.25</td><td style="width: 50px; text-align: center;">8.18</td><td style="width: 50px; text-align: center;">7.87</td><td style="width: 45px; text-align: center;">7.68</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.4em 0.75em; width: 160px;">Qwen-Image-Edit-2509</td>
+            <td style="width: 50px; text-align: center;">3.51</td><td style="width: 50px; text-align: center;">4.84</td><td style="width: 45px; text-align: center;">4.36</td><td style="width: 45px; text-align: center;">4.43</td><td style="width: 55px; text-align: center;">4.29</td><td style="width: 55px; text-align: center;">4.66</td><td style="width: 50px; text-align: center;">4.42</td><td style="width: 60px; text-align: center;">3.72</td><td style="width: 50px; text-align: center;">4.58</td><td style="width: 60px; text-align: center;">4.31</td><td style="width: 50px; text-align: center;">8.12</td><td style="width: 50px; text-align: center;">8.01</td><td style="width: 45px; text-align: center;">7.61</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.4em 0.75em; width: 160px;">Nano Banana</td>
+            <td style="width: 50px; text-align: center;">3.89</td><td style="width: 50px; text-align: center;">4.20</td><td style="width: 45px; text-align: center;">4.32</td><td style="width: 45px; text-align: center;">4.33</td><td style="width: 55px; text-align: center;">4.39</td><td style="width: 55px; text-align: center;">4.55</td><td style="width: 50px; text-align: center;">4.36</td><td style="width: 60px; text-align: center;">3.42</td><td style="width: 50px; text-align: center;">4.48</td><td style="width: 60px; text-align: center;">4.22</td><td style="width: 50px; text-align: center;">7.43</td><td style="width: 50px; text-align: center;">8.14</td><td style="width: 45px; text-align: center;">7.20</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.4em 0.75em; width: 160px;">Seedream 4.0</td>
+            <td style="width: 50px; text-align: center;">2.96</td><td style="width: 50px; text-align: center;">4.76</td><td style="width: 45px; text-align: center;">4.22</td><td style="width: 45px; text-align: center;">4.47</td><td style="width: 55px; text-align: center;">4.25</td><td style="width: 55px; text-align: center;">4.42</td><td style="width: 50px; text-align: center;">4.31</td><td style="width: 60px; text-align: center;">3.11</td><td style="width: 50px; text-align: center;">4.45</td><td style="width: 60px; text-align: center;">4.11</td><td style="width: 50px; text-align: center;">8.24</td><td style="width: 50px; text-align: center;">7.86</td><td style="width: 45px; text-align: center;">7.66</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.4em 0.75em; width: 160px;">UniPic 2.0</td>
+            <td style="width: 50px; text-align: center;">1.86</td><td style="width: 50px; text-align: center;">4.53</td><td style="width: 45px; text-align: center;">4.73</td><td style="width: 45px; text-align: center;">4.48</td><td style="width: 55px; text-align: center;">4.00</td><td style="width: 55px; text-align: center;">4.73</td><td style="width: 50px; text-align: center;">4.18</td><td style="width: 60px; text-align: center;">3.82</td><td style="width: 50px; text-align: center;">4.22</td><td style="width: 60px; text-align: center;">4.06</td><td style="width: 50px; text-align: center;">7.63</td><td style="width: 50px; text-align: center;">7.17</td><td style="width: 45px; text-align: center;">7.10</td>
+          </tr>
+          <tr class="has-background-success-light">
+            <td style="padding: 0.4em 0.75em; width: 160px;">UniPic 3.0</td>
+            <td style="width: 50px; text-align: center;">3.31</td><td style="width: 50px; text-align: center;">4.97</td><td style="width: 45px; text-align: center;">4.35</td><td style="width: 45px; text-align: center;">4.45</td><td style="width: 55px; text-align: center;">4.46</td><td style="width: 55px; text-align: center;">4.71</td><td style="width: 50px; text-align: center;">4.44</td><td style="width: 60px; text-align: center;">3.77</td><td style="width: 50px; text-align: center;">4.69</td><td style="width: 60px; text-align: center; font-weight: bold;">4.35</td><td style="width: 50px; text-align: center;">8.12</td><td style="width: 50px; text-align: center;">7.79</td><td style="width: 45px; text-align: center;">7.55</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</section>
+  <!-- GENERATION AND EDITING DEMOS -->
+<section class="section" style="background: #ffffff; padding: 4rem 0;">
+  <div class="container" style="max-width: 1400px;">
+    <h2 class="title is-2 has-text-centered" style="margin-bottom: 1rem; font-size: 2.5rem; font-weight: 700;">Multi-image Composition</h2>
+    <p class="has-text-centered" style="margin-bottom: 3rem; color: #718096; font-style: italic; font-size: 0.95rem;">
+      *Note: Images shown here are in JPEG format with compression for display purposes. For detailed results, please refer to the paper and model outputs.
+    </p>
+    
+    <div style="background: #f8f9fa; padding: 3rem; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.08);">
+      <h3 class="title is-4 has-text-centered" style="margin-bottom: 2rem; font-weight: 600;">Visual Comparison</h3>
+      <img src="static/imgs/unipic3_comparison_1.jpg" alt="UniPic 3.0 Comparison" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+      <!-- <h3 class="title is-4 has-text-centered" style="margin-bottom: 2rem; font-weight: 600;">Visual Comparison</h3> -->
+      <img src="static/imgs/unipic3_comparison_2.jpg" alt="UniPic 3.0 Comparison" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+      <!-- <h3 class="title is-4 has-text-centered" style="margin-bottom: 2rem; font-weight: 600;">Visual Comparison</h3> -->
+      <img src="static/imgs/unipic3_comparison_3.jpg" alt="UniPic 3.0 Comparison" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    </div>
+    <div style="background: #f8f9fa; padding: 3rem; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.08);">
+      <h3 class="title is-4 has-text-centered" style="margin-bottom: 2rem; font-weight: 600;">Qualitative results in 8 steps</h3>
+      <img src="static/imgs/few_step_demo1024.jpg" alt="UniPic 3.0 few step" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    </div>
+  </div>
+</section>
+
+
+<!-- ACK / CITATION -->
+<section class="section">
+<div class="container is-max-desktop">
+      <h2 class="title is-3">Acknowledgement</h2>
+      <div class="content has-text-justified">
+        
+<!-- <ul>
+  <li><a href="https://unipic-v2.github.io/">Skywork UniPic 2.0 Building Kontext Model with Online RL for Unified Multimodal Model</a> </li>
+</ul> -->
+
+<p>We are grateful to the community for their open exploration and contributions to the field of unified multimodal model.</p>
+</div>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <h2 class="title is-3" style="margin-bottom: 0;">Citation</h2>
+        <button id="copy-citation-btn" class="button is-small is-dark" onclick="copyCitation()" title="Copy citation to clipboard">
+          <span class="icon is-small">
+            <i class="fas fa-copy"></i>
+          </span>
+          <span>Copy</span>
+        </button>
+      </div>
+      <pre><code id="citation-content">@article{wei2026skywork,
+        title={Skywork UniPic 3.0: Unified Multi-Image Composition via Sequence Modeling},
+        author={Wei, Hongyang and Liu, Hongbo and Wang, Zidong and Peng, Yi and Xu, Baixin and Wu, Size and Zhang, Xuying and He, Xianglong and Liu, Zexiang and Wang, Peiyu and others},
+        journal={arXiv preprint arXiv:2601.15664},
+        year={2026}
+      },
+      
+</code></pre>
+</div>
+</section>
+
+  <footer class="footer">
+    <div class="container"><div class="content has-text-centered">Template adapted from <a href="https://nerfies.github.io/">NERFies</a>, CC BY‑SA 4.0.</div></div>
+  </footer>
+
+  <script>
+    function copyCitation() {
+      const citationContent = document.getElementById('citation-content').textContent;
+      const copyButton = document.getElementById('copy-citation-btn');
+      
+      navigator.clipboard.writeText(citationContent).then(function() {
+        // Change button text to indicate success
+        const buttonText = copyButton.querySelector('span:last-child');
+        const originalText = buttonText.textContent;
+        buttonText.textContent = 'Copied!';
+        copyButton.classList.remove('is-dark');
+        copyButton.classList.add('is-success');
+        
+        // Reset button after 2 seconds
+        setTimeout(function() {
+          buttonText.textContent = originalText;
+          copyButton.classList.remove('is-success');
+          copyButton.classList.add('is-dark');
+        }, 2000);
+      }).catch(function(err) {
+        console.error('Failed to copy citation: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = citationContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // Show success feedback
+        const buttonText = copyButton.querySelector('span:last-child');
+        const originalText = buttonText.textContent;
+        buttonText.textContent = 'Copied!';
+        copyButton.classList.remove('is-dark');
+        copyButton.classList.add('is-success');
+        
+        setTimeout(function() {
+          buttonText.textContent = originalText;
+          copyButton.classList.remove('is-success');
+          copyButton.classList.add('is-dark');
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>

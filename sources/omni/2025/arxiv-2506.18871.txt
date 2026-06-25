@@ -1,0 +1,3162 @@
+arXiv:2506.18871v4 [cs.CV] 21 Apr 2026
+
+OmniGen2: Towards Instruction-Aligned Multimodal Generation
+Chenyuan Wu1,2 * , Jiahao Wang1,3∗ , Pengfei Zheng1,2∗ , Ruiran Yan1,2∗ , Shitao Xiao1∗§, Xin Luo1,2∗ ,
+Yueze Wang1∗ , Wanli Li1,4† , Xiyan Jiang1,4† , Yexin Liu1† , Junjie Zhou1 , Ziyi Xia1 ,
+Ze Liu1,2 , Chaofan Li1 , Haoge Deng1,3 , Kun Luo1,3 , Bo Zhang4 , Jiajun Zhang3 ,
+Dong Liu2 , Defu Lian2 , Xinlong Wang1 , Zhongyuan Wang1 , Tiejun Huang1 , Zheng Liu1‡§
+1
+Beijing Academy of Artificial Intelligence, 2 University of Science and Technology of China,
+3
+Institute of Automation, Chinese Academy of Sciences, 4 Zhejiang University
+{stxiao, yzwang}@baai.ac.cn zhengliu1026@gmail.com
+
+Abstract
+Multimodal generative models can process instructions
+in various modalities and demonstrate outstanding performance across a wide range of image generation tasks.
+However, their robustness in complex real-world scenarios remains limited due to insufficient generalized instruction alignment. We introduce OmniGen2, a unified multimodal generator designed to follow complex, fine-grained
+instructions. Our core contribution is a two-stage design
+that first builds a strong, world-knowledge-grounded foundation model and then aligns it using a progressive, multitask instruction tuning strategy. The foundation model features a streamlined architecture with decoupled decoding
+for versatile multimodal generation and a novel positional
+encoding scheme to improve learning efficiency. We ground
+this model in real-world knowledge using large-scale data
+construction pipelines. Building on this foundation, we
+propose a progressive, reinforcement-based alignment process. This phase carefully schedules training tasks and reward signals to foster cross-task knowledge transfer, significantly improving the model’s instruction-following capabilities. Our models demonstrate competitive performance
+on standard benchmarks and our dedicated in-context generation benchmark, OmniContext. We have released our
+models, code, benchmark, and training datasets at https:
+//github.com/VectorSpaceLab/OmniGen2.
+
+1. Introduction
+Multimodal image generation has witnessed rapid progress
+in the past year. Generative models such as GPT-Image* Co-first Authors and Listed in Alphabetical Order
+† Core Contributor
+‡ Corresponding Author
+§ Project Lead
+
+1 [34], Flux [40], Qwen-Image [95], Seedream [78]
+and NanoBanana [29] demonstrate increasingly broad and
+versatile capabilities such as stylization, text rendering,
+in-context generation, and knowledge-driven generation,
+marking a significant step toward general-purpose generative intelligence. Given these diverse capabilities, it is
+essential to perform multimodal instruction alignment to
+ensure the controllability, semantic consistency and overall generation quality. This involves two key challenges.
+The first is constructing a robust and versatile foundation
+model. The model must be endowed with nascent instruction following capabilities and broad world knowledge,
+while strictly avoiding over-training. The second is aligning the foundation model. This alignment requires explicit
+and comprehensive reward signals and must ensure consistency across all generation tasks.
+Existing open-source generation models are somewhat
+deficient as initial base model. Some models are specialized
+and can not handle tasks beyond their training scope while
+some are over-optimized towards specific aesthetic preferences, resulting in a severe loss of plasticity. Meanwhile,
+instruction alignment requires the foundation model to possess a deep understanding of multimodal semantic and task
+intent. Therefore, we aim to first establish a base model
+which is simple, versatile and flexible.
+The versatility of a generative model depends a lot on the
+scale and diversity of its training data. Existing datasets are
+typically generated either via inpainting models [93], which
+have limited task coverage, or by retrieving images from the
+Internet [98], which results in limited data volume and low
+image quality. To address this, we develop extensive data
+construction pipelines that leverage video sources, providing richer in-context and editing examples.
+A strong architecture is equally crucial. OmniGen2
+achieves unified multimodal generation by conditioning the
+diffusion transformer on the variable-length hidden states
+of a Vision Language Model (VLM), effectively leverag-
+
+Text to Image
+Image Editing
+
+Remove the ducks
+
+Cross her arms
+
+Change the style
+to Ghibli Studio
+
+Add a
+beautiful hat
+
+Replace the
+bow with scarf
+
+Change scarf
+to pink
+
+<|im_start|>system\nYou
+are a helpful assistant
+that ...<|im_end|>\n<|im_st
+art|>user\n a photo of a
+yellow broccoli <|im_end|>
+\n<|im_start|>assistant\n
+
+The broccoli in the
+image is green, but
+the description
+requires it to be
+yellow. The color of
+the broccoli should
+be changed to yellow.
+
+The generated
+images meet the
+user’s requirements,
+so there is no need
+to continue
+generating.
+
+<|im_start|>system\nYou
+are a helpful assistant
+that ...<|im_end|>\n<|im_st
+art|>user\n a photo of four
+stop signs<|im_end|>
+\n<|im_start|>assistant\n
+
+The description
+mentions four stop
+signs, but the image
+only has two. Please
+add two more stop
+signs to the image.
+
+The generated
+images meet the
+user's requirements,
+so there is no need
+to continue
+generating.
+
+Describe this image in short:
+
+Image
+Understanding
+
+Generate
+with Reflection
+
+In-context
+Generation
+
+Change the
+background to park
+
+The image is a colorful, cartoonstyle illustration of a panda
+sitting on a green chair in front
+of a small, green tea shop. The
+shop has a striped awning and a
+sign with Chinese characters.
+The panda is holding a cup of tea
+and appears to be enjoying a
+relaxing moment. The
+background features greenery
+and a tree, creating a serene
+and peaceful atmosphere.
+
+Figure 1. Overview of versatile abilities of OmniGen2.
+
+ing the VLM’s deep semantic understanding and rich world
+knowledge. To support diverse tasks, we introduce OmniRoPE, which enhances spatial consistency across images
+and improves cross-image localization. While conceptually
+similar to MetaQuery [66], OmniGen2 differs in execution:
+rather than using fixed-length query tokens, it conditions
+the diffusion decoder on the VLM’s variable-length hidden
+states, avoiding information bottlenecks. During the majority of the training process, the VLM is frozen, and optimization focuses on image rendering, making OmniGen2 more
+efficient than models like Mogao [46] and BAGEL [18].
+Once the foundation model is obtained via pre-training
+and fine-tuning, we apply progressive reinforcement learning to facilitate instruction alignment of OmniGen2.
+Specifically, we adopt Group Relative Policy Optimization (GRPO) [79] and divide the instruction alignment process into multiple sequential stages. At each stage, appropriate reward is selected to optimize the alignment for specific target tasks. The training sequence is carefully organized to promote inter-task transfer.
+Our extensive evaluation of OmniGen2 reveals its competitive performance across various task domains, including
+
+text-to-image (T2I) generation, image editing (Edit), and incontext generation (IC). Instruction alignment consistently
+and significantly improves the performance of the base
+model across all these tasks. Notably, for the in-context
+generation task, there is currently a lack of well-established
+public benchmark to systematically assess and compare the
+key capabilities of different models. To mitigate this limitation, we introduce the OmniContext benchmark, comprising eight task categories specifically designed to evaluate
+consistency across individuals, objects, and scenes.
+In summary, our main contributions are as follows:
+• We introduce OmniGen2, a powerful multimodal generative model that is systematically instruction aligned. The
+model demonstrates superior instruction following ability, context consistency, and generation quality across diverse task scenarios.
+• We establish an end-to-end pipeline to achieve comprehensive instruction alignment. This pipeline spans from
+strong foundation model construction to dedicated multitask alignment.
+• We present the OmniContext benchmark, a rigorous suite
+designed to evaluate in-context image generation, provid-
+
+ing the community with a standardized tool to measure
+progress in this key area.
+
+2. Dataset Construction
+To build a versatile and robust base model, high-quality,
+large-scale, and diverse training data is essential. Our goal
+is to equip the base model with broad world knowledge and
+the ability to generate varied content. A key challenge is the
+lack of high-quality public data for complex tasks like detailed image editing and consistent in-context generation.
+Therefore, we not only gather existing datasets but also
+build our own scalable pipelines to create the high-quality
+data needed to fill these gaps.
+Foundational Knowledge and General Capabilities. To
+build a strong foundation, we first curate a massive dataset
+covering both multimodal understanding and text-to-image
+(T2I) generation. For the former, we adopt LLaVAOneVision [41]. For T2I, we collect approximately 140M
+open-source image-text pairs from diverse datasets [9–
+12, 43, 44, 63, 77, 84], supplemented with 10M proprietary
+images annotated by Qwen2.5-VL-72B [3].
+Advanced Capabilities for Editing and In-Context
+Tasks. To address the data scarcity in more complex domains, we develop dedicated construction pipelines. For
+image editing, we integrate public datasets such as SEEDData-Edit [25] and OmniEdit [93], and further construct
+high-quality editing data using inpainting and video-based
+pipelines. For in-context generation and editing, we build
+our datasets from video sources to model consistent subjects
+across varying scenarios. We employ vision-language models for subject detection, segmentation, and semantic filtering, resulting in diverse and semantically consistent triplets
+for training.
+Fostering Higher-Level Reasoning. Finally, to push the
+base model’s capabilities beyond simple generation, we
+construct interleaved and reflection datasets to enhance temporal reasoning and self-correction capabilities in multimodal models. Detailed pipeline steps, examples and the
+capability of reflection are provided in Appendix 9.2, 9.3,
+9.4, 9.5, 9.6.
+
+3. Method
+OmniGen2 is built on three key components: (1) a decoupled architecture for unified generation, (2) Omni-RoPE for
+efficient contextual learning, and (3) a multi-stage training and alignment curriculum that progresses from broad
+knowledge to fine-grained instruction following.
+
+generation. It employs two distinct transformer modules to
+efficiently facilitate the concurrent support of both understanding and generation capabilities, as illustrated in Figure 2. The autoregressive transformer model is initialized
+from a VLM (Qwen2.5-VL-3B [3]). This VLM provides
+extensive world knowledge and deep understanding of multimodal instructions. The diffusion transformer is randomly
+initialized and dedicated solely to high-fidelity image synthesis.
+The two modules operate in sequence. First, the VLM
+processes the input multimodal context. A special token,
+<|img|>, is learned to distinguish the understanding and
+generation tasks. The generation of this token triggers the
+image generation. The corresponding hidden states from
+the VLM are extracted and fed to the diffusion decoder
+as a condition. It encodes high-level semantic instruction.
+Besides the high-level semantic encoding from the VLM,
+we incorporate low-level image features to ensure consistency of fine-grained visual details for tasks like image editing. We utilize Flux-VAE [39] for this purpose. This approach avoids complex architectural modifications to the
+pre-trained VLM, thereby preserving its powerful instruction understanding capabilities.
+
+3.2. Diffusion Decoder
+OmniGen2 employs computational efficient conditioning
+mechanism for the diffusion decoder. Existing methods
+such as MetaQuery [66] compressing instructions into a
+fixed set of learnable query tokens can create an information bottleneck. In contrast, OmniGen2 directly leverages
+the rich hidden states from the VLM’s final layer. Furthermore, we utilize only the hidden states corresponding to text
+tokens, as the VAE features already provide sufficient visual
+detail.
+Within the diffusion decoder, we adopt a unified transformer backbone, following the architecture of LuminaImage 2.0 [69], where the parameters are shared across
+modalities. This design choice is motivated by the motivation that language and vision share substantial semantic representations. Consequently, parameter sharing provides a more natural and efficient means of cross-modal
+alignment than maintaining separate pathways [18, 39, 40].
+Meanwhile, this design facilitates more consistent information exchange between modalities. Before processed by the
+core transformer blocks, input conditioning signals (VLM
+hidden states, VAE features, and noisy latents) are aligned
+by a lightweight two-layer transformer refiner. This refiner
+shares the same architecture as the transformer block employed in Lumina-Image 2.0.
+
+3.1. Overall Architecture
+We aim to design a simple, efficient, and versatile architecture for multimodal generation. Following this principle,
+OmniGen2 utilizes decoupled pathways for text and image
+
+3.3. Omni-RoPE: Unified Positional Encoding
+We introduce Omni-RoPE, a positional encoding scheme
+tailored for multimodal contexts with complex structural
+
+<|img|>
+
+Predict
+
+VAE
+
+Hidden States
+
+Time
+step
+
+Autoregressive Transformer
+Text Tokenizer
+
+ViT Tokenizer
+
+Diffusion Transformer
+Refiner
+
+Refiner
+
+Text Tokenizer
+
+[System] You
+are a helpful
+assistant.
+
+Change the
+color of her
+dress to blue.
+
+[User]
+
+[Assistant]
+
+Refiner
+
+VAE
+
+Hidden States
+from AR model
+
+Figure 2. Architecture of OmniGen2. OmniGen2 employs separate transformers for autoregressive and diffusion. Two distinct image
+encoders are utilized: ViT encodes images for input into the text transformer, while VAE encodes images for the diffusion transformer.
+(10,0,0) (10,0,1) (10,0,2)
+
+(14,0,0) (14,0,1) (14,0,2) (14,0,3)
+
+(10,1,0) (10,1,1) (10,1,2)
+
+(14,1,0) (14,1,1) (14,1,2) (14,1,3)
+
+(10,2,0) (10,2,1) (10,2,2)
+
+(14,2,0) (14,2,1) (14,2,2) (14,2,3)
+
+(10,3,0) (10,3,1) (10,3,2)
+
+(14,3,0) (14,3,1) (14,3,2) (14,3,3)
+
+Input Image 2
+
+Output Image
+
+(6,0,0) (6,0,1) (6,0,2) (6,0,3)
+
+Let them lie on the beach
+(0,0,0) (1,0,0) (2,0,0) (3,0,0) (4,0,0)
+
+(6,1,0) (6,1,1) (6,1,2) (6,1,3)
+
+(5,0,0)
+
+(te
+
+xt
+
+/im
+ag
+
+ei
+
+d,
+
+he
+
+ig
+
+(6,2,0) (6,2,1) (6,2,2) (6,2,3)
+
+Instruction
+
+Input Image 1
+
+ht
+
+,w
+
+id
+
+th
+
+)
+
+(k)
+
+Figure 3. Illustration of Omni-RoPE. Each token in the k-th image is assigned a three-dimensional positional identifier (∆I , h, w),
+(k)
+where ∆I denotes the instance identity shared by all tokens within the same image, and (h, w) are the local 2D spatial coordinates
+computed from (0, 0). This decomposition enables the model to distinguish different images while preserving local spatial consistency for
+tasks such as image editing.
+Method
+
+PosID PosIDk (h, w)
+
+Steps to Target ↓
+
+Final Loss ↓
+
+Lumina-Image-2.0’s
+Qwen2-VL’s
+Omni-RoPE (Ours)
++ Image Index Emb.
+
+(0, h + ∆h , w + ∆w )
+(∆I , h + ∆I , w + ∆I )
+
+∼2,500
+∼1,200
+∼800
+∼800
+
+0.017
+0.005
+0.003
+0.002
+
+(∆I , h, w)
+
+Table 1. Comparison of RoPE designs in the toy reconstruction
+task. Models are trained to reproduce the k-th image among randomly sampled inputs. We report the number of steps required to
+reach the target (loss < 0.014). Omni-RoPE achieves both faster
+convergence and lower final loss. Note: ∆h and ∆w denote the accumulated coordinate offsets in the height and width dimensions,
+respectively, while ∆I represents the accumulated offset in the instance dimension.
+
+correspondence. Conventional positional encodings cannot reliably distinguish multiple images or preserve spatial alignment across editing operations. Omni-RoPE addresses this limitation by extending Rotary Position Embedding (RoPE) [83] to a unified multimodal setting.
+Unified formulation. As shown in Figure 3, each token
+at coordinates (h, w) in the k-th image is assigned a threedimensional positional identifier:
+(k)
+
+PosIDk (h, w) = (∆I , h, w),
+
+(1)
+
+(k)
+
+where ∆I denotes the instance identity, which distinguishes different images or modalities, and (h, w) are the
+2D spatial coordinates. All tokens from the same image
+(k)
+share the same ∆I , while the spatial mapping remains un(k)
+(k)
+changed, i.e., Ph (h) = h and Pw (w) = w. For text
+tokens, this formulation naturally reduces to a standard 1D
+positional index.
+This decomposition separates image identity from intraimage spatial layout. Spatial coordinates are computed locally from (0, 0) within each image, ensuring that corresponding patches in input and output images receive identical embeddings, thereby preserving spatial alignment and
+(k)
+edit consistency. Meanwhile, ∆I provides an explicit
+channel for distinguishing visual instances, which is critical
+for in-context image generation and multi-image reasoning.
+Toy experiment verification. To evaluate positional
+correspondence, we design a controlled toy task in which
+a randomly initialized model is trained to reconstruct the
+k-th image from multiple randomly sampled input images,
+thereby isolating the effect of positional encoding. We measure efficiency by the number of training steps required to
+reach a high-fidelity reconstruction target (loss < 0.014).
+
+As reported in Table 1, the RoPE variants used in
+Lumina-Image-2.0 and Qwen2-VL [90] require substantially more training steps to converge, indicating weaker
+alignment across visual instances. In contrast, Omni-RoPE
+converges markedly faster and achieves the lowest reconstruction loss, demonstrating stronger spatial correspondence and instance discrimination. Incorporating an image
+index embedding [14] further improves the final reconstruction fidelity at no additional cost.
+
+3.4. Foundation Model Training
+We construct the foundation model using a two-stage
+training pipeline comprising from-scratch pre-training followed by supervised fine-tuning. To accommodate variable context lengths in unified multi-task training, we employ FlashAttention2 [17] for efficient sequence processing. The model is optimized using the Rectified Flow objective [2, 49, 55].
+Pre-training. This stage focuses on learning generalpurpose visual and semantic representations from largescale datasets. The model is trained through a resolutionbased curriculum (2562 → 5122 → 10242 ). For each resolution, we first conduct training on the text-to-image (T2I)
+task to establish strong text–image alignment. Then, we introduce a curated mixed-task dataset (covering image editing and in-context generation) to diversify the model’s capabilities.
+Supervised Fine-Tuning. After pre-training, the model undergoes SFT at 10242 resolution to refine high-level reasoning and compositional skills. We train on a mixture of
+curated datasets and distilled data from proprietary models,
+aiming to enhance instruction following and visual fidelity.
+Through two-stage training, the model acquired initial
+instruction-following skills and versatile generation capability, setting a foundation for subsequent alignment. Detailed configurations for each stage are provided in Appendix 9.7.
+
+3.5. Instruction Alignment
+We perform online reinforcement learning for multi-task
+alignment via a progressive curriculum instead of a single
+joint training stage to ensure stability and avoid task interference. The key challenge is to achieve synergistic gains
+across tasks without degrading individual performance.
+We define a sequence of training tasks S =
+⟨T1 , . . . , TN ⟩, where each task T = (τ, δ, R) consists of
+a task type τ ∈ {T2I, Edit, IC}, a task instance δ, and a
+reward signal R. Our goal is to cover all fundamental task
+types for comprehensive alignment.
+For τ = Edit and τ = IC, we adopt general-purpose
+tasks to enhance instruction-following and compositional
+abilities. As these tasks lack verifiable rewards, we employ learned reward models: EditScore [57] for Edit and
+
+Qwen2.5-VL-72B [3] for IC. For τ = T2I, we select
+GenEval, which provides verifiable rewards and exhibits
+strong overlap with Edit and IC.
+We exclude T2I tasks with limited generalization or high
+reward-hacking risk. In particular, aesthetic rewards such
+as HPSv3 [58] are omitted due to reward hacking, and specialized tasks (e.g., OCR) are excluded as they lack synergy
+with general instruction-following.
+This yields a three-stage curriculum ⟨T1 , T2 , T3 ⟩, trained
+with Flow-GRPO [52]:
+• T1 = (Edit, general editing, EditScore),
+• T2 = (T2I, GenEval, Verifiable Reward),
+• T3 = (IC, general in-context, Qwen2.5-VL-72B).
+Our RL data includes 50k T2I prompts from FlowGRPO [55], 110k editing samples from EditScore [57], and
+180k in-context data from Echo-4o [102].
+
+4. OmniContext Benchmark
+Rigorous evaluation is essential for generalized instruction alignment, particularly for reference-based tasks testing core consistency. However, existing benchmarks fall
+short, lacking support for multiple input images and diverse
+tasks. For instance, DreamBench [76] only contains 30 objects and 25 prompt templates. And relying on simplistic
+metrics like CLIP-I fails on multi-subject evaluation and offers no explainability. To address these critical gaps, we
+introduce OmniContext, a comprehensive benchmark designed to assess a model’s ability to generate content consistent with user-specified context images.
+To bridge these gaps, we construct OmniContext using a
+large-scale, manually collected dataset of high-quality images including personal photos, open-source images, animation stills and AI-generated images. These images are
+grouped into three distinct categories — Character, Object,
+and Scene — and exhibit diverse coverage across various
+domains, as illustrated in Figure 4. We define three task
+categories(SINGLE, MULTIPLE, and SCENE), each with
+50 examples per subtask. SINGLE uses one context image,
+MULTIPLE combines multiple subjects, and SCENE conditions on environmental context.
+Image–prompt pairs are constructed through a hybrid process combining MLLMs and manual annotation.
+MLLMs first filter low-quality samples, after which experts select images based on clarity, aesthetics, and diversity. Prompts are generated with GPT-4o and refined for
+semantic and syntactic variety.
+We use GPT-4.1 to assess outputs on three metrics:
+Prompt Following (PF), Subject Consistency (SC), and an
+Overall Score (geometric mean of PF and SC). Following
+VIEScore [38], GPT-4.1 provides both scores (0–10) and
+rationales to justify its evaluations. We believe the OmniContext will serve as a valuable resource for driving future
+research in controllable, reference-based image generation.
+
+9.3
+
+%
+
+Food 3.4%
+
+1.9%
+
+%
+
+.7
+
+Ma
+
+l0
+
+ra
+
+tu
+Na
+
+n-m
+ade
+
+al
+Virtu
+
+5.3. Image Editing
+
+Urb
+a
+
+nt
+Pla
+
+Animal
+Animat
+
+cte
+ara
+Ch
+
+de
+rly
+
+.1
+%
+l3
+cia
+
+15.8
+%
+
+3.7
+
+%
+
+%
+2.9
+
+Male
+
+er
+
+Object
+
+Scene
+
+%
+
+Female 21.9
+
+ild
+Ch
+
+m
+
+ed 1.8%
+
+El
+
+r
+
+m
+
+10.9%
+
+Scene
+
+%
+4.2
+
+Co
+
+Character
+
+jec
+Ob
+
+Domestic 8.7%
+
+ark
+dm
+Lan
+
+%
+
+8.6
+
+t
+
+n3
+.0%
+
+Figure 4. Overview of OmniContext benchmark. Left: Image
+genres included in OmniContext. Right: Example images for each
+genre in OmniContext.
+
+5. Experiments
+In this section, we conduct a comprehensive evaluation of
+OmniGen2 to demonstrate its unified capabilities across a
+wide spectrum of generation tasks. The overall comparison
+results are presented in Table 2.
+
+5.1. Visual Understanding
+OmniGen2 leverages Qwen2.5-VL-3B-Instruct [3] for visual understanding. As shown in Table 2, our model demonstrates robust multimodal comprehension, achieving solid
+scores of 79.1 on MMBench [56], 53.1 on MMMU [107],
+and 61.8 on MM-Vet [105]. These results confirm that OmniGen2 possesses a solid foundation for interpreting complex visual and textual instructions, which is essential for
+high-quality, instruction-aligned generation.
+
+5.2. Text-to-Image Generation
+We assess OmniGen2’s T2I generation capabilities on two
+standard benchmarks: GenEval [26], which evaluates compositional generation, and OneIG-Bench [7] which evaluate models across multiple dimensions, including promptimage alignment, text rendering precision, reasoninggenerated content, stylization, and diversity.
+As shown in Table 2, OmniGen2 delivers strong image generation performance on complex, compositional
+prompts, achieving an overall score of 0.95 on GenEval.
+This surpasses other powerful unified models such as
+UniWorld-V1 (0.84) and BAGEL (0.88), as well as QwenImage, a model specialized for T2I generation, highlighting the effectiveness of the RL alignment strategy in OmniGen2. On the more comprehensive OneIG-Bench, OmniGen2 continues to demonstrate competitive realism, achieving an overall score of 0.47, outperforming most existing
+models and trailing only behind large-scale models such as
+Gemini 2.5 Flash Image and Qwen-Image. More details are
+provided in Appendix 8.1 and 9.10.
+
+Image editing is a cornerstone of OmniGen2’s capabilities.
+We rigorously evaluate its performance across three diverse
+benchmarks: Emu-Edit [80], GEdit-Bench-EN [54] and
+ImgEdit-Bench [103]. The results collectively demonstrate
+that OmniGen2 achieve a strong performance in instructionbased image editing.
+As shown in Table 3, OmniGen2 exhibits an exceptional balance between edit accuracy and image preservation. On Emu-Edit, our model achieves the highest CLIPOut score (0.311), indicating it most effectively applies the
+requested edits among all compared models. Concurrently,
+it secures the second-best scores for CLIP-I (0.896) and best
+scores for DINO (0.876), which measure the preservation of
+unedited regions. This combination highlights OmniGen2’s
+proficiency in making precise, localized changes without
+disturbing the rest of the image. This strong instructionfollowing capability is further confirmed on GEdit-Bench,
+where OmniGen2 achieves the second-highest Semantic
+Consistency (SC) score of 7.58 and the highest Perceptual
+Quality (PQ) score of 7.94. This leads to a strong overall
+score of 7.21, placing it among the top-tier models. This
+score outperforms Gemini-2.5-Flash-Image and is second
+only to Qwen-Image-Edit among open-source models. As
+detailed in Table 2, OmniGen2 demonstrates compelling
+performance on the comprehensive ImgEdit-Bench, notably
+surpassing some strong open-source models like BAGEL.
+More details are provided in Appendix 8.2.
+
+5.4. In-context Generation
+A distinguishing feature of OmniGen2 is its capacity to
+perform in-context generation. We introduce the OmniContext benchmark to provide a comprehensive evaluation of the performance of the existing model in this domain. OmniContext comprises eight subtasks, with overall scores for each subtask presented in Table 4. As the
+inaugural model evaluated on this benchmark, OmniGen2
+establishes a strong baseline, achieving an overall score
+of 7.95, which surpass the powerful open-sourced model
+Qwen-Image-Edit-2509. These results show OmniGen2’s
+proficiency in disentangling the subject’s identity from its
+original background and re-rendering it accurately according to new textual instructions. OmniGen2 exhibits significant improvements over competing models in all types of
+tasks, demonstrating superior prompt-following ability and
+subject consistency. Among closed-source models, GPT4o [64] achieves the highest scores in the Overall metrics.
+More details are provided in Appendix 8.3, 9.8.
+
+5.5. Ablation Study
+Our ablation study, detailed in Table 5, validates our principled curriculum by demonstrating the critical importance of
+two key factors: the selection of tasks and reward signals,
+
+Model
+
+# Params
+MMB↑
+
+Understanding
+MMMU↑ MM-Vet↑
+
+Image Generation
+GenEval↑
+OneIG-Bench-EN↑
+
+Image Editing
+ImgEdit-Bench↑ GEdit-Bench-EN↑
+
+In-context Generation
+Single↑ Multiple↑ Scene↑
+
+LLaVA-1.5 [51]
+LLaVA-NeXT [50]
+
+-
+
+36.4
+79.3
+
+67.8
+51.1
+
+36.3
+57.4
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+SDXL [67]
+SD3-medium [1]
+FLUX.1-dev [39]
+Qwen-Image [95]
+
+-
+
+-
+
+-
+
+-
+
+0.55
+0.62
+0.66
+0.91
+
+0.32
+0.43
+0.54
+
+-
+
+-
+
+-
+
+-
+
+-
+
+Instruct-P2P [5]
+MagicBrush [108]
+AnyEdit [104]
+Step1X-Edit [54]
+IC-Edit [110]
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+1.88
+1.90
+2.45
+3.06
+3.05
+
+3.68
+1.86
+3.21
+6.70
+4.84
+
+-
+
+-
+
+-
+
+UNO [97]
+InfiniteYou [37]
+DreamO [62]
+UMO [15]
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+6.72
+6.05
+7.65
+7.78
+
+4.48
+7.05
+7.14
+
+3.59
+4.52
+6.78
+
+Show-o [99]
+Janus-Pro [13]
+Emu3 [91]
+MetaQuery-XL [66]
+BLIP3-o 8B [11]
+BAGEL [18]
+UniWorld-V1 [48]
+
+7B + 1.6B∗
+7B + 1.4B∗
+7B + 7B∗
+7B + 12B∗
+
+75.5
+58.5
+83.5
+83.5
+85.0
+83.5
+
+27.4
+36.3
+31.6
+58.6
+58.6
+55.3
+58.6
+
+39.8
+37.2
+66.6
+66.6
+67.2
+67.1
+
+0.68
+0.80
+0.54 / 0.66†
+0.80†
+0.84†
+0.82 / 0.88†
+0.84†
+
+0.26
+0.31
+0.36
+-
+
+3.20
+3.26
+
+6.52
+4.85
+
+6.25
+-
+
+6.02
+-
+
+5.08
+-
+
+Qwen-Image-Edit-2509 [95]
+Gemini 2.5 Flash Image [29]
+
+7B + 20B
+-
+
+-
+
+-
+
+-
+
+-
+
+0.55
+
+4.41
+4.28
+
+7.54
+7.10
+
+8.74
+8.77
+
+8.13
+8.06
+
+6.55
+7.01
+
+OmniGen [98]
+OmniGen2
+
+3.8B
+3B + 4B∗
+
+79.1
+
+53.1
+
+61.8
+
+0.68
+0.95
+
+0.47
+
+2.96
+3.69
+
+5.06
+7.21
+
+6.46
+8.41
+
+5.26
+7.73
+
+4.34
+7.86
+
+Table 2. Comparison of different models across Understanding, Generation, Editing, and In-context Generation tasks. *: The first term
+represents the number of parameters for text generation, while the second term corresponds to the number of parameters allocated for
+image generation. † refers to the methods using LLM rewriter.
+Method
+CLIP-I↑
+
+Emu-Edit
+CLIP-Out↑
+
+DINO↑
+
+GEdit-Bench-EN
+SC↑ PQ↑ O ↑
+
+Gemini-2.0-Flash-Image [28]
+Gemini-2.5-Flash-Image [29]
+GPT-4o [64]
+
+-
+
+-
+
+-
+
+6.73
+7.41
+7.85
+
+6.61
+7.96
+7.62
+
+6.32
+7.10
+7.53
+
+Instruct-Pix2Pix [5]
+MagicBrush [108]
+AnyEdit [104]
+OmniGen [98]
+ICEdit [110]
+Step1X-Edit [54]
+BAGEL [18]
+UniWorld-V1 [48]
+Qwen-Image-Edit-2509 [95]
+OmniGen2
+
+0.856
+0.877
+0.907
+0.860
+0.839
+0.896
+
+0.292
+0.298
+0.305
+0.304
+0.307
+0.311
+
+0.773
+0.807
+0.866
+0.782
+0.753
+0.876
+
+3.58
+4.68
+3.18
+5.96
+5.11
+7.09
+7.36
+4.93
+8.15
+7.58
+
+5.49
+5.66
+5.82
+5.89
+6.85
+6.76
+6.83
+7.43
+7.86
+7.94
+
+3.68
+4.52
+3.21
+5.06
+4.84
+6.70
+6.52
+4.85
+7.54
+7.21
+
+Table 3. Quantitative comparison on Emu-Edit [81] and GEditBench-EN [54]. For Emu-Edit, CLIP-I/DINO measure consistency with the source image, while CLIP-Out measures alignment with the caption of target image, CLIP-B/32 [71] and DINOS/16 [6] are leveraged for feature calculation. For GEdit-Bench,
+SC (Semantic Consistency) evaluates instruction following, and
+PQ (Perceptual Quality) assesses image naturalness and artifacts.
+Higher scores are better for all metrics.
+
+and the scheduling of the training sequence. For task selection, we highlight four crucial findings: (1) Tasks with limited skill overlap can cause negative interference, as shown
+by OCR only training which degrades the GEdit Overall score from 6.28 to 6.13. (2) Conversely, well-chosen
+tasks with skill overlap such as instruction following exhibit strong synergy; the Edit & GenEval strategy surpasses both single-task baselines on their respective metrics
+(GenEval: 0.95 vs. 0.94; GEdit Overall: 7.19 vs. 7.01).
+
+(3) Reward signals about human preference pose significant
+risks, with Edit & HPSv3 confirming reward hacking by
+inflating the PQ score to 8.22 at the severe cost of collapsing SC and IC scores. (4) accuracy reward signal is vital.
+As shown by Edit only, whose IC score is higher than
+IC only (7.71 vs. 7.38) because of excel performance
+of EditScore [57] to enhance instruction following. Beyond selection, the training sequence is equally vital. This
+is confirmed by comparing our final curriculum (Edit &
+Geneval & IC) against an alternative ordering (Edit
+& IC & Geneval), which results in a marked performance drop (GEdit Overall: 7.21 vs. 7.06). We also observe
+that prioritizing editing tasks leads to consistently better
+performance than T2I-first. We hypothesize this is because
+editing tasks with richer supervision build a robust foundation for subsequent learning. And Additional results on
+out-of-distribution (OOD) benchmarks are provided in Appendix 9.10, showing consistent improvements under our
+RL curriculum. These findings collectively prove that both
+careful selection and scheduling are essential to our principled alignment strategy.
+
+6. Related Works
+6.1. Multimodal Generation
+Recent advances in multimodal generation have produced
+models capable of both understanding and generating content across text, images, and video. Diffusion-based models, including the Stable Diffusion series [22, 67, 74],
+
+SINGLE
+
+Method
+
+MULTIPLE
+
+SCENE
+
+Average↑
+
+Character
+
+Object
+
+Character
+
+Object
+
+Char. + Obj.
+
+Character
+
+Object
+
+Char. + Obj.
+
+Flux.1 Kontext max [40]
+Gemini-2.0-Flash-Image [28]
+Gemini-2.5-Flash-Image [29]
+GPT-4o [64]
+
+8.48
+5.06
+8.62
+8.90
+
+8.68
+5.17
+8.91
+9.01
+
+2.91
+7.88
+9.07
+
+2.16
+8.92
+8.95
+
+3.80
+7.39
+8.54
+
+3.02
+7.29
+8.90
+
+3.89
+7.05
+8.44
+
+2.92
+6.68
+8.60
+
+3.62
+7.84
+8.80
+
+InfiniteYou [37]
+UNO [97]
+BAGEL [18]
+Qwen-Image-Edit-2509 [95]
+OmniGen [98]
+OmniGen2
+
+6.05
+6.60
+5.48
+8.35
+7.21
+8.19
+
+6.83
+7.03
+9.13
+5.71
+8.63
+
+2.54
+5.17
+7.65
+5.65
+7.45
+
+6.51
+6.64
+8.85
+5.44
+7.91
+
+4.39
+6.24
+7.90
+4.68
+7.93
+
+2.06
+4.07
+5.16
+3.59
+7.75
+
+4.33
+5.71
+7.75
+4.32
+7.91
+
+4.37
+5.47
+6.73
+5.12
+7.93
+
+4.71
+5.73
+7.69
+4.34
+7.95
+
+Table 4. Overall comparison of existing models on our proposed OmniContext benchmark. ”Char. + Obj.” indicates Character + Object.
+Strategy
+
+GEdit ↑
+
+GenEval ↑ OmniContext ↑
+SC
+
+PQ
+
+Overall
+
+Base (w/o RL)
+
+0.78
+
+7.18
+
+6.72 7.20
+
+6.28
+
+Single-Task
+Edit only
+GenEval only
+OCR only
+IC only
+
+0.79
+0.94
+0.78
+0.78
+
+7.71
+7.24
+7.33
+7.38
+
+7.30
+6.78
+6.65
+6.97
+
+7.95
+7.20
+7.15
+6.98
+
+7.01
+6.30
+6.13
+6.39
+
+Multi-Tasks
+Edit & GenEval
+Edit & OCR
+Edit & HPSv3
+Edit & IC & GenEval
+Geneval & Edit & IC
+Edit & GenEval & IC (Ours)
+
+0.95
+0.81
+0.77
+0.93
+0.94
+0.95
+
+7.68
+7.70
+6.82
+7.65
+7.80
+7.95
+
+7.52
+7.28
+6.87
+7.33
+7.49
+7.58
+
+7.95
+7.96
+8.22
+7.92
+7.97
+7.94
+
+7.19
+7.06
+6.88
+7.06
+7.21
+7.21
+
+Table 5. Ablation study of multi-task reinforcement learning
+strategies. T2I, Edit, and IC tasks are trained for 1500, 700, and
+200 steps, respectively.
+
+DALL·E [72], and Imagen [35], have achieved high-fidelity
+image synthesis, while methods like ControlNet [109] and
+T2I-Adapter [61] improve controllability, and StyleShot,
+InstructPix2Pix, and EMU-Edit [5, 24, 81] support finegrained, instruction-guided editing. Unified image generation models such as OmniGen [98], UniReal [14], and related works [14, 59, 88, 98] extend this further, integrating
+multiple tasks into a single model. Building on this foundation, autoregressive multimodal models provide an alternative paradigm for unified generation [85, 87, 91]. There
+are also hybrid approaches such as Show-o and Transfusion [20, 31, 66, 82, 99, 112] combining autoregressive text
+generation with diffusion-based image modeling. Several
+works focus on adapting large language models for multimodal generation [11, 18, 46, 89, 96]: These works are
+trained with vast amount of data, obtaining powerful image
+understanding and image generation capabilities.
+
+6.2. Reinforcement Learning in Diffusion Model
+Reinforcement learning has increasingly been adopted to
+improve alignment in diffusion and flow-based models. For
+text-to-image (T2I) generation, early works such as DDPO
+
+and DPOK [4, 23] formulated diffusion sampling as a sequential decision process and optimized via KL-regularized
+policy updates. Follow-up approaches including ReFL,
+AlignProp [8, 68] refined this paradigm with more stable
+reward optimization, improved credit assignment across denoising steps, and scalable preference-learning from human or synthetic feedback. More recently GRPO [79]
+has become prominent due to its training stability and
+efficiency. GRPO-based alignment method like DanceGRPO [100], Flow-GRPO [52], and Mix-GRPO [42] further push the boundaries of alignment technology, outperforming traditional methods in both accuracy and scalability [32, 45, 92]. For image editing or in-context generation,
+RL has also been used to enforce text alignment and editing
+faithfulness to ensure consistency between input and output [15, 33, 57, 60]. Despite the rapid progress, most existing approaches optimize RL for a single task or a narrow alignment objective. In contrast, our work introduces
+a multi-task RL pipeline that jointly aligns the model’s behavior across all three critical scenarios, achieving comprehensive, all-around alignment.
+
+7. Conclusion
+In this work, we present OmniGen2, a generative model
+that is systematically instruction aligned. OmniGen2 explores two directions to enhance alignment performance:
+constructing a robust and flexible base model, and developing a multi-task RL alignment scheme. OmniGen2 utilizes
+a simple, efficient and flexible architecture to support diverse multimodal generation tasks. Our experiments across
+standard benchmarks and our propose novel OmniContext
+benchmark demonstrate OmniGen2’s semantic consistency,
+versatile capabilities, and superior generation quality. Instruction alignment has consistently and significantly enhanced the base model across various tasks. These results
+suggest that instruction alignment may represent a crucial
+step toward realizing general multimodal systems.
+
+References
+[1] Stability AI. Sd3-medium. https://stability.ai/
+news/stable-diffusion-3-medium, 2024. 7, 11
+[2] Michael S Albergo and Eric Vanden-Eijnden. Building normalizing flows with stochastic interpolants. arXiv preprint
+arXiv:2209.15571, 2022. 5
+[3] Shuai Bai, Keqin Chen, Xuejing Liu, Jialin Wang, Wenbin
+Ge, Sibo Song, Kai Dang, Peng Wang, Shijie Wang, Jun
+Tang, et al. Qwen2. 5-vl technical report. arXiv preprint
+arXiv:2502.13923, 2025. 3, 5, 6, 7
+[4] Kevin Black, Michael Janner, Yilun Du, Ilya Kostrikov, and
+Sergey Levine. Training diffusion models with reinforcement learning, 2024. 8
+[5] Tim Brooks, Aleksander Holynski, and Alexei A Efros. Instructpix2pix: Learning to follow image editing instructions. In Proceedings of the IEEE/CVF Conference on
+Computer Vision and Pattern Recognition, pages 18392–
+18402, 2023. 7, 8
+[6] Mathilde Caron, Hugo Touvron, Ishan Misra, Hervé Jégou,
+Julien Mairal, Piotr Bojanowski, and Armand Joulin.
+Emerging properties in self-supervised vision transformers.
+In Proceedings of the IEEE/CVF international conference
+on computer vision, pages 9650–9660, 2021. 7, 5
+[7] Jingjing Chang, Yixiao Fang, Peng Xing, Shuhan Wu,
+Wei Cheng, Rui Wang, Xianfang Zeng, Gang Yu, and
+Hai-Bao Chen. Oneig-bench: Omni-dimensional nuanced evaluation for image generation. arXiv preprint
+arXiv:2506.07977, 2025. 6
+[8] Chaofeng Chen, Annan Wang, Haoning Wu, Liang Liao,
+Wenxiu Sun, Qiong Yan, and Weisi Lin. Enhancing diffusion models with text-encoder reinforcement learning. In
+European Conference on Computer Vision, pages 182–198.
+Springer, 2024. 8
+[9] Guiming Hardy Chen, Shunian Chen, Ruifei Zhang, Junying Chen, Xiangbo Wu, Zhiyi Zhang, Zhihong Chen, Jianquan Li, Xiang Wan, and Benyou Wang. Allava: Harnessing gpt4v-synthesized data for a lite vision-language model,
+2024. 3, 5
+[10] Junsong Chen, Jincheng Yu, Chongjian Ge, Lewei Yao,
+Enze Xie, Yue Wu, Zhongdao Wang, James Kwok, Ping
+Luo, Huchuan Lu, et al. Pixart-alpha: Fast training of diffusion transformer for photorealistic text-to-image synthesis.
+arXiv preprint arXiv:2310.00426, 2023. 5
+[11] Jiuhai Chen, Zhiyang Xu, Xichen Pan, Yushi Hu, Can Qin,
+Tom Goldstein, Lifu Huang, Tianyi Zhou, Saining Xie, Silvio Savarese, et al. Blip3-o: A family of fully open unified
+multimodal models-architecture, training and dataset. arXiv
+preprint arXiv:2505.09568, 2025. 7, 8, 5, 11
+[12] Lin Chen, Jisong Li, Xiaoyi Dong, Pan Zhang, Conghui
+He, Jiaqi Wang, Feng Zhao, and Dahua Lin. Sharegpt4v:
+Improving large multi-modal models with better captions.
+arXiv preprint arXiv:2311.12793, 2023. 3, 5
+[13] Xiaokang Chen, Zhiyu Wu, Xingchao Liu, Zizheng Pan,
+Wen Liu, Zhenda Xie, Xingkai Yu, and Chong Ruan. Januspro: Unified multimodal understanding and generation with
+data and model scaling. arXiv preprint arXiv:2501.17811,
+2025. 7, 11
+
+[14] Xi Chen, Zhifei Zhang, He Zhang, Yuqian Zhou, Soo Ye
+Kim, Qing Liu, Yijun Li, Jianming Zhang, Nanxuan Zhao,
+Yilin Wang, et al. Unireal: Universal image generation and
+editing via learning real-world dynamics. In Proceedings of
+the Computer Vision and Pattern Recognition Conference,
+pages 12501–12511, 2025. 5, 8
+[15] Yufeng Cheng, Wenxu Wu, Shaojin Wu, Mengqi Huang,
+Fei Ding, and Qian He. Umo: Scaling multi-identity consistency for image customization via matching reward. arXiv
+preprint arXiv:2509.06818, 2025. 7, 8
+[16] Jaemin Cho, Yushi Hu, Jason Baldridge, Roopal Garg, Peter Anderson, Ranjay Krishna, Mohit Bansal, Jordi PontTuset, and Su Wang. Davidsonian scene graph: Improving
+reliability in fine-grained evaluation for text-to-image generation. In ICLR, 2024. 9
+[17] Tri Dao. Flashattention-2: Faster attention with better parallelism and work partitioning. arXiv preprint
+arXiv:2307.08691, 2023. 5
+[18] Chaorui Deng, Deyao Zhu, Kunchang Li, Chenhui Gou,
+Feng Li, Zeyu Wang, Shu Zhong, Weihao Yu, Xiaonan Nie,
+Ziang Song, et al. Emerging properties in unified multimodal pretraining. arXiv preprint arXiv:2505.14683, 2025.
+2, 3, 7, 8, 10, 11
+[19] Haoge Deng, Ting Pan, Haiwen Diao, Zhengxiong Luo,
+Yufeng Cui, Huchuan Lu, Shiguang Shan, Yonggang Qi,
+and Xinlong Wang. Autoregressive video generation without vector quantization. arXiv preprint arXiv:2412.14169,
+2024. 11
+[20] Runpei Dong, Chunrui Han, Yuang Peng, Zekun Qi, Zheng
+Ge, Jinrong Yang, Liang Zhao, Jianjian Sun, Hongyu Zhou,
+Haoran Wei, et al. Dreamllm: Synergistic multimodal comprehension and creation. arXiv preprint arXiv:2309.11499,
+2023. 8
+[21] Doubao.
+Doubao-1.5-pro.
+https : / / seed .
+bytedance . com / zh / special / doubao _ 1 _ 5 _
+pro, 2025. 9
+[22] Patrick Esser, Sumith Kulal, Andreas Blattmann, Rahim
+Entezari, Jonas Müller, Harry Saini, Yam Levi, Dominik
+Lorenz, Axel Sauer, Frederic Boesel, et al. Scaling rectified
+flow transformers for high-resolution image synthesis. In
+Forty-first International Conference on Machine Learning,
+2024. 7
+[23] Ying Fan, Olivia Watkins, Yuqing Du, Hao Liu,
+Moonkyung Ryu, Craig Boutilier, Pieter Abbeel, Mohammad Ghavamzadeh, Kangwook Lee, and Kimin Lee. Dpok:
+Reinforcement learning for fine-tuning text-to-image diffusion models. Advances in Neural Information Processing
+Systems, 36:79858–79885, 2023. 8
+[24] Junyao Gao, Yanchen Liu, Yanan Sun, Yinhao Tang, Yanhong Zeng, Kai Chen, and Cairong Zhao. Styleshot: A
+snapshot on any style. arXiv preprint arXiv:2407.01414,
+2024. 8
+[25] Yuying Ge, Sijie Zhao, Chen Li, Yixiao Ge, and
+Ying Shan. Seed-data-edit technical report: A hybrid
+dataset for instructional image editing. arXiv preprint
+arXiv:2405.04007, 2024. 3, 5
+[26] Dhruba Ghosh, Hannaneh Hajishirzi, and Ludwig Schmidt.
+Geneval: An object-focused framework for evaluating text-
+
+to-image alignment. Advances in Neural Information Processing Systems, 36:52132–52152, 2023. 6
+[27] Dhruba Ghosh, Hannaneh Hajishirzi, and Ludwig Schmidt.
+Geneval: An object-focused framework for evaluating textto-image alignment. Advances in Neural Information Processing Systems, 36, 2024. 11
+[28] Google. Gemini 2.0 flash. https://developers.
+googleblog . com / en / experiment - with gemini - 20 - flash - native - image generation, 2025. 7, 8, 10
+[29] Google.
+Introducing gemini 2.5 flash image.
+https : / / developers . googleblog . com /
+en/introducing-gemini-2-5-flash-image/,
+2025. Accessed: 2025-09-18. 1, 7, 8
+[30] Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song,
+Peiyi Wang, Qihao Zhu, Runxin Xu, Ruoyu Zhang, Shirong
+Ma, Xiao Bi, et al. Deepseek-r1 incentivizes reasoning in
+llms through reinforcement learning. Nature, 645(8081):
+633–638, 2025. 8
+[31] Agrim Gupta, Linxi Fan, Surya Ganguli, and Li Fei-Fei.
+Metamorph: Learning universal controllers with transformers. arXiv preprint arXiv:2203.11931, 2022. 8
+[32] Xiaoxuan He, Siming Fu, Yuke Zhao, Wanli Li, Jian Yang,
+Dacheng Yin, Fengyun Rao, and Bo Zhang. Tempflowgrpo: When timing matters for grpo in flow models. arXiv
+preprint arXiv:2508.04324, 2025. 8
+[33] Ziwei Huang, Ying Shu, Hao Fang, Quanyu Long, Wenya
+Wang, Qiushi Guo, Tiezheng Ge, and Leilei Gan. From
+competition to synergy: Unlocking reinforcement learning for subject-driven image generation. arXiv preprint
+arXiv:2510.18263, 2025. 8
+[34] Aaron Hurst, Adam Lerer, Adam P Goucher, Adam Perelman, Aditya Ramesh, Aidan Clark, AJ Ostrow, Akila Welihinda, Alan Hayes, Alec Radford, et al. Gpt-4o system
+card. arXiv preprint arXiv:2410.21276, 2024. 1
+[35] Imagen-Team-Google. Imagen 3, 2024. 8
+[36] Aaron Jaech, Adam Kalai, Adam Lerer, Adam Richardson,
+Ahmed El-Kishky, Aiden Low, Alec Helyar, Aleksander
+Madry, Alex Beutel, Alex Carney, et al. Openai o1 system
+card. arXiv preprint arXiv:2412.16720, 2024. 8
+[37] Liming Jiang, Qing Yan, Yumin Jia, Zichuan Liu, Hao
+Kang, and Xin Lu. Infiniteyou: Flexible photo recrafting while preserving your identity. arXiv preprint
+arXiv:2503.16418, 2025. 7, 8, 10
+[38] Max Ku, Dongfu Jiang, Cong Wei, Xiang Yue, and Wenhu
+Chen. Viescore: Towards explainable metrics for conditional image synthesis evaluation, 2023. 5
+[39] Black Forest Labs. Flux. https://github.com/
+black-forest-labs/flux, 2024. 3, 7, 11
+[40] Black Forest Labs. Flux.1 kontext: Flow matching for incontext image generation and editing in latent space. 2025.
+1, 3, 8, 5, 10
+[41] Bo Li, Yuanhan Zhang, Dong Guo, Renrui Zhang, Feng Li,
+Hao Zhang, Kaichen Zhang, Peiyuan Zhang, Yanwei Li,
+Ziwei Liu, et al. Llava-onevision: Easy visual task transfer.
+arXiv preprint arXiv:2408.03326, 2024. 3, 5
+
+[42] Junzhe Li, Yutao Cui, Tao Huang, Yinping Ma, Chun Fan,
+Miles Yang, and Zhao Zhong. Mixgrpo: Unlocking flowbased grpo efficiency with mixed ode-sde, 2025. 8
+[43] Xianhang Li, Haoqin Tu, Mude Hui, Zeyu Wang, Bingchen
+Zhao, Junfei Xiao, Sucheng Ren, Jieru Mei, Qing Liu,
+Huangjie Zheng, Yuyin Zhou, and Cihang Xie. What if
+we recaption billions of web images with llama-3? arXiv
+preprint arXiv:2406.08478, 2024. 3, 5
+[44] Xiaotong Li, Fan Zhang, Haiwen Diao, Yueze Wang, Xinlong Wang, and Ling-Yu Duan. Densefusion-1m: Merging
+vision experts for comprehensive multimodal perception.
+2407.08303, 2024. 3, 5
+[45] Yuming Li, Yikai Wang, Yuying Zhu, Zhongyu Zhao, Ming
+Lu, Qi She, and Shanghang Zhang. Branchgrpo: Stable and
+efficient grpo with structured branching in diffusion models. arXiv preprint arXiv:2509.06040, 2025. 8
+[46] Chao Liao, Liyang Liu, Xun Wang, Zhengxiong Luo,
+Xinyu Zhang, Wenliang Zhao, Jie Wu, Liang Li, Zhi Tian,
+and Weilin Huang. Mogao: An omni foundation model
+for interleaved multi-modal generation. arXiv preprint
+arXiv:2505.05472, 2025. 2, 8
+[47] Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe. Let’s verify step by
+step. arXiv preprint arXiv:2305.20050, 2023. 8
+[48] Bin Lin, Zongjian Li, Xinhua Cheng, Yuwei Niu, Yang Ye,
+Xianyi He, Shenghai Yuan, Wangbo Yu, Shaodong Wang,
+Yunyang Ge, et al. Uniworld: High-resolution semantic
+encoders for unified visual understanding and generation.
+arXiv preprint arXiv:2506.03147, 2025. 7, 11
+[49] Yaron Lipman, Ricky TQ Chen, Heli Ben-Hamu, Maximilian Nickel, and Matt Le. Flow matching for generative
+modeling. arXiv preprint arXiv:2210.02747, 2022. 5
+[50] Haotian Liu, Chunyuan Li, Yuheng Li, Bo Li, Yuanhan
+Zhang, Sheng Shen, and Yong Jae Lee. Llava-next: Improved reasoning, ocr, and world knowledge, 2024. 7
+[51] Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong Jae
+Lee. Visual instruction tuning. Advances in neural information processing systems, 36, 2024. 7
+[52] Jie Liu, Gongye Liu, Jiajun Liang, Yangguang Li, Jiaheng
+Liu, Xintao Wang, Pengfei Wan, Di Zhang, and Wanli
+Ouyang. Flow-grpo: Training flow matching models via
+online rl. arXiv preprint arXiv:2505.05470, 2025. 5, 8
+[53] Shilong Liu, Zhaoyang Zeng, Tianhe Ren, Feng Li, Hao
+Zhang, Jie Yang, Chunyuan Li, Jianwei Yang, Hang Su, Jun
+Zhu, et al. Grounding dino: Marrying dino with grounded
+pre-training for open-set object detection. arXiv preprint
+arXiv:2303.05499, 2023. 5
+[54] Shiyu Liu, Yucheng Han, Peng Xing, Fukun Yin, Rui
+Wang, Wei Cheng, Jiaqi Liao, Yingming Wang, Honghao Fu, Chunrui Han, et al. Step1x-edit: A practical framework for general image editing. arXiv preprint
+arXiv:2504.17761, 2025. 6, 7
+[55] Xingchao Liu, Chengyue Gong, and Qiang Liu. Flow
+straight and fast: Learning to generate and transfer data
+with rectified flow. arXiv preprint arXiv:2209.03003, 2022.
+5
+
+[56] Yuan Liu, Haodong Duan, Yuanhan Zhang, Bo Li,
+Songyang Zhang, Wangbo Zhao, Yike Yuan, Jiaqi Wang,
+Conghui He, Ziwei Liu, et al. Mmbench: Is your multimodal model an all-around player? In European conference
+on computer vision, pages 216–233. Springer, 2024. 6
+[57] Xin Luo, Jiahao Wang, Chenyuan Wu, Shitao Xiao, Xiyan
+Jiang, Defu Lian, Jiajun Zhang, Dong Liu, and Zheng Liu.
+Editscore: Unlocking online rl for image editing via highfidelity reward modeling. arXiv preprint arXiv:2509.23909,
+2025. 5, 7, 8
+[58] Yuhang Ma, Yunhao Shui, Xiaoshi Wu, Keqiang Sun, and
+Hongsheng Li. Hpsv3: Towards wide-spectrum human
+preference score. CoRR, abs/2508.03789, 2025. 5
+[59] Chaojie Mao, Jingfeng Zhang, Yulin Pan, Zeyinzi Jiang,
+Zhen Han, Yu Liu, and Jingren Zhou. Ace++: Instructionbased image creation and editing via context-aware content
+filling. arXiv preprint arXiv:2501.02487, 2025. 8
+[60] Yanting Miao, William Loh, Suraj Kothawade, Pascal
+Poupart, Abdullah Rashwan, and Yeqing Li. Subject-driven
+text-to-image generation via preference-based reinforcement learning. Advances in Neural Information Processing
+Systems, 37:123563–123591, 2024. 8
+[61] Chong Mou, Xintao Wang, Liangbin Xie, Yanze Wu, Jian
+Zhang, Zhongang Qi, Ying Shan, and Xiaohu Qie. T2iadapter: Learning adapters to dig out more controllable
+ability for text-to-image diffusion models, 2023. 8
+[62] Chong Mou, Yanze Wu, Wenxu Wu, Zinan Guo, Pengze
+Zhang, Yufeng Cheng, Yiming Luo, Fei Ding, Shiwen
+Zhang, Xinghui Li, et al. Dreamo: A unified framework
+for image customization. arXiv preprint arXiv:2504.16915,
+2025. 7
+[63] Yasumasa Onoe, Sunayana Rane, Zachary Berger, Yonatan
+Bitton, Jaemin Cho, Roopal Garg, Alexander Ku, Zarana
+Parekh, Jordi Pont-Tuset, Garrett Tanzer, et al. Docci:
+Descriptions of connected and contrasting images. arXiv
+preprint arXiv:2404.19753, 2024. 3, 5
+[64] OpenAI. Gpt-4o. https://openai.com/index/
+introducing-4o-image-generation, 2025. 6, 7,
+8, 10
+[65] Maxime Oquab, Timothée Darcet, Théo Moutakanni, Huy
+Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez,
+Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, et al.
+Dinov2: Learning robust visual features without supervision. arXiv preprint arXiv:2304.07193, 2023. 7
+[66] Xichen Pan, Satya Narayan Shukla, Aashu Singh, Zhuokai
+Zhao, Shlok Kumar Mishra, Jialiang Wang, Zhiyang Xu,
+Jiuhai Chen, Kunpeng Li, Felix Juefei-Xu, et al. Transfer between modalities with metaqueries. arXiv preprint
+arXiv:2504.06256, 2025. 2, 3, 7, 8, 11
+[67] Dustin Podell, Zion English, Kyle Lacey, Andreas
+Blattmann, Tim Dockhorn, Jonas Müller, Joe Penna, and
+Robin Rombach. Sdxl: Improving latent diffusion models for high-resolution image synthesis. arXiv preprint
+arXiv:2307.01952, 2023. 7, 11
+[68] Mihir Prabhudesai, Anirudh Goyal, Deepak Pathak, and
+Katerina Fragkiadaki. Aligning text-to-image diffusion
+models with reward backpropagation. 2023. 8
+
+[69] Qi Qin, Le Zhuo, Yi Xin, Ruoyi Du, Zhen Li, Bin Fu, Yiting
+Lu, Jiakang Yuan, Xinyue Li, Dongyang Liu, et al. Luminaimage 2.0: A unified and efficient image generative framework. arXiv preprint arXiv:2503.21758, 2025. 3
+[70] Liao Qu, Huichao Zhang, Yiheng Liu, Xu Wang, Yi Jiang,
+Yiming Gao, Hu Ye, Daniel K Du, Zehuan Yuan, and Xinglong Wu. Tokenflow: Unified image tokenizer for multimodal understanding and generation. In Proceedings of
+the Computer Vision and Pattern Recognition Conference,
+pages 2545–2555, 2025. 11
+[71] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya
+Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry,
+Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning transferable visual models from natural language supervision. In International conference on machine learning,
+pages 8748–8763. PmLR, 2021. 7
+[72] Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey
+Chu, and Mark Chen.
+Hierarchical text-conditional
+image generation with clip latents.
+arXiv preprint
+arXiv:2204.06125, 1(2):3, 2022. 8
+[73] Nikhila Ravi, Valentin Gabeur, Yuan-Ting Hu, Ronghang
+Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, Roman Rädle, Chloe Rolland, Laura Gustafson, et al. Sam
+2: Segment anything in images and videos. arXiv preprint
+arXiv:2408.00714, 2024. 5, 6
+[74] Robin Rombach, Andreas Blattmann, Dominik Lorenz,
+Patrick Esser, and Björn Ommer. High-resolution image
+synthesis with latent diffusion models. In Proceedings of
+the IEEE/CVF conference on computer vision and pattern
+recognition, pages 10684–10695, 2022. 7
+[75] Robin Rombach, Andreas Blattmann, Dominik Lorenz,
+Patrick Esser, and Björn Ommer. High-resolution image
+synthesis with latent diffusion models. In Proceedings of
+the IEEE/CVF conference on computer vision and pattern
+recognition, pages 10684–10695, 2022. 11
+[76] Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch,
+Michael Rubinstein, and Kfir Aberman. Dreambooth: Fine
+tuning text-to-image diffusion models for subject-driven
+generation. In Proceedings of the IEEE/CVF conference
+on computer vision and pattern recognition, pages 22500–
+22510, 2023. 5
+[77] Christoph Schuhmann, Romain Beaumont, Richard Vencu,
+Cade Gordon, Ross Wightman, Mehdi Cherti, Theo
+Coombes, Aarush Katta, Clayton Mullis, Mitchell Wortsman, et al. Laion-5b: An open large-scale dataset for training next generation image-text models. Advances in Neural
+Information Processing Systems, 35:25278–25294, 2022.
+3, 5
+[78] Team Seedream, Yunpeng Chen, Yu Gao, Lixue Gong,
+Meng Guo, Qiushan Guo, Zhiyao Guo, Xiaoxia Hou,
+Weilin Huang, Yixuan Huang, et al. Seedream 4.0: Toward next-generation multimodal image generation. arXiv
+preprint arXiv:2509.20427, 2025. 1
+[79] Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, YK
+Li, Yang Wu, et al. Deepseekmath: Pushing the limits of
+mathematical reasoning in open language models. arXiv
+preprint arXiv:2402.03300, 2024. 2, 8
+
+[80] Shelly Sheynin, Adam Polyak, Uriel Singer, Yuval Kirstain,
+Amit Zohar, Oron Ashual, Devi Parikh, and Yaniv Taigman.
+Emu edit: Precise image editing via recognition and generation tasks. In Proceedings of the IEEE/CVF Conference
+on Computer Vision and Pattern Recognition, pages 8871–
+8879, 2024. 6
+[81] Shelly Sheynin, Adam Polyak, Uriel Singer, Yuval Kirstain,
+Amit Zohar, Oron Ashual, Devi Parikh, and Yaniv Taigman.
+Emu edit: Precise image editing via recognition and generation tasks. In Proceedings of the IEEE/CVF Conference
+on Computer Vision and Pattern Recognition, pages 8871–
+8879, 2024. 7, 8
+[82] Weijia Shi, Xiaochuang Han, Chunting Zhou, Weixin
+Liang, Xi Victoria Lin, Luke Zettlemoyer, and Lili Yu. Llamafusion: Adapting pretrained language models for multimodal generation. arXiv preprint arXiv:2412.15188, 2024.
+8
+[83] Jianlin Su, Murtadha Ahmed, Yu Lu, Shengfeng Pan, Wen
+Bo, and Yunfeng Liu. Roformer: Enhanced transformer
+with rotary position embedding. Neurocomputing, 568:
+127063, 2024. 4
+[84] Keqiang Sun, Junting Pan, Yuying Ge, Hao Li, Haodong
+Duan, Xiaoshi Wu, Renrui Zhang, Aojun Zhou, Zipeng
+Qin, Yi Wang, et al. Journeydb: A benchmark for generative image understanding. Advances in Neural Information
+Processing Systems, 36, 2024. 3, 5
+[85] Quan Sun, Yufeng Cui, Xiaosong Zhang, Fan Zhang, Qiying Yu, Yueze Wang, Yongming Rao, Jingjing Liu, Tiejun
+Huang, and Xinlong Wang. Generative multimodal models
+are in-context learners. In Proceedings of the IEEE/CVF
+Conference on Computer Vision and Pattern Recognition,
+pages 14398–14409, 2024. 8
+[86] Zhenxiong Tan, Songhua Liu, Xingyi Yang, Qiaochu Xue,
+and Xinchao Wang. Ominicontrol: Minimal and universal control for diffusion transformer. arXiv preprint
+arXiv:2411.15098, 2024. 5
+[87] Chameleon Team. Chameleon: Mixed-modal early-fusion
+foundation models. arXiv preprint arXiv:2405.09818,
+2024. 8
+[88] Xueyun Tian, Wei Li, Bingbing Xu, Yige Yuan, Yuanzhuo
+Wang, and Huawei Shen. Mige: A unified framework for
+multimodal instruction-based image generation and editing.
+arXiv preprint arXiv:2502.21291, 2025. 8
+[89] Guo-Hua Wang, Shanshan Zhao, Xinjie Zhang, Liangfu
+Cao, Pengxin Zhan, Lunhao Duan, Shiyin Lu, Minghao
+Fu, Xiaohao Chen, Jianshan Zhao, Yang Li, and Qing-Guo
+Chen. Ovis-u1 technical report, 2025. 8
+[90] Peng Wang, Shuai Bai, Sinan Tan, Shijie Wang, Zhihao
+Fan, Jinze Bai, Keqin Chen, Xuejing Liu, Jialin Wang,
+Wenbin Ge, et al. Qwen2-vl: Enhancing vision-language
+model’s perception of the world at any resolution. arXiv
+preprint arXiv:2409.12191, 2024. 5
+[91] Xinlong Wang, Xiaosong Zhang, Zhengxiong Luo, Quan
+Sun, Yufeng Cui, Jinsheng Wang, Fan Zhang, Yueze Wang,
+Zhen Li, Qiying Yu, et al. Emu3: Next-token prediction is
+all you need. arXiv preprint arXiv:2409.18869, 2024. 7, 8,
+11
+
+[92] Yibin Wang, Zhimin Li, Yuhang Zang, Yujie Zhou, Jiazi
+Bu, Chunyu Wang, Qinglin Lu, Cheng Jin, and Jiaqi Wang.
+Pref-grpo: Pairwise preference reward-based grpo for stable text-to-image reinforcement learning. arXiv preprint
+arXiv:2508.20751, 2025. 8
+[93] Cong Wei, Zheyang Xiong, Weiming Ren, Xeron Du, Ge
+Zhang, and Wenhu Chen. Omniedit: Building image editing generalist models through specialist supervision. In
+The Thirteenth International Conference on Learning Representations, 2024. 1, 3, 5
+[94] Chengyue Wu, Xiaokang Chen, Zhiyu Wu, Yiyang Ma,
+Xingchao Liu, Zizheng Pan, Wen Liu, Zhenda Xie, Xingkai
+Yu, Chong Ruan, et al. Janus: Decoupling visual encoding
+for unified multimodal understanding and generation. In
+Proceedings of the Computer Vision and Pattern Recognition Conference, pages 12966–12977, 2025. 11
+[95] Chenfei Wu, Jiahao Li, Jingren Zhou, Junyang Lin,
+Kaiyuan Gao, Kun Yan, Sheng ming Yin, Shuai Bai,
+Xiao Xu, Yilei Chen, Yuxiang Chen, Zecheng Tang, Zekai
+Zhang, Zhengyi Wang, An Yang, Bowen Yu, Chen Cheng,
+Dayiheng Liu, Deqing Li, Hang Zhang, Hao Meng, Hu
+Wei, Jingyuan Ni, Kai Chen, Kuan Cao, Liang Peng, Lin
+Qu, Minggang Wu, Peng Wang, Shuting Yu, Tingkun Wen,
+Wensen Feng, Xiaoxiao Xu, Yi Wang, Yichang Zhang,
+Yongqiang Zhu, Yujia Wu, Yuxuan Cai, and Zenan Liu.
+Qwen-image technical report, 2025. 1, 7, 8
+[96] Chenfei Wu, Jiahao Li, Jingren Zhou, Junyang Lin,
+Kaiyuan Gao, Kun Yan, Sheng-ming Yin, Shuai Bai, Xiao
+Xu, Yilei Chen, et al. Qwen-image technical report. arXiv
+preprint arXiv:2508.02324, 2025. 8
+[97] Shaojin Wu, Mengqi Huang, Wenxu Wu, Yufeng Cheng,
+Fei Ding, and Qian He. Less-to-more generalization:
+Unlocking more controllability by in-context generation.
+arXiv preprint arXiv:2504.02160, 2025. 7, 8, 5, 10
+[98] Shitao Xiao, Yueze Wang, Junjie Zhou, Huaying Yuan,
+Xingrun Xing, Ruiran Yan, Chaofan Li, Shuting Wang,
+Tiejun Huang, and Zheng Liu. Omnigen: Unified image
+generation. In Proceedings of the Computer Vision and Pattern Recognition Conference, pages 13294–13304, 2025. 1,
+7, 8, 10, 11
+[99] Jinheng Xie, Weijia Mao, Zechen Bai, David Junhao
+Zhang, Weihao Wang, Kevin Qinghong Lin, Yuchao Gu,
+Zhijie Chen, Zhenheng Yang, and Mike Zheng Shou.
+Show-o: One single transformer to unify multimodal understanding and generation. arXiv preprint arXiv:2408.12528,
+2024. 7, 8, 11
+[100] Zeyue Xue, Jie Wu, Yu Gao, Fangyuan Kong, Lingting
+Zhu, Mengzhao Chen, Zhiheng Liu, Wei Liu, Qiushan Guo,
+Weilin Huang, et al. Dancegrpo: Unleashing grpo on visual
+generation. arXiv preprint arXiv:2505.07818, 2025. 8
+[101] Hu Ye, Jun Zhang, Sibo Liu, Xiao Han, and Wei Yang. Ipadapter: Text compatible image prompt adapter for text-toimage diffusion models. arXiv preprint arXiv:2308.06721,
+2023. 5
+[102] Junyan Ye, Dongzhi Jiang, Zihao Wang, Leqi Zhu, Zhenghao Hu, Zilong Huang, Jun He, Zhiyuan Yan, Jinghua Yu,
+Hongsheng Li, et al. Echo-4o: Harnessing the power of gpt-
+
+4o synthetic images for improved image generation. arXiv
+preprint arXiv:2508.09987, 2025. 5
+[103] Yang Ye, Xianyi He, Zongjian Li, Bin Lin, Shenghai Yuan,
+Zhiyuan Yan, Bohan Hou, and Li Yuan. Imgedit: A unified image editing dataset and benchmark. arXiv preprint
+arXiv:2505.20275, 2025. 6, 5
+[104] Qifan Yu, Wei Chow, Zhongqi Yue, Kaihang Pan, Yang
+Wu, Xiaoyang Wan, Juncheng Li, Siliang Tang, Hanwang
+Zhang, and Yueting Zhuang. Anyedit: Mastering unified
+high-quality image editing for any idea. In Proceedings of
+the Computer Vision and Pattern Recognition Conference,
+pages 26125–26135, 2025. 7
+[105] Weihao Yu, Zhengyuan Yang, Linjie Li, Jianfeng Wang,
+Kevin Lin, Zicheng Liu, Xinchao Wang, and Lijuan Wang.
+Mm-vet: Evaluating large multimodal models for integrated capabilities. arXiv preprint arXiv:2308.02490, 2023.
+6
+[106] Yongsheng Yu, Ziyun Zeng, Hang Hua, Jianlong Fu, and
+Jiebo Luo. Promptfix: You prompt and we fix the photo.
+arXiv preprint arXiv:2405.16785, 2024. 5
+[107] Xiang Yue, Yuansheng Ni, Kai Zhang, Tianyu Zheng,
+Ruoqi Liu, Ge Zhang, Samuel Stevens, Dongfu Jiang,
+Weiming Ren, Yuxuan Sun, et al. Mmmu: A massive multidiscipline multimodal understanding and reasoning benchmark for expert agi. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages
+9556–9567, 2024. 6
+[108] Kai Zhang, Lingbo Mo, Wenhu Chen, Huan Sun, and
+Yu Su. Magicbrush: A manually annotated dataset for
+instruction-guided image editing. Advances in Neural Information Processing Systems, 36, 2024. 7
+[109] Lvmin Zhang, Anyi Rao, and Maneesh Agrawala. Adding
+conditional control to text-to-image diffusion models. In
+Proceedings of the IEEE/CVF International Conference on
+Computer Vision (ICCV), pages 3836–3847, 2023. 8
+[110] Zechuan Zhang, Ji Xie, Yu Lu, Zongxin Yang, and Yi Yang.
+In-context edit: Enabling instructional image editing with
+in-context generation in large scale diffusion transformer.
+arXiv preprint arXiv:2504.20690, 2025. 7
+[111] Haozhe Zhao, Xiaojian Shawn Ma, Liang Chen, Shuzheng
+Si, Rujie Wu, Kaikai An, Peiyu Yu, Minjia Zhang, Qing
+Li, and Baobao Chang. Ultraedit: Instruction-based finegrained image editing at scale. Advances in Neural Information Processing Systems, 37:3058–3093, 2024. 5
+[112] Chunting Zhou, Lili Yu, Arun Babu, Kushal Tirumala,
+Michihiro Yasunaga, Leonid Shamis, Jacob Kahn, Xuezhe
+Ma, Luke Zettlemoyer, and Omer Levy. Transfusion: Predict the next token and diffuse images with one multi-modal
+model. arXiv preprint arXiv:2408.11039, 2024. 8
+[113] Le Zhuo, Ruoyi Du, Han Xiao, Yangguang Li, Dongyang
+Liu, Rongjie Huang, Wenze Liu, Xiangyang Zhu, Fu-Yun
+Wang, Zhanyu Ma, et al. Lumina-next: Making lumina-t2x
+stronger and faster with next-dit. Advances in Neural Information Processing Systems, 37:131278–131315, 2024. 11
+
+OmniGen2: Towards Instruction-Aligned Multimodal Generation
+Supplementary Material
+8. More Qualitative Results
+In this section, we present more qualitative results of OmniGen2. OmniGen2 demonstrates unified and versatile capabilities across a wide range of tasks, including text-toimage generation, image editing, in-context generation, and
+others. Moreover, it exhibits strong generalization abilities,
+allowing it to effectively tackle complex generation scenarios with remarkable consistency and fidelity.
+
+8.1. Text to Image
+Figure 5 showcases OmniGen2’s robust capabilities in textto-image (T2I) synthesis. The model demonstrates high fidelity across a wide spectrum of conceptual and thematic
+prompts, from fantasy scenes like a celestial staircase to
+photorealistic portraits and dynamic actions. OmniGen2 excels in rendering intricate details, such as the water droplets
+on the blue rose, and displays a sophisticated understanding
+of complex lighting and composition, as seen in the dramatic glow of the girl wielding lightning and the serene ambiance of the underwater scene. Crucially, these examples
+also highlight the model’s native support for arbitrary aspect ratios, generating high-quality portrait, landscape, and
+square images without distortion. This combination of conceptual diversity, high fidelity, and flexible aspect ratio support validates OmniGen2 as a powerful and versatile T2I
+generator.
+
+8.2. Image Editing
+Figure 6 demonstrates OmniGen2’s comprehensive suite of
+image editing capabilities, showcasing its ability to interpret
+a wide range of user instructions with high fidelity. The
+model adeptly handles localized object manipulations, including precisely adding (a hat), removing (a cat), replacing
+(a sword with a hammer), and extracting subjects from their
+backgrounds. Beyond object-level changes, OmniGen2 excels at nuanced semantic alterations, such as modifying
+facial expressions (adding a smile) and character motion
+(changing a pose to waving). Furthermore, the model is capable of executing complex, global modifications that affect
+the entire image, from changing backgrounds to performing
+complete stylistic transformations (converting a photograph
+into a 3D figurine). A key strength observed across all examples is the model’s ability to preserve the identity of the
+subject and the integrity of unmodified regions, ensuring
+coherent and believable results.
+
+8.3. In context generation
+Figure 7 showcases OmniGen2’s advanced capabilities in
+in-context generation and editing, a challenging task requiring the model to comprehend and manipulate subjects
+provided in reference images. The model adeptly performs compositional tasks, such as seamlessly integrating
+a subject into a new environment (OBJECT + SCENE,
+PERSON + SCENE) or combining multiple distinct subjects into a coherent new image (ANIME + ANIME). In
+these examples, OmniGen2 successfully preserves the highfidelity identity of each subject while harmonizing them
+with the new context through appropriate adjustments in
+lighting, scale, and placement. Furthermore, the model handles complex in-context editing instructions. This includes
+replacing a subject within an existing scene (OBJECT
+REPLACE, PERSON REPLACE), where it not only swaps
+the main element but also intelligently adapts its appearance
+(e.g., color and accessories) to fit the new setting. These results demonstrate a sophisticated level of visual reasoning,
+where the model goes beyond simple generation to perform
+compositional and conditional editing based on multiple visual inputs.
+
+8.4. Limitations
+we also find several limitations of OmniGen2:
+1) Performance Disparity Between English and Chinese
+Prompts. As shown in the first row of Figure 8, prompts in
+English generally yield better results than those in Chinese.
+For instance, when using a Chinese prompt, the generated
+image exhibits a minor inconsistency between input image
+and edited image.
+2) Limited Generalization to Certain Instructions. The
+second row highlights OmniGen2’s difficulty in modifying
+human body shapes, likely due to the scarcity of real-world
+data capturing such variations.
+3) Sensitivity to Input Image Quality. As illustrated in
+Figure 8, the quality of the generated output is highly sensitive to the quality of the input image. When we input a
+low-quality image (generated by adding noise to the raw
+image), the resulting images exhibit significant degradation, with details becoming notably blurred. Furthermore,
+downsampling the input image to a maximum dimension of
+256 pixels leads to further loss of clarity and detail, and the
+model’s ability to accurately follow generation instructions
+is substantially reduced.
+4) Ambiguity in Multi-Image Inputs. The third row of
+Figure 8 demonstrates that the model’s performance improves when the prompt explicitly specifies the correspon-
+
+Figure 5. Qualitative text-to-image generation by OmniGen2. Examples showcasing the model’s high fidelity to various text prompts
+and its support for diverse aspect ratios.
+
+STYLE
+
+COLOR
+
+EXTRACT
+
+ADD
+
+REPLACE
+
+EXPRESSION
+
+REMOVE
+
+Motion
+
+BACKGROUND
+
+Figure 6. Versatile image editing with OmniGen2. The model skillfully handles a wide variety of instructions, from simple object
+modifications to complex motion change and stylistic alterations.
+
+OBJECT + SCENE
+
+OBJECT REPLACE
+
+PERSON REPLACE
+
+ANIME + ANIME
+
+PERSON + OBJECT
+
+PERSON + SCENE
+
+Figure 7. Qualitative results of in-context generation and in-context edit.
+
+Original image
+
+Make him smile
+
+让他笑
+
+Make him smile
+（Low quality input）
+
+Make him smile
+（Low resolution input）
+
+Original image
+
+Make him fat
+
+Make him thinner
+
+Make him shorter
+
+Make him taller
+
+Image 1
+
+Image 2
+
+Add the bird from image 1
+to the desk in image 2
+
+Add the bird to the desk
+
+Figure 8. Visualization of OmniGen2’s Limitations. Line 1: The model performs poorly when processing Chinese prompts and lowquality images. Line 2: The model often struggles to modify human body shapes accurately. Line 3: The model is sensitive to ambiguous
+instructions involving multiple image sources.
+
+dence between objects and their source images (e.g., “the
+bird from image 1 and the desk from image 2”), indicating
+a sensitivity to ambiguous multi-source instructions.
+5) In in-context generation tasks, the model occasionally
+fails to perfectly reproduce objects from the provided context. Increasing the guidance scale of image can partially
+alleviate this issue; however, it does not offer a complete
+solution. We hypothesize that significant improvements on
+such complex tasks may require further scaling of the model
+size.
+
+9. Other Experimental Details
+9.1. Toy Experiment Verification for Omni-RoPE
+Figure 9 provides the full loss curves for the toy reconstruction experiment introduced in Section 3.3. The trends
+
+are consistent with the quantitative results in Table 1 of
+the main paper: both Omni-RoPE variants reduce the reconstruction loss much faster than the prior positional encoding designs. In particular, Qwen2-VL’s RoPE shows
+a noticeable optimization plateau before converging, while
+Lumina-Image-2.0’s design remains unstable for a substantially longer period and converges to a worse final solution.
+The zoomed-in view further highlights the late-stage behavior. Omni-RoPE already achieves a low and stable
+loss floor, and adding the image index embedding mainly
+improves the final fidelity and variance in the last stage
+of training, yielding the best overall reconstruction quality. These results support our key design choice of disentangling image identity from local spatial coordinates: it
+preserves patch-wise correspondence across images while
+avoiding the optimization difficulty introduced by entangled
+
+Loss Curves Comparison
+
+2.0
+
+Omni-RoPE + Image Index Emb.
+Omni-RoPE (Ours)
+Qwen2-VL's
+Lumina-Image-2.0's
+
+Loss
+
+1.5
+1.0
+
+0.06
+
+0.5
+
+0.02
+
+0.0
+
+0.04
+
+0.00
+2000
+
+0
+
+500
+
+1000
+
+2100
+
+1500
+Steps
+
+2200
+
+2300
+
+2000
+
+2400
+
+2500
+
+2500
+
+Figure 9. Full loss curves for the Omni-RoPE toy reconstruction experiment. Omni-RoPE converges substantially faster than prior
+positional encoding schemes. The inset shows late-stage optimization, where adding image index embeddings yields the lowest and most
+stable final loss.
+
+global offsets.
+
+9.2. Data Construction Pipeline
+For multimodal understanding tasks, we utilize the dataset
+provided by LLaVA-OneVision [41].
+For T2I generation, our training corpus comprises approximately
+140 million open-source images sourced from RecapDataComp [43], SAM-LLaVA [10], ShareGPT4V [12],
+LAION-Aesthetic [77], ALLaVA-4V [9], DOCCI [63],
+DenseFusion [44], JourneyDB [84], and BLIP3-o [11].
+Furthermore, we incorporate 10 million proprietary images, for which we generate synthetic annotations using
+the Qwen2.5-VL-72B [3]. For image editing tasks, we
+collect publicly available datasets, including SEED-DataEdit [25], UltraEdit [111], OmniEdit [93], PromptFix [106],
+and ImgEdit [103]. However, these open-source resources
+often suffer from suboptimal image quality, limited instruction accuracy, and insufficient task diversity. To overcome
+these constraints and better serve our research objectives,
+we have meticulously constructed a new comprehensive
+training dataset for this study. The subsequent sections provide a detailed account of our data construction pipeline.
+
+9.3. In-Context Data
+The in-context image generation task [40, 86, 97, 101] focuses on extracting a visual concept—such as a specific object, identity or individual—from input images and accurately reproducing it within newly generated images. This
+task, also known as subject-driven generation [76], parallels in-context learning in large language models: the image generation model produces personalized outputs in real
+time based solely on the provided context, without the need
+for additional fine-tuning. While in-context image generation has been extensively explored due to its broad range of
+
+applications, the community still faces a notable shortage of
+high-quality datasets tailored to this task.
+9.3.1. In-Context Generation
+In-context generation tasks require modeling the diverse appearances of an object across different scenarios. To address this, we leverage video data, which inherently capture
+the same subjects under varying conditions across frames.
+This temporal diversity enables the construction of training pairs in which subjects remain semantically consistent
+but exhibit differences in pose, viewpoint, and illumination. As illustrated in Figure 10, our data pipeline begins by extracting keyframes from each video and designating a base frame. Using Qwen2.5-VL-7B-Instruct [3], we
+identify the primary subjects within the base frame, capitalizing on the model’s vision-language capabilities to focus on semantically salient entities while filtering out irrelevant background objects. The subject bounding boxes
+are then obtained via Grounding DINO [53], conditioned
+on the tags generated by the vision-language model. Subsequently, SAM2 [73] is employed to segment and track
+identified subjects in subsequent frames, with the last valid
+frame containing all subjects selected to maximize appearance variation. To mitigate tracking errors—such as the
+inclusion of visually similar but incorrect objects—we introduce a VLM-based filtering step to ensure subject consistency. To further enhance visual diversity, FLUX.1-Filldev1 is used to outpaint the subject with a novel background
+in the input frame. We apply DINO [6]-based similarity filtering to discard samples where the subject’s appearance deviates significantly, and Qwen2.5-VL-7B-Instruct is leveraged to assess both the semantic quality and consistency
+of the generated samples. Additionally, Qwen2.5-VL-7B1 https://huggingface.co/black-forest-labs/FLUX.1-Fill-dev
+
+VLM Filter
+
+A man wearing
+a straw hat
+
++
+Re-inpaint
+
+Subject-1 Mask
+
+Frame-4
+
+A women with
+short curly hair
+
++
+Frame-5
+
+Target
+image
+
+Instruction Construct
+
+Grounding + SAM2-Track
+
+Video Frames
+
+VLM Filter
+
+Subject-2 Mask
+
+Instruction: Using
+the man wearing a
+straw hat and the
+women with short
+curly hair to
+generate a new
+image: Two
+individuals are …
+
+DINO Filter
+
+Two individuals are standing in close proximity to each
+other. Their bodies are oriented in the same direction …
+
+Figure 10. In-Context Generation Dataset Construction Pipeline. The final input images are outlined with a red border and the target image
+is marked by a blue boundary.
+VLM Filter
+
+Subject Mask
+
+Base Image
+
+DINO Filter
+
+Target Image
+
+Inpaint
+
++
+Tracked Image
+
+Figure 1
+
+Subject Mask
+
+Instruction construct
+
+Outpaint
+
+Grounding + SAM2-Track
+
+Video Frames
+
++
+
+Instruction:
+Replace the man in
+Figure 2 with the
+man in Figure1
+
+Figure 2
+
+Figure 11. In-Context Editing Dataset Construction Pipeline. The final input and target images are outlined by red and blue consistent with
+Figure 10.
+
+Instruct is used to generate concise object descriptions and
+detailed captions for the base image, which are then integrated into natural language instructions. The final training triplet comprises the instruction, the repainted image as
+input, and the original image as output, providing semantically rich and visually diverse supervision for multi-subject
+generation tasks.
+9.3.2. In-Context Edit
+We further extend the in-context generation paradigm to
+editing tasks, introducing a new task termed in-context editing, as illustrated in Figure 11. Here, the model extracts
+relevant elements from a context image and utilizes them to
+edit a target input image.
+The data source for in-context editing mirrors that of
+in-context generation: two frames containing the same object are selected, with one serving as the context clip and
+the other as the target clip. Initially, object masks for
+
+both frames are obtained using SAM2 [73]. For the context image, FLUX.1-Fill-dev is applied to generate a new
+background for the object via outpainting, encouraging the
+model to focus on object-specific features. Subsequently,
+FLUX.1-Fill-dev is used to inpaint the target clip, removing the object while preserving the original background to
+create the input clip. Finally, Qwen2.5-VL-72B-Instruct [3]
+generates a natural language description of the transformation from the input clip to the target clip, which is combined
+with the object description from the context clip to produce
+comprehensive natural language instructions.
+
+9.4. Image Editing Data
+9.4.1. Inpaint Data
+Although most existing editing datasets are constructed
+through inpainting techniques, they suffer from two primary
+limitations: (1) substandard image quality, stemming from
+both inherent low resolution and post-processing degrada-
+
+Instruction:
+Scene
+Segmentation
+
+Similarity
+Filtering
+
+Image Pair
+
+Color Histograms
+Compare
+
+Raw Video Frames
+
+Lift the boy's head
+to face forward,
+revealing his eyes
+and changing his
+expression from
+downward focus to
+a direct gaze.
+
+Figure 12. Create image edit pairs from videos. We first filter out frames belonging to different scenes to ensure contextual consistency,
+and then remove frames that exhibit significant changes in viewpoint.
+
+tion during inpainting. (2) Editing instructions are inaccurate: previous work predefines editing instructions and
+uses inpainting models to generate images based on these
+instructions, but inpainting models have poor instructionfollowing capabilities, causing a mismatch between editing
+instructions and original-inpainted image pairs.
+In this work, we select a small set of high-quality images from text-to-image data as our data source, applying
+FLUX.1-Fill-dev for inpainting. We use the inpainted images as inputs and the original images as targets to ensure
+high-quality target images. Additionally, we do not input
+instructions to the inpainting model, allowing it to fill content randomly. After obtaining image pairs, we employ a
+MLLM to write editing instructions based on these pairs.
+We find that the latest MLLM(e.g., Qwen2.5-VL) excels
+at writing editing instructions for original-inpainted image
+pairs, resulting in a high-accuracy editing dataset.
+9.4.2. Video Data
+Traditional inpainting methods are inherently limited in
+their capacity to construct diverse types of data, rendering
+them inadequate for tasks such as action modification, object movement, or expression changes. To address these
+limitations, we additionally extract editing pairs from video
+sources.
+We show the pipeline in Figure 12. Image editing tasks
+typically require localized modifications while preserving
+the integrity of the surrounding context. To construct suitable image editing pairs from videos, it is essential to identify frame pairs that exhibit only local changes. We begin
+by segmenting videos into distinct scenes to avoid pairing
+frames across discontinuous contexts. Scene boundaries are
+detected by analyzing average RGB pixel intensities, while
+a rolling average of differences in the HSV color space enhances robustness to rapid motion. Within each identified
+scene, we extract multiple frame pairs and evaluate their
+differences using both DINOv2 [65] and CLIP [71]. Pairs
+
+exhibiting substantial differences—indicative of viewpoint
+changes—or negligible differences are filtered out.
+Since camera viewpoints in videos often change even
+within a single scene, further refinement is necessary. Existing approaches, such as vision-language models, are computationally expensive and prone to inaccuracies, while
+methods based on color histograms or pixel-level similarity are either insensitive to spatial structure or overly susceptible to noise. To address these challenges, we divide
+each image into multiple blocks and compare the color histograms of corresponding blocks to assess their similarity,
+effectively reducing the impact of noise. The proportion
+of similar blocks is then computed to impose spatial constraints, serving as a reliable indicator of viewpoint consistency. This strategy efficiently filters out frame pairs with
+viewpoint changes while maintaining computational efficiency.
+Finally, for each retained image pair with a consistent camera viewpoint, we employ Qwen2.5-VL-72BInstruct [3] to generate precise editing instructions, thereby
+facilitating the construction of high-quality image editing
+datasets.
+
+9.5. Interleave Data
+9.5.1. Interleaved Frames
+We initially segment videos based on detected scene transitions and extract key frames from each segment. Subsequently, we construct two types of video frame sequences,
+each comprising up to five frames: intra-scene interleaved
+sequence composed of frames within identical scene and
+inter-scene interleaved sequence composed of frames across
+different scenes. Following frame sequence extraction,
+we annotate each pair of consecutive frames with descriptive captions using an MLLM to describe changes in object actions and behaviors, variations in environment and
+background, and differences in object appearances. Given
+the substantial volume of required annotations, we employ
+
+Cross-entropy Loss
+
+MSE Loss
+
+Cross-entropy Loss
+
+LM Head
+
+Diffusion
+Decoder
+
+LM Head
+
+Hidden States
+
+Autoregressive Transformer
+Text Tokenizer
+The image shows a
+plate filled with
+round, golden-brown
+pastries dusted
+with powdered
+sugar.
+
+ViT Tokenizer
+
+Text Tokenizer
+
+ViT Tokenizer
+
+The pastries are not
+dusted with
+powdered sugar as
+described. Please add
+a dusting of
+powdered sugar on
+top of the pastries.
+
+Text Tokenizer
+The generated
+images meet the
+user's requirements,
+so there is no need to
+continue generating.
+
+Figure 13. Multimodal Reflection for image generation.
+A photo of a refrigerator
+above a baseball bat
+
+The description mentions a
+refrigerator above a baseball bat,
+but the image only shows a
+refrigerator without any baseball
+bat. Please add a baseball bat
+below the refrigerator.
+
+A photo of three pizzas
+
+The description mentions
+three pizzas, but the image
+only shows one pizza.
+Please add two more pizzas
+to the image.
+
+A photo of two sandwichs
+
+The description mentions two
+sandwiches, but the image
+only shows one sandwich.
+Please add another sandwich
+to the image.
+
+A photo of a yellow dining
+table and a pink dog
+
+The dog is pink but not wearing any
+visible pink clothing or accessories.
+Consider adding pink elements such as a
+pink collar, bow tie, or other pink items to
+the dog to better match the description.
+
+The description mentions a yellow
+dining table, but in the image, the dog is
+sitting on a yellow chair. The dog should
+be placed on the yellow dining table
+instead of the chair.
+The generated images meet the
+user's requirements, so there is
+no need to continue generating.
+
+The generated images meet
+the user's requirements, so
+there is no need to continue
+generating.
+
+The generated images meet
+the user's requirements, so
+there is no need to continue
+generating.
+
+Figure 14. Example of generation with reflection using OmniGen2. Left and middle: Successful correction via one round of reflection.
+Right: an example of failed reflection, where the correct answer is incorrectly judged as wrong due to over-reflection.
+
+Qwen2.5-VL-7B-Instruct for this process. Consequently,
+we obtain 0.8 million interleaved data samples from video
+sources, which serve to pretrain the model’s capacity for
+processing continuous multimodal sequences.
+9.5.2. Reflection Data
+Inspired by previous advances in test-time scaling and selfreflection of large language models [30, 36, 47], we further
+explore the integration of reflection capabilities into multimodal generation models and demonstrate how test-time
+scaling can enhance the quality of image generation. In
+this section, we focus on describing the construction of the
+
+reflection data for subsequent model fine-tuning. The reflection data comprise an interleaved sequence of text and
+images, beginning with a user instruction, followed by the
+multimodal model’s generated image, and step-by-step reflections on the previous generated outputs. Each reflection
+addresses two key aspects: 1) an analysis of the deficiencies
+or unmet requirements in relation to the original instruction,
+and 2) proposed solutions to address the previous image’s
+limitation.
+To construct self-reflection data, we select a small subset
+from the training data (in the current experiment, we only
+use data from the text-to-image task) and generate images
+
+Input Image 1
+
+Input Image 2
+
+Prompt Following (PF)
+PF Prompt
+
+Rationale:
+The final image shows two people,…, However, there is no
+visible indication that they are actually watching a show, …,
+nor does their posture clearly suggest show-watching. The
+people are simply seated with notepads, not directly
+engaging with a screen or each other in a way typical for
+watching a show, so the instruction is only partially fulfilled.
+PF Score: 4
+
+Instruction
+
+Output Image
+
+Subject Consistency (SC)
+SC Prompt
+
+They are
+watching a show
+together.
+
+Rationale:
+The woman on the left in the final image matches closely in
+facial features, hair color, hairstyle, and skin tone to the
+woman in the first reference image. However, the second
+woman from the reference is missing entirely, replaced by an
+unknown man. This is a severe identity mismatch, as one entire
+subject's identity is not present at all, resulting in a low score.
+SC Score: 3
+
+Figure 15. An illustrative example of evaluating the output image in the OmniContext benchmark.
+
+through the model. Subsequently, we use an MLLM to assess whether the generated images meet the instruction requirements. If the images fail to adequately follow instructions or exhibit other quality issues, the model identifies
+specific errors and suggests modifications. Initially, we experimented with the DSG [16] evaluation framework to assess instruction-image alignment. However, this approach
+frequently led to hallucinations. Later, we discovered that
+powerful multimodal models could handle this task directly,
+so we employed Doubao-1.5-pro [21] to output issues and
+modification suggestions. After obtaining the first round
+of reflections, we append the generated images and corresponding reflections to the original instructions and finetune the model on these data. Once training is complete, we
+continue inferring data (using the first round of reflection
+data) to obtain a second round of images and corresponding
+reflective data. This iterative process yields multiple rounds
+of self-reflection data.
+There is currently limited research on employing reflection mechanisms to enhance image generation tasks
+within multimodal generative models. We hope that our
+present work will contribute to advancing the development
+of reasoning capabilities in the field of multimodal generation. After the model acquires initial reflective capabilities
+through training with the current data, online reinforcement
+learning algorithms can further enhance these capabilities,
+which we leave for future exploration.
+
+9.6. Reflection Fine-Tuning
+We fine-tune OmniGen2 on reflection dataset following the
+illustrated in Figure 13. The model’s enhanced reflection
+capabilities are demonstrated through the examples in Figure 14. In the successful cases, the model effectively reflects
+on the initial generated image, identifies its shortcomings,
+makes appropriate corrections and terminate the generation
+
+process at an appropriate point. However, it still faces challenges in reflection and correction. The model may overreflect on simple instructions, generating unnecessary requirements or fails to revise the image. These issues arise
+from the limited perception of the 3B-scale MLLM and insufficient reflection data. In future work, we plan to scale
+up the model and employ reinforcement learning to improve
+reflection quality.
+
+9.7. Training pipeline details
+Detailed configurations for each stage are summarized in
+Table 6.
+Stage
+
+Resolution
+
+Task Type
+
+Steps
+
+256×256
+
+T2I-only
+Mixed-Task
+
+50k
+50k
+
+512×512
+
+T2I-only
+Mixed-Task
+
+30k
+30k
+
+1024×1024
+
+T2I-only
+Mixed-Task
+
+50k
+50k
+
+2. SFT
+
+1024×1024
+
+Mixed-Task
+
+100k
+
+3. RL Alignment
+
+512×512
+
+Mixed-Task
+
+2.4k
+
+1. Pre-training
+
+Table 6. Details of the OmniGen2 staged training pipeline. The
+curriculum progresses from general pre-training to general instruction alignment, with increasing task complexity and resolution.
+
+9.8. OmniContext Details
+The detailed metrics for each subtask are presented in Tables 7, 8 and 9. The pipeline to evaluate models on OmniContext as shown in Figure 15.
+
+SINGLE↑
+Method
+
+Character
+
+Object
+
+Average
+
+PF
+
+SC
+
+Overall
+
+PF
+
+SC
+
+Overall
+
+PF
+
+SC
+
+Overall
+
+Flux.1 Kontext max [40]
+Gemini-2.0-flash [28]
+GPT-4o [64]
+
+7.98
+5.54
+8.89
+
+9.24
+5.98
+9.03
+
+8.48
+5.06
+8.90
+
+8.78
+6.17
+9.40
+
+8.76
+5.89
+8.74
+
+8.68
+5.17
+9.01
+
+8.38
+5.86
+9.14
+
+9.00
+5.93
+8.88
+
+8.58
+5.11
+8.95
+
+InfiniteYou [37]
+UNO [97]
+BAGEL [18]
+OmniGen [98]
+OmniGen2
+
+7.81
+7.56
+7.72
+7.12
+7.92
+
+5.15
+6.48
+4.86
+7.58
+8.68
+
+6.05
+6.60
+5.48
+7.21
+8.19
+
+7.78
+8.56
+7.66
+8.98
+
+6.65
+6.06
+5.04
+8.44
+
+6.83
+7.03
+5.71
+8.63
+
+7.67
+8.14
+7.39
+8.45
+
+6.56
+5.46
+6.31
+8.56
+
+6.72
+6.25
+6.46
+8.41
+
+Table 7. Comparison on task type SINGLE from OmniContext. Prompt Following (PF), Subject Consistency (SC), and Overall scores are
+reported (higher is better, ↑).
+
+MULTIPLE↑
+Method
+
+Character
+
+Object
+
+Char. + Obj.
+
+Average
+
+PF
+
+SC
+
+Overall
+
+PF
+
+SC
+
+Overall
+
+PF
+
+SC
+
+Overall
+
+PF
+
+SC
+
+Overall
+
+Gemini-2.0-flash [28]
+GPT-4o [64]
+
+3.65
+9.17
+
+3.02
+9.03
+
+2.91
+9.07
+
+2.50
+9.06
+
+5.02
+8.90
+
+2.16
+8.95
+
+4.26
+8.34
+
+5.80
+8.89
+
+3.80
+8.54
+
+3.47
+8.86
+
+4.62
+8.94
+
+2.96
+8.86
+
+UNO [97]
+BAGEL [18]
+OmniGen [98]
+OmniGen2
+
+3.88
+6.14
+5.92
+7.30
+
+2.38
+4.86
+6.18
+8.10
+
+2.54
+5.17
+5.65
+7.45
+
+7.46
+7.54
+5.60
+7.98
+
+5.86
+6.10
+5.46
+7.74
+
+6.51
+6.64
+5.44
+7.80
+
+5.10
+6.74
+4.64
+7.60
+
+4.10
+6.28
+4.96
+8.34
+
+4.39
+6.24
+4.68
+7.93
+
+5.48
+6.81
+5.39
+7.63
+
+4.11
+5.75
+5.53
+8.06
+
+4.48
+6.02
+5.26
+7.73
+
+Table 8. Comparison on task type MULTIPLE from OmniContext. Prompt Following (PF), Subject Consistency (SC), and Overall scores
+are reported (higher is better, ↑).
+
+SCENE↑
+Method
+
+Character
+
+Object
+
+Char. + Obj.
+
+Average
+
+PF
+
+SC
+
+Overall
+
+PF
+
+SC
+
+Overall
+
+PF
+
+SC
+
+Overall
+
+PF
+
+SC
+
+Overall
+
+Gemini-2.0-flash [28]
+GPT-4o [64]
+
+3.76
+9.05
+
+3.33
+8.88
+
+3.02
+8.90
+
+4.02
+8.33
+
+5.22
+8.62
+
+3.89
+8.44
+
+2.89
+8.71
+
+4.63
+8.57
+
+2.92
+8.60
+
+3.56
+8.70
+
+4.39
+8.69
+
+3.28
+8.65
+
+UNO [97]
+BAGEL [18]
+OmniGen [98]
+OmniGen2
+
+2.74
+4.56
+4.14
+8.02
+
+2.50
+3.94
+3.42
+7.64
+
+2.06
+4.07
+3.59
+7.75
+
+5.62
+6.12
+5.24
+8.10
+
+3.52
+5.50
+3.72
+7.80
+
+4.33
+5.71
+4.32
+7.91
+
+5.22
+5.90
+5.56
+8.08
+
+3.86
+5.30
+4.84
+7.88
+
+4.37
+5.47
+5.12
+7.93
+
+4.53
+5.53
+4.98
+8.07
+
+3.29
+4.91
+3.99
+7.77
+
+3.59
+5.08
+4.34
+7.86
+
+Table 9. Comparison on task type SCENE from OmniContext. Prompt Following (PF), Subject Consistency (SC), and Overall scores are
+reported (higher is better, ↑).
+
+9.9. RL Generalization to Out-of-Distribution
+Benchmarks
+To further evaluate the generalization ability of our multistage RL curriculum, we conduct experiments on out-ofdistribution (OOD) benchmarks that are not directly aligned
+with our training rewards.
+Specifically, we evaluate on Emu-Edit and OneIGBench, which assess editing fidelity and general image gen-
+
+eration quality under diverse and challenging conditions.
+These benchmarks differ from our training objectives and
+thus provide a reliable measure of transferability.
+As shown in Table 10, our full curriculum (Edit →
+GenEval → IC) consistently outperforms the base model
+and alternative training orders across all OOD metrics. This
+demonstrates that our alignment strategy does not overfit to
+specific reward signals, but instead learns generalizable capabilities that transfer across tasks.
+
+Emu-Edit
+
+Strategy
+
+OneIG
+
+CLIP-I↑ CLIP-Out↑ DINO↑ Align.↑
+Base
+GenEval+Edit
+GenEval+Edit+IC
+Edit+IC+GenEval
+Edit+GenEval+IC
+
+0.877
+0.909
+0.886
+0.868
+0.896
+
+0.309
+0.311
+0.312
+0.310
+0.311
+
+0.823
+0.894
+0.858
+0.826
+0.876
+
+0.7870
+0.8160
+0.8212
+0.8242
+0.8289
+
+Table 10. RL curriculum ablation on out-of-distribution (OOD)
+benchmarks. Base denotes the model without RL.
+Method
+
+Single object↑
+
+Two object↑
+
+Counting↑
+
+Colors↑
+
+Position↑
+
+Color attribution↑
+
+Overall↑
+
+SDv2.1 [75]
+SDXL [67]
+IF-XL
+LUMINA-Next [113]
+SD3-medium [1]
+FLUX.1-dev [39]
+NOVA [19]
+OmniGen [98]
+
+0.98
+0.98
+0.97
+0.92
+0.99
+0.99
+0.99
+0.98
+
+0.51
+0.74
+0.74
+0.46
+0.94
+0.81
+0.91
+0.84
+
+0.44
+0.39
+0.66
+0.48
+0.72
+0.79
+0.62
+0.66
+
+0.85
+0.85
+0.81
+0.70
+0.89
+0.74
+0.85
+0.74
+
+0.07
+0.15
+0.13
+0.09
+0.33
+0.20
+0.33
+0.40
+
+0.17
+0.23
+0.35
+0.13
+0.60
+0.47
+0.56
+0.43
+
+0.50
+0.55
+0.61
+0.46
+0.74
+0.67
+0.71
+0.68
+
+TokenFlow-XL [70]
+Janus [94]
+Janus Pro [13]
+Emu3-Gen† [91]
+Show-o [99]
+MetaQuery-XL† [66]
+BLIP3-o† 4B [11]
+BLIP3-o† 8B [11]
+BAGEL [18]
+BAGEL† [18]
+UniWorld-V1 [48]
+UniWorld-V1† [48]
+OmniGen2
+
+0.95
+0.97
+0.99
+0.99
+0.98
+0.99
+0.98
+0.99
+0.98
+0.99
+
+0.60
+0.68
+0.89
+0.81
+0.80
+0.94
+0.95
+0.93
+0.93
+1
+
+0.41
+0.30
+0.59
+0.42
+0.66
+0.81
+0.84
+0.79
+0.81
+0.93
+
+0.81
+0.84
+0.90
+0.80
+0.84
+0.88
+0.95
+0.89
+0.89
+0.91
+
+0.16
+0.46
+0.79
+0.49
+0.31
+0.64
+0.78
+0.49
+0.74
+1
+
+0.24
+0.42
+0.66
+0.45
+0.50
+0.63
+0.77
+0.70
+0.71
+0.86
+
+0.55
+0.61
+0.80
+0.66
+0.68
+0.80
+0.81
+0.84
+0.82
+0.88
+0.80
+0.84
+0.95
+
+Table 11. Evaluation of text-to-image generation ability on
+GenEval [27] benchmark. † refers to the methods using LLM
+rewriter.
+
+9.10. GenEval Results
+As shown in the Table 11, OmniGen2 excels at generating
+images from complex, compositional prompts. Our model
+achieves an impressive overall score of 0.95. This result
+surpasses other powerful unified models like UniWorld-V1
+(0.84) and BAGEL (0.88). It is crucial to note that this
+SOTA performance is achieved with exceptional efficiency.
+OmniGen2 utilizes only 4B trainable parameters and was
+trained on 15M T2I pairs and 50k prompts used in RL.
+
+

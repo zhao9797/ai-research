@@ -1,0 +1,1 @@
+Access to model nvidia/Cosmos-1.0-Diffusion-7B-Text2World is restricted. You must have access to it and be authenticated to access it. Please log in.
