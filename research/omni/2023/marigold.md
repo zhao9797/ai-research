@@ -110,8 +110,8 @@ Marigold 换了一条路：**不再自己攒大数据集，而是复用文生图
 - hf_model (LCM v1.0): https://huggingface.co/prs-eth/marigold-depth-lcm-v1-0
 - follow-up paper (2025, image analysis 全模态): https://arxiv.org/abs/2505.09358
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2312.02145.pdf
-- ../../../sources/omni/2023/marigold--readme.md
-- ../../../sources/omni/2023/marigold--hf-depth-v1-1-card.md
-- ../../../sources/omni/2023/marigold--hf-lcm-card.md
+## 一手源存档（sources/）
+- [arxiv-2312.02145.pdf](https://arxiv.org/pdf/2312.02145)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/marigold--readme.md)
+- [hf-depth-v1-1-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/marigold--hf-depth-v1-1-card.md)
+- [hf-lcm-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/marigold--hf-lcm-card.md)

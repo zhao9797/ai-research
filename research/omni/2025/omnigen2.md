@@ -123,8 +123,8 @@ OmniGen2 是 [[omnigen]]（OmniGen v1，CVPR 2025 同组）的升级：v1 是单
 - modelscope: https://www.modelscope.cn/models/OmniGen2/OmniGen2
 - project_page: https://vectorspacelab.github.io/OmniGen2
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2506.18871.pdf
-- ../../../sources/omni/2025/arxiv-2506.18871.txt
-- ../../../sources/omni/2025/omnigen2--readme.md
-- ../../../sources/omni/2025/omnigen2--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2506.18871.pdf](https://arxiv.org/pdf/2506.18871)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2506.18871.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2506.18871.txt)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/omnigen2--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/omnigen2--hf-modelcard.md)

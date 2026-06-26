@@ -123,8 +123,8 @@ Playground v2 是 Playground 团队 2023 年 12 月开源的文生图模型：**
 - project: https://playground.com
 - intermediate base models: https://huggingface.co/playgroundai/playground-v2-256px-base ; https://huggingface.co/playgroundai/playground-v2-512px-base
 
-## 本地落盘文件
-- ../../../sources/omni/2023/playground-v2--hf-card.md
-- ../../../sources/omni/2023/playground-v2--mjhq30k-dataset-card.md
-- ../../../sources/omni/2023/playground-v2--official-blog.md
-- ../../../sources/omni/2023/playground-v2.5--arxiv-2402.17245-html.md
+## 一手源存档（sources/）
+- [hf-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/playground-v2--hf-card.md)
+- [mjhq30k-dataset-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/playground-v2--mjhq30k-dataset-card.md)
+- [official-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/playground-v2--official-blog.md)
+- [playground-v2.5--arxiv-2402.17245-html.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/playground-v2.5--arxiv-2402.17245-html.md)

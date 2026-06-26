@@ -99,9 +99,9 @@ Mochi 1（preview）是 Genmo 于 **2024 年 10 月**在 Apache 2.0 下开源的
 - playground: https://www.genmo.ai/play
 - 注：官方**无 arXiv 技术报告**（已核实；博客承诺的 paper 未发布）
 
-## 本地落盘文件
-- ../../../sources/omni/2024/mochi-1--blog-post.md
-- ../../../sources/omni/2024/mochi-1--blog-index.md
-- ../../../sources/omni/2024/mochi-1--github-models-readme.md
-- ../../../sources/omni/2024/mochi-1--hf-modelcard.md
-- ../../../sources/omni/2024/mochi-1--finetuner-readme.md
+## 一手源存档（sources/）
+- [blog-post.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/mochi-1--blog-post.md)
+- [blog-index.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/mochi-1--blog-index.md)
+- [github-models-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/mochi-1--github-models-readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/mochi-1--hf-modelcard.md)
+- [finetuner-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/mochi-1--finetuner-readme.md)

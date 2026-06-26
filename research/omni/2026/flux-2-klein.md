@@ -140,18 +140,18 @@ BFL 仅以**人评 Elo + 延迟/显存帕累托图**呈现，**未公布 FID / G
 - hf collection（含 fp8/nvfp4/kv/small-decoder 全档）: https://huggingface.co/collections/black-forest-labs/flux2
 - hf API（下载/likes 计数快照，2026-06-25）: https://huggingface.co/api/models?author=black-forest-labs&search=FLUX.2
 
-## 本地落盘文件
-- ../../../sources/omni/2026/flux-2-klein--blog.md
-- ../../../sources/omni/2026/flux-2-klein--flux2-announce-blog.md
-- ../../../sources/omni/2026/flux-2-klein--vae-research-blog.md
-- ../../../sources/omni/2026/flux-2-klein--docs-overview.md
-- ../../../sources/omni/2026/flux-2-klein--klein-training-doc.md
-- ../../../sources/omni/2026/flux-2-klein--kv-cache-doc.md
-- ../../../sources/omni/2026/flux-2-klein--github-readme.md
-- ../../../sources/omni/2026/flux-2-klein--hf-4b-card.md
-- ../../../sources/omni/2026/flux-2-klein--flux2-dev-card.md
-- ../../../sources/omni/2026/flux-2-klein--hf-collection-api.md
-- ../../../sources/omni/2026/flux-2-klein--src-model.py
-- ../../../sources/omni/2026/flux-2-klein--src-util.py
-- ../../../sources/omni/2026/flux-2-klein--src-text_encoder.py
-- ../../../sources/omni/2026/flux-2-klein--src-autoencoder.py
+## 一手源存档（sources/）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--blog.md)
+- [flux2-announce-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--flux2-announce-blog.md)
+- [vae-research-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--vae-research-blog.md)
+- [docs-overview.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--docs-overview.md)
+- [klein-training-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--klein-training-doc.md)
+- [kv-cache-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--kv-cache-doc.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--github-readme.md)
+- [hf-4b-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--hf-4b-card.md)
+- [flux2-dev-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--flux2-dev-card.md)
+- [hf-collection-api.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--hf-collection-api.md)
+- [src-model.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--src-model.py)
+- [src-util.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--src-util.py)
+- [src-text_encoder.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--src-text_encoder.py)
+- [src-autoencoder.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/flux-2-klein--src-autoencoder.py)

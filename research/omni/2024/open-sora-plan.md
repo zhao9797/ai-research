@@ -153,10 +153,10 @@ updated: 2026-06-25
 - modelscope (Open-Sora v2): https://modelscope.cn/models/luchentech/Open-Sora-v2
 - 后续 (Helios, 2026): https://github.com/PKU-YuanGroup/Helios （arXiv 2603.04379）
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2412.00131.pdf （Open-Sora Plan v1.3 技术报告）
-- ../../../sources/omni/2024/arxiv-2411.17459.pdf （WF-VAE 论文）
-- ../../../sources/omni/2024/arxiv-2412.20404.pdf （HPC-AI Open-Sora 1.2 技术报告）
-- ../../../sources/omni/2024/arxiv-2503.09642.pdf （HPC-AI Open-Sora 2.0 技术报告）
-- ../../../sources/omni/2024/open-sora-plan--readme.md （PKU-YuanGroup README，含全版本时间线）
-- ../../../sources/omni/2024/open-sora-hpcai--readme.md （hpcaitech README，含成本/VBench/推理效率表）
+## 一手源存档（sources/）
+- [arxiv-2412.00131.pdf](https://arxiv.org/pdf/2412.00131) （Open-Sora Plan v1.3 技术报告）  （arXiv 原文 PDF，不入 git）
+- [arxiv-2411.17459.pdf](https://arxiv.org/pdf/2411.17459) （WF-VAE 论文）  （arXiv 原文 PDF，不入 git）
+- [arxiv-2412.20404.pdf](https://arxiv.org/pdf/2412.20404) （HPC-AI Open-Sora 1.2 技术报告）  （arXiv 原文 PDF，不入 git）
+- [arxiv-2503.09642.pdf](https://arxiv.org/pdf/2503.09642) （HPC-AI Open-Sora 2.0 技术报告）  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/open-sora-plan--readme.md) （PKU-YuanGroup README，含全版本时间线）
+- [open-sora-hpcai--readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/open-sora-hpcai--readme.md) （hpcaitech README，含成本/VBench/推理效率表）

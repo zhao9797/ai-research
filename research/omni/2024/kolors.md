@@ -124,8 +124,8 @@ MPS 自动评分 Kolors 同样居首（10.3），与人评结论一致。
 - team page / blog: https://kwai-kolors.github.io/
 - official platform: https://kolors.kuaishou.com/
 
-## 本地落盘文件
-- ../../../sources/omni/2024/kolors.pdf （技术报告全文，12MB；.gitignore 排除，本地精读）
-- ../../../sources/omni/2024/kolors--readme.md （GitHub README，含人评/MPS 表与生态信息）
-- ../../../sources/omni/2024/kolors--hf-modelcard.md （HF model card，含推理调度器/超参）
-- ../../../sources/omni/2024/kolors--teampage.md （团队博客首页快照）
+## 一手源存档（sources/）
+- kolors.pdf （技术报告全文，12MB；.gitignore 排除，本地精读）  （PDF 不入 git，走 HF bucket）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/kolors--readme.md) （GitHub README，含人评/MPS 表与生态信息）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/kolors--hf-modelcard.md) （HF model card，含推理调度器/超参）
+- [teampage.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/kolors--teampage.md) （团队博客首页快照）

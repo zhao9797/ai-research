@@ -132,9 +132,9 @@ BAGEL 是字节 Seed 开源的 **统一多模态基础模型**（7B 激活 / 14B
 - hf: https://huggingface.co/ByteDance-Seed/BAGEL-7B-MoT
 - project_page: https://bagel-ai.org/
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2505.14683.pdf
-- ../../../sources/omni/2025/arxiv-2505.14683.txt
-- ../../../sources/omni/2025/bagel--readme.md
-- ../../../sources/omni/2025/bagel--hf-modelcard.md
-- ../../../sources/omni/2025/bagel--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2505.14683.pdf](https://arxiv.org/pdf/2505.14683)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2505.14683.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2505.14683.txt)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/bagel--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/bagel--hf-modelcard.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/bagel--project-page.md)

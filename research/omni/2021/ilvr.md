@@ -138,6 +138,6 @@ ILVR 不需要成对/标注数据，**底层无条件 DDPM 在单一目标域上
 - arxiv_pdf: https://arxiv.org/pdf/2108.02938
 - github: https://github.com/jychoi118/ilvr_adm
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2108.02938.pdf
-- ../../../sources/omni/2021/ilvr--readme.md
+## 一手源存档（sources/）
+- [arxiv-2108.02938.pdf](https://arxiv.org/pdf/2108.02938)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/ilvr--readme.md)

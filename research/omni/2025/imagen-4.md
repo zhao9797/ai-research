@@ -107,9 +107,9 @@ Imagen 系列是 Google 的旗舰文生图线：[[imagen]]（2022，基于级联
 - docs (Vertex AI Imagen 4 模型规格，含三档 model ID/分辨率/语言/限制): https://cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-generate
 - blog (Google Developers — Imagen 4 全家桶 GA + Imagen 4 Fast 发布，含 $0.02/图 定价): https://developers.googleblog.com/en/announcing-imagen-4-fast-and-imagen-4-family-generally-available-in-the-gemini-api/
 
-## 本地落盘文件
-- ../../../sources/omni/2025/imagen-4--deepmind-model.md
-- ../../../sources/omni/2025/imagen-4--blog-google-io-2025.md
-- ../../../sources/omni/2025/imagen-4--vertex-ai-blog.md
-- ../../../sources/omni/2025/imagen-4--vertex-model-docs.md
-- ../../../sources/omni/2025/gpt-image-1-mini-and-imagen-fast--imagen4-ga-googleblog.md （Imagen 4 全家桶 GA + Fast 定价，文件名前缀沿用同批抓取的 work item）
+## 一手源存档（sources/）
+- [deepmind-model.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/imagen-4--deepmind-model.md)
+- [blog-google-io-2025.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/imagen-4--blog-google-io-2025.md)
+- [vertex-ai-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/imagen-4--vertex-ai-blog.md)
+- [vertex-model-docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/imagen-4--vertex-model-docs.md)
+- [gpt-image-1-mini-and-imagen-fast--imagen4-ga-googleblog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gpt-image-1-mini-and-imagen-fast--imagen4-ga-googleblog.md) （Imagen 4 全家桶 GA + Fast 定价，文件名前缀沿用同批抓取的 work item）

@@ -124,7 +124,7 @@ RAPHAEL 是 SenseTime/港大提出的文生图扩散模型，核心创新是在 
 - arxiv_pdf: https://arxiv.org/pdf/2305.18295
 - project_page: https://raphael-painter.github.io/
 
-## 本地落盘文件
-- ../../../sources/omni/2022/raphael--paper.pdf  （arXiv 官方 PDF，2305.18295，~20MB；与 ar5iv 文本逐项核对一致，6.61 / 3B / 1000×A100×2月 / 美学分<4.7 等均已对核；按本仓约定 PDF 不入 git，备份走 HF bucket）
-- ../../../sources/omni/2022/raphael--paper-ar5iv.md  （ar5iv 渲染的论文全文 HTML→markdown，含方法/实验/附录/超参表 Table 2/FID 表 Table 1，精读主源）
-- ../../../sources/omni/2022/raphael--project-page.md  （官方项目页 cloakbrowser 快照，含 COCO FID 图、ViLG-300 人评图、LoRA 对比图）
+## 一手源存档（sources/）
+- paper.pdf  （arXiv 官方 PDF，2305.18295，~20MB；与 ar5iv 文本逐项核对一致，6.61 / 3B / 1000×A100×2月 / 美学分<4.7 等均已对核；按本仓约定 PDF 不入 git，备份走 HF bucket）
+- [paper-ar5iv.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/raphael--paper-ar5iv.md)  （ar5iv 渲染的论文全文 HTML→markdown，含方法/实验/附录/超参表 Table 2/FID 表 Table 1，精读主源）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/raphael--project-page.md)  （官方项目页 cloakbrowser 快照，含 COCO FID 图、ViLG-300 人评图、LoRA 对比图）

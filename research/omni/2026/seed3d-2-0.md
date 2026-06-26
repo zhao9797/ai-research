@@ -148,7 +148,7 @@ report 侧重算法与推理管线工程，集群级 infra（GPU 数、训练时
 - product (Volcano Engine): https://exp.volcengine.com/ark/vision?mode=vision&modelId=doubao-seed3d-2-0-260328&tab=Gen3D
 - 前置工作 Seed3D 1.0 (arXiv): https://arxiv.org/abs/2510.19944
 
-## 本地落盘文件
-- ../../../sources/omni/2026/seed3d-2-0.pdf（官方技术报告 PDF，= arXiv 2605.13862，18 页：正文 14 页 + 参考文献/贡献者，已精读）
-- ../../../sources/omni/2026/seed3d-2-0--blog.md（官方技术博客快照）
-- ../../../sources/omni/2026/seed3d-2-0--project-page.md（官方项目页快照）
+## 一手源存档（sources/）
+- seed3d-2-0.pdf（官方技术报告 PDF，= arXiv 2605.13862，18 页：正文 14 页 + 参考文献/贡献者，已精读）  （PDF 不入 git，走 HF bucket）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seed3d-2-0--blog.md)（官方技术博客快照）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seed3d-2-0--project-page.md)（官方项目页快照）

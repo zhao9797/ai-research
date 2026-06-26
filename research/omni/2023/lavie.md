@@ -148,6 +148,6 @@ LaVie 的两点核心洞见：
 - hf_weights: https://huggingface.co/YaohuiW/LaVie
 - hf_space: https://huggingface.co/spaces/Vchitect/LaVie
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2309.15103.pdf
-- ../../../sources/omni/2023/lavie--readme.md
+## 一手源存档（sources/）
+- [arxiv-2309.15103.pdf](https://arxiv.org/pdf/2309.15103)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lavie--readme.md)

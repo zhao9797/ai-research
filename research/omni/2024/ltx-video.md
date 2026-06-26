@@ -126,7 +126,7 @@ LTX-Video 的核心论点是 **"holistic（整体化）"latent diffusion**：不
 - project: https://ltx.video
 - LTX-2 后续(blog，README 指向): https://github.com/Lightricks/LTX-2 ・ https://website.ltx.video/blog/introducing-ltx-2
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2501.00103.pdf
-- ../../../sources/omni/2024/ltx-video--github-readme.md
-- ../../../sources/omni/2024/ltx-video--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2501.00103.pdf](https://arxiv.org/pdf/2501.00103)  （arXiv 原文 PDF，不入 git）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ltx-video--github-readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ltx-video--hf-modelcard.md)

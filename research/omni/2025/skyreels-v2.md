@@ -161,6 +161,6 @@ I2V 两个变体均为**开源 SOTA**（远超 HunyuanVideo-13B 2.84 / Wan2.1-14
 - modelscope: https://www.modelscope.cn/collections/SkyReels-V2-f665650130b144
 - playground: https://www.skyreels.ai/home
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2504.13074.pdf
-- ../../../sources/omni/2025/skyreels-v2--readme.md
+## 一手源存档（sources/）
+- [arxiv-2504.13074.pdf](https://arxiv.org/pdf/2504.13074)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/skyreels-v2--readme.md)

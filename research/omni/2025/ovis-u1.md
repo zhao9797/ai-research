@@ -133,7 +133,7 @@ GPT-4o 的原生图像生成证明了「理解 + 生成」统一模型的价值�
 - github: https://github.com/AIDC-AI/Ovis-U1
 - hf_space (demo): https://huggingface.co/spaces/AIDC-AI/Ovis-U1-3B
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2506.23044.pdf
-- ../../../sources/omni/2025/ovis-u1--hf-readme.md
-- ../../../sources/omni/2025/ovis-u1--github-readme.md
+## 一手源存档（sources/）
+- [arxiv-2506.23044.pdf](https://arxiv.org/pdf/2506.23044)  （arXiv 原文 PDF，不入 git）
+- [hf-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ovis-u1--hf-readme.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ovis-u1--github-readme.md)

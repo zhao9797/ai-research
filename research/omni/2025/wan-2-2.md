@@ -99,11 +99,11 @@ Wan2.2 的数据披露偏定性（无独立论文），关键数字来自 README
 - arxiv (Wan2.1 基础技术报告，非 Wan2.2): https://arxiv.org/abs/2503.20314
 - blog / 产品页: https://wan.video
 
-## 本地落盘文件
-- ../../../sources/omni/2025/wan-2-2--github-readme.md
-- ../../../sources/omni/2025/wan-2-2--hf-t2v-a14b.md
-- ../../../sources/omni/2025/wan-2-2--hf-i2v-a14b.md
-- ../../../sources/omni/2025/wan-2-2--hf-ti2v-5b.md
-- ../../../sources/omni/2025/wan-2-2--blog.md
-- ../../../sources/omni/2025/arxiv-2503.20314.pdf
-- ../../../sources/omni/2025/arxiv-2503.20314.txt
+## 一手源存档（sources/）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/wan-2-2--github-readme.md)
+- [hf-t2v-a14b.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/wan-2-2--hf-t2v-a14b.md)
+- [hf-i2v-a14b.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/wan-2-2--hf-i2v-a14b.md)
+- [hf-ti2v-5b.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/wan-2-2--hf-ti2v-5b.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/wan-2-2--blog.md)
+- [arxiv-2503.20314.pdf](https://arxiv.org/pdf/2503.20314)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2503.20314.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2503.20314.txt)

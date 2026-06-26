@@ -101,9 +101,9 @@ ADD 的定位：**保留扩散模型的样本质量与组合性、又拿到 GAN 
 - github: https://github.com/Stability-AI/generative-models
 - demo: http://clipdrop.co/stable-diffusion-turbo
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.17042.pdf
-- ../../../sources/omni/2023/sdxl-turbo-add--hf-readme.md
-- ../../../sources/omni/2023/sdxl-turbo-add--blog.md
-- ../../../sources/omni/2023/sdxl-turbo-add--research-page.md
-- ../../../sources/omni/2023/sdxl-turbo-add--github-readme.md
+## 一手源存档（sources/）
+- [arxiv-2311.17042.pdf](https://arxiv.org/pdf/2311.17042)  （arXiv 原文 PDF，不入 git）
+- [hf-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/sdxl-turbo-add--hf-readme.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/sdxl-turbo-add--blog.md)
+- [research-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/sdxl-turbo-add--research-page.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/sdxl-turbo-add--github-readme.md)

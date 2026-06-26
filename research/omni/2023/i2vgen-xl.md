@@ -126,7 +126,7 @@ I2VGen-XL 给出两条对策：
 - hf_space: https://huggingface.co/spaces/damo-vilab/I2VGen-XL
 - modelscope: https://modelscope.cn/models/iic/i2vgen-xl
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.04145.pdf
-- ../../../sources/omni/2023/i2vgen-xl--readme.md
-- ../../../sources/omni/2023/i2vgen-xl--hf-model-card.md
+## 一手源存档（sources/）
+- [arxiv-2311.04145.pdf](https://arxiv.org/pdf/2311.04145)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/i2vgen-xl--readme.md)
+- [hf-model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/i2vgen-xl--hf-model-card.md)

@@ -125,8 +125,8 @@ CommonCanvas 是**仅用 Creative-Commons 授权图像 + BLIP-2 合成 caption**
 - hf_model_card (旗舰 XL-NC): https://huggingface.co/common-canvas/CommonCanvas-XL-NC
 - hf_space_demo: https://huggingface.co/spaces/common-canvas/CommonCanvas
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2310.16825.pdf
-- ../../../sources/omni/2023/commoncanvas--readme.md
-- ../../../sources/omni/2023/commoncanvas--common-canvas-doc.md
-- ../../../sources/omni/2023/commoncanvas--hf-xl-nc.md
+## 一手源存档（sources/）
+- [arxiv-2310.16825.pdf](https://arxiv.org/pdf/2310.16825)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/commoncanvas--readme.md)
+- [common-canvas-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/commoncanvas--common-canvas-doc.md)
+- [hf-xl-nc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/commoncanvas--hf-xl-nc.md)

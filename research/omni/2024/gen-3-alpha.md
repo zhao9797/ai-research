@@ -104,8 +104,8 @@ Gen-3 Alpha 是 Runway 2024-06-17 发布的**新一代视频基础模型**，在
 - creating-t2v-i2v（官方规格文档）: https://help.runwayml.com/hc/en-us/articles/30266515017875-Creating-with-Text-Image-to-Video-on-Gen-3-Alpha-and-Turbo
 - research-index（GWM 叙事来源）: https://runwayml.com/research
 
-## 本地落盘文件
-- ../../../sources/omni/2024/gen-3-alpha--blog.md
-- ../../../sources/omni/2024/gen-3-alpha--blog.html
-- ../../../sources/omni/2024/gen-3-alpha--prompting-guide.md
-- ../../../sources/omni/2024/gen-3-alpha--creating-t2v-i2v.md
+## 一手源存档（sources/）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gen-3-alpha--blog.md)
+- [blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gen-3-alpha--blog.html)
+- [prompting-guide.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gen-3-alpha--prompting-guide.md)
+- [creating-t2v-i2v.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gen-3-alpha--creating-t2v-i2v.md)

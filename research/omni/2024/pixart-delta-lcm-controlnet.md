@@ -97,7 +97,7 @@ PixArt-δ 在 [[pixart-alpha]]（0.6B DiT 文生图）之上叠加两件加速 /
 - HF ControlNet weights: https://huggingface.co/PixArt-alpha/PixArt-ControlNet/tree/main
 - HF LCM demo: https://huggingface.co/spaces/PixArt-alpha/PixArt-LCM
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2401.05252.pdf
-- ../../../sources/omni/2024/pixart-delta-lcm-controlnet--readme.md
-- ../../../sources/omni/2024/pixart-delta-lcm-controlnet--hf-lcm-card.md
+## 一手源存档（sources/）
+- [arxiv-2401.05252.pdf](https://arxiv.org/pdf/2401.05252)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/pixart-delta-lcm-controlnet--readme.md)
+- [hf-lcm-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/pixart-delta-lcm-controlnet--hf-lcm-card.md)

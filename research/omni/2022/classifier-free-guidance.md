@@ -91,6 +91,6 @@ Classifier-Free Guidance（CFG，Ho & Salimans）提出**无需任何分类器**
 - workshop（NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications，短版原文）: https://openreview.net/forum?id=qw8AKxfYbI （PDF: https://openreview.net/pdf?id=qw8AKxfYbI）
 - 说明：本工作为纯方法论文，作者**未发布官方代码仓库 / HF / ModelScope / 官方博客**；openreview 为其短版（workshop）正式版，无独立产品页。
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2207.12598.pdf （arXiv v1 完整版，含 Table 1/2 全部数字与附录样本图）
-- ../../../sources/omni/2022/cfg-neurips2021ws.pdf （NeurIPS 2021 Workshop 短版原文，方法部分与 arXiv 版一致）
+## 一手源存档（sources/）
+- [arxiv-2207.12598.pdf](https://arxiv.org/pdf/2207.12598) （arXiv v1 完整版，含 Table 1/2 全部数字与附录样本图）  （arXiv 原文 PDF，不入 git）
+- cfg-neurips2021ws.pdf （NeurIPS 2021 Workshop 短版原文，方法部分与 arXiv 版一致）  （PDF 不入 git，走 HF bucket）

@@ -124,7 +124,7 @@ Pyramid Flow（金字塔式流匹配，ICLR 2025）用**单个统一 DiT**把视
 - hf_sd3: https://huggingface.co/rain1011/pyramid-flow-sd3
 - hf_demo: https://huggingface.co/spaces/Pyramid-Flow/pyramid-flow
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2410.05954.pdf
-- ../../../sources/omni/2024/pyramid-flow--readme.md
-- ../../../sources/omni/2024/pyramid-flow--hf-miniflux-card.md
+## 一手源存档（sources/）
+- [arxiv-2410.05954.pdf](https://arxiv.org/pdf/2410.05954)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/pyramid-flow--readme.md)
+- [hf-miniflux-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/pyramid-flow--hf-miniflux-card.md)

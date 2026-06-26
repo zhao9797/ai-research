@@ -143,7 +143,7 @@ T2I 的 U-Net 由 2D 卷积残差块 + transformer 块组成，每个 transforme
 - hf_library: https://huggingface.co/Tune-A-Video-library
 - hf_demo: https://huggingface.co/spaces/Tune-A-Video-library/Tune-A-Video-Training-UI
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2212.11565.pdf
-- ../../../sources/omni/2022/tune-a-video--readme.md
-- ../../../sources/omni/2022/tune-a-video--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2212.11565.pdf](https://arxiv.org/pdf/2212.11565)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/tune-a-video--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/tune-a-video--project-page.md)

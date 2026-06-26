@@ -158,8 +158,8 @@ IMAGDressing 服装 CLIP-sim 最高（0.8405）但只能出白底图、几乎不
 - project page: https://mc-e.github.io/project/DreamO
 - ComfyUI 原生实现: https://github.com/ToTheBeginning/ComfyUI-DreamO
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2504.16915.pdf （论文全文 PDF，SIGGRAPH Asia 2025 版，正文+表至第 7–8 页、参考文献至第 9 页，已精读；PDF 按 .gitignore 不入 git）
-- ../../../sources/omni/2025/dreamo--readme.md （GitHub README：任务说明 / 推理 / 量化 / 消费级 GPU）
-- ../../../sources/omni/2025/dreamo--v1.1.md （v1.1 官方发布说明：SFT+DPO 后训练）
-- ../../../sources/omni/2025/dreamo--hf-modelcard.md （HF model card，仅含链接，信息极少）
+## 一手源存档（sources/）
+- [arxiv-2504.16915.pdf](https://arxiv.org/pdf/2504.16915) （论文全文 PDF，SIGGRAPH Asia 2025 版，正文+表至第 7–8 页、参考文献至第 9 页，已精读；PDF 按 .gitignore 不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/dreamo--readme.md) （GitHub README：任务说明 / 推理 / 量化 / 消费级 GPU）
+- [v1.1.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/dreamo--v1.1.md) （v1.1 官方发布说明：SFT+DPO 后训练）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/dreamo--hf-modelcard.md) （HF model card，仅含链接，信息极少）

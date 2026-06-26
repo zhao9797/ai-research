@@ -143,8 +143,8 @@ OFT/COFT 在三类控制任务上控制一致性均强于 ControlNet/T2I-Adapter
 - hf_peft_doc: https://huggingface.co/docs/peft/en/conceptual_guides/oft
 - venue: NeurIPS 2023
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2306.07280.pdf
-- ../../../sources/omni/2023/orthogonal-finetuning-oft--arxiv-html.md
-- ../../../sources/omni/2023/orthogonal-finetuning-oft--project.md
-- ../../../sources/omni/2023/orthogonal-finetuning-oft--readme.md
+## 一手源存档（sources/）
+- [arxiv-2306.07280.pdf](https://arxiv.org/pdf/2306.07280)  （arXiv 原文 PDF，不入 git）
+- [arxiv-html.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/orthogonal-finetuning-oft--arxiv-html.md)
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/orthogonal-finetuning-oft--project.md)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/orthogonal-finetuning-oft--readme.md)

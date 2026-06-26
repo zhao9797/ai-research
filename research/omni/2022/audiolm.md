@@ -134,7 +134,7 @@ AudioLM 的核心洞察：把 NLP 语言模型对**长程结构**的建模能力
 - official blog (Google Research): https://research.google/blog/audiolm-a-language-modeling-approach-to-audio-generation/ （原 ai.googleblog.com/2022/10/audiolm-language-modeling-approach-to.html 重定向）
 - project / audio examples: https://google-research.github.io/seanet/audiolm/examples/
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2209.03143.pdf
-- ../../../sources/omni/2022/audiolm--blog.md
-- ../../../sources/omni/2022/audiolm--project.md
+## 一手源存档（sources/）
+- [arxiv-2209.03143.pdf](https://arxiv.org/pdf/2209.03143)  （arXiv 原文 PDF，不入 git）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/audiolm--blog.md)
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/audiolm--project.md)

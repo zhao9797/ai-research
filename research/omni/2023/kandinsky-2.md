@@ -135,9 +135,9 @@ Kandinsky 的演进脉络（同一 GitHub 仓库内）：
 - Habr 博文（2.2，俄文）: https://habr.com/ru/companies/sberbank/articles/747446/
 - Sber-MoVQGAN: https://github.com/ai-forever/MoVQGAN
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2310.03502.pdf
-- ../../../sources/omni/2023/kandinsky-2--github-readme.md
-- ../../../sources/omni/2023/kandinsky-2--hf-2-2-decoder.md
-- ../../../sources/omni/2023/kandinsky-2--hf-2-2-prior.md
-- ../../../sources/omni/2023/kandinsky-2--hf-2-1.md
+## 一手源存档（sources/）
+- [arxiv-2310.03502.pdf](https://arxiv.org/pdf/2310.03502)  （arXiv 原文 PDF，不入 git）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/kandinsky-2--github-readme.md)
+- [hf-2-2-decoder.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/kandinsky-2--hf-2-2-decoder.md)
+- [hf-2-2-prior.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/kandinsky-2--hf-2-2-prior.md)
+- [hf-2-1.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/kandinsky-2--hf-2-1.md)

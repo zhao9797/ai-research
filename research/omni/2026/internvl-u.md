@@ -168,9 +168,9 @@ InternVL-U 属于"集成/混合"路线,但**重新设计了对齐接口与生成
 - TextEdit Benchmark: https://github.com/open-compass/TextEdit
 - 主仓库(InternVL 家族,含历史模型链接): https://github.com/OpenGVLab/InternVL
 
-## 本地落盘文件
-- ../../../sources/omni/2026/arxiv-2603.09877.pdf  (技术报告全文 PDF,~35MB,8 节正文+附录;.gitignore 排除不入 git,本地精读)
-- ../../../sources/omni/2026/internvl-u--arxiv-abs.html  (arXiv abstract 页快照,含作者/提交日期)
-- ../../../sources/omni/2026/internvl-u--repo-readme.md  (OpenGVLab/InternVL-U 官方仓库 README)
-- ../../../sources/omni/2026/internvl-u--hf-modelcard.md  (HuggingFace InternVL-U/InternVL-U model card)
-- ../../../sources/omni/2026/internvl-u--internvl-main-repo-readme.md  (InternVL 主仓库 README,作家族背景上下文;截至抓取时尚未收录 InternVL-U 条目)
+## 一手源存档（sources/）
+- [arxiv-2603.09877.pdf](https://arxiv.org/pdf/2603.09877)  (技术报告全文 PDF,~35MB,8 节正文+附录;.gitignore 排除不入 git,本地精读)
+- [arxiv-abs.html](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/internvl-u--arxiv-abs.html)  (arXiv abstract 页快照,含作者/提交日期)
+- [repo-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/internvl-u--repo-readme.md)  (OpenGVLab/InternVL-U 官方仓库 README)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/internvl-u--hf-modelcard.md)  (HuggingFace InternVL-U/InternVL-U model card)
+- [internvl-main-repo-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/internvl-u--internvl-main-repo-readme.md)  (InternVL 主仓库 README,作家族背景上下文;截至抓取时尚未收录 InternVL-U 条目)

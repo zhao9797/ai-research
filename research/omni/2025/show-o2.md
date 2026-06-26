@@ -126,7 +126,7 @@ Show-o2 是 [[show-o]] 的升级版"原生统一多模态模型"：在 **Wan2.1 
 - github: https://github.com/showlab/Show-o （show-o2 子目录 https://github.com/showlab/Show-o/tree/main/show-o2）
 - hf_modelcard: https://huggingface.co/showlab/show-o2-7B （另有 1.5B / 1.5B-HQ / 7B-w-video-und 等）
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2506.15564.pdf （v3, 22 页，精读）
-- ../../../sources/omni/2025/show-o2--github-readme.md
-- ../../../sources/omni/2025/show-o2--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2506.15564.pdf](https://arxiv.org/pdf/2506.15564) （v3, 22 页，精读）  （arXiv 原文 PDF，不入 git）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/show-o2--github-readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/show-o2--hf-modelcard.md)

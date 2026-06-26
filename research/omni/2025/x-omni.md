@@ -135,8 +135,8 @@ RL（核心创新）：
 - hf_dataset(LongText-Bench): https://huggingface.co/datasets/X-Omni/LongText-Bench
 - hf_spaces: https://huggingface.co/collections/X-Omni/x-omni-spaces-6888c64f38446f1efc402de7
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2507.22058.pdf （论文全文，6 页正文 + 附录 + 参考，已精读）
-- ../../../sources/omni/2025/x-omni--readme.md （GitHub 官方 README，含推理命令、超参、News）
-- ../../../sources/omni/2025/x-omni--hf-en-card.md （HF X-Omni-En model card，指针型）
-- ../../../sources/omni/2025/x-omni--project-page.md （项目主页快照，内容与论文 abstract 一致）
+## 一手源存档（sources/）
+- [arxiv-2507.22058.pdf](https://arxiv.org/pdf/2507.22058) （论文全文，6 页正文 + 附录 + 参考，已精读）  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/x-omni--readme.md) （GitHub 官方 README，含推理命令、超参、News）
+- [hf-en-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/x-omni--hf-en-card.md) （HF X-Omni-En model card，指针型）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/x-omni--project-page.md) （项目主页快照，内容与论文 abstract 一致）

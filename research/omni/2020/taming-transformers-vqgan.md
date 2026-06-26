@@ -127,8 +127,8 @@ VQGAN 的关键论断是反 VQVAE 的：**第一阶段要尽可能"强"、感受
 - github: https://github.com/CompVis/taming-transformers
 - project_page: https://compvis.github.io/taming-transformers/
 
-## 本地落盘文件
-- ../../../sources/omni/2020/arxiv-2012.09841.pdf
-- ../../../sources/omni/2020/arxiv-2012.09841.txt
-- ../../../sources/omni/2020/taming-transformers-vqgan--readme.md
-- ../../../sources/omni/2020/taming-transformers-vqgan--project-page.html
+## 一手源存档（sources/）
+- [arxiv-2012.09841.pdf](https://arxiv.org/pdf/2012.09841)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2012.09841.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2020/arxiv-2012.09841.txt)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2020/taming-transformers-vqgan--readme.md)
+- [project-page.html](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2020/taming-transformers-vqgan--project-page.html)

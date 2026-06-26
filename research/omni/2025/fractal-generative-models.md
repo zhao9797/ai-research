@@ -129,6 +129,6 @@ FractalGen 的切入点是：自然图像具有**近分形（near-fractal）/多
 - github: https://github.com/LTH14/fractalgen
 - colab_demo: http://colab.research.google.com/github/LTH14/fractalgen/blob/main/demo/run_fractalgen.ipynb
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2502.17437.pdf
-- ../../../sources/omni/2025/fractal-generative-models--readme.md
+## 一手源存档（sources/）
+- [arxiv-2502.17437.pdf](https://arxiv.org/pdf/2502.17437)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/fractal-generative-models--readme.md)

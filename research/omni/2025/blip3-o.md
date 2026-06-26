@@ -152,7 +152,7 @@ BLIP3-o 是 Salesforce Research 提出的"全开放"统一多模态模型族（4
 - hf_data: https://huggingface.co/datasets/BLIP3o/BLIP3o-Pretrain , BLIP3o-Pretrain-Long-Caption / -Short-Caption / -JourneyDB , BLIP3o-60k
 - project_demo: https://blip3o.salesforceresearch.ai/
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2505.09568.pdf
-- ../../../sources/omni/2025/blip3-o--github-readme.md
-- ../../../sources/omni/2025/blip3-o--hf-model-card.md
+## 一手源存档（sources/）
+- [arxiv-2505.09568.pdf](https://arxiv.org/pdf/2505.09568)  （arXiv 原文 PDF，不入 git）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/blip3-o--github-readme.md)
+- [hf-model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/blip3-o--hf-model-card.md)

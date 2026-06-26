@@ -85,14 +85,14 @@ CogView4-6B 是智谱 2025-03 开源的 6B 参数文生图 DiT，最大创新是
 - 谱系论文 (CogView3, relay diffusion + re-caption 方法): https://arxiv.org/abs/2403.05121
 - CogKit 微调工具: https://github.com/THUDM/CogKit
 
-## 本地落盘文件
-- ../../../sources/omni/2025/cogview4--github-readme.md
-- ../../../sources/omni/2025/cogview4--github-readme-zh.md
-- ../../../sources/omni/2025/cogview4--hf-modelcard.md
-- ../../../sources/omni/2025/cogview4--transformer-config.json
-- ../../../sources/omni/2025/cogview4--vae-config.json
-- ../../../sources/omni/2025/cogview4--scheduler-config.json
-- ../../../sources/omni/2025/cogview4--model_index.json
-- ../../../sources/omni/2025/cogview4--diffusers-transformer.py
-- ../../../sources/omni/2025/cogview4--bigmodel-docs.md
-- ../../../sources/omni/2025/arxiv-2403.05121.pdf
+## 一手源存档（sources/）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--github-readme.md)
+- [github-readme-zh.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--github-readme-zh.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--hf-modelcard.md)
+- [transformer-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--transformer-config.json)
+- [vae-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--vae-config.json)
+- [scheduler-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--scheduler-config.json)
+- [model_index.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--model_index.json)
+- [diffusers-transformer.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--diffusers-transformer.py)
+- [bigmodel-docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/cogview4--bigmodel-docs.md)
+- [arxiv-2403.05121.pdf](https://arxiv.org/pdf/2403.05121)  （arXiv 原文 PDF，不入 git）

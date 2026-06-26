@@ -123,8 +123,8 @@ HunyuanVideo 是腾讯混元 2024 年 12 月开源的 **13B 参数**文生视频
 - hf_model: https://huggingface.co/tencent/HunyuanVideo
 - project_page: https://aivideo.hunyuan.tencent.com
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2412.03603.pdf
-- ../../../sources/omni/2024/arxiv-2412.03603.txt
-- ../../../sources/omni/2024/hunyuan-video--readme.md
-- ../../../sources/omni/2024/hunyuan-video--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2412.03603.pdf](https://arxiv.org/pdf/2412.03603)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2412.03603.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/arxiv-2412.03603.txt)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/hunyuan-video--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/hunyuan-video--hf-modelcard.md)

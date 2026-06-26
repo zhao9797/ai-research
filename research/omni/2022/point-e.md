@@ -110,6 +110,6 @@ Point·E 的核心思路是**把两条路线拼起来**：文-图阶段用海量
 - arxiv_pdf: https://arxiv.org/pdf/2212.08751
 - github: https://github.com/openai/point-e
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2212.08751.pdf
-- ../../../sources/omni/2022/point-e--readme.md
+## 一手源存档（sources/）
+- [arxiv-2212.08751.pdf](https://arxiv.org/pdf/2212.08751)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/point-e--readme.md)

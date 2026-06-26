@@ -146,8 +146,8 @@ Qwen2.5-Omni 的定位是 Qwen 系列的**旗舰全模态开源模型**，把 [[
 - hf(AWQ): https://huggingface.co/Qwen/Qwen2.5-Omni-7B-AWQ
 - modelscope: https://modelscope.cn/organization/qwen
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2503.20215.pdf （技术报告 PDF，.gitignore 排除，本地精读）
-- ../../../sources/omni/2025/arxiv-2503.20215.txt （PDF 全文抽取，已读全文）
-- ../../../sources/omni/2025/qwen2-5-omni--readme.md （GitHub README 快照，含 3B/量化/显存/部署）
-- ../../../sources/omni/2025/qwen2-5-omni--hf-modelcard.md （HuggingFace 7B model card 快照）
+## 一手源存档（sources/）
+- [arxiv-2503.20215.pdf](https://arxiv.org/pdf/2503.20215) （技术报告 PDF，.gitignore 排除，本地精读）
+- [arxiv-2503.20215.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2503.20215.txt) （PDF 全文抽取，已读全文）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen2-5-omni--readme.md) （GitHub README 快照，含 3B/量化/显存/部署）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen2-5-omni--hf-modelcard.md) （HuggingFace 7B model card 快照）

@@ -140,6 +140,6 @@ VAR 的核心洞察是**重新定义图像的「顺序」**：人类感知与作
 - hf_weights: https://huggingface.co/FoundationVision/var
 - project/demo: https://var.vision
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2404.02905.pdf
-- ../../../sources/omni/2024/var--readme.md
+## 一手源存档（sources/）
+- [arxiv-2404.02905.pdf](https://arxiv.org/pdf/2404.02905)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/var--readme.md)

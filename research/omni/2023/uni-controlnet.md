@@ -119,6 +119,6 @@ Uni-ControlNet 走第二条路线但解决上述痛点：把所有条件归为 *
 - project_page: https://shihaozhaozsh.github.io/unicontrolnet/
 - hf_model: https://huggingface.co/shihaozhao/uni-controlnet
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2305.16322.pdf
-- ../../../sources/omni/2023/uni-controlnet--readme.md
+## 一手源存档（sources/）
+- [arxiv-2305.16322.pdf](https://arxiv.org/pdf/2305.16322)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/uni-controlnet--readme.md)

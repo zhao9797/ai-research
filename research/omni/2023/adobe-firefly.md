@@ -105,10 +105,10 @@ Adobe Firefly 是 Adobe 2023 年 3 月推出的**商业版权安全文生图（t
 - vs-stable-diffusion（Adobe 官方对比页，明示"Firefly is a diffusion model"）: https://www.adobe.com/products/firefly/discover/firefly-vs-stable-diffusion.html
 - product（产品页）: https://www.adobe.com/products/firefly.html
 
-## 本地落盘文件
-- ../../../sources/omni/2023/adobe-firefly--press-release.md
-- ../../../sources/omni/2023/adobe-firefly--launch-blog.md
-- ../../../sources/omni/2023/adobe-firefly--gen-ai-approach.md
-- ../../../sources/omni/2023/adobe-firefly--photoshop-generative-fill.md
-- ../../../sources/omni/2023/adobe-firefly--max-2023-firefly-update.md
-- ../../../sources/omni/2023/adobe-firefly--vs-stable-diffusion.md
+## 一手源存档（sources/）
+- [press-release.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/adobe-firefly--press-release.md)
+- [launch-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/adobe-firefly--launch-blog.md)
+- [gen-ai-approach.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/adobe-firefly--gen-ai-approach.md)
+- [photoshop-generative-fill.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/adobe-firefly--photoshop-generative-fill.md)
+- [max-2023-firefly-update.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/adobe-firefly--max-2023-firefly-update.md)
+- [vs-stable-diffusion.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/adobe-firefly--vs-stable-diffusion.md)

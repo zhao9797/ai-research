@@ -168,13 +168,13 @@ Kandinsky 5.0 是 Sber AI（俄罗斯）开源的图像+视频生成基础模型
 - blog (Habr, Sber, Video Lite 公告 2025-09-30): https://habr.com/ru/companies/sberbank/articles/951800/
 - project page: https://kandinskylab.ai/
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2511.14993.pdf （技术报告 PDF，gitignore，本地精读）
-- ../../../sources/omni/2025/kandinsky-5--techreport.txt （技术报告全文提取）
-- ../../../sources/omni/2025/arxiv-2507.13546.pdf （NABLA 论文 PDF，gitignore）
-- ../../../sources/omni/2025/kandinsky-5--nabla.txt （NABLA 论文全文提取）
-- ../../../sources/omni/2025/kandinsky-5--readme.md （GitHub README）
-- ../../../sources/omni/2025/kandinsky-5--hf-t2v-pro.md （HF Video Pro model card）
-- ../../../sources/omni/2025/kandinsky-5--hf-t2v-lite.md （HF Video Lite model card）
-- ../../../sources/omni/2025/kandinsky-5--hf-t2i-lite.md （HF Image Lite model card）
-- ../../../sources/omni/2025/kandinsky-5--habr.md （Habr 官方博客文本提取）
+## 一手源存档（sources/）
+- [arxiv-2511.14993.pdf](https://arxiv.org/pdf/2511.14993) （技术报告 PDF，gitignore，本地精读）
+- [techreport.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kandinsky-5--techreport.txt) （技术报告全文提取）
+- [arxiv-2507.13546.pdf](https://arxiv.org/pdf/2507.13546) （NABLA 论文 PDF，gitignore）
+- [nabla.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kandinsky-5--nabla.txt) （NABLA 论文全文提取）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kandinsky-5--readme.md) （GitHub README）
+- [hf-t2v-pro.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kandinsky-5--hf-t2v-pro.md) （HF Video Pro model card）
+- [hf-t2v-lite.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kandinsky-5--hf-t2v-lite.md) （HF Video Lite model card）
+- [hf-t2i-lite.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kandinsky-5--hf-t2i-lite.md) （HF Image Lite model card）
+- [habr.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kandinsky-5--habr.md) （Habr 官方博客文本提取）

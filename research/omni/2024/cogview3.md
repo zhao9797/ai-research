@@ -137,7 +137,7 @@ CogView3 在 ImageReward 上对 SDXL 提升明显（DrawBench 0.847 vs 0.676）�
 - modelscope_model: https://modelscope.cn/models/ZhipuAI/CogView3-Plus-3B
 - relay_diffusion_precursor: https://arxiv.org/abs/2309.03350 （Relay Diffusion, Teng et al. 2023）
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2403.05121.pdf
-- ../../../sources/omni/2024/cogview3--github.md
-- ../../../sources/omni/2024/cogview3plus--modelscope-readme.md
+## 一手源存档（sources/）
+- [arxiv-2403.05121.pdf](https://arxiv.org/pdf/2403.05121)  （arXiv 原文 PDF，不入 git）
+- [github.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/cogview3--github.md)
+- [cogview3plus--modelscope-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/cogview3plus--modelscope-readme.md)

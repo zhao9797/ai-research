@@ -130,7 +130,7 @@ Emu Video 的核心假设：**强化条件信号**对高质量视频生成至关
 - project_page: https://emu-video.metademolab.com/
 - official_blog: https://ai.meta.com/blog/emu-text-to-video-generation-image-editing-research/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.10709.pdf （PDF，gitignore 不入 git，已本地精读）
-- ../../../sources/omni/2023/emu-video--project.md
-- ../../../sources/omni/2023/emu-video--blog.md
+## 一手源存档（sources/）
+- [arxiv-2311.10709.pdf](https://arxiv.org/pdf/2311.10709) （PDF，gitignore 不入 git，已本地精读）
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/emu-video--project.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/emu-video--blog.md)

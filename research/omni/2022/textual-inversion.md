@@ -118,7 +118,7 @@ Textual Inversion 用 3–5 张图、只优化**一个新的"伪词"嵌入向量
 - project_page: https://textual-inversion.github.io/
 - github: https://github.com/rinongal/textual_inversion
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2208.01618.pdf
-- ../../../sources/omni/2022/textual-inversion--readme.md
-- ../../../sources/omni/2022/textual-inversion--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2208.01618.pdf](https://arxiv.org/pdf/2208.01618)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/textual-inversion--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/textual-inversion--project-page.md)

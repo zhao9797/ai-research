@@ -128,6 +128,6 @@ Video LDM 把图像潜空间扩散模型（[[latent-diffusion-ldm]] / Stable Dif
 - arxiv_pdf: https://arxiv.org/pdf/2304.08818
 - project_page: https://research.nvidia.com/labs/toronto-ai/VideoLDM/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2304.08818.pdf
-- ../../../sources/omni/2023/align-your-latents-vldm--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2304.08818.pdf](https://arxiv.org/pdf/2304.08818)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/align-your-latents-vldm--project-page.md)

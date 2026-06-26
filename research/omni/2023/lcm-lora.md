@@ -109,9 +109,9 @@ LCM-LoRA 本身**不引入新的网络架构**，它是加在现成 SD 主干上
 - project page: https://latent-consistency-models.github.io
 - official HF blog（一等公民，含速度基准）: https://huggingface.co/blog/lcm_lora
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.05556.pdf
-- ../../../sources/omni/2023/lcm-lora--hf-sdxl-readme.md
-- ../../../sources/omni/2023/lcm-lora--hf-sdv1-5-readme.md
-- ../../../sources/omni/2023/lcm-lora--github-readme.md
-- ../../../sources/omni/2023/lcm-lora--hf-blog.md
+## 一手源存档（sources/）
+- [arxiv-2311.05556.pdf](https://arxiv.org/pdf/2311.05556)  （arXiv 原文 PDF，不入 git）
+- [hf-sdxl-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lcm-lora--hf-sdxl-readme.md)
+- [hf-sdv1-5-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lcm-lora--hf-sdv1-5-readme.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lcm-lora--github-readme.md)
+- [hf-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lcm-lora--hf-blog.md)

@@ -80,7 +80,7 @@ Imagen 2 是 Google DeepMind 2023 年 12 月发布的第二代闭源文生图扩
 - blog (Google Cloud — Imagen 2 on Vertex AI is now generally available, 2023-12-13): https://cloud.google.com/blog/products/ai-machine-learning/imagen-2-on-vertex-ai-is-now-generally-available
 - blog (Google Labs — Try ImageFX and MusicFX, 2023-12): https://blog.google/innovation-and-ai/products/google-labs-imagefx-textfx-generative-ai/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/imagen-2--deepmind-original-page-wayback.md  （DeepMind 官方 Imagen 2 技术页，Wayback 2024-02-01 存档，含 caption 增强 / 美学条件 / 风格条件 / inpainting-outpainting / SynthID / 致谢作者名单）
-- ../../../sources/omni/2023/imagen-2--vertex-ai-ga.md  （Vertex AI GA 博客，含文本渲染 / 多语言 / logo / captioning-QA / SynthID 水印 / 客户案例）
-- ../../../sources/omni/2023/imagen-2--imagefx-labs-blog.md  （ImageFX Labs 博客，确认 ImageFX 由 Imagen 2 驱动、"expressive chips" 交互、最高质量定位）
+## 一手源存档（sources/）
+- [deepmind-original-page-wayback.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/imagen-2--deepmind-original-page-wayback.md)  （DeepMind 官方 Imagen 2 技术页，Wayback 2024-02-01 存档，含 caption 增强 / 美学条件 / 风格条件 / inpainting-outpainting / SynthID / 致谢作者名单）
+- [vertex-ai-ga.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/imagen-2--vertex-ai-ga.md)  （Vertex AI GA 博客，含文本渲染 / 多语言 / logo / captioning-QA / SynthID 水印 / 客户案例）
+- [imagefx-labs-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/imagen-2--imagefx-labs-blog.md)  （ImageFX Labs 博客，确认 ImageFX 由 Imagen 2 驱动、"expressive chips" 交互、最高质量定位）

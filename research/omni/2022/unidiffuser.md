@@ -121,7 +121,7 @@ UniDiffuser 的核心洞见是把"学不同分布"统一成**同一件事——�
 - hf (v0): https://huggingface.co/thu-ml/unidiffuser-v0
 - diffusers 文档: https://huggingface.co/docs/diffusers/main/en/api/pipelines/unidiffuser
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2303.06555.pdf
-- ../../../sources/omni/2022/unidiffuser--readme.md
-- ../../../sources/omni/2022/unidiffuser--hf-v1-card.md
+## 一手源存档（sources/）
+- [arxiv-2303.06555.pdf](https://arxiv.org/pdf/2303.06555)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/unidiffuser--readme.md)
+- [hf-v1-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/unidiffuser--hf-v1-card.md)

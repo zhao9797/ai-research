@@ -135,6 +135,6 @@ OpenAI（Alex Nichol & Prafulla Dhariwal, 2021-02）对 [[ddpm]] 的四点关键
 - arxiv_pdf: https://arxiv.org/pdf/2102.09672
 - github: https://github.com/openai/improved-diffusion
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2102.09672.pdf
-- ../../../sources/omni/2021/improved-ddpm--readme.md
+## 一手源存档（sources/）
+- [arxiv-2102.09672.pdf](https://arxiv.org/pdf/2102.09672)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/improved-ddpm--readme.md)

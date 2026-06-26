@@ -117,7 +117,7 @@ T2I-Adapter 是与 [[controlnet]] 同期（2023-02）提出的轻量级可控生
 - hf_models: https://huggingface.co/TencentARC （t2i-adapter-{sketch,canny,lineart,openpose,depth-midas,depth-zoe}-sdxl-1.0）
 - diffusers_docs: https://huggingface.co/docs/diffusers/main/en/api/pipelines/stable_diffusion/adapter
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2302.08453.pdf
-- ../../../sources/omni/2023/t2i-adapter--readme.md
-- ../../../sources/omni/2023/t2i-adapter--hf-sdxl-blog.md
+## 一手源存档（sources/）
+- [arxiv-2302.08453.pdf](https://arxiv.org/pdf/2302.08453)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/t2i-adapter--readme.md)
+- [hf-sdxl-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/t2i-adapter--hf-sdxl-blog.md)

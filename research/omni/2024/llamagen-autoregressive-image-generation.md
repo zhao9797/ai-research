@@ -114,7 +114,7 @@ LlamaGen 的研究哲学正相反：**减少视觉信号上的归纳偏置，架
 - HF demo Space: https://huggingface.co/spaces/FoundationVision/LlamaGen
 - project page: https://peizesun.github.io/llamagen/
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2406.06525.pdf
-- ../../../sources/omni/2024/llamagen-autoregressive-image-generation--readme.md
-- ../../../sources/omni/2024/llamagen-autoregressive-image-generation--project.md
+## 一手源存档（sources/）
+- [arxiv-2406.06525.pdf](https://arxiv.org/pdf/2406.06525)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/llamagen-autoregressive-image-generation--readme.md)
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/llamagen-autoregressive-image-generation--project.md)

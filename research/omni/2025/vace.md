@@ -127,8 +127,8 @@ VACE 的定位就是把图像域 ACE/ACE++ 那套「统一创作+编辑」搬到
 - ModelScope collection: https://modelscope.cn/collections/VACE-8fa5fcfd386e43
 - VACE-Benchmark dataset: https://huggingface.co/datasets/ali-vilab/VACE-Benchmark
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2503.07598.pdf
-- ../../../sources/omni/2025/vace--readme.md
-- ../../../sources/omni/2025/vace--hf-modelcard.md
-- ../../../sources/omni/2025/vace--hf-modelcard-preview.md
+## 一手源存档（sources/）
+- [arxiv-2503.07598.pdf](https://arxiv.org/pdf/2503.07598)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/vace--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/vace--hf-modelcard.md)
+- [hf-modelcard-preview.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/vace--hf-modelcard-preview.md)

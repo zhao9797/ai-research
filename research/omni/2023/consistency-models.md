@@ -122,6 +122,6 @@ OpenAI（Yang Song、Prafulla Dhariwal、Mark Chen、Ilya Sutskever）提出的*
 - huggingface (diffusers checkpoint): https://huggingface.co/openai/diffusers-cd_imagenet64_l2
 - diffusers docs: https://huggingface.co/docs/diffusers/main/en/api/pipelines/consistency_models
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2303.01469.pdf
-- ../../../sources/omni/2023/consistency-models--readme.md
+## 一手源存档（sources/）
+- [arxiv-2303.01469.pdf](https://arxiv.org/pdf/2303.01469)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/consistency-models--readme.md)

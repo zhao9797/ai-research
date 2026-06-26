@@ -127,9 +127,9 @@ DDPO 不用 FID/CLIPScore/GenEval 等标准 T2I 榜，而是**在自定义奖励
 - hf_weights（4 个发布权重）: https://huggingface.co/kvablack/ddpo-alignment ｜ ddpo-aesthetic ｜ ddpo-compressibility ｜ ddpo-incompressibility
 - llava_server: https://github.com/kvablack/LLaVA-server
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2305.13301.pdf
-- ../../../sources/omni/2023/ddpo--project-page.md
-- ../../../sources/omni/2023/ddpo--bair-blog.md
-- ../../../sources/omni/2023/ddpo--readme.md
-- ../../../sources/omni/2023/ddpo-pytorch--readme.md
+## 一手源存档（sources/）
+- [arxiv-2305.13301.pdf](https://arxiv.org/pdf/2305.13301)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ddpo--project-page.md)
+- [bair-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ddpo--bair-blog.md)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ddpo--readme.md)
+- [ddpo-pytorch--readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ddpo-pytorch--readme.md)

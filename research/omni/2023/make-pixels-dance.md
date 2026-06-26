@@ -121,6 +121,6 @@ UCF-101（表 2，指标 IS↑ / FID↓ / FVD↓）：
 - project_page: https://makepixelsdance.github.io/
 - youtube_demo: https://www.youtube.com/watch?v=QERmPmCg9aQ （项目页给出）
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.10982.pdf
-- ../../../sources/omni/2023/make-pixels-dance--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2311.10982.pdf](https://arxiv.org/pdf/2311.10982)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/make-pixels-dance--project-page.md)

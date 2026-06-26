@@ -119,5 +119,5 @@ Make-A-Scene 沿用 [[dall-e-1]] / [[cogview]] 的"两阶段 + 自回归 transfo
 - arxiv_abs: https://arxiv.org/abs/2203.13131
 - arxiv_pdf: https://arxiv.org/pdf/2203.13131
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2203.13131.pdf
+## 一手源存档（sources/）
+- [arxiv-2203.13131.pdf](https://arxiv.org/pdf/2203.13131)  （arXiv 原文 PDF，不入 git）

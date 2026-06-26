@@ -171,8 +171,8 @@ LDM 段「**全部音频不论是否有标注**」自监督训练；GPT-2 段只
 - training_code: https://github.com/haoheliu/AudioLDM-training-finetuning
 - TASLP 2024: https://doi.org/10.1109/TASLP.2024.3399607
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2308.05734.pdf  （论文 PDF，13 页 v3，gitignore 不入 git）
-- ../../../sources/omni/2023/audioldm-2--readme.md  （GitHub README，checkpoint 列表/用法）
-- ../../../sources/omni/2023/audioldm-2--hf-model-card.md  （HF cvssp/audioldm2 官方 checkpoint 表）
-- ../../../sources/omni/2023/audioldm-2--hf-blog-faster.md  （HF 官方推理优化博客）
+## 一手源存档（sources/）
+- [arxiv-2308.05734.pdf](https://arxiv.org/pdf/2308.05734)  （论文 PDF，13 页 v3，gitignore 不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/audioldm-2--readme.md)  （GitHub README，checkpoint 列表/用法）
+- [hf-model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/audioldm-2--hf-model-card.md)  （HF cvssp/audioldm2 官方 checkpoint 表）
+- [hf-blog-faster.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/audioldm-2--hf-blog-faster.md)  （HF 官方推理优化博客）

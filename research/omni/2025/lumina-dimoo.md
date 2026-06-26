@@ -125,6 +125,6 @@ Lumina-DiMOO 站在第三条路上，定位为"把纯离散扩散统一模型做
 - project_page (demo & benchmark): https://synbol.github.io/Lumina-DiMOO/
 - UniGenBench leaderboard: https://huggingface.co/spaces/CodeGoat24/UniGenBench_Leaderboard
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2510.06308.pdf  （技术报告 PDF v1，2025-10-7，29.9 MB / 33 页：正文 1–24 页（Conclusion 在 p24）+ 其后参考文献；本地精读，未入 git）
-- ../../../sources/omni/2025/lumina-dimoo--readme.md  （GitHub 仓库页 markdown 快照，含 HF 链接 / news / ML-Cache 默认超参 / 单卡实测 / 训练框架致谢）
+## 一手源存档（sources/）
+- [arxiv-2510.06308.pdf](https://arxiv.org/pdf/2510.06308)  （技术报告 PDF v1，2025-10-7，29.9 MB / 33 页：正文 1–24 页（Conclusion 在 p24）+ 其后参考文献；本地精读，未入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/lumina-dimoo--readme.md)  （GitHub 仓库页 markdown 快照，含 HF 链接 / news / ML-Cache 默认超参 / 单卡实测 / 训练框架致谢）

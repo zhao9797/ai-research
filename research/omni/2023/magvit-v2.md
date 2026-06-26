@@ -134,7 +134,7 @@ MAGVIT-v2 是一个统一图像/视频的离散视觉 tokenizer，核心创新�
 - project_page: https://magvit.cs.cmu.edu/v2/
 - github (官方 MAGVIT 仓库，含 v1 与后续): https://github.com/google-research/magvit
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2310.05737.pdf
-- ../../../sources/omni/2023/magvit-v2--project-page.md
-- ../../../sources/omni/2023/magvit-v2--github-readme.md
+## 一手源存档（sources/）
+- [arxiv-2310.05737.pdf](https://arxiv.org/pdf/2310.05737)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/magvit-v2--project-page.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/magvit-v2--github-readme.md)

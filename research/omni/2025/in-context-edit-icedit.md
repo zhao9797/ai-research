@@ -139,7 +139,7 @@ G(x)_i = softmax(TopK(g(x), k))_i
 - hf_model (normal-LoRA): https://huggingface.co/RiverZ/normal-lora
 - hf_demo: https://huggingface.co/spaces/RiverZ/ICEdit
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2504.20690.pdf
-- ../../../sources/omni/2025/arxiv-2504.20690.txt
-- ../../../sources/omni/2025/in-context-edit-icedit--readme.md
+## 一手源存档（sources/）
+- [arxiv-2504.20690.pdf](https://arxiv.org/pdf/2504.20690)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2504.20690.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2504.20690.txt)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/in-context-edit-icedit--readme.md)

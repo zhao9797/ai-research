@@ -85,7 +85,7 @@ Ideogram 的切入点就是把"图内文字"做成第一卖点。其创始团队
 - press（VentureBeat 同期报道，2023-08-24）: https://venturebeat.com/ai/watch-out-midjourney-ideogram-launches-ai-image-generator-with-impressive-typography
 - reference（Wikipedia 词条，含型号谱系与融资事实）: https://en.wikipedia.org/wiki/Ideogram_(text-to-image_model)
 
-## 本地落盘文件
-- ../../../sources/omni/2023/ideogram-v0--launch-blog.md  （官方 launch 公告，Wayback 存档正文）
-- ../../../sources/omni/2023/ideogram-v0--venturebeat-launch.md  （VentureBeat 同期报道全文）
-- ../../../sources/omni/2023/ideogram-v0--wikipedia.md  （Wikipedia 词条 extract，谱系与融资事实）
+## 一手源存档（sources/）
+- [launch-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ideogram-v0--launch-blog.md)  （官方 launch 公告，Wayback 存档正文）
+- [venturebeat-launch.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ideogram-v0--venturebeat-launch.md)  （VentureBeat 同期报道全文）
+- [wikipedia.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ideogram-v0--wikipedia.md)  （Wikipedia 词条 extract，谱系与融资事实）

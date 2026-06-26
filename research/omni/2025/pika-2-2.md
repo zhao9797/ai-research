@@ -121,9 +121,9 @@ Pika Labs（Palo Alto，创始人兼 CEO Demi Guo）走的是与 OpenAI Sora、R
 - platform model doc (Pika 2.2 spec): https://docs.imagine.art/ai-models/video/pika-2-2
 - news (Pika 2.2 launch, 引用官方 X): https://www.aibase.com/news/15808
 
-## 本地落盘文件
-- ../../../sources/omni/2025/pika-2-2--venturebeat-pika20.md
-- ../../../sources/omni/2025/pika-2-2--testingcatalog-pika21.md
-- ../../../sources/omni/2025/pika-2-2--imagineart-doc.md
-- ../../../sources/omni/2025/pika-2-2--aibase-pika22.md
-- ../../../sources/omni/2025/pika-2-2--pika-art-home.html
+## 一手源存档（sources/）
+- [venturebeat-pika20.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/pika-2-2--venturebeat-pika20.md)
+- [testingcatalog-pika21.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/pika-2-2--testingcatalog-pika21.md)
+- [imagineart-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/pika-2-2--imagineart-doc.md)
+- [aibase-pika22.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/pika-2-2--aibase-pika22.md)
+- [pika-art-home.html](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/pika-2-2--pika-art-home.html)

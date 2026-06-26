@@ -114,8 +114,8 @@ OpenAI 对训练数据披露极简，**几乎全部具体规模/配比/清洗细
 - system-card-addendum（页面入口）: https://openai.com/index/gpt-4o-image-generation-system-card-addendum/
 - system-card（PDF 正文，安全/偏差量化）: https://cdn.openai.com/11998be9-5319-4302-bfbf-1167e093f1fb/Native_Image_Generation_System_Card.pdf
 
-## 本地落盘文件
-- ../../../sources/omni/2025/gpt-image-1--introducing-4o-image-generation.md
-- ../../../sources/omni/2025/gpt-image-1--image-generation-api.md
-- ../../../sources/omni/2025/gpt-image-1--system-card-addendum.md
-- ../../../sources/omni/2025/gpt-image-1-native-image-generation-system-card.pdf （PDF，.gitignore 排除，不入 git，本地精读）
+## 一手源存档（sources/）
+- [introducing-4o-image-generation.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gpt-image-1--introducing-4o-image-generation.md)
+- [image-generation-api.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gpt-image-1--image-generation-api.md)
+- [system-card-addendum.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gpt-image-1--system-card-addendum.md)
+- gpt-image-1-native-image-generation-system-card.pdf （PDF，.gitignore 排除，不入 git，本地精读）

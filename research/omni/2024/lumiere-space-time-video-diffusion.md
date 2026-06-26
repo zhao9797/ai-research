@@ -113,6 +113,6 @@ Lumiere FVD=332.49、IS=37.54，**优于 Make-A-Video/PYoCo/Show-1/Emu/Video LDM
 - paper PDF: https://arxiv.org/pdf/2401.12945
 - project page / demo gallery: https://lumiere-video.github.io/
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2401.12945.pdf
-- ../../../sources/omni/2024/lumiere-space-time-video-diffusion--blog.md
+## 一手源存档（sources/）
+- [arxiv-2401.12945.pdf](https://arxiv.org/pdf/2401.12945)  （arXiv 原文 PDF，不入 git）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/lumiere-space-time-video-diffusion--blog.md)

@@ -113,7 +113,7 @@ DreamFusion **没有可训练的"模型权重"产物**——每个 prompt 都从
 - arxiv_pdf: https://arxiv.org/pdf/2209.14988
 - project_page: https://dreamfusion3d.github.io/
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2209.14988.pdf
-- ../../../sources/omni/2022/dreamfusion--arxiv-abs.md
-- ../../../sources/omni/2022/dreamfusion--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2209.14988.pdf](https://arxiv.org/pdf/2209.14988)  （arXiv 原文 PDF，不入 git）
+- [arxiv-abs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dreamfusion--arxiv-abs.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dreamfusion--project-page.md)

@@ -101,10 +101,10 @@ V7 在产品脉络中的定位：
 - docs（Draft & Conversational Modes，V7 草稿/对话/语音模式）: https://docs.midjourney.com/hc/en-us/articles/35577175650957-Draft-Conversational-Modes
 - docs（Personalization，V7 默认个性化 `--p` 解锁/机制）: https://docs.midjourney.com/hc/en-us/articles/32433330574221-Personalization
 
-## 本地落盘文件
-- ../../../sources/omni/2025/midjourney-v7--v7-alpha-blog.md
-- ../../../sources/omni/2025/midjourney-v7--update-editor-exp.md
-- ../../../sources/omni/2025/midjourney-v7--docs-version.md
-- ../../../sources/omni/2025/midjourney-v7--docs-omni-reference.md
-- ../../../sources/omni/2025/midjourney-v7--docs-draft-mode.md
-- ../../../sources/omni/2025/midjourney-v7--docs-personalization.md
+## 一手源存档（sources/）
+- [v7-alpha-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/midjourney-v7--v7-alpha-blog.md)
+- [update-editor-exp.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/midjourney-v7--update-editor-exp.md)
+- [docs-version.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/midjourney-v7--docs-version.md)
+- [docs-omni-reference.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/midjourney-v7--docs-omni-reference.md)
+- [docs-draft-mode.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/midjourney-v7--docs-draft-mode.md)
+- [docs-personalization.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/midjourney-v7--docs-personalization.md)

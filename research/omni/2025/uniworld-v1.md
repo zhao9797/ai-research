@@ -109,8 +109,8 @@ UniWorld-V1 是北大 PKU-YuanGroup 推出的开源统一视觉模型：用**高
 - hf_model: https://huggingface.co/LanguageBind/UniWorld-V1
 - hf_dataset: https://huggingface.co/datasets/LanguageBind/UniWorld-V1
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2506.03147.pdf
-- ../../../sources/omni/2025/uniworld-v1--readme.md
-- ../../../sources/omni/2025/uniworld-v1--hf-modelcard.md
-- ../../../sources/omni/2025/uniworld-v1--hf-dataset.md
+## 一手源存档（sources/）
+- [arxiv-2506.03147.pdf](https://arxiv.org/pdf/2506.03147)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/uniworld-v1--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/uniworld-v1--hf-modelcard.md)
+- [hf-dataset.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/uniworld-v1--hf-dataset.md)

@@ -171,9 +171,9 @@ UniPic 3.0 的统计分析发现：社区最关心的子任务是 **HOI（Human-
 - hf (collection + dataset): https://huggingface.co/collections/Skywork/skywork-unipic3
 - 前作: UniPic 1.0 arXiv 2508.03320 ; UniPic 2.0 arXiv 2509.04548
 
-## 本地落盘文件
-- ../../../sources/omni/2026/arxiv-2601.15664.pdf
-- ../../../sources/omni/2026/skywork-unipic-3-0--hf-readme.md
-- ../../../sources/omni/2026/skywork-unipic-3-0--github-readme.md
-- ../../../sources/omni/2026/skywork-unipic-3-0--github-unipic3-readme.md
-- ../../../sources/omni/2026/skywork-unipic-3-0--project-page.html
+## 一手源存档（sources/）
+- [arxiv-2601.15664.pdf](https://arxiv.org/pdf/2601.15664)  （arXiv 原文 PDF，不入 git）
+- [hf-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/skywork-unipic-3-0--hf-readme.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/skywork-unipic-3-0--github-readme.md)
+- [github-unipic3-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/skywork-unipic-3-0--github-unipic3-readme.md)
+- [project-page.html](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/skywork-unipic-3-0--project-page.html)

@@ -139,6 +139,6 @@ Step-Audio 是阶跃星辰 2025-02 开源的「首个生产可用」中文语音
 - modelscope (Chat): https://modelscope.cn/models/stepfun-ai/Step-Audio-Chat
 - 线上产品「跃问」: https://yuewen.cn
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2502.11946.pdf
-- ../../../sources/omni/2025/step-audio--readme.md
+## 一手源存档（sources/）
+- [arxiv-2502.11946.pdf](https://arxiv.org/pdf/2502.11946)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/step-audio--readme.md)

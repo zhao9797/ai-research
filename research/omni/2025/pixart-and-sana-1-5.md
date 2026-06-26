@@ -97,8 +97,8 @@ SANA-1.5 是 NVIDIA/MIT/清华在线性注意力扩散 Transformer 上做"高效
 - hf_models: https://huggingface.co/collections/Efficient-Large-Model/sana-15
 - 前置工作 SANA-1.0: https://arxiv.org/abs/2410.10629 ; DC-AE: https://arxiv.org/abs/2410.10733
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2501.18427.pdf
-- ../../../sources/omni/2025/arxiv-2501.18427.txt
-- ../../../sources/omni/2025/sana-1-5--readme.md
-- ../../../sources/omni/2025/sana-1-5--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2501.18427.pdf](https://arxiv.org/pdf/2501.18427)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2501.18427.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2501.18427.txt)
+- [sana-1-5--readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/sana-1-5--readme.md)
+- [sana-1-5--project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/sana-1-5--project-page.md)

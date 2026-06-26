@@ -84,8 +84,8 @@ Midjourney 是 David Holz 创立的「社区众筹型独立研究实验室」（
 - docs (2023-01-30 Wayback 存档的 V4 发布期 model-versions 原始页，含「全新代码库 / 超算」原话与 `--style 4a/4b` 默认): http://web.archive.org/web/20230130031205/https://docs.midjourney.com/docs/model-versions
 - updates/blog (官方更新博客，Ghost；V4 原始公告未能获取): https://updates.midjourney.com/ —— 现行首页仅列 2026 年近期帖；Wayback 对该子域最早快照为 2024-03（API 查 20221115 返回 closest=20240328），无 2022 年存档。V4 的原始发布实为 2022-11 的 Discord 公告，无对应官方博客文章可落盘，故本页 V4 架构原话以「2023-01 存档 model-versions 页」为一手依据。
 
-## 本地落盘文件
-- ../../../sources/omni/2022/midjourney-v1-v4--home.md
-- ../../../sources/omni/2022/midjourney-v1-v4--docs-version.md
-- ../../../sources/omni/2022/midjourney-v1-v4--docs-legacy-features.md
-- ../../../sources/omni/2022/midjourney-v1-v4--docs-model-versions-2023jan-wayback.md
+## 一手源存档（sources/）
+- [home.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/midjourney-v1-v4--home.md)
+- [docs-version.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/midjourney-v1-v4--docs-version.md)
+- [docs-legacy-features.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/midjourney-v1-v4--docs-legacy-features.md)
+- [docs-model-versions-2023jan-wayback.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/midjourney-v1-v4--docs-model-versions-2023jan-wayback.md)

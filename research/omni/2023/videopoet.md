@@ -110,6 +110,6 @@ VideoPoet 的论点是：**LLM 范式真正的价值不在"文生视频单任务
 - blog (项目页): https://sites.research.google/videopoet/
 - 会议: ICML 2024（PMLR 235）；v4 2024-06-04
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2312.14125.pdf
-- ../../../sources/omni/2023/videopoet--blog.md
+## 一手源存档（sources/）
+- [arxiv-2312.14125.pdf](https://arxiv.org/pdf/2312.14125)  （arXiv 原文 PDF，不入 git）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/videopoet--blog.md)

@@ -107,9 +107,9 @@ ERNIE-Image 是百度文心团队开源的 **8B 单流 DiT 文生图模型**（L
 - modelscope（ERNIE-Image-Turbo）: https://www.modelscope.cn/models/PaddlePaddle/ERNIE-Image-Turbo/summary
 - art gallery: https://ernieimageprompt.com
 
-## 本地落盘文件
-- ../../../sources/omni/2026/arxiv-2605.25347.pdf
-- ../../../sources/omni/2026/ernie-image--blog.md
-- ../../../sources/omni/2026/ernie-image--github-readme.md
-- ../../../sources/omni/2026/ernie-image--hf-readme.md
-- ../../../sources/omni/2026/ernie-image-turbo--hf-readme.md
+## 一手源存档（sources/）
+- [arxiv-2605.25347.pdf](https://arxiv.org/pdf/2605.25347)  （arXiv 原文 PDF，不入 git）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/ernie-image--blog.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/ernie-image--github-readme.md)
+- [hf-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/ernie-image--hf-readme.md)
+- [ernie-image-turbo--hf-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/ernie-image-turbo--hf-readme.md)

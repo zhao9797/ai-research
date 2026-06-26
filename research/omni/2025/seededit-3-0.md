@@ -143,6 +143,6 @@ L = E_{t,q} || v_θ(x_t1, t | c, x0) − (ε − x1) ||²₂  +  Σ_i λ_i · R_
 - product (豆包): https://www.doubao.com/
 - 前置工作 SeedEdit 1.0: https://arxiv.org/abs/2411.06686
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2506.05083.pdf （技术报告全文 PDF，7 页，已精读正文/实验/附录）
-- ../../../sources/omni/2025/seededit-3-0--blog.md （seed.bytedance.com 官方技术报告页快照）
+## 一手源存档（sources/）
+- [arxiv-2506.05083.pdf](https://arxiv.org/pdf/2506.05083) （技术报告全文 PDF，7 页，已精读正文/实验/附录）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/seededit-3-0--blog.md) （seed.bytedance.com 官方技术报告页快照）

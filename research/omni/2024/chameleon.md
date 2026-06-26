@@ -108,6 +108,6 @@ Chameleon 走的是**早融合 + token-based** 路线：所有模态（图像、
 - checkpoint download (gated): https://ai.meta.com/resources/models-and-libraries/chameleon-downloads
 - （前身博客 CM3Leon，本地已存）: https://ai.meta.com/blog/generative-ai-text-images-cm3leon/
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2405.09818.pdf
-- ../../../sources/omni/2023/chameleon-cm3leon--blog.md  （前身 CM3Leon 官方博客，提供谱系背景）
+## 一手源存档（sources/）
+- [arxiv-2405.09818.pdf](https://arxiv.org/pdf/2405.09818)  （arXiv 原文 PDF，不入 git）
+- [chameleon-cm3leon--blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/chameleon-cm3leon--blog.md)  （前身 CM3Leon 官方博客，提供谱系背景）

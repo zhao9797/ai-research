@@ -124,10 +124,10 @@ Show-1 的核心洞察来自一项控制实验（论文 Fig.2 / Tab.4）：**在
 - hf_sr1: https://huggingface.co/showlab/show-1-sr1
 - hf_sr2: https://huggingface.co/showlab/show-1-sr2
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2309.15818.pdf
-- ../../../sources/omni/2023/show-1--readme.md
-- ../../../sources/omni/2023/show-1--hf-base-card.md
-- ../../../sources/omni/2023/show-1--hf-interp-card.md
-- ../../../sources/omni/2023/show-1--hf-sr1-card.md
-- ../../../sources/omni/2023/show-1--hf-sr2-card.md
+## 一手源存档（sources/）
+- [arxiv-2309.15818.pdf](https://arxiv.org/pdf/2309.15818)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/show-1--readme.md)
+- [hf-base-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/show-1--hf-base-card.md)
+- [hf-interp-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/show-1--hf-interp-card.md)
+- [hf-sr1-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/show-1--hf-sr1-card.md)
+- [hf-sr2-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/show-1--hf-sr2-card.md)

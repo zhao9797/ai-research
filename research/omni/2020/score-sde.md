@@ -129,6 +129,6 @@ updated: 2026-06-25
 - github (JAX/FLAX 官方实现): https://github.com/yang-song/score_sde
 - github (PyTorch 实现): https://github.com/yang-song/score_sde_pytorch
 
-## 本地落盘文件
-- ../../../sources/omni/2020/arxiv-2011.13456.pdf
-- ../../../sources/omni/2020/score-sde--readme.md
+## 一手源存档（sources/）
+- [arxiv-2011.13456.pdf](https://arxiv.org/pdf/2011.13456)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2020/score-sde--readme.md)

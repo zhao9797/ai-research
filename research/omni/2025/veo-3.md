@@ -95,11 +95,11 @@ Veo 3 / Veo 3.1 是**完全闭源的商用产品**，Google **未发布技术报
 - docs (Gemini API 视频文档，含分辨率/时长/宽高比/模型ID 等硬规格): https://ai.google.dev/gemini-api/docs/video
 - docs (Vertex AI Veo 3 模型参考，含 4/6/8s · 720p/1080p · 24 FPS · GA 2025-07-29 等硬规格): https://cloud.google.com/vertex-ai/generative-ai/docs/models/veo/3-0-generate-001?hl=en
 
-## 本地落盘文件
-- ../../../sources/omni/2025/veo-3--blog-generative-media-io2025.md
-- ../../../sources/omni/2025/veo-3--vertex-ai-announce.md
-- ../../../sources/omni/2025/veo-3--deepmind-model.md
-- ../../../sources/omni/2025/veo-3--deepmind-evals.md
-- ../../../sources/omni/2025/veo-3--gemini-api-video-docs.md
-- ../../../sources/omni/2025/veo-3--vertex-model-reference.md （原中文快照仅含导航；审稿时已补抓英文版正文的 Veo 3 技术规格表）
-- ../../../sources/omni/2025/veo-3-1--blog-veo-updates-flow.md
+## 一手源存档（sources/）
+- [blog-generative-media-io2025.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/veo-3--blog-generative-media-io2025.md)
+- [vertex-ai-announce.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/veo-3--vertex-ai-announce.md)
+- [deepmind-model.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/veo-3--deepmind-model.md)
+- [deepmind-evals.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/veo-3--deepmind-evals.md)
+- [gemini-api-video-docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/veo-3--gemini-api-video-docs.md)
+- [vertex-model-reference.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/veo-3--vertex-model-reference.md) （原中文快照仅含导航；审稿时已补抓英文版正文的 Veo 3 技术规格表）
+- [veo-3-1--blog-veo-updates-flow.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/veo-3-1--blog-veo-updates-flow.md)

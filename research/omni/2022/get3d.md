@@ -139,7 +139,7 @@ GET3D 的定位是首次"三点全占"：用 **DMTet（[[dmtet]]）** 解决"显
 - project page: https://nv-tlabs.github.io/GET3D/ （= https://research.nvidia.com/labs/toronto-ai/GET3D/）
 - github: https://github.com/nv-tlabs/GET3D
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2209.11163.pdf
-- ../../../sources/omni/2022/get3d--readme.md
-- ../../../sources/omni/2022/get3d--project.md
+## 一手源存档（sources/）
+- [arxiv-2209.11163.pdf](https://arxiv.org/pdf/2209.11163)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/get3d--readme.md)
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/get3d--project.md)

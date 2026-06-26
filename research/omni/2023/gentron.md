@@ -123,6 +123,6 @@ GenTron 是 Meta 与香港大学把 [[dit-scalable-diffusion-transformers]]（Di
 - arxiv_pdf: https://arxiv.org/pdf/2312.04557
 - project_page: https://www.shoufachen.com/gentron_website/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2312.04557.pdf
-- ../../../sources/omni/2023/gentron--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2312.04557.pdf](https://arxiv.org/pdf/2312.04557)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/gentron--project-page.md)

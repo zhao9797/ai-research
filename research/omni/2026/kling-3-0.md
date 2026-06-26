@@ -129,9 +129,9 @@ vCoT 的"先思考后渲染"在训练上需要推理-生成联合监督，但官
 - project_page (官方): https://klingai.com ；Omni 入口 https://www.klingai.com/app/omni/new
 - klingaio-blog (第三方/二手，仅作交叉参考，非官方): https://klingaio.com/blogs/kling-3-release
 
-## 本地落盘文件
-- ../../../sources/omni/2026/kling-3-0--kuaishou-ir-press.md
-- ../../../sources/omni/2026/kling-3-0--video-release-notes.md
-- ../../../sources/omni/2026/kling-3-0--image-release-notes.md
-- ../../../sources/omni/2026/kling-3-0--api-update-notice.md
-- ../../../sources/omni/2026/kling-3-0--klingaio-blog.md （第三方二手快照，已在文件头标注 [THIRD-PARTY/SECONDARY]）
+## 一手源存档（sources/）
+- [kuaishou-ir-press.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/kling-3-0--kuaishou-ir-press.md)
+- [video-release-notes.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/kling-3-0--video-release-notes.md)
+- [image-release-notes.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/kling-3-0--image-release-notes.md)
+- [api-update-notice.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/kling-3-0--api-update-notice.md)
+- [klingaio-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/kling-3-0--klingaio-blog.md) （第三方二手快照，已在文件头标注 [THIRD-PARTY/SECONDARY]）

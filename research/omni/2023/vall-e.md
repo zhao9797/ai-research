@@ -131,8 +131,8 @@ VALL-E 在鲁棒性（WER 5.9 vs YourTTS 7.7）和相似度（SPK 0.580 vs 0.337
 - project_page (MSR，VALL-E Family 总览页): https://www.microsoft.com/en-us/research/project/vall-e-x/
 - demo_page: https://aka.ms/valle
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2301.02111.pdf
-- ../../../sources/omni/2023/arxiv-2301.02111.txt
-- ../../../sources/omni/2023/vall-e--unilm-readme.md
-- ../../../sources/omni/2023/vall-e--msr-project-page.md
+## 一手源存档（sources/）
+- [arxiv-2301.02111.pdf](https://arxiv.org/pdf/2301.02111)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2301.02111.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/arxiv-2301.02111.txt)
+- [unilm-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/vall-e--unilm-readme.md)
+- [msr-project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/vall-e--msr-project-page.md)

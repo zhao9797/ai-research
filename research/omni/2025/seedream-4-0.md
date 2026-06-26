@@ -122,8 +122,8 @@ Seedream 4.0 的定位是用「架构效率」破局——通过 efficient DiT b
 - 产品入口: 豆包 https://www.doubao.com/chat/create-image ; 即梦 https://jimeng.jianying.com/ai-tool/image/generate
 - 公开榜单: Artificial Analysis Arena https://artificialanalysis.ai/text-to-image/arena
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2509.20427.pdf
-- ../../../sources/omni/2025/arxiv-2509.20427.txt
-- ../../../sources/omni/2025/seedream-4-0--project-page.md
-- ../../../sources/omni/2025/seedream-4-0--volcengine-docs.md
+## 一手源存档（sources/）
+- [arxiv-2509.20427.pdf](https://arxiv.org/pdf/2509.20427)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2509.20427.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2509.20427.txt)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/seedream-4-0--project-page.md)
+- [volcengine-docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/seedream-4-0--volcengine-docs.md)

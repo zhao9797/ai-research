@@ -113,6 +113,6 @@ MAR（Masked Autoregressive）用一个**小 MLP 上的逐 token 扩散过程（
 - code (GitHub): https://github.com/LTH14/mar
 - HuggingFace (社区移植 model card + demo): https://huggingface.co/jadechoghari/mar
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2406.11838.pdf
-- ../../../sources/omni/2024/mar-autoregressive-without-vector-quantization--readme.md
+## 一手源存档（sources/）
+- [arxiv-2406.11838.pdf](https://arxiv.org/pdf/2406.11838)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/mar-autoregressive-without-vector-quantization--readme.md)

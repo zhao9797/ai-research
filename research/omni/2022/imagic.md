@@ -86,6 +86,6 @@ Imagic **不引入任何新网络结构**，而是一个施加在现成预训练
 - github (项目页 + TEdBench): https://github.com/imagic-editing/imagic-editing.github.io/tree/main/tedbench
 - hf_dataset (TEdBench): https://huggingface.co/datasets/bahjat-kawar/tedbench
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2210.09276.pdf
-- ../../../sources/omni/2022/imagic--project.md
+## 一手源存档（sources/）
+- [arxiv-2210.09276.pdf](https://arxiv.org/pdf/2210.09276)  （arXiv 原文 PDF，不入 git）
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/imagic--project.md)

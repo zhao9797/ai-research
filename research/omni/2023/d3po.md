@@ -121,6 +121,6 @@ D3PO 在四项指标上全面最优；**人评偏好率 55.7% 远超次优**，I
 - github: https://github.com/yk7333/D3PO
 - hf_dataset（README 引用）: https://huggingface.co/datasets/yangkaiSIGS/d3po_datasets
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.13231.pdf
-- ../../../sources/omni/2023/d3po--readme.md
+## 一手源存档（sources/）
+- [arxiv-2311.13231.pdf](https://arxiv.org/pdf/2311.13231)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/d3po--readme.md)

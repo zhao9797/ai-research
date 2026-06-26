@@ -103,8 +103,8 @@ FLUX.1 Krea [dev] 是 Black Forest Labs（BFL）与应用型 AI 公司 Krea 合�
 - hf (模型卡 + 权重): https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev
 - 引用："AI look" 论文: https://arxiv.org/abs/2506.15742 ；guidance distillation: https://arxiv.org/abs/2210.03142 ；CFG: https://arxiv.org/abs/2207.12598
 
-## 本地落盘文件
-- ../../../sources/omni/2025/flux-1-krea-dev--bfl-blog.md
-- ../../../sources/omni/2025/flux-1-krea-dev--krea-blog.md
-- ../../../sources/omni/2025/flux-1-krea-dev--github-readme.md
-- ../../../sources/omni/2025/flux-1-krea-dev--hf-modelcard-page.md
+## 一手源存档（sources/）
+- [bfl-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-1-krea-dev--bfl-blog.md)
+- [krea-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-1-krea-dev--krea-blog.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-1-krea-dev--github-readme.md)
+- [hf-modelcard-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-1-krea-dev--hf-modelcard-page.md)

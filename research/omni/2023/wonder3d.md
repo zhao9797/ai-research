@@ -149,6 +149,6 @@ Wonder3D 在两项几何指标和三项 NVS 指标上**全面领先**，PSNR 较
 - hf_checkpoint: https://huggingface.co/flamehaze1115/wonder3d-v1.0
 - hf_demo: https://huggingface.co/spaces/flamehaze1115/Wonder3D-demo
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2310.15008.pdf
-- ../../../sources/omni/2023/wonder3d--readme.md
+## 一手源存档（sources/）
+- [arxiv-2310.15008.pdf](https://arxiv.org/pdf/2310.15008)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/wonder3d--readme.md)

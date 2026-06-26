@@ -138,6 +138,6 @@ HyperDreamBooth 用一个 HyperNetwork（ViT 编码器 + Transformer 解码器�
 - arxiv_pdf: https://arxiv.org/pdf/2307.06949
 - project_page: https://hyperdreambooth.github.io/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2307.06949.pdf
-- ../../../sources/omni/2023/hyperdreambooth--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2307.06949.pdf](https://arxiv.org/pdf/2307.06949)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/hyperdreambooth--project-page.md)

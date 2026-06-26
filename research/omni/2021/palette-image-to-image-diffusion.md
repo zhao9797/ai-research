@@ -134,6 +134,6 @@ Palette 倡导**统一评测协议**：基于 ImageNet（用 [Larsson 2016] 的 
 - 评测数据/输出发布（论文给出）: https://bit.ly/eval-pix2pix
 - 注：Google 官方未维护独立 GitHub/HF model 仓库；社区有第三方复现（非一手源，未采纳）。
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2111.05826.pdf
-- ../../../sources/omni/2021/palette-image-to-image-diffusion--project-page.html
+## 一手源存档（sources/）
+- [arxiv-2111.05826.pdf](https://arxiv.org/pdf/2111.05826)  （arXiv 原文 PDF，不入 git）
+- [project-page.html](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/palette-image-to-image-diffusion--project-page.html)

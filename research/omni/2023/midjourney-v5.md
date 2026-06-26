@@ -97,9 +97,9 @@ Midjourney V5（2023-03-15 发布）及其迭代 V5.1（2023-05-04）/ V5.2（20
 - wayback（2023-06-05 快照，V5.1 默认 + `--style raw` + V5 photographic 描述 + Niji 5）: https://web.archive.org/web/20230605075612/https://docs.midjourney.com/docs/model-versions
 - product: https://www.midjourney.com
 
-## 本地落盘文件
-- ../../../sources/omni/2023/midjourney-v5--docs-version.md
-- ../../../sources/omni/2023/midjourney-v5--docs-legacy-features.md
-- ../../../sources/omni/2023/midjourney-v5--docs-zoom-out.md
-- ../../../sources/omni/2023/midjourney-v5--wayback-2023-03-v5-launch.md
-- ../../../sources/omni/2023/midjourney-v5--wayback-2023-06-model-versions.md
+## 一手源存档（sources/）
+- [docs-version.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/midjourney-v5--docs-version.md)
+- [docs-legacy-features.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/midjourney-v5--docs-legacy-features.md)
+- [docs-zoom-out.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/midjourney-v5--docs-zoom-out.md)
+- [wayback-2023-03-v5-launch.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/midjourney-v5--wayback-2023-03-v5-launch.md)
+- [wayback-2023-06-model-versions.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/midjourney-v5--wayback-2023-06-model-versions.md)

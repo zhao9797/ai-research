@@ -96,7 +96,7 @@ Lumina-Next 是 [[lumina-t2x]] 的下一代升级：把核心扩散变换器从 
 - hf_model (T2I): https://huggingface.co/Alpha-VLLM/Lumina-Next-T2I
 - hf_diffusers: https://huggingface.co/Alpha-VLLM/Lumina-Next-SFT-diffusers
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2406.18583.pdf
-- ../../../sources/omni/2024/lumina-next--t2x-readme.md
-- ../../../sources/omni/2024/lumina-next--t2i-readme.md
+## 一手源存档（sources/）
+- [arxiv-2406.18583.pdf](https://arxiv.org/pdf/2406.18583)  （arXiv 原文 PDF，不入 git）
+- [t2x-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/lumina-next--t2x-readme.md)
+- [t2i-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/lumina-next--t2i-readme.md)

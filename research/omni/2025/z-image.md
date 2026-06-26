@@ -153,13 +153,13 @@ S3-DiT 结构细节（Table 2）：
 - modelscope: https://www.modelscope.cn/models/Tongyi-MAI/Z-Image-Turbo
 - DMDR code: https://github.com/vvvvvjdy/dmdr
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2511.22699.pdf （主报告 PDF，.gitignore 排除）
-- ../../../sources/omni/2025/arxiv-2511.22699.txt
-- ../../../sources/omni/2025/arxiv-2511.22677.pdf （Decoupled-DMD PDF）
-- ../../../sources/omni/2025/arxiv-2511.22677.txt
-- ../../../sources/omni/2025/arxiv-2511.13649.pdf （DMDR PDF）
-- ../../../sources/omni/2025/arxiv-2511.13649.txt
-- ../../../sources/omni/2025/z-image--hf-modelcard.md
-- ../../../sources/omni/2025/z-image--readme.md
-- ../../../sources/omni/2025/z-image--blog.md
+## 一手源存档（sources/）
+- [arxiv-2511.22699.pdf](https://arxiv.org/pdf/2511.22699) （主报告 PDF，.gitignore 排除）
+- [arxiv-2511.22699.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2511.22699.txt)
+- [arxiv-2511.22677.pdf](https://arxiv.org/pdf/2511.22677) （Decoupled-DMD PDF）
+- [arxiv-2511.22677.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2511.22677.txt)
+- [arxiv-2511.13649.pdf](https://arxiv.org/pdf/2511.13649) （DMDR PDF）
+- [arxiv-2511.13649.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2511.13649.txt)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/z-image--hf-modelcard.md)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/z-image--readme.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/z-image--blog.md)

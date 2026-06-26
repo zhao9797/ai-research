@@ -141,7 +141,7 @@ Qwen-Image-2.0 正是 Qwen-Image 两条支线（生图支线 [[qwen-image]] 2025
 - ModelScope（系列）: https://modelscope.cn/models/Qwen/Qwen-Image
 - Qwen Chat 试用: https://chat.qwen.ai/?inputFeature=t2i
 
-## 本地落盘文件
-- ../../../sources/omni/2026/arxiv-2605.10730.pdf
-- ../../../sources/omni/2026/qwen-image-2-0--readme.md
-- ../../../sources/omni/2026/qwen-image-2-0--blog.md
+## 一手源存档（sources/）
+- [arxiv-2605.10730.pdf](https://arxiv.org/pdf/2605.10730)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen-image-2-0--readme.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen-image-2-0--blog.md)

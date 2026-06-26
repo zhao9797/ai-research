@@ -171,8 +171,8 @@ L_total = L_recon + λ_lpips · L_lpips + λ_align · L_align
 - github (benchmark + eval toolkit): https://github.com/alibaba/OmniDoc-TokenBench
 - hf_dataset (OmniDoc-TokenBench): https://huggingface.co/datasets/alibabagroup/OmniDoc-TokenBench
 
-## 本地落盘文件
+## 一手源存档（sources/）
 
-- ../../../sources/omni/2026/arxiv-2605.13565.pdf
-- ../../../sources/omni/2026/qwen-image-vae-2-0--github-readme.md
-- ../../../sources/omni/2026/qwen-image-vae-2-0--hf-dataset-card.md
+- [arxiv-2605.13565.pdf](https://arxiv.org/pdf/2605.13565)  （arXiv 原文 PDF，不入 git）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen-image-vae-2-0--github-readme.md)
+- [hf-dataset-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen-image-vae-2-0--hf-dataset-card.md)

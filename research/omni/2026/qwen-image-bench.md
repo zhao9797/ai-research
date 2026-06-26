@@ -134,8 +134,8 @@ T2I 生成已从"画得像"进化为专业创作工作流的核心能力，但�
 - modelscope_dataset: https://www.modelscope.cn/datasets/Qwen/Qwen-Image-Bench
 - modelscope_model: https://modelscope.cn/models/Qwen/Qwen-Image-Bench
 
-## 本地落盘文件
-- ../../../sources/omni/2026/arxiv-2605.28091.pdf
-- ../../../sources/omni/2026/qwen-image-bench--github-readme.md
-- ../../../sources/omni/2026/qwen-image-bench--hf-dataset-readme.md
-- ../../../sources/omni/2026/qwen-image-bench--hf-judge-model-card.md
+## 一手源存档（sources/）
+- [arxiv-2605.28091.pdf](https://arxiv.org/pdf/2605.28091)  （arXiv 原文 PDF，不入 git）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen-image-bench--github-readme.md)
+- [hf-dataset-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen-image-bench--hf-dataset-readme.md)
+- [hf-judge-model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen-image-bench--hf-judge-model-card.md)

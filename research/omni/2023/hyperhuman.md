@@ -116,7 +116,7 @@ HyperHuman 的关键 insight：**人体图像在多粒度上天然结构化**—
 - short_demo: https://www.youtube.com/watch?v=eRPZW1pwxog
 - long_demo: https://www.youtube.com/watch?v=CxGfbwZOcyU
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2310.08579.pdf
-- ../../../sources/omni/2023/hyperhuman--readme.md
-- ../../../sources/omni/2023/hyperhuman--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2310.08579.pdf](https://arxiv.org/pdf/2310.08579)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/hyperhuman--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/hyperhuman--project-page.md)

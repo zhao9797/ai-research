@@ -122,10 +122,10 @@ SD3.5 Large Turbo 的具体训练语料/规模/清洗配比官方未单独披露
 - hf model card（SD3.5 Large Turbo，gated，cloakbrowser 抓取）: https://huggingface.co/stabilityai/stable-diffusion-3.5-large-turbo
 - github（推理代码，含 Turbo 默认 CONFIGS）: https://github.com/Stability-AI/sd3.5
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2403.12015.pdf  （LADD / SD3-Turbo 论文）
-- ../../../sources/omni/2024/arxiv-2311.17042.pdf  （原 ADD / SDXL-Turbo 论文）
-- ../../../sources/omni/2024/sd3-5--blog.md  （SD3.5 发布博客）
-- ../../../sources/omni/2024/sd3-5-turbo--hf-page.md  （SD3.5 Large Turbo HF model card，cloakbrowser 快照）
-- ../../../sources/omni/2024/sd3-5--github-readme.md  （SD3.5 推理仓库 README）
-- ../../../sources/omni/2024/sd3-5--sd3_infer.py  （SD3.5 推理脚本，含 CONFIGS 的 Turbo 默认 shift/cfg/steps/sampler）
+## 一手源存档（sources/）
+- [arxiv-2403.12015.pdf](https://arxiv.org/pdf/2403.12015)  （LADD / SD3-Turbo 论文）  （arXiv 原文 PDF，不入 git）
+- [arxiv-2311.17042.pdf](https://arxiv.org/pdf/2311.17042)  （原 ADD / SDXL-Turbo 论文）  （arXiv 原文 PDF，不入 git）
+- [sd3-5--blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sd3-5--blog.md)  （SD3.5 发布博客）
+- [sd3-5-turbo--hf-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sd3-5-turbo--hf-page.md)  （SD3.5 Large Turbo HF model card，cloakbrowser 快照）
+- [sd3-5--github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sd3-5--github-readme.md)  （SD3.5 推理仓库 README）
+- [sd3-5--sd3_infer.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sd3-5--sd3_infer.py)  （SD3.5 推理脚本，含 CONFIGS 的 Turbo 默认 shift/cfg/steps/sampler）

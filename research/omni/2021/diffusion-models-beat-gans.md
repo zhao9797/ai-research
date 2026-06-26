@@ -97,8 +97,8 @@ OpenAI（Dhariwal & Nichol, 2021-05）通过一系列架构消融得到改进的
 - github: https://github.com/openai/guided-diffusion
 - model-card: https://github.com/openai/guided-diffusion/blob/main/model-card.md
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2105.05233.pdf
-- ../../../sources/omni/2021/diffusion-models-beat-gans--readme.md
-- ../../../sources/omni/2021/diffusion-models-beat-gans--model-card.md
-- ../../../sources/omni/2021/diffusion-models-beat-gans--arxiv-abs.md
+## 一手源存档（sources/）
+- [arxiv-2105.05233.pdf](https://arxiv.org/pdf/2105.05233)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/diffusion-models-beat-gans--readme.md)
+- [model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/diffusion-models-beat-gans--model-card.md)
+- [arxiv-abs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/diffusion-models-beat-gans--arxiv-abs.md)

@@ -108,11 +108,11 @@ Crowson 的关键洞察:**分类器引导里的"类别梯度",可以换成 CLIP 
 - model-card (backbone 数据与 CLIP-guidance 探测说明): https://github.com/openai/guided-diffusion/blob/main/model-card.md
 - 依赖 (CLIP): https://github.com/openai/CLIP  ·  k-diffusion(v2): https://github.com/crowsonkb/k-diffusion
 
-## 本地落盘文件
-- ../../../sources/omni/2021/clip-guided-diffusion--2021-colab.md
-- ../../../sources/omni/2021/clip-guided-diffusion--crowsonkb-readme.md
-- ../../../sources/omni/2021/guided-diffusion--openai-readme.md
-- ../../../sources/omni/2021/diffusion-models-beat-gans--arxiv-abs.md
-- ../../../sources/omni/2021/diffusion-models-beat-gans--model-card.md
-- ../../../sources/omni/2021/arxiv-2105.05233.pdf  (Diffusion Models Beat GANs 全文,40MB,.gitignore 排除不入 git)
-- ../../../sources/omni/2021/arxiv-2112.10741.pdf  (GLIDE 全文,用于 zero-shot MS-COCO FID 12.24 对照;.gitignore 排除不入 git)
+## 一手源存档（sources/）
+- [2021-colab.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/clip-guided-diffusion--2021-colab.md)
+- [crowsonkb-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/clip-guided-diffusion--crowsonkb-readme.md)
+- [guided-diffusion--openai-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/guided-diffusion--openai-readme.md)
+- [diffusion-models-beat-gans--arxiv-abs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/diffusion-models-beat-gans--arxiv-abs.md)
+- [diffusion-models-beat-gans--model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/diffusion-models-beat-gans--model-card.md)
+- [arxiv-2105.05233.pdf](https://arxiv.org/pdf/2105.05233)  (Diffusion Models Beat GANs 全文,40MB,.gitignore 排除不入 git)
+- [arxiv-2112.10741.pdf](https://arxiv.org/pdf/2112.10741)  (GLIDE 全文,用于 zero-shot MS-COCO FID 12.24 对照;.gitignore 排除不入 git)

@@ -147,9 +147,9 @@ Qwen-Image-Edit 是基于 20B 的 [[qwen-image]] 基座（MMDiT + Qwen2.5-VL + W
 - blog (Edit, 2025-08-19): https://qwenlm.github.io/blog/qwen-image-edit/ （现重定向至 qwen.ai，正文与 HF 卡一致）
 - demo: https://huggingface.co/spaces/Qwen/Qwen-Image-Edit
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2508.02324.pdf （Qwen-Image 技术报告全文 46 页，已精读；PDF 不入 git）
-- ../../../sources/omni/2025/qwen-image-edit--hf-card.md
-- ../../../sources/omni/2025/qwen-image-edit-2509--hf-card.md
-- ../../../sources/omni/2025/qwen-image-edit--blog.md
-- ../../../sources/omni/2025/qwen-image--github-readme.md
+## 一手源存档（sources/）
+- [arxiv-2508.02324.pdf](https://arxiv.org/pdf/2508.02324) （Qwen-Image 技术报告全文 46 页，已精读；PDF 不入 git）
+- [hf-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen-image-edit--hf-card.md)
+- [qwen-image-edit-2509--hf-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen-image-edit-2509--hf-card.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen-image-edit--blog.md)
+- [qwen-image--github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen-image--github-readme.md)

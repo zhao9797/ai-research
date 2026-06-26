@@ -136,8 +136,8 @@ EDM 是方法论文，用标准学术数据集，无大规模图文对：
 - github: https://github.com/NVlabs/edm
 - 预训练模型（config A/F）: https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/
 
-## 本地落盘文件
+## 一手源存档（sources/）
 
-- ../../../sources/omni/2022/arxiv-2206.00364.pdf （EDM 论文 v2，2022-10-11，已精读正文+附录 B.6/F.2/F.3 + Table 1/2/7/8）
-- ../../../sources/omni/2022/edm-text.txt （上 PDF 的 pdftotext 全文，用于检索）
-- ../../../sources/omni/2022/elucidating-edm--readme.md （NVlabs/edm 官方 README，含训练配置/GPU·时/采样器命令）
+- [arxiv-2206.00364.pdf](https://arxiv.org/pdf/2206.00364) （EDM 论文 v2，2022-10-11，已精读正文+附录 B.6/F.2/F.3 + Table 1/2/7/8）  （arXiv 原文 PDF，不入 git）
+- [edm-text.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/edm-text.txt) （上 PDF 的 pdftotext 全文，用于检索）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/elucidating-edm--readme.md) （NVlabs/edm 官方 README，含训练配置/GPU·时/采样器命令）

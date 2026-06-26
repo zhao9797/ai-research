@@ -79,10 +79,10 @@ Seedance 2.0 是字节跳动 Seed 团队 2026-02-12（中国）发布的新一�
 - pdf: https://arxiv.org/pdf/2604.14148
 - 接入页（火山引擎方舟，model id doubao-seedance-2-0-260128）: https://www.volcengine.com/experience/ark?mode=vision&modelId=doubao-seedance-2-0-260128&tab=GenVideo
 
-## 本地落盘文件
-- ../../../sources/omni/2026/arxiv-2604.14148.pdf
-- ../../../sources/omni/2026/seedance-2-0--blog.md
-- ../../../sources/omni/2026/seedance-2-0--project-page.md
-- ../../../sources/omni/2026/seedance-2-0--eval-t2v.jpg
-- ../../../sources/omni/2026/seedance-2-0--eval-i2v.jpg
-- ../../../sources/omni/2026/seedance-2-0--eval-multimodal.jpg
+## 一手源存档（sources/）
+- [arxiv-2604.14148.pdf](https://arxiv.org/pdf/2604.14148)  （arXiv 原文 PDF，不入 git）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedance-2-0--blog.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedance-2-0--project-page.md)
+- [eval-t2v.jpg](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedance-2-0--eval-t2v.jpg)
+- [eval-i2v.jpg](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedance-2-0--eval-i2v.jpg)
+- [eval-multimodal.jpg](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedance-2-0--eval-multimodal.jpg)

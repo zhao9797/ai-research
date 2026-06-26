@@ -92,11 +92,11 @@ OpenAI 的原生图像生成路线：[[dall-e-3]]（独立扩散模型，GPT 通
 - image-generation-guide（分辨率/质量/保真/编辑/流式/限制）: https://developers.openai.com/api/docs/guides/image-generation
 - pricing（按 token 计费）: https://developers.openai.com/api/docs/pricing
 
-## 本地落盘文件
-- ../../../sources/omni/2026/gpt-image-2--blog-zh.md
-- ../../../sources/omni/2026/gpt-image-2--system-card.pdf
-- ../../../sources/omni/2026/gpt-image-2--system-card.txt
-- ../../../sources/omni/2026/gpt-image-2--system-card-toc.md
-- ../../../sources/omni/2026/gpt-image-2--api-model-doc.md
-- ../../../sources/omni/2026/gpt-image-2--image-generation-guide.md
-- ../../../sources/omni/2026/gpt-image-2--pricing.md
+## 一手源存档（sources/）
+- [blog-zh.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/gpt-image-2--blog-zh.md)
+- system-card.pdf  （PDF 不入 git，走 HF bucket）
+- [system-card.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/gpt-image-2--system-card.txt)
+- [system-card-toc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/gpt-image-2--system-card-toc.md)
+- [api-model-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/gpt-image-2--api-model-doc.md)
+- [image-generation-guide.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/gpt-image-2--image-generation-guide.md)
+- [pricing.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/gpt-image-2--pricing.md)

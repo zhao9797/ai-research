@@ -141,6 +141,6 @@ eDiff-I 是 NVIDIA 2022.11 的级联文生图扩散模型，核心创新是**按
 - project_page: https://research.nvidia.com/labs/dir/eDiff-I/ （重定向至 https://research.nvidia.com/labs/cosmos-lab/ediff-i/）
 - video: https://youtu.be/WbaVvlgxbl4
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2211.01324.pdf （论文全文，v5 / 2023-03-14；PDF 不入 git，本地精读）
-- ../../../sources/omni/2022/ediff-i--project-page.md （NVIDIA 官方项目页 cloakbrowser 快照）
+## 一手源存档（sources/）
+- [arxiv-2211.01324.pdf](https://arxiv.org/pdf/2211.01324) （论文全文，v5 / 2023-03-14；PDF 不入 git，本地精读）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/ediff-i--project-page.md) （NVIDIA 官方项目页 cloakbrowser 快照）

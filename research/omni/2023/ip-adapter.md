@@ -142,8 +142,8 @@ IP-Adapter 是一个仅 **22M 参数** 的轻量适配器，用「**解耦交叉
 - hf_modelcard: https://huggingface.co/h94/IP-Adapter
 - hf_faceid_card: https://huggingface.co/h94/IP-Adapter-FaceID
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2308.06721.pdf
-- ../../../sources/omni/2023/ip-adapter--readme.md
-- ../../../sources/omni/2023/ip-adapter--hf-modelcard.md
-- ../../../sources/omni/2023/ip-adapter--hf-faceid-card.md
+## 一手源存档（sources/）
+- [arxiv-2308.06721.pdf](https://arxiv.org/pdf/2308.06721)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ip-adapter--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ip-adapter--hf-modelcard.md)
+- [hf-faceid-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ip-adapter--hf-faceid-card.md)

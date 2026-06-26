@@ -132,7 +132,7 @@ NÜWA 的 FID-0=12.9、CLIPSIM=0.3429 显著优于 DALL-E/CogView；XMC-GAN 的 
 - github_readme: https://raw.githubusercontent.com/microsoft/NUWA/main/README.md
 - github_nuwa_detail: https://raw.githubusercontent.com/microsoft/NUWA/main/NUWA.md
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2111.12417.pdf
-- ../../../sources/omni/2021/nuwa--readme.md
-- ../../../sources/omni/2021/nuwa--nuwa-detail.md
+## 一手源存档（sources/）
+- [arxiv-2111.12417.pdf](https://arxiv.org/pdf/2111.12417)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/nuwa--readme.md)
+- [nuwa-detail.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/nuwa--nuwa-detail.md)

@@ -125,7 +125,7 @@ LRM 在全部 5 个指标上大幅领先：FID 比次优（Shap-E 97.05）低 3 
 - 开源复现（非官方）OpenLRM: https://github.com/3DTopia/OpenLRM
 - OpenLRM 权重: https://huggingface.co/zxhezexin
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.04400.pdf  （论文全文，PDF 不入 git）
-- ../../../sources/omni/2023/openlrm--readme.md  （开源复现 README，含模型配置表）
-- ../../../sources/omni/2023/lrm--project-page.md  （原项目页抓取结果——已被停放，仅留作证据）
+## 一手源存档（sources/）
+- [arxiv-2311.04400.pdf](https://arxiv.org/pdf/2311.04400)  （论文全文，PDF 不入 git）
+- [openlrm--readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/openlrm--readme.md)  （开源复现 README，含模型配置表）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lrm--project-page.md)  （原项目页抓取结果——已被停放，仅留作证据）

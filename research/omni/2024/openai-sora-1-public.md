@@ -99,7 +99,7 @@ Sora 是 OpenAI 的文/图/视频→视频生成模型，2024-12-09 以 **Sora T
 - project（产品页）: https://openai.com/sora/
 - bibtex: https://openai.com/bibtex/videoworldsimulators2024.bib
 
-## 本地落盘文件
-- ../../../sources/omni/2024/openai-sora-1-public--blog.md
-- ../../../sources/omni/2024/openai-sora-1-public--system-card.md
-- ../../../sources/omni/2024/openai-sora-1-public--tech-report.md
+## 一手源存档（sources/）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/openai-sora-1-public--blog.md)
+- [system-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/openai-sora-1-public--system-card.md)
+- [tech-report.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/openai-sora-1-public--tech-report.md)

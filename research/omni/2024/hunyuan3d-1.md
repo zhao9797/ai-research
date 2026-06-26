@@ -147,7 +147,7 @@ Hunyuan3D 1.0 走的是「**多视图扩散 → 前馈稀疏视图重建**」的
 - hf_demo: https://huggingface.co/spaces/Tencent/Hunyuan3D-1
 - project: https://3d.hunyuan.tencent.com
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2411.02293.pdf
-- ../../../sources/omni/2024/hunyuan3d-1--readme.md
-- ../../../sources/omni/2024/hunyuan3d-1--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2411.02293.pdf](https://arxiv.org/pdf/2411.02293)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/hunyuan3d-1--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/hunyuan3d-1--hf-modelcard.md)

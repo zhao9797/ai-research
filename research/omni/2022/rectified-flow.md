@@ -147,7 +147,7 @@ min_v ∫_0^1 E[ || (X1 − X0) − v(Xt, t) ||^2 ] dt,   Xt = t·X1 + (1−t)·
 - 理论续作（README 指向）: https://arxiv.org/abs/2209.14577
 - 文生图落地 InstaFlow（README 指向）: https://github.com/gnobitab/InstaFlow
 
-## 本地落盘文件
+## 一手源存档（sources/）
 
-- ../../../sources/omni/2022/arxiv-2209.03003.pdf （论文全文 PDF，约 18 MB；.gitignore 排除，本地精读用）
-- ../../../sources/omni/2022/rectified-flow--readme.md （官方 GitHub README，含训练/推理/infra/checkpoint 细节）
+- [arxiv-2209.03003.pdf](https://arxiv.org/pdf/2209.03003) （论文全文 PDF，约 18 MB；.gitignore 排除，本地精读用）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/rectified-flow--readme.md) （官方 GitHub README，含训练/推理/infra/checkpoint 细节）

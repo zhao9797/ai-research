@@ -163,10 +163,10 @@ ELLA 走第三条路：**不动基座，只加一个轻量 adapter**。它把"LL
 - comfyui_plugin: https://github.com/TencentQQGYLab/ComfyUI-ELLA
 - 后续工作 EMMA: https://arxiv.org/abs/2406.09162
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2403.05135.pdf
-- ../../../sources/omni/2024/ella--paper-html.md
-- ../../../sources/omni/2024/ella--arxiv-abs.md
-- ../../../sources/omni/2024/ella--project-page.md
-- ../../../sources/omni/2024/ella--github-readme.md
-- ../../../sources/omni/2024/ella--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2403.05135.pdf](https://arxiv.org/pdf/2403.05135)  （arXiv 原文 PDF，不入 git）
+- [paper-html.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ella--paper-html.md)
+- [arxiv-abs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ella--arxiv-abs.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ella--project-page.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ella--github-readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ella--hf-modelcard.md)

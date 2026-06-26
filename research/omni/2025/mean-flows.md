@@ -156,8 +156,8 @@ u_tgt = v_t − (t−r)·(v_t·∂_z u_θ + ∂_t u_θ)。
 - 衍生 iMF: https://arxiv.org/abs/2512.02012 ・ https://github.com/Lyy-iiis/imeanflow
 - 衍生 pMF: https://arxiv.org/abs/2601.22158 ・ https://github.com/Lyy-iiis/pMF
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2505.13447.pdf
-- ../../../sources/omni/2025/arxiv-2505.13447.txt（PDF 文本抽取）
-- ../../../sources/omni/2025/mean-flows--readme.md（官方 JAX 仓库 README）
-- ../../../sources/omni/2025/mean-flows--github-readme.md（同上，jsDelivr 镜像抓取）
+## 一手源存档（sources/）
+- [arxiv-2505.13447.pdf](https://arxiv.org/pdf/2505.13447)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2505.13447.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2505.13447.txt)（PDF 文本抽取）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/mean-flows--readme.md)（官方 JAX 仓库 README）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/mean-flows--github-readme.md)（同上，jsDelivr 镜像抓取）

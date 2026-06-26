@@ -118,7 +118,7 @@ DALL·E 3 在**全部**自动指标上 SOTA。Drawbench 评测用 **GPT-V（visi
 - system card（DALL·E 3 System Card，2023-10-03）: https://cdn.openai.com/papers/DALL_E_3_System_Card.pdf
 - eval samples / 代码: https://github.com/openai/dalle3-eval-samples
 
-## 本地落盘文件
-- ../../../sources/omni/2023/dall-e-3.pdf
-- ../../../sources/omni/2023/dall-e-3--blog.md
-- ../../../sources/omni/2023/dall-e-3--system-card.pdf
+## 一手源存档（sources/）
+- dall-e-3.pdf  （PDF 不入 git，走 HF bucket）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/dall-e-3--blog.md)
+- system-card.pdf  （PDF 不入 git，走 HF bucket）

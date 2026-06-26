@@ -164,11 +164,11 @@ ControlNet 是给"冻结的"大规模文生图扩散模型（实现于 [[stable-
 - hf_weights: https://huggingface.co/lllyasviel/ControlNet
 - controlnet_v1.1: https://github.com/lllyasviel/ControlNet-v1-1-nightly
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2302.05543.pdf （主论文 v3，PDF 不入 git）
-- ../../../sources/omni/2023/controlnet-supplementary.pdf （补充材料 33 页，PDF 不入 git）
-- ../../../sources/omni/2023/controlnet--readme.md
-- ../../../sources/omni/2023/controlnet--faq.md
-- ../../../sources/omni/2023/controlnet--train.md
-- ../../../sources/omni/2023/controlnet--low-vram.md
-- ../../../sources/omni/2023/controlnet--ablation-blog.md （官方消融博客 #188 快照）
+## 一手源存档（sources/）
+- [arxiv-2302.05543.pdf](https://arxiv.org/pdf/2302.05543) （主论文 v3，PDF 不入 git）
+- controlnet-supplementary.pdf （补充材料 33 页，PDF 不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/controlnet--readme.md)
+- [faq.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/controlnet--faq.md)
+- [train.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/controlnet--train.md)
+- [low-vram.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/controlnet--low-vram.md)
+- [ablation-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/controlnet--ablation-blog.md) （官方消融博客 #188 快照）

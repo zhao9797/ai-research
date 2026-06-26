@@ -96,9 +96,9 @@ V6 解决的核心痛点是 V5.2 时代的两大短板：(1) **长 prompt 失效
 - blog (Updates 索引页): https://www.midjourney.com/updates
 - product: https://www.midjourney.com
 
-## 本地落盘文件
-- ../../../sources/omni/2024/midjourney-v6--docs-models.md
-- ../../../sources/omni/2024/midjourney-v6--model-versions-wayback2024.md
-- ../../../sources/omni/2024/midjourney-v6--v61-announcement-wayback.md
-- ../../../sources/omni/2024/midjourney-v6--text-generation-doc.md
-- ../../../sources/omni/2024/midjourney-v6--updates-index.md
+## 一手源存档（sources/）
+- [docs-models.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/midjourney-v6--docs-models.md)
+- [model-versions-wayback2024.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/midjourney-v6--model-versions-wayback2024.md)
+- [v61-announcement-wayback.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/midjourney-v6--v61-announcement-wayback.md)
+- [text-generation-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/midjourney-v6--text-generation-doc.md)
+- [updates-index.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/midjourney-v6--updates-index.md)

@@ -115,7 +115,7 @@ VQ-Diffusion 用**非自回归**的离散扩散替换 AR 解码器来同时消�
 - hf_model_card: https://huggingface.co/microsoft/vq-diffusion-ithq
 - 后续工作（Improved VQ-Diffusion，README 指向）: https://arxiv.org/abs/2205.16007
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2111.14822.pdf
-- ../../../sources/omni/2021/vq-diffusion--readme.md
-- ../../../sources/omni/2021/vq-diffusion--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2111.14822.pdf](https://arxiv.org/pdf/2111.14822)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/vq-diffusion--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/vq-diffusion--hf-modelcard.md)

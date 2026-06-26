@@ -189,9 +189,9 @@ MAGI-1(2×decoder，2560×1440) **总分 89.28，VBench-I2V 排名第一**；MAG
 - 产品: https://sand.ai ， https://magi.sand.ai
 - 公司主页: https://sand.ai
 
-## 本地落盘文件
-- ../../../sources/omni/2025/magi-1--arxiv-html.md   （arxiv v1 全文 markdown，约 255KB，主精读源）
-- ../../../sources/omni/2025/arxiv-2505.13211.pdf   （arxiv v1 PDF，28.3MB，本页所有数字以此为准；*.pdf 不入 git，备份 HF bucket）
-- ../../../sources/omni/2025/magi-1--github-readme.md   （GitHub README，含 model zoo / 评测表 / MAGI-1.1 更新日志）
-- ../../../sources/omni/2025/magi-1--hf-modelcard.md   （HF model card）
-- ../../../sources/omni/2025/magi-1--hf-papers.md   （HF papers 页面快照）
+## 一手源存档（sources/）
+- [arxiv-html.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/magi-1--arxiv-html.md)   （arxiv v1 全文 markdown，约 255KB，主精读源）
+- [arxiv-2505.13211.pdf](https://arxiv.org/pdf/2505.13211)   （arxiv v1 PDF，28.3MB，本页所有数字以此为准；*.pdf 不入 git，备份 HF bucket）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/magi-1--github-readme.md)   （GitHub README，含 model zoo / 评测表 / MAGI-1.1 更新日志）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/magi-1--hf-modelcard.md)   （HF model card）
+- [hf-papers.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/magi-1--hf-papers.md)   （HF papers 页面快照）

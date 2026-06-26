@@ -128,6 +128,6 @@ RePaint **不训练 inpainting 模型**，所以"数据"主要指它复用的预
 - github: https://github.com/andreas128/RePaint
 - 依赖基座: OpenAI guided-diffusion https://github.com/openai/guided-diffusion （RePaint 复用其预训练 ADM 与反向步实现）
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2201.09865.pdf
-- ../../../sources/omni/2022/repaint--readme.md
+## 一手源存档（sources/）
+- [arxiv-2201.09865.pdf](https://arxiv.org/pdf/2201.09865)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/repaint--readme.md)

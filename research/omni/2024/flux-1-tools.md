@@ -117,17 +117,17 @@ FLUX.1 Tools 是 Black Forest Labs 在 2024-11-21 围绕基座 [[flux-1]] 推出
 - diffusers 官方文档（独立佐证：channel-wise concat、guidance-distilled）: https://huggingface.co/docs/diffusers/main/en/api/pipelines/flux
 - benchmark PDF（ELO，外链，未下载）: Fill https://drive.google.com/file/d/1y4CyrvBgy_QXRc7BllYTCyv0PnHb7xeX/view ; Depth https://drive.google.com/file/d/1DFfhOSrTlKfvBFLcD2vAALwwH4jSGdGk/view ; Canny https://drive.google.com/file/d/1dRoxOL-vy3tSAesyqBSJoUWsbkMwv3en/view ; Redux https://drive.google.com/file/d/1rqbyUjXqYatn2oMqkdjHCLfbsKMsjBla/view
 
-## 本地落盘文件
-- ../../../sources/omni/2024/flux-1-tools--blog.md （官方发布博客，Wayback 存档全文）
-- ../../../sources/omni/2024/flux-1-tools--github-readme.md （flux 仓库 README，含模型表/许可/引用）
-- ../../../sources/omni/2024/flux-1-tools--docs-fill.md （Fill 用法/权重 sha256）
-- ../../../sources/omni/2024/flux-1-tools--docs-structural-conditioning.md （Canny/Depth 用法 + TRT FP8/FP4）
-- ../../../sources/omni/2024/flux-1-tools--docs-image-variation.md （Redux 用法）
-- ../../../sources/omni/2024/flux-1-tools--docs-text-to-image.md （基座 t2i 上下文）
-- ../../../sources/omni/2024/flux-1-tools--diffusers-docs.md （diffusers Flux 管线文档，独立佐证）
-- ../../../sources/omni/2024/flux-1-tools--src-image_embedders.py （Depth/Canny/Redux 编码器实现）
-- ../../../sources/omni/2024/flux-1-tools--src-sampling.py （prepare_fill/control/redux 条件构造）
-- ../../../sources/omni/2024/flux-1-tools--src-util.py （各变体 ModelSpec：in_channels 64/128/384 等）
-- ../../../sources/omni/2024/flux-1-tools--src-cli-fill.py （Fill CLI：`num_steps=50` / `guidance=30.0` 默认值出处）
-- ../../../sources/omni/2024/flux-1-tools--src-cli-control.py （Canny/Depth CLI：guidance 按模型分支 canny=30 / depth=10、`num_steps=50`）
-- ../../../sources/omni/2024/flux-1-tools--src-cli-redux.py （Redux CLI：`guidance=2.5`、`num_steps = 4 if schnell else 50`）
+## 一手源存档（sources/）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--blog.md) （官方发布博客，Wayback 存档全文）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--github-readme.md) （flux 仓库 README，含模型表/许可/引用）
+- [docs-fill.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--docs-fill.md) （Fill 用法/权重 sha256）
+- [docs-structural-conditioning.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--docs-structural-conditioning.md) （Canny/Depth 用法 + TRT FP8/FP4）
+- [docs-image-variation.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--docs-image-variation.md) （Redux 用法）
+- [docs-text-to-image.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--docs-text-to-image.md) （基座 t2i 上下文）
+- [diffusers-docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--diffusers-docs.md) （diffusers Flux 管线文档，独立佐证）
+- [src-image_embedders.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--src-image_embedders.py) （Depth/Canny/Redux 编码器实现）
+- [src-sampling.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--src-sampling.py) （prepare_fill/control/redux 条件构造）
+- [src-util.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--src-util.py) （各变体 ModelSpec：in_channels 64/128/384 等）
+- [src-cli-fill.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--src-cli-fill.py) （Fill CLI：`num_steps=50` / `guidance=30.0` 默认值出处）
+- [src-cli-control.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--src-cli-control.py) （Canny/Depth CLI：guidance 按模型分支 canny=30 / depth=10、`num_steps=50`）
+- [src-cli-redux.py](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/flux-1-tools--src-cli-redux.py) （Redux CLI：`guidance=2.5`、`num_steps = 4 if schnell else 50`）

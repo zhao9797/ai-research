@@ -123,10 +123,10 @@ OpenAI 对图像生成**没有公布 FID / GenEval / DPG-Bench / T2I-CompBench /
 - system-card PDF (Native Image Generation): https://cdn.openai.com/11998be9-5319-4302-bfbf-1167e093f1fb/Native_Image_Generation_System_Card.pdf
 - blog (gpt-image-1 进 API, 2025-04, 定价/采用度): https://openai.com/index/image-generation-api/
 
-## 本地落盘文件
-- ../../../sources/omni/2024/gpt-4o-native-image--hello-gpt4o-blog.md
-- ../../../sources/omni/2024/gpt-4o-native-image--gpt4o-system-card.md
-- ../../../sources/omni/2024/gpt-4o-native-image--introducing-4o-image-gen-blog.md
-- ../../../sources/omni/2024/gpt-4o-native-image-system-card.pdf （PDF，.gitignore 排除，仅本地）
-- ../../../sources/omni/2024/gpt-4o-native-image--image-gen-system-card-addendum.md
-- ../../../sources/omni/2024/gpt-4o-native-image--gpt-image-1-api-blog.md
+## 一手源存档（sources/）
+- [hello-gpt4o-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gpt-4o-native-image--hello-gpt4o-blog.md)
+- [gpt4o-system-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gpt-4o-native-image--gpt4o-system-card.md)
+- [introducing-4o-image-gen-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gpt-4o-native-image--introducing-4o-image-gen-blog.md)
+- gpt-4o-native-image-system-card.pdf （PDF，.gitignore 排除，仅本地）  （PDF 不入 git，走 HF bucket）
+- [image-gen-system-card-addendum.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gpt-4o-native-image--image-gen-system-card-addendum.md)
+- [gpt-image-1-api-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/gpt-4o-native-image--gpt-image-1-api-blog.md)

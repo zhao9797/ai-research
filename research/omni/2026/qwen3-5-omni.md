@@ -163,7 +163,7 @@ Qwen3.5-Omni 在 [[qwen2-5-omni]] 首创的 Thinker–Talker 框架、[[qwen3-5-
 - API 文档（阿里云百炼）: https://www.alibabacloud.com/help/en/model-studio/qwen-omni
 - 预代码 GitHub（上一代 Qwen3-Omni，开源）: https://github.com/QwenLM/Qwen3-Omni
 
-## 本地落盘文件
-- ../../../sources/omni/2026/arxiv-2604.15804.pdf
-- ../../../sources/omni/2026/qwen3-5-omni--blog.md
-- ../../../sources/omni/2026/qwen3-5-omni--predecessor-qwen3-omni-github-readme.md
+## 一手源存档（sources/）
+- [arxiv-2604.15804.pdf](https://arxiv.org/pdf/2604.15804)  （arXiv 原文 PDF，不入 git）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen3-5-omni--blog.md)
+- [predecessor-qwen3-omni-github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen3-5-omni--predecessor-qwen3-omni-github-readme.md)

@@ -97,8 +97,8 @@ Playground v3（PGv3）是 Playground 推出的 24B 参数 DiT 文生图模型�
 - official blog (Introducing Playground v3, 2024-10-17): https://playground.com/blog/introducing-playground-v3
 - CapsBench dataset (HF): https://huggingface.co/datasets/playgroundai/CapsBench
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2409.10695.pdf
-- ../../../sources/omni/2024/playground-v3--capsbench-readme.md
-- ../../../sources/omni/2024/playground-v3--blog.md
-- ../../../sources/omni/2024/playground-v3--landing.md
+## 一手源存档（sources/）
+- [arxiv-2409.10695.pdf](https://arxiv.org/pdf/2409.10695)  （arXiv 原文 PDF，不入 git）
+- [capsbench-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/playground-v3--capsbench-readme.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/playground-v3--blog.md)
+- [landing.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/playground-v3--landing.md)

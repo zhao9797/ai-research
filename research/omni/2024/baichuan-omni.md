@@ -141,6 +141,6 @@ Baichuan-Omni 的定位就是**填这个空白**：用一个仅 7B 的稠密 LLM
 - hf_paper: https://huggingface.co/papers/2410.08565
 - 后续版本: https://github.com/baichuan-inc/Baichuan-Omni-1.5 （2025-01-26 权重开源）
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2410.08565.pdf （技术报告全文 PDF，已精读正文/实验/消融/附录表）
-- ../../../sources/omni/2024/baichuan-omni--readme.md （GitHub bc-omni README，含 News/架构概述/引用）
+## 一手源存档（sources/）
+- [arxiv-2410.08565.pdf](https://arxiv.org/pdf/2410.08565) （技术报告全文 PDF，已精读正文/实验/消融/附录表）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/baichuan-omni--readme.md) （GitHub bc-omni README，含 News/架构概述/引用）

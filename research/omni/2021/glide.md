@@ -141,7 +141,7 @@ GLIDE 从未在 MS-COCO 上训练，zero-shot FID 12.24 大幅领先同为 zero-
 - github: https://github.com/openai/glide-text2im
 - model-card: https://github.com/openai/glide-text2im/blob/main/model-card.md
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2112.10741.pdf
-- ../../../sources/omni/2021/glide--readme.md
-- ../../../sources/omni/2021/glide--model-card.md
+## 一手源存档（sources/）
+- [arxiv-2112.10741.pdf](https://arxiv.org/pdf/2112.10741)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/glide--readme.md)
+- [model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/glide--model-card.md)

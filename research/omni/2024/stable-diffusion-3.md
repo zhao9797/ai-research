@@ -130,7 +130,7 @@ SD3 要同时回答两个问题：
 - arxiv_pdf: https://arxiv.org/pdf/2403.03206
 - blog: https://stability.ai/news/stable-diffusion-3-research-paper
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2403.03206.pdf
-- ../../../sources/omni/2024/arxiv-2403.03206.txt
-- ../../../sources/omni/2024/stable-diffusion-3--blog.md
+## 一手源存档（sources/）
+- [arxiv-2403.03206.pdf](https://arxiv.org/pdf/2403.03206)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2403.03206.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/arxiv-2403.03206.txt)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/stable-diffusion-3--blog.md)

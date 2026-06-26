@@ -127,6 +127,6 @@ Concept Sliders 训练**不需要大规模数据集**，只需极少量监督信
 - hf_demo: https://huggingface.co/spaces/baulab/ConceptSliders
 - trained_weights: https://sliders.baulab.info/weights/xl_sliders/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.12092.pdf
-- ../../../sources/omni/2023/concept-sliders--readme.md
+## 一手源存档（sources/）
+- [arxiv-2311.12092.pdf](https://arxiv.org/pdf/2311.12092)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/concept-sliders--readme.md)

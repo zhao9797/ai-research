@@ -143,7 +143,7 @@ FramePack 不是一个新基座，而是一个**可加在现有 DiT 视频基座
 - project_page: https://lllyasviel.github.io/frame_pack_gitpage/
 - followup (See also): https://arxiv.org/abs/2512.23851
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2504.12626.pdf
-- ../../../sources/omni/2025/framepack--readme.md
-- ../../../sources/omni/2025/framepack--projectpage.md
+## 一手源存档（sources/）
+- [arxiv-2504.12626.pdf](https://arxiv.org/pdf/2504.12626)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/framepack--readme.md)
+- [projectpage.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/framepack--projectpage.md)

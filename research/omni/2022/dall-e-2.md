@@ -110,8 +110,8 @@ P(x|y) = P(x|z_i, y)·P(z_i|y)，先用 prior 从文本 y 采样 CLIP 图像 emb
 - system-card: https://github.com/openai/dalle-2-preview/blob/main/system-card.md
 - 相关博客(pre-training mitigations): https://openai.com/index/dall-e-2-pre-training-mitigations/
 
-## 本地落盘文件
-- ../../../sources/omni/2022/dall-e-2--paper-html.md   （ar5iv 论文全文，含 Appendix C 训练细节与超参表；arXiv PDF 因沙箱网络对 arxiv.org:443 的 SSL 阻断未能下载，正文已由此 HTML 全量替代）
-- ../../../sources/omni/2022/dall-e-2--blog.md   （OpenAI DALL·E 2 产品页快照）
-- ../../../sources/omni/2022/dall-e-2--research-blog.md   （OpenAI 研究发布页 / 摘要）
-- ../../../sources/omni/2022/dall-e-2--system-card.md   （DALL·E 2 Preview system card 全文）
+## 一手源存档（sources/）
+- [paper-html.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dall-e-2--paper-html.md)   （ar5iv 论文全文，含 Appendix C 训练细节与超参表；arXiv PDF 因沙箱网络对 arxiv.org:443 的 SSL 阻断未能下载，正文已由此 HTML 全量替代）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dall-e-2--blog.md)   （OpenAI DALL·E 2 产品页快照）
+- [research-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dall-e-2--research-blog.md)   （OpenAI 研究发布页 / 摘要）
+- [system-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dall-e-2--system-card.md)   （DALL·E 2 Preview system card 全文）

@@ -166,8 +166,8 @@ Movie Gen 图像在 **Flux.1 / DALL-E 3 / Midjourney V6.1 / Ideogram V2** 中取
 - paper PDF（92 页技术报告）: https://ai.meta.com/static-resource/movie-gen-research-paper
 - 视频示例: https://go.fb.me/MovieGenResearchVideos
 
-## 本地落盘文件
-- ../../../sources/omni/2024/movie-gen.pdf （官方 92 页技术报告 PDF，gitignore，仅本地）
-- ../../../sources/omni/2024/movie-gen.txt （pdftotext 全文，仅本地）
-- ../../../sources/omni/2024/movie-gen--blog.md （官方博客 cloakbrowser 快照，入 git）
-- ../../../sources/omni/2024/movie-gen--research.md （research 项目页快照，入 git）
+## 一手源存档（sources/）
+- movie-gen.pdf （官方 92 页技术报告 PDF，gitignore，仅本地）  （PDF 不入 git，走 HF bucket）
+- [movie-gen.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/movie-gen.txt) （pdftotext 全文，仅本地）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/movie-gen--blog.md) （官方博客 cloakbrowser 快照，入 git）
+- [research.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/movie-gen--research.md) （research 项目页快照，入 git）

@@ -169,8 +169,8 @@ SBER-MoVQGAN 重建质量最佳（PSNR/SSIM/LPIPS 全面领先），决定了生
 - hf (7B T2I): https://huggingface.co/Alpha-VLLM/Lumina-mGPT-2.0
 - hf (7B Omni / all-in-one): https://huggingface.co/Alpha-VLLM/Lumina-mGPT-2.0-Omni
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2507.17801.pdf （arXiv 2507.17801v1，2025-07-23 提交，技术报告）
-- ../../../sources/omni/2025/lumina-mgpt-2-0--readme.md （GitHub README 清洗版，含 A100 推理耗时表 + News 时间线）
-- ../../../sources/omni/2025/lumina-mgpt-2-0--github-readme.md （GitHub 页面原始抓取，含导航噪声，内容为上者超集）
-- ../../../sources/omni/2025/lumina-mgpt-2-0--hf-modelcard.md （HF model card，license: apache-2.0）
+## 一手源存档（sources/）
+- [arxiv-2507.17801.pdf](https://arxiv.org/pdf/2507.17801) （arXiv 2507.17801v1，2025-07-23 提交，技术报告）  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/lumina-mgpt-2-0--readme.md) （GitHub README 清洗版，含 A100 推理耗时表 + News 时间线）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/lumina-mgpt-2-0--github-readme.md) （GitHub 页面原始抓取，含导航噪声，内容为上者超集）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/lumina-mgpt-2-0--hf-modelcard.md) （HF model card，license: apache-2.0）

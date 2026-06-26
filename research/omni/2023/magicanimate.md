@@ -121,12 +121,12 @@ MagicAnimate 三处针对性改进：把 2D 图扩散 inflate 成 **3D 时序 UN
 - hf_space(demo): https://huggingface.co/spaces/zcxu-eric/magicanimate
 - repo_preprint_pdf: https://github.com/magic-research/magic-animate/blob/main/assets/preprint/MagicAnimate.pdf
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.16498.pdf （arXiv v1 正文，10 页，精读）
-- ../../../sources/omni/2023/magicanimate--preprint.pdf （仓库 preprint，10 页，与 arXiv v1 同，无补充材料）
-- ../../../sources/omni/2023/magicanimate--readme.md （GitHub README，基座/checkpoint 结构）
-- ../../../sources/omni/2023/magicanimate--project-page.md （项目页快照，BibTeX 确认 CVPR 2024）
-- ../../../sources/omni/2023/magicanimate--hf-modelcard.md （HF 模型卡，license bsd-3-clause）
-- ../../../sources/omni/2023/magicanimate--animation-yaml.txt （仓库 `configs/prompts/animation.yaml`：size=512/L=16/steps=25/guidance_scale=7.5/fusion_blocks=midup）
-- ../../../sources/omni/2023/magicanimate--appearance-encoder-config.json （HF appearance_encoder config：`AppearanceEncoderModel`，UNet 同构）
-- ../../../sources/omni/2023/magicanimate--densepose-controlnet-config.json （HF densepose_controlnet config：`ControlNetModel`，conditioning_channels=3）
+## 一手源存档（sources/）
+- [arxiv-2311.16498.pdf](https://arxiv.org/pdf/2311.16498) （arXiv v1 正文，10 页，精读）  （arXiv 原文 PDF，不入 git）
+- preprint.pdf （仓库 preprint，10 页，与 arXiv v1 同，无补充材料）  （PDF 不入 git，走 HF bucket）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/magicanimate--readme.md) （GitHub README，基座/checkpoint 结构）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/magicanimate--project-page.md) （项目页快照，BibTeX 确认 CVPR 2024）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/magicanimate--hf-modelcard.md) （HF 模型卡，license bsd-3-clause）
+- [animation-yaml.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/magicanimate--animation-yaml.txt) （仓库 `configs/prompts/animation.yaml`：size=512/L=16/steps=25/guidance_scale=7.5/fusion_blocks=midup）
+- [appearance-encoder-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/magicanimate--appearance-encoder-config.json) （HF appearance_encoder config：`AppearanceEncoderModel`，UNet 同构）
+- [densepose-controlnet-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/magicanimate--densepose-controlnet-config.json) （HF densepose_controlnet config：`ControlNetModel`，conditioning_channels=3）

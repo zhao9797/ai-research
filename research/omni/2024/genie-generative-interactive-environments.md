@@ -113,6 +113,6 @@ C-ViViT 全时空注意力显存最高却最差（易过拟合需强正则）；
 - paper (PDF): https://arxiv.org/pdf/2402.15391
 - project page / blog: https://sites.google.com/view/genie-2024/home
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2402.15391.pdf
-- ../../../sources/omni/2024/genie--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2402.15391.pdf](https://arxiv.org/pdf/2402.15391)  （arXiv 原文 PDF，不入 git）
+- [genie--project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/genie--project-page.md)

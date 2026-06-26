@@ -144,7 +144,7 @@ T 步生成（无 beam-search / top-k / nucleus / classifier guidance 也能跑�
 - github: https://github.com/google-research/maskgit
 - demo: https://colab.research.google.com/github/google-research/maskgit/blob/main/MaskGIT_demo.ipynb
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2202.04200.pdf
-- ../../../sources/omni/2022/maskgit--readme.md
-- ../../../sources/omni/2022/maskgit--project.md
+## 一手源存档（sources/）
+- [arxiv-2202.04200.pdf](https://arxiv.org/pdf/2202.04200)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/maskgit--readme.md)
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/maskgit--project.md)

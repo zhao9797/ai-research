@@ -109,8 +109,8 @@ DALL·E、Stable Diffusion、PixArt-α 等主流文生图模型缺乏对中文 p
 - project_page: https://dit.hunyuan.tencent.com
 - companion_paper (DialogGen): https://arxiv.org/abs/2403.08857
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2405.08748.pdf
-- ../../../sources/omni/2024/hunyuan-dit--readme.md
-- ../../../sources/omni/2024/hunyuan-dit--hf-modelcard.md
-- ../../../sources/omni/2024/hunyuan-dit--diffusers-transformer-config.json
+## 一手源存档（sources/）
+- [arxiv-2405.08748.pdf](https://arxiv.org/pdf/2405.08748)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/hunyuan-dit--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/hunyuan-dit--hf-modelcard.md)
+- [diffusers-transformer-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/hunyuan-dit--diffusers-transformer-config.json)

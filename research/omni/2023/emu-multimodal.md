@@ -105,8 +105,8 @@ Emu 预训练混合四类、共约 **82M 样本 / 150B token**：
 - hf: https://huggingface.co/BAAI/Emu
 - demo/project: https://emu.ssi.plus/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2307.05222.pdf
-- ../../../sources/omni/2023/emu-multimodal--readme.md （仓库顶层 README）
-- ../../../sources/omni/2023/emu-multimodal--emu1-readme.md （Emu1 子目录 README）
-- ../../../sources/omni/2023/emu-multimodal--hf-card.md （HF BAAI/Emu model card）
+## 一手源存档（sources/）
+- [arxiv-2307.05222.pdf](https://arxiv.org/pdf/2307.05222)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/emu-multimodal--readme.md) （仓库顶层 README）
+- [emu1-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/emu-multimodal--emu1-readme.md) （Emu1 子目录 README）
+- [hf-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/emu-multimodal--hf-card.md) （HF BAAI/Emu model card）

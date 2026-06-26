@@ -106,8 +106,8 @@ Seedream 5.0 Lite **未公开任何数值化 benchmark**（无 FID/CLIPScore/Gen
 - volcengine 模型价格（图片生成计费，0.22 元/张，一手）: https://www.volcengine.com/docs/82379/1544106
 - 产品入口: 即梦 https://jimeng.jianying.com/ ; 火山方舟体验中心 https://console.volcengine.com/ark/region:ark+cn-beijing/experience/vision?type=GenImage
 
-## 本地落盘文件
-- ../../../sources/omni/2026/seedream-5-0-lite--blog.md
-- ../../../sources/omni/2026/seedream-5-0-lite--project_page.md
-- ../../../sources/omni/2026/seedream-5-0-lite--volcengine-ark-api.md
-- ../../../sources/omni/2026/seedream-5-0-lite--volcengine-pricing.md
+## 一手源存档（sources/）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedream-5-0-lite--blog.md)
+- [project_page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedream-5-0-lite--project_page.md)
+- [volcengine-ark-api.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedream-5-0-lite--volcengine-ark-api.md)
+- [volcengine-pricing.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/seedream-5-0-lite--volcengine-pricing.md)

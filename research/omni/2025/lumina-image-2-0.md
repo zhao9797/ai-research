@@ -137,7 +137,7 @@ DPG 大幅领先归因于 UniCap 产出的超长详细 caption 与 DPG prompt �
 - hf_space_demo: https://huggingface.co/spaces/Alpha-VLLM/Lumina-Image-2.0
 - diffusers_docs: https://huggingface.co/docs/diffusers/main/en/api/pipelines/lumina2
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2503.21758.pdf
-- ../../../sources/omni/2025/lumina-image-2-0--readme.md
-- ../../../sources/omni/2025/lumina-image-2-0--hf-card.md
+## 一手源存档（sources/）
+- [arxiv-2503.21758.pdf](https://arxiv.org/pdf/2503.21758)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/lumina-image-2-0--readme.md)
+- [hf-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/lumina-image-2-0--hf-card.md)

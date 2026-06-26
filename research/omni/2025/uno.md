@@ -132,10 +132,10 @@ UNO 在多主体上同样拿到最高 DINO / CLIP-I，CLIP-T 有竞争力。
 - hf demo (Space): https://huggingface.co/spaces/bytedance-research/UNO-FLUX
 - project page: https://bytedance.github.io/UNO/
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2504.02160.pdf
-- ../../../sources/omni/2025/arxiv-2504.02160.txt
-- ../../../sources/omni/2025/uno--readme.md
-- ../../../sources/omni/2025/uno--hf-model-card.md
-- ../../../sources/omni/2025/uno-1m--hf-dataset-card.md
-- ../../../sources/omni/2025/uno--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2504.02160.pdf](https://arxiv.org/pdf/2504.02160)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2504.02160.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2504.02160.txt)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/uno--readme.md)
+- [hf-model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/uno--hf-model-card.md)
+- [uno-1m--hf-dataset-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/uno-1m--hf-dataset-card.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/uno--project-page.md)

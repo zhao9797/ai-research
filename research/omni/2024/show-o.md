@@ -109,7 +109,7 @@ Show-o 的核心洞见：**不必让图像也自回归**。它在同一个 Trans
 - hf demo: https://huggingface.co/spaces/showlab/Show-o
 - hf checkpoints: https://huggingface.co/showlab （show-o, show-o-512x512, show-o-w-clip-vit, magvitv2, show-o2-1.5B/7B 等）
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2408.12528.pdf （即 ICLR 2025 camera-ready 版，PDF 页眉标注 "Published as a conference paper at ICLR 2025"，与 openreview 链接内容一致）
-- ../../../sources/omni/2024/show-o--readme.md
+## 一手源存档（sources/）
+- [arxiv-2408.12528.pdf](https://arxiv.org/pdf/2408.12528) （即 ICLR 2025 camera-ready 版，PDF 页眉标注 "Published as a conference paper at ICLR 2025"，与 openreview 链接内容一致）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/show-o--readme.md)
 - （openreview PDF 未单独落盘——内容与上面落盘的 arxiv PDF 相同，故不重复抓取）

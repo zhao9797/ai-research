@@ -128,6 +128,6 @@ Lumina-T2X 是上海 AI Lab 提出的统一 **flow-based 大 DiT（Flag-DiT）**
 - hf (Lumina-T2I 5B): https://huggingface.co/Alpha-VLLM/Lumina-T2I
 - 后续: Lumina-Next https://arxiv.org/abs/2406.18583 ; Lumina-mGPT https://arxiv.org/abs/2408.02657
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2405.05945.pdf
-- ../../../sources/omni/2024/lumina-t2x--readme.md
+## 一手源存档（sources/）
+- [arxiv-2405.05945.pdf](https://arxiv.org/pdf/2405.05945)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/lumina-t2x--readme.md)

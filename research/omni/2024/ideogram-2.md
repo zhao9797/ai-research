@@ -79,5 +79,5 @@ Ideogram 2.0 是 Ideogram（前 Google Imagen / Brain 成员创办）2024-08-21 
 - product: https://ideogram.ai
 - iOS App / API：发布公告内链接（App Store / Ideogram API beta），随产品迭代已变动
 
-## 本地落盘文件
-- ../../../sources/omni/2024/ideogram-2--blog.md  （Ideogram 2.0 官方公告，Wayback 20240821 快照清洗为纯文本）
+## 一手源存档（sources/）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ideogram-2--blog.md)  （Ideogram 2.0 官方公告，Wayback 20240821 快照清洗为纯文本）

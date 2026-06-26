@@ -138,7 +138,7 @@ SDEdit 在两个数据集的 L2 与 KID 上同时大幅领先，KID 几乎压低
 - project_page: https://sde-image-editing.github.io/
 - colab(官方demo): https://colab.research.google.com/drive/1KkLS53PndXKQpPlS1iK-k1nRQYmlb4aO
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2108.01073.pdf
-- ../../../sources/omni/2021/sdedit--readme.md
-- ../../../sources/omni/2021/sdedit--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2108.01073.pdf](https://arxiv.org/pdf/2108.01073)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/sdedit--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/sdedit--project-page.md)

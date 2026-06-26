@@ -119,7 +119,7 @@ LoRA 任务（AnimeOutline / MoXin，风格控制）：
 - github: https://github.com/showlab/X-Adapter
 - hf_checkpoint: https://huggingface.co/Lingmin-Ran/X-Adapter
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2312.02238.pdf
-- ../../../sources/omni/2023/x-adapter--readme.md
-- ../../../sources/omni/2023/x-adapter--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2312.02238.pdf](https://arxiv.org/pdf/2312.02238)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/x-adapter--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/x-adapter--project-page.md)

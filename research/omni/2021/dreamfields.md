@@ -148,8 +148,8 @@ Dream Fields 用**冻结的预训练 CLIP（图文对比模型）作为引导信
 - colab_demo: https://colab.research.google.com/drive/1TjCWS2_Q0HJKdi9wA2OSY7avmFUQYGje
 - video (YouTube): https://www.youtube.com/watch?v=1Fke6w46tv4
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2112.01455.pdf  （官方论文 PDF，21MB，不入 git；已 pdftotext 校验与 HTML 一致）
-- ../../../sources/omni/2021/dreamfields--paper-html.md  （ar5iv 全文 HTML→markdown，含正文+全附录 A–F，精读所用）
-- ../../../sources/omni/2021/dreamfields--project.md  （项目主页快照）
-- ../../../sources/omni/2021/dreamfields--readme.md  （官方 GitHub README，含运行/配置/硬件说明）
+## 一手源存档（sources/）
+- [arxiv-2112.01455.pdf](https://arxiv.org/pdf/2112.01455)  （官方论文 PDF，21MB，不入 git；已 pdftotext 校验与 HTML 一致）
+- [paper-html.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/dreamfields--paper-html.md)  （ar5iv 全文 HTML→markdown，含正文+全附录 A–F，精读所用）
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/dreamfields--project.md)  （项目主页快照）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/dreamfields--readme.md)  （官方 GitHub README，含运行/配置/硬件说明）

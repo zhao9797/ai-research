@@ -120,6 +120,6 @@ Imagen 是**零样本**就拿到 7.27，甚至优于在 COCO 上**训练过**的
 - project_page: https://imagen.research.google/
 - DrawBench prompts（项目页给出）: https://docs.google.com/spreadsheets/d/1y7nAbmR4FREi6npB1u-Bo3GFdwdOPYJc617rBOxIRHY/edit
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2205.11487.pdf
-- ../../../sources/omni/2022/imagen--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2205.11487.pdf](https://arxiv.org/pdf/2205.11487)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/imagen--project-page.md)

@@ -133,6 +133,6 @@ HPS v2 **不引入新架构**，核心是把 CLIP 当作"prompt–图像"打分�
 - pypi: https://pypi.org/project/hpsv2
 - test_vis: https://tgxs002.github.io/hpd_test_vis/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2306.09341.pdf
-- ../../../sources/omni/2023/hps-v2--readme.md
+## 一手源存档（sources/）
+- [arxiv-2306.09341.pdf](https://arxiv.org/pdf/2306.09341)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/hps-v2--readme.md)

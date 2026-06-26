@@ -101,8 +101,8 @@ Emu Edit 的核心论点：**编辑的目标不是产出一张「可信」的图
 - hf_benchmark: https://huggingface.co/datasets/facebook/emu_edit_test_set
 - hf_generations: https://huggingface.co/datasets/facebook/emu_edit_test_set_generations
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.10089.pdf
-- ../../../sources/omni/2023/emu-edit--project.md
-- ../../../sources/omni/2023/emu-edit--meta-blog.md
-- ../../../sources/omni/2023/emu-edit--hf-dataset-card.md
+## 一手源存档（sources/）
+- [arxiv-2311.10089.pdf](https://arxiv.org/pdf/2311.10089)  （arXiv 原文 PDF，不入 git）
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/emu-edit--project.md)
+- [meta-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/emu-edit--meta-blog.md)
+- [hf-dataset-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/emu-edit--hf-dataset-card.md)

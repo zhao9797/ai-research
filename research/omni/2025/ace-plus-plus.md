@@ -103,8 +103,8 @@ ACE++ 的核心 insight：把 ACE 里属于 **0-ref 任务**（无参考图，�
 - base model FLUX.1-Fill-dev: https://huggingface.co/black-forest-labs/FLUX.1-Fill-dev
 - predecessor ACE (arXiv): https://arxiv.org/abs/2410.00086
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2501.02487.pdf
-- ../../../sources/omni/2025/ace-plus-plus--readme.md
-- ../../../sources/omni/2025/ace-plus-plus--hf-modelcard.md
-- ../../../sources/omni/2025/ace-plus-plus--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2501.02487.pdf](https://arxiv.org/pdf/2501.02487)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ace-plus-plus--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ace-plus-plus--hf-modelcard.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ace-plus-plus--project-page.md)

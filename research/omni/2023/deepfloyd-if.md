@@ -129,8 +129,8 @@ DeepFloyd IF 是 Stability AI 旗下 DeepFloyd Lab 2023 年 4 月开源的 **Ima
 - inspired-by (Imagen 论文，模型卡 arxiv 字段): https://arxiv.org/abs/2205.11487
 - 注：DeepFloyd IF **无独立论文/技术报告**（README "Research Paper (Soon)" 从未发布）。
 
-## 本地落盘文件
-- ../../../sources/omni/2023/deepfloyd-if--github-readme.md
-- ../../../sources/omni/2023/deepfloyd-if--stability-blog.md
-- ../../../sources/omni/2023/deepfloyd-if--hf-blog.md
-- ../../../sources/omni/2023/deepfloyd-if--hf-IF-I-L-card.md
+## 一手源存档（sources/）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/deepfloyd-if--github-readme.md)
+- [stability-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/deepfloyd-if--stability-blog.md)
+- [hf-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/deepfloyd-if--hf-blog.md)
+- [hf-IF-I-L-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/deepfloyd-if--hf-IF-I-L-card.md)

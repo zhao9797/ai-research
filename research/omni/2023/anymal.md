@@ -118,5 +118,5 @@ AnyMAL 是 Meta 把 **图像 / 视频 / 音频 / IMU 运动传感器** 四类非
 - arxiv_abs: https://arxiv.org/abs/2309.16058
 - arxiv_pdf: https://arxiv.org/pdf/2309.16058
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2309.16058.pdf
+## 一手源存档（sources/）
+- [arxiv-2309.16058.pdf](https://arxiv.org/pdf/2309.16058)  （arXiv 原文 PDF，不入 git）

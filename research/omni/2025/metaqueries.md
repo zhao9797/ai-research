@@ -143,8 +143,8 @@ MetaQuery 走相反的哲学——"**生成归扩散，理解归 LLM**"（Render
 - github: https://github.com/facebookresearch/metaquery
 - hf_data (MetaQuery-Instruct-2.4M): https://huggingface.co/collections/xcpan/metaquery-instruction-tuning-data-685b0f16d81ce54bcb7ea3a8
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2504.06256.pdf
-- ../../../sources/omni/2025/arxiv-2504.06256.txt
-- ../../../sources/omni/2025/metaqueries--project-page.md
-- ../../../sources/omni/2025/metaqueries--readme.md
+## 一手源存档（sources/）
+- [arxiv-2504.06256.pdf](https://arxiv.org/pdf/2504.06256)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2504.06256.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2504.06256.txt)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/metaqueries--project-page.md)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/metaqueries--readme.md)

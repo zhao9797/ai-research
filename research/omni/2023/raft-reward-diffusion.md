@@ -141,8 +141,8 @@ ImageReward 是**首个通用文生图人类偏好奖励模型（RM）**，用 1
 - 中文博客（官方）: https://zhuanlan.zhihu.com/p/639494251 （知乎 JS 反爬，curl 直连/代理均返回挑战页，**未能获取**；需交互式无头浏览器。其为论文同内容的中文科普，无新数字）
 - 下一代: https://github.com/THUDM/VisionReward
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2304.05977.pdf
-- ../../../sources/omni/2023/raft-reward-diffusion--readme.md
-- ../../../sources/omni/2023/raft-reward-diffusion--hf-datasetcard.md
-- ../../../sources/omni/2023/raft-reward-diffusion--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2304.05977.pdf](https://arxiv.org/pdf/2304.05977)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/raft-reward-diffusion--readme.md)
+- [hf-datasetcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/raft-reward-diffusion--hf-datasetcard.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/raft-reward-diffusion--hf-modelcard.md)

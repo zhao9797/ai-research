@@ -105,6 +105,6 @@ Imagen 3 是 Google [[imagen]]（2022，像素空间级联扩散 + T5-XXL 文本
 - arxiv_pdf: https://arxiv.org/pdf/2408.07009
 - blog/product（产品页，原 /technologies/imagen-3/ 已重定向至模型总览页，无 Imagen-3 专属技术内容）: https://deepmind.google/models/imagen/
 
-## 本地落盘文件
+## 一手源存档（sources/）
 - ../../../sources/omni/2024/arxiv-2408.07009.pdf —— 技术报告（含 v3 附录 D 的 Imagen 3-002 更新），本页所有数字均出自此文件
 - ../../../sources/omni/2024/imagen-3--blog.md —— deepmind.google/models/imagen 当前产品落地页快照（已迭代到 Imagen 4，仅导航壳 + 示例 prompt，**无 Imagen-3 专属技术内容**，仅作链接留痕）

@@ -88,6 +88,6 @@ IC-LoRA 提出一个极简范式：文生图 DiT（以 [[flux-1]] 为例）**天
 - hf models (10 LoRAs): https://huggingface.co/ali-vilab/In-Context-LoRA
 - predecessor (Group Diffusion Transformers): https://arxiv.org/abs/2410.15027
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2410.23775.pdf
-- ../../../sources/omni/2024/in-context-lora--readme.md
+## 一手源存档（sources/）
+- [arxiv-2410.23775.pdf](https://arxiv.org/pdf/2410.23775)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/in-context-lora--readme.md)

@@ -118,7 +118,7 @@ MVDream 是首个文生「多视角一致图像」的扩散模型：把 Stable D
 - huggingface: https://huggingface.co/MVDream/MVDream
 - project_page: https://mv-dream.github.io/
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2308.16512.pdf
-- ../../../sources/omni/2023/mvdream--readme.md
-- ../../../sources/omni/2023/mvdream--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2308.16512.pdf](https://arxiv.org/pdf/2308.16512)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/mvdream--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/mvdream--project-page.md)

@@ -150,6 +150,6 @@ HART = **混合 tokenizer** + **混合 transformer（可变分辨率 AR + 残差
 - hf (model): https://huggingface.co/mit-han-lab/hart-0.7b-1024px
 - hf (text encoder): https://huggingface.co/mit-han-lab/Qwen2-VL-1.5B-Instruct
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2410.10812.pdf
-- ../../../sources/omni/2024/hart-hybrid-ar--readme.md
+## 一手源存档（sources/）
+- [arxiv-2410.10812.pdf](https://arxiv.org/pdf/2410.10812)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/hart-hybrid-ar--readme.md)

@@ -98,9 +98,9 @@ reviewed: 2026-06-25
 - system-card (OpenAI, Native image generation, GPT-4o addendum, 2025-03-25, gpt-image-1/mini 共享其架构与安全栈): https://cdn.openai.com/11998be9-5319-4302-bfbf-1167e093f1fb/Native_Image_Generation_System_Card.pdf
 - (worklist 原列 Google URL `imagen-4-now-generally-available-gemini-api/` 实测 404；正确 GA 博客已替换为上方 announcing-… 链接)
 
-## 本地落盘文件
-- ../../../sources/omni/2025/gpt-image-1-mini-and-imagen-fast--imagen4-ga-googleblog.md
-- ../../../sources/omni/2025/gpt-image-1-mini-and-imagen-fast--openai-image-api.md
-- ../../../sources/omni/2025/gpt-image-1-mini-and-imagen-fast--openai-model-doc.md
-- ../../../sources/omni/2025/gpt-image-1-mini-and-imagen-fast--openai-imagegen-guide.md
-- ../../../sources/omni/2025/native-image-generation-system-card.pdf
+## 一手源存档（sources/）
+- [imagen4-ga-googleblog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gpt-image-1-mini-and-imagen-fast--imagen4-ga-googleblog.md)
+- [openai-image-api.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gpt-image-1-mini-and-imagen-fast--openai-image-api.md)
+- [openai-model-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gpt-image-1-mini-and-imagen-fast--openai-model-doc.md)
+- [openai-imagegen-guide.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gpt-image-1-mini-and-imagen-fast--openai-imagegen-guide.md)
+- native-image-generation-system-card.pdf  （PDF 不入 git，走 HF bucket）

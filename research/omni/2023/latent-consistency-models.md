@@ -119,11 +119,11 @@ LCM 的定位就是补上这两块：把 CM 放进潜空间做高清文生图，
 - hf_model (lcm-lora-sdxl): https://huggingface.co/latent-consistency/lcm-lora-sdxl
 - hf_model (lcm-lora-sdv1-5): https://huggingface.co/latent-consistency/lcm-lora-sdv1-5
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2310.04378.pdf
-- ../../../sources/omni/2023/arxiv-2311.05556.pdf
-- ../../../sources/omni/2023/latent-consistency-models--readme.md
-- ../../../sources/omni/2023/latent-consistency-models--project-page.md
-- ../../../sources/omni/2023/lcm-lora--hf-blog.md
-- ../../../sources/omni/2023/lcm-lora--hf-sdxl-readme.md
-- ../../../sources/omni/2023/lcm-lora--hf-sdv1-5-readme.md
+## 一手源存档（sources/）
+- [arxiv-2310.04378.pdf](https://arxiv.org/pdf/2310.04378)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2311.05556.pdf](https://arxiv.org/pdf/2311.05556)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/latent-consistency-models--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/latent-consistency-models--project-page.md)
+- [lcm-lora--hf-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lcm-lora--hf-blog.md)
+- [lcm-lora--hf-sdxl-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lcm-lora--hf-sdxl-readme.md)
+- [lcm-lora--hf-sdv1-5-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/lcm-lora--hf-sdv1-5-readme.md)

@@ -107,7 +107,7 @@ JanusFlow 走第三条路，核心改进是把当时图像生成 SOTA 方法 **r
 - hf_model: https://huggingface.co/deepseek-ai/JanusFlow-1.3B
 - hf_demo: https://huggingface.co/spaces/deepseek-ai/JanusFlow-1.3B
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2411.07975.pdf
-- ../../../sources/omni/2024/janusflow--readme.md
-- ../../../sources/omni/2024/janusflow--hf-modelcard.md
+## 一手源存档（sources/）
+- [arxiv-2411.07975.pdf](https://arxiv.org/pdf/2411.07975)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/janusflow--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/janusflow--hf-modelcard.md)

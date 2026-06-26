@@ -137,7 +137,7 @@ Kosmos-G 在同类 CLIP-aligned VL2I 模型里 FID 最优。（作者自测的 S
 - github（官方代码，已并入 unilm）: https://github.com/microsoft/unilm/tree/master/kosmos-g
 - github（作者原 repo，重定向到 unilm）: https://github.com/xichenpan/Kosmos-G
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2310.02992.pdf
-- ../../../sources/omni/2023/kosmos-g--readme.md
-- ../../../sources/omni/2023/kosmos-g--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2310.02992.pdf](https://arxiv.org/pdf/2310.02992)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/kosmos-g--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/kosmos-g--project-page.md)

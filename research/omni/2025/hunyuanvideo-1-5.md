@@ -178,9 +178,9 @@ HunyuanVideo 1.5 是腾讯混元 2025 年 11 月开源的**轻量级视频生成
 - flex-block-attn 稀疏注意力库: https://github.com/Tencent-Hunyuan/flex-block-attn
 - OmniWeaving (衍生统一模型): https://github.com/Tencent-Hunyuan/OmniWeaving
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2511.18870.pdf  （技术报告 PDF，8 页，已精读）
-- ../../../sources/omni/2025/arxiv-2511.18870.txt  （pdftotext 全文）
-- ../../../sources/omni/2025/hunyuanvideo-1-5--readme.md  （GitHub README 英文）
-- ../../../sources/omni/2025/hunyuanvideo-1-5--readme-cn.md  （GitHub README 中文）
-- ../../../sources/omni/2025/hunyuanvideo-1-5--hf-modelcard.md  （HF model card）
+## 一手源存档（sources/）
+- [arxiv-2511.18870.pdf](https://arxiv.org/pdf/2511.18870)  （技术报告 PDF，8 页，已精读）
+- [arxiv-2511.18870.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/arxiv-2511.18870.txt)  （pdftotext 全文）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/hunyuanvideo-1-5--readme.md)  （GitHub README 英文）
+- [readme-cn.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/hunyuanvideo-1-5--readme-cn.md)  （GitHub README 中文）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/hunyuanvideo-1-5--hf-modelcard.md)  （HF model card）

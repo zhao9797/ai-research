@@ -126,11 +126,11 @@ BFL 自评：开源权重档 FLUX.2 [dev] 在文生图、单参考编辑、多�
 - klein 后续发布（2026-01，补充）: https://bfl.ai/blog/flux2-klein-towards-interactive-visual-intelligence
 - 文档/Prompting 指南: https://docs.bfl.ai/flux_2/ ・ https://docs.bfl.ai/guides/prompting_guide_flux2
 
-## 本地落盘文件
-- ../../../sources/omni/2025/flux-2--blog.md  （BFL 主发布博客快照）
-- ../../../sources/omni/2025/flux-2--vae-techblog.md  （representation-comparison 全文，含 Table 1 / Figure 3 数字与架构）
-- ../../../sources/omni/2025/flux-2--github-readme.md  （flux2 仓库 README，含档位表/参数/News）
-- ../../../sources/omni/2025/flux-2--hf-modelcard.md  （FLUX.2-dev model card，含安全披露）
-- ../../../sources/omni/2025/flux-2--hf-diffusers-blog.md  （HF diffusers 工程博客，DiT/VAE/文本编码器改动）
-- ../../../sources/omni/2025/flux-2--diffusers-quant-doc.md  （低显存/量化推理 doc）
-- ../../../sources/omni/2025/flux-2--prompt-upsampling-doc.md  （prompt upsampling doc，确认 Mistral-Small-3.2-24B）
+## 一手源存档（sources/）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-2--blog.md)  （BFL 主发布博客快照）
+- [vae-techblog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-2--vae-techblog.md)  （representation-comparison 全文，含 Table 1 / Figure 3 数字与架构）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-2--github-readme.md)  （flux2 仓库 README，含档位表/参数/News）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-2--hf-modelcard.md)  （FLUX.2-dev model card，含安全披露）
+- [hf-diffusers-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-2--hf-diffusers-blog.md)  （HF diffusers 工程博客，DiT/VAE/文本编码器改动）
+- [diffusers-quant-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-2--diffusers-quant-doc.md)  （低显存/量化推理 doc）
+- [prompt-upsampling-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/flux-2--prompt-upsampling-doc.md)  （prompt upsampling doc，确认 Mistral-Small-3.2-24B）

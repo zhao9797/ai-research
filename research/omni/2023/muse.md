@@ -158,6 +158,6 @@ Muse 是**多子模型级联（cascade）**，除 VQGAN 外全部基于 Transfor
 - project_page: https://muse-model.github.io/
 - 备注：Google Research **未发布**官方独立博客、代码仓库、HuggingFace/ModelScope 权重或公开 demo（论文 §5 明确出于伦理考量不开源）。已检索确认无官方代码/权重一手源。
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2301.00704.pdf
-- ../../../sources/omni/2023/muse--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2301.00704.pdf](https://arxiv.org/pdf/2301.00704)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/muse--project-page.md)

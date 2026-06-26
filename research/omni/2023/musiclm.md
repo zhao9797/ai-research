@@ -97,7 +97,7 @@ MusicLM 把文生音乐建模成**层级离散 token 的多阶段自回归序列
 - project_page (demo): https://google-research.github.io/seanet/musiclm/examples/
 - dataset (MusicCaps): https://www.kaggle.com/datasets/googleai/musiccaps
 
-## 本地落盘文件
-- ../../../sources/omni/2023/musiclm--paper-fulltext.md  （ar5iv 全文 HTML→markdown，含正文+附录 A/B/C，精读所用）
-- ../../../sources/omni/2023/musiclm--project-page.md  （官方 demo 页快照）
-- ../../../sources/omni/2023/arxiv-2301.11325.pdf  （arXiv 官方 PDF v1，6 页；已直连 curl 下载校验，PDF 按规则不入 git、备份 HF bucket）
+## 一手源存档（sources/）
+- [paper-fulltext.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/musiclm--paper-fulltext.md)  （ar5iv 全文 HTML→markdown，含正文+附录 A/B/C，精读所用）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/musiclm--project-page.md)  （官方 demo 页快照）
+- [arxiv-2301.11325.pdf](https://arxiv.org/pdf/2301.11325)  （arXiv 官方 PDF v1，6 页；已直连 curl 下载校验，PDF 按规则不入 git、备份 HF bucket）

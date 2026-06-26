@@ -141,8 +141,8 @@ Image-to-3D：CLIP↑ / FD_incep↓ / FD_dinov2↓
 - project_page: https://microsoft.github.io/TRELLIS/
 - hf demo (live): https://huggingface.co/spaces/Microsoft/TRELLIS
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2412.01506.pdf
-- ../../../sources/omni/2024/trellis--readme.md
-- ../../../sources/omni/2024/trellis--hf-card.md
-- ../../../sources/omni/2024/trellis--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2412.01506.pdf](https://arxiv.org/pdf/2412.01506)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/trellis--readme.md)
+- [hf-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/trellis--hf-card.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/trellis--project-page.md)

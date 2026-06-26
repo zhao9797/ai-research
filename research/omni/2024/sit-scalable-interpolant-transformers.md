@@ -144,6 +144,6 @@ SiT（Scalable Interpolant Transformers）把 [[dit-scalable-diffusion-transform
 - project page: https://scalable-interpolant.github.io/
 - 理论基础: Stochastic Interpolants (Albergo et al., arXiv:2303.08797)
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2401.08740.pdf
-- ../../../sources/omni/2024/sit-scalable-interpolant-transformers--readme.md
+## 一手源存档（sources/）
+- [arxiv-2401.08740.pdf](https://arxiv.org/pdf/2401.08740)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sit-scalable-interpolant-transformers--readme.md)

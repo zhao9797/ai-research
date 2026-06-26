@@ -114,7 +114,7 @@ DPM-Solver 是为扩散 ODE 量身定制的**高阶、免训练**专用数值求
 - 改进版（DPM-Solver++，部署版）: https://arxiv.org/abs/2211.01095
 - HF demo: https://huggingface.co/spaces/LuChengTHU/dpmsolver_sdm
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2206.00927.pdf
-- ../../../sources/omni/2022/dpm-solver--readme.md
-- ../../../sources/omni/2022/arxiv-2211.01095.pdf
+## 一手源存档（sources/）
+- [arxiv-2206.00927.pdf](https://arxiv.org/pdf/2206.00927)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dpm-solver--readme.md)
+- [arxiv-2211.01095.pdf](https://arxiv.org/pdf/2211.01095)  （arXiv 原文 PDF，不入 git）

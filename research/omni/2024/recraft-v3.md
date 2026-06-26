@@ -114,11 +114,11 @@ Recraft **未公布任何自动指标**（无 FID / CLIPScore / GenEval / DPG-Be
 - 方法灵感（TextDiffuser-2，非 Recraft 自有）: https://arxiv.org/abs/2311.16465
 - 自训 OCR 基础（Bridging Text Spotting，非 Recraft 自有）: https://arxiv.org/abs/2404.04624
 
-## 本地落盘文件
+## 一手源存档（sources/）
 
-- ../../../sources/omni/2024/recraft-v3--blog.md
-- ../../../sources/omni/2024/recraft-v3--ml-team-insights.md
-- ../../../sources/omni/2024/recraft-v3--docs.md
-- ../../../sources/omni/2024/recraft-v3--aa-leaderboard-snapshot.md
-- ../../../sources/omni/2024/arxiv-2311.16465.pdf
-- ../../../sources/omni/2024/arxiv-2404.04624.pdf
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/recraft-v3--blog.md)
+- [ml-team-insights.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/recraft-v3--ml-team-insights.md)
+- [docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/recraft-v3--docs.md)
+- [aa-leaderboard-snapshot.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/recraft-v3--aa-leaderboard-snapshot.md)
+- [arxiv-2311.16465.pdf](https://arxiv.org/pdf/2311.16465)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2404.04624.pdf](https://arxiv.org/pdf/2404.04624)  （arXiv 原文 PDF，不入 git）

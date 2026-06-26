@@ -152,9 +152,9 @@ OmniGen 在 Canny F1（38.96，全表最高）上领先；Seg mIoU（40.06）低
 - x2i_dataset: https://huggingface.co/collections/yzwang/x2i-dataset-674c66d1d700f7f816a9590d
 - omnigen2(续作): https://github.com/VectorSpaceLab/OmniGen2
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2409.11340.pdf
-- ../../../sources/omni/2024/arxiv-2409.11340.txt
-- ../../../sources/omni/2024/omnigen--readme.md
-- ../../../sources/omni/2024/omnigen--hf-modelcard.md
-- ../../../sources/omni/2024/omnigen--inference-docs.md
+## 一手源存档（sources/）
+- [arxiv-2409.11340.pdf](https://arxiv.org/pdf/2409.11340)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2409.11340.txt](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/arxiv-2409.11340.txt)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/omnigen--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/omnigen--hf-modelcard.md)
+- [inference-docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/omnigen--inference-docs.md)

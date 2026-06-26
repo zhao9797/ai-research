@@ -88,11 +88,11 @@ Nano Banana Pro（正式名 **Gemini 3 Pro Image**，模型代码 `gemini-3-pro-
 - project（DeepMind 模型页）: https://deepmind.google/models/gemini-image/pro/
 - benchmark（第三方盲评，Artificial Analysis 文生图竞技场）: https://artificialanalysis.ai/text-to-image/arena/leaderboard-text
 
-## 本地落盘文件
-- ../../../sources/omni/2025/gemini-3-pro-image-nano-banana-pro--blog-google.md
-- ../../../sources/omni/2025/gemini-3-pro-image-nano-banana-pro--developers-blog.md
-- ../../../sources/omni/2025/gemini-3-pro-image-nano-banana-pro--enterprise-blog.md
-- ../../../sources/omni/2025/gemini-3-pro-image-nano-banana-pro--image-gen-docs.md
-- ../../../sources/omni/2025/gemini-3-pro-image-nano-banana-pro--api-modelcard.md
-- ../../../sources/omni/2025/gemini-3-pro-image-nano-banana-pro--vertex-modelcard.md
-- ../../../sources/omni/2025/gemini-3-pro-image-nano-banana-pro--artificialanalysis-t2i-arena.md
+## 一手源存档（sources/）
+- [blog-google.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-3-pro-image-nano-banana-pro--blog-google.md)
+- [developers-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-3-pro-image-nano-banana-pro--developers-blog.md)
+- [enterprise-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-3-pro-image-nano-banana-pro--enterprise-blog.md)
+- [image-gen-docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-3-pro-image-nano-banana-pro--image-gen-docs.md)
+- [api-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-3-pro-image-nano-banana-pro--api-modelcard.md)
+- [vertex-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-3-pro-image-nano-banana-pro--vertex-modelcard.md)
+- [artificialanalysis-t2i-arena.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-3-pro-image-nano-banana-pro--artificialanalysis-t2i-arena.md)

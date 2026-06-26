@@ -108,9 +108,9 @@ SEED-X 是 SEED 系列（[[seed-llama]] / SEED / SEED-Tokenizer）的第三代�
 - hf dataset (SEED-Data-Edit): https://huggingface.co/datasets/AILab-CVC/SEED-Data-Edit
 - demo: https://arc.tencent.com/en/ai-demos/multimodal
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2404.14396.pdf
-- ../../../sources/omni/2024/arxiv-2405.04007.pdf
-- ../../../sources/omni/2024/seed-x--readme.md
-- ../../../sources/omni/2024/seed-x--hf-modelcard.md
-- ../../../sources/omni/2024/seed-data-edit--hf-datasetcard.md
+## 一手源存档（sources/）
+- [arxiv-2404.14396.pdf](https://arxiv.org/pdf/2404.14396)  （arXiv 原文 PDF，不入 git）
+- [arxiv-2405.04007.pdf](https://arxiv.org/pdf/2405.04007)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/seed-x--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/seed-x--hf-modelcard.md)
+- [seed-data-edit--hf-datasetcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/seed-data-edit--hf-datasetcard.md)

@@ -132,7 +132,7 @@ min_{θ'} L = E_{z,ε~N(0,I),t} [ ‖ ε − f_{θ,θ'}(z_t, t, y) ‖² ]
 - hf_models: https://huggingface.co/gligen
 - demo: https://huggingface.co/spaces/gligen/demo
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2301.07093.pdf
-- ../../../sources/omni/2023/gligen--readme.md
-- ../../../sources/omni/2023/gligen--vs-controlnet.md
+## 一手源存档（sources/）
+- [arxiv-2301.07093.pdf](https://arxiv.org/pdf/2301.07093)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/gligen--readme.md)
+- [vs-controlnet.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/gligen--vs-controlnet.md)

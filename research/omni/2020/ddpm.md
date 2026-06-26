@@ -143,7 +143,7 @@ DDPM 是无条件图像生成，使用标准学术数据集，无大规模图文
 - github: https://github.com/hojonathanho/diffusion
 - project_page: https://hojonathanho.github.io/diffusion/
 
-## 本地落盘文件
-- ../../../sources/omni/2020/arxiv-2006.11239.pdf
-- ../../../sources/omni/2020/ddpm--readme.md
-- ../../../sources/omni/2020/ddpm--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2006.11239.pdf](https://arxiv.org/pdf/2006.11239)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2020/ddpm--readme.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2020/ddpm--project-page.md)

@@ -98,6 +98,6 @@ StyleCLIP 不做大规模训练，**没有自有训练数据集**；它依赖的
 - github: https://github.com/orpatashnik/StyleCLIP
 - venue: ICCV 2021 (Oral), pp. 2085-2094
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2103.17249.pdf （论文全文 PDF，含正文+补充材料，.gitignore 排除不入 git，仅本地）
-- ../../../sources/omni/2021/styleclip--readme.md （官方 GitHub README，含三法实现/预训练权重/CelebA-HQ 反演隐码/训练命令）
+## 一手源存档（sources/）
+- [arxiv-2103.17249.pdf](https://arxiv.org/pdf/2103.17249) （论文全文 PDF，含正文+补充材料，.gitignore 排除不入 git，仅本地）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/styleclip--readme.md) （官方 GitHub README，含三法实现/预训练权重/CelebA-HQ 反演隐码/训练命令）

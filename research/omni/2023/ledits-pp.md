@@ -126,10 +126,10 @@ LEDITS++ **不是一个新模型，而是一个 inference-time 编辑算法**，
 - HF Demo Space: https://huggingface.co/spaces/editing-images/leditsplusplus
 - TEdBench++ 数据集: https://huggingface.co/datasets/AIML-TUDA/TEdBench_plusplus
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2311.16711.pdf （CVPR 2024 / arXiv v2 全文+附录，已精读）
-- ../../../sources/omni/2023/ledits-pp--project-page.md （官方项目页快照）
-- ../../../sources/omni/2023/ledits-pp--github-readme.md （ml-research/ledits_pp README）
-- ../../../sources/omni/2023/ledits-pp--diffusers-doc.md （diffusers 官方管线文档）
-- ../../../sources/omni/2023/ledits-pp--tedbench-dataset.md （TEdBench++ 数据集卡）
-- ../../../sources/omni/2023/ledits-pp--space-readme.md （HF Space 配置 stub）
+## 一手源存档（sources/）
+- [arxiv-2311.16711.pdf](https://arxiv.org/pdf/2311.16711) （CVPR 2024 / arXiv v2 全文+附录，已精读）  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ledits-pp--project-page.md) （官方项目页快照）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ledits-pp--github-readme.md) （ml-research/ledits_pp README）
+- [diffusers-doc.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ledits-pp--diffusers-doc.md) （diffusers 官方管线文档）
+- [tedbench-dataset.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ledits-pp--tedbench-dataset.md) （TEdBench++ 数据集卡）
+- [space-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/ledits-pp--space-readme.md) （HF Space 配置 stub）

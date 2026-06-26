@@ -146,6 +146,6 @@ GILLMapper 在 OOD 的 VIST 上 CLIP 远超线性/MLP（后者 ~0.50，几乎不
 - hf_space: https://huggingface.co/spaces/jykoh/gill
 - hf_paper: https://huggingface.co/papers/2305.17216
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2305.17216.pdf
-- ../../../sources/omni/2023/gill--readme.md
+## 一手源存档（sources/）
+- [arxiv-2305.17216.pdf](https://arxiv.org/pdf/2305.17216)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/gill--readme.md)

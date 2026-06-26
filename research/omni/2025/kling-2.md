@@ -105,10 +105,10 @@ updated: 2026-06-25
 - 产品首页（落盘的 about.md 实际抓取的是 kling.ai 首页，非 /about）: https://kling.ai/ ， https://www.klingai.com/
 - 列于 worklist 但未能获取（登录/区域门控、SPA 仅渲染外壳）: https://app.klingai.com/global/release-notes
 
-## 本地落盘文件
-- ../../../sources/omni/2025/kling-2--pr-20.md
-- ../../../sources/omni/2025/kling-2--pr-21.md
-- ../../../sources/omni/2025/kling-2--ir-25turbo.md
-- ../../../sources/omni/2025/kling-2--ir-revenue.md
-- ../../../sources/omni/2025/kling-2--api-doc-models.md
-- ../../../sources/omni/2025/kling-2--about.md
+## 一手源存档（sources/）
+- [pr-20.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kling-2--pr-20.md)
+- [pr-21.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kling-2--pr-21.md)
+- [ir-25turbo.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kling-2--ir-25turbo.md)
+- [ir-revenue.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kling-2--ir-revenue.md)
+- [api-doc-models.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kling-2--api-doc-models.md)
+- [about.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/kling-2--about.md)

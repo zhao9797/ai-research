@@ -147,7 +147,7 @@ MMaDA 在 MMLU/ARC-C 上接近 Qwen2-7B/LLaMA-3-8B，并在数学（GSM8K/MATH/G
 - RL infra (dLLM-RL / TraceRL): https://github.com/Gen-Verse/dLLM-RL
 - 后续工作 MMaDA-Parallel: https://arxiv.org/abs/2511.09611
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2505.15809.pdf
-- ../../../sources/omni/2025/mmada--readme.md
-- ../../../sources/omni/2025/mmada--hf-base-card.md
+## 一手源存档（sources/）
+- [arxiv-2505.15809.pdf](https://arxiv.org/pdf/2505.15809)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/mmada--readme.md)
+- [hf-base-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/mmada--hf-base-card.md)

@@ -101,12 +101,12 @@ Reve 官方**未发布任何标准学术 benchmark 数字**（无 GenEval / DPG-
 - 创始人 X 串（Michaël Gharbi, 理念阐述）: https://x.com/m_gharbi/status/1904213903384695280
 - 二手综述（overchat，仅交叉参考，数字不可信）: https://overchat.ai/ai-hub/reve-image-generator
 
-## 本地落盘文件
-- ../../../sources/omni/2025/reve-image--venturebeat-launch.md
-- ../../../sources/omni/2025/reve-image--ainews-halfmoon.md
-- ../../../sources/omni/2025/reve-image--reve2-landing.md
-- ../../../sources/omni/2025/reve-image--about.md
-- ../../../sources/omni/2025/reve-image--art-page.html
-- ../../../sources/omni/2025/reve-image--artificialanalysis-arena.md
-- ../../../sources/omni/2025/reve-image--artificialanalysis-t2i-leaderboard.md
-- ../../../sources/omni/2025/reve-image--overchat-summary-secondary.md
+## 一手源存档（sources/）
+- [venturebeat-launch.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/reve-image--venturebeat-launch.md)
+- [ainews-halfmoon.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/reve-image--ainews-halfmoon.md)
+- [reve2-landing.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/reve-image--reve2-landing.md)
+- [about.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/reve-image--about.md)
+- [art-page.html](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/reve-image--art-page.html)
+- [artificialanalysis-arena.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/reve-image--artificialanalysis-arena.md)
+- [artificialanalysis-t2i-leaderboard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/reve-image--artificialanalysis-t2i-leaderboard.md)
+- [overchat-summary-secondary.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/reve-image--overchat-summary-secondary.md)

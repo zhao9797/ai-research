@@ -93,8 +93,8 @@ Ideogram 3.0 是 Ideogram（前 Google Imagen / Brain 成员创办）于 **2025-
 - api-doc（Inpaint / Replace Background / Reframe / Remix v3 + 自定义模型微调）: https://developer.ideogram.ai/api-reference/api-reference/inpaint-v3 ；https://developer.ideogram.ai/tutorials/custom-model-training
 - api-overview（能力总览：Generate/Remix/Edit/Reframe/Replace Background/Face Swap）: https://developer.ideogram.ai/ideogram-api/api-overview
 
-## 本地落盘文件
-- ../../../sources/omni/2025/ideogram-3-0--blog.md （launch 博客正文，Wayback 存档清洗为 markdown）
-- ../../../sources/omni/2025/ideogram-3-0--blog-snapshot.html （launch 博客原始 HTML 存档，631KB）
-- ../../../sources/omni/2025/ideogram-3-0--api-generate-v3.md （v3 generate 端点官方文档 markdown，含分辨率/风格/渲染速度/字符参考/版权检测）
-- ../../../sources/omni/2025/ideogram-3-0--api-edit-and-training.md （v3 Inpaint/Replace Background/Reframe/Remix + 自定义模型训练 + API 总览，官方文档合并）
+## 一手源存档（sources/）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ideogram-3-0--blog.md) （launch 博客正文，Wayback 存档清洗为 markdown）
+- [blog-snapshot.html](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ideogram-3-0--blog-snapshot.html) （launch 博客原始 HTML 存档，631KB）
+- [api-generate-v3.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ideogram-3-0--api-generate-v3.md) （v3 generate 端点官方文档 markdown，含分辨率/风格/渲染速度/字符参考/版权检测）
+- [api-edit-and-training.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/ideogram-3-0--api-edit-and-training.md) （v3 Inpaint/Replace Background/Reframe/Remix + 自定义模型训练 + API 总览，官方文档合并）

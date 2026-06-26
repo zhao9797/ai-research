@@ -120,7 +120,7 @@ updated: 2026-06-25
 - hf (LDM ckpt mirror): https://huggingface.co/omriav/blended-latent-diffusion-ldm
 - video: https://www.youtube.com/watch?v=7ZZXmwJCsKI
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2206.02779.pdf  （论文 v2 全文 27 页，已精读方法/实验/附录）
-- ../../../sources/omni/2022/blended-latent-diffusion--readme.md  （GitHub 仓库页快照，含安装/用法/检查点/SD2.1/SDXL）
-- ../../../sources/omni/2022/blended-latent-diffusion--project-page.md  （官方项目页快照）
+## 一手源存档（sources/）
+- [arxiv-2206.02779.pdf](https://arxiv.org/pdf/2206.02779)  （论文 v2 全文 27 页，已精读方法/实验/附录）  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/blended-latent-diffusion--readme.md)  （GitHub 仓库页快照，含安装/用法/检查点/SD2.1/SDXL）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/blended-latent-diffusion--project-page.md)  （官方项目页快照）

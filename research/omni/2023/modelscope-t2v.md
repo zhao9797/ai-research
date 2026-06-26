@@ -118,9 +118,9 @@ ModelScopeT2V 是阿里达摩院 2023 年 8 月发布的**首个开源 diffusion
 - modelscope (studio demo): https://modelscope.cn/studios/damo/text-to-video-synthesis/summary
 - github (ModelScope): https://github.com/modelscope/modelscope
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2308.06571.pdf
-- ../../../sources/omni/2023/modelscope-t2v--hf-card.md
-- ../../../sources/omni/2023/modelscope-t2v--modelscope-card.md
-- ../../../sources/omni/2023/modelscope-t2v--model-index.json
-- ../../../sources/omni/2023/modelscope-t2v--unet-config.json
+## 一手源存档（sources/）
+- [arxiv-2308.06571.pdf](https://arxiv.org/pdf/2308.06571)  （arXiv 原文 PDF，不入 git）
+- [hf-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/modelscope-t2v--hf-card.md)
+- [modelscope-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/modelscope-t2v--modelscope-card.md)
+- [model-index.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/modelscope-t2v--model-index.json)
+- [unet-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/modelscope-t2v--unet-config.json)

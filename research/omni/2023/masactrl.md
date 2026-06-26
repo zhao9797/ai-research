@@ -114,7 +114,7 @@ MasaCtrl **本身不是一个模型，而是一个推理期的注意力替换算
 - hf_model_assets: https://huggingface.co/TencentARC/MasaCtrl
 - hf_demo: https://huggingface.co/spaces/TencentARC/MasaCtrl
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2304.08465.pdf  （arXiv v1 预印本全文，含方法/消融/失败案例）
-- ../../../sources/omni/2023/masactrl-iccv2023.pdf  （ICCV 2023 camera-ready，含 Table 1 定量与用户研究——arXiv v1 缺此表）
-- ../../../sources/omni/2023/masactrl--readme.md  （官方 GitHub README：实现细节、checkpoint、SDXL/T2I-Adapter 用法、ICCV bibtex）
+## 一手源存档（sources/）
+- [arxiv-2304.08465.pdf](https://arxiv.org/pdf/2304.08465)  （arXiv v1 预印本全文，含方法/消融/失败案例）  （arXiv 原文 PDF，不入 git）
+- masactrl-iccv2023.pdf  （ICCV 2023 camera-ready，含 Table 1 定量与用户研究——arXiv v1 缺此表）  （PDF 不入 git，走 HF bucket）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/masactrl--readme.md)  （官方 GitHub README：实现细节、checkpoint、SDXL/T2I-Adapter 用法、ICCV bibtex）

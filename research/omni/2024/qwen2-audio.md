@@ -116,8 +116,8 @@ Qwen2-Audio 是阿里通义千问团队 2024 年 7 月发布的 **8.2B 大音频
 - modelscope: https://modelscope.cn/models/qwen/Qwen2-Audio-7B
 - demo: https://huggingface.co/spaces/Qwen/Qwen2-Audio-Instruct-Demo
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2407.10759.pdf （论文全文，已精读；PDF 被 .gitignore 排除不入 git）
-- ../../../sources/omni/2024/qwen2-audio--readme.md （GitHub README，含论文版 + HF 转换版双套 benchmark 数字）
-- ../../../sources/omni/2024/qwen2-audio--hf-modelcard.md （HF Qwen2-Audio-7B-Instruct 模型卡）
-- ../../../sources/omni/2024/qwen2-audio--blog.md （官方博客快照，含多语言/无 ASR/scaling 未来计划）
+## 一手源存档（sources/）
+- [arxiv-2407.10759.pdf](https://arxiv.org/pdf/2407.10759) （论文全文，已精读；PDF 被 .gitignore 排除不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/qwen2-audio--readme.md) （GitHub README，含论文版 + HF 转换版双套 benchmark 数字）
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/qwen2-audio--hf-modelcard.md) （HF Qwen2-Audio-7B-Instruct 模型卡）
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/qwen2-audio--blog.md) （官方博客快照，含多语言/无 ASR/scaling 未来计划）

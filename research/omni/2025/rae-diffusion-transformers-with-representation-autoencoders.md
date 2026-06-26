@@ -117,7 +117,7 @@ RAE 推翻两个长期成见：① 「语义编码器不能用于忠实重建」
 - project_page: https://rae-dit.github.io/
 - hf_models: https://huggingface.co/collections/nyu-visionx/rae-68ecb57b8bfbf816c83cce15
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2510.11690.pdf  （论文全文 PDF，已精读正文+附录 A-J）
-- ../../../sources/omni/2025/rae-diffusion-transformers-with-representation-autoencoders--readme.md  （官方 GitHub README）
-- ../../../sources/omni/2025/rae-diffusion-transformers-with-representation-autoencoders--projectpage.md  （项目页 markdown 快照）
+## 一手源存档（sources/）
+- [arxiv-2510.11690.pdf](https://arxiv.org/pdf/2510.11690)  （论文全文 PDF，已精读正文+附录 A-J）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/rae-diffusion-transformers-with-representation-autoencoders--readme.md)  （官方 GitHub README）
+- [projectpage.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/rae-diffusion-transformers-with-representation-autoencoders--projectpage.md)  （项目页 markdown 快照）

@@ -149,6 +149,6 @@ LDM 的核心洞察是把图像生成显式拆成两个阶段：
 - github: https://github.com/CompVis/latent-diffusion
 - hf_demo: https://huggingface.co/spaces/multimodalart/latentdiffusion
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2112.10752.pdf   （论文全文 v2，2022-04-13；PDF 不入 git，本地精读）
-- ../../../sources/omni/2021/latent-diffusion-ldm--readme.md   （CompVis 官方仓库 README，含 model zoo / LAION 1.45B 权重 / 检索增强 RDM / colab）
+## 一手源存档（sources/）
+- [arxiv-2112.10752.pdf](https://arxiv.org/pdf/2112.10752)   （论文全文 v2，2022-04-13；PDF 不入 git，本地精读）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/latent-diffusion-ldm--readme.md)   （CompVis 官方仓库 README，含 model zoo / LAION 1.45B 权重 / 检索增强 RDM / colab）

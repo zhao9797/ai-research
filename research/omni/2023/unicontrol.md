@@ -146,6 +146,6 @@ UniControl 在多数任务上达到或超越所有单任务基线（Depth 提升
 - dataset(MultiGen-20M): gs://sfr-unicontrol-data-research/dataset
 - checkpoint: https://storage.googleapis.com/sfr-unicontrol-data-research/unicontrol_v1.1.ckpt
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2305.11147.pdf
-- ../../../sources/omni/2023/unicontrol--readme.md
+## 一手源存档（sources/）
+- [arxiv-2305.11147.pdf](https://arxiv.org/pdf/2305.11147)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/unicontrol--readme.md)

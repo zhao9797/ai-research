@@ -93,10 +93,10 @@ Nano Banana（正式名 **Gemini 2.5 Flash Image**，模型代码 `gemini-2.5-fl
 - model card（Vertex AI / Gemini Enterprise Agent Platform）: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/2-5-flash-image
 - benchmark（LMArena Image Edit Arena 盲评 Elo）: https://lmarena.ai/leaderboard/image-edit
 
-## 本地落盘文件
-- ../../../sources/omni/2025/gemini-2-5-flash-image-nano-banana--blog-google.md
-- ../../../sources/omni/2025/gemini-2-5-flash-image-nano-banana--developers-blog.md
-- ../../../sources/omni/2025/gemini-2-5-flash-image-nano-banana--model-page.md
-- ../../../sources/omni/2025/gemini-2-5-flash-image-nano-banana--api-docs.md
-- ../../../sources/omni/2025/gemini-2-5-flash-image-nano-banana--vertex-modelcard.md
-- ../../../sources/omni/2025/gemini-2-5-flash-image-nano-banana--lmarena-image-edit.md
+## 一手源存档（sources/）
+- [blog-google.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-2-5-flash-image-nano-banana--blog-google.md)
+- [developers-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-2-5-flash-image-nano-banana--developers-blog.md)
+- [model-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-2-5-flash-image-nano-banana--model-page.md)
+- [api-docs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-2-5-flash-image-nano-banana--api-docs.md)
+- [vertex-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-2-5-flash-image-nano-banana--vertex-modelcard.md)
+- [lmarena-image-edit.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/gemini-2-5-flash-image-nano-banana--lmarena-image-edit.md)

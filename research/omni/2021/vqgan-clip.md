@@ -122,8 +122,8 @@ VQGAN-CLIP 在几乎全部 12 个 prompt 上得分最高，人评压倒性认为
 - github (EleutherAI 官方): https://github.com/EleutherAI/vqgan-clip
 - 原始 Colab notebook (Katherine Crowson): https://colab.research.google.com/drive/1ZAus_gn2RhTZWzOWUpPERNC0Q8OhZRTZ
 
-## 本地落盘文件
-- ../../../sources/omni/2021/arxiv-2204.08583.pdf
-- ../../../sources/omni/2021/vqgan-clip--arxiv-abs.md
-- ../../../sources/omni/2021/vqgan-clip--nerdyrodent-readme.md
-- ../../../sources/omni/2021/vqgan-clip--eleutherai-readme.md
+## 一手源存档（sources/）
+- [arxiv-2204.08583.pdf](https://arxiv.org/pdf/2204.08583)  （arXiv 原文 PDF，不入 git）
+- [arxiv-abs.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/vqgan-clip--arxiv-abs.md)
+- [nerdyrodent-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/vqgan-clip--nerdyrodent-readme.md)
+- [eleutherai-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2021/vqgan-clip--eleutherai-readme.md)

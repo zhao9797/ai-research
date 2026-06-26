@@ -128,11 +128,11 @@ Krea 此前的实践是与 [[black-forest-labs]] 合作的 FLUX.1 Krea [dev]（�
 - hf (Turbo): https://huggingface.co/krea/Krea-2-Turbo
 - 外部榜单: https://artificialanalysis.ai/image/leaderboard/text-to-image （技术报告/README 引用，未单独抓取）
 
-## 本地落盘文件
-- ../../../sources/omni/2026/krea-2--technical-report.md
-- ../../../sources/omni/2026/krea-2--hf-raw-card.md
-- ../../../sources/omni/2026/krea-2--hf-turbo-card.md
-- ../../../sources/omni/2026/krea-2--github-readme.md
-- ../../../sources/omni/2026/krea-2--open-source.md
-- ../../../sources/omni/2026/krea-2--project-page.md
-- ../../../sources/omni/2026/krea-2--blog.md
+## 一手源存档（sources/）
+- [technical-report.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/krea-2--technical-report.md)
+- [hf-raw-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/krea-2--hf-raw-card.md)
+- [hf-turbo-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/krea-2--hf-turbo-card.md)
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/krea-2--github-readme.md)
+- [open-source.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/krea-2--open-source.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/krea-2--project-page.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/krea-2--blog.md)

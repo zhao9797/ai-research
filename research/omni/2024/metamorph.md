@@ -120,7 +120,7 @@ MetaMorph 的核心假设是把 LLaVA 的洞见类推到生成侧：**LLM 同样
 - project_page: https://tsb0601.github.io/metamorph/
 - github: https://github.com/facebookresearch/metamorph
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2412.14164.pdf
-- ../../../sources/omni/2024/metamorph--project-page.md
-- ../../../sources/omni/2024/metamorph--readme.md
+## 一手源存档（sources/）
+- [arxiv-2412.14164.pdf](https://arxiv.org/pdf/2412.14164)  （arXiv 原文 PDF，不入 git）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/metamorph--project-page.md)
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/metamorph--readme.md)

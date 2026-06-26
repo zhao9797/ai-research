@@ -165,9 +165,9 @@ Qwen-Image 站在 [[latent-diffusion-ldm]] → [[mmdit]]（[[stable-diffusion-3]
 - blog (官方, 中文): https://qwen.ai/blog?id=qwen-image
 - blog (镜像): https://qwenlm.github.io/blog/qwen-image/
 
-## 本地落盘文件
+## 一手源存档（sources/）
 
-- ../../../sources/omni/2025/arxiv-2508.02324.pdf
-- ../../../sources/omni/2025/qwen-image--readme.md
-- ../../../sources/omni/2025/qwen-image--hf-modelcard.md
-- ../../../sources/omni/2025/qwen-image--blog.md
+- [arxiv-2508.02324.pdf](https://arxiv.org/pdf/2508.02324)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen-image--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen-image--hf-modelcard.md)
+- [blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/qwen-image--blog.md)

@@ -136,8 +136,8 @@ OminiControl 在此之上做三件事：
 - Subjects200K github: https://github.com/Yuanshi9815/Subjects200K
 - 后续工作 OminiControl2（效率，另一篇）: https://arxiv.org/abs/2503.08280
 
-## 本地落盘文件
-- ../../../sources/omni/2024/arxiv-2411.15098.pdf
-- ../../../sources/omni/2024/ominicontrol--readme.md
-- ../../../sources/omni/2024/ominicontrol--hf-model-card.md
-- ../../../sources/omni/2024/subjects200k--dataset-card.md
+## 一手源存档（sources/）
+- [arxiv-2411.15098.pdf](https://arxiv.org/pdf/2411.15098)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ominicontrol--readme.md)
+- [hf-model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/ominicontrol--hf-model-card.md)
+- [subjects200k--dataset-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/subjects200k--dataset-card.md)

@@ -156,7 +156,7 @@ StyleGAN-T 是 GAN 路线在大规模文生图上的"最后一搏"——把 Styl
 - project page (ICML 2023 oral): https://sites.google.com/view/stylegan-t/
 - supplementary video: https://www.youtube.com/watch?v=MMj8OTOUIok
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2301.09515.pdf
-- ../../../sources/omni/2023/stylegan-t-fast-large-scale-t2i--readme.md
-- ../../../sources/omni/2023/stylegan-t-fast-large-scale-t2i--project.md
+## 一手源存档（sources/）
+- [arxiv-2301.09515.pdf](https://arxiv.org/pdf/2301.09515)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/stylegan-t-fast-large-scale-t2i--readme.md)
+- [project.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/stylegan-t-fast-large-scale-t2i--project.md)

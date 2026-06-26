@@ -156,7 +156,7 @@ StyleDrop 本体**不训练新基座**，所有大规模数据来自冻结的 Mu
 - project_page: https://styledrop.github.io/
 - ar5iv（全文 HTML，含附录）: https://ar5iv.labs.arxiv.org/html/2306.00983
 
-## 本地落盘文件
-- ../../../sources/omni/2023/styledrop--ar5iv.md （ar5iv 全文 markdown：正文 §1-5 + 附录 B，含 adapter 伪码/超参表/CFG 消融——主精读来源）
-- ../../../sources/omni/2023/styledrop--project-page.md （styledrop.github.io 项目页快照）
-- ../../../sources/omni/2023/arxiv-2306.00983.pdf （arXiv 官方 PDF，28 页完整版，已直连重抓修复，pdftotext 可正常提取；全文表格/超参数已逐一核对）
+## 一手源存档（sources/）
+- [ar5iv.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/styledrop--ar5iv.md) （ar5iv 全文 markdown：正文 §1-5 + 附录 B，含 adapter 伪码/超参表/CFG 消融——主精读来源）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/styledrop--project-page.md) （styledrop.github.io 项目页快照）
+- [arxiv-2306.00983.pdf](https://arxiv.org/pdf/2306.00983) （arXiv 官方 PDF，28 页完整版，已直连重抓修复，pdftotext 可正常提取；全文表格/超参数已逐一核对）

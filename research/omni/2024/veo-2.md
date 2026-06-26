@@ -77,9 +77,9 @@ Veo 2 是 Google DeepMind 2024-12-16 发布的旗舰闭源文/图生视频模型
 - Vertex AI 官方 model card（生产规格）: https://cloud.google.com/vertex-ai/generative-ai/docs/models/veo/2-0-generate-001
 - 家族架构旁证（Veo 3 技术报告，非 Veo 2 口径）: https://storage.googleapis.com/deepmind-media/veo/Veo-3-Tech-Report.pdf
 
-## 本地落盘文件
-- ../../../sources/omni/2024/veo-2--blog-google-dec2024.md （2024-12-16 发布博客，核心一手源：4K/分钟级/电影术语/SynthID/measured rollout）
-- ../../../sources/omni/2024/veo-2--deepmind-veo2-wayback20241220.md （**原始 Veo 2 产品页 wayback 快照**，唯一含 MovieGenBench 1003 prompt 人评设置的一手文本）
-- ../../../sources/omni/2024/veo-2--deepmind-veo2.md （⚠️ 抓取时该 URL 已重定向，内容实为 **Veo 3/3.1 现行页**，非 Veo 2 原页；仅留作链路记录，正文 Veo 2 结论不据此页）
-- ../../../sources/omni/2024/veo-2--vertex-ai-model-card.md （Vertex AI / Gemini Enterprise `veo-2.0-generate-001` GA 规格表：720p·5–8s·24FPS·≤4 视频·英语·配额 10/min；2026-06-25 重抓，原抓取仅得导航 chrome 已修复）
-- ../../../sources/omni/2024/veo-3-tech-report-family-context.pdf （PDF，.gitignore 排除不入 git，仅本地；**Veo 3 技术报告**，仅作家族 latent-diffusion 方法谱系旁证，非 Veo 2 口径）
+## 一手源存档（sources/）
+- [blog-google-dec2024.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/veo-2--blog-google-dec2024.md) （2024-12-16 发布博客，核心一手源：4K/分钟级/电影术语/SynthID/measured rollout）
+- [deepmind-veo2-wayback20241220.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/veo-2--deepmind-veo2-wayback20241220.md) （**原始 Veo 2 产品页 wayback 快照**，唯一含 MovieGenBench 1003 prompt 人评设置的一手文本）
+- [deepmind-veo2.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/veo-2--deepmind-veo2.md) （⚠️ 抓取时该 URL 已重定向，内容实为 **Veo 3/3.1 现行页**，非 Veo 2 原页；仅留作链路记录，正文 Veo 2 结论不据此页）
+- [vertex-ai-model-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/veo-2--vertex-ai-model-card.md) （Vertex AI / Gemini Enterprise `veo-2.0-generate-001` GA 规格表：720p·5–8s·24FPS·≤4 视频·英语·配额 10/min；2026-06-25 重抓，原抓取仅得导航 chrome 已修复）
+- veo-3-tech-report-family-context.pdf （PDF，.gitignore 排除不入 git，仅本地；**Veo 3 技术报告**，仅作家族 latent-diffusion 方法谱系旁证，非 Veo 2 口径）

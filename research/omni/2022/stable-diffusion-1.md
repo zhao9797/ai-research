@@ -118,10 +118,10 @@ SD v1 的 model card 本身**只给了一张"不同 CFG scale（1.5/2/3/4/5/6/7/
 - paper (LDM, CVPR'22 Oral): https://arxiv.org/abs/2112.10752
 - project page: https://ommer-lab.com/research/latent-diffusion-models/
 
-## 本地落盘文件
-- ../../../sources/omni/2022/stable-diffusion-1--github-readme.md
-- ../../../sources/omni/2022/stable-diffusion-1--hf-v1-4-card.md
-- ../../../sources/omni/2022/stable-diffusion-1--hf-v1-1-card.md
-- ../../../sources/omni/2022/stable-diffusion-1--hf-v1-5-card.md
-- ../../../sources/omni/2022/stable-diffusion-1--stability-blog.md
-- ../../../sources/omni/2022/arxiv-2112.10752.pdf （LDM 论文，~39MB，.gitignore 排除，仅本地）
+## 一手源存档（sources/）
+- [github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/stable-diffusion-1--github-readme.md)
+- [hf-v1-4-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/stable-diffusion-1--hf-v1-4-card.md)
+- [hf-v1-1-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/stable-diffusion-1--hf-v1-1-card.md)
+- [hf-v1-5-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/stable-diffusion-1--hf-v1-5-card.md)
+- [stability-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/stable-diffusion-1--stability-blog.md)
+- [arxiv-2112.10752.pdf](https://arxiv.org/pdf/2112.10752) （LDM 论文，~39MB，.gitignore 排除，仅本地）  （arXiv 原文 PDF，不入 git）

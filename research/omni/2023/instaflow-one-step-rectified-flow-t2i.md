@@ -113,6 +113,6 @@ InstaFlow 是**第一个由 Stable Diffusion 蒸馏得到、能在单步（one-s
 - demo (HF Space): https://huggingface.co/spaces/XCLiu/InstaFlow
 - official Rectified Flow repo: https://github.com/gnobitab/RectifiedFlow
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2309.06380.pdf
-- ../../../sources/omni/2023/instaflow-one-step-rectified-flow-t2i--readme.md
+## 一手源存档（sources/）
+- [arxiv-2309.06380.pdf](https://arxiv.org/pdf/2309.06380)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/instaflow-one-step-rectified-flow-t2i--readme.md)

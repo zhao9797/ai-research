@@ -129,8 +129,8 @@ Sora 是 OpenAI 2024-02-15 以技术报告《Video generation models as world si
 - product-launch blog (Dec 2024, Sora Turbo 产品发布): https://openai.com/index/sora-is-here/
 - 引用：Brooks, Peebles, et al., "Video generation models as world simulators," 2024. BibTeX: https://openai.com/bibtex/videoworldsimulators2024.bib
 
-## 本地落盘文件
-- ../../../sources/omni/2024/sora--tech-report.md
-- ../../../sources/omni/2024/sora--system-card.md
-- ../../../sources/omni/2024/sora--blog-landing.md
-- ../../../sources/omni/2024/sora--blog-launch.md
+## 一手源存档（sources/）
+- [tech-report.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sora--tech-report.md)
+- [system-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sora--system-card.md)
+- [blog-landing.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sora--blog-landing.md)
+- [blog-launch.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2024/sora--blog-launch.md)

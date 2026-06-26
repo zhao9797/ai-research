@@ -114,7 +114,7 @@ DreamBooth 在主体与提示保真上都明显领先 Textual Inversion；Imagen
 - project_page: https://dreambooth.github.io/
 - dataset_github: https://github.com/google/dreambooth
 
-## 本地落盘文件
-- ../../../sources/omni/2022/arxiv-2208.12242.pdf （论文 PDF，23MB，.gitignore 排除不入 git，已本地精读）
-- ../../../sources/omni/2022/dreambooth--project-page.md （项目页快照，含两步微调等正文未详述细节）
-- ../../../sources/omni/2022/dreambooth--dataset-readme.md （DreamBench 数据集 GitHub README）
+## 一手源存档（sources/）
+- [arxiv-2208.12242.pdf](https://arxiv.org/pdf/2208.12242) （论文 PDF，23MB，.gitignore 排除不入 git，已本地精读）
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dreambooth--project-page.md) （项目页快照，含两步微调等正文未详述细节）
+- [dataset-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2022/dreambooth--dataset-readme.md) （DreamBench 数据集 GitHub README）

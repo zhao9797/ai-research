@@ -146,8 +146,8 @@ Hunyuan3D-Paint **四项全优**，相对自家上一代 Hunyuan3D-2.0 在所有
 - project_page: https://3d-models.hunyuan.tencent.com/
 - official_site: https://3d.hunyuan.tencent.com
 
-## 本地落盘文件
-- ../../../sources/omni/2025/arxiv-2506.15442.pdf
-- ../../../sources/omni/2025/hunyuan3d-2-1--readme.md
-- ../../../sources/omni/2025/hunyuan3d-2-1--hf-modelcard.md
-- ../../../sources/omni/2025/hunyuan3d-2-1--project-page.md
+## 一手源存档（sources/）
+- [arxiv-2506.15442.pdf](https://arxiv.org/pdf/2506.15442)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/hunyuan3d-2-1--readme.md)
+- [hf-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/hunyuan3d-2-1--hf-modelcard.md)
+- [project-page.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2025/hunyuan3d-2-1--project-page.md)

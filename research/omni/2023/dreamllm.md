@@ -126,6 +126,6 @@ DreamLLM 的两条核心原则把它和前作区分开：
 - project page: https://dreamllm.github.io/
 - huggingface checkpoints: https://huggingface.co/collections/RunpeiDong/dreamllm-65fa8297e12a435e55e4b5ca
 
-## 本地落盘文件
-- ../../../sources/omni/2023/arxiv-2309.11499.pdf
-- ../../../sources/omni/2023/dreamllm--readme.md
+## 一手源存档（sources/）
+- [arxiv-2309.11499.pdf](https://arxiv.org/pdf/2309.11499)  （arXiv 原文 PDF，不入 git）
+- [readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2023/dreamllm--readme.md)
