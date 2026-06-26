@@ -29,5 +29,5 @@ IDEA 研究院封神榜 Ziya-Visual：面向中英双语的视觉语言模型，
 - pdf_url: https://arxiv.org/pdf/2310.08166
 - github_url: https://github.com/IDEA-CCNL/Fengshenbang-LM
 
-## 本地落盘文件
-- ../../../sources/llm/2023/ziya-visual.pdf
+## 一手源存档（sources/）
+- ziya-visual.pdf  （PDF 不入 git，走 HF bucket）

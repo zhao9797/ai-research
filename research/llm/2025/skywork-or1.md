@@ -29,5 +29,5 @@ downloaded: [skywork-or1.pdf]
 - pdf_url: https://arxiv.org/pdf/2505.22312
 - github_url: https://github.com/SkyworkAI/Skywork-OR1
 
-## 本地落盘文件
-- ../../../sources/llm/2025/skywork-or1.pdf
+## 一手源存档（sources/）
+- skywork-or1.pdf  （PDF 不入 git，走 HF bucket）

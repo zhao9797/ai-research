@@ -29,5 +29,5 @@ ChatGLM3 是智谱 AI 与清华 KEG 联合发布的对话预训练模型。ChatG
 - url: https://github.com/THUDM/ChatGLM3
 - github_url: https://github.com/THUDM/ChatGLM3
 
-## 本地落盘文件
-- ../../../sources/llm/2023/chatglm3-readme.md
+## 一手源存档（sources/）
+- [chatglm3-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/chatglm3-readme.md)

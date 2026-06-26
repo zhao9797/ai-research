@@ -29,5 +29,5 @@ Magistral 从头自建 RL 流水线，仅用自家模型与基础设施，探索
 - PDF：https://arxiv.org/pdf/2506.10910
 - 官方博客：https://mistral.ai/news/magistral
 
-## 本地落盘文件
-- ../../../sources/llm/2025/magistral.pdf
+## 一手源存档（sources/）
+- magistral.pdf  （PDF 不入 git，走 HF bucket）

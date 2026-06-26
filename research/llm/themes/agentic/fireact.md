@@ -28,5 +28,5 @@ downloaded: [fireact-2310.05915.pdf]
 - pdf_url: https://arxiv.org/pdf/2310.05915
 - github_url: https://github.com/anchen1011/FireAct
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/fireact-2310.05915.pdf
+## 一手源存档（sources/）
+- [fireact-2310.05915.pdf](https://arxiv.org/pdf/2310.05915)  （arXiv 原文 PDF，不入 git）

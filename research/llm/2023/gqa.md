@@ -26,5 +26,5 @@ MQA 仅用单个 KV 头大幅加速解码但损质量，且不愿为加速单独
 - url: https://arxiv.org/abs/2305.13245
 - pdf_url: https://arxiv.org/pdf/2305.13245
 
-## 本地落盘文件
-- ../../../sources/llm/2023/gqa.pdf
+## 一手源存档（sources/）
+- gqa.pdf  （PDF 不入 git，走 HF bucket）

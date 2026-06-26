@@ -30,5 +30,5 @@ R1-Searcher 提出两阶段、基于结果（outcome-based）的 RL 方法，让
 - pdf_url: https://arxiv.org/pdf/2503.05592
 - github_url: https://github.com/RUCAIBox/R1-Searcher
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/r1-searcher-2503.05592.pdf
+## 一手源存档（sources/）
+- [r1-searcher-2503.05592.pdf](https://arxiv.org/pdf/2503.05592)  （arXiv 原文 PDF，不入 git）

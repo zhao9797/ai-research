@@ -29,5 +29,5 @@ ALiBi（Attention with Linear Biases）：不加位置嵌入，而是按 query-k
 - url: https://arxiv.org/abs/2108.12409
 - pdf_url: https://arxiv.org/pdf/2108.12409
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2108.12409.pdf
+## 一手源存档（sources/）
+- [arxiv-2108.12409.pdf](https://arxiv.org/pdf/2108.12409)  （arXiv 原文 PDF，不入 git）

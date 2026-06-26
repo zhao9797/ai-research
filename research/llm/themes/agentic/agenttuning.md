@@ -29,5 +29,5 @@ downloaded: [agenttuning-2310.12823.pdf]
 - pdf_url: https://arxiv.org/pdf/2310.12823
 - github_url: https://github.com/THUDM/AgentTuning
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/agenttuning-2310.12823.pdf
+## 一手源存档（sources/）
+- [agenttuning-2310.12823.pdf](https://arxiv.org/pdf/2310.12823)  （arXiv 原文 PDF，不入 git）

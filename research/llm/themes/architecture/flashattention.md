@@ -30,5 +30,5 @@ Transformer 在长序列上慢且耗显存，因为自注意力时间和显存�
 - pdf_url: https://arxiv.org/pdf/2205.14135
 - github_url: https://github.com/Dao-AILab/flash-attention
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/flashattention.pdf
+## 一手源存档（sources/）
+- flashattention.pdf  （PDF 不入 git，走 HF bucket）

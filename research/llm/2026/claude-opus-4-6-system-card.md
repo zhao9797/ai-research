@@ -30,5 +30,5 @@ Claude Opus 4.6 是 Anthropic 的前沿模型，在软件工程、智能体任�
 - url: https://www.anthropic.com/system-cards
 - pdf_url: https://www-cdn.anthropic.com/14e4fb01875d2a69f646fa5e574dea2b1c0ff7b5.pdf
 
-## 本地落盘文件
-- ../../../sources/llm/2026/anthropic-claude-opus-4-6-system-card.pdf
+## 一手源存档（sources/）
+- anthropic-claude-opus-4-6-system-card.pdf  （PDF 不入 git，走 HF bucket）

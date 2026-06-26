@@ -28,5 +28,5 @@ Jamba 是基于新型混合 Transformer-Mamba MoE 架构的基础大模型：交
 - url: https://arxiv.org/abs/2403.19887
 - pdf_url: https://arxiv.org/pdf/2403.19887
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2403.19887.pdf
+## 一手源存档（sources/）
+- [2403.19887.pdf](https://arxiv.org/pdf/2403.19887)  （arXiv 原文 PDF，不入 git）

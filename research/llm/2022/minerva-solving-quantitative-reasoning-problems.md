@@ -28,5 +28,5 @@ SOTA 模型在需要定量推理的任务（大学级数学、科学、工程）
 - url: https://arxiv.org/abs/2206.14858
 - pdf_url: https://arxiv.org/pdf/2206.14858
 
-## 本地落盘文件
-- ../../../sources/llm/2022/minerva.pdf
+## 一手源存档（sources/）
+- minerva.pdf  （PDF 不入 git，走 HF bucket）

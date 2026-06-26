@@ -29,5 +29,5 @@ SWE-agent 研究"界面设计如何影响 LM agent 表现"。作者主张 LM age
 - pdf_url: https://arxiv.org/pdf/2405.15793
 - github_url: https://github.com/SWE-agent/SWE-agent
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/swe-agent-2405.15793.pdf
+## 一手源存档（sources/）
+- [swe-agent-2405.15793.pdf](https://arxiv.org/pdf/2405.15793)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ Toolformer 提出一种自监督方式，让语言模型自主决定调用哪些
 - url: https://arxiv.org/abs/2302.04761
 - pdf_url: https://arxiv.org/pdf/2302.04761
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/toolformer-2302.04761.pdf
+## 一手源存档（sources/）
+- [toolformer-2302.04761.pdf](https://arxiv.org/pdf/2302.04761)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ downloaded: [qwen3-coder-blog.html]
 - url: https://qwenlm.github.io/blog/qwen3-coder/
 - github_url: https://github.com/QwenLM/Qwen3-Coder
 
-## 本地落盘文件
-- ../../../sources/llm/2025/qwen3-coder-blog.html
+## 一手源存档（sources/）
+- [qwen3-coder-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/qwen3-coder-blog.html)

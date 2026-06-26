@@ -30,5 +30,5 @@ ViT 将图像分割为固定大小的 patch（如 16×16），线性投影为序
 - pdf_url: https://arxiv.org/pdf/2010.11929
 - github_url: https://github.com/google-research/vision_transformer
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2010.11929.pdf
+## 一手源存档（sources/）
+- [arxiv-2010.11929.pdf](https://arxiv.org/pdf/2010.11929)  （arXiv 原文 PDF，不入 git）

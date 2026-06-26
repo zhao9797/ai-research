@@ -37,7 +37,7 @@ MiniCPM5-1B 是 MiniCPM5 系列首个 checkpoint，定位本地助手、coding a
 - pdf_url (UltraData 数据方法): https://arxiv.org/abs/2602.09003
 - github_url: https://github.com/OpenBMB/MiniCPM
 
-## 本地落盘文件
-- ../../../sources/llm/2026/minicpm5-readme.md
-- ../../../sources/llm/2026/arxiv-2602.09003-ultradata.pdf
-- ../../../sources/llm/2026/minicpm5-1b-config.json
+## 一手源存档（sources/）
+- [minicpm5-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/minicpm5-readme.md)
+- [arxiv-2602.09003-ultradata.pdf](https://arxiv.org/pdf/2602.09003)  （arXiv 原文 PDF，不入 git）
+- [minicpm5-1b-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/minicpm5-1b-config.json)

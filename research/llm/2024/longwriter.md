@@ -29,5 +29,5 @@ downloaded: [files/longwriter.pdf]
 - PDF: https://arxiv.org/pdf/2408.07055
 - GitHub: https://github.com/THUDM/LongWriter
 
-## 本地落盘文件
-- ../../../sources/llm/2024/longwriter.pdf
+## 一手源存档（sources/）
+- longwriter.pdf  （PDF 不入 git，走 HF bucket）

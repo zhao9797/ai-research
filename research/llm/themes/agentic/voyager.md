@@ -30,5 +30,5 @@ Voyager 是基于 GPT-4 的开放世界具身 agent，在 Minecraft 中持续探
 - pdf_url: https://arxiv.org/pdf/2305.16291
 - github_url: https://github.com/MineDojo/Voyager
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/voyager-2305.16291.pdf
+## 一手源存档（sources/）
+- [voyager-2305.16291.pdf](https://arxiv.org/pdf/2305.16291)  （arXiv 原文 PDF，不入 git）

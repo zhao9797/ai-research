@@ -28,5 +28,5 @@ Llama 3 首发博客（8B/70B），标准 decoder-only Transformer 大改进 + 1
 ## 原始链接
 - url: https://ai.meta.com/blog/meta-llama-3/
 
-## 本地落盘文件
-- ../../../sources/llm/2024/meta-llama-3-blog.md
+## 一手源存档（sources/）
+- [meta-llama-3-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/meta-llama-3-blog.md)

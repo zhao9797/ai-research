@@ -31,5 +31,5 @@ Microsoft Research 2026-03-04 发布的 Phi-4-reasoning-vision-15B 技术报告�
 - github_url: https://github.com/microsoft/Phi-4-reasoning-vision-15B
 - huggingface: https://huggingface.co/microsoft/Phi-4-reasoning-vision-15B
 
-## 本地落盘文件
-- ../../../sources/llm/2026/phi-4-reasoning-vision-15b-tech-report.pdf
+## 一手源存档（sources/）
+- phi-4-reasoning-vision-15b-tech-report.pdf  （PDF 不入 git，走 HF bucket）

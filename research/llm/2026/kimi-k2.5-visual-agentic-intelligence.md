@@ -31,5 +31,5 @@ Kimi K2.5（arXiv 2026-02-02，作者 "Kimi Team"）是一款开源多模态 age
 - pdf_url: https://arxiv.org/pdf/2602.02276
 - model card: https://huggingface.co/moonshotai/Kimi-K2.5 ; https://huggingface.co/moonshotai/Kimi-K2.6
 
-## 本地落盘文件
-- ../../../sources/llm/2026/kimi-k2.5.pdf
+## 一手源存档（sources/）
+- kimi-k2.5.pdf  （PDF 不入 git，走 HF bucket）

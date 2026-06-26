@@ -31,6 +31,6 @@ The Pile 是一个 825 GiB（约 800GB）的多样化开源语言建模数据集
 - 官方站: https://pile.eleuther.ai/
 - github_url: https://github.com/EleutherAI/the-pile
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2101.00027.pdf
-- ../../../sources/llm/2020/eleuther-the-pile.html
+## 一手源存档（sources/）
+- [arxiv-2101.00027.pdf](https://arxiv.org/pdf/2101.00027)  （arXiv 原文 PDF，不入 git）
+- [eleuther-the-pile.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2020/eleuther-the-pile.html)

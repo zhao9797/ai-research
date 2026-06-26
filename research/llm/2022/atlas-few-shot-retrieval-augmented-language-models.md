@@ -30,5 +30,5 @@ Meta 的检索增强语言模型 Atlas：用远小的参数 + 可更新文档索
 - pdf_url: https://arxiv.org/pdf/2208.03299
 - github_url: https://github.com/facebookresearch/atlas
 
-## 本地落盘文件
-- ../../../sources/llm/2022/atlas.pdf
+## 一手源存档（sources/）
+- atlas.pdf  （PDF 不入 git，走 HF bucket）

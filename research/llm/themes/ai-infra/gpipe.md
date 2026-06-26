@@ -26,5 +26,5 @@ GPipe 把模型按层划分为多个 stage 放到不同加速器，将一个 min
 - url: https://arxiv.org/abs/1811.06965
 - pdf_url: https://arxiv.org/pdf/1811.06965
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/gpipe-1811.06965.pdf
+## 一手源存档（sources/）
+- [gpipe-1811.06965.pdf](https://arxiv.org/pdf/1811.06965)  （arXiv 原文 PDF，不入 git）

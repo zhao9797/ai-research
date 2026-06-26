@@ -28,5 +28,5 @@ downloaded: [dapo-2503.14476.pdf]
 - pdf_url: https://arxiv.org/pdf/2503.14476
 - github_url: https://github.com/volcengine/verl
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/dapo-2503.14476.pdf
+## 一手源存档（sources/）
+- [dapo-2503.14476.pdf](https://arxiv.org/pdf/2503.14476)  （arXiv 原文 PDF，不入 git）

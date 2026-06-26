@@ -29,5 +29,5 @@ LLM 越来越多作目标驱动 agent 与环境交互，但用传统 RL 学 tria
 - pdf_url: https://arxiv.org/pdf/2303.11366
 - github_url: https://github.com/noahshinn/reflexion
 
-## 本地落盘文件
-- ../../../sources/llm/2023/reflexion.pdf
+## 一手源存档（sources/）
+- reflexion.pdf  （PDF 不入 git，走 HF bucket）

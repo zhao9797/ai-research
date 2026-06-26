@@ -30,5 +30,5 @@ ToolLLM 是面向工具使用的通用框架，含数据构造、模型训练、
 - pdf_url: https://arxiv.org/pdf/2307.16789
 - github_url: https://github.com/OpenBMB/ToolBench
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/toolllm-2307.16789.pdf
+## 一手源存档（sources/）
+- [toolllm-2307.16789.pdf](https://arxiv.org/pdf/2307.16789)  （arXiv 原文 PDF，不入 git）

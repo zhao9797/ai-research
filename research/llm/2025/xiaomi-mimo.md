@@ -30,5 +30,5 @@ MiMo-7B 证明小模型也能有强推理。预训练侧优化数据 pipeline、
 - pdf_url: https://arxiv.org/pdf/2505.07608
 - github_url: https://github.com/XiaomiMiMo/MiMo
 
-## 本地落盘文件
-- ../../../sources/llm/2025/xiaomi-mimo.pdf
+## 一手源存档（sources/）
+- xiaomi-mimo.pdf  （PDF 不入 git，走 HF bucket）

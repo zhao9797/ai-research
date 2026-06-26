@@ -26,5 +26,5 @@ GShard 用一组轻量级 sharding API（注解张量切分）让编译器自动
 - url: https://arxiv.org/abs/2006.16668
 - pdf_url: https://arxiv.org/pdf/2006.16668
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/gshard-2006.16668.pdf
+## 一手源存档（sources/）
+- [gshard-2006.16668.pdf](https://arxiv.org/pdf/2006.16668)  （arXiv 原文 PDF，不入 git）

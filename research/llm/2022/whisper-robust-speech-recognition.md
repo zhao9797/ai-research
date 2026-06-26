@@ -30,5 +30,5 @@ OpenAI 用 68 万小时弱监督多语言多任务音频训练的 Whisper，zero
 - pdf_url: https://arxiv.org/pdf/2212.04356
 - github_url: https://github.com/openai/whisper
 
-## 本地落盘文件
-- ../../../sources/llm/2022/whisper.pdf
+## 一手源存档（sources/）
+- whisper.pdf  （PDF 不入 git，走 HF bucket）

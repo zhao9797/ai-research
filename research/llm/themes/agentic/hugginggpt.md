@@ -29,5 +29,5 @@ HuggingGPT 用 ChatGPT 作为控制器(controller)来管理和调用 Hugging Fac
 - pdf_url: https://arxiv.org/pdf/2303.17580
 - github_url: https://github.com/microsoft/JARVIS
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/hugginggpt-2303.17580.pdf
+## 一手源存档（sources/）
+- [hugginggpt-2303.17580.pdf](https://arxiv.org/pdf/2303.17580)  （arXiv 原文 PDF，不入 git）

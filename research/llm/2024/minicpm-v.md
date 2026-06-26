@@ -30,5 +30,5 @@ MiniCPM-V 是可部署到手机端的高效 MLLM 系列。最新 MiniCPM-Llama3-
 - PDF: https://arxiv.org/pdf/2408.01800
 - GitHub: https://github.com/OpenBMB/MiniCPM-V
 
-## 本地落盘文件
-- ../../../sources/llm/2024/minicpm-v.pdf
+## 一手源存档（sources/）
+- minicpm-v.pdf  （PDF 不入 git，走 HF bucket）

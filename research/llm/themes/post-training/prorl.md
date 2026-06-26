@@ -29,5 +29,5 @@ ProRL：用"长时程 RL"正面回应"RL 只是放大 base 已有能力"的质�
 - pdf_url: https://arxiv.org/pdf/2505.24864
 - model: https://huggingface.co/nvidia/Nemotron-Research-Reasoning-Qwen-1.5B
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/prorl.pdf
+## 一手源存档（sources/）
+- prorl.pdf  （PDF 不入 git，走 HF bucket）

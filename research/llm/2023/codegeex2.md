@@ -29,5 +29,5 @@ CodeGeeX2 是多语言代码生成模型 CodeGeeX 的第二代。不同于一代
 - url: https://github.com/THUDM/CodeGeeX2
 - github_url: https://github.com/THUDM/CodeGeeX2
 
-## 本地落盘文件
-- ../../../sources/llm/2023/codegeex2-readme.md
+## 一手源存档（sources/）
+- [codegeex2-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/codegeex2-readme.md)

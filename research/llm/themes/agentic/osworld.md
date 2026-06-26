@@ -29,5 +29,5 @@ OSWorld 是首个可扩展的真实计算机环境，用于多模态 agent，支
 - pdf_url: https://arxiv.org/pdf/2404.07972
 - github_url: https://github.com/xlang-ai/OSWorld
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/osworld-2404.07972.pdf
+## 一手源存档（sources/）
+- [osworld-2404.07972.pdf](https://arxiv.org/pdf/2404.07972)  （arXiv 原文 PDF，不入 git）

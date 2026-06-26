@@ -28,5 +28,5 @@ MM1：Apple 关于如何构建高性能多模态 LLM 的系统消融研究，得
 - url: https://arxiv.org/abs/2403.09611
 - pdf_url: https://arxiv.org/pdf/2403.09611
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2403.09611.pdf
+## 一手源存档（sources/）
+- [2403.09611.pdf](https://arxiv.org/pdf/2403.09611)  （arXiv 原文 PDF，不入 git）

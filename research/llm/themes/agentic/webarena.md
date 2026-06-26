@@ -29,5 +29,5 @@ WebArena 构建了一个高度真实、可复现的 web agent 评测环境，包
 - pdf_url: https://arxiv.org/pdf/2307.13854
 - github_url: https://github.com/web-arena-x/webarena
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/webarena-2307.13854.pdf
+## 一手源存档（sources/）
+- [webarena-2307.13854.pdf](https://arxiv.org/pdf/2307.13854)  （arXiv 原文 PDF，不入 git）

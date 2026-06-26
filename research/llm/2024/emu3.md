@@ -29,5 +29,5 @@ downloaded: [files/emu3.pdf]
 - PDF: https://arxiv.org/pdf/2409.18869
 - GitHub: https://github.com/baaivision/Emu3
 
-## 本地落盘文件
-- ../../../sources/llm/2024/emu3.pdf
+## 一手源存档（sources/）
+- emu3.pdf  （PDF 不入 git，走 HF bucket）

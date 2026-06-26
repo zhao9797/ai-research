@@ -28,5 +28,5 @@ Mooncake 是 Kimi 的 serving 平台，采用 KVCache 中心的分离架构（pr
 - pdf_url: https://arxiv.org/pdf/2407.00079
 - github_url: https://github.com/kvcache-ai/Mooncake
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/mooncake-2407.00079.pdf
+## 一手源存档（sources/）
+- [mooncake-2407.00079.pdf](https://arxiv.org/pdf/2407.00079)  （arXiv 原文 PDF，不入 git）

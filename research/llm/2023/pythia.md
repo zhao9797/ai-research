@@ -30,5 +30,5 @@ EleutherAI 的 Pythia：16 个同序数据训练、含 154 个 checkpoint 的可
 - pdf_url: https://arxiv.org/pdf/2304.01373
 - github_url: https://github.com/EleutherAI/pythia
 
-## 本地落盘文件
-- ../../../sources/llm/2023/pythia.pdf
+## 一手源存档（sources/）
+- pythia.pdf  （PDF 不入 git，走 HF bucket）

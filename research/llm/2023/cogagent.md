@@ -30,5 +30,5 @@ downloaded: [cogagent.pdf]
 - pdf_url: https://arxiv.org/pdf/2312.08914
 - github_url: https://github.com/THUDM/CogVLM
 
-## 本地落盘文件
-- ../../../sources/llm/2023/cogagent.pdf
+## 一手源存档（sources/）
+- cogagent.pdf  （PDF 不入 git，走 HF bucket）

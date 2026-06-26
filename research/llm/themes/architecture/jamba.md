@@ -29,5 +29,5 @@ Jamba 把 Transformer 注意力层、Mamba（SSM）层和 MoE 层按比例交替
 - pdf_url: https://arxiv.org/pdf/2403.19887
 - github_url: https://huggingface.co/ai21labs/Jamba-v0.1
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/jamba.pdf
+## 一手源存档（sources/）
+- jamba.pdf  （PDF 不入 git，走 HF bucket）

@@ -30,5 +30,5 @@ Pangu Ultra 是 135B 参数稠密 Transformer，证明国产昇腾 NPU 能高效
 - url: https://arxiv.org/abs/2504.07866
 - pdf_url: https://arxiv.org/pdf/2504.07866
 
-## 本地落盘文件
-- ../../../sources/llm/2025/pangu-ultra.pdf
+## 一手源存档（sources/）
+- pangu-ultra.pdf  （PDF 不入 git，走 HF bucket）

@@ -29,5 +29,5 @@ DeepSeek LLM 是面向长期主义的开源大模型项目，深入研究 scalin
 - PDF: https://arxiv.org/pdf/2401.02954
 - GitHub: https://github.com/deepseek-ai/DeepSeek-LLM
 
-## 本地落盘文件
-- ../../../sources/llm/2024/deepseek-llm.pdf
+## 一手源存档（sources/）
+- deepseek-llm.pdf  （PDF 不入 git，走 HF bucket）

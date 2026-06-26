@@ -26,5 +26,5 @@ downloaded: [phi-2-microsoft-blog.html]
 ## 原始链接
 - url: https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/
 
-## 本地落盘文件
-- ../../../sources/llm/2023/phi-2-microsoft-blog.html
+## 一手源存档（sources/）
+- [phi-2-microsoft-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/phi-2-microsoft-blog.html)

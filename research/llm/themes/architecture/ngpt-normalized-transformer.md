@@ -29,5 +29,5 @@ nGPT 提出在超球面上做表示学习的归一化 Transformer：embedding、
 - pdf_url: https://arxiv.org/pdf/2410.01131
 - github_url: https://github.com/NVIDIA/ngpt
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/ngpt.pdf
+## 一手源存档（sources/）
+- ngpt.pdf  （PDF 不入 git，走 HF bucket）

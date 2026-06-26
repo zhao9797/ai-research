@@ -28,5 +28,5 @@ phi-4 是 14B 参数模型，训练配方以数据质量为中心。不同于多
 - url: https://arxiv.org/abs/2412.08905
 - pdf_url: https://arxiv.org/pdf/2412.08905
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2412.08905.pdf
+## 一手源存档（sources/）
+- [2412.08905.pdf](https://arxiv.org/pdf/2412.08905)  （arXiv 原文 PDF，不入 git）

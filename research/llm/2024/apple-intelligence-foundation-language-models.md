@@ -29,5 +29,5 @@ Apple Intelligence 基础模型技术报告：一个约 3B 的端侧模型 + 一
 - url: https://arxiv.org/abs/2407.21075
 - pdf_url: https://arxiv.org/pdf/2407.21075
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2407.21075.pdf
+## 一手源存档（sources/）
+- [2407.21075.pdf](https://arxiv.org/pdf/2407.21075)  （arXiv 原文 PDF，不入 git）

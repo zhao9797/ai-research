@@ -26,5 +26,5 @@ Alpa 把并行策略空间分层：intra-operator parallelism（数据/张量并
 - url: https://arxiv.org/abs/2201.12023
 - pdf_url: https://arxiv.org/pdf/2201.12023
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/alpa-2201.12023.pdf
+## 一手源存档（sources/）
+- [alpa-2201.12023.pdf](https://arxiv.org/pdf/2201.12023)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ Skywork-MoE 是 146B 参数、16 专家的高性能 MoE LLM，由已有的 Skywo
 - PDF: https://arxiv.org/pdf/2406.06563
 - GitHub: https://github.com/SkyworkAI/Skywork-MoE
 
-## 本地落盘文件
-- ../../../sources/llm/2024/skywork-moe.pdf
+## 一手源存档（sources/）
+- skywork-moe.pdf  （PDF 不入 git，走 HF bucket）

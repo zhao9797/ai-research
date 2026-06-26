@@ -29,5 +29,5 @@ downloaded: [files/cogvlm2.pdf]
 - PDF: https://arxiv.org/pdf/2408.16500
 - GitHub: https://github.com/THUDM/CogVLM2
 
-## 本地落盘文件
-- ../../../sources/llm/2024/cogvlm2.pdf
+## 一手源存档（sources/）
+- cogvlm2.pdf  （PDF 不入 git，走 HF bucket）

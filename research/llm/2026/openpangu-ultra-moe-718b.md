@@ -32,5 +32,5 @@ openPangu-Ultra-MoE-718B（HuggingFace openpangu 官方组织，createdAt 2026-0
 - url: https://huggingface.co/openpangu/openPangu-Ultra-MoE-718B-model
 - 联系: openPangu@huawei.com
 
-## 本地落盘文件
-- ../../../sources/llm/2026/openpangu-ultra-moe-718b-modelcard.md
+## 一手源存档（sources/）
+- [openpangu-ultra-moe-718b-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/openpangu-ultra-moe-718b-modelcard.md)

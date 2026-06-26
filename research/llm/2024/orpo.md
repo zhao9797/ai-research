@@ -28,5 +28,5 @@ ORPO：把偏好对齐融入 SFT 的单体（monolithic）算法——用 odds r
 - pdf_url: https://arxiv.org/pdf/2403.07691
 - github: https://github.com/xfactlab/orpo
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2403.07691.pdf
+## 一手源存档（sources/）
+- [2403.07691.pdf](https://arxiv.org/pdf/2403.07691)  （arXiv 原文 PDF，不入 git）

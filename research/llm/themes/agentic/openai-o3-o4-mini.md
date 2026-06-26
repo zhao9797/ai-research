@@ -27,5 +27,5 @@ OpenAI 首批"会自己用全套工具"的推理模型：o3/o4-mini 经训练能
 ## 原始链接
 - url: https://openai.com/index/introducing-o3-and-o4-mini/
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/openai-o3-o4-mini.html
+## 一手源存档（sources/）
+- [openai-o3-o4-mini.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/agentic/openai-o3-o4-mini.html)

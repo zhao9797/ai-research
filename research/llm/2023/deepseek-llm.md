@@ -31,5 +31,5 @@ DeepSeek LLM 提供 7B 与 67B 两种开源配置，在 scaling law 指导下设
 - pdf_url: https://arxiv.org/pdf/2401.02954
 - github_url: https://github.com/deepseek-ai/DeepSeek-LLM
 
-## 本地落盘文件
-- ../../../sources/llm/2023/deepseek-llm.pdf
+## 一手源存档（sources/）
+- deepseek-llm.pdf  （PDF 不入 git，走 HF bucket）

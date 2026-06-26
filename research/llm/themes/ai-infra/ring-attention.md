@@ -26,5 +26,5 @@ Ring Attention 将输入序列分块分布到多设备，计算 blockwise attent
 - url: https://arxiv.org/abs/2310.01889
 - pdf_url: https://arxiv.org/pdf/2310.01889
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/ring-attention-2310.01889.pdf
+## 一手源存档（sources/）
+- [ring-attention-2310.01889.pdf](https://arxiv.org/pdf/2310.01889)  （arXiv 原文 PDF，不入 git）

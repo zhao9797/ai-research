@@ -29,5 +29,5 @@ downloaded: [rope.pdf]
 - pdf_url: https://arxiv.org/pdf/2104.09864
 - github_url: https://github.com/ZhuiyiTechnology/roformer
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/rope.pdf
+## 一手源存档（sources/）
+- rope.pdf  （PDF 不入 git，走 HF bucket）

@@ -31,5 +31,5 @@ DeepSeek-R1：证明纯 RL（无 SFT 冷启动）即可让模型自发涌现长 
 - pdf_url: https://arxiv.org/pdf/2501.12948
 - github_url: https://github.com/deepseek-ai/DeepSeek-R1
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/deepseek-r1.pdf
+## 一手源存档（sources/）
+- deepseek-r1.pdf  （PDF 不入 git，走 HF bucket）

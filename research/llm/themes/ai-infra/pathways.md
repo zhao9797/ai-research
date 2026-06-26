@@ -26,5 +26,5 @@ Pathways 面向新型 ML 工作负载（稀疏、多任务、跨 pod），采用
 - url: https://arxiv.org/abs/2203.12533
 - pdf_url: https://arxiv.org/pdf/2203.12533
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/pathways-2203.12533.pdf
+## 一手源存档（sources/）
+- [pathways-2203.12533.pdf](https://arxiv.org/pdf/2203.12533)  （arXiv 原文 PDF，不入 git）

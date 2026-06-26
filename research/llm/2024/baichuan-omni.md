@@ -28,5 +28,5 @@ Baichuan-Omni 是首个开源 7B 全模态 MLLM，能并发处理图像、视频
 - PDF: https://arxiv.org/pdf/2410.08565
 - GitHub: https://github.com/westlake-baichuan-mllm/bc-omni
 
-## 本地落盘文件
-- ../../../sources/llm/2024/baichuan-omni.pdf
+## 一手源存档（sources/）
+- baichuan-omni.pdf  （PDF 不入 git，走 HF bucket）

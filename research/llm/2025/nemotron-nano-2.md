@@ -30,5 +30,5 @@ Nemotron-Nano-9B-v2 在 Nemotron-H 架构上（大多数自注意力替换为 Ma
 - arXiv：https://arxiv.org/abs/2508.14444
 - PDF：https://arxiv.org/pdf/2508.14444
 
-## 本地落盘文件
-- ../../../sources/llm/2025/nemotron-nano-2.pdf
+## 一手源存档（sources/）
+- nemotron-nano-2.pdf  （PDF 不入 git，走 HF bucket）

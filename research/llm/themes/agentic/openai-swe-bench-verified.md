@@ -27,5 +27,5 @@ OpenAI 与 SWE-bench 原作者合作，发布经人工验证的 500 题子集 SW
 ## 原始链接
 - url: https://openai.com/index/introducing-swe-bench-verified/
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/openai-swe-bench-verified.html
+## 一手源存档（sources/）
+- [openai-swe-bench-verified.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/agentic/openai-swe-bench-verified.html)

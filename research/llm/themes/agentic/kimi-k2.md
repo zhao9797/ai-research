@@ -31,5 +31,5 @@ Kimi K2 是 32B 激活、1T 总参的 MoE 大模型。提出 MuonClip 优化器�
 - pdf_url: https://arxiv.org/pdf/2507.20534
 - github_url: https://github.com/MoonshotAI/Kimi-K2
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/kimi-k2-2507.20534.pdf
+## 一手源存档（sources/）
+- [kimi-k2-2507.20534.pdf](https://arxiv.org/pdf/2507.20534)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ DBRX 发布博客：细粒度 MoE 开源模型，132B 总参数 / 36B 激活，1
 - url: https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
 - github: https://github.com/databricks/dbrx
 
-## 本地落盘文件
-- ../../../sources/llm/2024/databricks-dbrx-blog.md
+## 一手源存档（sources/）
+- [databricks-dbrx-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/databricks-dbrx-blog.md)

@@ -28,5 +28,5 @@ M6（Multi-Modality to Multi-Modality Multitask Mega-transformer）构建了当�
 - url: https://arxiv.org/abs/2103.00823
 - pdf_url: https://arxiv.org/pdf/2103.00823
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2103.00823.pdf
+## 一手源存档（sources/）
+- [arxiv-2103.00823.pdf](https://arxiv.org/pdf/2103.00823)  （arXiv 原文 PDF，不入 git）

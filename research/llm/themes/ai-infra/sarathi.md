@@ -26,5 +26,5 @@ LLM 推理中 prefill 是计算密集、decode 是访存密集，二者混批导
 - url: https://arxiv.org/abs/2308.16369
 - pdf_url: https://arxiv.org/pdf/2308.16369
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/sarathi-2308.16369.pdf
+## 一手源存档（sources/）
+- [sarathi-2308.16369.pdf](https://arxiv.org/pdf/2308.16369)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ downloaded: [ul2.pdf]
 - pdf_url: https://arxiv.org/pdf/2205.05131
 - github_url: https://github.com/google-research/google-research/tree/master/ul2
 
-## 本地落盘文件
-- ../../../sources/llm/2022/ul2.pdf
+## 一手源存档（sources/）
+- ul2.pdf  （PDF 不入 git，走 HF bucket）

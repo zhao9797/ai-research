@@ -29,5 +29,5 @@ Phi-4-reasoning 在 Phi-4 之上做 SFT：精选"可教（teachable）"的合适
 - arXiv：https://arxiv.org/abs/2504.21318
 - PDF：https://arxiv.org/pdf/2504.21318
 
-## 本地落盘文件
-- ../../../sources/llm/2025/phi-4-reasoning.pdf
+## 一手源存档（sources/）
+- phi-4-reasoning.pdf  （PDF 不入 git，走 HF bucket）

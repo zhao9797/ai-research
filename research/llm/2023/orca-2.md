@@ -29,5 +29,5 @@ Orca 1 从解释轨迹等丰富信号学习，超过常规指令微调模型。O
 - pdf_url: https://arxiv.org/pdf/2311.11045
 - github_url: https://aka.ms/orca-2
 
-## 本地落盘文件
-- ../../../sources/llm/2023/orca-2.pdf
+## 一手源存档（sources/）
+- orca-2.pdf  （PDF 不入 git，走 HF bucket）

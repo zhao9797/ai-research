@@ -29,5 +29,5 @@ Llama 3.1 发布博客：首个前沿级开源模型 405B，连同升级版 8B/7
 - url: https://ai.meta.com/blog/meta-llama-3-1/
 - paper: https://ai.meta.com/research/publications/the-llama-3-herd-of-models/
 
-## 本地落盘文件
-- ../../../sources/llm/2024/meta-llama-3-1-blog.md
+## 一手源存档（sources/）
+- [meta-llama-3-1-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/meta-llama-3-1-blog.md)

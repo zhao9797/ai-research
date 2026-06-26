@@ -28,5 +28,5 @@ Gemini 1.5（Pro / Flash）是基于稀疏 MoE Transformer 的多模态模型，
 - url: https://arxiv.org/abs/2403.05530
 - pdf_url: https://arxiv.org/pdf/2403.05530
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/gemini1.5.pdf
+## 一手源存档（sources/）
+- gemini1.5.pdf  （PDF 不入 git，走 HF bucket）

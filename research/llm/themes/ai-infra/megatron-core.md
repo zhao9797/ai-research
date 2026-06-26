@@ -26,5 +26,5 @@ NVIDIA 把 Megatron-LM 沉淀为可组合库 Megatron Core，提供 GPU 优化�
 - url: https://github.com/NVIDIA/Megatron-LM
 - github_url: https://github.com/NVIDIA/Megatron-LM
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/megatron-lm-readme.md
+## 一手源存档（sources/）
+- [megatron-lm-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/megatron-lm-readme.md)

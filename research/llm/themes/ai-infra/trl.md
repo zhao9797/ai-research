@@ -26,5 +26,5 @@ TRL（Transformer Reinforcement Learning）把主流后训练方法封装为与 
 - url: https://github.com/huggingface/trl
 - github_url: https://github.com/huggingface/trl
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/trl-readme.md
+## 一手源存档（sources/）
+- [trl-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/trl-readme.md)

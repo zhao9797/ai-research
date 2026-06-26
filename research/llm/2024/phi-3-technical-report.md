@@ -30,5 +30,5 @@ phi-3-mini 为 3.8B 参数、训练 3.3T token 的模型，整体性能比肩 Mi
 - url: https://arxiv.org/abs/2404.14219
 - pdf_url: https://arxiv.org/pdf/2404.14219
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2404.14219.pdf
+## 一手源存档（sources/）
+- [2404.14219.pdf](https://arxiv.org/pdf/2404.14219)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ Longformer 提出随序列长度线性增长的注意力机制，组合局部滑
 - pdf_url: https://arxiv.org/pdf/2004.05150
 - github_url: https://github.com/allenai/longformer
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2004.05150.pdf
+## 一手源存档（sources/）
+- [arxiv-2004.05150.pdf](https://arxiv.org/pdf/2004.05150)  （arXiv 原文 PDF，不入 git）

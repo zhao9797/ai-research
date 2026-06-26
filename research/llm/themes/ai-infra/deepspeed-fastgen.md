@@ -28,5 +28,5 @@ DeepSpeed-FastGen 基于 DeepSpeed-MII 与 DeepSpeed-Inference，提出 Dynamic 
 - pdf_url: https://arxiv.org/pdf/2401.08671
 - github_url: https://github.com/deepspeedai/DeepSpeed-MII
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/deepspeed-fastgen-2401.08671.pdf
+## 一手源存档（sources/）
+- [deepspeed-fastgen-2401.08671.pdf](https://arxiv.org/pdf/2401.08671)  （arXiv 原文 PDF，不入 git）

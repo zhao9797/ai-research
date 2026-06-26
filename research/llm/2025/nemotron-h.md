@@ -30,5 +30,5 @@ NVIDIA 2025-04 的 Nemotron-H 技术报告：8B 与 56B/47B 的混合 Mamba-Tran
 - arXiv：https://arxiv.org/abs/2504.03624
 - PDF：https://arxiv.org/pdf/2504.03624
 
-## 本地落盘文件
-- ../../../sources/llm/2025/nemotron-h.pdf
+## 一手源存档（sources/）
+- nemotron-h.pdf  （PDF 不入 git，走 HF bucket）

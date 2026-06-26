@@ -31,5 +31,5 @@ downloaded: [pangu-ultra-moe.pdf]
 - url: https://arxiv.org/abs/2505.04519
 - pdf_url: https://arxiv.org/pdf/2505.04519
 
-## 本地落盘文件
-- ../../../sources/llm/2025/pangu-ultra-moe.pdf
+## 一手源存档（sources/）
+- pangu-ultra-moe.pdf  （PDF 不入 git，走 HF bucket）

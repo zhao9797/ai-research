@@ -30,5 +30,5 @@ Skywork-OR1 是面向数学与代码推理的开源 RL 训练方案，从 DeepSe
 - pdf_url: https://arxiv.org/pdf/2505.22312
 - github_url: https://github.com/SkyworkAI/Skywork-OR1
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/skywork-or1.pdf
+## 一手源存档（sources/）
+- skywork-or1.pdf  （PDF 不入 git，走 HF bucket）

@@ -26,5 +26,5 @@ downloaded: [alpaca-stanford-crfm.html]
 ## 原始链接
 - url: https://crfm.stanford.edu/2023/03/13/alpaca.html
 
-## 本地落盘文件
-- ../../../sources/llm/2023/alpaca-stanford-crfm.html
+## 一手源存档（sources/）
+- [alpaca-stanford-crfm.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/alpaca-stanford-crfm.html)

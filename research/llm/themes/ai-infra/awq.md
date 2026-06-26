@@ -28,5 +28,5 @@ AWQ 观察到权重重要性由激活幅度决定：保护约 1% 显著通道即
 - pdf_url: https://arxiv.org/pdf/2306.00978
 - github_url: https://github.com/mit-han-lab/llm-awq
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/awq-2306.00978.pdf
+## 一手源存档（sources/）
+- [awq-2306.00978.pdf](https://arxiv.org/pdf/2306.00978)  （arXiv 原文 PDF，不入 git）

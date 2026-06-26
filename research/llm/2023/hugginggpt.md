@@ -29,5 +29,5 @@ downloaded: [hugginggpt.pdf]
 - pdf_url: https://arxiv.org/pdf/2303.17580
 - github_url: https://github.com/microsoft/JARVIS
 
-## 本地落盘文件
-- ../../../sources/llm/2023/hugginggpt.pdf
+## 一手源存档（sources/）
+- hugginggpt.pdf  （PDF 不入 git，走 HF bucket）

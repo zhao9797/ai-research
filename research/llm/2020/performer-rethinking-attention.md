@@ -28,5 +28,5 @@ Performer 提出 FAVOR+（Fast Attention Via positive Orthogonal Random features
 - url: https://arxiv.org/abs/2009.14794
 - pdf_url: https://arxiv.org/pdf/2009.14794
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2009.14794.pdf
+## 一手源存档（sources/）
+- [arxiv-2009.14794.pdf](https://arxiv.org/pdf/2009.14794)  （arXiv 原文 PDF，不入 git）

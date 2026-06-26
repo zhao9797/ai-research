@@ -34,5 +34,5 @@ gpt-oss 是 OpenAI 自 GPT-2 以来首次发布开放权重模型：gpt-oss-120b
 - arXiv：https://arxiv.org/abs/2508.10925
 - GitHub：https://github.com/openai/gpt-oss
 
-## 本地落盘文件
-- ../../../sources/llm/2025/gpt-oss-model-card.pdf
+## 一手源存档（sources/）
+- gpt-oss-model-card.pdf  （PDF 不入 git，走 HF bucket）

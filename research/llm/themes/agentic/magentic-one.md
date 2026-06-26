@@ -29,5 +29,5 @@ downloaded: [magentic-one-2411.04468.pdf]
 - pdf_url: https://arxiv.org/pdf/2411.04468
 - github_url: https://github.com/microsoft/autogen
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/magentic-one-2411.04468.pdf
+## 一手源存档（sources/）
+- [magentic-one-2411.04468.pdf](https://arxiv.org/pdf/2411.04468)  （arXiv 原文 PDF，不入 git）

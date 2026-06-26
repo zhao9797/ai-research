@@ -30,5 +30,5 @@ RAG 把预训练的参数化生成器（BART）与非参数化外部记忆（基
 - url: https://arxiv.org/abs/2005.11401
 - pdf_url: https://arxiv.org/pdf/2005.11401
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2005.11401.pdf
+## 一手源存档（sources/）
+- [arxiv-2005.11401.pdf](https://arxiv.org/pdf/2005.11401)  （arXiv 原文 PDF，不入 git）

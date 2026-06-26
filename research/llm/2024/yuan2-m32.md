@@ -29,5 +29,5 @@ Yuan 2.0-M32 基础架构类似 Yuan-2.0 2B，采用 32 专家、激活 2 个的
 - PDF: https://arxiv.org/pdf/2405.17976
 - GitHub: https://github.com/IEIT-Yuan/Yuan2.0-M32
 
-## 本地落盘文件
-- ../../../sources/llm/2024/yuan2-m32.pdf
+## 一手源存档（sources/）
+- yuan2-m32.pdf  （PDF 不入 git，走 HF bucket）

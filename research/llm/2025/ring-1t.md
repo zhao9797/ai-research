@@ -30,5 +30,5 @@ Ring-1T 是首个万亿参数级、开源 SOTA thinking 模型，1T 总参、每
 - pdf_url: https://arxiv.org/pdf/2510.18855
 - github_url: https://github.com/inclusionAI/Ring-V2
 
-## 本地落盘文件
-- ../../../sources/llm/2025/ring-1t.pdf
+## 一手源存档（sources/）
+- ring-1t.pdf  （PDF 不入 git，走 HF bucket）

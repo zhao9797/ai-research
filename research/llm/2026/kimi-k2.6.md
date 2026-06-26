@@ -55,7 +55,7 @@ downloaded: [kimi-k2.6-readme.md, kimi-k2.6-config.json, kimi-k2.6-blog.md, arxi
 - 同代另有 **Kimi-K2.7-Code**、**Kimi-Linear-48B-A3B**；K2.5 报告 arXiv 2602.02276
 - 许可 Modified-MIT
 
-## 本地落盘文件
-- ../../../sources/llm/2026/kimi-k2.6-readme.md
-- ../../../sources/llm/2026/kimi-k2.6-config.json
-- ../../../sources/llm/2026/arxiv-2602.02276-kimi-k2.5.pdf （K2.5 技术报告，K2.6 继承其训练方法）
+## 一手源存档（sources/）
+- [kimi-k2.6-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/kimi-k2.6-readme.md)
+- [kimi-k2.6-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/kimi-k2.6-config.json)
+- [arxiv-2602.02276-kimi-k2.5.pdf](https://arxiv.org/pdf/2602.02276) （K2.5 技术报告，K2.6 继承其训练方法）  （arXiv 原文 PDF，不入 git）

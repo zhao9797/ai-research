@@ -35,6 +35,6 @@ DeepSeek-V4 系列是 DeepSeek 发布的预览版（preview）旗舰模型，包
 - pdf_url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/DeepSeek_V4.pdf
 - github_url: https://github.com/deepseek-ai
 
-## 本地落盘文件
-- ../../../sources/llm/2026/deepseek-v4-technical-report.pdf
-- ../../../sources/llm/2026/deepseek-v4-pro-modelcard.md
+## 一手源存档（sources/）
+- deepseek-v4-technical-report.pdf  （PDF 不入 git，走 HF bucket）
+- [deepseek-v4-pro-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/deepseek-v4-pro-modelcard.md)

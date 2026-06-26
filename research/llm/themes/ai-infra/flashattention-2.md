@@ -28,5 +28,5 @@ FlashAttention-1 的 GPU 利用率仍只有理论峰值的 25-40%，原因是 no
 - pdf_url: https://arxiv.org/pdf/2307.08691
 - github_url: https://github.com/Dao-AILab/flash-attention
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/flashattention2-2307.08691.pdf
+## 一手源存档（sources/）
+- [flashattention2-2307.08691.pdf](https://arxiv.org/pdf/2307.08691)  （arXiv 原文 PDF，不入 git）

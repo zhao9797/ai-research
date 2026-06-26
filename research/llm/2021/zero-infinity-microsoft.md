@@ -30,5 +30,5 @@ downloaded: [arxiv-2104.07857.pdf]
 - pdf_url: https://arxiv.org/pdf/2104.07857
 - github_url: https://github.com/microsoft/DeepSpeed
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2104.07857.pdf
+## 一手源存档（sources/）
+- [arxiv-2104.07857.pdf](https://arxiv.org/pdf/2104.07857)  （arXiv 原文 PDF，不入 git）

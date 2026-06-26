@@ -28,5 +28,5 @@ downloaded: [megatron-gpu-clusters-2104.04473.pdf]
 - pdf_url: https://arxiv.org/pdf/2104.04473
 - github_url: https://github.com/NVIDIA/Megatron-LM
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/megatron-gpu-clusters-2104.04473.pdf
+## 一手源存档（sources/）
+- [megatron-gpu-clusters-2104.04473.pdf](https://arxiv.org/pdf/2104.04473)  （arXiv 原文 PDF，不入 git）

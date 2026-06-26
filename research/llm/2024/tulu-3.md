@@ -29,5 +29,5 @@ Tulu 3：完全开放的 SOTA 后训练模型族与配方，首次提出 RLVR（
 - pdf_url: https://arxiv.org/pdf/2411.15124
 - github: https://github.com/allenai/open-instruct
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2411.15124.pdf
+## 一手源存档（sources/）
+- [2411.15124.pdf](https://arxiv.org/pdf/2411.15124)  （arXiv 原文 PDF，不入 git）

@@ -28,5 +28,5 @@ PaLM 2 是新一代 SOTA 语言模型，多语言与推理能力更强、比 PaL
 - url: https://arxiv.org/abs/2305.10403
 - pdf_url: https://arxiv.org/pdf/2305.10403
 
-## 本地落盘文件
-- ../../../sources/llm/2023/palm-2.pdf
+## 一手源存档（sources/）
+- palm-2.pdf  （PDF 不入 git，走 HF bucket）

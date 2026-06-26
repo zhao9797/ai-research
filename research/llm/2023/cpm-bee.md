@@ -31,5 +31,5 @@ CPM-Bee 是完全开源、允许商用的百亿参数中英文基座模型，是
 - url: https://github.com/OpenBMB/CPM-Bee
 - github_url: https://github.com/OpenBMB/CPM-Bee
 
-## 本地落盘文件
-- ../../../sources/llm/2023/cpm-bee-readme.md
+## 一手源存档（sources/）
+- [cpm-bee-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/cpm-bee-readme.md)

@@ -27,5 +27,5 @@ downloaded: [qwen2.5-max-blog.html]
 ## 原始链接
 - url: https://qwenlm.github.io/blog/qwen2.5-max/
 
-## 本地落盘文件
-- ../../../sources/llm/2025/qwen2.5-max-blog.html
+## 一手源存档（sources/）
+- [qwen2.5-max-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/qwen2.5-max-blog.html)

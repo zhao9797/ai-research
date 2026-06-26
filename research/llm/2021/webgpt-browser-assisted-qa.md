@@ -29,5 +29,5 @@ WebGPT 把 GPT-3 微调为能在基于文本的网页浏览环境中搜索与导
 - url: https://arxiv.org/abs/2112.09332
 - pdf_url: https://arxiv.org/pdf/2112.09332
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2112.09332.pdf
+## 一手源存档（sources/）
+- [arxiv-2112.09332.pdf](https://arxiv.org/pdf/2112.09332)  （arXiv 原文 PDF，不入 git）

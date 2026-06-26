@@ -27,5 +27,5 @@ downloaded: [aux-loss-free.pdf]
 - url: https://arxiv.org/abs/2408.15664
 - pdf_url: https://arxiv.org/pdf/2408.15664
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/aux-loss-free.pdf
+## 一手源存档（sources/）
+- aux-loss-free.pdf  （PDF 不入 git，走 HF bucket）

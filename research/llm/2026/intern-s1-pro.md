@@ -30,5 +30,5 @@ Intern-S1-Pro（arXiv 2026-03，作者团队来自上海人工智能实验室 / 
 - pdf_url: https://arxiv.org/pdf/2603.25040
 - github_url: https://github.com/InternLM
 
-## 本地落盘文件
-- ../../../sources/llm/2026/intern-s1-pro.pdf
+## 一手源存档（sources/）
+- intern-s1-pro.pdf  （PDF 不入 git，走 HF bucket）

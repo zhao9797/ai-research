@@ -31,5 +31,5 @@ ToRL（Tool-Integrated Reinforcement Learning）训练 LLM 自主使用计算工
 - pdf_url: https://arxiv.org/pdf/2503.23383
 - github_url: https://github.com/GAIR-NLP/ToRL
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/torl-2503.23383.pdf
+## 一手源存档（sources/）
+- [torl-2503.23383.pdf](https://arxiv.org/pdf/2503.23383)  （arXiv 原文 PDF，不入 git）

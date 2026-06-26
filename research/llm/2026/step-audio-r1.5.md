@@ -29,5 +29,5 @@ Step-Audio-R1.5（arXiv 2026-04-28，作者 Yuxin Zhang 等 19 人）研究把 C
 - pdf_url: https://arxiv.org/pdf/2604.25719
 - HF: https://huggingface.co/stepfun-ai
 
-## 本地落盘文件
-- ../../../sources/llm/2026/step-audio-r1.5.pdf
+## 一手源存档（sources/）
+- step-audio-r1.5.pdf  （PDF 不入 git，走 HF bucket）

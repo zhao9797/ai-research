@@ -28,6 +28,6 @@ NeMo-Aligner 把主流对齐算法（RLHF-PPO、DPO、SteerLM、SPIN、奖励模
 - pdf_url: https://arxiv.org/pdf/2405.01481
 - github_url: https://github.com/NVIDIA/NeMo-Aligner
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/nemo-aligner-2405.01481.pdf
-- ../../../../sources/llm/themes/ai-infra/nemo-aligner-readme.md
+## 一手源存档（sources/）
+- [nemo-aligner-2405.01481.pdf](https://arxiv.org/pdf/2405.01481)  （arXiv 原文 PDF，不入 git）
+- [nemo-aligner-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/nemo-aligner-readme.md)

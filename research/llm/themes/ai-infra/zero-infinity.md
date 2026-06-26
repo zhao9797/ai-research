@@ -28,5 +28,5 @@ ZeRO-Infinity 在 ZeRO-3 基础上引入异构内存层级（GPU、CPU、NVMe）
 - pdf_url: https://arxiv.org/pdf/2104.07857
 - github_url: https://github.com/deepspeedai/DeepSpeed
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/zero-infinity-2104.07857.pdf
+## 一手源存档（sources/）
+- [zero-infinity-2104.07857.pdf](https://arxiv.org/pdf/2104.07857)  （arXiv 原文 PDF，不入 git）

@@ -28,5 +28,5 @@ Llama 3.2 发布博客：首个 Llama 视觉模型（11B/90B）+ 端侧轻量纯
 - url: https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/
 - github: https://github.com/meta-llama/llama-stack
 
-## 本地落盘文件
-- ../../../sources/llm/2024/meta-llama-3-2-blog.md
+## 一手源存档（sources/）
+- [meta-llama-3-2-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/meta-llama-3-2-blog.md)

@@ -28,5 +28,5 @@ downloaded: [arxiv-2010.14701.pdf]
 - url: https://arxiv.org/abs/2010.14701
 - pdf_url: https://arxiv.org/pdf/2010.14701
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2010.14701.pdf
+## 一手源存档（sources/）
+- [arxiv-2010.14701.pdf](https://arxiv.org/pdf/2010.14701)  （arXiv 原文 PDF，不入 git）

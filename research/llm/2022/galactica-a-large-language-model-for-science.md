@@ -28,5 +28,5 @@ Meta 在精选科学语料上训练的科学专用 LLM，在公式/引用/分子
 - url: https://arxiv.org/abs/2211.09085
 - pdf_url: https://arxiv.org/pdf/2211.09085
 
-## 本地落盘文件
-- ../../../sources/llm/2022/galactica.pdf
+## 一手源存档（sources/）
+- galactica.pdf  （PDF 不入 git，走 HF bucket）

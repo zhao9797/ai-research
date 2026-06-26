@@ -29,5 +29,5 @@ downloaded: [2406.12045.pdf]
 - pdf_url: https://arxiv.org/pdf/2406.12045
 - github: https://github.com/sierra-research/tau-bench
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2406.12045.pdf
+## 一手源存档（sources/）
+- [2406.12045.pdf](https://arxiv.org/pdf/2406.12045)  （arXiv 原文 PDF，不入 git）

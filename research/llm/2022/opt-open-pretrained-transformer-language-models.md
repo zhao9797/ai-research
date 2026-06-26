@@ -30,5 +30,5 @@ OPT 是一套 125M 到 175B 参数的 decoder-only 预训练 Transformer，Meta 
 - pdf_url: https://arxiv.org/pdf/2205.01068
 - github_url: https://github.com/facebookresearch/metaseq
 
-## 本地落盘文件
-- ../../../sources/llm/2022/opt.pdf
+## 一手源存档（sources/）
+- opt.pdf  （PDF 不入 git，走 HF bucket）

@@ -41,6 +41,6 @@ downloaded: [mistral-small-4-readme.md, mistral-small-4-config.json]
 ## 原始链接
 - url: https://huggingface.co/mistralai/Mistral-Small-4-119B-2603 （另：-eagle 投机解码 / -NVFP4 量化）
 
-## 本地落盘文件
-- ../../../sources/llm/2026/mistral-small-4-readme.md
-- ../../../sources/llm/2026/mistral-small-4-config.json
+## 一手源存档（sources/）
+- [mistral-small-4-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/mistral-small-4-readme.md)
+- [mistral-small-4-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/mistral-small-4-config.json)

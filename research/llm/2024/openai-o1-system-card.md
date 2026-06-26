@@ -29,6 +29,6 @@ o1 系列用大规模强化学习训练，用 CoT 进行推理。文中指出这
 - pdf_url: https://arxiv.org/pdf/2412.16720
 - arXiv abs: https://arxiv.org/abs/2412.16720
 
-## 本地落盘文件
-- ../../../sources/llm/2024/openai-o1-system-card.md
-- ../../../sources/llm/2024/2412.16720.pdf
+## 一手源存档（sources/）
+- [openai-o1-system-card.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/openai-o1-system-card.md)
+- [2412.16720.pdf](https://arxiv.org/pdf/2412.16720)  （arXiv 原文 PDF，不入 git）

@@ -26,5 +26,5 @@ Anthropic 官方成立公告（2021-05-28）：AI 安全与研究公司成立、
 ## 原始链接
 - url: https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems
 
-## 本地落盘文件
-- ../../../sources/llm/2021/anthropic-founding.html
+## 一手源存档（sources/）
+- [anthropic-founding.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2021/anthropic-founding.html)

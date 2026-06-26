@@ -29,5 +29,5 @@ Movie Gen 是一族生成高质量 1080p HD 视频（不同宽高比）且带同
 - url: https://arxiv.org/abs/2410.13720
 - pdf_url: https://arxiv.org/pdf/2410.13720
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2410.13720.pdf
+## 一手源存档（sources/）
+- [2410.13720.pdf](https://arxiv.org/pdf/2410.13720)  （arXiv 原文 PDF，不入 git）

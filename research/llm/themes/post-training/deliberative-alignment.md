@@ -27,5 +27,5 @@ Deliberative Alignment 让模型在推理链中显式回忆并应用人写的安
 - url: https://arxiv.org/abs/2412.16339
 - pdf_url: https://arxiv.org/pdf/2412.16339
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/deliberative-alignment.pdf
+## 一手源存档（sources/）
+- deliberative-alignment.pdf  （PDF 不入 git，走 HF bucket）

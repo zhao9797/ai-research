@@ -30,5 +30,5 @@ Gemini 3.1 Pro 是 Gemini 3 系列的下一迭代，高能力、原生多模态�
 - url: https://deepmind.google/models/model-cards/gemini-3-1-pro/
 - pdf_url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-1-Pro-Model-Card.pdf
 
-## 本地落盘文件
-- ../../../sources/llm/2026/gemini-3-1-pro-model-card.pdf
+## 一手源存档（sources/）
+- gemini-3-1-pro-model-card.pdf  （PDF 不入 git，走 HF bucket）

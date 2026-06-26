@@ -29,5 +29,5 @@ downloaded: [retool-2504.11536.pdf]
 - pdf_url: https://arxiv.org/pdf/2504.11536
 - github_url: https://github.com/ReTool-RL/ReTool
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/retool-2504.11536.pdf
+## 一手源存档（sources/）
+- [retool-2504.11536.pdf](https://arxiv.org/pdf/2504.11536)  （arXiv 原文 PDF，不入 git）

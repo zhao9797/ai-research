@@ -30,5 +30,5 @@ Kimi k1.5 用强化学习把推理能力作为"continued scaling"的新轴，关
 - pdf_url: https://arxiv.org/pdf/2501.12599
 - github_url: https://github.com/MoonshotAI/Kimi-k1.5
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/kimi-k1.5.pdf
+## 一手源存档（sources/）
+- kimi-k1.5.pdf  （PDF 不入 git，走 HF bucket）

@@ -29,5 +29,5 @@ Qwen2.5-VL 在基础能力与创新功能上大幅提升：增强视觉识别、
 - pdf_url: https://arxiv.org/pdf/2502.13923
 - github_url: https://github.com/QwenLM/Qwen2.5-VL
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/qwen2.5-vl.pdf
+## 一手源存档（sources/）
+- qwen2.5-vl.pdf  （PDF 不入 git，走 HF bucket）

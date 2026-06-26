@@ -28,5 +28,5 @@ Mistral Medium 3 平衡 SOTA 性能、8x 更低成本与更简单部署，面向
 ## 原始链接
 - 官方博客：https://mistral.ai/news/mistral-medium-3
 
-## 本地落盘文件
-- ../../../sources/llm/2025/mistral-medium-3-blog.md
+## 一手源存档（sources/）
+- [mistral-medium-3-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/mistral-medium-3-blog.md)

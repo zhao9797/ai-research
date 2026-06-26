@@ -30,5 +30,5 @@ Qwen3 涵盖 dense 与 MoE 架构、0.6B 到 235B 参数。核心创新是把「
 - pdf_url: https://arxiv.org/pdf/2505.09388
 - github_url: https://github.com/QwenLM/Qwen3
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/qwen3.pdf
+## 一手源存档（sources/）
+- qwen3.pdf  （PDF 不入 git，走 HF bucket）

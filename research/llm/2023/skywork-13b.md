@@ -32,6 +32,6 @@ Skywork-13B 是一组在 3.2 万亿 token 中英文语料上训练的 13B 大模
 - pdf_url: https://arxiv.org/pdf/2310.19341
 - github_url: https://github.com/SkyworkAI/Skywork
 
-## 本地落盘文件
-- ../../../sources/llm/2023/skywork-13b.pdf
-- ../../../sources/llm/2023/skywork-readme.md
+## 一手源存档（sources/）
+- skywork-13b.pdf  （PDF 不入 git，走 HF bucket）
+- [skywork-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/skywork-readme.md)

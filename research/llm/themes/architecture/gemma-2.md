@@ -28,5 +28,5 @@ Gemma 2 是 Google DeepMind 轻量开放模型族，规模 2B 到 27B。它对 T
 - url: https://arxiv.org/abs/2408.00118
 - pdf_url: https://arxiv.org/pdf/2408.00118
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/gemma2.pdf
+## 一手源存档（sources/）
+- gemma2.pdf  （PDF 不入 git，走 HF bucket）

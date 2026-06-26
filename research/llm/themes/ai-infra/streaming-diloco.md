@@ -26,5 +26,5 @@ DeepMind 的低通信分布式训练算法 DiLoCo 的改进版，通过参数子
 - url: https://arxiv.org/abs/2501.18512
 - pdf_url: https://arxiv.org/pdf/2501.18512
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/streaming-diloco-2501.18512.pdf
+## 一手源存档（sources/）
+- [streaming-diloco-2501.18512.pdf](https://arxiv.org/pdf/2501.18512)  （arXiv 原文 PDF，不入 git）

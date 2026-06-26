@@ -30,5 +30,5 @@ Amazon Nova（re:Invent 2024 发布）：AWS 自研基础模型族，含理解�
 - 概览/指南（落盘）: https://www.aboutamazon.com/news/aws/amazon-nova-foundation-models-guide
 - 技术报告/模型卡: https://www.amazon.science/publications/the-amazon-nova-family-of-models-technical-report-and-model-card
 
-## 本地落盘文件
-- ../../../sources/llm/2024/amazon-nova-blog.md
+## 一手源存档（sources/）
+- [amazon-nova-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/amazon-nova-blog.md)

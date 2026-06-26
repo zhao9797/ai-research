@@ -29,5 +29,5 @@ downloaded: [deepnet.pdf]
 - pdf_url: https://arxiv.org/pdf/2203.00555
 - github_url: https://github.com/microsoft/torchscale
 
-## 本地落盘文件
-- ../../../sources/llm/2022/deepnet.pdf
+## 一手源存档（sources/）
+- deepnet.pdf  （PDF 不入 git，走 HF bucket）

@@ -30,5 +30,5 @@ FAIR 的 BlenderBot：用最高 94 亿参数的对话模型 + 在众包对话数
 - pdf_url: https://arxiv.org/pdf/2004.13637
 - github_url: https://github.com/facebookresearch/ParlAI
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2004.13637.pdf
+## 一手源存档（sources/）
+- [arxiv-2004.13637.pdf](https://arxiv.org/pdf/2004.13637)  （arXiv 原文 PDF，不入 git）

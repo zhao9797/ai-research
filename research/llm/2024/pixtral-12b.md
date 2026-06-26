@@ -29,5 +29,5 @@ Pixtral-12B 是 12B 参数多模态模型，训练用于理解自然图像与文
 - url: https://arxiv.org/abs/2410.07073
 - pdf_url: https://arxiv.org/pdf/2410.07073
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2410.07073.pdf
+## 一手源存档（sources/）
+- [2410.07073.pdf](https://arxiv.org/pdf/2410.07073)  （arXiv 原文 PDF，不入 git）

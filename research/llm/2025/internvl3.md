@@ -30,5 +30,5 @@ InternVL3 是 InternVL 系列的重要进展，采用 native multimodal pre-trai
 - pdf_url: https://arxiv.org/pdf/2504.10479
 - github_url: https://github.com/OpenGVLab/InternVL
 
-## 本地落盘文件
-- ../../../sources/llm/2025/internvl3.pdf
+## 一手源存档（sources/）
+- internvl3.pdf  （PDF 不入 git，走 HF bucket）

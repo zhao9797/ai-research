@@ -31,5 +31,5 @@ ERNIE 3.0 Titan 把知识增强预训练扩到 260B 参数，基于 PaddlePaddle
 - pdf_url: https://arxiv.org/pdf/2112.12731
 - github_url: https://github.com/PaddlePaddle/ERNIE
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2112.12731.pdf
+## 一手源存档（sources/）
+- [arxiv-2112.12731.pdf](https://arxiv.org/pdf/2112.12731)  （arXiv 原文 PDF，不入 git）

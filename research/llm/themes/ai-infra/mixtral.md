@@ -26,5 +26,5 @@ Mixtral 8x7B 与 Mistral 7B 同架构，但每层 FFN 换成 8 个专家，route
 - url: https://arxiv.org/abs/2401.04088
 - pdf_url: https://arxiv.org/pdf/2401.04088
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/mixtral-2401.04088.pdf
+## 一手源存档（sources/）
+- [mixtral-2401.04088.pdf](https://arxiv.org/pdf/2401.04088)  （arXiv 原文 PDF，不入 git）

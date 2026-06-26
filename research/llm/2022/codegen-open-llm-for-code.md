@@ -29,5 +29,5 @@ Salesforce 开源的最高 16.1B 代码大模型 CodeGen，提出多轮程序合
 - pdf_url: https://arxiv.org/pdf/2203.13474
 - github_url: https://github.com/salesforce/CodeGen
 
-## 本地落盘文件
-- ../../../sources/llm/2022/codegen.pdf
+## 一手源存档（sources/）
+- codegen.pdf  （PDF 不入 git，走 HF bucket）

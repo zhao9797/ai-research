@@ -29,5 +29,5 @@ Apple 2025 基础模型技术报告：两款多语言多模态基础模型——
 - 官方页面：https://machinelearning.apple.com/research/apple-foundation-models-tech-report-2025
 - arXiv PDF：https://arxiv.org/pdf/2507.13575
 
-## 本地落盘文件
-- ../../../sources/llm/2025/apple-foundation-models-2025.pdf
+## 一手源存档（sources/）
+- apple-foundation-models-2025.pdf  （PDF 不入 git，走 HF bucket）

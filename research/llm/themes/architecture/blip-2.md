@@ -28,5 +28,5 @@ BLIP-2 用轻量的 Querying Transformer (Q-Former) 桥接冻结的图像编码�
 - pdf_url: https://arxiv.org/pdf/2301.12597
 - github_url: https://github.com/salesforce/LAVIS/tree/main/projects/blip2
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/blip2.pdf
+## 一手源存档（sources/）
+- blip2.pdf  （PDF 不入 git，走 HF bucket）

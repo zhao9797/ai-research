@@ -32,5 +32,5 @@ downloaded: [qwen-technical-report.pdf]
 - pdf_url: https://arxiv.org/pdf/2309.16609
 - github_url: https://github.com/QwenLM/Qwen
 
-## 本地落盘文件
-- ../../../sources/llm/2023/qwen-technical-report.pdf
+## 一手源存档（sources/）
+- qwen-technical-report.pdf  （PDF 不入 git，走 HF bucket）

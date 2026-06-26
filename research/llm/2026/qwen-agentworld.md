@@ -57,7 +57,7 @@ downloaded: [qwen-agentworld-readme.md, qwen-agentworld-config.json, qwen-agentw
 - url: https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B · blog: https://qwen.ai/blog?id=qwen-agentworld
 - paper: https://arxiv.org/abs/2606.24597 · github: https://github.com/QwenLM/Qwen-AgentWorld · dataset: Qwen/AgentWorldBench
 
-## 本地落盘文件
-- ../../../sources/llm/2026/qwen-agentworld-readme.md
-- ../../../sources/llm/2026/qwen-agentworld-config.json
-- ../../../sources/llm/2026/arxiv-2606.24597-qwen-agentworld.pdf
+## 一手源存档（sources/）
+- [qwen-agentworld-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/qwen-agentworld-readme.md)
+- [qwen-agentworld-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/qwen-agentworld-config.json)
+- [arxiv-2606.24597-qwen-agentworld.pdf](https://arxiv.org/pdf/2606.24597)  （arXiv 原文 PDF，不入 git）

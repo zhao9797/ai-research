@@ -28,5 +28,5 @@ RNN 推理快、长序列扩展好，但难训练、难 scale。论文提出 Haw
 - url: https://arxiv.org/abs/2402.19427
 - pdf_url: https://arxiv.org/pdf/2402.19427
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/griffin-hawk.pdf
+## 一手源存档（sources/）
+- griffin-hawk.pdf  （PDF 不入 git，走 HF bucket）

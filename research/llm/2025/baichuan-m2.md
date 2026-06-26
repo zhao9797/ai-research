@@ -29,5 +29,5 @@ downloaded: [baichuan-m2.pdf]
 - pdf_url: https://arxiv.org/pdf/2509.02208
 - github_url: https://huggingface.co/baichuan-inc/Baichuan-M2-32B
 
-## 本地落盘文件
-- ../../../sources/llm/2025/baichuan-m2.pdf
+## 一手源存档（sources/）
+- baichuan-m2.pdf  （PDF 不入 git，走 HF bucket）

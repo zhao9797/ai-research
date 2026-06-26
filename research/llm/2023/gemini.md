@@ -28,5 +28,5 @@ Gemini 系列在图像、音频、视频、文本理解上能力突出，分 Ult
 - url: https://arxiv.org/abs/2312.11805
 - pdf_url: https://arxiv.org/pdf/2312.11805
 
-## 本地落盘文件
-- ../../../sources/llm/2023/gemini.pdf
+## 一手源存档（sources/）
+- gemini.pdf  （PDF 不入 git，走 HF bucket）

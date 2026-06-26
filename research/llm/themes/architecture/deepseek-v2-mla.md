@@ -29,5 +29,5 @@ DeepSeek-V2 是一个 236B 总参数、每 token 激活 21B、支持 128K 上下
 - pdf_url: https://arxiv.org/pdf/2405.04434
 - github_url: https://github.com/deepseek-ai/DeepSeek-V2
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/deepseek-v2.pdf
+## 一手源存档（sources/）
+- deepseek-v2.pdf  （PDF 不入 git，走 HF bucket）

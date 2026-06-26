@@ -29,5 +29,5 @@ DeepSpeed 升级 ZeRO-2（叠加梯度分片 + 激活分片 + 连续内存优化
 - url: https://www.microsoft.com/en-us/research/blog/zero-2-deepspeed-shattering-barriers-of-deep-learning-speed-scale/
 - github_url: https://github.com/microsoft/DeepSpeed
 
-## 本地落盘文件
-- ../../../sources/llm/2020/ms-zero2-deepspeed.html
+## 一手源存档（sources/）
+- [ms-zero2-deepspeed.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2020/ms-zero2-deepspeed.html)

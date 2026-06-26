@@ -30,6 +30,6 @@ Gemma 3 是 Gemma 家族的多模态扩展，规模 1B 到 27B，新增视觉理
 - pdf_url: https://arxiv.org/pdf/2503.19786
 - github_url: https://blog.google/technology/developers/gemma-3/
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/gemma3.pdf
-- ../../../../sources/llm/themes/architecture/gemma3-blog.html
+## 一手源存档（sources/）
+- gemma3.pdf  （PDF 不入 git，走 HF bucket）
+- [gemma3-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/architecture/gemma3-blog.html)

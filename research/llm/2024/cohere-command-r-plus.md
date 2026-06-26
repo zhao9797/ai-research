@@ -29,5 +29,5 @@ Command R+ 发布博客：面向企业、RAG 优化的旗舰模型，128K 上下
 - url: https://cohere.com/blog/command-r-plus-microsoft-azure
 - 模型卡/文档: https://docs.cohere.com/docs/command-r-plus
 
-## 本地落盘文件
-- ../../../sources/llm/2024/cohere-command-r-plus-blog.md
+## 一手源存档（sources/）
+- [cohere-command-r-plus-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/cohere-command-r-plus-blog.md)

@@ -28,5 +28,5 @@ OpenAI 官方发布 o1（o1-preview）的研究博客，首次系统阐述用大
 ## 原始链接
 - url: https://openai.com/index/learning-to-reason-with-llms/
 
-## 本地落盘文件
-- ../../../sources/llm/2024/openai-learning-to-reason-with-llms.md
+## 一手源存档（sources/）
+- [openai-learning-to-reason-with-llms.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/openai-learning-to-reason-with-llms.md)

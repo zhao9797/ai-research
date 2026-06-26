@@ -27,5 +27,5 @@ QKNorm（QK-Norm）在注意力打分前对每个 query / key 沿头维做 ℓ2 
 - url: https://arxiv.org/abs/2010.04245
 - pdf_url: https://arxiv.org/pdf/2010.04245
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/qknorm.pdf
+## 一手源存档（sources/）
+- qknorm.pdf  （PDF 不入 git，走 HF bucket）

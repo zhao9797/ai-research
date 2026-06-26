@@ -29,5 +29,5 @@ Longformer 用「滑动窗口 + 扩张窗口 + 全局注意力」的稀疏注意
 - pdf_url: https://arxiv.org/pdf/2004.05150
 - github_url: https://github.com/allenai/longformer
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/longformer.pdf
+## 一手源存档（sources/）
+- longformer.pdf  （PDF 不入 git，走 HF bucket）

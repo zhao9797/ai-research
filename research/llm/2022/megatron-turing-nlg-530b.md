@@ -30,5 +30,5 @@ downloaded: [megatron-turing-nlg-530b.pdf]
 - pdf_url: https://arxiv.org/pdf/2201.11990
 - github_url: https://github.com/microsoft/Megatron-DeepSpeed
 
-## 本地落盘文件
-- ../../../sources/llm/2022/megatron-turing-nlg-530b.pdf
+## 一手源存档（sources/）
+- megatron-turing-nlg-530b.pdf  （PDF 不入 git，走 HF bucket）

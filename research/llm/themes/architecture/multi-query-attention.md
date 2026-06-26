@@ -27,5 +27,5 @@ Noam Shazeer 提出 Multi-Query Attention (MQA)：所有注意力头共享同一
 - url: https://arxiv.org/abs/1911.02150
 - pdf_url: https://arxiv.org/pdf/1911.02150
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/mqa.pdf
+## 一手源存档（sources/）
+- mqa.pdf  （PDF 不入 git，走 HF bucket）

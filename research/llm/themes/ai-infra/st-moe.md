@@ -26,5 +26,5 @@ downloaded: [st-moe-2202.08906.pdf]
 - url: https://arxiv.org/abs/2202.08906
 - pdf_url: https://arxiv.org/pdf/2202.08906
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/st-moe-2202.08906.pdf
+## 一手源存档（sources/）
+- [st-moe-2202.08906.pdf](https://arxiv.org/pdf/2202.08906)  （arXiv 原文 PDF，不入 git）

@@ -30,5 +30,5 @@ downloaded: [webshop-2207.01206.pdf]
 - pdf_url: https://arxiv.org/pdf/2207.01206
 - github_url: https://github.com/princeton-nlp/WebShop
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/webshop-2207.01206.pdf
+## 一手源存档（sources/）
+- [webshop-2207.01206.pdf](https://arxiv.org/pdf/2207.01206)  （arXiv 原文 PDF，不入 git）

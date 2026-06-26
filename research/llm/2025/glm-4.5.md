@@ -31,5 +31,5 @@ GLM-4.5 是开源 MoE 大模型，355B 总参、32B 激活，支持 thinking 与
 - blog: https://z.ai/blog/glm-4.5
 - github_url: https://github.com/zai-org/GLM-4.5
 
-## 本地落盘文件
-- ../../../sources/llm/2025/glm-4.5.pdf
+## 一手源存档（sources/）
+- glm-4.5.pdf  （PDF 不入 git，走 HF bucket）

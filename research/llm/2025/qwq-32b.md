@@ -28,5 +28,5 @@ downloaded: [qwq-32b-blog.html]
 - url: https://qwenlm.github.io/blog/qwq-32b/
 - github_url: https://huggingface.co/Qwen/QwQ-32B
 
-## 本地落盘文件
-- ../../../sources/llm/2025/qwq-32b-blog.html
+## 一手源存档（sources/）
+- [qwq-32b-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/qwq-32b-blog.html)

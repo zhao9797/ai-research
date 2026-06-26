@@ -29,5 +29,5 @@ MiniMax-M2 系列（arXiv 2026-05-26，作者 "MiniMax"，207 人）是面向 ag
 - url: https://arxiv.org/abs/2605.26494
 - pdf_url: https://arxiv.org/pdf/2605.26494
 
-## 本地落盘文件
-- ../../../sources/llm/2026/minimax-m2.pdf
+## 一手源存档（sources/）
+- minimax-m2.pdf  （PDF 不入 git，走 HF bucket）

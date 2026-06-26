@@ -27,5 +27,5 @@ PyTorch DistributedDataParallel（DDP）的设计与工程经验论文，gradien
 - url: https://arxiv.org/abs/2006.15704
 - pdf_url: https://arxiv.org/pdf/2006.15704
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/pytorch-ddp-2006.15704.pdf
+## 一手源存档（sources/）
+- [pytorch-ddp-2006.15704.pdf](https://arxiv.org/pdf/2006.15704)  （arXiv 原文 PDF，不入 git）

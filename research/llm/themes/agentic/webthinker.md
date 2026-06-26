@@ -29,5 +29,5 @@ WebThinker 针对 LRM（如 o1、DeepSeek-R1）依赖静态内部知识、难以
 - pdf_url: https://arxiv.org/pdf/2504.21776
 - github_url: https://github.com/RUC-NLPIR/WebThinker
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/webthinker-2504.21776.pdf
+## 一手源存档（sources/）
+- [webthinker-2504.21776.pdf](https://arxiv.org/pdf/2504.21776)  （arXiv 原文 PDF，不入 git）

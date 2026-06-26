@@ -32,5 +32,5 @@ Nemotron 3 Super 是 120B 总参数（12B 激活）的混合 Mamba-Attention MoE
 - url: https://arxiv.org/abs/2604.12374
 - pdf_url: https://arxiv.org/pdf/2604.12374
 
-## 本地落盘文件
-- ../../../sources/llm/2026/arxiv-2604.12374.pdf
+## 一手源存档（sources/）
+- [arxiv-2604.12374.pdf](https://arxiv.org/pdf/2604.12374)  （arXiv 原文 PDF，不入 git）

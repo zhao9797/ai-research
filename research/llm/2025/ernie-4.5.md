@@ -30,5 +30,5 @@ ERNIE 4.5 是百度新一代多模态大模型家族，开源 10 个变体：文
 - github_url: https://github.com/PaddlePaddle/ERNIE
 - model card: https://huggingface.co/baidu/ERNIE-4.5-300B-A47B-Base-PT
 
-## 本地落盘文件
-- ../../../sources/llm/2025/ernie-4.5-report.pdf
+## 一手源存档（sources/）
+- ernie-4.5-report.pdf  （PDF 不入 git，走 HF bucket）

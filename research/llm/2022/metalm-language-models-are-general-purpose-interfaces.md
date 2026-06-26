@@ -29,5 +29,5 @@ downloaded: [metalm.pdf]
 - pdf_url: https://arxiv.org/pdf/2206.06336
 - github_url: https://github.com/microsoft/unilm
 
-## 本地落盘文件
-- ../../../sources/llm/2022/metalm.pdf
+## 一手源存档（sources/）
+- metalm.pdf  （PDF 不入 git，走 HF bucket）

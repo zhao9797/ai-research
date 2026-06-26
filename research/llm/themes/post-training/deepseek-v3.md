@@ -31,5 +31,5 @@ DeepSeek-V3 是 6710 亿参数的 MoE 模型（每 token 激活 370 亿），用
 - pdf_url: https://arxiv.org/pdf/2412.19437
 - github_url: https://github.com/deepseek-ai/DeepSeek-V3
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/deepseek-v3.pdf
+## 一手源存档（sources/）
+- deepseek-v3.pdf  （PDF 不入 git，走 HF bucket）

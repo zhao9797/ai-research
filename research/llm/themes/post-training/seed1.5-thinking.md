@@ -29,5 +29,5 @@ Seed1.5-Thinking 是字节跳动的推理模型，采用 MoE 架构（约 200B �
 - pdf_url: https://arxiv.org/pdf/2504.13914
 - github_url: https://github.com/ByteDance-Seed/Seed-Thinking-v1.5
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/seed-thinking-v1.5.pdf
+## 一手源存档（sources/）
+- seed-thinking-v1.5.pdf  （PDF 不入 git，走 HF bucket）

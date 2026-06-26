@@ -28,5 +28,5 @@ Gemma 是源自 Gemini 研究与技术的轻量 SOTA 开放模型族，在语言
 - url: https://arxiv.org/abs/2403.08295
 - pdf_url: https://arxiv.org/pdf/2403.08295
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2403.08295.pdf
+## 一手源存档（sources/）
+- [2403.08295.pdf](https://arxiv.org/pdf/2403.08295)  （arXiv 原文 PDF，不入 git）

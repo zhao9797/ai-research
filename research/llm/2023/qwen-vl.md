@@ -29,5 +29,5 @@ Qwen-VL 系列在 Qwen-LM 基座上，通过精心设计的视觉接收器、输
 - pdf_url: https://arxiv.org/pdf/2308.12966
 - github_url: https://github.com/QwenLM/Qwen-VL
 
-## 本地落盘文件
-- ../../../sources/llm/2023/qwen-vl.pdf
+## 一手源存档（sources/）
+- qwen-vl.pdf  （PDF 不入 git，走 HF bucket）

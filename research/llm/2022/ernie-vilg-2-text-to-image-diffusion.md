@@ -28,5 +28,5 @@ downloaded: [ernie-vilg-2.pdf]
 - url: https://arxiv.org/abs/2210.15257
 - pdf_url: https://arxiv.org/pdf/2210.15257
 
-## 本地落盘文件
-- ../../../sources/llm/2022/ernie-vilg-2.pdf
+## 一手源存档（sources/）
+- ernie-vilg-2.pdf  （PDF 不入 git，走 HF bucket）

@@ -30,5 +30,5 @@ Gemma 3n 是基于全新端侧架构的首个开放模型，与 Qualcomm/MediaTe
 - 官方博客：https://developers.googleblog.com/en/introducing-gemma-3n/
 - 模型页：https://deepmind.google/models/gemma/gemma-3n/
 
-## 本地落盘文件
-- ../../../sources/llm/2025/gemma-3n-blog.md
+## 一手源存档（sources/）
+- [gemma-3n-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/gemma-3n-blog.md)

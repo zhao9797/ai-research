@@ -29,5 +29,5 @@ CPO（Contrastive Preference Optimization）：在机器翻译场景提出的偏
 - pdf_url: https://arxiv.org/pdf/2401.08417
 - github_url: https://github.com/fe1ixxu/ALMA
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/cpo.pdf
+## 一手源存档（sources/）
+- cpo.pdf  （PDF 不入 git，走 HF bucket）

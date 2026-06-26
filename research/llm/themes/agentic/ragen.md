@@ -30,5 +30,5 @@ downloaded: [ragen-2504.20073.pdf]
 - pdf_url: https://arxiv.org/pdf/2504.20073
 - github_url: https://github.com/RAGEN-AI/RAGEN
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/ragen-2504.20073.pdf
+## 一手源存档（sources/）
+- [ragen-2504.20073.pdf](https://arxiv.org/pdf/2504.20073)  （arXiv 原文 PDF，不入 git）

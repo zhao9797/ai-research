@@ -28,5 +28,5 @@ downloaded: [webwalker-2501.07572.pdf]
 - pdf_url: https://arxiv.org/pdf/2501.07572
 - github_url: https://github.com/Alibaba-NLP/WebAgent
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/webwalker-2501.07572.pdf
+## 一手源存档（sources/）
+- [webwalker-2501.07572.pdf](https://arxiv.org/pdf/2501.07572)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ RLHF 在生成式摘要上的奠基性论文：用人类偏好训练奖励模型
 - pdf_url: https://arxiv.org/pdf/2009.01325
 - github_url: https://github.com/openai/summarize-from-feedback
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/learning-to-summarize-from-human-feedback.pdf
+## 一手源存档（sources/）
+- learning-to-summarize-from-human-feedback.pdf  （PDF 不入 git，走 HF bucket）

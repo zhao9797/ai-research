@@ -30,5 +30,5 @@ downloaded: [toolrl-2504.13958.pdf]
 - pdf_url: https://arxiv.org/pdf/2504.13958
 - github_url: https://github.com/qiancheng0/ToolRL
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/toolrl-2504.13958.pdf
+## 一手源存档（sources/）
+- [toolrl-2504.13958.pdf](https://arxiv.org/pdf/2504.13958)  （arXiv 原文 PDF，不入 git）

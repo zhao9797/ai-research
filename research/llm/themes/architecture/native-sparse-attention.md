@@ -27,5 +27,5 @@ NSA 是 DeepSeek 提出的「原生可训练」稀疏注意力：分层（压缩
 - url: https://arxiv.org/abs/2502.11089
 - pdf_url: https://arxiv.org/pdf/2502.11089
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/native-sparse-attention.pdf
+## 一手源存档（sources/）
+- native-sparse-attention.pdf  （PDF 不入 git，走 HF bucket）

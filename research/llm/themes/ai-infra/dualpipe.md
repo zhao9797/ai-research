@@ -26,5 +26,5 @@ DualPipe 在 DeepSeek-V3 技术报告中提出，从流水线两端同时注入 
 - url: https://github.com/deepseek-ai/DualPipe
 - github_url: https://github.com/deepseek-ai/DualPipe
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/dualpipe-readme.md
+## 一手源存档（sources/）
+- [dualpipe-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/dualpipe-readme.md)

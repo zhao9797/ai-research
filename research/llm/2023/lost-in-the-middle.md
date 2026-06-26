@@ -27,5 +27,5 @@ downloaded: [lost-in-the-middle.pdf]
 - url: https://arxiv.org/abs/2307.03172
 - pdf_url: https://arxiv.org/pdf/2307.03172
 
-## 本地落盘文件
-- ../../../sources/llm/2023/lost-in-the-middle.pdf
+## 一手源存档（sources/）
+- lost-in-the-middle.pdf  （PDF 不入 git，走 HF bucket）

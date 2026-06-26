@@ -29,5 +29,5 @@ RecurrentGemma 是一族基于 Google 的 Griffin 架构的开放语言模型。
 - pdf_url: https://arxiv.org/pdf/2404.07839
 - github_url: https://github.com/google-deepmind/recurrentgemma
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/recurrentgemma.pdf
+## 一手源存档（sources/）
+- recurrentgemma.pdf  （PDF 不入 git，走 HF bucket）

@@ -29,5 +29,5 @@ downloaded: [glm-4.5v.pdf]
 - pdf_url: https://arxiv.org/pdf/2507.01006
 - github_url: https://github.com/zai-org/GLM-V
 
-## 本地落盘文件
-- ../../../sources/llm/2025/glm-4.5v.pdf
+## 一手源存档（sources/）
+- glm-4.5v.pdf  （PDF 不入 git，走 HF bucket）

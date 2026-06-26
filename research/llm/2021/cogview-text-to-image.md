@@ -30,5 +30,5 @@ CogView 用 40 亿参数 Transformer 配 VQ-VAE tokenizer 解决通用领域文�
 - pdf_url: https://arxiv.org/pdf/2105.13290
 - github_url: https://github.com/THUDM/CogView
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2105.13290.pdf
+## 一手源存档（sources/）
+- [arxiv-2105.13290.pdf](https://arxiv.org/pdf/2105.13290)  （arXiv 原文 PDF，不入 git）

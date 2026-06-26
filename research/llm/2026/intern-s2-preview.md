@@ -40,6 +40,6 @@ downloaded: [intern-s2-preview-readme.md, intern-s2-preview-config.json]
 ## 原始链接
 - url: https://huggingface.co/internlm/Intern-S2-Preview-FP8 · github: https://github.com/InternLM/Intern-S1 · chat: https://chat.intern-ai.org.cn
 
-## 本地落盘文件
-- ../../../sources/llm/2026/intern-s2-preview-readme.md
-- ../../../sources/llm/2026/intern-s2-preview-config.json
+## 一手源存档（sources/）
+- [intern-s2-preview-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/intern-s2-preview-readme.md)
+- [intern-s2-preview-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/intern-s2-preview-config.json)

@@ -30,5 +30,5 @@ downloaded: [cogagent-2312.08914.pdf]
 - pdf_url: https://arxiv.org/pdf/2312.08914
 - github_url: https://github.com/THUDM/CogAgent
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/cogagent-2312.08914.pdf
+## 一手源存档（sources/）
+- [cogagent-2312.08914.pdf](https://arxiv.org/pdf/2312.08914)  （arXiv 原文 PDF，不入 git）

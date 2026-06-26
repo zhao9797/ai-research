@@ -30,5 +30,5 @@ DeepSeek-Prover-V2 通过递归定理证明 pipeline 收集冷启动数据：先
 - pdf_url: https://arxiv.org/pdf/2504.21801
 - github_url: https://github.com/deepseek-ai/DeepSeek-Prover-V2
 
-## 本地落盘文件
-- ../../../sources/llm/2025/deepseek-prover-v2.pdf
+## 一手源存档（sources/）
+- deepseek-prover-v2.pdf  （PDF 不入 git，走 HF bucket）

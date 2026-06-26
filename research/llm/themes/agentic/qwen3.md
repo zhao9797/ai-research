@@ -30,5 +30,5 @@ Qwen3 是 Qwen 模型家族最新版本，含稠密与 MoE 两类架构、参数
 - pdf_url: https://arxiv.org/pdf/2505.09388
 - github_url: https://github.com/QwenLM/Qwen3
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/qwen3-2505.09388.pdf
+## 一手源存档（sources/）
+- [qwen3-2505.09388.pdf](https://arxiv.org/pdf/2505.09388)  （arXiv 原文 PDF，不入 git）

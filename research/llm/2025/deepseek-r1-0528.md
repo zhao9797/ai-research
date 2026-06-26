@@ -29,6 +29,6 @@ DeepSeek-R1 的 2025-05-28 小版本升级（0528）：靠"加大算力 + 后训
 - url: https://api-docs.deepseek.com/news/news250528
 - github_url: https://huggingface.co/deepseek-ai/DeepSeek-R1-0528
 
-## 本地落盘文件
-- ../../../sources/llm/2025/deepseek-r1-0528.html
-- ../../../sources/llm/2025/deepseek-r1-0528-modelcard.md
+## 一手源存档（sources/）
+- [deepseek-r1-0528.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/deepseek-r1-0528.html)
+- [deepseek-r1-0528-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/deepseek-r1-0528-modelcard.md)

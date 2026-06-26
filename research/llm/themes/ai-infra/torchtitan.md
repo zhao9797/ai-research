@@ -28,5 +28,5 @@ TorchTitan 用 PyTorch 原生组件（DTensor、FSDP2、Tensor/Pipeline/Context 
 - pdf_url: https://arxiv.org/pdf/2410.06511
 - github_url: https://github.com/pytorch/torchtitan
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/torchtitan-2410.06511.pdf
+## 一手源存档（sources/）
+- [torchtitan-2410.06511.pdf](https://arxiv.org/pdf/2410.06511)  （arXiv 原文 PDF，不入 git）

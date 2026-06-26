@@ -29,5 +29,5 @@ Jamba-1.5 是基于 Jamba 混合架构的指令微调模型：Transformer-Mamba 
 - pdf_url: https://arxiv.org/pdf/2408.12570
 - github_url: https://huggingface.co/ai21labs/AI21-Jamba-1.5-Large
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/jamba-1.5.pdf
+## 一手源存档（sources/）
+- jamba-1.5.pdf  （PDF 不入 git，走 HF bucket）

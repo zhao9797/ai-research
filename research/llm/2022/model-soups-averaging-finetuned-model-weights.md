@@ -29,5 +29,5 @@ downloaded: [model-soups.pdf]
 - pdf_url: https://arxiv.org/pdf/2203.05482
 - github_url: https://github.com/mlfoundations/model-soups
 
-## 本地落盘文件
-- ../../../sources/llm/2022/model-soups.pdf
+## 一手源存档（sources/）
+- model-soups.pdf  （PDF 不入 git，走 HF bucket）

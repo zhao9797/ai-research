@@ -28,5 +28,5 @@ downloaded: [self-consistency.pdf]
 - url: https://arxiv.org/abs/2203.11171
 - pdf_url: https://arxiv.org/pdf/2203.11171
 
-## 本地落盘文件
-- ../../../sources/llm/2022/self-consistency.pdf
+## 一手源存档（sources/）
+- self-consistency.pdf  （PDF 不入 git，走 HF bucket）

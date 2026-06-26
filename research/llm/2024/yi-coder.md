@@ -28,5 +28,5 @@ Yi-Coder 是 Yi 系列的代码专用模型，提供 1.5B 与 9B 两档（Base �
 - HF model card: https://huggingface.co/01-ai/Yi-Coder-9B-Chat
 - GitHub: https://github.com/01-ai/Yi-Coder
 
-## 本地落盘文件
-- ../../../sources/llm/2024/yi-coder-hf-readme.md
+## 一手源存档（sources/）
+- [yi-coder-hf-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/yi-coder-hf-readme.md)

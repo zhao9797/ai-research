@@ -28,5 +28,5 @@ Meta 通过继续预训练把 Llama 2 扩到 32k 上下文，70B 长任务超 gp
 - url: https://arxiv.org/abs/2309.16039
 - pdf_url: https://arxiv.org/pdf/2309.16039
 
-## 本地落盘文件
-- ../../../sources/llm/2023/llama-2-long.pdf
+## 一手源存档（sources/）
+- llama-2-long.pdf  （PDF 不入 git，走 HF bucket）

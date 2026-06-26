@@ -28,5 +28,5 @@ Ulysses 针对超长序列训练，把激活沿序列维切到多卡；进入注
 - pdf_url: https://arxiv.org/pdf/2309.14509
 - github_url: https://github.com/deepspeedai/DeepSpeed
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/deepspeed-ulysses-2309.14509.pdf
+## 一手源存档（sources/）
+- [deepspeed-ulysses-2309.14509.pdf](https://arxiv.org/pdf/2309.14509)  （arXiv 原文 PDF，不入 git）

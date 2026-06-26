@@ -29,5 +29,5 @@ LLaMA 是 7B 到 65B 参数的基础语言模型系列，训练于数万亿 toke
 - url: https://arxiv.org/abs/2302.13971
 - pdf_url: https://arxiv.org/pdf/2302.13971
 
-## 本地落盘文件
-- ../../../sources/llm/2023/llama.pdf
+## 一手源存档（sources/）
+- llama.pdf  （PDF 不入 git，走 HF bucket）

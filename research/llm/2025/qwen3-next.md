@@ -30,5 +30,5 @@ downloaded: [qwen3-next-blog.html]
 - url: https://qwen.ai/blog?id=qwen3-next
 - github_url: https://github.com/QwenLM/Qwen3-Next
 
-## 本地落盘文件
-- ../../../sources/llm/2025/qwen3-next-blog.html
+## 一手源存档（sources/）
+- [qwen3-next-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/qwen3-next-blog.html)

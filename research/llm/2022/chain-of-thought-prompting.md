@@ -28,5 +28,5 @@ downloaded: [chain-of-thought.pdf]
 - url: https://arxiv.org/abs/2201.11903
 - pdf_url: https://arxiv.org/pdf/2201.11903
 
-## 本地落盘文件
-- ../../../sources/llm/2022/chain-of-thought.pdf
+## 一手源存档（sources/）
+- chain-of-thought.pdf  （PDF 不入 git，走 HF bucket）

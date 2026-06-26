@@ -27,5 +27,5 @@ Pixtral 12B 是 120 亿参数多模态语言模型，能理解自然图像与文
 - url: https://arxiv.org/abs/2410.07073
 - pdf_url: https://arxiv.org/pdf/2410.07073
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/pixtral.pdf
+## 一手源存档（sources/）
+- pixtral.pdf  （PDF 不入 git，走 HF bucket）

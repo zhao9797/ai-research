@@ -28,5 +28,5 @@ downloaded: [llm-int8-2208.07339.pdf]
 - pdf_url: https://arxiv.org/pdf/2208.07339
 - github_url: https://github.com/bitsandbytes-foundation/bitsandbytes
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/llm-int8-2208.07339.pdf
+## 一手源存档（sources/）
+- [llm-int8-2208.07339.pdf](https://arxiv.org/pdf/2208.07339)  （arXiv 原文 PDF，不入 git）

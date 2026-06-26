@@ -30,6 +30,6 @@ Sparrow 是一个用 RLHF 训练的信息检索对话代理，核心创新是把
 - pdf_url: https://arxiv.org/pdf/2209.14375
 - blog: https://deepmind.google/blog/building-safer-dialogue-agents/
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/sparrow.pdf
-- ../../../../sources/llm/themes/post-training/deepmind-sparrow-blog.html
+## 一手源存档（sources/）
+- sparrow.pdf  （PDF 不入 git，走 HF bucket）
+- [deepmind-sparrow-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/post-training/deepmind-sparrow-blog.html)

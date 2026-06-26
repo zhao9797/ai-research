@@ -28,5 +28,5 @@ InternLM-XComposer2 是擅长自由形式图文创作与理解的视觉语言大
 - PDF: https://arxiv.org/pdf/2401.16420
 - GitHub: https://github.com/InternLM/InternLM-XComposer
 
-## 本地落盘文件
-- ../../../sources/llm/2024/internlm-xcomposer2.pdf
+## 一手源存档（sources/）
+- internlm-xcomposer2.pdf  （PDF 不入 git，走 HF bucket）

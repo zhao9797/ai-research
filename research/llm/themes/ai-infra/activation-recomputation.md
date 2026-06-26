@@ -28,5 +28,5 @@ downloaded: [activation-recomputation-2205.05198.pdf]
 - pdf_url: https://arxiv.org/pdf/2205.05198
 - github_url: https://github.com/NVIDIA/Megatron-LM
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/activation-recomputation-2205.05198.pdf
+## 一手源存档（sources/）
+- [activation-recomputation-2205.05198.pdf](https://arxiv.org/pdf/2205.05198)  （arXiv 原文 PDF，不入 git）

@@ -31,5 +31,5 @@ NVIDIA Megatron-LM 的 3D 并行扩展论文：提出 interleaved pipeline sched
 - pdf_url: https://arxiv.org/pdf/2104.04473
 - github_url: https://github.com/NVIDIA/Megatron-LM
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2104.04473.pdf
+## 一手源存档（sources/）
+- [arxiv-2104.04473.pdf](https://arxiv.org/pdf/2104.04473)  （arXiv 原文 PDF，不入 git）

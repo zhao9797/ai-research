@@ -29,5 +29,5 @@ FlashAttention-3：针对 Hopper(H100) 重写注意力内核，利用异步 Tens
 - pdf_url: https://arxiv.org/pdf/2407.08608
 - github: https://github.com/Dao-AILab/flash-attention
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2407.08608.pdf
+## 一手源存档（sources/）
+- [2407.08608.pdf](https://arxiv.org/pdf/2407.08608)  （arXiv 原文 PDF，不入 git）

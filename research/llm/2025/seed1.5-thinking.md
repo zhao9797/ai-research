@@ -28,5 +28,5 @@ Seed1.5-Thinking 在响应前先思考，在广泛 benchmark 上提升表现：A
 - url: https://arxiv.org/abs/2504.13914
 - pdf_url: https://arxiv.org/pdf/2504.13914
 
-## 本地落盘文件
-- ../../../sources/llm/2025/seed1.5-thinking.pdf
+## 一手源存档（sources/）
+- seed1.5-thinking.pdf  （PDF 不入 git，走 HF bucket）

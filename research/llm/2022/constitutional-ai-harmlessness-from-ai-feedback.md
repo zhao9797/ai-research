@@ -29,5 +29,5 @@ downloaded: [constitutional-ai.pdf]
 - url: https://arxiv.org/abs/2212.08073
 - pdf_url: https://arxiv.org/pdf/2212.08073
 
-## 本地落盘文件
-- ../../../sources/llm/2022/constitutional-ai.pdf
+## 一手源存档（sources/）
+- constitutional-ai.pdf  （PDF 不入 git，走 HF bucket）

@@ -28,5 +28,5 @@ RewardBench：首个系统评测 RLHF 奖励模型的基准与排行榜，覆盖
 - pdf_url: https://arxiv.org/pdf/2403.13787
 - github: https://github.com/allenai/reward-bench
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2403.13787.pdf
+## 一手源存档（sources/）
+- [2403.13787.pdf](https://arxiv.org/pdf/2403.13787)  （arXiv 原文 PDF，不入 git）

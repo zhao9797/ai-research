@@ -30,5 +30,5 @@ DeepSeek-V3.2-Exp 是实验性稀疏注意力模型，通过继续训练给 Deep
 - pdf_url: https://github.com/deepseek-ai/DeepSeek-V3.2-Exp/raw/main/DeepSeek_V3_2.pdf
 - github_url: https://github.com/deepseek-ai/DeepSeek-V3.2-Exp
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/deepseek-v3.2-exp.pdf
+## 一手源存档（sources/）
+- deepseek-v3.2-exp.pdf  （PDF 不入 git，走 HF bucket）

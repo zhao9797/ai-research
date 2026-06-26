@@ -30,5 +30,5 @@ DeBERTa 引入两项关键改进：一是解耦注意力（disentangled attentio
 - pdf_url: https://arxiv.org/pdf/2006.03654
 - github_url: https://github.com/microsoft/DeBERTa
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2006.03654.pdf
+## 一手源存档（sources/）
+- [arxiv-2006.03654.pdf](https://arxiv.org/pdf/2006.03654)  （arXiv 原文 PDF，不入 git）

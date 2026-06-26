@@ -30,5 +30,5 @@ AI2 系统横评 12 个开源指令数据集，发布 Tülu 模型与 open-instr
 - pdf_url: https://arxiv.org/pdf/2306.04751
 - github_url: https://github.com/allenai/open-instruct
 
-## 本地落盘文件
-- ../../../sources/llm/2023/tulu-camels.pdf
+## 一手源存档（sources/）
+- tulu-camels.pdf  （PDF 不入 git，走 HF bucket）

@@ -28,5 +28,5 @@ Mistral 7B v0.1 是 7B 参数模型，在所有评测基准上超过 Llama 2 13B
 - url: https://arxiv.org/abs/2310.06825
 - pdf_url: https://arxiv.org/pdf/2310.06825
 
-## 本地落盘文件
-- ../../../sources/llm/2023/mistral-7b.pdf
+## 一手源存档（sources/）
+- mistral-7b.pdf  （PDF 不入 git，走 HF bucket）

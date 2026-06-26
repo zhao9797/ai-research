@@ -27,5 +27,5 @@ Anthropic 官方发布 Claude 2 的公告博客。Claude 2 在编码、数学、
 ## 原始链接
 - url: https://www.anthropic.com/news/claude-2
 
-## 本地落盘文件
-- ../../../sources/llm/2023/claude-2-anthropic.html
+## 一手源存档（sources/）
+- [claude-2-anthropic.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/claude-2-anthropic.html)

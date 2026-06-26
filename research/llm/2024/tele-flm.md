@@ -29,5 +29,5 @@ downloaded: [files/tele-flm.pdf]
 - PDF: https://arxiv.org/pdf/2404.16645
 - GitHub: https://github.com/CofeAI/Tele-FLM
 
-## 本地落盘文件
-- ../../../sources/llm/2024/tele-flm.pdf
+## 一手源存档（sources/）
+- tele-flm.pdf  （PDF 不入 git，走 HF bucket）

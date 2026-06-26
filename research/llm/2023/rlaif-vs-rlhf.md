@@ -28,5 +28,5 @@ RLAIF 用现成 LLM 生成偏好来训奖励模型，作为昂贵人类标注的
 - url: https://arxiv.org/abs/2309.00267
 - pdf_url: https://arxiv.org/pdf/2309.00267
 
-## 本地落盘文件
-- ../../../sources/llm/2023/rlaif-vs-rlhf.pdf
+## 一手源存档（sources/）
+- rlaif-vs-rlhf.pdf  （PDF 不入 git，走 HF bucket）

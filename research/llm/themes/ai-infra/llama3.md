@@ -28,5 +28,5 @@ Llama 3 是支持多语言、代码、推理、工具调用的基础模型家族
 - pdf_url: https://arxiv.org/pdf/2407.21783
 - github_url: https://github.com/meta-llama/llama-models
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/llama3-2407.21783.pdf
+## 一手源存档（sources/）
+- [llama3-2407.21783.pdf](https://arxiv.org/pdf/2407.21783)  （arXiv 原文 PDF，不入 git）

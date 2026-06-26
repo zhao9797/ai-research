@@ -29,5 +29,5 @@ Llama-Nemotron 系列（LN-Nano 8B、LN-Super 49B、LN-Ultra 253B）面向企业
 - pdf_url: https://arxiv.org/pdf/2505.00949
 - models: https://huggingface.co/collections/nvidia/llama-nemotron
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/llama-nemotron.pdf
+## 一手源存档（sources/）
+- llama-nemotron.pdf  （PDF 不入 git，走 HF bucket）

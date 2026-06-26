@@ -29,5 +29,5 @@ Llama Guard 3 Vision 是一个基于多模态 LLM 的安全护栏，用于涉及
 - pdf_url: https://arxiv.org/pdf/2411.10414
 - github: https://github.com/meta-llama/PurpleLlama
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2411.10414.pdf
+## 一手源存档（sources/）
+- [2411.10414.pdf](https://arxiv.org/pdf/2411.10414)  （arXiv 原文 PDF，不入 git）

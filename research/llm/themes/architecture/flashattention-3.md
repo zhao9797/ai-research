@@ -29,5 +29,5 @@ FlashAttention-3 针对 Hopper (H100) 重写注意力 kernel，用异步 Tensor 
 - pdf_url: https://arxiv.org/pdf/2407.08608
 - github_url: https://github.com/Dao-AILab/flash-attention
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/flashattention3.pdf
+## 一手源存档（sources/）
+- flashattention3.pdf  （PDF 不入 git，走 HF bucket）

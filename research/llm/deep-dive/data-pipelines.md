@@ -365,7 +365,7 @@
 
 ---
 
-## 本地落盘文件清单
+## 一手源存档（sources/）
 
 - `deep-dive/files/t5-c4-original-1910.10683.pdf`（T5/C4）
 - `deep-dive/files/c4-documenting-2104.08758.pdf`（C4 记录论文）

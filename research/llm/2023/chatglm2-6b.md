@@ -30,5 +30,5 @@ ChatGLM2-6B 是 ChatGLM-6B 的第二代版本。基座全面升级：采用 GLM 
 - url: https://github.com/THUDM/ChatGLM2-6B
 - github_url: https://github.com/THUDM/ChatGLM2-6B
 
-## 本地落盘文件
-- ../../../sources/llm/2023/chatglm2-6b-readme.md
+## 一手源存档（sources/）
+- [chatglm2-6b-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/chatglm2-6b-readme.md)

@@ -30,5 +30,5 @@ T0 通过"多任务提示训练"（multitask prompted training）实现强 zero-
 - pdf_url: https://arxiv.org/pdf/2110.08207
 - github_url: https://github.com/bigscience-workshop/t-zero
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2110.08207.pdf
+## 一手源存档（sources/）
+- [arxiv-2110.08207.pdf](https://arxiv.org/pdf/2110.08207)  （arXiv 原文 PDF，不入 git）

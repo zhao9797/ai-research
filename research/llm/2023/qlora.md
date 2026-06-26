@@ -30,5 +30,5 @@ QLoRA 在单张 48GB GPU 上微调 65B 模型且保持 16-bit 全量微调性能
 - pdf_url: https://arxiv.org/pdf/2305.14314
 - github_url: https://github.com/artidoro/qlora
 
-## 本地落盘文件
-- ../../../sources/llm/2023/qlora.pdf
+## 一手源存档（sources/）
+- qlora.pdf  （PDF 不入 git，走 HF bucket）

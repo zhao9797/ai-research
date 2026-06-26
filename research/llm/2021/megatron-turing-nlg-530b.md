@@ -33,7 +33,7 @@ MT-NLG 是微软与 NVIDIA 联合训练的最大单体（monolithic）Transforme
 - blog: https://www.microsoft.com/en-us/research/blog/using-deepspeed-and-megatron-to-train-megatron-turing-nlg-530b-the-worlds-largest-and-most-powerful-generative-language-model/
 - github_url: https://github.com/NVIDIA/Megatron-LM
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2201.11990.pdf
-- ../../../sources/llm/2021/ms-mtnlg-blog.html
-- ../../../sources/llm/2021/nvidia-mtnlg-blog.html
+## 一手源存档（sources/）
+- [arxiv-2201.11990.pdf](https://arxiv.org/pdf/2201.11990)  （arXiv 原文 PDF，不入 git）
+- [ms-mtnlg-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2021/ms-mtnlg-blog.html)
+- [nvidia-mtnlg-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2021/nvidia-mtnlg-blog.html)

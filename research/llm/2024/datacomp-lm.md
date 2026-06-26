@@ -29,5 +29,5 @@ DataComp for Language Models（DCLM）是用于受控数据集实验、以改进
 - pdf_url: https://arxiv.org/pdf/2406.11794
 - github: https://github.com/mlfoundations/dclm
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2406.11794.pdf
+## 一手源存档（sources/）
+- [2406.11794.pdf](https://arxiv.org/pdf/2406.11794)  （arXiv 原文 PDF，不入 git）

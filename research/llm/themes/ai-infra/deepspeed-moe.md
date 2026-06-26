@@ -30,5 +30,5 @@ DeepSpeed 的端到端 MoE 训练+推理方案：新 MoE 架构（PR-MoE）+ 模
 - github_url: https://github.com/deepspeedai/DeepSpeed
 - 会议版: https://proceedings.mlr.press/v162/rajbhandari22a （ICML 2022）
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/deepspeed-moe-2201.05596.pdf
+## 一手源存档（sources/）
+- [deepspeed-moe-2201.05596.pdf](https://arxiv.org/pdf/2201.05596)  （arXiv 原文 PDF，不入 git）

@@ -27,5 +27,5 @@ PaLM（Pathways Language Model）是 5400 亿参数的 dense decoder-only Transf
 - url: https://arxiv.org/abs/2204.02311
 - pdf_url: https://arxiv.org/pdf/2204.02311
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/palm.pdf
+## 一手源存档（sources/）
+- palm.pdf  （PDF 不入 git，走 HF bucket）

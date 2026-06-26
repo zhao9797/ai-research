@@ -29,5 +29,5 @@ Anthropic 官方工程指南，定义了至今被广泛引用的"workflows vs ag
 - url: https://www.anthropic.com/engineering/building-effective-agents
 - github_url: https://github.com/anthropics/anthropic-cookbook
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/anthropic-building-effective-agents.html
+## 一手源存档（sources/）
+- [anthropic-building-effective-agents.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/agentic/anthropic-building-effective-agents.html)

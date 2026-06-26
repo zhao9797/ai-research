@@ -28,5 +28,5 @@ downloaded: [fastmoe-2103.13262.pdf]
 - pdf_url: https://arxiv.org/pdf/2103.13262
 - github_url: https://github.com/laekov/fastmoe
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/fastmoe-2103.13262.pdf
+## 一手源存档（sources/）
+- [fastmoe-2103.13262.pdf](https://arxiv.org/pdf/2103.13262)  （arXiv 原文 PDF，不入 git）

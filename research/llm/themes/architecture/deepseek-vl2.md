@@ -28,5 +28,5 @@ DeepSeek-VL2 在前代 DeepSeek-VL 基础上两大升级：视觉侧采用 dynam
 - pdf_url: https://arxiv.org/pdf/2412.10302
 - github_url: https://github.com/deepseek-ai/DeepSeek-VL2
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/deepseek-vl2.pdf
+## 一手源存档（sources/）
+- deepseek-vl2.pdf  （PDF 不入 git，走 HF bucket）

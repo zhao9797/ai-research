@@ -28,5 +28,5 @@ downloaded: [areal-2505.24298.pdf]
 - pdf_url: https://arxiv.org/pdf/2505.24298
 - github_url: https://github.com/inclusionAI/AReaL
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/areal-2505.24298.pdf
+## 一手源存档（sources/）
+- [areal-2505.24298.pdf](https://arxiv.org/pdf/2505.24298)  （arXiv 原文 PDF，不入 git）

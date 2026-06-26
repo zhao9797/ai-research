@@ -29,5 +29,5 @@ Seed1.5-VL 是面向通用多模态理解与推理的视觉语言基座，由 53
 - pdf_url: https://arxiv.org/pdf/2505.07062
 - github_url: https://github.com/ByteDance-Seed/Seed1.5-VL
 
-## 本地落盘文件
-- ../../../sources/llm/2025/seed1.5-vl.pdf
+## 一手源存档（sources/）
+- seed1.5-vl.pdf  （PDF 不入 git，走 HF bucket）

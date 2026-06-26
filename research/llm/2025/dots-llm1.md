@@ -30,5 +30,5 @@ dots.llm1 是大规模 MoE，142B 总参、每 token 激活 14B，性能比肩 S
 - pdf_url: https://arxiv.org/pdf/2506.05767
 - github_url: https://github.com/rednote-hilab/dots.llm1
 
-## 本地落盘文件
-- ../../../sources/llm/2025/dots-llm1.pdf
+## 一手源存档（sources/）
+- dots-llm1.pdf  （PDF 不入 git，走 HF bucket）

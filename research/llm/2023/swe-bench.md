@@ -30,5 +30,5 @@ SWE-bench：用真实 GitHub issue/PR 评测模型修真实代码库，agentic c
 - pdf_url: https://arxiv.org/pdf/2310.06770
 - github_url: https://github.com/princeton-nlp/SWE-bench
 
-## 本地落盘文件
-- ../../../sources/llm/2023/swe-bench.pdf
+## 一手源存档（sources/）
+- swe-bench.pdf  （PDF 不入 git，走 HF bucket）

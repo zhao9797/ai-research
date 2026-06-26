@@ -29,5 +29,5 @@ Qwen2-VL 是 Qwen-VL 的重大升级，摒弃固定分辨率方案。Naive Dynam
 - pdf_url: https://arxiv.org/pdf/2409.12191
 - github_url: https://github.com/QwenLM/Qwen2-VL
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/qwen2-vl.pdf
+## 一手源存档（sources/）
+- qwen2-vl.pdf  （PDF 不入 git，走 HF bucket）

@@ -30,5 +30,5 @@ OpenHands（前 OpenDevin）：开源通用软件开发 agent 平台——agent 
 - pdf_url: https://arxiv.org/pdf/2407.16741
 - github: https://github.com/All-Hands-AI/OpenHands
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2407.16741.pdf
+## 一手源存档（sources/）
+- [2407.16741.pdf](https://arxiv.org/pdf/2407.16741)  （arXiv 原文 PDF，不入 git）

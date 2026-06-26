@@ -28,5 +28,5 @@ agentic 搜索(如 Deep Research 系统——agent 自主浏览网页、综合�
 - pdf_url: https://arxiv.org/pdf/2506.21506
 - github_url: https://github.com/OSU-NLP-Group/Mind2Web-2
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/mind2web2-2506.21506.pdf
+## 一手源存档（sources/）
+- [mind2web2-2506.21506.pdf](https://arxiv.org/pdf/2506.21506)  （arXiv 原文 PDF，不入 git）

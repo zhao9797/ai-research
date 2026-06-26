@@ -29,5 +29,5 @@ rStar-Math 让 SLM 通过 MCTS（蒙特卡洛树搜索）做 test-time 搜索，
 - arXiv：https://arxiv.org/abs/2501.04519
 - PDF：https://arxiv.org/pdf/2501.04519
 
-## 本地落盘文件
-- ../../../sources/llm/2025/rstar-math.pdf
+## 一手源存档（sources/）
+- rstar-math.pdf  （PDF 不入 git，走 HF bucket）

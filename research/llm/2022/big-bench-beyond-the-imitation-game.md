@@ -29,5 +29,5 @@ downloaded: [big-bench.pdf]
 - pdf_url: https://arxiv.org/pdf/2206.04615
 - github_url: https://github.com/google/BIG-bench
 
-## 本地落盘文件
-- ../../../sources/llm/2022/big-bench.pdf
+## 一手源存档（sources/）
+- big-bench.pdf  （PDF 不入 git，走 HF bucket）

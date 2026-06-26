@@ -29,5 +29,5 @@ Qwen 认为 Context Length Scaling 与 Total Parameter Scaling 是两大趋势�
 - url: https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list
 - github_url: https://huggingface.co/collections/Qwen/qwen3-next-68c25fd6838e585db8eeea9d
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/qwen3-next-blog.html
+## 一手源存档（sources/）
+- [qwen3-next-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/architecture/qwen3-next-blog.html)

@@ -47,6 +47,6 @@ downloaded: [minimax-m3-readme.md, minimax-m3-config.json]
 ## 原始链接
 - url: https://huggingface.co/MiniMaxAI/MiniMax-M3 · MSA 报告: https://arxiv.org/abs/2606.13392 · github: https://github.com/MiniMax-AI/MSA
 
-## 本地落盘文件
-- ../../../sources/llm/2026/minimax-m3-readme.md
-- ../../../sources/llm/2026/minimax-m3-config.json
+## 一手源存档（sources/）
+- [minimax-m3-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/minimax-m3-readme.md)
+- [minimax-m3-config.json](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/minimax-m3-config.json)

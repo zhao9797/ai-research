@@ -26,5 +26,5 @@ RAFT 提出用奖励排序微调对齐生成模型：每轮从当前模型采样
 - url: https://arxiv.org/abs/2304.06767
 - pdf_url: https://arxiv.org/pdf/2304.06767
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/raft.pdf
+## 一手源存档（sources/）
+- raft.pdf  （PDF 不入 git，走 HF bucket）

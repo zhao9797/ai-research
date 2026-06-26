@@ -28,5 +28,5 @@ downloaded: [flash-decoding-pytorch-blog.md]
 - url: https://pytorch.org/blog/flash-decoding/
 - github_url: https://github.com/Dao-AILab/flash-attention
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/flash-decoding-pytorch-blog.md
+## 一手源存档（sources/）
+- [flash-decoding-pytorch-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/flash-decoding-pytorch-blog.md)

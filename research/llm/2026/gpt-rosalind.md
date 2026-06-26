@@ -27,5 +27,5 @@ GPT-Rosalind 是 OpenAI 专为企业规模生命科学研究打造的模型系�
 ## 原始链接
 - url: https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/
 
-## 本地落盘文件
-- ../../../sources/llm/2026/openai-gpt-rosalind.html
+## 一手源存档（sources/）
+- [openai-gpt-rosalind.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/openai-gpt-rosalind.html)

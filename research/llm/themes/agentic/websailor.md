@@ -29,5 +29,5 @@ downloaded: [websailor-2507.02592.pdf]
 - pdf_url: https://arxiv.org/pdf/2507.02592
 - github_url: https://github.com/Alibaba-NLP/DeepResearch
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/websailor-2507.02592.pdf
+## 一手源存档（sources/）
+- [websailor-2507.02592.pdf](https://arxiv.org/pdf/2507.02592)  （arXiv 原文 PDF，不入 git）

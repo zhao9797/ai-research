@@ -29,5 +29,5 @@ downloaded: [files/glm-4.pdf]
 - PDF: https://arxiv.org/pdf/2406.12793
 - GitHub: https://github.com/THUDM/GLM-4
 
-## 本地落盘文件
-- ../../../sources/llm/2024/glm-4.pdf
+## 一手源存档（sources/）
+- glm-4.pdf  （PDF 不入 git，走 HF bucket）

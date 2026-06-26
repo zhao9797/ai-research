@@ -31,5 +31,5 @@ Llama 3 全系技术报告（92 页），最大为 405B 稠密 Transformer，128
 - url: https://arxiv.org/abs/2407.21783
 - pdf_url: https://arxiv.org/pdf/2407.21783
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2407.21783.pdf
+## 一手源存档（sources/）
+- [2407.21783.pdf](https://arxiv.org/pdf/2407.21783)  （arXiv 原文 PDF，不入 git）

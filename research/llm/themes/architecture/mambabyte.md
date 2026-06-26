@@ -29,5 +29,5 @@ Token-free 模型直接从原始字节学习、移除子词分词偏置，但字
 - url: https://arxiv.org/abs/2401.13660
 - pdf_url: https://arxiv.org/pdf/2401.13660
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/mambabyte.pdf
+## 一手源存档（sources/）
+- mambabyte.pdf  （PDF 不入 git，走 HF bucket）

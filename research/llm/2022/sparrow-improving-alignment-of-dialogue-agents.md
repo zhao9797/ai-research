@@ -29,5 +29,5 @@ Sparrow 是信息检索型对话智能体，相比提示式基线更有用、正
 - url: https://arxiv.org/abs/2209.14375
 - pdf_url: https://arxiv.org/pdf/2209.14375
 
-## 本地落盘文件
-- ../../../sources/llm/2022/sparrow.pdf
+## 一手源存档（sources/）
+- sparrow.pdf  （PDF 不入 git，走 HF bucket）

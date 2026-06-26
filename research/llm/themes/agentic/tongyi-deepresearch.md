@@ -32,5 +32,5 @@ Tongyi DeepResearch 是面向长时程、深度信息检索研究任务的 agent
 - HuggingFace: https://huggingface.co/Alibaba-NLP/Tongyi-DeepResearch-30B-A3B
 - 官方博客: https://tongyi-agent.github.io/blog
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/tongyi-deepresearch-2510.24701.pdf
+## 一手源存档（sources/）
+- [tongyi-deepresearch-2510.24701.pdf](https://arxiv.org/pdf/2510.24701)  （arXiv 原文 PDF，不入 git）

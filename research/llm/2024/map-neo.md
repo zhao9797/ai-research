@@ -29,5 +29,5 @@ downloaded: [files/map-neo.pdf]
 - PDF: https://arxiv.org/pdf/2405.19327
 - GitHub: https://github.com/multimodal-art-projection/MAP-NEO
 
-## 本地落盘文件
-- ../../../sources/llm/2024/map-neo.pdf
+## 一手源存档（sources/）
+- map-neo.pdf  （PDF 不入 git，走 HF bucket）

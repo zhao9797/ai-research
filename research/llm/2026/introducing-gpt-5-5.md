@@ -38,5 +38,5 @@ GPT-5.5 是 OpenAI 截至发布时最智能的模型，强调智能体编程（a
 ## 原始链接
 - url: https://openai.com/index/introducing-gpt-5-5/
 
-## 本地落盘文件
-- ../../../sources/llm/2026/openai-gpt-5-5.html
+## 一手源存档（sources/）
+- [openai-gpt-5-5.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/openai-gpt-5-5.html)

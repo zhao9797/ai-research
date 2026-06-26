@@ -28,5 +28,5 @@ Conformer 在 Transformer 编码器中插入卷积模块，结合自注意力建
 - url: https://arxiv.org/abs/2005.08100
 - pdf_url: https://arxiv.org/pdf/2005.08100
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2005.08100.pdf
+## 一手源存档（sources/）
+- [arxiv-2005.08100.pdf](https://arxiv.org/pdf/2005.08100)  （arXiv 原文 PDF，不入 git）

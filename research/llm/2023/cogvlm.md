@@ -30,5 +30,5 @@ downloaded: [cogvlm.pdf]
 - pdf_url: https://arxiv.org/pdf/2311.03079
 - github_url: https://github.com/THUDM/CogVLM
 
-## 本地落盘文件
-- ../../../sources/llm/2023/cogvlm.pdf
+## 一手源存档（sources/）
+- cogvlm.pdf  （PDF 不入 git，走 HF bucket）

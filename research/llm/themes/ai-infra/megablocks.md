@@ -28,5 +28,5 @@ downloaded: [megablocks-2211.15841.pdf, ]
 - pdf_url: https://arxiv.org/pdf/2211.15841
 - github_url: https://github.com/databricks/megablocks
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/megablocks-2211.15841.pdf
+## 一手源存档（sources/）
+- [megablocks-2211.15841.pdf](https://arxiv.org/pdf/2211.15841)  （arXiv 原文 PDF，不入 git）

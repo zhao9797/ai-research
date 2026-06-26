@@ -27,5 +27,5 @@ Chameleon 是一族早融合 (early-fusion)、基于 token 的混合模态模型
 - url: https://arxiv.org/abs/2405.09818
 - pdf_url: https://arxiv.org/pdf/2405.09818
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/chameleon.pdf
+## 一手源存档（sources/）
+- chameleon.pdf  （PDF 不入 git，走 HF bucket）

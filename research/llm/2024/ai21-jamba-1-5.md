@@ -30,6 +30,6 @@ Jamba 1.5（Mini + Large）发布博客：首次把非 Transformer（SSM-Transfo
 - 研究页: https://www.ai21.com/research/jamba-1-5-hybrid-transformer-mamba-models-at-scale/
 - paper: https://arxiv.org/abs/2408.12570
 
-## 本地落盘文件
-- ../../../sources/llm/2024/ai21-jamba-1-5-blog.md
-- ../../../sources/llm/2024/2408.12570.pdf
+## 一手源存档（sources/）
+- [ai21-jamba-1-5-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/ai21-jamba-1-5-blog.md)
+- [2408.12570.pdf](https://arxiv.org/pdf/2408.12570)  （arXiv 原文 PDF，不入 git）

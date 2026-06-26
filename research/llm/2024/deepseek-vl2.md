@@ -28,5 +28,5 @@ DeepSeek-VL2 相比 DeepSeek-VL 有两大升级：视觉侧采用 dynamic tiling
 - PDF: https://arxiv.org/pdf/2412.10302
 - GitHub: https://github.com/deepseek-ai/DeepSeek-VL2
 
-## 本地落盘文件
-- ../../../sources/llm/2024/deepseek-vl2.pdf
+## 一手源存档（sources/）
+- deepseek-vl2.pdf  （PDF 不入 git，走 HF bucket）

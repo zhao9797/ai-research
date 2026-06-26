@@ -30,5 +30,5 @@ MOSS 是复旦大学开源的工具增强对话语言模型。moss-moon-003-base
 - url: https://github.com/OpenMOSS/MOSS
 - github_url: https://github.com/OpenMOSS/MOSS
 
-## 本地落盘文件
-- ../../../sources/llm/2023/moss-readme.md
+## 一手源存档（sources/）
+- [moss-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/moss-readme.md)

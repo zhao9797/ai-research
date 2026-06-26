@@ -31,5 +31,5 @@ Command A 是面向真实企业用例的 111B 模型，支持 23 种商业语言
 - arXiv：https://arxiv.org/abs/2504.00698
 - 官方 PDF：https://cohere.com/research/papers/command-a-technical-report.pdf
 
-## 本地落盘文件
-- ../../../sources/llm/2025/command-a.pdf
+## 一手源存档（sources/）
+- command-a.pdf  （PDF 不入 git，走 HF bucket）

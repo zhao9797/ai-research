@@ -29,5 +29,5 @@ downloaded: [appworld-2407.18901.pdf]
 - pdf_url: https://arxiv.org/pdf/2407.18901
 - github_url: https://github.com/StonyBrookNLP/appworld
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/appworld-2407.18901.pdf
+## 一手源存档（sources/）
+- [appworld-2407.18901.pdf](https://arxiv.org/pdf/2407.18901)  （arXiv 原文 PDF，不入 git）

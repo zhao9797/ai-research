@@ -27,5 +27,5 @@ GShard 用条件计算（Mixture-of-Experts）和自动分片把 Transformer 扩
 - url: https://arxiv.org/abs/2006.16668
 - pdf_url: https://arxiv.org/pdf/2006.16668
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/gshard.pdf
+## 一手源存档（sources/）
+- gshard.pdf  （PDF 不入 git，走 HF bucket）

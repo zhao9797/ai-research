@@ -29,5 +29,5 @@ MiniMax Sparse Attention（MSA，arXiv 2026-06-11，作者 Xunhao Lai 等 17 人
 - url: https://arxiv.org/abs/2606.13392
 - pdf_url: https://arxiv.org/pdf/2606.13392
 
-## 本地落盘文件
-- ../../../sources/llm/2026/minimax-sparse-attention.pdf
+## 一手源存档（sources/）
+- minimax-sparse-attention.pdf  （PDF 不入 git，走 HF bucket）

@@ -31,5 +31,5 @@ DeepSeek 推出第一代推理模型 DeepSeek-R1-Zero 与 DeepSeek-R1。R1-Zero 
 - pdf_url: https://arxiv.org/pdf/2501.12948
 - github_url: https://github.com/deepseek-ai/DeepSeek-R1
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/deepseek-r1-2501.12948.pdf
+## 一手源存档（sources/）
+- [deepseek-r1-2501.12948.pdf](https://arxiv.org/pdf/2501.12948)  （arXiv 原文 PDF，不入 git）

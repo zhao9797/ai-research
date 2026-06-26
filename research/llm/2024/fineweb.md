@@ -29,5 +29,5 @@ LLM 性能高度依赖预训练数据的质量与规模，但 Llama 3、Mixtral 
 - pdf_url: https://arxiv.org/pdf/2406.17557
 - dataset: https://huggingface.co/datasets/HuggingFaceFW/fineweb
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2406.17557.pdf
+## 一手源存档（sources/）
+- [2406.17557.pdf](https://arxiv.org/pdf/2406.17557)  （arXiv 原文 PDF，不入 git）

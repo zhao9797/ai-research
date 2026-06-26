@@ -30,5 +30,5 @@ HuggingFace 用 dSFT+dDPO 蒸馏出 Zephyr-7B，无任何人工标注就超 Llam
 - pdf_url: https://arxiv.org/pdf/2310.16944
 - github_url: https://github.com/huggingface/alignment-handbook
 
-## 本地落盘文件
-- ../../../sources/llm/2023/zephyr.pdf
+## 一手源存档（sources/）
+- zephyr.pdf  （PDF 不入 git，走 HF bucket）

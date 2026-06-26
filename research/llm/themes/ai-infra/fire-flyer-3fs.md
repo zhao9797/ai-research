@@ -27,5 +27,5 @@ DeepSeek 开源的面向 AI 训练/推理的高性能分布式文件系统，基
 - url: https://github.com/deepseek-ai/3FS
 - github_url: https://github.com/deepseek-ai/3FS
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/3fs-readme.md
+## 一手源存档（sources/）
+- [3fs-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/3fs-readme.md)

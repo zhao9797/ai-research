@@ -29,5 +29,5 @@ Anthropic 红队方法论与数据集：系统研究不同规模/类型模型的
 - pdf_url: https://arxiv.org/pdf/2209.07858
 - github_url: https://github.com/anthropics/hh-rlhf
 
-## 本地落盘文件
-- ../../../sources/llm/2022/anthropic-red-teaming.pdf
+## 一手源存档（sources/）
+- anthropic-red-teaming.pdf  （PDF 不入 git，走 HF bucket）

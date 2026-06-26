@@ -32,5 +32,5 @@ Samba 把 Mamba（选择性 SSM）与 Sliding Window Attention（SWA）逐层交
 - pdf_url: https://arxiv.org/pdf/2406.07522
 - github_url: https://github.com/microsoft/Samba
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/samba.pdf
+## 一手源存档（sources/）
+- samba.pdf  （PDF 不入 git，走 HF bucket）

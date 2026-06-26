@@ -28,5 +28,5 @@ downloaded: [zero-shot-reasoners.pdf]
 - url: https://arxiv.org/abs/2205.11916
 - pdf_url: https://arxiv.org/pdf/2205.11916
 
-## 本地落盘文件
-- ../../../sources/llm/2022/zero-shot-reasoners.pdf
+## 一手源存档（sources/）
+- zero-shot-reasoners.pdf  （PDF 不入 git，走 HF bucket）

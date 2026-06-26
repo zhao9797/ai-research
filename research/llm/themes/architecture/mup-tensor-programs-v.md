@@ -29,5 +29,5 @@ downloaded: [mup.pdf]
 - pdf_url: https://arxiv.org/pdf/2203.03466
 - github_url: https://github.com/microsoft/mup
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/mup.pdf
+## 一手源存档（sources/）
+- mup.pdf  （PDF 不入 git，走 HF bucket）

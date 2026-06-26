@@ -29,5 +29,5 @@ downloaded: [flan-scaling.pdf]
 - pdf_url: https://arxiv.org/pdf/2210.11416
 - github_url: https://github.com/google-research/FLAN
 
-## 本地落盘文件
-- ../../../sources/llm/2022/flan-scaling.pdf
+## 一手源存档（sources/）
+- flan-scaling.pdf  （PDF 不入 git，走 HF bucket）

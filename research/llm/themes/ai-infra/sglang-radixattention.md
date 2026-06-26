@@ -28,6 +28,6 @@ downloaded: [sglang-radixattention-2312.07104.pdf, sglang-readme.md]
 - pdf_url: https://arxiv.org/pdf/2312.07104
 - github_url: https://github.com/sgl-project/sglang
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/sglang-radixattention-2312.07104.pdf
-- ../../../../sources/llm/themes/ai-infra/sglang-readme.md
+## 一手源存档（sources/）
+- [sglang-radixattention-2312.07104.pdf](https://arxiv.org/pdf/2312.07104)  （arXiv 原文 PDF，不入 git）
+- [sglang-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/sglang-readme.md)

@@ -28,5 +28,5 @@ downloaded: [webrl-2411.02337.pdf]
 - pdf_url: https://arxiv.org/pdf/2411.02337
 - github_url: https://github.com/THUDM/WebRL
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/webrl-2411.02337.pdf
+## 一手源存档（sources/）
+- [webrl-2411.02337.pdf](https://arxiv.org/pdf/2411.02337)  （arXiv 原文 PDF，不入 git）

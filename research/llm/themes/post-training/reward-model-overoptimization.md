@@ -27,5 +27,5 @@ RLHF 中"奖励黑客/过度优化"的定量研究：用 gold RM 作为真值，
 - url: https://arxiv.org/abs/2210.10760
 - pdf_url: https://arxiv.org/pdf/2210.10760
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/reward-overoptimization.pdf
+## 一手源存档（sources/）
+- reward-overoptimization.pdf  （PDF 不入 git，走 HF bucket）

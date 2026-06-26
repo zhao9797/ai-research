@@ -29,5 +29,5 @@ KTO（Kahneman-Tversky Optimization）：把前景理论的人类损失厌恶引
 - pdf_url: https://arxiv.org/pdf/2402.01306
 - github_url: https://github.com/ContextualAI/HALOs
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/kto.pdf
+## 一手源存档（sources/）
+- kto.pdf  （PDF 不入 git，走 HF bucket）

@@ -31,5 +31,5 @@ Stable-DiffCoder（arXiv 2026-01-22，作者 Chenghao Fan 等 9 人，ByteDance 
 - pdf_url: https://arxiv.org/pdf/2601.15892
 - github_url: https://github.com/ByteDance-Seed/Stable-DiffCoder
 
-## 本地落盘文件
-- ../../../sources/llm/2026/stable-diffcoder.pdf
+## 一手源存档（sources/）
+- stable-diffcoder.pdf  （PDF 不入 git，走 HF bucket）

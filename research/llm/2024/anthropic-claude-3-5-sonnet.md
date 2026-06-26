@@ -28,5 +28,5 @@ Claude 3.5 Sonnet 首发博客：以 Claude 3 Sonnet 的速度和成本超越 Cl
 - url: https://www.anthropic.com/news/claude-3-5-sonnet
 - 3.5 addendum model card: https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf
 
-## 本地落盘文件
-- ../../../sources/llm/2024/anthropic-claude-3-5-sonnet.md
+## 一手源存档（sources/）
+- [anthropic-claude-3-5-sonnet.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/anthropic-claude-3-5-sonnet.md)

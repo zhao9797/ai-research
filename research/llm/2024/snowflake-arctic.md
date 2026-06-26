@@ -28,5 +28,5 @@ Snowflake Arctic 发布博客：独特的 Dense-MoE 混合架构（480B 总 / 17
 ## 原始链接
 - url: https://www.snowflake.com/en/blog/arctic-open-efficient-foundation-language-models-snowflake/
 
-## 本地落盘文件
-- ../../../sources/llm/2024/snowflake-arctic-blog.md
+## 一手源存档（sources/）
+- [snowflake-arctic-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/snowflake-arctic-blog.md)

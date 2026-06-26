@@ -30,5 +30,5 @@ wav2vec 2.0 先用 CNN 特征编码器把原始波形编码为隐表示，再对
 - pdf_url: https://arxiv.org/pdf/2006.11477
 - github_url: https://github.com/facebookresearch/fairseq
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2006.11477.pdf
+## 一手源存档（sources/）
+- [arxiv-2006.11477.pdf](https://arxiv.org/pdf/2006.11477)  （arXiv 原文 PDF，不入 git）

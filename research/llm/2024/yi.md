@@ -29,5 +29,5 @@ Yi 模型家族基于 6B 和 34B 预训练语言模型，并扩展出 chat、200
 - PDF: https://arxiv.org/pdf/2403.04652
 - GitHub: https://github.com/01-ai/Yi
 
-## 本地落盘文件
-- ../../../sources/llm/2024/yi.pdf
+## 一手源存档（sources/）
+- yi.pdf  （PDF 不入 git，走 HF bucket）

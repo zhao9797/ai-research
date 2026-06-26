@@ -26,5 +26,5 @@ GPTQ 是 PTQ（post-training quantization）方法，基于近似二阶（Hessia
 - url: https://arxiv.org/abs/2210.17323
 - pdf_url: https://arxiv.org/pdf/2210.17323
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/gptq-2210.17323.pdf
+## 一手源存档（sources/）
+- [gptq-2210.17323.pdf](https://arxiv.org/pdf/2210.17323)  （arXiv 原文 PDF，不入 git）

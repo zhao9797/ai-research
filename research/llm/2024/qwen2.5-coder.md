@@ -30,5 +30,5 @@ Qwen2.5-Coder 系列含 0.5B/1.5B/3B/7B/14B/32B 六个模型，构建于 Qwen2.5
 - PDF: https://arxiv.org/pdf/2409.12186
 - GitHub: https://github.com/QwenLM/Qwen2.5-Coder
 
-## 本地落盘文件
-- ../../../sources/llm/2024/qwen2.5-coder.pdf
+## 一手源存档（sources/）
+- qwen2.5-coder.pdf  （PDF 不入 git，走 HF bucket）

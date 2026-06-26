@@ -29,5 +29,5 @@ downloaded: [rlhf-workflow.pdf]
 - pdf_url: https://arxiv.org/pdf/2405.07863
 - github_url: https://github.com/RLHFlow/Online-RLHF
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/rlhf-workflow.pdf
+## 一手源存档（sources/）
+- rlhf-workflow.pdf  （PDF 不入 git，走 HF bucket）

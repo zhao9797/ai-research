@@ -25,5 +25,5 @@ Anthropic 官方公布 Claude 所用"宪法"的具体条款来源与设计理念
 ## 原始链接
 - url: https://www.anthropic.com/news/claudes-constitution
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/anthropic-claudes-constitution.html
+## 一手源存档（sources/）
+- [anthropic-claudes-constitution.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/post-training/anthropic-claudes-constitution.html)

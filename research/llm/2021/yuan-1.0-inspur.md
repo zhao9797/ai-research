@@ -29,5 +29,5 @@ downloaded: [arxiv-2110.04725.pdf]
 - url: https://arxiv.org/abs/2110.04725
 - pdf_url: https://arxiv.org/pdf/2110.04725
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2110.04725.pdf
+## 一手源存档（sources/）
+- [arxiv-2110.04725.pdf](https://arxiv.org/pdf/2110.04725)  （arXiv 原文 PDF，不入 git）

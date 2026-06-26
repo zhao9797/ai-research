@@ -30,5 +30,5 @@ downloaded: [kimi-k1.5-2501.12599.pdf]
 - pdf_url: https://arxiv.org/pdf/2501.12599
 - github_url: https://github.com/MoonshotAI/Kimi-k1.5
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/kimi-k1.5-2501.12599.pdf
+## 一手源存档（sources/）
+- [kimi-k1.5-2501.12599.pdf](https://arxiv.org/pdf/2501.12599)  （arXiv 原文 PDF，不入 git）

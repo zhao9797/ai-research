@@ -27,5 +27,5 @@ OpenAI 首个面向消费者的浏览器 agent 产品：用自带浏览器替用
 ## 原始链接
 - url: https://openai.com/index/introducing-operator/
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/openai-introducing-operator.html
+## 一手源存档（sources/）
+- [openai-introducing-operator.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/agentic/openai-introducing-operator.html)

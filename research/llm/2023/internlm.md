@@ -38,6 +38,6 @@ downloaded: [internlm-techreport.pdf, internlm-techreport-readme.md]
 - pdf_url: https://github.com/InternLM/InternLM-techreport/raw/main/InternLM.pdf
 - github_url: https://github.com/InternLM/InternLM-techreport
 
-## 本地落盘文件
-- ../../../sources/llm/2023/internlm-techreport.pdf
-- ../../../sources/llm/2023/internlm-techreport-readme.md
+## 一手源存档（sources/）
+- internlm-techreport.pdf  （PDF 不入 git，走 HF bucket）
+- [internlm-techreport-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/internlm-techreport-readme.md)

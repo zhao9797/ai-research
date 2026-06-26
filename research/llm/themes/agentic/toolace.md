@@ -30,5 +30,5 @@ downloaded: [toolace-2409.00920.pdf]
 - pdf_url: https://arxiv.org/pdf/2409.00920
 - github_url: https://huggingface.co/Team-ACE
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/toolace-2409.00920.pdf
+## 一手源存档（sources/）
+- [toolace-2409.00920.pdf](https://arxiv.org/pdf/2409.00920)  （arXiv 原文 PDF，不入 git）

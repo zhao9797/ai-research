@@ -29,5 +29,5 @@ Kaplan 等提出语言模型性能随模型参数 N、数据量 D、算力 C 呈
 - url: https://arxiv.org/abs/2001.08361
 - pdf_url: https://arxiv.org/pdf/2001.08361
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2001.08361.pdf
+## 一手源存档（sources/）
+- [arxiv-2001.08361.pdf](https://arxiv.org/pdf/2001.08361)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ InternVL 1.5 通过三方面缩小与商用多模态模型差距：(1) 强视觉
 - PDF: https://arxiv.org/pdf/2404.16821
 - GitHub: https://github.com/OpenGVLab/InternVL
 
-## 本地落盘文件
-- ../../../sources/llm/2024/internvl-1-5.pdf
+## 一手源存档（sources/）
+- internvl-1-5.pdf  （PDF 不入 git，走 HF bucket）

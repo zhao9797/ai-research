@@ -32,5 +32,5 @@ Step 3.7 Flash（HuggingFace stepfun-ai 官方组织，createdAt 2026-05-23，bl
 - blog: https://static.stepfun.com/blog/step-3.7-flash/
 - 平台: https://platform.stepfun.com (CN) / https://platform.stepfun.ai (Global)
 
-## 本地落盘文件
-- ../../../sources/llm/2026/step-3.7-flash-modelcard.md
+## 一手源存档（sources/）
+- [step-3.7-flash-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/step-3.7-flash-modelcard.md)

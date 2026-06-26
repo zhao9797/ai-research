@@ -27,5 +27,5 @@ downloaded: [dpo-vs-ppo.pdf]
 - url: https://arxiv.org/abs/2404.10719
 - pdf_url: https://arxiv.org/pdf/2404.10719
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/dpo-vs-ppo.pdf
+## 一手源存档（sources/）
+- dpo-vs-ppo.pdf  （PDF 不入 git，走 HF bucket）

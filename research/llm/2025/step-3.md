@@ -29,5 +29,5 @@ Step-3 是 321B 参数 VLM，以硬件感知的 model-system co-design 最小化
 - pdf_url: https://arxiv.org/pdf/2507.19427
 - github_url: https://github.com/stepfun-ai/Step3
 
-## 本地落盘文件
-- ../../../sources/llm/2025/step-3.pdf
+## 一手源存档（sources/）
+- step-3.pdf  （PDF 不入 git，走 HF bucket）

@@ -27,5 +27,5 @@ Mixtral 8x22B 发布博客：稀疏 MoE 开源模型，141B 总参数仅激活 3
 ## 原始链接
 - url: https://mistral.ai/news/mixtral-8x22b/
 
-## 本地落盘文件
-- ../../../sources/llm/2024/mistral-mixtral-8x22b-blog.md
+## 一手源存档（sources/）
+- [mistral-mixtral-8x22b-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/mistral-mixtral-8x22b-blog.md)

@@ -30,5 +30,5 @@ downloaded: [glm-4.6-blog.md]
 - tech report: https://arxiv.org/abs/2508.06471
 - github_url: https://huggingface.co/zai-org/GLM-4.6
 
-## 本地落盘文件
-- ../../../sources/llm/2025/glm-4.6-blog.md
+## 一手源存档（sources/）
+- [glm-4.6-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/glm-4.6-blog.md)

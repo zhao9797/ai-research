@@ -30,5 +30,5 @@ Gemini 3 Pro 是 Gemini 系列新一代、原生多模态、推理模型，是 G
 ## 原始链接
 - url / pdf_url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf
 
-## 本地落盘文件
-- ../../../sources/llm/2026/gemini-3-pro-model-card.pdf
+## 一手源存档（sources/）
+- gemini-3-pro-model-card.pdf  （PDF 不入 git，走 HF bucket）

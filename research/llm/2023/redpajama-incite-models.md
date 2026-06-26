@@ -27,5 +27,5 @@ Together 官方博客，发布首批用 RedPajama 基础数据集训练的模型
 ## 原始链接
 - url: https://www.together.ai/blog/redpajama-models-v1
 
-## 本地落盘文件
-- ../../../sources/llm/2023/redpajama-incite-together.html
+## 一手源存档（sources/）
+- [redpajama-incite-together.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/redpajama-incite-together.html)

@@ -29,5 +29,5 @@ XVERSE-13B 是深圳元象科技自研的多语言大语言模型，采用主流
 - url: https://github.com/xverse-ai/XVERSE-13B
 - github_url: https://github.com/xverse-ai/XVERSE-13B
 
-## 本地落盘文件
-- ../../../sources/llm/2023/xverse-13b-readme.md
+## 一手源存档（sources/）
+- [xverse-13b-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/xverse-13b-readme.md)

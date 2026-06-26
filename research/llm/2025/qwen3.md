@@ -32,6 +32,6 @@ Qwen3 是 Qwen 家族最新一代，含 dense 与 MoE 两类架构，参数 0.6B
 - blog: https://qwenlm.github.io/blog/qwen3/
 - github_url: https://github.com/QwenLM/Qwen3
 
-## 本地落盘文件
-- ../../../sources/llm/2025/qwen3.pdf
-- ../../../sources/llm/2025/qwen3-blog.html
+## 一手源存档（sources/）
+- qwen3.pdf  （PDF 不入 git，走 HF bucket）
+- [qwen3-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/qwen3-blog.html)

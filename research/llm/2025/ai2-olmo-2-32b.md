@@ -31,5 +31,5 @@ OLMo 2 32B 把 OLMo 2 训练配方扩到 32B：训练至 6T tokens，用 Tülu 3
 - 官方博客：https://allenai.org/blog/olmo2-32B
 - tech report：https://arxiv.org/abs/2501.00656
 
-## 本地落盘文件
-- ../../../sources/llm/2025/ai2-olmo-2-32b-blog.md
+## 一手源存档（sources/）
+- [ai2-olmo-2-32b-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/ai2-olmo-2-32b-blog.md)

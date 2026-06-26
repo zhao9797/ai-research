@@ -31,5 +31,5 @@ CPM 针对 GPT-3 不开源且以英文为主的现状，构建了大规模中文
 - pdf_url: https://arxiv.org/pdf/2012.00413
 - github_url: https://github.com/TsinghuaAI/CPM-1-Generate
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2012.00413.pdf
+## 一手源存档（sources/）
+- [arxiv-2012.00413.pdf](https://arxiv.org/pdf/2012.00413)  （arXiv 原文 PDF，不入 git）

@@ -26,5 +26,5 @@ FlashMLA 是面向 MLA（Multi-head Latent Attention）的优化 CUDA kernel 库
 - url: https://github.com/deepseek-ai/FlashMLA
 - github_url: https://github.com/deepseek-ai/FlashMLA
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/flashmla-readme.md
+## 一手源存档（sources/）
+- [flashmla-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/flashmla-readme.md)

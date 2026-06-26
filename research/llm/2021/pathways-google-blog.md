@@ -26,5 +26,5 @@ Jeff Dean 在 Google 官方博客（2021-10-28）提出 Pathways 愿景：一个
 ## 原始链接
 - url: https://blog.google/technology/ai/introducing-pathways-next-generation-ai-architecture/
 
-## 本地落盘文件
-- ../../../sources/llm/2021/google-pathways-blog.html
+## 一手源存档（sources/）
+- [google-pathways-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2021/google-pathways-blog.html)

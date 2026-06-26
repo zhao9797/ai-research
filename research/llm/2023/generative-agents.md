@@ -28,5 +28,5 @@ downloaded: [generative-agents.pdf]
 - url: https://arxiv.org/abs/2304.03442
 - pdf_url: https://arxiv.org/pdf/2304.03442
 
-## 本地落盘文件
-- ../../../sources/llm/2023/generative-agents.pdf
+## 一手源存档（sources/）
+- generative-agents.pdf  （PDF 不入 git，走 HF bucket）

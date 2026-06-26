@@ -31,5 +31,5 @@ DeepSeek-Coder 由一系列 1.3B 到 33B 的开源代码模型组成，从零在
 - pdf_url: https://arxiv.org/pdf/2401.14196
 - github_url: https://github.com/deepseek-ai/DeepSeek-Coder
 
-## 本地落盘文件
-- ../../../sources/llm/2023/deepseek-coder.pdf
+## 一手源存档（sources/）
+- deepseek-coder.pdf  （PDF 不入 git，走 HF bucket）

@@ -28,5 +28,5 @@ GLA 给线性注意力加上数据相关的门控，并配套 FlashLinearAttenti
 - pdf_url: https://arxiv.org/pdf/2312.06635
 - github_url: https://github.com/fla-org/flash-linear-attention
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/gla.pdf
+## 一手源存档（sources/）
+- gla.pdf  （PDF 不入 git，走 HF bucket）

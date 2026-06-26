@@ -29,5 +29,5 @@ downloaded: [webdancer-2505.22648.pdf]
 - pdf_url: https://arxiv.org/pdf/2505.22648
 - github_url: https://github.com/Alibaba-NLP/DeepResearch
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/webdancer-2505.22648.pdf
+## 一手源存档（sources/）
+- [webdancer-2505.22648.pdf](https://arxiv.org/pdf/2505.22648)  （arXiv 原文 PDF，不入 git）

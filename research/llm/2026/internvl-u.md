@@ -29,5 +29,5 @@ InternVL-U（arXiv 2026-03，OpenGVLab / InternVL 团队）是统一多模态模
 - pdf_url: https://arxiv.org/pdf/2603.09877
 - github_url: https://github.com/OpenGVLab/InternVL
 
-## 本地落盘文件
-- ../../../sources/llm/2026/internvl-u.pdf
+## 一手源存档（sources/）
+- internvl-u.pdf  （PDF 不入 git，走 HF bucket）

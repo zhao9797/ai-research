@@ -30,5 +30,5 @@ GLM-4.5 是面向智能体、推理与编码（ARC）的统一基础模型，采
 - pdf_url: https://arxiv.org/pdf/2508.06471
 - github_url: https://github.com/zai-org/GLM-4.5
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/glm-4.5.pdf
+## 一手源存档（sources/）
+- glm-4.5.pdf  （PDF 不入 git，走 HF bucket）

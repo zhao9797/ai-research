@@ -33,5 +33,5 @@ xAI 开源 Grok-1 的权重与 JAX 推理代码：314B 参数的 8 专家 MoE（
 - github: https://github.com/xai-org/grok-1
 - weights: https://huggingface.co/xai-org/grok-1
 
-## 本地落盘文件
-- ../../../sources/llm/2024/xai-grok-1-README.md
+## 一手源存档（sources/）
+- [xai-grok-1-README.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/xai-grok-1-README.md)

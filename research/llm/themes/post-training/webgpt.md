@@ -27,5 +27,5 @@ WebGPT 把 GPT-3 微调成能操作一个基于文本的浏览环境（搜索、
 - url: https://arxiv.org/abs/2112.09332
 - pdf_url: https://arxiv.org/pdf/2112.09332
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/webgpt.pdf
+## 一手源存档（sources/）
+- webgpt.pdf  （PDF 不入 git，走 HF bucket）

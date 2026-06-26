@@ -28,5 +28,5 @@ downloaded: [arxiv-2006.16236.pdf]
 - pdf_url: https://arxiv.org/pdf/2006.16236
 - github_url: https://github.com/idiap/fast-transformers
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2006.16236.pdf
+## 一手源存档（sources/）
+- [arxiv-2006.16236.pdf](https://arxiv.org/pdf/2006.16236)  （arXiv 原文 PDF，不入 git）

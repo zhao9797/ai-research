@@ -31,7 +31,7 @@ Codex 是在 GitHub 公开代码上微调的 GPT 语言模型，研究其 Python
 - blog: https://openai.com/index/openai-codex/
 - github_url: https://github.com/openai/human-eval
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2107.03374.pdf
-- ../../../sources/llm/2021/openai-codex-blog.md
-- ../../../sources/llm/2021/openai-codex-blog.html
+## 一手源存档（sources/）
+- [arxiv-2107.03374.pdf](https://arxiv.org/pdf/2107.03374)  （arXiv 原文 PDF，不入 git）
+- [openai-codex-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2021/openai-codex-blog.md)
+- [openai-codex-blog.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2021/openai-codex-blog.html)

@@ -29,5 +29,5 @@ Dolma：3 万亿 token 的开放英文预训练语料，连同数据构建文档
 - pdf_url: https://arxiv.org/pdf/2402.00159
 - github: https://github.com/allenai/dolma
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2402.00159.pdf
+## 一手源存档（sources/）
+- [2402.00159.pdf](https://arxiv.org/pdf/2402.00159)  （arXiv 原文 PDF，不入 git）

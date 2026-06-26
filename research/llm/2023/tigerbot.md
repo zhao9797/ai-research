@@ -31,5 +31,5 @@ TigerBot 是一组 7B/13B/70B/180B 的开源大模型（base + chat），从 Lla
 - pdf_url: https://arxiv.org/pdf/2312.08688
 - github_url: https://github.com/TigerResearch/TigerBot
 
-## 本地落盘文件
-- ../../../sources/llm/2023/tigerbot.pdf
+## 一手源存档（sources/）
+- tigerbot.pdf  （PDF 不入 git，走 HF bucket）

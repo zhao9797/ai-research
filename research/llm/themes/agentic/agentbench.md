@@ -28,5 +28,5 @@ AgentBench 是评估 LLM 作为 agent 的多维度基准，含 8 个不同的交
 - pdf_url: https://arxiv.org/pdf/2308.03688
 - github_url: https://github.com/THUDM/AgentBench
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/agentbench-2308.03688.pdf
+## 一手源存档（sources/）
+- [agentbench-2308.03688.pdf](https://arxiv.org/pdf/2308.03688)  （arXiv 原文 PDF，不入 git）

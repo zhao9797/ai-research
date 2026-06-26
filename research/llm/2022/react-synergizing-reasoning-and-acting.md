@@ -29,5 +29,5 @@ LLM 在语言理解与交互决策上表现出色，但其推理（如 CoT）与
 - pdf_url: https://arxiv.org/pdf/2210.03629
 - github_url: https://github.com/ysymyth/ReAct
 
-## 本地落盘文件
-- ../../../sources/llm/2022/react.pdf
+## 一手源存档（sources/）
+- react.pdf  （PDF 不入 git，走 HF bucket）

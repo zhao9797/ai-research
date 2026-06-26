@@ -31,5 +31,5 @@ Claude 4 为 hybrid 模型（近即时回答 + extended thinking 两模式）。
 - 官方博客：https://www.anthropic.com/news/claude-4
 - system card 列表：https://www.anthropic.com/system-cards
 
-## 本地落盘文件
-- ../../../sources/llm/2025/anthropic-claude-4-blog.md
+## 一手源存档（sources/）
+- [anthropic-claude-4-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/anthropic-claude-4-blog.md)

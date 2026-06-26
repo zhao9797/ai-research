@@ -30,5 +30,5 @@ AutoGen 是开源框架，让开发者用可相互对话的多个 agent 构建 L
 - pdf_url: https://arxiv.org/pdf/2308.08155
 - github_url: https://github.com/microsoft/autogen
 
-## 本地落盘文件
-- ../../../sources/llm/2023/autogen.pdf
+## 一手源存档（sources/）
+- autogen.pdf  （PDF 不入 git，走 HF bucket）

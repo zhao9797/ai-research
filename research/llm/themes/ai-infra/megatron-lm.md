@@ -29,6 +29,6 @@ NVIDIA 提出的张量并行（tensor/intra-layer model parallelism）经典工�
 - pdf_url: https://arxiv.org/pdf/1909.08053
 - github_url: https://github.com/NVIDIA/Megatron-LM
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/megatron-lm-1909.08053.pdf
-- ../../../../sources/llm/themes/ai-infra/megatron-lm-readme.md
+## 一手源存档（sources/）
+- [megatron-lm-1909.08053.pdf](https://arxiv.org/pdf/1909.08053)  （arXiv 原文 PDF，不入 git）
+- [megatron-lm-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/megatron-lm-readme.md)

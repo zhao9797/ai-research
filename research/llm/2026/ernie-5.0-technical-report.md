@@ -30,5 +30,5 @@ ERNIE 5.0（arXiv 2026-02-04，作者 Haifeng Wang 等 438 人）是百度面向
 - url: https://arxiv.org/abs/2602.04705
 - pdf_url: https://arxiv.org/pdf/2602.04705
 
-## 本地落盘文件
-- ../../../sources/llm/2026/ernie-5.0.pdf
+## 一手源存档（sources/）
+- ernie-5.0.pdf  （PDF 不入 git，走 HF bucket）

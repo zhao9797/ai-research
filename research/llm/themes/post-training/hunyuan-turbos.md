@@ -27,5 +27,5 @@ Hunyuan-TurboS 采用 Mamba-Transformer 混合架构（Mamba 擅长长序列、�
 - url: https://arxiv.org/abs/2505.15431
 - pdf_url: https://arxiv.org/pdf/2505.15431
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/hunyuan-turbos.pdf
+## 一手源存档（sources/）
+- hunyuan-turbos.pdf  （PDF 不入 git，走 HF bucket）

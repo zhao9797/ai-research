@@ -26,5 +26,5 @@ MQA 虽能加速解码但常导致质量下降和训练不稳。GQA 把 H 个 qu
 - url: https://arxiv.org/abs/2305.13245
 - pdf_url: https://arxiv.org/pdf/2305.13245
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/gqa.pdf
+## 一手源存档（sources/）
+- gqa.pdf  （PDF 不入 git，走 HF bucket）

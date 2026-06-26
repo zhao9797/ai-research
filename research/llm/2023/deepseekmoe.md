@@ -33,5 +33,5 @@ downloaded: [deepseekmoe.pdf]
 - pdf_url: https://arxiv.org/pdf/2401.06066
 - github_url: https://github.com/deepseek-ai/DeepSeek-MoE
 
-## 本地落盘文件
-- ../../../sources/llm/2023/deepseekmoe.pdf
+## 一手源存档（sources/）
+- deepseekmoe.pdf  （PDF 不入 git，走 HF bucket）

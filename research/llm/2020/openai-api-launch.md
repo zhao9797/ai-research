@@ -28,5 +28,5 @@ OpenAI 发布私有测试版 API，提供通用的 text-in/text-out 接口，可
 ## 原始链接
 - url: https://openai.com/index/openai-api/
 
-## 本地落盘文件
-- ../../../sources/llm/2020/openai-api.html
+## 一手源存档（sources/）
+- [openai-api.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2020/openai-api.html)

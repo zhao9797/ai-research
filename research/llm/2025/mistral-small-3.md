@@ -30,5 +30,5 @@ Mistral Small 3 是 24B 参数、Apache 2.0 的延迟优化模型，设计目标
 - 官方博客：https://mistral.ai/news/mistral-small-3
 - HF：https://huggingface.co/mistralai/Mistral-Small-24B-Instruct-2501
 
-## 本地落盘文件
-- ../../../sources/llm/2025/mistral-small-3-blog.md
+## 一手源存档（sources/）
+- [mistral-small-3-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/mistral-small-3-blog.md)

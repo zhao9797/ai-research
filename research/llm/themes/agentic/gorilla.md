@@ -30,5 +30,5 @@ Gorilla 是基于 LLaMA 微调的模型，专门生成正确的 API 调用。作
 - pdf_url: https://arxiv.org/pdf/2305.15334
 - github_url: https://github.com/ShishirPatil/gorilla
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/gorilla-2305.15334.pdf
+## 一手源存档（sources/）
+- [gorilla-2305.15334.pdf](https://arxiv.org/pdf/2305.15334)  （arXiv 原文 PDF，不入 git）

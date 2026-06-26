@@ -29,5 +29,5 @@ DeepSeek-Coder 系列从头训练，规模 1.3B 到 33B，在 2T token 上预训
 - PDF: https://arxiv.org/pdf/2401.14196
 - GitHub: https://github.com/deepseek-ai/DeepSeek-Coder
 
-## 本地落盘文件
-- ../../../sources/llm/2024/deepseek-coder.pdf
+## 一手源存档（sources/）
+- deepseek-coder.pdf  （PDF 不入 git，走 HF bucket）

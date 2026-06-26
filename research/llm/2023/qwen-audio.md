@@ -29,5 +29,5 @@ downloaded: [qwen-audio.pdf]
 - pdf_url: https://arxiv.org/pdf/2311.07919
 - github_url: https://github.com/QwenLM/Qwen-Audio
 
-## 本地落盘文件
-- ../../../sources/llm/2023/qwen-audio.pdf
+## 一手源存档（sources/）
+- qwen-audio.pdf  （PDF 不入 git，走 HF bucket）

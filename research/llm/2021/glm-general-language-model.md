@@ -30,5 +30,5 @@ GLM 提出 General Language Model 框架，用自回归空白填充目标统一 
 - pdf_url: https://arxiv.org/pdf/2103.10360
 - github_url: https://github.com/THUDM/GLM
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2103.10360.pdf
+## 一手源存档（sources/）
+- [arxiv-2103.10360.pdf](https://arxiv.org/pdf/2103.10360)  （arXiv 原文 PDF，不入 git）

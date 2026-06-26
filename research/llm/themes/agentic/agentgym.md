@@ -29,5 +29,5 @@ downloaded: [agentgym-2406.04151.pdf]
 - pdf_url: https://arxiv.org/pdf/2406.04151
 - github_url: https://github.com/WooooDyy/AgentGym
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/agentgym-2406.04151.pdf
+## 一手源存档（sources/）
+- [agentgym-2406.04151.pdf](https://arxiv.org/pdf/2406.04151)  （arXiv 原文 PDF，不入 git）

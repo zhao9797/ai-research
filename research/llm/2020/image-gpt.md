@@ -32,6 +32,6 @@ OpenAI（2020-06-17 发布博客，对应 ICML 2020 论文）训练了与 GPT-2 
 - pdf_url (V1 ICML): https://cdn.openai.com/papers/Generative_Pretraining_from_Pixels_V1_ICML.pdf
 - github_url: https://github.com/openai/image-gpt
 
-## 本地落盘文件
-- ../../../sources/llm/2020/image-gpt-v2.pdf
-- ../../../sources/llm/2020/openai-image-gpt.html
+## 一手源存档（sources/）
+- image-gpt-v2.pdf  （PDF 不入 git，走 HF bucket）
+- [openai-image-gpt.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2020/openai-image-gpt.html)

@@ -30,5 +30,5 @@ Zephyr 展示纯蒸馏对齐：先用更强教师模型（GPT-4/ChatGPT）生成
 - pdf_url: https://arxiv.org/pdf/2310.16944
 - github_url: https://github.com/huggingface/alignment-handbook
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/zephyr.pdf
+## 一手源存档（sources/）
+- zephyr.pdf  （PDF 不入 git，走 HF bucket）

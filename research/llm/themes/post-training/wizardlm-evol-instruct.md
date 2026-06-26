@@ -29,5 +29,5 @@ WizardLM 提出 Evol-Instruct，用 ChatGPT 等模型把简单指令逐步改写
 - pdf_url: https://arxiv.org/pdf/2304.12244
 - github_url: https://github.com/nlpxucan/WizardLM
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/wizardlm-evol-instruct.pdf
+## 一手源存档（sources/）
+- wizardlm-evol-instruct.pdf  （PDF 不入 git，走 HF bucket）

@@ -30,5 +30,5 @@ AgentBench 是一个多维基准，由 8 个不同交互环境组成，用于量
 - pdf_url: https://arxiv.org/pdf/2308.03688
 - github_url: https://github.com/THUDM/AgentBench
 
-## 本地落盘文件
-- ../../../sources/llm/2023/agentbench.pdf
+## 一手源存档（sources/）
+- agentbench.pdf  （PDF 不入 git，走 HF bucket）

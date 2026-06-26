@@ -32,5 +32,5 @@ Baichuan 2 是一组 7B 与 13B 参数的多语言大模型，从零开始在 2.
 - pdf_url: https://arxiv.org/pdf/2309.10305
 - github_url: https://github.com/baichuan-inc/Baichuan2
 
-## 本地落盘文件
-- ../../../sources/llm/2023/baichuan2.pdf
+## 一手源存档（sources/）
+- baichuan2.pdf  （PDF 不入 git，走 HF bucket）

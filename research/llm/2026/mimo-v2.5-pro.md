@@ -30,5 +30,5 @@ MiMo-V2.5-Pro（HuggingFace XiaomiMiMo 官方组织，createdAt 2026-04-27，blo
 - blog: https://mimo.xiaomi.com/mimo-v2-5-pro
 - github_url: https://github.com/XiaomiMiMo
 
-## 本地落盘文件
-- ../../../sources/llm/2026/mimo-v2.5-pro-modelcard.md
+## 一手源存档（sources/）
+- [mimo-v2.5-pro-modelcard.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2026/mimo-v2.5-pro-modelcard.md)

@@ -30,5 +30,5 @@ Anthropic 2026 年 2 月发布的"风险报告"（105 页，2026-05-26 更新）
 - url: https://www.anthropic.com/feb-2026-risk-report
 - pdf_url: https://www-cdn.anthropic.com/097c63b5fe7dd8b14866e1f15bb1910ec713658a.pdf
 
-## 本地落盘文件
-- ../../../sources/llm/2026/anthropic-feb-2026-risk-report.pdf
+## 一手源存档（sources/）
+- anthropic-feb-2026-risk-report.pdf  （PDF 不入 git，走 HF bucket）

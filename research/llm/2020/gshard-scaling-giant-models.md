@@ -30,5 +30,5 @@ GShard 由一套轻量级的并行计算标注 API 和支持 SPMD 编译器（XL
 - url: https://arxiv.org/abs/2006.16668
 - pdf_url: https://arxiv.org/pdf/2006.16668
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2006.16668.pdf
+## 一手源存档（sources/）
+- [arxiv-2006.16668.pdf](https://arxiv.org/pdf/2006.16668)  （arXiv 原文 PDF，不入 git）

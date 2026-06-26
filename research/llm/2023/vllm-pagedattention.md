@@ -30,5 +30,5 @@ PagedAttention 把 OS 分页搬到 KV cache，vLLM 吞吐较 SOTA 提 2-4x，成
 - pdf_url: https://arxiv.org/pdf/2309.06180
 - github_url: https://github.com/vllm-project/vllm
 
-## 本地落盘文件
-- ../../../sources/llm/2023/vllm-pagedattention.pdf
+## 一手源存档（sources/）
+- vllm-pagedattention.pdf  （PDF 不入 git，走 HF bucket）

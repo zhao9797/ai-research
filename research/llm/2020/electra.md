@@ -30,5 +30,5 @@ ELECTRA 提出一种更高效的判别式预训练任务：用一个小的生成
 - pdf_url: https://arxiv.org/pdf/2003.10555
 - github_url: https://github.com/google-research/electra
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2003.10555.pdf
+## 一手源存档（sources/）
+- [arxiv-2003.10555.pdf](https://arxiv.org/pdf/2003.10555)  （arXiv 原文 PDF，不入 git）

@@ -28,5 +28,5 @@ downloaded: [bitnet.pdf]
 - url: https://arxiv.org/abs/2310.11453
 - pdf_url: https://arxiv.org/pdf/2310.11453
 
-## 本地落盘文件
-- ../../../sources/llm/2023/bitnet.pdf
+## 一手源存档（sources/）
+- bitnet.pdf  （PDF 不入 git，走 HF bucket）

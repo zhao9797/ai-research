@@ -31,5 +31,5 @@ Ai2 + 华盛顿大学 2026-01 发布的 Molmo2——完全开放（权重/数据
 - github_url: https://github.com/allenai/molmo2
 - blog: https://allenai.org/blog/molmo2
 
-## 本地落盘文件
-- ../../../sources/llm/2026/molmo2-arxiv-2601.10611.pdf
+## 一手源存档（sources/）
+- [molmo2-arxiv-2601.10611.pdf](https://arxiv.org/pdf/2601.10611)  （arXiv 原文 PDF，不入 git）

@@ -28,5 +28,5 @@ DeepSeek-V2 是 236B 总参、每 token 激活 21B 的 MoE 模型，支持 128K 
 - pdf_url: https://arxiv.org/pdf/2405.04434
 - github_url: https://github.com/deepseek-ai/DeepSeek-V2
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/deepseek-v2-2405.04434.pdf
+## 一手源存档（sources/）
+- [deepseek-v2-2405.04434.pdf](https://arxiv.org/pdf/2405.04434)  （arXiv 原文 PDF，不入 git）

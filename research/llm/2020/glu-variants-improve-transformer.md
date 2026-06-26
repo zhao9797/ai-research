@@ -28,5 +28,5 @@ Noam Shazeer 提出在 Transformer 前馈层用门控线性单元变体（尤其
 - url: https://arxiv.org/abs/2002.05202
 - pdf_url: https://arxiv.org/pdf/2002.05202
 
-## 本地落盘文件
-- ../../../sources/llm/2020/arxiv-2002.05202.pdf
+## 一手源存档（sources/）
+- [arxiv-2002.05202.pdf](https://arxiv.org/pdf/2002.05202)  （arXiv 原文 PDF，不入 git）

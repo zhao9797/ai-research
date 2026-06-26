@@ -29,5 +29,5 @@ Aquila2 系列开源，包含基座（Aquila2-7B / 34B / 70B-Expr）与对话模
 - url: https://github.com/FlagAI-Open/Aquila2
 - github_url: https://github.com/FlagAI-Open/Aquila2
 
-## 本地落盘文件
-- ../../../sources/llm/2023/aquila2-readme.md
+## 一手源存档（sources/）
+- [aquila2-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/aquila2-readme.md)

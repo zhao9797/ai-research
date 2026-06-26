@@ -25,5 +25,5 @@ OpenAI 官方博客，宣布 Chat Completions API 的 function calling 能力及
 ## 原始链接
 - url: https://openai.com/index/function-calling-and-other-api-updates/
 
-## 本地落盘文件
-- ../../../sources/llm/2023/openai-function-calling-blog.md
+## 一手源存档（sources/）
+- [openai-function-calling-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2023/openai-function-calling-blog.md)

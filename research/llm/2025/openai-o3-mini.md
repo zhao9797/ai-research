@@ -28,5 +28,5 @@ o3-mini 面向 STEM（数学、编码、科学），中等推理强度下与 o1 
 ## 原始链接
 - 官方博客：https://openai.com/index/openai-o3-mini/
 
-## 本地落盘文件
-- ../../../sources/llm/2025/openai-o3-mini-blog.md
+## 一手源存档（sources/）
+- [openai-o3-mini-blog.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/openai-o3-mini-blog.md)

@@ -28,5 +28,5 @@ downloaded: [llm-int8.pdf]
 - pdf_url: https://arxiv.org/pdf/2208.07339
 - github_url: https://github.com/bitsandbytes-foundation/bitsandbytes
 
-## 本地落盘文件
-- ../../../sources/llm/2022/llm-int8.pdf
+## 一手源存档（sources/）
+- llm-int8.pdf  （PDF 不入 git，走 HF bucket）

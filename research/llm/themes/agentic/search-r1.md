@@ -30,5 +30,5 @@ Search-R1 把推理框架的强化学习扩展到搜索引擎使用：LLM 在逐
 - pdf_url: https://arxiv.org/pdf/2503.09516
 - github_url: https://github.com/PeterGriffinJin/Search-R1
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/search-r1-2503.09516.pdf
+## 一手源存档（sources/）
+- [search-r1-2503.09516.pdf](https://arxiv.org/pdf/2503.09516)  （arXiv 原文 PDF，不入 git）

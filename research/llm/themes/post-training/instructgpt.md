@@ -27,5 +27,5 @@ downloaded: [instructgpt.pdf]
 - url: https://arxiv.org/abs/2203.02155
 - pdf_url: https://arxiv.org/pdf/2203.02155
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/instructgpt.pdf
+## 一手源存档（sources/）
+- instructgpt.pdf  （PDF 不入 git，走 HF bucket）

@@ -31,5 +31,5 @@ OLMo 2 是 AI2 下一代 fully-open 模型：7B/13B/32B 稠密模型，全部 ar
 - PDF：https://arxiv.org/pdf/2501.00656
 - 官方：https://allenai.org/olmo2
 
-## 本地落盘文件
-- ../../../sources/llm/2025/olmo-2.pdf
+## 一手源存档（sources/）
+- olmo-2.pdf  （PDF 不入 git，走 HF bucket）

@@ -29,5 +29,5 @@ Falcon-H1 采用新颖混合架构，兼顾性能与效率。不同于此前纯 
 - pdf_url: https://arxiv.org/pdf/2507.22448
 - github_url: https://github.com/tiiuae/falcon-h1
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/falcon-h1.pdf
+## 一手源存档（sources/）
+- falcon-h1.pdf  （PDF 不入 git，走 HF bucket）

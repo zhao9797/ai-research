@@ -26,5 +26,5 @@ Transformer Engine（TE）为 NVIDIA GPU 提供高度优化的 Transformer 算�
 - url: https://github.com/NVIDIA/TransformerEngine
 - github_url: https://github.com/NVIDIA/TransformerEngine
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/transformer-engine-readme.md
+## 一手源存档（sources/）
+- [transformer-engine-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/ai-infra/transformer-engine-readme.md)

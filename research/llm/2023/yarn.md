@@ -29,5 +29,5 @@ RoPE 有效编码位置但模型无法泛化超出训练长度。YaRN(Yet anothe
 - pdf_url: https://arxiv.org/pdf/2309.00071
 - github_url: https://github.com/jquesnelle/yarn
 
-## 本地落盘文件
-- ../../../sources/llm/2023/yarn.pdf
+## 一手源存档（sources/）
+- yarn.pdf  （PDF 不入 git，走 HF bucket）

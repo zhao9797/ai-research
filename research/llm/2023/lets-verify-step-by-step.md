@@ -30,5 +30,5 @@ OpenAI 证明过程监督(PRM)显著优于结果监督，并开源 PRM800K，奠
 - pdf_url: https://arxiv.org/pdf/2305.20050
 - github_url: https://github.com/openai/prm800k
 
-## 本地落盘文件
-- ../../../sources/llm/2023/lets-verify-step-by-step.pdf
+## 一手源存档（sources/）
+- lets-verify-step-by-step.pdf  （PDF 不入 git，走 HF bucket）

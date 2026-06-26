@@ -29,5 +29,5 @@ downloaded: [agenttuning.pdf]
 - pdf_url: https://arxiv.org/pdf/2310.12823
 - github_url: https://github.com/THUDM/AgentTuning
 
-## 本地落盘文件
-- ../../../sources/llm/2023/agenttuning.pdf
+## 一手源存档（sources/）
+- agenttuning.pdf  （PDF 不入 git，走 HF bucket）

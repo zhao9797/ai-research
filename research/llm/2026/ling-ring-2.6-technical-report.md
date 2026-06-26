@@ -31,5 +31,5 @@ Ling-2.6 与 Ring-2.6（arXiv 2026-06-13，作者 Ang Li 等 218 人）是一族
 - pdf_url: https://arxiv.org/pdf/2606.15079
 - github_url: https://github.com/inclusionAI
 
-## 本地落盘文件
-- ../../../sources/llm/2026/ling-ring-2.6.pdf
+## 一手源存档（sources/）
+- ling-ring-2.6.pdf  （PDF 不入 git，走 HF bucket）

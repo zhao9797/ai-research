@@ -30,5 +30,5 @@ LLM agent 通常被提示以预定义格式(JSON 或文本)输出动作，受限
 - pdf_url: https://arxiv.org/pdf/2402.01030
 - github_url: https://github.com/xingyaoww/code-act
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/codeact-2402.01030.pdf
+## 一手源存档（sources/）
+- [codeact-2402.01030.pdf](https://arxiv.org/pdf/2402.01030)  （arXiv 原文 PDF，不入 git）

@@ -29,5 +29,5 @@ HyperCLOVA 研究大规模语言模型能为非英语（韩语）带来哪些变
 - url: https://arxiv.org/abs/2109.04650
 - pdf_url: https://arxiv.org/pdf/2109.04650
 
-## 本地落盘文件
-- ../../../sources/llm/2021/arxiv-2109.04650.pdf
+## 一手源存档（sources/）
+- [arxiv-2109.04650.pdf](https://arxiv.org/pdf/2109.04650)  （arXiv 原文 PDF，不入 git）

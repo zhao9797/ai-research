@@ -30,5 +30,5 @@ Llama 3 原生支持多语言、代码、推理与工具使用。最大模型是
 - pdf_url: https://arxiv.org/pdf/2407.21783
 - github_url: https://github.com/meta-llama/llama3
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/llama3.pdf
+## 一手源存档（sources/）
+- llama3.pdf  （PDF 不入 git，走 HF bucket）

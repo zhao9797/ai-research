@@ -27,5 +27,5 @@ DeepSeek 迈向 agent 时代的第一步：首个混合推理（Think / Non-Thin
 - url: https://api-docs.deepseek.com/news/news250821
 - github_url: https://huggingface.co/deepseek-ai/DeepSeek-V3.1
 
-## 本地落盘文件
-- ../../../sources/llm/2025/deepseek-v3.1.html
+## 一手源存档（sources/）
+- [deepseek-v3.1.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2025/deepseek-v3.1.html)

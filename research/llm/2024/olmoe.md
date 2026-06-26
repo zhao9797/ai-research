@@ -29,5 +29,5 @@ OLMoE 是利用稀疏 MoE 的完全开放 SOTA 模型。OLMoE-1B-7B 总参数 7B
 - pdf_url: https://arxiv.org/pdf/2409.02060
 - github: https://github.com/allenai/OLMoE
 
-## 本地落盘文件
-- ../../../sources/llm/2024/2409.02060.pdf
+## 一手源存档（sources/）
+- [2409.02060.pdf](https://arxiv.org/pdf/2409.02060)  （arXiv 原文 PDF，不入 git）

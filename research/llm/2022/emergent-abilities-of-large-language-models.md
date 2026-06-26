@@ -28,5 +28,5 @@ downloaded: [emergent-abilities.pdf]
 - url: https://arxiv.org/abs/2206.07682
 - pdf_url: https://arxiv.org/pdf/2206.07682
 
-## 本地落盘文件
-- ../../../sources/llm/2022/emergent-abilities.pdf
+## 一手源存档（sources/）
+- emergent-abilities.pdf  （PDF 不入 git，走 HF bucket）

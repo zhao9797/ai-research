@@ -29,5 +29,5 @@ downloaded: [tutel-2206.03382.pdf]
 - pdf_url: https://arxiv.org/pdf/2206.03382
 - github_url: https://github.com/microsoft/tutel
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/ai-infra/tutel-2206.03382.pdf
+## 一手源存档（sources/）
+- [tutel-2206.03382.pdf](https://arxiv.org/pdf/2206.03382)  （arXiv 原文 PDF，不入 git）

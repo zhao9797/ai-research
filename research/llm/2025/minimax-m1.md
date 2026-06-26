@@ -30,5 +30,5 @@ MiniMax-M1 是全球首个开源、大规模 hybrid-attention 推理模型，由
 - pdf_url: https://arxiv.org/pdf/2506.13585
 - github_url: https://github.com/MiniMax-AI/MiniMax-M1
 
-## 本地落盘文件
-- ../../../sources/llm/2025/minimax-m1.pdf
+## 一手源存档（sources/）
+- minimax-m1.pdf  （PDF 不入 git，走 HF bucket）

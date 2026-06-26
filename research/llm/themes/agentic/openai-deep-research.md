@@ -29,6 +29,6 @@ OpenAI 的 agentic 深度研究能力：由专为网页浏览优化的 o3 早期
 - url: https://openai.com/index/introducing-deep-research/
 - pdf_url: https://cdn.openai.com/deep-research-system-card.pdf
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/agentic/openai-introducing-deep-research.html
-- ../../../../sources/llm/themes/agentic/openai-deep-research-system-card.pdf
+## 一手源存档（sources/）
+- [openai-introducing-deep-research.html](https://github.com/zhao9797/ai-research/blob/main/sources/llm/themes/agentic/openai-introducing-deep-research.html)
+- openai-deep-research-system-card.pdf  （PDF 不入 git，走 HF bucket）

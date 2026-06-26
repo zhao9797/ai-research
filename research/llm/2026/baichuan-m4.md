@@ -30,6 +30,6 @@ Baichuan-M4（arXiv 2026-06-08，作者 Aiyuan Yang 等 28 人）是百川智能
 - pdf_url: https://arxiv.org/pdf/2606.08982
 - Baichuan-M3: https://arxiv.org/abs/2602.06570 ; https://huggingface.co/collections/baichuan-inc/baichuan-m3
 
-## 本地落盘文件
-- ../../../sources/llm/2026/baichuan-m4.pdf
-- ../../../sources/llm/2026/baichuan-m3.pdf
+## 一手源存档（sources/）
+- baichuan-m4.pdf  （PDF 不入 git，走 HF bucket）
+- baichuan-m3.pdf  （PDF 不入 git，走 HF bucket）

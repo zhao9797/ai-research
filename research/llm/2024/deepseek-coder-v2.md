@@ -31,5 +31,5 @@ DeepSeek-Coder-V2 是开源 MoE 代码语言模型，从 DeepSeek-V2 的中间 c
 - PDF: https://arxiv.org/pdf/2406.11931
 - GitHub: https://github.com/deepseek-ai/DeepSeek-Coder-V2
 
-## 本地落盘文件
-- ../../../sources/llm/2024/deepseek-coder-v2.pdf
+## 一手源存档（sources/）
+- deepseek-coder-v2.pdf  （PDF 不入 git，走 HF bucket）

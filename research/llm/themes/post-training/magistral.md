@@ -28,5 +28,5 @@ Magistral 是 Mistral AI 的首个推理模型与其自研可扩展 RL 系统。
 - url: https://arxiv.org/abs/2506.10910
 - pdf_url: https://arxiv.org/pdf/2506.10910
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/post-training/magistral.pdf
+## 一手源存档（sources/）
+- magistral.pdf  （PDF 不入 git，走 HF bucket）

@@ -29,5 +29,5 @@ downloaded: [nope.pdf]
 - pdf_url: https://arxiv.org/pdf/2305.19466
 - github_url: https://github.com/McGill-NLP/length-generalization
 
-## 本地落盘文件
-- ../../../../sources/llm/themes/architecture/nope.pdf
+## 一手源存档（sources/）
+- nope.pdf  （PDF 不入 git，走 HF bucket）

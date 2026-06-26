@@ -30,5 +30,5 @@ RLHF 三阶段范式（SFT → 奖励模型 → PPO）的奠基论文：1.3B 的
 - pdf_url: https://arxiv.org/pdf/2203.02155
 - github_url: https://github.com/openai/following-instructions-human-feedback
 
-## 本地落盘文件
-- ../../../sources/llm/2022/instructgpt.pdf
+## 一手源存档（sources/）
+- instructgpt.pdf  （PDF 不入 git，走 HF bucket）

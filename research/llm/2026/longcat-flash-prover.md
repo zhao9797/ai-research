@@ -30,5 +30,5 @@ LongCat-Flash-Prover（arXiv 2026-03-22，作者 Jianing Wang 等 27 人）是 5
 - pdf_url: https://arxiv.org/pdf/2603.21065
 - github_url: https://github.com/meituan-longcat
 
-## 本地落盘文件
-- ../../../sources/llm/2026/longcat-flash-prover.pdf
+## 一手源存档（sources/）
+- longcat-flash-prover.pdf  （PDF 不入 git，走 HF bucket）

@@ -27,5 +27,5 @@ MiniCPM3-4B 是 MiniCPM 系列第三代，整体性能超越 Phi-3.5-mini-Instru
 - HF model card: https://huggingface.co/openbmb/MiniCPM3-4B
 - GitHub: https://github.com/OpenBMB/MiniCPM
 
-## 本地落盘文件
-- ../../../sources/llm/2024/minicpm3-hf-readme.md
+## 一手源存档（sources/）
+- [minicpm3-hf-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/llm/2024/minicpm3-hf-readme.md)
