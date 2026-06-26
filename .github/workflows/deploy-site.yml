@@ -36,6 +36,11 @@ jobs:
           cp -r research/* .quartz/content/
           cp site/index.md .quartz/content/index.md
           cp site/quartz.config.ts .quartz/quartz.config.ts
+          # Quartz emits file-style HTML but computes folder-style relative links,
+          # so in-content "../figs/" images resolve one level too high on GitHub Pages.
+          # Rewrite to content-root-absolute "/omni/figs/" (build copy only; repo markdown
+          # keeps "../figs/" so GitHub blob view / Obsidian still render the figures).
+          find .quartz/content/omni -name '*.md' -exec perl -pi -e 's#\]\(\.\./figs/#](/omni/figs/#g' {} +
 
       - name: Build site
         run: |
