@@ -154,5 +154,5 @@ Qwen-Image-Flash 是把 [[qwen-image-2-0]] 蒸馏到 **4 NFE（function evaluati
 - huggingface `Qwen/Qwen-Image-Flash`：**截至 2026-06-25 抓取返回 401（不存在/未公开）**
 
 ## 一手源存档（sources/）
-- ../../../sources/omni/2026/arxiv-2606.03746.pdf — Flash 论文一手 PDF（19 页，2026-06-04，v2）
-- ../../../sources/omni/2026/qwen-image-flash--qwen-image-github-readme.md — **即 QwenLM/Qwen-Image 仓库通用 README**（与 `qwen-image-2-0--readme.md` 字节完全相同），**不含 Flash 专属内容**，仅作生态 / teacher 背景；Flash 模型本身无独立 card / blog（HF 401、ModelScope 404）
+- [arxiv-2606.03746.pdf](https://arxiv.org/pdf/2606.03746) — Flash 论文一手 PDF（19 页，2026-06-04，v2）
+- [qwen-image-github-readme.md](https://github.com/zhao9797/ai-research/blob/main/sources/omni/2026/qwen-image-flash--qwen-image-github-readme.md) — **即 QwenLM/Qwen-Image 仓库通用 README**（与 `qwen-image-2-0--readme.md` 字节完全相同），**不含 Flash 专属内容**，仅作生态 / teacher 背景；Flash 模型本身无独立 card / blog（HF 401、ModelScope 404）
