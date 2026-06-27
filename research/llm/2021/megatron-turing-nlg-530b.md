@@ -21,7 +21,7 @@ MT-NLG 是微软与 NVIDIA 联合训练的最大单体（monolithic）Transforme
 - 参数：530B（530 billion），稠密单体 Transformer；105 层，隐藏维度 20480，128 注意力头，decoder-only。
 - 3D 并行：tensor-slicing（TP=8）+ pipeline（PP=35）+ data parallelism，结合 DeepSpeed ZeRO 与 Megatron-LM。
 - 内存：训练 530B 需 >10 TB 聚合内存（单 A100 80GB 远不够）。
-- 硬件：NVIDIA Selene 超算，560 个 DGX A100 节点，每节点 8×80GB A100（共 4480 GPU），HDR InfiniBand 互联。
+- 硬件：NVIDIA Selene 超算，560 个 DGX A100 节点，每节点 8×80GB A100（共 4480 GPU），节点内 NVLink/NVSwitch、节点间 HDR InfiniBand 互联。
 - 精度：16-bit bfloat16 混合精度。
 - 吞吐：A100 16-bit 峰值 312 teraFLOP/s；实测在 280/350/420 DGX A100 服务器上分别为 126/121/113 teraFLOP/s per GPU。
 - 数据：约 270B token，基于 the Pile + 额外网页/书籍；精心设计的训练语料 + 数据清洗管线（去重 / 质量过滤）被视为成功关键。

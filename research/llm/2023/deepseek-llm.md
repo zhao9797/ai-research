@@ -23,6 +23,7 @@ DeepSeek LLM 提供 7B 与 67B 两种开源配置，在 scaling law 指导下设
 - 设计取舍：67B 选择"加深网络层数（95 层）"而非加宽 FFN；SwiGLU（FFN 中间维 8/3·d_model）；RoPE。
 - Tokenizer：Byte-level BPE（BBPE），常规 token 10 万 + 15 特殊 token，模型词表设为 102,400。
 - Scaling law：用 1.6B 模型 / 100B token 拟合 LR 调度等超参；提出以非 embedding FLOPs/token（M）刻画模型规模，给出 batch/LR 随算力的拟合公式。
+- 学习率调度：multi-step learning rate scheduler（非 cosine，便于持续 / 增量训练）。
 - 训练精度/infra：bf16 训练；on-the-fly 将 bf16 logits 转 fp32 再算梯度以省显存；融合 LayerNorm、GEMM、Adam 更新等算子。
 - 后训练：SFT + DPO（直接偏好优化）；强调对齐后的无害性与中英开放式回答质量。
 

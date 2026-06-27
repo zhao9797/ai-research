@@ -27,6 +27,7 @@ downloaded: [deepseekmoe.pdf]
 - DeepSeekMoE 145B（初步）：相比 GShard 持续占优；仅 28.5%（甚至 18.2%）计算量即媲美 DeepSeek 67B。
 - 负载均衡：使用专家级 + 设备级负载均衡损失。
 - 对齐：对 DeepSeekMoE 16B 成功做 SFT，chat 版媲美 DeepSeek-Chat-7B / LLaMA2-SFT-7B。
+- 后续影响：直接成为 DeepSeek-V2（160 routed 专家）/ V3（256 routed + 1 shared）的 FFN 基础。
 
 ## 原始链接
 - url: https://arxiv.org/abs/2401.06066
