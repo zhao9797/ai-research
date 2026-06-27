@@ -1,4 +1,4 @@
-> 🌐 English entry page. Deep pages are in Chinese. 中文版 / Chinese: [00-SUMMARY.md](00-SUMMARY.md)
+> 🌐 English entry page. Deep pages are in Chinese. 中文版 / Chinese: [[llm/00-SUMMARY|中文]]
 
 ---
 title: LLM Technology Evolution Research (GPT-3 → 2026-06) · Main Summary
@@ -43,7 +43,7 @@ Four layers, by granularity from "conclusion" to "primary source":
    - [Agentic training](sections/agentic.md)
    - [Open-source model training recipes (cross-comparison)](sections/open-model-recipes.md)
 2. **Open-source model deep-dive archives (for training/data/mixture-ratio/RL/architecture details)** — `deep-dive/` (see Section 4)
-3. **Full source index (by year/month, every entry clickable)** — [01-INDEX.md](01-INDEX.md)
+3. **Full source index (by year/month, every entry clickable)** — [[llm/01-INDEX|01-INDEX]]
 4. **Per-entry structured pages** — `2020/`…`2026/`, `themes/`; **downloaded primary sources** — `sources/llm/<scope>/` (html/json with the repo, pdf on HF bucket)
 
 ---
@@ -90,7 +90,7 @@ Each gives, model by model: exact architecture config · pretraining data source
 
 ---
 
-## 5. Annual Timeline (selected milestones; full entries in [01-INDEX.md](01-INDEX.md))
+## 5. Annual Timeline (selected milestones; full entries in [[llm/01-INDEX|01-INDEX]])
 
 ### 2020 — Scaling laws and the dawn of RLHF
 - [GPT-3 175B](2020/language-models-are-few-shot-learners-gpt-3.md) (few-shot in-context learning) · [Scaling Laws](2020/scaling-laws-for-neural-language-models.md)

@@ -1,4 +1,4 @@
-> 🌐 English entry page. Deep pages are in Chinese. 中文版 / Chinese: [00-SUMMARY.md](00-SUMMARY.md)
+> 🌐 English entry page. Deep pages are in Chinese. 中文版 / Chinese: [[omni/00-SUMMARY|中文]]
 
 ---
 title: "Omni / Multimodal Generation Technology Evolution Research (2020 → 2026-H1) · Main Summary"
@@ -48,7 +48,7 @@ Four layers from "conclusion" to "primary source":
    - [Unified/Omni model families (Chameleon·Emu·Janus·Bagel·OmniGen·Show-o·VAR)](deep-dive/unified-omni-families.md)
    - [Video generation families (Sora·Veo·Wan·Movie-Gen·Hunyuan·Kling·CogVideoX)](deep-dive/video-generation-families.md)
    - [Image editing and controllable generation families (ControlNet·InstructPix2Pix·Emu-Edit·Kontext·Step1X·Qwen-Edit)](deep-dive/image-editing-control.md)
-3. **Full source index (by year/month, every entry clickable)** — [01-INDEX.md](01-INDEX.md)
+3. **Full source index (by year/month, every entry clickable)** — [[omni/01-INDEX|01-INDEX]]
 4. **Per-work structured pages** — `2020/`…`2026/`; **downloaded primary sources** — `sources/omni/<year>/`
 
 ---

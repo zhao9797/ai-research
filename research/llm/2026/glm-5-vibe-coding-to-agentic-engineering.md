@@ -62,7 +62,7 @@ downloaded: [arxiv-2602.15763-glm-5.pdf, glm-5.pdf, glm-5.2-modelcard.md]
 
 ## 原始链接
 - url: https://arxiv.org/abs/2602.15763 · pdf: https://arxiv.org/pdf/2602.15763 · github: https://github.com/zai-org/GLM-5
-- GLM-5.2（旗舰迭代，1M + IndexShare）见 [2026/glm-5.2.md](glm-5.2.md)
+- GLM-5.2（旗舰迭代，1M + IndexShare）见 [[glm-5.2]]
 
 ## 一手源存档（sources/）
 - [arxiv-2602.15763-glm-5.pdf](https://arxiv.org/pdf/2602.15763)  （arXiv 原文 PDF，不入 git）

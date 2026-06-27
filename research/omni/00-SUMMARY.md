@@ -8,7 +8,7 @@ updated: 2026-06-25
 
 # Omni / 多模态生成技术演进调研 · 主汇总（2020 → 2026-H1）
 
-> 🌐 **English**: [00-SUMMARY.en.md](00-SUMMARY.en.md)
+> 🌐 **English**: [[omni/00-SUMMARY.en|English]]
 
 > 覆盖**视觉/多模态「生成与编辑」模型及其使能方法**：文生图 · 图像编辑/可控生成 · 统一理解+生成 · any-to-any 全模态(omni) · 视频生成 · 全模态中的音频/语音 · 3D · 以及扩散/流/自回归等使能方法。
 > 只收**一手官方来源**：arXiv 原文、官方技术报告/system card、官方博客/产品发布、官方 GitHub / HuggingFace / ModelScope model card。**不含第三方解读/二手聚合**。
@@ -48,7 +48,7 @@ updated: 2026-06-25
    - [统一/Omni 模型族（Chameleon·Emu·Janus·Bagel·OmniGen·Show-o·VAR）](deep-dive/unified-omni-families.md)
    - [视频生成族（Sora·Veo·Wan·Movie-Gen·Hunyuan·Kling·CogVideoX）](deep-dive/video-generation-families.md)
    - [图像编辑与可控生成族（ControlNet·InstructPix2Pix·Emu-Edit·Kontext·Step1X·Qwen-Edit）](deep-dive/image-editing-control.md)
-3. **全量来源索引（按年月，可点开每条）** — [01-INDEX.md](01-INDEX.md)
+3. **全量来源索引（按年月，可点开每条）** — [[omni/01-INDEX|01-INDEX]]
 4. **单工作结构化页** — `2020/`…`2026/`；**下载原文** — `sources/omni/<年>/`
 
 ---
