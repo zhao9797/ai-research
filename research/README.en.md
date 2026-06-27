@@ -35,4 +35,10 @@ Two independent scopes, **isomorphically organized** (both follow the "four-laye
 
 ## Maintenance
 
-`01-INDEX.md` is generated automatically from each page's YAML frontmatter: after source pages are added or removed, the index is regenerated and omni internal-link aliases are normalized (e.g. `[[dit]]`→`[[dit-scalable-diffusion-transformers]]`).
+Maintenance scripts live in the repo's `scripts/` directory (Python standard library only, no dependencies; see `scripts/README.md`):
+- `build_index.py` / `build_index_omni.py` — regenerate each scope's `01-INDEX.md` from page frontmatter
+- `normalize_wikilinks.py` — normalize omni internal-link aliases (e.g. `[[dit]]`→`[[dit-scalable-diffusion-transformers]]`)
+- `fix_frontmatter.py` — repair YAML frontmatter
+- `lint.py` — health checks (duplicate pages / frontmatter / broken wikilinks / folder-date consistency), run by CI on every push/PR
+
+After adding or removing source pages, re-run `build_index*.py` to refresh the index; run `lint.py` before committing.

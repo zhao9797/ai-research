@@ -1,0 +1,30 @@
+name: Lint research/
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # stdlib only — no dependencies to install
+      - name: Lint knowledge base
+        run: python3 scripts/lint.py
+      - name: Check 01-INDEX.md is up to date
+        run: |
+          python3 scripts/build_index.py
+          python3 scripts/build_index_omni.py
+          if ! git diff --quiet -- research/llm/01-INDEX.md research/omni/01-INDEX.md; then
+            echo "::error::01-INDEX.md is stale. Run scripts/build_index.py + scripts/build_index_omni.py and commit."
+            git --no-pager diff -- research/llm/01-INDEX.md research/omni/01-INDEX.md
+            exit 1
+          fi
+          echo "indexes up to date"

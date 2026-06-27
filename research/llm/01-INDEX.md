@@ -10,6 +10,17 @@ updated: 2026-06-18
 > 去重后 **532** 条一手来源（按 `date` 年份归组；去重键为原始 URL）。
 
 
+## 2018（1 条）
+
+- [GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism](themes/ai-infra/gpipe.md) — Google · 2018-11 · paper · [AI infra] — https://arxiv.org/abs/1811.06965
+
+## 2019（4 条）
+
+- [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](themes/ai-infra/megatron-lm.md) — NVIDIA · 2019-09 · paper · [AI infra/架构] — https://arxiv.org/abs/1909.08053
+- [Root Mean Square Layer Normalization (RMSNorm)](themes/architecture/rmsnorm.md) — University of Edinburgh / University of Zurich · 2019-10 · paper · [架构] — https://arxiv.org/abs/1910.07467
+- [ZeRO: Memory Optimizations Toward Training Trillion Parameter Models](themes/ai-infra/zero.md) — Microsoft (DeepSpeed) · 2019-10 · paper · [AI infra] — https://arxiv.org/abs/1910.02054
+- [Fast Transformer Decoding: One Write-Head is All You Need (Multi-Query Attention)](themes/architecture/multi-query-attention.md) — Google · 2019-11 · paper · [架构/AI infra] — https://arxiv.org/abs/1911.02150
+
 ## 2020（36 条）
 
 - [Reformer — The Efficient Transformer](2020/reformer.md) — Google Research / UC Berkeley · 2020-01 · paper · [架构] — https://arxiv.org/abs/2001.04451

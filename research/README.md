@@ -35,4 +35,10 @@
 
 ## 维护
 
-`01-INDEX.md` 按各页 YAML frontmatter 自动生成：来源页增删后重新生成索引，并归一化 omni 内链别名（如 `[[dit]]`→`[[dit-scalable-diffusion-transformers]]`）。
+维护脚本在仓库 `scripts/` 目录（纯 Python 标准库、无依赖；用法见 `scripts/README.md`）：
+- `build_index.py` / `build_index_omni.py` —— 从各页 frontmatter 重生成对应 scope 的 `01-INDEX.md`
+- `normalize_wikilinks.py` —— 归一化 omni 内链别名（如 `[[dit]]`→`[[dit-scalable-diffusion-transformers]]`）
+- `fix_frontmatter.py` —— 修复 YAML frontmatter
+- `lint.py` —— 健检（重复页 / frontmatter / 死内链 / 目录-日期一致），CI 每次 push/PR 运行
+
+新增或删除来源页后重跑 `build_index*.py` 刷新索引；提交前跑 `lint.py` 自检。
