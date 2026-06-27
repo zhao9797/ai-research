@@ -87,6 +87,20 @@ for scope in SCOPES:
                     slugs.append(os.path.basename(tgt).removesuffix(".md"))
                 if slugs:
                     wikilink_sites.append((rel, slugs))
+                # bare-filename sibling .md links resolve to the SITE ROOT from a
+                # subfolder page (Quartz computes folder-style relative paths but
+                # GitHub Pages serves file-style URLs). Use a scope-qualified
+                # wikilink instead, e.g. [[llm/01-INDEX|01-INDEX]].
+                for m in re.finditer(r"\]\(([^)\s]+\.md)\)", scan):
+                    tgt = m.group(1)
+                    if "://" in tgt or tgt.startswith("#"):
+                        continue
+                    t = tgt[2:] if tgt.startswith("./") else tgt
+                    if "/" not in t:
+                        errors.append(
+                            f"{rel}: bare sibling link ]({tgt}) breaks on the site from a "
+                            f"subfolder — use a scope-qualified wikilink, e.g. [[<scope>/{t[:-3]}|...]]"
+                        )
             if not is_workpage(fn):
                 continue
             folder = os.path.basename(root)
