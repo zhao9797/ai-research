@@ -90,8 +90,7 @@ for scope in SCOPES:
                 continue
             folder = os.path.basename(root)
             url = (fm or {}).get("url", "").rstrip("/")
-            is_stub = "主题索引条目" in txt   # pointer page, no syncable content
-            if url and not is_stub:
+            if url:
                 url_to_files[url].append(rel)
             if YEAR_RX.match(folder):
                 if not fm:
@@ -137,7 +136,7 @@ dist = collections.Counter(len(v) for v in url_to_files.values())
 # ---- report ----
 print("=== research/ lint ===")
 print(f"year-dir work pages: {len(year_pages)} | unique source URLs: {len(url_to_files)}")
-print("duplication by URL (full pages only; stubs excluded):")
+print("duplication by URL (across year+themes+deep-dive):")
 for n in sorted(dist):
     works = dist[n]
     extra = (n - 1) * works
