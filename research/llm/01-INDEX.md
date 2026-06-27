@@ -143,7 +143,7 @@ updated: 2026-06-18
 - [Solving math word problems with process- and outcome-based feedback](themes/post-training/process-outcome-feedback.md) — DeepMind · 2022-11 · paper · [后训练] — https://arxiv.org/abs/2211.14275
 - [Constitutional AI: Harmlessness from AI Feedback](2022/constitutional-ai-harmlessness-from-ai-feedback.md) — Anthropic · 2022-12 · paper · [后训练] — https://arxiv.org/abs/2212.08073
 - [Robust Speech Recognition via Large-Scale Weak Supervision (Whisper)](2022/whisper-robust-speech-recognition.md) — OpenAI · 2022-12 · paper · [预训练数据/架构] — https://arxiv.org/abs/2212.04356
-- [Self-Instruct: Aligning Language Models with Self-Generated Instructions](2022/self-instruct-aligning-lms-with-self-generated-instructions.md) — Univ. of Washington / AllenAI 等 · 2022-12 · paper · [后训练] — https://arxiv.org/abs/2212.10560
+- [Self-Instruct: Aligning Language Models with Self-Generated Instructions](2022/self-instruct.md) — Univ. of Washington / AllenAI 等 · 2022-12 · paper · [后训练] — https://arxiv.org/abs/2212.10560
 
 ## 2023（102 条）
 
