@@ -80,4 +80,4 @@ Four layers from "conclusion" to "primary source":
 
 ---
 
-*Maintenance: research scripts and index generators are under `self-wiki/scripts/tmp/` (`build_index_omni.py` refreshes the index, `normalize_wikilinks.py` normalizes internal links).*
+*Maintenance: `01-INDEX.md` is generated from each page's frontmatter; internal-link aliases are normalized.*

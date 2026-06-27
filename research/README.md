@@ -35,7 +35,4 @@
 
 ## 维护
 
-来源页增删后，用 `self-wiki/scripts/tmp/` 下脚本刷新：
-- `build_index.py` / `build_index_omni.py` —— 从各页 frontmatter 重生成对应 scope 的 `01-INDEX.md`
-- `normalize_wikilinks.py` —— 归一化 omni 内链别名（如 `[[dit]]`→`[[dit-scalable-diffusion-transformers]]`）
-- `fix_frontmatter.py` —— 修复 YAML（多字段挤行 / 含冒号标量未加引号）
+`01-INDEX.md` 按各页 YAML frontmatter 自动生成：来源页增删后重新生成索引，并归一化 omni 内链别名（如 `[[dit]]`→`[[dit-scalable-diffusion-transformers]]`）。

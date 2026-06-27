@@ -80,4 +80,4 @@ updated: 2026-06-25
 
 ---
 
-*维护：调研脚本与索引生成器在 `self-wiki/scripts/tmp/`（`build_index_omni.py` 刷新索引、`normalize_wikilinks.py` 归一化内链）。*
+*维护：`01-INDEX.md` 由各页 frontmatter 自动生成，内链别名统一归一化。*

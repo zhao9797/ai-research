@@ -35,7 +35,4 @@ Two independent scopes, **isomorphically organized** (both follow the "four-laye
 
 ## Maintenance
 
-After source pages are added or removed, refresh using scripts under `self-wiki/scripts/tmp/`:
-- `build_index.py` / `build_index_omni.py` — regenerate the corresponding scope's `01-INDEX.md` from each page's frontmatter
-- `normalize_wikilinks.py` — normalize omni internal-link aliases (e.g. `[[dit]]`→`[[dit-scalable-diffusion-transformers]]`)
-- `fix_frontmatter.py` — fix YAML (multiple fields crammed on one line / scalars containing colons not quoted)
+`01-INDEX.md` is generated automatically from each page's YAML frontmatter: after source pages are added or removed, the index is regenerated and omni internal-link aliases are normalized (e.g. `[[dit]]`→`[[dit-scalable-diffusion-transformers]]`).
