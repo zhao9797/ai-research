@@ -28,7 +28,7 @@ Qwen2.5-Omni 是阿里 Qwen 团队 2025-03 推出的**端到端全模态**单一
 2. **多模态输出互不干扰**——文本 token 与语音 token 同时生成时训练相互掣肘；
 3. **实时流式架构**——低首包延迟地边理解边出语音。
 
-Qwen2.5-Omni 的定位是 Qwen 系列的**旗舰全模态开源模型**，把 [[qwen2-5-vl]] 的视觉编码器、[[qwen2-audio]] 的音频编码器、Qwen2.5 的 LLM 三者整合进一个可端到端训练/推理的系统，并新增流式语音输出。它对标的是 OpenAI GPT-4o 这类闭源 omni 模型，而以**完全开源**（Apache-2.0，7B/3B 双尺寸 + GPTQ/AWQ 量化版）的形态发布，是开源全模态的代表性工作。
+Qwen2.5-Omni 的定位是 Qwen 系列的**旗舰全模态开源模型**，把 [[qwen2.5-vl]] 的视觉编码器、[[qwen2-audio]] 的音频编码器、Qwen2.5 的 LLM 三者整合进一个可端到端训练/推理的系统，并新增流式语音输出。它对标的是 OpenAI GPT-4o 这类闭源 omni 模型，而以**完全开源**（Apache-2.0，7B/3B 双尺寸 + GPTQ/AWQ 量化版）的形态发布，是开源全模态的代表性工作。
 
 ## 模型架构
 ![qwen2-5-omni 架构](../figs/qwen2-5-omni/arch.png)
@@ -39,7 +39,7 @@ Qwen2.5-Omni 的定位是 Qwen 系列的**旗舰全模态开源模型**，把 [[
 - **Thinker（"大脑"）**：一个 Transformer decoder（LLM），外挂音频编码器、视觉编码器，负责理解文本/音频/视频输入并生成高层表示与文本。
   - **文本 tokenizer**：Qwen tokenizer，byte-level BPE，词表 151,643 个常规 token。
   - **音频编码器**：取自 [[qwen2-audio]]，初始化自 **Whisper-large-v3**。输入 16kHz 重采样、转 128 通道 mel 谱（窗 25ms、hop 10ms）；每帧音频表示≈原始信号 40ms。
-  - **视觉编码器**：取自 [[qwen2-5-vl]] 的 ViT，约 **6.75 亿参数**，图像/视频混合训练；patch size 14，相邻 2×2 token 经 MLP 合并为 1 个 token；视频用**动态帧率**采样以适配音频采样率，单张图像被当作两个相同帧处理。
+  - **视觉编码器**：取自 [[qwen2.5-vl]] 的 ViT，约 **6.75 亿参数**，图像/视频混合训练；patch size 14，相邻 2×2 token 经 MLP 合并为 1 个 token；视频用**动态帧率**采样以适配音频采样率，单张图像被当作两个相同帧处理。
 - **Talker（"嘴"）**：**双轨自回归 Transformer decoder**。它**直接接收 Thinker 的高维隐表示**并共享 Thinker 的全部历史上下文，同时也吃 Thinker 采样出的文本 token 的 embedding——高维表示传递语气/态度等隐含信息（让流式语音能"未读完文本先定调"），离散文本 token 则消除同音异义带来的不确定性（Thinker 表示空间是语义相近而非语音相近）。整套架构作为一个内聚单模型端到端训练/推理。
 
 **TMRoPE（Time-aligned Multimodal RoPE）**：在 M-RoPE（把旋转位置编码拆成 temporal/height/width 三分量）基础上**显式加入绝对时间位置**。文本三分量用同一 position ID（退化为 1D-RoPE）；音频也用同一 ID 并加绝对时间编码，**1 个 temporal ID = 40ms**；图像 temporal ID 恒定、h/w 按 token 位置分配；带音频的视频按实际帧时间动态调整 temporal ID 保证 1 ID=40ms。多模态混排时，每个模态的位置编号从上一模态最大 position ID +1 起算。

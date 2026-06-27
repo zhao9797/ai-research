@@ -76,10 +76,11 @@ for scope in SCOPES:
             rel = os.path.relpath(path, REPO)
             all_slugs.add(fn[:-3])   # every page is a valid wikilink target
             fm, txt = parse_fm(path)
-            # wikilink targets (skip auto-generated index)
+            # wikilink targets (skip auto-generated index; ignore inline-code examples)
             if not fn.startswith("01-"):
                 slugs = []
-                for m in LINK_RX.finditer(txt):
+                scan = re.sub(r"`[^`\n]*`", "", txt)   # drop inline-code spans
+                for m in LINK_RX.finditer(scan):
                     tgt = m.group(1).strip()
                     if not tgt or tgt.startswith("#"):
                         continue

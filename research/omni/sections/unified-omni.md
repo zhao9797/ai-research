@@ -139,7 +139,7 @@ tags: [unified, understanding-generation, any-to-any, omni, early-fusion, decoup
 
 ---
 
-## 附：本章引用的单工作页（[[slug]] 内链）
+## 附：本章引用的单工作页（`[[slug]]` 内链）
 
 范式一：[[chameleon]] · [[chameleon-cm3leon]] · [[emu3]] · [[show-o]] · [[x-omni]]
 范式二：[[janus]] · [[janusflow]] · [[janus-pro]] · [[metaqueries]] · [[blip3-o]] · [[bagel]]
