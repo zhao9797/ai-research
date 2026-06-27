@@ -39,6 +39,8 @@ jobs:
           # custom footer: drop the default "Created with Quartz" credit + upstream
           # GitHub/Discord links, point the single link at this repo instead
           cp site/quartz/components/Footer.tsx .quartz/quartz/components/Footer.tsx
+          # custom theme (Technical Archive — indigo): palette is in quartz.config.ts, styling here
+          cp site/quartz/styles/custom.scss .quartz/quartz/styles/custom.scss
           # explorer: clicking a folder name expands it in place (default "link" navigates away)
           perl -pi -e 's/Component\.Explorer\(\)/Component.Explorer({ folderClickBehavior: "collapse" })/g' .quartz/quartz.layout.ts
           # Quartz emits file-style HTML but computes folder-style relative links,

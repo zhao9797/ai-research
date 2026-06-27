@@ -1,0 +1,91 @@
+@use "./base.scss";
+
+// ── Technical Archive theme (indigo) ──────────────────────────────
+// Palette + primary fonts live in quartz.config.ts; this file is the
+// editorial styling layer. (base.scss above pulls in Quartz's layout —
+// do not remove that @use, it is the stylesheet entry point.)
+
+// Fonts with CJK fallbacks (element-level so they win over base vars).
+.page-title,
+.center h1,
+.center h2,
+.center h3,
+article h1,
+article h2,
+article h3 {
+  font-family: "Fraunces", "Songti SC", "Noto Serif SC", serif;
+  letter-spacing: -0.015em;
+}
+body {
+  font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont,
+    "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+
+// Hairline rule under section headings; roomier reading rhythm.
+article h2 {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--lightgray);
+}
+article p {
+  line-height: 1.78;
+}
+
+// Archive-label metadata (date / reading time): mono, uppercase, spaced.
+.content-meta {
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+  font-style: normal;
+}
+
+// Internal links: indigo with a quiet underline that fills in on hover.
+a.internal {
+  background-color: transparent;
+  border-bottom: 1.5px solid var(--highlight);
+  border-radius: 0;
+  padding: 0;
+  font-weight: 500;
+  &:hover {
+    background-color: transparent;
+    border-bottom-color: var(--secondary);
+  }
+}
+
+// Tag pills: mono, soft indigo.
+.tags > li > a,
+a.tag-link {
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  border-radius: 1rem;
+  background-color: var(--highlight);
+  color: var(--secondary);
+  border: none;
+  &:hover {
+    background-color: var(--secondary);
+    color: var(--light);
+  }
+}
+
+// Callouts / blockquotes: indigo left rule on a faint tint.
+blockquote {
+  border-left: 2.5px solid var(--secondary);
+  background-color: var(--highlight);
+  border-radius: 0 6px 6px 0;
+}
+
+// Left explorer + right TOC section labels: a touch more technical.
+.explorer button h2,
+.toc > button h3 {
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+code {
+  font-size: 0.88em;
+}
