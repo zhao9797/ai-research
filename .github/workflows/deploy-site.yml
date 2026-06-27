@@ -36,6 +36,9 @@ jobs:
           cp -r research/* .quartz/content/
           cp site/index.md .quartz/content/index.md
           cp site/quartz.config.ts .quartz/quartz.config.ts
+          # custom footer: drop the default "Created with Quartz" credit + upstream
+          # GitHub/Discord links, point the single link at this repo instead
+          cp site/quartz/components/Footer.tsx .quartz/quartz/components/Footer.tsx
           # Quartz emits file-style HTML but computes folder-style relative links,
           # so in-content "../figs/" images resolve one level too high on GitHub Pages.
           # Rewrite to content-root-absolute "/omni/figs/" (build copy only; repo markdown
