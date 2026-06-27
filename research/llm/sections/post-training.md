@@ -100,9 +100,9 @@
 - GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models (Zhipu AI, 2025-08, report) — 把 Agentic/Reasoning/Coding 三类能力统一进 MoE 模型，后训练用专家分训 + self-distillation 融合 + 大规模 RL。355B 总参 / 32B 激活（Air 106B/12B）；支持 hybrid thinking；约 23T tokens，权重 MIT 开源。https://arxiv.org/abs/2508.06471
 
 ## 增量补录（2026 调研后查漏，后训练维度）
-- **GLM-5.2**（承 GLM-5）— SFT(3类/202K上下文/三种thinking) → **Reasoning RL(GRPO+IcePop,去KL,混合4域) → Agentic RL(全异步/TITO/双边IS) → General RL(规则+ORM+GRM混合奖励)** → On-Policy 跨阶段蒸馏。[详](../2026/glm-5.2.md)
-- **Kimi-K2.6**（承 K2.5）— zero-vision SFT、按能力联合多模态 RL(视觉RL反哺文本)、token级裁剪+MuonClip、混合奖励(规则+budget+GRM+视觉)、**Toggle 省 token 25~30%**、Agent Swarm/PARL。[详](../2026/kimi-k2.6.md)
-- **Qwen-AgentWorld** — CPT→SFT→RL(**GSPO** + rubric&rule 混合奖励)。[详](../2026/qwen-agentworld.md)
-- **Intern-S2-Preview** — 全链 pretrain→RL、shared-weight MTP+KL、CoT 压缩。[详](../2026/intern-s2-preview.md)
-- **MiniCPM5-1B** — **RL+OPD 两阶段推理 RL**(math/code/IF 均分↑16、超长↓29pp)。[详](../2026/minicpm5-1b.md)
-- **Mistral-Small-4** — 统一 Instruct+Reasoning(Magistral)+Devstral，reasoning_effort 可调。[详](../2026/mistral-small-4.md)
+- **GLM-5.2**（承 GLM-5）— SFT(3类/202K上下文/三种thinking) → **Reasoning RL(GRPO+IcePop,去KL,混合4域) → Agentic RL(全异步/TITO/双边IS) → General RL(规则+ORM+GRM混合奖励)** → On-Policy 跨阶段蒸馏。[详](llm/2026/glm-5.2.md)
+- **Kimi-K2.6**（承 K2.5）— zero-vision SFT、按能力联合多模态 RL(视觉RL反哺文本)、token级裁剪+MuonClip、混合奖励(规则+budget+GRM+视觉)、**Toggle 省 token 25~30%**、Agent Swarm/PARL。[详](llm/2026/kimi-k2.6.md)
+- **Qwen-AgentWorld** — CPT→SFT→RL(**GSPO** + rubric&rule 混合奖励)。[详](llm/2026/qwen-agentworld.md)
+- **Intern-S2-Preview** — 全链 pretrain→RL、shared-weight MTP+KL、CoT 压缩。[详](llm/2026/intern-s2-preview.md)
+- **MiniCPM5-1B** — **RL+OPD 两阶段推理 RL**(math/code/IF 均分↑16、超长↓29pp)。[详](llm/2026/minicpm5-1b.md)
+- **Mistral-Small-4** — 统一 Instruct+Reasoning(Magistral)+Devstral，reasoning_effort 可调。[详](llm/2026/mistral-small-4.md)

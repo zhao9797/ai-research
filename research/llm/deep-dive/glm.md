@@ -432,4 +432,4 @@ updated: 2026-06-18
 - **GLM-5.1**：无独立技术报告，仅在 GLM-5.2 card 对比表出现分数。
 
 ## 增量补录（2026-06+，初版调研后）
-- **GLM-5.2** — `glm_moe_dsa`，hidden 6144 / 78 层 / 64 头 MLA(qk_head_dim 256=nope192+rope64) / 256 路由专家+1 共享(8/tok) / **1M 上下文** / rope 8e6；**IndexShare**（每 4 个稀疏注意力层共享 indexer，1M 下 per-token FLOPs −2.9×，arXiv 2603.12201）+ 改进 MTP（accept +20%）；MIT。详见 [2026/glm-5.2.md](../2026/glm-5.2.md)。
+- **GLM-5.2** — `glm_moe_dsa`，hidden 6144 / 78 层 / 64 头 MLA(qk_head_dim 256=nope192+rope64) / 256 路由专家+1 共享(8/tok) / **1M 上下文** / rope 8e6；**IndexShare**（每 4 个稀疏注意力层共享 indexer，1M 下 per-token FLOPs −2.9×，arXiv 2603.12201）+ 改进 MTP（accept +20%）；MIT。详见 [2026/glm-5.2.md](llm/2026/glm-5.2.md)。

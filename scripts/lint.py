@@ -87,19 +87,20 @@ for scope in SCOPES:
                     slugs.append(os.path.basename(tgt).removesuffix(".md"))
                 if slugs:
                     wikilink_sites.append((rel, slugs))
-                # bare-filename sibling .md links resolve to the SITE ROOT from a
-                # subfolder page (Quartz computes folder-style relative paths but
-                # GitHub Pages serves file-style URLs). Use a scope-qualified
-                # wikilink instead, e.g. [[llm/01-INDEX|01-INDEX]].
+                # Internal markdown links must be content-root-relative (start with a
+                # scope folder, e.g. llm/ or omni/). Bare/relative .md links resolve
+                # to the wrong path on the site: Quartz computes folder-style relative
+                # hrefs but GitHub Pages serves file-style URLs, so a link like
+                # ](2020/x.md) from /llm/ drops to /2020/x (404). Use ](llm/2020/x.md).
                 for m in re.finditer(r"\]\(([^)\s]+\.md)\)", scan):
                     tgt = m.group(1)
                     if "://" in tgt or tgt.startswith("#"):
                         continue
                     t = tgt[2:] if tgt.startswith("./") else tgt
-                    if "/" not in t:
+                    if t.split("/", 1)[0] not in SCOPES:
                         errors.append(
-                            f"{rel}: bare sibling link ]({tgt}) breaks on the site from a "
-                            f"subfolder — use a scope-qualified wikilink, e.g. [[<scope>/{t[:-3]}|...]]"
+                            f"{rel}: internal link ]({tgt}) is not content-root-relative — "
+                            f"prefix the scope, e.g. ]({scope}/{t})"
                         )
             if not is_workpage(fn):
                 continue

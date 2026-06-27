@@ -376,4 +376,4 @@
 - 官方 GitHub 组织：https://github.com/QwenLM ｜ HF：https://huggingface.co/Qwen
 
 ## 增量补录（2026-06+，初版调研后）
-- **Qwen-AgentWorld-35B-A3B** — **首个语言世界模型(LWM)**，覆盖 7 个 agent 交互域；CPT→SFT→RL 三阶段、环境建模即训练目标；单轮非 agentic RL warm-up 可迁移到多轮 tool-calling；35B/3B 激活，`qwen3_5_moe` 混合线性注意力，256 专家/8。arXiv 2606.24597。详见 [2026/qwen-agentworld.md](../2026/qwen-agentworld.md)。
+- **Qwen-AgentWorld-35B-A3B** — **首个语言世界模型(LWM)**，覆盖 7 个 agent 交互域；CPT→SFT→RL 三阶段、环境建模即训练目标；单轮非 agentic RL warm-up 可迁移到多轮 tool-calling；35B/3B 激活，`qwen3_5_moe` 混合线性注意力，256 专家/8。arXiv 2606.24597。详见 [2026/qwen-agentworld.md](llm/2026/qwen-agentworld.md)。

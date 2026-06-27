@@ -12,6 +12,7 @@ import os, re, collections, sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(REPO, "research", "omni")
+SCOPE = os.path.basename(os.path.normpath(BASE))  # "llm" or "omni"; links are content-root-relative
 SRC_DIRS = ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027",
             "sections", "deep-dive", "themes"]
 
@@ -106,7 +107,7 @@ for y in years:
     out.append("\n## %s（%d 条）\n" % (y, len(ye)))
     for e in ye:
         out.append("- [%s](%s) — %s · %s · %s · [%s] — %s" % (
-            e["title"].replace("[", "(").replace("]", ")"), e["rel"],
+            e["title"].replace("[", "(").replace("]", ")"), SCOPE + "/" + e["rel"],
             e["org"] or "-", e["date"] or "?", e["type"] or "?",
             e["category"] or "-", e["url"] or ""))
 

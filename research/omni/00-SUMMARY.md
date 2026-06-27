@@ -36,18 +36,18 @@ updated: 2026-06-25
 从"结论"到"原文"四层：
 
 1. **六大横向章节（核心，先读）** — `sections/`
-   - [模型架构演进](sections/architecture.md) — U-Net→DiT→MMDiT→AR/next-scale/masked→统一 omni 骨干；tokenizer/VAE/text-encoder 演进
-   - [数据：规模·配比·重标注·过滤](sections/data.md) — LAION 时代 → re-captioning 浪潮 → 分阶段配比 → 版权/安全过滤
-   - [训练方法](sections/training.md) — diffusion/flow-matching/AR/masked 目标 · 多阶段 · 偏好对齐(DPO/DDPO/Flow-GRPO/reward) · 蒸馏少步
-   - [评测 benchmark](sections/benchmark.md) — FID→CLIPScore→GenEval/DPG/T2I-CompBench→人评/Arena→编辑/视频 bench + 横向数字表
-   - [Infra](sections/infra.md) — 训练规模/并行 · tokenizer 工程 · 推理加速 · 闭源黑盒边界
-   - [统一理解生成 & any-to-any omni 专题](sections/unified-omni.md) — 三大范式对比
+   - [模型架构演进](omni/sections/architecture.md) — U-Net→DiT→MMDiT→AR/next-scale/masked→统一 omni 骨干；tokenizer/VAE/text-encoder 演进
+   - [数据：规模·配比·重标注·过滤](omni/sections/data.md) — LAION 时代 → re-captioning 浪潮 → 分阶段配比 → 版权/安全过滤
+   - [训练方法](omni/sections/training.md) — diffusion/flow-matching/AR/masked 目标 · 多阶段 · 偏好对齐(DPO/DDPO/Flow-GRPO/reward) · 蒸馏少步
+   - [评测 benchmark](omni/sections/benchmark.md) — FID→CLIPScore→GenEval/DPG/T2I-CompBench→人评/Arena→编辑/视频 bench + 横向数字表
+   - [Infra](omni/sections/infra.md) — 训练规模/并行 · tokenizer 工程 · 推理加速 · 闭源黑盒边界
+   - [统一理解生成 & any-to-any omni 专题](omni/sections/unified-omni.md) — 三大范式对比
 2. **模型族横向对比** — `deep-dive/`
-   - [Stable Diffusion → SDXL → SD3 → FLUX 谱系](deep-dive/sd-flux-lineage.md)
-   - [中国系文生图/编辑族（CogView·Qwen·Hunyuan·Seedream·Kolors·ERNIE）](deep-dive/chinese-t2i-families.md)
-   - [统一/Omni 模型族（Chameleon·Emu·Janus·Bagel·OmniGen·Show-o·VAR）](deep-dive/unified-omni-families.md)
-   - [视频生成族（Sora·Veo·Wan·Movie-Gen·Hunyuan·Kling·CogVideoX）](deep-dive/video-generation-families.md)
-   - [图像编辑与可控生成族（ControlNet·InstructPix2Pix·Emu-Edit·Kontext·Step1X·Qwen-Edit）](deep-dive/image-editing-control.md)
+   - [Stable Diffusion → SDXL → SD3 → FLUX 谱系](omni/deep-dive/sd-flux-lineage.md)
+   - [中国系文生图/编辑族（CogView·Qwen·Hunyuan·Seedream·Kolors·ERNIE）](omni/deep-dive/chinese-t2i-families.md)
+   - [统一/Omni 模型族（Chameleon·Emu·Janus·Bagel·OmniGen·Show-o·VAR）](omni/deep-dive/unified-omni-families.md)
+   - [视频生成族（Sora·Veo·Wan·Movie-Gen·Hunyuan·Kling·CogVideoX）](omni/deep-dive/video-generation-families.md)
+   - [图像编辑与可控生成族（ControlNet·InstructPix2Pix·Emu-Edit·Kontext·Step1X·Qwen-Edit）](omni/deep-dive/image-editing-control.md)
 3. **全量来源索引（按年月，可点开每条）** — [[omni/01-INDEX|01-INDEX]]
 4. **单工作结构化页** — `2020/`…`2026/`；**下载原文** — `sources/omni/<年>/`
 

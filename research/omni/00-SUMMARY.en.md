@@ -36,18 +36,18 @@ updated: 2026-06-25
 Four layers from "conclusion" to "primary source":
 
 1. **Six cross-cutting chapters (core, read first)** — `sections/`
-   - [Model architecture evolution](sections/architecture.md) — U-Net→DiT→MMDiT→AR/next-scale/masked→unified omni backbone; tokenizer/VAE/text-encoder evolution
-   - [Data: scale · mixture ratios · re-captioning · filtering](sections/data.md) — LAION era → re-captioning wave → staged mixture ratios → copyright/safety filtering
-   - [Training methods](sections/training.md) — diffusion/flow-matching/AR/masked objectives · multi-stage · preference alignment (DPO/DDPO/Flow-GRPO/reward) · few-step distillation
-   - [Benchmark evaluation](sections/benchmark.md) — FID→CLIPScore→GenEval/DPG/T2I-CompBench→human eval/Arena→editing/video benchmarks + cross-comparison number tables
-   - [Infra](sections/infra.md) — training scale/parallelism · tokenizer engineering · inference acceleration · closed-source black-box boundaries
-   - [Unified understanding-and-generation & any-to-any omni topic](sections/unified-omni.md) — comparison of the three major paradigms
+   - [Model architecture evolution](omni/sections/architecture.md) — U-Net→DiT→MMDiT→AR/next-scale/masked→unified omni backbone; tokenizer/VAE/text-encoder evolution
+   - [Data: scale · mixture ratios · re-captioning · filtering](omni/sections/data.md) — LAION era → re-captioning wave → staged mixture ratios → copyright/safety filtering
+   - [Training methods](omni/sections/training.md) — diffusion/flow-matching/AR/masked objectives · multi-stage · preference alignment (DPO/DDPO/Flow-GRPO/reward) · few-step distillation
+   - [Benchmark evaluation](omni/sections/benchmark.md) — FID→CLIPScore→GenEval/DPG/T2I-CompBench→human eval/Arena→editing/video benchmarks + cross-comparison number tables
+   - [Infra](omni/sections/infra.md) — training scale/parallelism · tokenizer engineering · inference acceleration · closed-source black-box boundaries
+   - [Unified understanding-and-generation & any-to-any omni topic](omni/sections/unified-omni.md) — comparison of the three major paradigms
 2. **Model-family cross-comparison** — `deep-dive/`
-   - [Stable Diffusion → SDXL → SD3 → FLUX lineage](deep-dive/sd-flux-lineage.md)
-   - [Chinese text-to-image/editing families (CogView·Qwen·Hunyuan·Seedream·Kolors·ERNIE)](deep-dive/chinese-t2i-families.md)
-   - [Unified/Omni model families (Chameleon·Emu·Janus·Bagel·OmniGen·Show-o·VAR)](deep-dive/unified-omni-families.md)
-   - [Video generation families (Sora·Veo·Wan·Movie-Gen·Hunyuan·Kling·CogVideoX)](deep-dive/video-generation-families.md)
-   - [Image editing and controllable generation families (ControlNet·InstructPix2Pix·Emu-Edit·Kontext·Step1X·Qwen-Edit)](deep-dive/image-editing-control.md)
+   - [Stable Diffusion → SDXL → SD3 → FLUX lineage](omni/deep-dive/sd-flux-lineage.md)
+   - [Chinese text-to-image/editing families (CogView·Qwen·Hunyuan·Seedream·Kolors·ERNIE)](omni/deep-dive/chinese-t2i-families.md)
+   - [Unified/Omni model families (Chameleon·Emu·Janus·Bagel·OmniGen·Show-o·VAR)](omni/deep-dive/unified-omni-families.md)
+   - [Video generation families (Sora·Veo·Wan·Movie-Gen·Hunyuan·Kling·CogVideoX)](omni/deep-dive/video-generation-families.md)
+   - [Image editing and controllable generation families (ControlNet·InstructPix2Pix·Emu-Edit·Kontext·Step1X·Qwen-Edit)](omni/deep-dive/image-editing-control.md)
 3. **Full source index (by year/month, every entry clickable)** — [[omni/01-INDEX|01-INDEX]]
 4. **Per-work structured pages** — `2020/`…`2026/`; **downloaded primary sources** — `sources/omni/<year>/`
 
