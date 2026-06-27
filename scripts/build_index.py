@@ -109,8 +109,9 @@ for y in years:
     out.append("\n## %s（%d 条）\n" % (y, len(ye)))
     for e in ye:
         cats = "/".join(e["categories"]) if e["categories"] else "-"
-        out.append("- [%s](%s) — %s · %s · %s · [%s] — %s" % (
-            e["title"].replace("[", "(").replace("]", ")"), SCOPE + "/" + e["rel"],
+        title = e["title"].replace("[", "(").replace("]", ")").replace("|", "/")
+        out.append("- [[%s|%s]] — %s · %s · %s · [%s] — %s" % (
+            SCOPE + "/" + e["rel"][:-3], title,
             e["org"] or "-", e["date"] or "?", e["type"] or "?", cats, e["url"] or ""))
 
 with open(os.path.join(BASE, "01-INDEX.md"), "w", encoding="utf-8") as f:

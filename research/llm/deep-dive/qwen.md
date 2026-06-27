@@ -304,7 +304,7 @@
 ### Qwen-VL / Qwen-VL-Chat — 2023（arXiv 2308.12966）
 本地：`../../../sources/llm/2023/qwen-vl.pdf`
 - 架构：LLM=**Qwen-7B** 初始化；Vision Encoder=**ViT-bigG（OpenCLIP，1.9B）**，patch stride 14；**Position-aware VL Adapter**（单层 cross-attention + 256 个可训练 query，把图像特征压到固定 **256** 长度，2D 绝对位置编码）。总参 **9.6B**（ViT 1.9B + Adapter 0.08B + LLM 7.7B）。
-- 输入输出：`<img></img>` 包裹图像特征；bounding box 归一化到 [0,1000) 字符串，`<box></box>`/`<ref></ref>` 标记 → 支持 grounding。
+- 输入输出：`<img></img>` 包裹图像特征；bounding box 归一化到 [[llm/2026/qwen-agentworld|0,1000) 字符串，`<box></box>`/`<ref></ref>` 标记 → 支持 grounding。
 - 三阶段训练：① 低分辨率图文对预训练（原始 50 亿对 → 清洗后 **14 亿**，英 77.3% 中 22.7%）② 多任务高分辨率预训练（解冻全部）③ 高分辨率指令微调（冻 ViT，只调 LLM+Adapter）。
 - URL：https://arxiv.org/abs/2308.12966
 
@@ -376,4 +376,4 @@
 - 官方 GitHub 组织：https://github.com/QwenLM ｜ HF：https://huggingface.co/Qwen
 
 ## 增量补录（2026-06+，初版调研后）
-- **Qwen-AgentWorld-35B-A3B** — **首个语言世界模型(LWM)**，覆盖 7 个 agent 交互域；CPT→SFT→RL 三阶段、环境建模即训练目标；单轮非 agentic RL warm-up 可迁移到多轮 tool-calling；35B/3B 激活，`qwen3_5_moe` 混合线性注意力，256 专家/8。arXiv 2606.24597。详见 [2026/qwen-agentworld.md](llm/2026/qwen-agentworld.md)。
+- **Qwen-AgentWorld-35B-A3B** — **首个语言世界模型(LWM)**，覆盖 7 个 agent 交互域；CPT→SFT→RL 三阶段、环境建模即训练目标；单轮非 agentic RL warm-up 可迁移到多轮 tool-calling；35B/3B 激活，`qwen3_5_moe` 混合线性注意力，256 专家/8。arXiv 2606.24597。详见 [2026/qwen-agentworld.md]]。

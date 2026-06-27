@@ -90,6 +90,6 @@
 - DeepSeek-V3 Technical Report (DeepSeek-AI, 2024-12, report) — 671B 总参 / 37B 激活 MoE，MLA + DeepSeekMoE + 无辅助损失负载均衡 + MTP + FP8 混合精度训练 + DualPipe；14.8T token 预训练仅用 2.788M H800 GPU·hr、全程无不可恢复 loss spike，是算法-系统-硬件协同设计的标杆。https://arxiv.org/abs/2412.19437
 
 ## 增量补录（2026 调研后查漏，AI infra 维度）
-- **GLM-5.2**（承 GLM-5）— **slime 异步 RL**(解耦 gen/train)、PD 分离、DP-attention(EP64/DP64)、FP8 rollout；Muon 零冗余通信、pipeline ZeRO2/激活offload；国产芯片全栈适配(昇腾/摩尔/海光/寒武纪/昆仑芯/沐曦/燧原)。[详](llm/2026/glm-5.2.md)
-- **Kimi-K2.6**（承 K2.5）— **Decoupled Encoder Process (DEP)**，多模态训练效率达纯文本 90%；MuonClip。[详](llm/2026/kimi-k2.6.md)
-- **MiniMax-M3** — MSA 协同 GPU kernel：exp-free TopK + KV-outer 稀疏注意力 + LSE 融合 + 动态负载均衡；109B 验证 prefill 14.2×/decode 7.6× vs GQA。[详](llm/2026/minimax-m3.md)
+- **GLM-5.2**（承 GLM-5）— **slime 异步 RL**(解耦 gen/train)、PD 分离、DP-attention(EP64/DP64)、FP8 rollout；Muon 零冗余通信、pipeline ZeRO2/激活offload；国产芯片全栈适配(昇腾/摩尔/海光/寒武纪/昆仑芯/沐曦/燧原)。[[llm/2026/glm-5.2|详]]
+- **Kimi-K2.6**（承 K2.5）— **Decoupled Encoder Process (DEP)**，多模态训练效率达纯文本 90%；MuonClip。[[llm/2026/kimi-k2.6|详]]
+- **MiniMax-M3** — MSA 协同 GPU kernel：exp-free TopK + KV-outer 稀疏注意力 + LSE 融合 + 动态负载均衡；109B 验证 prefill 14.2×/decode 7.6× vs GQA。[[llm/2026/minimax-m3|详]]

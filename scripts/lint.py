@@ -87,21 +87,20 @@ for scope in SCOPES:
                     slugs.append(os.path.basename(tgt).removesuffix(".md"))
                 if slugs:
                     wikilink_sites.append((rel, slugs))
-                # Internal markdown links must be content-root-relative (start with a
-                # scope folder, e.g. llm/ or omni/). Bare/relative .md links resolve
-                # to the wrong path on the site: Quartz computes folder-style relative
-                # hrefs but GitHub Pages serves file-style URLs, so a link like
-                # ](2020/x.md) from /llm/ drops to /2020/x (404). Use ](llm/2020/x.md).
-                for m in re.finditer(r"\]\(([^)\s]+\.md)\)", scan):
+                # Internal page links must be wikilinks [[scope/path|text]], not
+                # markdown [text](path.md). Markdown .md links don't resolve
+                # consistently across BOTH the published site (Quartz folder-style
+                # hrefs vs GitHub Pages file-style URLs) AND Obsidian (relative to
+                # the file vs the vault root). Wikilinks resolve correctly in both.
+                for m in re.finditer(r"\]\(([^)\s]+\.md)(?:#[^)]*)?\)", scan):
                     tgt = m.group(1)
                     if "://" in tgt or tgt.startswith("#"):
                         continue
-                    t = tgt[2:] if tgt.startswith("./") else tgt
-                    if t.split("/", 1)[0] not in SCOPES:
-                        errors.append(
-                            f"{rel}: internal link ]({tgt}) is not content-root-relative — "
-                            f"prefix the scope, e.g. ]({scope}/{t})"
-                        )
+                    slug = re.sub(r"\.md$", "", tgt[2:] if tgt.startswith("./") else tgt)
+                    errors.append(
+                        f"{rel}: internal page link ]({tgt}) — use a wikilink instead, "
+                        f"e.g. [[{slug}|...]] (markdown .md links break on the site / in Obsidian)"
+                    )
             if not is_workpage(fn):
                 continue
             folder = os.path.basename(root)

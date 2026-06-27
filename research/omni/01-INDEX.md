@@ -12,356 +12,356 @@ updated: 2026-06-25
 
 ## 2020（7 条）
 
-- [Jukebox: A Generative Model for Music](omni/2020/jukebox.md) — OpenAI · 2020-04 · paper · [audio] — https://openai.com/index/jukebox/
-- [Denoising Diffusion Probabilistic Models (DDPM)](omni/2020/ddpm.md) — UC Berkeley · 2020-06 · paper · [method] — https://arxiv.org/abs/2006.11239
-- [Generative Pretraining from Pixels (Image GPT / iGPT)](omni/2020/image-gpt.md) — OpenAI · 2020-06 · paper · [method] — https://openai.com/index/image-gpt/
-- [Improved Techniques for Training Score-Based Generative Models (NCSNv2)](omni/2020/ncsnv2.md) — Stanford University · 2020-06 · paper · [method] — https://arxiv.org/abs/2006.09011
-- [Denoising Diffusion Implicit Models (DDIM)](omni/2020/ddim.md) — Stanford University · 2020-10 · paper · [method] — https://arxiv.org/abs/2010.02502
-- [Score-Based Generative Modeling through Stochastic Differential Equations (Score SDE)](omni/2020/score-sde.md) — Stanford University / Google Brain · 2020-11 · paper · [method] — https://openreview.net/forum?id=PxTIG12RRHS
-- [Taming Transformers for High-Resolution Image Synthesis (VQGAN)](omni/2020/taming-transformers-vqgan.md) — Heidelberg University (CompVis) · 2020-12 · paper · [method] — https://arxiv.org/abs/2012.09841
+- [[omni/2020/jukebox|Jukebox: A Generative Model for Music]] — OpenAI · 2020-04 · paper · [audio] — https://openai.com/index/jukebox/
+- [[omni/2020/ddpm|Denoising Diffusion Probabilistic Models (DDPM)]] — UC Berkeley · 2020-06 · paper · [method] — https://arxiv.org/abs/2006.11239
+- [[omni/2020/image-gpt|Generative Pretraining from Pixels (Image GPT / iGPT)]] — OpenAI · 2020-06 · paper · [method] — https://openai.com/index/image-gpt/
+- [[omni/2020/ncsnv2|Improved Techniques for Training Score-Based Generative Models (NCSNv2)]] — Stanford University · 2020-06 · paper · [method] — https://arxiv.org/abs/2006.09011
+- [[omni/2020/ddim|Denoising Diffusion Implicit Models (DDIM)]] — Stanford University · 2020-10 · paper · [method] — https://arxiv.org/abs/2010.02502
+- [[omni/2020/score-sde|Score-Based Generative Modeling through Stochastic Differential Equations (Score SDE)]] — Stanford University / Google Brain · 2020-11 · paper · [method] — https://openreview.net/forum?id=PxTIG12RRHS
+- [[omni/2020/taming-transformers-vqgan|Taming Transformers for High-Resolution Image Synthesis (VQGAN)]] — Heidelberg University (CompVis) · 2020-12 · paper · [method] — https://arxiv.org/abs/2012.09841
 
 ## 2021（25 条）
 
-- [DALL·E: Zero-Shot Text-to-Image Generation](omni/2021/dall-e-1.md) — OpenAI · 2021-02 · paper · [t2i] — https://openai.com/index/dall-e/
-- [Improved Denoising Diffusion Probabilistic Models (Improved DDPM / IDDPM)](omni/2021/improved-ddpm.md) — OpenAI · 2021-02 · paper · [method] — https://arxiv.org/abs/2102.09672
-- [M6: A Chinese Multimodal Pretrainer](omni/2021/m6.md) — Alibaba DAMO Academy · 2021-03 · paper · [unified] — https://arxiv.org/abs/2103.00823
-- [Paint by Word](omni/2021/paint-by-word.md) — MIT CSAIL / Harvard GSD · 2021-03 · paper · [edit] — https://arxiv.org/abs/2103.10951
-- [StyleCLIP: Text-Driven Manipulation of StyleGAN Imagery](omni/2021/styleclip.md) — Hebrew University of Jerusalem / Tel-Aviv University / Adobe Research · 2021-03 · paper · [edit] — https://arxiv.org/abs/2103.17249
-- [GODIVA: Generating Open-DomaIn Videos from nAtural Descriptions](omni/2021/godiva.md) — Microsoft Research Asia / Duke University · 2021-04 · paper · [video] — https://arxiv.org/abs/2104.14806
-- [VQGAN-CLIP: Open Domain Image Generation and Editing with Natural Language Guidance](omni/2021/vqgan-clip.md) — EleutherAI / community (Crowson et al.) · 2021-04 · paper · [t2i] — https://arxiv.org/abs/2204.08583
-- [VideoGPT: Video Generation using VQ-VAE and Transformers](omni/2021/videogpt.md) — UC Berkeley · 2021-04 · paper · [video] — https://arxiv.org/abs/2104.10157
-- [CLIP-Guided Diffusion (Katherine Crowson / 社区版)](omni/2021/clip-guided-diffusion.md) — Community (Katherine Crowson, RiversHaveWings) / EleutherAI · 2021-05 · method · [method] — https://colab.research.google.com/drive/1QBsaDAZv8np29FPbvjffbE1eytoJcsgA
-- [Cascaded Diffusion Models for High Fidelity Image Generation (CDM)](omni/2021/cascaded-diffusion-models.md) — Google Research / Brain · 2021-05 · paper · [method] — https://arxiv.org/abs/2106.15282
-- [CogView: Mastering Text-to-Image Generation via Transformers](omni/2021/cogview.md) — Tsinghua / DAMO Academy (Alibaba) / BAAI · 2021-05 · paper · [t2i] — https://arxiv.org/abs/2105.13290
-- [Diffusion Models Beat GANs on Image Synthesis (ADM / Classifier Guidance)](omni/2021/diffusion-models-beat-gans.md) — OpenAI · 2021-05 · paper · [method] — https://arxiv.org/abs/2105.05233
-- [ILVR: Conditioning Method for Denoising Diffusion Probabilistic Models](omni/2021/ilvr.md) — Seoul National University / Samsung SDS · 2021-08 · paper · [method] — https://arxiv.org/abs/2108.02938
-- [SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations](omni/2021/sdedit.md) — Stanford University / Carnegie Mellon University · 2021-08 · paper · [edit] — https://arxiv.org/abs/2108.01073
-- [CLIP-Forge: Towards Zero-Shot Text-to-Shape Generation](omni/2021/clip-forge.md) — Autodesk AI Lab / Autodesk Research · 2021-10 · paper · [3d] — https://arxiv.org/abs/2110.02624
-- [Vector-quantized Image Modeling with Improved VQGAN (ViT-VQGAN)](omni/2021/vit-vqgan.md) — Google Research · 2021-10 · paper · [method] — https://arxiv.org/abs/2110.04627
-- [Blended Diffusion for Text-driven Editing of Natural Images](omni/2021/imle-net-blended-diffusion.md) — The Hebrew University of Jerusalem & Reichman University · 2021-11 · paper · [edit] — https://arxiv.org/abs/2111.14818
-- [GauGAN2 / PoE-GAN — 文字 + 语义涂鸦 + 草图多模态合成风景图](omni/2021/gaugan2.md) — NVIDIA · 2021-11 · blog · [t2i] — https://blogs.nvidia.com/blog/2021/11/22/gaugan2-ai-art-demo/
-- [NÜWA: Visual Synthesis Pre-training for Neural visUal World creAtion](omni/2021/nuwa.md) — Microsoft Research Asia / Peking University · 2021-11 · paper · [unified] — https://arxiv.org/abs/2111.12417
-- [Palette: Image-to-Image Diffusion Models](omni/2021/palette-image-to-image-diffusion.md) — Google Research (Brain Team) · 2021-11 · paper · [edit] — https://arxiv.org/abs/2111.05826
-- [VQ-Diffusion：用于文生图的向量量化扩散模型](omni/2021/vq-diffusion.md) — Microsoft Research / 中国科学技术大学 (USTC) · 2021-11 · paper · [method] — https://arxiv.org/abs/2111.14822
-- [ERNIE-ViLG: Unified Generative Pre-training for Bidirectional Vision-Language Generation](omni/2021/ernie-vilg.md) — Baidu · 2021-12 · paper · [unified] — https://arxiv.org/abs/2112.15283
-- [GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models](omni/2021/glide.md) — OpenAI · 2021-12 · paper · [t2i] — https://arxiv.org/abs/2112.10741
-- [High-Resolution Image Synthesis with Latent Diffusion Models (LDM)](omni/2021/latent-diffusion-ldm.md) — LMU Munich / IWR Heidelberg (CompVis) / Runway ML · 2021-12 · paper · [foundation] — https://arxiv.org/abs/2112.10752
-- [Zero-Shot Text-Guided Object Generation with Dream Fields](omni/2021/dreamfields.md) — Google Research / UC Berkeley · 2021-12 · paper · [3d] — https://ajayj.com/dreamfields
+- [[omni/2021/dall-e-1|DALL·E: Zero-Shot Text-to-Image Generation]] — OpenAI · 2021-02 · paper · [t2i] — https://openai.com/index/dall-e/
+- [[omni/2021/improved-ddpm|Improved Denoising Diffusion Probabilistic Models (Improved DDPM / IDDPM)]] — OpenAI · 2021-02 · paper · [method] — https://arxiv.org/abs/2102.09672
+- [[omni/2021/m6|M6: A Chinese Multimodal Pretrainer]] — Alibaba DAMO Academy · 2021-03 · paper · [unified] — https://arxiv.org/abs/2103.00823
+- [[omni/2021/paint-by-word|Paint by Word]] — MIT CSAIL / Harvard GSD · 2021-03 · paper · [edit] — https://arxiv.org/abs/2103.10951
+- [[omni/2021/styleclip|StyleCLIP: Text-Driven Manipulation of StyleGAN Imagery]] — Hebrew University of Jerusalem / Tel-Aviv University / Adobe Research · 2021-03 · paper · [edit] — https://arxiv.org/abs/2103.17249
+- [[omni/2021/godiva|GODIVA: Generating Open-DomaIn Videos from nAtural Descriptions]] — Microsoft Research Asia / Duke University · 2021-04 · paper · [video] — https://arxiv.org/abs/2104.14806
+- [[omni/2021/vqgan-clip|VQGAN-CLIP: Open Domain Image Generation and Editing with Natural Language Guidance]] — EleutherAI / community (Crowson et al.) · 2021-04 · paper · [t2i] — https://arxiv.org/abs/2204.08583
+- [[omni/2021/videogpt|VideoGPT: Video Generation using VQ-VAE and Transformers]] — UC Berkeley · 2021-04 · paper · [video] — https://arxiv.org/abs/2104.10157
+- [[omni/2021/clip-guided-diffusion|CLIP-Guided Diffusion (Katherine Crowson / 社区版)]] — Community (Katherine Crowson, RiversHaveWings) / EleutherAI · 2021-05 · method · [method] — https://colab.research.google.com/drive/1QBsaDAZv8np29FPbvjffbE1eytoJcsgA
+- [[omni/2021/cascaded-diffusion-models|Cascaded Diffusion Models for High Fidelity Image Generation (CDM)]] — Google Research / Brain · 2021-05 · paper · [method] — https://arxiv.org/abs/2106.15282
+- [[omni/2021/cogview|CogView: Mastering Text-to-Image Generation via Transformers]] — Tsinghua / DAMO Academy (Alibaba) / BAAI · 2021-05 · paper · [t2i] — https://arxiv.org/abs/2105.13290
+- [[omni/2021/diffusion-models-beat-gans|Diffusion Models Beat GANs on Image Synthesis (ADM / Classifier Guidance)]] — OpenAI · 2021-05 · paper · [method] — https://arxiv.org/abs/2105.05233
+- [[omni/2021/ilvr|ILVR: Conditioning Method for Denoising Diffusion Probabilistic Models]] — Seoul National University / Samsung SDS · 2021-08 · paper · [method] — https://arxiv.org/abs/2108.02938
+- [[omni/2021/sdedit|SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations]] — Stanford University / Carnegie Mellon University · 2021-08 · paper · [edit] — https://arxiv.org/abs/2108.01073
+- [[omni/2021/clip-forge|CLIP-Forge: Towards Zero-Shot Text-to-Shape Generation]] — Autodesk AI Lab / Autodesk Research · 2021-10 · paper · [3d] — https://arxiv.org/abs/2110.02624
+- [[omni/2021/vit-vqgan|Vector-quantized Image Modeling with Improved VQGAN (ViT-VQGAN)]] — Google Research · 2021-10 · paper · [method] — https://arxiv.org/abs/2110.04627
+- [[omni/2021/imle-net-blended-diffusion|Blended Diffusion for Text-driven Editing of Natural Images]] — The Hebrew University of Jerusalem & Reichman University · 2021-11 · paper · [edit] — https://arxiv.org/abs/2111.14818
+- [[omni/2021/gaugan2|GauGAN2 / PoE-GAN — 文字 + 语义涂鸦 + 草图多模态合成风景图]] — NVIDIA · 2021-11 · blog · [t2i] — https://blogs.nvidia.com/blog/2021/11/22/gaugan2-ai-art-demo/
+- [[omni/2021/nuwa|NÜWA: Visual Synthesis Pre-training for Neural visUal World creAtion]] — Microsoft Research Asia / Peking University · 2021-11 · paper · [unified] — https://arxiv.org/abs/2111.12417
+- [[omni/2021/palette-image-to-image-diffusion|Palette: Image-to-Image Diffusion Models]] — Google Research (Brain Team) · 2021-11 · paper · [edit] — https://arxiv.org/abs/2111.05826
+- [[omni/2021/vq-diffusion|VQ-Diffusion：用于文生图的向量量化扩散模型]] — Microsoft Research / 中国科学技术大学 (USTC) · 2021-11 · paper · [method] — https://arxiv.org/abs/2111.14822
+- [[omni/2021/ernie-vilg|ERNIE-ViLG: Unified Generative Pre-training for Bidirectional Vision-Language Generation]] — Baidu · 2021-12 · paper · [unified] — https://arxiv.org/abs/2112.15283
+- [[omni/2021/glide|GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models]] — OpenAI · 2021-12 · paper · [t2i] — https://arxiv.org/abs/2112.10741
+- [[omni/2021/latent-diffusion-ldm|High-Resolution Image Synthesis with Latent Diffusion Models (LDM)]] — LMU Munich / IWR Heidelberg (CompVis) / Runway ML · 2021-12 · paper · [foundation] — https://arxiv.org/abs/2112.10752
+- [[omni/2021/dreamfields|Zero-Shot Text-Guided Object Generation with Dream Fields]] — Google Research / UC Berkeley · 2021-12 · paper · [3d] — https://ajayj.com/dreamfields
 
 ## 2022（44 条）
 
-- [CM3: A Causal Masked Multimodal Model of the Internet](omni/2022/cm3.md) — Meta (FAIR) · 2022-01 · paper · [unified] — https://arxiv.org/abs/2201.07520
-- [RePaint: Inpainting using Denoising Diffusion Probabilistic Models](omni/2022/repaint.md) — ETH Zürich (Computer Vision Lab) · 2022-01 · paper · [edit] — https://arxiv.org/abs/2201.09865
-- [MaskGIT: Masked Generative Image Transformer](omni/2022/maskgit.md) — Google Research · 2022-02 · paper · [method] — https://arxiv.org/abs/2202.04200
-- [StyleGAN-XL: Scaling StyleGAN to Large Diverse Datasets](omni/2022/stylegan-xl.md) — University of Tübingen / Max Planck Institute for Intelligent Systems · 2022-02 · paper · [t2i] — https://arxiv.org/abs/2202.00273
-- [Make-A-Scene: Scene-Based Text-to-Image Generation with Human Priors](omni/2022/make-a-scene.md) — Meta AI Research · 2022-03 · paper · [t2i] — https://arxiv.org/abs/2203.13131
-- [CogView2: Faster and Better Text-to-Image Generation via Hierarchical Transformers](omni/2022/cogview2.md) — Tsinghua / BAAI · 2022-04 · paper · [t2i] — https://arxiv.org/abs/2204.14217
-- [DALL·E 2 / unCLIP（Hierarchical Text-Conditional Image Generation with CLIP Latents）](omni/2022/dall-e-2.md) — OpenAI · 2022-04 · paper · [t2i] — https://arxiv.org/abs/2204.06125
-- [Video Diffusion Models (VDM)](omni/2022/video-diffusion-models-vdm.md) — Google Research · 2022-04 · paper · [video] — https://arxiv.org/abs/2204.03458
-- [CogVideo: Large-scale Pretraining for Text-to-Video Generation via Transformers](omni/2022/cogvideo.md) — Tsinghua University / BAAI · 2022-05 · paper · [video] — https://arxiv.org/abs/2205.15868
-- [Imagen: Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding](omni/2022/imagen.md) — Google Research (Brain Team) · 2022-05 · paper · [t2i] — https://arxiv.org/abs/2205.11487
-- [Blended Latent Diffusion](omni/2022/blended-latent-diffusion.md) — The Hebrew University of Jerusalem / Reichman University · 2022-06 · paper · [edit] — https://arxiv.org/abs/2206.02779
-- [DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps](omni/2022/dpm-solver.md) — Tsinghua University (TSAIL) & Renmin University · 2022-06 · paper · [method] — https://arxiv.org/abs/2206.00927
-- [Elucidating the Design Space of Diffusion-Based Generative Models (EDM)](omni/2022/elucidating-edm.md) — NVIDIA · 2022-06 · paper · [method] — https://arxiv.org/abs/2206.00364
-- [Parti: Scaling Autoregressive Models for Content-Rich Text-to-Image Generation](omni/2022/parti.md) — Google Research · 2022-06 · paper · [t2i] — https://arxiv.org/abs/2206.10789
-- [Classifier-Free Diffusion Guidance (CFG)](omni/2022/classifier-free-guidance.md) — Google Research, Brain team · 2022-07 · paper · [method] — https://arxiv.org/abs/2207.12598
-- [Midjourney (公测 V1–V4)](omni/2022/midjourney-v1-v4.md) — Midjourney · 2022-07 · blog · [t2i] — https://docs.midjourney.com/hc/en-us/articles/33329788681101-Legacy-Features
-- [An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion](omni/2022/textual-inversion.md) — Tel Aviv University / NVIDIA · 2022-08 · paper · [edit] — https://arxiv.org/abs/2208.01618
-- [DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation](omni/2022/dreambooth.md) — Google Research / Boston University · 2022-08 · paper · [edit] — https://arxiv.org/abs/2208.12242
-- [Prompt-to-Prompt Image Editing with Cross Attention Control](omni/2022/prompt-to-prompt.md) — Google Research / Tel Aviv University · 2022-08 · paper · [edit] — https://arxiv.org/abs/2208.01626
-- [Stable Diffusion v1 (CompVis / Stability AI / Runway)](omni/2022/stable-diffusion-1.md) — Stability AI / CompVis / Runway ML · 2022-08 · model-card · [t2i] — https://github.com/CompVis/stable-diffusion
-- [All are Worth Words: A ViT Backbone for Diffusion Models (U-ViT)](omni/2022/u-vit-all-are-worth-words.md) — Tsinghua University (TSAIL) / Renmin University of China / BAAI · 2022-09 · paper · [method] — https://arxiv.org/abs/2209.12152
-- [AudioLM: a Language Modeling Approach to Audio Generation](omni/2022/audiolm.md) — Google Research · 2022-09 · paper · [audio] — https://arxiv.org/abs/2209.03143
-- [DreamFusion: Text-to-3D using 2D Diffusion](omni/2022/dreamfusion.md) — Google Research / UC Berkeley · 2022-09 · paper · [3d] — https://arxiv.org/abs/2209.14988
-- [Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow](omni/2022/rectified-flow.md) — UT Austin · 2022-09 · paper · [method] — https://arxiv.org/abs/2209.03003
-- [GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images](omni/2022/get3d.md) — NVIDIA · 2022-09 · paper · [3d] — https://nv-tlabs.github.io/GET3D/
-- [Make-A-Video: Text-to-Video Generation without Text-Video Data](omni/2022/make-a-video.md) — Meta AI · 2022-09 · paper · [video] — https://arxiv.org/abs/2209.14792
-- [DiffEdit: Diffusion-based Semantic Image Editing with Mask Guidance](omni/2022/diffedit.md) — Meta AI / Sorbonne Université / Valeo.ai · 2022-10 · paper · [edit] — https://arxiv.org/abs/2210.11427
-- [ERNIE-ViLG 2.0: Improving Text-to-Image Diffusion Model with Knowledge-Enhanced Mixture-of-Denoising-Experts](omni/2022/ernie-vilg-2.md) — Baidu · 2022-10 · paper · [t2i] — https://arxiv.org/abs/2210.15257
-- [Flow Matching for Generative Modeling](omni/2022/flow-matching.md) — Meta AI (FAIR) / Weizmann Institute · 2022-10 · paper · [method] — https://arxiv.org/abs/2210.02747
-- [Imagen Video: High Definition Video Generation with Diffusion Models](omni/2022/imagen-video.md) — Google Research (Brain Team) · 2022-10 · tech-report · [video] — https://imagen.research.google/video/
-- [Imagic: Text-Based Real Image Editing with Diffusion Models](omni/2022/imagic.md) — Google Research / Technion / Weizmann Institute · 2022-10 · paper · [edit] — https://arxiv.org/abs/2210.09276
-- [Phenaki: Variable Length Video Generation from Open Domain Textual Descriptions](omni/2022/phenaki.md) — Google Brain · 2022-10 · paper · [video] — https://openreview.net/forum?id=vOEXS39nOF
-- [Stable Diffusion Inpainting / img2img (SD v1.5 编辑权重)](omni/2022/stable-diffusion-img2img-inpaint.md) — Runway / Stability AI / CompVis · 2022-10 · model-card · [edit] — https://huggingface.co/runwayml/stable-diffusion-inpainting
-- [InstructPix2Pix: Learning to Follow Image Editing Instructions](omni/2022/instructpix2pix.md) — UC Berkeley · 2022-11 · paper · [edit] — https://arxiv.org/abs/2211.09800
-- [Magic3D: High-Resolution Text-to-3D Content Creation](omni/2022/magic3d.md) — NVIDIA · 2022-11 · paper · [3d] — https://research.nvidia.com/labs/dir/magic3d/
-- [Null-text Inversion for Editing Real Images using Guided Diffusion Models](omni/2022/null-text-inversion.md) — Google Research / Tel Aviv University · 2022-11 · paper · [edit] — https://arxiv.org/abs/2211.09794
-- [Stable Diffusion 2.0 / 2.1](omni/2022/stable-diffusion-2.md) — Stability AI · 2022-11 · model-card · [t2i] — https://stability.ai/news/stable-diffusion-v2-release
-- [Versatile Diffusion: Text, Images and Variations All in One Diffusion Model](omni/2022/versatile-diffusion.md) — SHI Labs (UIUC / Georgia Tech / U of Oregon) · UT Austin · Picsart AI Research (PAIR) · 2022-11 · paper · [unified] — https://arxiv.org/abs/2211.08332
-- [eDiff-I: Text-to-Image Diffusion Models with an Ensemble of Expert Denoisers](omni/2022/ediff-i.md) — NVIDIA · 2022-11 · tech-report · [t2i] — https://arxiv.org/abs/2211.01324
-- [MAGVIT: Masked Generative Video Transformer](omni/2022/magvit-masked-generative-video-transformer.md) — Google Research / Carnegie Mellon University · 2022-12 · paper · [video] — https://arxiv.org/abs/2212.05199
-- [Point·E: A System for Generating 3D Point Clouds from Complex Prompts](omni/2022/point-e.md) — OpenAI · 2022-12 · paper · [3d] — https://arxiv.org/abs/2212.08751
-- [Scalable Diffusion Models with Transformers (DiT)](omni/2022/dit-scalable-diffusion-transformers.md) — UC Berkeley / New York University (Meta AI FAIR) · 2022-12 · paper · [method] — https://arxiv.org/abs/2212.09748
-- [Tune-A-Video: One-Shot Tuning of Image Diffusion Models for Text-to-Video Generation](omni/2022/tune-a-video.md) — Show Lab (NUS) / Tencent ARC Lab & PCG · 2022-12 · paper · [video] — https://arxiv.org/abs/2212.11565
-- [UniDiffuser: One Transformer Fits All Distributions in Multi-Modal Diffusion](omni/2022/unidiffuser.md) — Tsinghua (TSAIL) / RUC / ShengShu / BAAI · 2022-12 · paper · [unified] — https://arxiv.org/abs/2303.06555
+- [[omni/2022/cm3|CM3: A Causal Masked Multimodal Model of the Internet]] — Meta (FAIR) · 2022-01 · paper · [unified] — https://arxiv.org/abs/2201.07520
+- [[omni/2022/repaint|RePaint: Inpainting using Denoising Diffusion Probabilistic Models]] — ETH Zürich (Computer Vision Lab) · 2022-01 · paper · [edit] — https://arxiv.org/abs/2201.09865
+- [[omni/2022/maskgit|MaskGIT: Masked Generative Image Transformer]] — Google Research · 2022-02 · paper · [method] — https://arxiv.org/abs/2202.04200
+- [[omni/2022/stylegan-xl|StyleGAN-XL: Scaling StyleGAN to Large Diverse Datasets]] — University of Tübingen / Max Planck Institute for Intelligent Systems · 2022-02 · paper · [t2i] — https://arxiv.org/abs/2202.00273
+- [[omni/2022/make-a-scene|Make-A-Scene: Scene-Based Text-to-Image Generation with Human Priors]] — Meta AI Research · 2022-03 · paper · [t2i] — https://arxiv.org/abs/2203.13131
+- [[omni/2022/cogview2|CogView2: Faster and Better Text-to-Image Generation via Hierarchical Transformers]] — Tsinghua / BAAI · 2022-04 · paper · [t2i] — https://arxiv.org/abs/2204.14217
+- [[omni/2022/dall-e-2|DALL·E 2 / unCLIP（Hierarchical Text-Conditional Image Generation with CLIP Latents）]] — OpenAI · 2022-04 · paper · [t2i] — https://arxiv.org/abs/2204.06125
+- [[omni/2022/video-diffusion-models-vdm|Video Diffusion Models (VDM)]] — Google Research · 2022-04 · paper · [video] — https://arxiv.org/abs/2204.03458
+- [[omni/2022/cogvideo|CogVideo: Large-scale Pretraining for Text-to-Video Generation via Transformers]] — Tsinghua University / BAAI · 2022-05 · paper · [video] — https://arxiv.org/abs/2205.15868
+- [[omni/2022/imagen|Imagen: Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding]] — Google Research (Brain Team) · 2022-05 · paper · [t2i] — https://arxiv.org/abs/2205.11487
+- [[omni/2022/blended-latent-diffusion|Blended Latent Diffusion]] — The Hebrew University of Jerusalem / Reichman University · 2022-06 · paper · [edit] — https://arxiv.org/abs/2206.02779
+- [[omni/2022/dpm-solver|DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps]] — Tsinghua University (TSAIL) & Renmin University · 2022-06 · paper · [method] — https://arxiv.org/abs/2206.00927
+- [[omni/2022/elucidating-edm|Elucidating the Design Space of Diffusion-Based Generative Models (EDM)]] — NVIDIA · 2022-06 · paper · [method] — https://arxiv.org/abs/2206.00364
+- [[omni/2022/parti|Parti: Scaling Autoregressive Models for Content-Rich Text-to-Image Generation]] — Google Research · 2022-06 · paper · [t2i] — https://arxiv.org/abs/2206.10789
+- [[omni/2022/classifier-free-guidance|Classifier-Free Diffusion Guidance (CFG)]] — Google Research, Brain team · 2022-07 · paper · [method] — https://arxiv.org/abs/2207.12598
+- [[omni/2022/midjourney-v1-v4|Midjourney (公测 V1–V4)]] — Midjourney · 2022-07 · blog · [t2i] — https://docs.midjourney.com/hc/en-us/articles/33329788681101-Legacy-Features
+- [[omni/2022/textual-inversion|An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion]] — Tel Aviv University / NVIDIA · 2022-08 · paper · [edit] — https://arxiv.org/abs/2208.01618
+- [[omni/2022/dreambooth|DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation]] — Google Research / Boston University · 2022-08 · paper · [edit] — https://arxiv.org/abs/2208.12242
+- [[omni/2022/prompt-to-prompt|Prompt-to-Prompt Image Editing with Cross Attention Control]] — Google Research / Tel Aviv University · 2022-08 · paper · [edit] — https://arxiv.org/abs/2208.01626
+- [[omni/2022/stable-diffusion-1|Stable Diffusion v1 (CompVis / Stability AI / Runway)]] — Stability AI / CompVis / Runway ML · 2022-08 · model-card · [t2i] — https://github.com/CompVis/stable-diffusion
+- [[omni/2022/u-vit-all-are-worth-words|All are Worth Words: A ViT Backbone for Diffusion Models (U-ViT)]] — Tsinghua University (TSAIL) / Renmin University of China / BAAI · 2022-09 · paper · [method] — https://arxiv.org/abs/2209.12152
+- [[omni/2022/audiolm|AudioLM: a Language Modeling Approach to Audio Generation]] — Google Research · 2022-09 · paper · [audio] — https://arxiv.org/abs/2209.03143
+- [[omni/2022/dreamfusion|DreamFusion: Text-to-3D using 2D Diffusion]] — Google Research / UC Berkeley · 2022-09 · paper · [3d] — https://arxiv.org/abs/2209.14988
+- [[omni/2022/rectified-flow|Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow]] — UT Austin · 2022-09 · paper · [method] — https://arxiv.org/abs/2209.03003
+- [[omni/2022/get3d|GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images]] — NVIDIA · 2022-09 · paper · [3d] — https://nv-tlabs.github.io/GET3D/
+- [[omni/2022/make-a-video|Make-A-Video: Text-to-Video Generation without Text-Video Data]] — Meta AI · 2022-09 · paper · [video] — https://arxiv.org/abs/2209.14792
+- [[omni/2022/diffedit|DiffEdit: Diffusion-based Semantic Image Editing with Mask Guidance]] — Meta AI / Sorbonne Université / Valeo.ai · 2022-10 · paper · [edit] — https://arxiv.org/abs/2210.11427
+- [[omni/2022/ernie-vilg-2|ERNIE-ViLG 2.0: Improving Text-to-Image Diffusion Model with Knowledge-Enhanced Mixture-of-Denoising-Experts]] — Baidu · 2022-10 · paper · [t2i] — https://arxiv.org/abs/2210.15257
+- [[omni/2022/flow-matching|Flow Matching for Generative Modeling]] — Meta AI (FAIR) / Weizmann Institute · 2022-10 · paper · [method] — https://arxiv.org/abs/2210.02747
+- [[omni/2022/imagen-video|Imagen Video: High Definition Video Generation with Diffusion Models]] — Google Research (Brain Team) · 2022-10 · tech-report · [video] — https://imagen.research.google/video/
+- [[omni/2022/imagic|Imagic: Text-Based Real Image Editing with Diffusion Models]] — Google Research / Technion / Weizmann Institute · 2022-10 · paper · [edit] — https://arxiv.org/abs/2210.09276
+- [[omni/2022/phenaki|Phenaki: Variable Length Video Generation from Open Domain Textual Descriptions]] — Google Brain · 2022-10 · paper · [video] — https://openreview.net/forum?id=vOEXS39nOF
+- [[omni/2022/stable-diffusion-img2img-inpaint|Stable Diffusion Inpainting / img2img (SD v1.5 编辑权重)]] — Runway / Stability AI / CompVis · 2022-10 · model-card · [edit] — https://huggingface.co/runwayml/stable-diffusion-inpainting
+- [[omni/2022/instructpix2pix|InstructPix2Pix: Learning to Follow Image Editing Instructions]] — UC Berkeley · 2022-11 · paper · [edit] — https://arxiv.org/abs/2211.09800
+- [[omni/2022/magic3d|Magic3D: High-Resolution Text-to-3D Content Creation]] — NVIDIA · 2022-11 · paper · [3d] — https://research.nvidia.com/labs/dir/magic3d/
+- [[omni/2022/null-text-inversion|Null-text Inversion for Editing Real Images using Guided Diffusion Models]] — Google Research / Tel Aviv University · 2022-11 · paper · [edit] — https://arxiv.org/abs/2211.09794
+- [[omni/2022/stable-diffusion-2|Stable Diffusion 2.0 / 2.1]] — Stability AI · 2022-11 · model-card · [t2i] — https://stability.ai/news/stable-diffusion-v2-release
+- [[omni/2022/versatile-diffusion|Versatile Diffusion: Text, Images and Variations All in One Diffusion Model]] — SHI Labs (UIUC / Georgia Tech / U of Oregon) · UT Austin · Picsart AI Research (PAIR) · 2022-11 · paper · [unified] — https://arxiv.org/abs/2211.08332
+- [[omni/2022/ediff-i|eDiff-I: Text-to-Image Diffusion Models with an Ensemble of Expert Denoisers]] — NVIDIA · 2022-11 · tech-report · [t2i] — https://arxiv.org/abs/2211.01324
+- [[omni/2022/magvit-masked-generative-video-transformer|MAGVIT: Masked Generative Video Transformer]] — Google Research / Carnegie Mellon University · 2022-12 · paper · [video] — https://arxiv.org/abs/2212.05199
+- [[omni/2022/point-e|Point·E: A System for Generating 3D Point Clouds from Complex Prompts]] — OpenAI · 2022-12 · paper · [3d] — https://arxiv.org/abs/2212.08751
+- [[omni/2022/dit-scalable-diffusion-transformers|Scalable Diffusion Models with Transformers (DiT)]] — UC Berkeley / New York University (Meta AI FAIR) · 2022-12 · paper · [method] — https://arxiv.org/abs/2212.09748
+- [[omni/2022/tune-a-video|Tune-A-Video: One-Shot Tuning of Image Diffusion Models for Text-to-Video Generation]] — Show Lab (NUS) / Tencent ARC Lab & PCG · 2022-12 · paper · [video] — https://arxiv.org/abs/2212.11565
+- [[omni/2022/unidiffuser|UniDiffuser: One Transformer Fits All Distributions in Multi-Modal Diffusion]] — Tsinghua (TSAIL) / RUC / ShengShu / BAAI · 2022-12 · paper · [unified] — https://arxiv.org/abs/2303.06555
 
 ## 2023（92 条）
 
-- [GLIGEN: Open-Set Grounded Text-to-Image Generation](omni/2023/gligen.md) — UW-Madison / Columbia / Microsoft · 2023-01 · paper · [edit] — https://arxiv.org/abs/2301.07093
-- [Muse: Text-To-Image Generation via Masked Generative Transformers](omni/2023/muse.md) — Google Research · 2023-01 · paper · [t2i] — https://arxiv.org/abs/2301.00704
-- [MusicLM: Generating Music From Text](omni/2023/musiclm.md) — Google Research · 2023-01 · paper · [audio] — https://arxiv.org/abs/2301.11325
-- [StyleGAN-T: Unlocking the Power of GANs for Fast Large-Scale Text-to-Image Synthesis](omni/2023/stylegan-t-fast-large-scale-t2i.md) — NVIDIA / University of Tübingen · 2023-01 · paper · [t2i] — https://arxiv.org/abs/2301.09515
-- [VALL-E: Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers](omni/2023/vall-e.md) — Microsoft · 2023-01 · paper · [audio] — https://arxiv.org/abs/2301.02111
-- [ControlNet: Adding Conditional Control to Text-to-Image Diffusion Models](omni/2023/controlnet.md) — Stanford University · 2023-02 · paper · [edit] — https://arxiv.org/abs/2302.05543
-- [Gen-1: Structure and Content-Guided Video Synthesis with Diffusion Models](omni/2023/runway-gen1.md) — Runway · 2023-02 · paper · [video] — https://arxiv.org/abs/2302.03011
-- [Pix2Pix-Zero: Zero-shot Image-to-Image Translation](omni/2023/pix2pix-zero.md) — CMU / Adobe Research · 2023-02 · paper · [edit] — https://arxiv.org/abs/2302.03027
-- [T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models](omni/2023/t2i-adapter.md) — Tencent ARC Lab (PCG) / 北京大学 · 2023-02 · paper · [edit] — https://arxiv.org/abs/2302.08453
-- [Adobe Firefly（首个图像模型 + Photoshop Generative Fill）](omni/2023/adobe-firefly.md) — Adobe · 2023-03 · blog · [t2i] — https://news.adobe.com/news/news-details/2023/adobe-unveils-firefly-a-family-of-new-creative-generative-ai
-- [Consistency Models](omni/2023/consistency-models.md) — OpenAI · 2023-03 · paper · [method] — https://arxiv.org/abs/2303.01469
-- [Zero-1-to-3: Zero-shot One Image to 3D Object](omni/2023/zero-1-to-3.md) — Columbia University / Toyota Research Institute · 2023-03 · paper · [3d] — https://arxiv.org/abs/2303.11328
-- [Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models (Video LDM)](omni/2023/align-your-latents-vldm.md) — NVIDIA / LMU Munich · 2023-04 · paper · [video] — https://arxiv.org/abs/2304.08818
-- [DeepFloyd IF](omni/2023/deepfloyd-if.md) — Stability AI / DeepFloyd · 2023-04 · model-card · [t2i] — https://github.com/deep-floyd/IF
-- [ImageReward & ReFL: Learning and Evaluating Human Preferences for Text-to-Image Generation](omni/2023/raft-reward-diffusion.md) — Tsinghua University / Zhipu AI · 2023-04 · paper · [method] — https://arxiv.org/abs/2304.05977
-- [InstantBooth: Personalized Text-to-Image Generation without Test-Time Finetuning](omni/2023/instantbooth.md) — Adobe Inc. · 2023-04 · paper · [edit] — https://arxiv.org/abs/2304.03411
-- [MasaCtrl: Tuning-Free Mutual Self-Attention Control for Consistent Image Synthesis and Editing](omni/2023/masactrl.md) — The University of Tokyo / Tencent PCG (ARC Lab) · 2023-04 · paper · [edit] — https://arxiv.org/abs/2304.08465
-- [DDPO: Training Diffusion Models with Reinforcement Learning](omni/2023/ddpo.md) — UC Berkeley / MIT · 2023-05 · paper · [method] — https://arxiv.org/abs/2305.13301
-- [DragGAN / DragDiffusion: 基于点的交互式拖拽图像编辑](omni/2023/dragdiffusion.md) — MPI-Informatics / NUS / ByteDance · 2023-05 · paper · [edit] — https://arxiv.org/abs/2305.10973
-- [GILL: Generating Images with Multimodal Language Models](omni/2023/gill.md) — Carnegie Mellon University (CMU) · 2023-05 · paper · [unified] — https://arxiv.org/abs/2305.17216
-- [ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation](omni/2023/prolificdreamer.md) — Tsinghua University / Renmin University / ShengShu · 2023-05 · paper · [3d] — https://ml.cs.tsinghua.edu.cn/prolificdreamer/
-- [RAPHAEL: Text-to-Image Generation via Large Mixture of Diffusion Paths](omni/2022/raphael.md) — SenseTime Research / HKU · 2023-05 · paper · [t2i] — https://arxiv.org/abs/2305.18295
-- [Uni-ControlNet: All-in-One Control to Text-to-Image Diffusion Models](omni/2023/uni-controlnet.md) — HKU / Microsoft · 2023-05 · paper · [edit] — https://arxiv.org/abs/2305.16322
-- [UniControl: A Unified Diffusion Model for Controllable Visual Generation In the Wild](omni/2023/unicontrol.md) — Salesforce AI Research / Northeastern / Stanford · 2023-05 · paper · [edit] — https://arxiv.org/abs/2305.11147
-- [Controlling Text-to-Image Diffusion by Orthogonal Finetuning (OFT / COFT)](omni/2023/orthogonal-finetuning-oft.md) — MPI for Intelligent Systems · Cambridge · Tübingen · 2023-06 · paper · [method] — https://arxiv.org/abs/2306.07280
-- [Human Preference Score v2 (HPS v2): A Solid Benchmark for Evaluating Human Preferences of Text-to-Image Synthesis](omni/2023/hps-v2.md) — CUHK MMLab / CPII / SenseTime · 2023-06 · paper · [method] — https://arxiv.org/abs/2306.09341
-- [MagicBrush: A Manually Annotated Dataset for Instruction-Guided Image Editing](omni/2023/magicbrush.md) — Ohio State University / University of Waterloo · 2023-06 · paper · [edit] — https://osu-nlp-group.github.io/MagicBrush/
-- [MusicGen / AudioCraft: Simple and Controllable Music Generation](omni/2023/musicgen-audiocraft.md) — Meta AI · 2023-06 · paper · [audio] — https://arxiv.org/abs/2306.05284
-- [One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape Optimization](omni/2023/one-2-3-45.md) — UC San Diego / UCLA / Cornell / 浙大 / IIT Madras / Adobe · 2023-06 · paper · [3d] — https://arxiv.org/abs/2306.16928
-- [Rerender A Video: Zero-Shot Text-Guided Video-to-Video Translation](omni/2023/rerender-a-video.md) — NTU S-Lab · 2023-06 · paper · [video] — https://arxiv.org/abs/2306.07954
-- [StyleDrop: Text-to-Image Generation in Any Style](omni/2023/styledrop.md) — Google Research · 2023-06 · paper · [edit] — https://arxiv.org/abs/2306.00983
-- [Würstchen: An Efficient Architecture for Large-Scale Text-to-Image Diffusion Models](omni/2023/wurstchen.md) — Wand Technologies / TH Ingolstadt / Mila / Stability AI(compute) · 2023-06 · paper · [t2i] — https://arxiv.org/abs/2306.00637
-- [AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning](omni/2023/animatediff.md) — CUHK / Shanghai AI Lab / Stanford · 2023-07 · paper · [video] — https://arxiv.org/abs/2307.04725
-- [CM3Leon: Scaling Autoregressive Multi-Modal Models (Pretraining and Instruction Tuning)](omni/2023/chameleon-cm3leon.md) — Meta FAIR · 2023-07 · paper · [unified] — https://arxiv.org/abs/2309.02591
-- [Emu: Generative Pretraining in Multimodality](omni/2023/emu-multimodal.md) — BAAI (智源) + 清华 THU + 北大 PKU · 2023-07 · paper · [unified] — https://arxiv.org/abs/2307.05222
-- [HyperDreamBooth: HyperNetworks for Fast Personalization of Text-to-Image Models](omni/2023/hyperdreambooth.md) — Google Research · 2023-07 · paper · [edit] — https://arxiv.org/abs/2307.06949
-- [Kandinsky 2.x (Image Prior + Latent Diffusion)](omni/2023/kandinsky-2.md) — Sber AI / AIRI / Skoltech · 2023-07 · tech-report · [t2i] — https://arxiv.org/abs/2310.03502
-- [SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis](omni/2023/sdxl.md) — Stability AI · 2023-07 · tech-report · [t2i] — https://arxiv.org/abs/2307.01952
-- [SEED: Planting a SEED of Vision in Large Language Model](omni/2023/seed-tokenizer.md) — Tencent AI Lab / ARC Lab (Tencent PCG) · 2023-07 · paper · [unified] — https://arxiv.org/abs/2307.08041
-- [Subject-Diffusion: Open Domain Personalized Text-to-Image Generation without Test-time Fine-tuning](omni/2023/subject-diffusion.md) — OPPO AI Center · 2023-07 · paper · [edit] — https://arxiv.org/abs/2307.11410
-- [TokenFlow: Consistent Diffusion Features for Consistent Video Editing](omni/2023/tokenflow-video-edit.md) — Weizmann Institute of Science · 2023-07 · paper · [video] — https://arxiv.org/abs/2307.10373
-- [3D Gaussian Splatting for Real-Time Radiance Field Rendering](omni/2023/3d-gaussian-splatting.md) — Inria / Université Côte d'Azur (GRAPHDECO) + MPI Informatik · 2023-08 · paper · [3d] — https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
-- [AudioLDM 2: Learning Holistic Audio Generation with Self-supervised Pretraining](omni/2023/audioldm-2.md) — University of Surrey (CVSSP) / CUHK / ByteDance SAMI · 2023-08 · paper · [audio] — https://arxiv.org/abs/2308.05734
-- [IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models](omni/2023/ip-adapter.md) — Tencent AI Lab · 2023-08 · paper · [edit] — https://arxiv.org/abs/2308.06721
-- [Ideogram 0.1](omni/2023/ideogram-v0.md) — Ideogram AI · 2023-08 · blog · [t2i] — https://ideogram.ai/launch
-- [MVDream: Multi-view Diffusion for 3D Generation](omni/2023/mvdream.md) — ByteDance · 2023-08 · paper · [3d] — https://arxiv.org/abs/2308.16512
-- [ModelScopeT2V（ModelScope Text-to-Video Technical Report）](omni/2023/modelscope-t2v.md) — Alibaba Group / DAMO Academy · 2023-08 · tech-report · [video] — https://arxiv.org/abs/2308.06571
-- [AnyMAL: An Efficient and Scalable Any-Modality Augmented Language Model](omni/2023/anymal.md) — Meta (FAIR & Reality Labs) · 2023-09 · paper · [omni] — https://arxiv.org/abs/2309.16058
-- [DreamLLM: Synergistic Multimodal Comprehension and Creation](omni/2023/dreamllm.md) — Xi'an Jiaotong University / MEGVII / Tsinghua · 2023-09 · paper · [unified] — https://openreview.net/forum?id=y01KGvd9Bw
-- [Emu: Enhancing Image Generation Models Using Photogenic Needles in a Haystack](omni/2023/emu-quality-tuning.md) — Meta · 2023-09 · paper · [t2i] — https://arxiv.org/abs/2309.15807
-- [FreeU: Free Lunch in Diffusion U-Net](omni/2023/freeu.md) — S-Lab, Nanyang Technological University · 2023-09 · paper · [method] — https://arxiv.org/abs/2309.11497
-- [InstaFlow: One Step is Enough for High-Quality Diffusion-Based Text-to-Image Generation](omni/2023/instaflow-one-step-rectified-flow-t2i.md) — UT Austin / Helixon Research · 2023-09 · paper · [method] — https://arxiv.org/abs/2309.06380
-- [InstructDiffusion: A Generalist Modeling Interface for Vision Tasks](omni/2023/instructdiffusion.md) — Microsoft Research Asia · 2023-09 · paper · [edit] — https://arxiv.org/abs/2309.03895
-- [LaVie: High-Quality Video Generation with Cascaded Latent Diffusion Models](omni/2023/lavie.md) — Shanghai AI Lab · 2023-09 · paper · [video] — https://arxiv.org/abs/2309.15103
-- [MGIE: Guiding Instruction-based Image Editing via Multimodal Large Language Models](omni/2023/mgie.md) — Apple / UC Santa Barbara · 2023-09 · paper · [edit] — https://arxiv.org/abs/2309.17102
-- [NExT-GPT: Any-to-Any Multimodal LLM](omni/2023/next-gpt.md) — National University of Singapore (NExT++) · 2023-09 · paper · [omni] — https://arxiv.org/abs/2309.05519
-- [PixArt-α: Fast Training of Diffusion Transformer for Photorealistic Text-to-Image Synthesis](omni/2023/pixart-alpha.md) — Huawei Noah's Ark Lab · 2023-09 · paper · [t2i] — https://arxiv.org/abs/2310.00426
-- [Show-1: Marrying Pixel and Latent Diffusion Models for Text-to-Video Generation](omni/2023/show-1.md) — Show Lab, National University of Singapore · 2023-09 · paper · [video] — https://arxiv.org/abs/2309.15818
-- [SyncDreamer: Generating Multiview-consistent Images from a Single-view Image](omni/2023/syncdreamer.md) — HKU / Tencent Games / UPenn / Texas A&M · 2023-09 · paper · [3d] — https://arxiv.org/abs/2309.03453
-- [CommonCanvas: An Open Diffusion Model Trained with Creative-Commons Images](omni/2023/commoncanvas.md) — Cornell Tech & Databricks Mosaic (MosaicML) · 2023-10 · paper · [t2i] — https://arxiv.org/abs/2310.16825
-- [DALL·E 3](omni/2023/dall-e-3.md) — OpenAI · 2023-10 · blog · [t2i] — https://openai.com/index/dall-e-3/
-- [HyperHuman: Hyper-Realistic Human Generation with Latent Structural Diffusion](omni/2023/hyperhuman.md) — Snap Inc. / CUHK / HKU / NTU · 2023-10 · paper · [t2i] — https://arxiv.org/abs/2310.08579
-- [Kosmos-G: Generating Images in Context with Multimodal Large Language Models](omni/2023/kosmos-g.md) — Microsoft Research · 2023-10 · paper · [unified] — https://arxiv.org/abs/2310.02992
-- [Latent Consistency Models (LCM / LCM-LoRA)](omni/2023/latent-consistency-models.md) — Tsinghua IIIS (+ Hugging Face for LCM-LoRA) · 2023-10 · paper · [method] — https://arxiv.org/abs/2310.04378
-- [MAGVIT-v2 — Language Model Beats Diffusion: Tokenizer is Key to Visual Generation](omni/2023/magvit-v2.md) — Google / Carnegie Mellon University · 2023-10 · paper · [method] — https://arxiv.org/abs/2310.05737
-- [VideoCrafter1: Open Diffusion Models for High-Quality Video Generation](omni/2023/videocrafter1.md) — Tencent AI Lab · 2023-10 · tech-report · [video] — https://arxiv.org/abs/2310.19512
-- [Wonder3D: Single Image to 3D using Cross-Domain Diffusion](omni/2023/wonder3d.md) — HKU / VAST / Tsinghua · 2023-10 · paper · [3d] — https://arxiv.org/abs/2310.15008
-- [Zero123++: a Single Image to Consistent Multi-view Diffusion Base Model](omni/2023/zero123pp.md) — SUDO-AI (UC San Diego / Stanford / Tsinghua / UCLA / Zhejiang Univ.) · 2023-10 · tech-report · [3d] — https://arxiv.org/abs/2310.15110
-- [Animate Anyone: Consistent and Controllable Image-to-Video Synthesis for Character Animation](omni/2023/animate-anyone.md) — Alibaba (Institute for Intelligent Computing) · 2023-11 · paper · [video] — https://arxiv.org/abs/2311.17117
-- [Concept Sliders: LoRA Adaptors for Precise Control in Diffusion Models](omni/2023/concept-sliders.md) — Northeastern University / MIT · 2023-11 · paper · [edit] — https://arxiv.org/abs/2311.12092
-- [D3PO: Using Human Feedback to Fine-tune Diffusion Models without Any Reward Model](omni/2023/d3po.md) — Tsinghua University (SIGS) / Parametrix Technology · 2023-11 · paper · [method] — https://arxiv.org/abs/2311.13231
-- [Diffusion-DPO: Diffusion Model Alignment Using Direct Preference Optimization](omni/2023/diffusion-dpo.md) — Salesforce AI / Stanford University · 2023-11 · paper · [method] — https://arxiv.org/abs/2311.12908
-- [Emu Edit: Precise Image Editing via Recognition and Generation Tasks](omni/2023/emu-edit.md) — Meta (GenAI / AI at Meta) · 2023-11 · paper · [edit] — https://emu-edit.metademolab.com/
-- [Emu Video: Factorizing Text-to-Video Generation by Explicit Image Conditioning](omni/2023/emu-video.md) — Meta · 2023-11 · paper · [video] — https://emu-video.metademolab.com/
-- [I2VGen-XL: High-Quality Image-to-Video Synthesis via Cascaded Diffusion Models](omni/2023/i2vgen-xl.md) — Alibaba Group (Tongyi Lab) · 2023-11 · tech-report · [video] — https://arxiv.org/abs/2311.04145
-- [LCM-LoRA: A Universal Stable-Diffusion Acceleration Module](omni/2023/lcm-lora.md) — Tsinghua University (IIIS) / Hugging Face · 2023-11 · tech-report · [method] — https://arxiv.org/abs/2311.05556
-- [LEDITS++: Limitless Image Editing using Text-to-Image Models](omni/2023/ledits-pp.md) — TU Darmstadt / DFKI / hessian.AI / Hugging Face · 2023-11 · paper · [edit] — https://arxiv.org/abs/2311.16711
-- [LRM: Large Reconstruction Model for Single Image to 3D](omni/2023/lrm.md) — Adobe Research / Australian National University · 2023-11 · paper · [3d] — https://arxiv.org/abs/2311.04400
-- [MagicAnimate: Temporally Consistent Human Image Animation using Diffusion Model](omni/2023/magicanimate.md) — Show Lab (NUS) / ByteDance · 2023-11 · paper · [video] — https://arxiv.org/abs/2311.16498
-- [Make Pixels Dance: High-Dynamic Video Generation (PixelDance)](omni/2023/make-pixels-dance.md) — ByteDance Research · 2023-11 · paper · [video] — https://arxiv.org/abs/2311.10982
-- [One-step Diffusion with Distribution Matching Distillation (DMD)](omni/2023/dmd.md) — MIT / Adobe Research · 2023-11 · paper · [method] — https://arxiv.org/abs/2311.18828
-- [Pika 1.0](omni/2023/pika-1.md) — Pika Labs · 2023-11 · blog · [video] — https://pika.art/blog
-- [SDXL-Turbo / Adversarial Diffusion Distillation (ADD)](omni/2023/sdxl-turbo-add.md) — Stability AI · 2023-11 · paper · [method] — https://arxiv.org/abs/2311.17042
-- [Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets](omni/2023/stable-video-diffusion.md) — Stability AI · 2023-11 · paper · [video] — https://arxiv.org/abs/2311.15127
-- [GenTron: Diffusion Transformers for Image and Video Generation](omni/2023/gentron.md) — Meta / HKU · 2023-12 · paper · [method] — https://arxiv.org/abs/2312.04557
-- [Imagen 2](omni/2023/imagen-2.md) — Google DeepMind · 2023-12 · blog · [t2i] — https://deepmind.google/technologies/imagen-2/
-- [Marigold: Repurposing Diffusion-Based Image Generators for Monocular Depth Estimation](omni/2023/marigold.md) — ETH Zürich (Photogrammetry and Remote Sensing) · 2023-12 · paper · [method] — https://arxiv.org/abs/2312.02145
-- [Midjourney V6 / V6.1](omni/2024/midjourney-v6.md) — Midjourney · 2023-12 · blog · [t2i] — https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version
-- [Playground v2 (1024px Aesthetic)](omni/2023/playground-v2.md) — Playground (Playground AI) · 2023-12 · model-card · [t2i] — https://huggingface.co/playgroundai/playground-v2-1024px-aesthetic
-- [VideoPoet: A Large Language Model for Zero-Shot Video Generation](omni/2023/videopoet.md) — Google · 2023-12 · paper · [video] — https://arxiv.org/abs/2312.14125
-- [W.A.L.T: Photorealistic Video Generation with Diffusion Models](omni/2023/walt-photorealistic-video-diffusion.md) — Google Research / Stanford University · 2023-12 · paper · [video] — https://arxiv.org/abs/2312.06662
-- [X-Adapter: Adding Universal Compatibility of Plugins for Upgraded Diffusion Model](omni/2023/x-adapter.md) — Show Lab (NUS) / Tencent AI Lab / Fudan · 2023-12 · paper · [method] — https://arxiv.org/abs/2312.02238
+- [[omni/2023/gligen|GLIGEN: Open-Set Grounded Text-to-Image Generation]] — UW-Madison / Columbia / Microsoft · 2023-01 · paper · [edit] — https://arxiv.org/abs/2301.07093
+- [[omni/2023/muse|Muse: Text-To-Image Generation via Masked Generative Transformers]] — Google Research · 2023-01 · paper · [t2i] — https://arxiv.org/abs/2301.00704
+- [[omni/2023/musiclm|MusicLM: Generating Music From Text]] — Google Research · 2023-01 · paper · [audio] — https://arxiv.org/abs/2301.11325
+- [[omni/2023/stylegan-t-fast-large-scale-t2i|StyleGAN-T: Unlocking the Power of GANs for Fast Large-Scale Text-to-Image Synthesis]] — NVIDIA / University of Tübingen · 2023-01 · paper · [t2i] — https://arxiv.org/abs/2301.09515
+- [[omni/2023/vall-e|VALL-E: Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers]] — Microsoft · 2023-01 · paper · [audio] — https://arxiv.org/abs/2301.02111
+- [[omni/2023/controlnet|ControlNet: Adding Conditional Control to Text-to-Image Diffusion Models]] — Stanford University · 2023-02 · paper · [edit] — https://arxiv.org/abs/2302.05543
+- [[omni/2023/runway-gen1|Gen-1: Structure and Content-Guided Video Synthesis with Diffusion Models]] — Runway · 2023-02 · paper · [video] — https://arxiv.org/abs/2302.03011
+- [[omni/2023/pix2pix-zero|Pix2Pix-Zero: Zero-shot Image-to-Image Translation]] — CMU / Adobe Research · 2023-02 · paper · [edit] — https://arxiv.org/abs/2302.03027
+- [[omni/2023/t2i-adapter|T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models]] — Tencent ARC Lab (PCG) / 北京大学 · 2023-02 · paper · [edit] — https://arxiv.org/abs/2302.08453
+- [[omni/2023/adobe-firefly|Adobe Firefly（首个图像模型 + Photoshop Generative Fill）]] — Adobe · 2023-03 · blog · [t2i] — https://news.adobe.com/news/news-details/2023/adobe-unveils-firefly-a-family-of-new-creative-generative-ai
+- [[omni/2023/consistency-models|Consistency Models]] — OpenAI · 2023-03 · paper · [method] — https://arxiv.org/abs/2303.01469
+- [[omni/2023/zero-1-to-3|Zero-1-to-3: Zero-shot One Image to 3D Object]] — Columbia University / Toyota Research Institute · 2023-03 · paper · [3d] — https://arxiv.org/abs/2303.11328
+- [[omni/2023/align-your-latents-vldm|Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models (Video LDM)]] — NVIDIA / LMU Munich · 2023-04 · paper · [video] — https://arxiv.org/abs/2304.08818
+- [[omni/2023/deepfloyd-if|DeepFloyd IF]] — Stability AI / DeepFloyd · 2023-04 · model-card · [t2i] — https://github.com/deep-floyd/IF
+- [[omni/2023/raft-reward-diffusion|ImageReward & ReFL: Learning and Evaluating Human Preferences for Text-to-Image Generation]] — Tsinghua University / Zhipu AI · 2023-04 · paper · [method] — https://arxiv.org/abs/2304.05977
+- [[omni/2023/instantbooth|InstantBooth: Personalized Text-to-Image Generation without Test-Time Finetuning]] — Adobe Inc. · 2023-04 · paper · [edit] — https://arxiv.org/abs/2304.03411
+- [[omni/2023/masactrl|MasaCtrl: Tuning-Free Mutual Self-Attention Control for Consistent Image Synthesis and Editing]] — The University of Tokyo / Tencent PCG (ARC Lab) · 2023-04 · paper · [edit] — https://arxiv.org/abs/2304.08465
+- [[omni/2023/ddpo|DDPO: Training Diffusion Models with Reinforcement Learning]] — UC Berkeley / MIT · 2023-05 · paper · [method] — https://arxiv.org/abs/2305.13301
+- [[omni/2023/dragdiffusion|DragGAN / DragDiffusion: 基于点的交互式拖拽图像编辑]] — MPI-Informatics / NUS / ByteDance · 2023-05 · paper · [edit] — https://arxiv.org/abs/2305.10973
+- [[omni/2023/gill|GILL: Generating Images with Multimodal Language Models]] — Carnegie Mellon University (CMU) · 2023-05 · paper · [unified] — https://arxiv.org/abs/2305.17216
+- [[omni/2023/prolificdreamer|ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation]] — Tsinghua University / Renmin University / ShengShu · 2023-05 · paper · [3d] — https://ml.cs.tsinghua.edu.cn/prolificdreamer/
+- [[omni/2022/raphael|RAPHAEL: Text-to-Image Generation via Large Mixture of Diffusion Paths]] — SenseTime Research / HKU · 2023-05 · paper · [t2i] — https://arxiv.org/abs/2305.18295
+- [[omni/2023/uni-controlnet|Uni-ControlNet: All-in-One Control to Text-to-Image Diffusion Models]] — HKU / Microsoft · 2023-05 · paper · [edit] — https://arxiv.org/abs/2305.16322
+- [[omni/2023/unicontrol|UniControl: A Unified Diffusion Model for Controllable Visual Generation In the Wild]] — Salesforce AI Research / Northeastern / Stanford · 2023-05 · paper · [edit] — https://arxiv.org/abs/2305.11147
+- [[omni/2023/orthogonal-finetuning-oft|Controlling Text-to-Image Diffusion by Orthogonal Finetuning (OFT / COFT)]] — MPI for Intelligent Systems · Cambridge · Tübingen · 2023-06 · paper · [method] — https://arxiv.org/abs/2306.07280
+- [[omni/2023/hps-v2|Human Preference Score v2 (HPS v2): A Solid Benchmark for Evaluating Human Preferences of Text-to-Image Synthesis]] — CUHK MMLab / CPII / SenseTime · 2023-06 · paper · [method] — https://arxiv.org/abs/2306.09341
+- [[omni/2023/magicbrush|MagicBrush: A Manually Annotated Dataset for Instruction-Guided Image Editing]] — Ohio State University / University of Waterloo · 2023-06 · paper · [edit] — https://osu-nlp-group.github.io/MagicBrush/
+- [[omni/2023/musicgen-audiocraft|MusicGen / AudioCraft: Simple and Controllable Music Generation]] — Meta AI · 2023-06 · paper · [audio] — https://arxiv.org/abs/2306.05284
+- [[omni/2023/one-2-3-45|One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape Optimization]] — UC San Diego / UCLA / Cornell / 浙大 / IIT Madras / Adobe · 2023-06 · paper · [3d] — https://arxiv.org/abs/2306.16928
+- [[omni/2023/rerender-a-video|Rerender A Video: Zero-Shot Text-Guided Video-to-Video Translation]] — NTU S-Lab · 2023-06 · paper · [video] — https://arxiv.org/abs/2306.07954
+- [[omni/2023/styledrop|StyleDrop: Text-to-Image Generation in Any Style]] — Google Research · 2023-06 · paper · [edit] — https://arxiv.org/abs/2306.00983
+- [[omni/2023/wurstchen|Würstchen: An Efficient Architecture for Large-Scale Text-to-Image Diffusion Models]] — Wand Technologies / TH Ingolstadt / Mila / Stability AI(compute) · 2023-06 · paper · [t2i] — https://arxiv.org/abs/2306.00637
+- [[omni/2023/animatediff|AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning]] — CUHK / Shanghai AI Lab / Stanford · 2023-07 · paper · [video] — https://arxiv.org/abs/2307.04725
+- [[omni/2023/chameleon-cm3leon|CM3Leon: Scaling Autoregressive Multi-Modal Models (Pretraining and Instruction Tuning)]] — Meta FAIR · 2023-07 · paper · [unified] — https://arxiv.org/abs/2309.02591
+- [[omni/2023/emu-multimodal|Emu: Generative Pretraining in Multimodality]] — BAAI (智源) + 清华 THU + 北大 PKU · 2023-07 · paper · [unified] — https://arxiv.org/abs/2307.05222
+- [[omni/2023/hyperdreambooth|HyperDreamBooth: HyperNetworks for Fast Personalization of Text-to-Image Models]] — Google Research · 2023-07 · paper · [edit] — https://arxiv.org/abs/2307.06949
+- [[omni/2023/kandinsky-2|Kandinsky 2.x (Image Prior + Latent Diffusion)]] — Sber AI / AIRI / Skoltech · 2023-07 · tech-report · [t2i] — https://arxiv.org/abs/2310.03502
+- [[omni/2023/sdxl|SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis]] — Stability AI · 2023-07 · tech-report · [t2i] — https://arxiv.org/abs/2307.01952
+- [[omni/2023/seed-tokenizer|SEED: Planting a SEED of Vision in Large Language Model]] — Tencent AI Lab / ARC Lab (Tencent PCG) · 2023-07 · paper · [unified] — https://arxiv.org/abs/2307.08041
+- [[omni/2023/subject-diffusion|Subject-Diffusion: Open Domain Personalized Text-to-Image Generation without Test-time Fine-tuning]] — OPPO AI Center · 2023-07 · paper · [edit] — https://arxiv.org/abs/2307.11410
+- [[omni/2023/tokenflow-video-edit|TokenFlow: Consistent Diffusion Features for Consistent Video Editing]] — Weizmann Institute of Science · 2023-07 · paper · [video] — https://arxiv.org/abs/2307.10373
+- [[omni/2023/3d-gaussian-splatting|3D Gaussian Splatting for Real-Time Radiance Field Rendering]] — Inria / Université Côte d'Azur (GRAPHDECO) + MPI Informatik · 2023-08 · paper · [3d] — https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
+- [[omni/2023/audioldm-2|AudioLDM 2: Learning Holistic Audio Generation with Self-supervised Pretraining]] — University of Surrey (CVSSP) / CUHK / ByteDance SAMI · 2023-08 · paper · [audio] — https://arxiv.org/abs/2308.05734
+- [[omni/2023/ip-adapter|IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models]] — Tencent AI Lab · 2023-08 · paper · [edit] — https://arxiv.org/abs/2308.06721
+- [[omni/2023/ideogram-v0|Ideogram 0.1]] — Ideogram AI · 2023-08 · blog · [t2i] — https://ideogram.ai/launch
+- [[omni/2023/mvdream|MVDream: Multi-view Diffusion for 3D Generation]] — ByteDance · 2023-08 · paper · [3d] — https://arxiv.org/abs/2308.16512
+- [[omni/2023/modelscope-t2v|ModelScopeT2V（ModelScope Text-to-Video Technical Report）]] — Alibaba Group / DAMO Academy · 2023-08 · tech-report · [video] — https://arxiv.org/abs/2308.06571
+- [[omni/2023/anymal|AnyMAL: An Efficient and Scalable Any-Modality Augmented Language Model]] — Meta (FAIR & Reality Labs) · 2023-09 · paper · [omni] — https://arxiv.org/abs/2309.16058
+- [[omni/2023/dreamllm|DreamLLM: Synergistic Multimodal Comprehension and Creation]] — Xi'an Jiaotong University / MEGVII / Tsinghua · 2023-09 · paper · [unified] — https://openreview.net/forum?id=y01KGvd9Bw
+- [[omni/2023/emu-quality-tuning|Emu: Enhancing Image Generation Models Using Photogenic Needles in a Haystack]] — Meta · 2023-09 · paper · [t2i] — https://arxiv.org/abs/2309.15807
+- [[omni/2023/freeu|FreeU: Free Lunch in Diffusion U-Net]] — S-Lab, Nanyang Technological University · 2023-09 · paper · [method] — https://arxiv.org/abs/2309.11497
+- [[omni/2023/instaflow-one-step-rectified-flow-t2i|InstaFlow: One Step is Enough for High-Quality Diffusion-Based Text-to-Image Generation]] — UT Austin / Helixon Research · 2023-09 · paper · [method] — https://arxiv.org/abs/2309.06380
+- [[omni/2023/instructdiffusion|InstructDiffusion: A Generalist Modeling Interface for Vision Tasks]] — Microsoft Research Asia · 2023-09 · paper · [edit] — https://arxiv.org/abs/2309.03895
+- [[omni/2023/lavie|LaVie: High-Quality Video Generation with Cascaded Latent Diffusion Models]] — Shanghai AI Lab · 2023-09 · paper · [video] — https://arxiv.org/abs/2309.15103
+- [[omni/2023/mgie|MGIE: Guiding Instruction-based Image Editing via Multimodal Large Language Models]] — Apple / UC Santa Barbara · 2023-09 · paper · [edit] — https://arxiv.org/abs/2309.17102
+- [[omni/2023/next-gpt|NExT-GPT: Any-to-Any Multimodal LLM]] — National University of Singapore (NExT++) · 2023-09 · paper · [omni] — https://arxiv.org/abs/2309.05519
+- [[omni/2023/pixart-alpha|PixArt-α: Fast Training of Diffusion Transformer for Photorealistic Text-to-Image Synthesis]] — Huawei Noah's Ark Lab · 2023-09 · paper · [t2i] — https://arxiv.org/abs/2310.00426
+- [[omni/2023/show-1|Show-1: Marrying Pixel and Latent Diffusion Models for Text-to-Video Generation]] — Show Lab, National University of Singapore · 2023-09 · paper · [video] — https://arxiv.org/abs/2309.15818
+- [[omni/2023/syncdreamer|SyncDreamer: Generating Multiview-consistent Images from a Single-view Image]] — HKU / Tencent Games / UPenn / Texas A&M · 2023-09 · paper · [3d] — https://arxiv.org/abs/2309.03453
+- [[omni/2023/commoncanvas|CommonCanvas: An Open Diffusion Model Trained with Creative-Commons Images]] — Cornell Tech & Databricks Mosaic (MosaicML) · 2023-10 · paper · [t2i] — https://arxiv.org/abs/2310.16825
+- [[omni/2023/dall-e-3|DALL·E 3]] — OpenAI · 2023-10 · blog · [t2i] — https://openai.com/index/dall-e-3/
+- [[omni/2023/hyperhuman|HyperHuman: Hyper-Realistic Human Generation with Latent Structural Diffusion]] — Snap Inc. / CUHK / HKU / NTU · 2023-10 · paper · [t2i] — https://arxiv.org/abs/2310.08579
+- [[omni/2023/kosmos-g|Kosmos-G: Generating Images in Context with Multimodal Large Language Models]] — Microsoft Research · 2023-10 · paper · [unified] — https://arxiv.org/abs/2310.02992
+- [[omni/2023/latent-consistency-models|Latent Consistency Models (LCM / LCM-LoRA)]] — Tsinghua IIIS (+ Hugging Face for LCM-LoRA) · 2023-10 · paper · [method] — https://arxiv.org/abs/2310.04378
+- [[omni/2023/magvit-v2|MAGVIT-v2 — Language Model Beats Diffusion: Tokenizer is Key to Visual Generation]] — Google / Carnegie Mellon University · 2023-10 · paper · [method] — https://arxiv.org/abs/2310.05737
+- [[omni/2023/videocrafter1|VideoCrafter1: Open Diffusion Models for High-Quality Video Generation]] — Tencent AI Lab · 2023-10 · tech-report · [video] — https://arxiv.org/abs/2310.19512
+- [[omni/2023/wonder3d|Wonder3D: Single Image to 3D using Cross-Domain Diffusion]] — HKU / VAST / Tsinghua · 2023-10 · paper · [3d] — https://arxiv.org/abs/2310.15008
+- [[omni/2023/zero123pp|Zero123++: a Single Image to Consistent Multi-view Diffusion Base Model]] — SUDO-AI (UC San Diego / Stanford / Tsinghua / UCLA / Zhejiang Univ.) · 2023-10 · tech-report · [3d] — https://arxiv.org/abs/2310.15110
+- [[omni/2023/animate-anyone|Animate Anyone: Consistent and Controllable Image-to-Video Synthesis for Character Animation]] — Alibaba (Institute for Intelligent Computing) · 2023-11 · paper · [video] — https://arxiv.org/abs/2311.17117
+- [[omni/2023/concept-sliders|Concept Sliders: LoRA Adaptors for Precise Control in Diffusion Models]] — Northeastern University / MIT · 2023-11 · paper · [edit] — https://arxiv.org/abs/2311.12092
+- [[omni/2023/d3po|D3PO: Using Human Feedback to Fine-tune Diffusion Models without Any Reward Model]] — Tsinghua University (SIGS) / Parametrix Technology · 2023-11 · paper · [method] — https://arxiv.org/abs/2311.13231
+- [[omni/2023/diffusion-dpo|Diffusion-DPO: Diffusion Model Alignment Using Direct Preference Optimization]] — Salesforce AI / Stanford University · 2023-11 · paper · [method] — https://arxiv.org/abs/2311.12908
+- [[omni/2023/emu-edit|Emu Edit: Precise Image Editing via Recognition and Generation Tasks]] — Meta (GenAI / AI at Meta) · 2023-11 · paper · [edit] — https://emu-edit.metademolab.com/
+- [[omni/2023/emu-video|Emu Video: Factorizing Text-to-Video Generation by Explicit Image Conditioning]] — Meta · 2023-11 · paper · [video] — https://emu-video.metademolab.com/
+- [[omni/2023/i2vgen-xl|I2VGen-XL: High-Quality Image-to-Video Synthesis via Cascaded Diffusion Models]] — Alibaba Group (Tongyi Lab) · 2023-11 · tech-report · [video] — https://arxiv.org/abs/2311.04145
+- [[omni/2023/lcm-lora|LCM-LoRA: A Universal Stable-Diffusion Acceleration Module]] — Tsinghua University (IIIS) / Hugging Face · 2023-11 · tech-report · [method] — https://arxiv.org/abs/2311.05556
+- [[omni/2023/ledits-pp|LEDITS++: Limitless Image Editing using Text-to-Image Models]] — TU Darmstadt / DFKI / hessian.AI / Hugging Face · 2023-11 · paper · [edit] — https://arxiv.org/abs/2311.16711
+- [[omni/2023/lrm|LRM: Large Reconstruction Model for Single Image to 3D]] — Adobe Research / Australian National University · 2023-11 · paper · [3d] — https://arxiv.org/abs/2311.04400
+- [[omni/2023/magicanimate|MagicAnimate: Temporally Consistent Human Image Animation using Diffusion Model]] — Show Lab (NUS) / ByteDance · 2023-11 · paper · [video] — https://arxiv.org/abs/2311.16498
+- [[omni/2023/make-pixels-dance|Make Pixels Dance: High-Dynamic Video Generation (PixelDance)]] — ByteDance Research · 2023-11 · paper · [video] — https://arxiv.org/abs/2311.10982
+- [[omni/2023/dmd|One-step Diffusion with Distribution Matching Distillation (DMD)]] — MIT / Adobe Research · 2023-11 · paper · [method] — https://arxiv.org/abs/2311.18828
+- [[omni/2023/pika-1|Pika 1.0]] — Pika Labs · 2023-11 · blog · [video] — https://pika.art/blog
+- [[omni/2023/sdxl-turbo-add|SDXL-Turbo / Adversarial Diffusion Distillation (ADD)]] — Stability AI · 2023-11 · paper · [method] — https://arxiv.org/abs/2311.17042
+- [[omni/2023/stable-video-diffusion|Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets]] — Stability AI · 2023-11 · paper · [video] — https://arxiv.org/abs/2311.15127
+- [[omni/2023/gentron|GenTron: Diffusion Transformers for Image and Video Generation]] — Meta / HKU · 2023-12 · paper · [method] — https://arxiv.org/abs/2312.04557
+- [[omni/2023/imagen-2|Imagen 2]] — Google DeepMind · 2023-12 · blog · [t2i] — https://deepmind.google/technologies/imagen-2/
+- [[omni/2023/marigold|Marigold: Repurposing Diffusion-Based Image Generators for Monocular Depth Estimation]] — ETH Zürich (Photogrammetry and Remote Sensing) · 2023-12 · paper · [method] — https://arxiv.org/abs/2312.02145
+- [[omni/2024/midjourney-v6|Midjourney V6 / V6.1]] — Midjourney · 2023-12 · blog · [t2i] — https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version
+- [[omni/2023/playground-v2|Playground v2 (1024px Aesthetic)]] — Playground (Playground AI) · 2023-12 · model-card · [t2i] — https://huggingface.co/playgroundai/playground-v2-1024px-aesthetic
+- [[omni/2023/videopoet|VideoPoet: A Large Language Model for Zero-Shot Video Generation]] — Google · 2023-12 · paper · [video] — https://arxiv.org/abs/2312.14125
+- [[omni/2023/walt-photorealistic-video-diffusion|W.A.L.T: Photorealistic Video Generation with Diffusion Models]] — Google Research / Stanford University · 2023-12 · paper · [video] — https://arxiv.org/abs/2312.06662
+- [[omni/2023/x-adapter|X-Adapter: Adding Universal Compatibility of Plugins for Upgraded Diffusion Model]] — Show Lab (NUS) / Tencent AI Lab / Fudan · 2023-12 · paper · [method] — https://arxiv.org/abs/2312.02238
 
 ## 2024（66 条）
 
-- [Lumiere: A Space-Time Diffusion Model for Video Generation](omni/2024/lumiere-space-time-video-diffusion.md) — Google Research / Weizmann Institute / Tel-Aviv University / Technion · 2024-01 · paper · [video] — https://arxiv.org/abs/2401.12945
-- [PixArt-δ: Fast and Controllable Image Generation with Latent Consistency Models](omni/2024/pixart-delta-lcm-controlnet.md) — Huawei Noah's Ark Lab · 2024-01 · tech-report · [t2i] — https://arxiv.org/abs/2401.05252
-- [SiT: Exploring Flow and Diffusion-based Generative Models with Scalable Interpolant Transformers](omni/2024/sit-scalable-interpolant-transformers.md) — New York University (Saining Xie group) · 2024-01 · paper · [method] — https://arxiv.org/abs/2401.08740
-- [Genie: Generative Interactive Environments](omni/2024/genie-generative-interactive-environments.md) — Google DeepMind · 2024-02 · paper · [video] — https://arxiv.org/abs/2402.15391
-- [Sora: Video generation models as world simulators](omni/2024/sora.md) — OpenAI · 2024-02 · tech-report · [video] — https://openai.com/index/video-generation-models-as-world-simulators/
-- [Stable Audio: Fast Timing-Conditioned Latent Audio Diffusion](omni/2024/stable-audio-latent-audio-diffusion.md) — Stability AI (Harmonai) · 2024-02 · paper · [audio] — https://arxiv.org/abs/2402.04825
-- [Stable Cascade (Würstchen v3)](omni/2024/stable-cascade.md) — Stability AI · 2024-02 · model-card · [t2i] — https://stability.ai/news/introducing-stable-cascade
-- [CogView3: Finer and Faster Text-to-Image Generation via Relay Diffusion](omni/2024/cogview3.md) — Zhipu AI / Tsinghua University · 2024-03 · paper · [t2i] — https://arxiv.org/abs/2403.05121
-- [ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Alignment](omni/2024/ella.md) — Tencent · 2024-03 · paper · [method] — https://arxiv.org/abs/2403.05135
-- [PixArt-Σ: Weak-to-Strong Training of Diffusion Transformer for 4K Text-to-Image Generation](omni/2024/pixart-sigma.md) — Huawei Noah's Ark Lab / HKU / DLUT / HKUST · 2024-03 · paper · [t2i] — https://arxiv.org/abs/2403.04692
-- [Scaling Rectified Flow Transformers for High-Resolution Image Synthesis (Stable Diffusion 3 / MMDiT)](omni/2024/stable-diffusion-3.md) — Stability AI · 2024-03 · paper · [t2i] — https://stability.ai/news/stable-diffusion-3-research-paper
-- [SEED-X: Multimodal Models with Unified Multi-granularity Comprehension and Generation](omni/2024/seed-x.md) — Tencent ARC Lab / Tencent AI Lab (AILab-CVC) · 2024-04 · paper · [unified] — https://arxiv.org/abs/2404.14396
-- [Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction (VAR)](omni/2024/var.md) — ByteDance / Peking University · 2024-04 · paper · [method] — https://arxiv.org/abs/2404.02905
-- [Chameleon: Mixed-Modal Early-Fusion Foundation Models](omni/2024/chameleon.md) — Meta FAIR · 2024-05 · paper · [unified] — https://arxiv.org/abs/2405.09818
-- [GPT-4o 原生图像生成 (4o image generation / gpt-image-1)](omni/2024/gpt-4o-native-image.md) — OpenAI · 2024-05 · blog · [omni] — https://openai.com/index/hello-gpt-4o/
-- [Hunyuan-DiT: A Powerful Multi-Resolution Diffusion Transformer with Fine-Grained Chinese Understanding](omni/2024/hunyuan-dit.md) — Tencent (Hunyuan) · 2024-05 · tech-report · [t2i] — https://arxiv.org/abs/2405.08748
-- [Lumina-T2X: Transforming Text into Any Modality, Resolution, and Duration via Flow-based Large Diffusion Transformers](omni/2024/lumina-t2x.md) — Shanghai AI Laboratory & CUHK · 2024-05 · tech-report · [unified] — https://arxiv.org/abs/2405.05945
-- [Autoregressive Image Generation without Vector Quantization (MAR / Diffusion Loss)](omni/2024/mar-autoregressive-without-vector-quantization.md) — MIT CSAIL / Google DeepMind / Tsinghua (Kaiming He group; Tianhong Li) · 2024-06 · paper · [method] — https://arxiv.org/abs/2406.11838
-- [Kling (可灵) 视频生成大模型](omni/2024/kling.md) — Kuaishou (快手) · 2024-06 · blog · [video] — https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-unveils-proprietary-video-generation-model-kling/
-- [LlamaGen: Autoregressive Model Beats Diffusion — Llama for Scalable Image Generation](omni/2024/llamagen-autoregressive-image-generation.md) — University of Hong Kong / ByteDance · 2024-06 · paper · [method] — https://arxiv.org/abs/2406.06525
-- [Lumina-Next: Making Lumina-T2X Stronger and Faster with Next-DiT](omni/2024/lumina-next.md) — Shanghai AI Laboratory · 2024-06 · paper · [t2i] — https://arxiv.org/abs/2406.18583
-- [Runway Gen-3 Alpha](omni/2024/gen-3-alpha.md) — Runway · 2024-06 · blog · [video] — https://runwayml.com/research/introducing-gen-3-alpha
-- [Seed-TTS: A Family of High-Quality Versatile Speech Generation Models](omni/2024/seed-tts.md) — ByteDance · 2024-06 · tech-report · [audio] — https://arxiv.org/abs/2406.02430
-- [Kolors（可图）: Effective Training of Diffusion Model for Photorealistic Text-to-Image Synthesis](omni/2024/kolors.md) — Kuaishou（快手 Kolors 团队） · 2024-07 · tech-report · [t2i] — https://github.com/Kwai-Kolors/Kolors
-- [Qwen2-Audio](omni/2024/qwen2-audio.md) — Alibaba (Qwen Team) · 2024-07 · tech-report · [audio] — https://qwenlm.github.io/blog/qwen2-audio/
-- [UltraEdit: Instruction-based Fine-Grained Image Editing at Scale](omni/2024/ultraedit.md) — PKU / BIGAI / THU · 2024-07 · paper · [edit] — https://arxiv.org/abs/2407.05282
-- [CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer](omni/2024/cogvideox.md) — Zhipu AI / Tsinghua University · 2024-08 · paper · [video] — https://arxiv.org/abs/2408.06072
-- [FLUX.1 suite (pro / dev / schnell)](omni/2024/flux-1.md) — Black Forest Labs · 2024-08 · blog · [t2i] — https://bfl.ai/blog/24-08-01-bfl
-- [Ideogram 2.0](omni/2024/ideogram-2.md) — Ideogram · 2024-08 · blog · [t2i] — https://about.ideogram.ai/2.0
-- [Imagen 3](omni/2024/imagen-3.md) — Google DeepMind · 2024-08 · tech-report · [t2i] — https://arxiv.org/abs/2408.07009
-- [Show-o: One Single Transformer to Unify Multimodal Understanding and Generation](omni/2024/show-o.md) — Show Lab (NUS) / ByteDance · 2024-08 · paper · [unified] — https://arxiv.org/abs/2408.12528
-- [Transfusion: Predict the Next Token and Diffuse Images with One Multi-Modal Model](omni/2024/transfusion.md) — Meta / Waymo / USC · 2024-08 · paper · [unified] — https://arxiv.org/abs/2408.11039
-- [Emu3: Next-Token Prediction is All You Need](omni/2024/emu3.md) — BAAI（北京智源人工智能研究院） · 2024-09 · tech-report · [unified] — https://arxiv.org/abs/2409.18869
-- [OmniGen: Unified Image Generation](omni/2024/omnigen.md) — BAAI（北京智源人工智能研究院） · 2024-09 · paper · [unified] — https://arxiv.org/abs/2409.11340
-- [Playground v3: Improving Text-to-Image Alignment with Deep-Fusion Large Language Models](omni/2024/playground-v3.md) — Playground · 2024-09 · tech-report · [t2i] — https://arxiv.org/abs/2409.10695
-- [VILA-U: a Unified Foundation Model Integrating Visual Understanding and Generation](omni/2024/vila-u.md) — NVIDIA / MIT / Tsinghua / UC Berkeley / UC San Diego · 2024-09 · paper · [unified] — https://arxiv.org/abs/2409.04429
-- [Allegro: Open the Black Box of Commercial-Level Video Generation Model](omni/2024/allegro.md) — Rhymes AI · 2024-10 · tech-report · [video] — https://arxiv.org/abs/2410.15458
-- [Baichuan-Omni](omni/2024/baichuan-omni.md) — Baichuan Inc.（百川智能，联合西湖大学 / 浙江大学） · 2024-10 · tech-report · [omni] — https://arxiv.org/abs/2410.08565
-- [FLUX1.1 (pro)](omni/2024/flux-1-1-pro.md) — Black Forest Labs · 2024-10 · blog · [t2i] — https://bfl.ai/blog/24-10-02-flux
-- [HART: Efficient Visual Generation with Hybrid Autoregressive Transformer](omni/2024/hart-hybrid-ar.md) — MIT / NVIDIA / Tsinghua · 2024-10 · paper · [method] — https://arxiv.org/abs/2410.10812
-- [In-Context LoRA for Diffusion Transformers (IC-LoRA)](omni/2024/in-context-lora.md) — Alibaba Tongyi Lab (ali-vilab) · 2024-10 · tech-report · [method] — https://arxiv.org/abs/2410.23775
-- [Janus: Decoupling Visual Encoding for Unified Multimodal Understanding and Generation](omni/2024/janus.md) — DeepSeek-AI · 2024-10 · paper · [unified] — https://arxiv.org/abs/2410.13848
-- [Mochi 1 (preview)](omni/2024/mochi-1.md) — Genmo · 2024-10 · blog · [video] — https://www.genmo.ai/blog/mochi-1-a-new-sota-in-open-text-to-video
-- [Movie Gen: A Cast of Media Foundation Models](omni/2024/movie-gen.md) — Meta · 2024-10 · tech-report · [video] — https://ai.meta.com/research/movie-gen/
-- [Pyramid Flow:金字塔式流匹配的高效视频生成](omni/2024/pyramid-flow.md) — PKU / Kuaishou / BUPT · 2024-10 · paper · [video] — https://arxiv.org/abs/2410.05954
-- [REPA: Representation Alignment for Generation — Training Diffusion Transformers Is Easier Than You Think](omni/2024/repa.md) — KAIST / Korea University / Scaled Foundations / NYU · 2024-10 · paper · [method] — https://arxiv.org/abs/2410.06940
-- [Recraft V3 (red_panda)](omni/2024/recraft-v3.md) — Recraft · 2024-10 · blog · [t2i] — https://www.recraft.ai/blog/recraft-introduces-a-revolutionary-ai-model-that-thinks-in-design-language
-- [SD3.5 Large Turbo 与 (Latent) Adversarial Diffusion Distillation](omni/2024/sd3-5-turbo-adversarial-diffusion-distillation.md) — Stability AI · 2024-10 · paper · [method] — https://stability.ai/news/introducing-stable-diffusion-3-5
-- [Sana: Efficient High-Resolution Image Synthesis with Linear Diffusion Transformers](omni/2024/sana.md) — NVIDIA / MIT · 2024-10 · tech-report · [t2i] — https://arxiv.org/abs/2410.10629
-- [FLUX.1 Tools (Fill / Canny / Depth / Redux)](omni/2024/flux-1-tools.md) — Black Forest Labs · 2024-11 · blog · [edit] — https://blackforestlabs.ai/flux-1-tools/
-- [Hunyuan3D 1.0: A Unified Framework for Text-to-3D and Image-to-3D Generation](omni/2024/hunyuan3d-1.md) — Tencent · 2024-11 · tech-report · [3d] — https://arxiv.org/abs/2411.02293
-- [JanusFlow: Harmonizing Autoregression and Rectified Flow for Unified Multimodal Understanding and Generation](omni/2024/janusflow.md) — DeepSeek-AI / PKU / HKU / THU · 2024-11 · paper · [unified] — https://arxiv.org/abs/2411.07975
-- [LTX-Video: Realtime Video Latent Diffusion](omni/2024/ltx-video.md) — Lightricks · 2024-11 · paper · [video] — https://arxiv.org/abs/2501.00103
-- [OminiControl: Minimal and Universal Control for Diffusion Transformer](omni/2024/ominicontrol.md) — National University of Singapore (xML Lab, Xinchao Wang) · 2024-11 · paper · [edit] — https://arxiv.org/abs/2411.15098
-- [SeedEdit: Align Image Re-Generation to Image Editing](omni/2024/seededit.md) — ByteDance · 2024-11 · tech-report · [edit] — https://arxiv.org/abs/2411.06686
-- [Aurora (Grok Image Generation)](omni/2024/aurora-grok-image.md) — xAI · 2024-12 · blog · [t2i] — https://x.ai/news/grok-image-generation-release
-- [GLM-4-Voice: Towards Intelligent and Human-Like End-to-End Spoken Chatbot](omni/2024/glm-4-voice.md) — Zhipu AI / Tsinghua University · 2024-12 · tech-report · [audio] — https://arxiv.org/abs/2412.02612
-- [Gemini 2.0 Flash 原生图像生成（Native Image Output）](omni/2024/gemini-2-0-flash-native-image.md) — Google DeepMind · 2024-12 · blog · [omni] — https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/
-- [HunyuanVideo: A Systematic Framework For Large Video Generative Models](omni/2024/hunyuan-video.md) — Tencent · 2024-12 · tech-report · [video] — https://arxiv.org/abs/2412.03603
-- [Infinity: Scaling Bitwise AutoRegressive Modeling for High-Resolution Image Synthesis](omni/2024/infinity-bitwise-var.md) — ByteDance · 2024-12 · paper · [method] — https://arxiv.org/abs/2412.04431
-- [Liquid: Language Models are Scalable and Unified Multi-modal Generators](omni/2024/liquid-unified.md) — HUST / ByteDance / HKU · 2024-12 · paper · [unified] — https://arxiv.org/abs/2412.04332
-- [MetaMorph: Multimodal Understanding and Generation via Instruction Tuning](omni/2024/metamorph.md) — Meta (FAIR) / New York University · 2024-12 · paper · [unified] — https://arxiv.org/abs/2412.14164
-- [Open-Sora Plan / Open-Sora（2024 开源复现 Sora）](omni/2024/open-sora-plan.md) — PKU-YuanGroup（北大-兔展）/ HPC-AI Tech（潞晨） · 2024-12 · tech-report · [video] — https://arxiv.org/abs/2412.00131
-- [Sora（Sora Turbo）公开发布](omni/2024/openai-sora-1-public.md) — OpenAI · 2024-12 · system-card · [video] — https://openai.com/index/sora-is-here/
-- [TRELLIS: Structured 3D Latents for Scalable and Versatile 3D Generation](omni/2024/trellis.md) — Microsoft Research / Tsinghua / USTC · 2024-12 · paper · [3d] — https://arxiv.org/abs/2412.01506
-- [Veo 2](omni/2024/veo-2.md) — Google DeepMind · 2024-12 · blog · [video] — https://blog.google/innovation-and-ai/models-and-research/google-labs/video-image-generation-update-december-2024/
+- [[omni/2024/lumiere-space-time-video-diffusion|Lumiere: A Space-Time Diffusion Model for Video Generation]] — Google Research / Weizmann Institute / Tel-Aviv University / Technion · 2024-01 · paper · [video] — https://arxiv.org/abs/2401.12945
+- [[omni/2024/pixart-delta-lcm-controlnet|PixArt-δ: Fast and Controllable Image Generation with Latent Consistency Models]] — Huawei Noah's Ark Lab · 2024-01 · tech-report · [t2i] — https://arxiv.org/abs/2401.05252
+- [[omni/2024/sit-scalable-interpolant-transformers|SiT: Exploring Flow and Diffusion-based Generative Models with Scalable Interpolant Transformers]] — New York University (Saining Xie group) · 2024-01 · paper · [method] — https://arxiv.org/abs/2401.08740
+- [[omni/2024/genie-generative-interactive-environments|Genie: Generative Interactive Environments]] — Google DeepMind · 2024-02 · paper · [video] — https://arxiv.org/abs/2402.15391
+- [[omni/2024/sora|Sora: Video generation models as world simulators]] — OpenAI · 2024-02 · tech-report · [video] — https://openai.com/index/video-generation-models-as-world-simulators/
+- [[omni/2024/stable-audio-latent-audio-diffusion|Stable Audio: Fast Timing-Conditioned Latent Audio Diffusion]] — Stability AI (Harmonai) · 2024-02 · paper · [audio] — https://arxiv.org/abs/2402.04825
+- [[omni/2024/stable-cascade|Stable Cascade (Würstchen v3)]] — Stability AI · 2024-02 · model-card · [t2i] — https://stability.ai/news/introducing-stable-cascade
+- [[omni/2024/cogview3|CogView3: Finer and Faster Text-to-Image Generation via Relay Diffusion]] — Zhipu AI / Tsinghua University · 2024-03 · paper · [t2i] — https://arxiv.org/abs/2403.05121
+- [[omni/2024/ella|ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Alignment]] — Tencent · 2024-03 · paper · [method] — https://arxiv.org/abs/2403.05135
+- [[omni/2024/pixart-sigma|PixArt-Σ: Weak-to-Strong Training of Diffusion Transformer for 4K Text-to-Image Generation]] — Huawei Noah's Ark Lab / HKU / DLUT / HKUST · 2024-03 · paper · [t2i] — https://arxiv.org/abs/2403.04692
+- [[omni/2024/stable-diffusion-3|Scaling Rectified Flow Transformers for High-Resolution Image Synthesis (Stable Diffusion 3 / MMDiT)]] — Stability AI · 2024-03 · paper · [t2i] — https://stability.ai/news/stable-diffusion-3-research-paper
+- [[omni/2024/seed-x|SEED-X: Multimodal Models with Unified Multi-granularity Comprehension and Generation]] — Tencent ARC Lab / Tencent AI Lab (AILab-CVC) · 2024-04 · paper · [unified] — https://arxiv.org/abs/2404.14396
+- [[omni/2024/var|Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction (VAR)]] — ByteDance / Peking University · 2024-04 · paper · [method] — https://arxiv.org/abs/2404.02905
+- [[omni/2024/chameleon|Chameleon: Mixed-Modal Early-Fusion Foundation Models]] — Meta FAIR · 2024-05 · paper · [unified] — https://arxiv.org/abs/2405.09818
+- [[omni/2024/gpt-4o-native-image|GPT-4o 原生图像生成 (4o image generation / gpt-image-1)]] — OpenAI · 2024-05 · blog · [omni] — https://openai.com/index/hello-gpt-4o/
+- [[omni/2024/hunyuan-dit|Hunyuan-DiT: A Powerful Multi-Resolution Diffusion Transformer with Fine-Grained Chinese Understanding]] — Tencent (Hunyuan) · 2024-05 · tech-report · [t2i] — https://arxiv.org/abs/2405.08748
+- [[omni/2024/lumina-t2x|Lumina-T2X: Transforming Text into Any Modality, Resolution, and Duration via Flow-based Large Diffusion Transformers]] — Shanghai AI Laboratory & CUHK · 2024-05 · tech-report · [unified] — https://arxiv.org/abs/2405.05945
+- [[omni/2024/mar-autoregressive-without-vector-quantization|Autoregressive Image Generation without Vector Quantization (MAR / Diffusion Loss)]] — MIT CSAIL / Google DeepMind / Tsinghua (Kaiming He group; Tianhong Li) · 2024-06 · paper · [method] — https://arxiv.org/abs/2406.11838
+- [[omni/2024/kling|Kling (可灵) 视频生成大模型]] — Kuaishou (快手) · 2024-06 · blog · [video] — https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-unveils-proprietary-video-generation-model-kling/
+- [[omni/2024/llamagen-autoregressive-image-generation|LlamaGen: Autoregressive Model Beats Diffusion — Llama for Scalable Image Generation]] — University of Hong Kong / ByteDance · 2024-06 · paper · [method] — https://arxiv.org/abs/2406.06525
+- [[omni/2024/lumina-next|Lumina-Next: Making Lumina-T2X Stronger and Faster with Next-DiT]] — Shanghai AI Laboratory · 2024-06 · paper · [t2i] — https://arxiv.org/abs/2406.18583
+- [[omni/2024/gen-3-alpha|Runway Gen-3 Alpha]] — Runway · 2024-06 · blog · [video] — https://runwayml.com/research/introducing-gen-3-alpha
+- [[omni/2024/seed-tts|Seed-TTS: A Family of High-Quality Versatile Speech Generation Models]] — ByteDance · 2024-06 · tech-report · [audio] — https://arxiv.org/abs/2406.02430
+- [[omni/2024/kolors|Kolors（可图）: Effective Training of Diffusion Model for Photorealistic Text-to-Image Synthesis]] — Kuaishou（快手 Kolors 团队） · 2024-07 · tech-report · [t2i] — https://github.com/Kwai-Kolors/Kolors
+- [[omni/2024/qwen2-audio|Qwen2-Audio]] — Alibaba (Qwen Team) · 2024-07 · tech-report · [audio] — https://qwenlm.github.io/blog/qwen2-audio/
+- [[omni/2024/ultraedit|UltraEdit: Instruction-based Fine-Grained Image Editing at Scale]] — PKU / BIGAI / THU · 2024-07 · paper · [edit] — https://arxiv.org/abs/2407.05282
+- [[omni/2024/cogvideox|CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer]] — Zhipu AI / Tsinghua University · 2024-08 · paper · [video] — https://arxiv.org/abs/2408.06072
+- [[omni/2024/flux-1|FLUX.1 suite (pro / dev / schnell)]] — Black Forest Labs · 2024-08 · blog · [t2i] — https://bfl.ai/blog/24-08-01-bfl
+- [[omni/2024/ideogram-2|Ideogram 2.0]] — Ideogram · 2024-08 · blog · [t2i] — https://about.ideogram.ai/2.0
+- [[omni/2024/imagen-3|Imagen 3]] — Google DeepMind · 2024-08 · tech-report · [t2i] — https://arxiv.org/abs/2408.07009
+- [[omni/2024/show-o|Show-o: One Single Transformer to Unify Multimodal Understanding and Generation]] — Show Lab (NUS) / ByteDance · 2024-08 · paper · [unified] — https://arxiv.org/abs/2408.12528
+- [[omni/2024/transfusion|Transfusion: Predict the Next Token and Diffuse Images with One Multi-Modal Model]] — Meta / Waymo / USC · 2024-08 · paper · [unified] — https://arxiv.org/abs/2408.11039
+- [[omni/2024/emu3|Emu3: Next-Token Prediction is All You Need]] — BAAI（北京智源人工智能研究院） · 2024-09 · tech-report · [unified] — https://arxiv.org/abs/2409.18869
+- [[omni/2024/omnigen|OmniGen: Unified Image Generation]] — BAAI（北京智源人工智能研究院） · 2024-09 · paper · [unified] — https://arxiv.org/abs/2409.11340
+- [[omni/2024/playground-v3|Playground v3: Improving Text-to-Image Alignment with Deep-Fusion Large Language Models]] — Playground · 2024-09 · tech-report · [t2i] — https://arxiv.org/abs/2409.10695
+- [[omni/2024/vila-u|VILA-U: a Unified Foundation Model Integrating Visual Understanding and Generation]] — NVIDIA / MIT / Tsinghua / UC Berkeley / UC San Diego · 2024-09 · paper · [unified] — https://arxiv.org/abs/2409.04429
+- [[omni/2024/allegro|Allegro: Open the Black Box of Commercial-Level Video Generation Model]] — Rhymes AI · 2024-10 · tech-report · [video] — https://arxiv.org/abs/2410.15458
+- [[omni/2024/baichuan-omni|Baichuan-Omni]] — Baichuan Inc.（百川智能，联合西湖大学 / 浙江大学） · 2024-10 · tech-report · [omni] — https://arxiv.org/abs/2410.08565
+- [[omni/2024/flux-1-1-pro|FLUX1.1 (pro)]] — Black Forest Labs · 2024-10 · blog · [t2i] — https://bfl.ai/blog/24-10-02-flux
+- [[omni/2024/hart-hybrid-ar|HART: Efficient Visual Generation with Hybrid Autoregressive Transformer]] — MIT / NVIDIA / Tsinghua · 2024-10 · paper · [method] — https://arxiv.org/abs/2410.10812
+- [[omni/2024/in-context-lora|In-Context LoRA for Diffusion Transformers (IC-LoRA)]] — Alibaba Tongyi Lab (ali-vilab) · 2024-10 · tech-report · [method] — https://arxiv.org/abs/2410.23775
+- [[omni/2024/janus|Janus: Decoupling Visual Encoding for Unified Multimodal Understanding and Generation]] — DeepSeek-AI · 2024-10 · paper · [unified] — https://arxiv.org/abs/2410.13848
+- [[omni/2024/mochi-1|Mochi 1 (preview)]] — Genmo · 2024-10 · blog · [video] — https://www.genmo.ai/blog/mochi-1-a-new-sota-in-open-text-to-video
+- [[omni/2024/movie-gen|Movie Gen: A Cast of Media Foundation Models]] — Meta · 2024-10 · tech-report · [video] — https://ai.meta.com/research/movie-gen/
+- [[omni/2024/pyramid-flow|Pyramid Flow:金字塔式流匹配的高效视频生成]] — PKU / Kuaishou / BUPT · 2024-10 · paper · [video] — https://arxiv.org/abs/2410.05954
+- [[omni/2024/repa|REPA: Representation Alignment for Generation — Training Diffusion Transformers Is Easier Than You Think]] — KAIST / Korea University / Scaled Foundations / NYU · 2024-10 · paper · [method] — https://arxiv.org/abs/2410.06940
+- [[omni/2024/recraft-v3|Recraft V3 (red_panda)]] — Recraft · 2024-10 · blog · [t2i] — https://www.recraft.ai/blog/recraft-introduces-a-revolutionary-ai-model-that-thinks-in-design-language
+- [[omni/2024/sd3-5-turbo-adversarial-diffusion-distillation|SD3.5 Large Turbo 与 (Latent) Adversarial Diffusion Distillation]] — Stability AI · 2024-10 · paper · [method] — https://stability.ai/news/introducing-stable-diffusion-3-5
+- [[omni/2024/sana|Sana: Efficient High-Resolution Image Synthesis with Linear Diffusion Transformers]] — NVIDIA / MIT · 2024-10 · tech-report · [t2i] — https://arxiv.org/abs/2410.10629
+- [[omni/2024/flux-1-tools|FLUX.1 Tools (Fill / Canny / Depth / Redux)]] — Black Forest Labs · 2024-11 · blog · [edit] — https://blackforestlabs.ai/flux-1-tools/
+- [[omni/2024/hunyuan3d-1|Hunyuan3D 1.0: A Unified Framework for Text-to-3D and Image-to-3D Generation]] — Tencent · 2024-11 · tech-report · [3d] — https://arxiv.org/abs/2411.02293
+- [[omni/2024/janusflow|JanusFlow: Harmonizing Autoregression and Rectified Flow for Unified Multimodal Understanding and Generation]] — DeepSeek-AI / PKU / HKU / THU · 2024-11 · paper · [unified] — https://arxiv.org/abs/2411.07975
+- [[omni/2024/ltx-video|LTX-Video: Realtime Video Latent Diffusion]] — Lightricks · 2024-11 · paper · [video] — https://arxiv.org/abs/2501.00103
+- [[omni/2024/ominicontrol|OminiControl: Minimal and Universal Control for Diffusion Transformer]] — National University of Singapore (xML Lab, Xinchao Wang) · 2024-11 · paper · [edit] — https://arxiv.org/abs/2411.15098
+- [[omni/2024/seededit|SeedEdit: Align Image Re-Generation to Image Editing]] — ByteDance · 2024-11 · tech-report · [edit] — https://arxiv.org/abs/2411.06686
+- [[omni/2024/aurora-grok-image|Aurora (Grok Image Generation)]] — xAI · 2024-12 · blog · [t2i] — https://x.ai/news/grok-image-generation-release
+- [[omni/2024/glm-4-voice|GLM-4-Voice: Towards Intelligent and Human-Like End-to-End Spoken Chatbot]] — Zhipu AI / Tsinghua University · 2024-12 · tech-report · [audio] — https://arxiv.org/abs/2412.02612
+- [[omni/2024/gemini-2-0-flash-native-image|Gemini 2.0 Flash 原生图像生成（Native Image Output）]] — Google DeepMind · 2024-12 · blog · [omni] — https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/
+- [[omni/2024/hunyuan-video|HunyuanVideo: A Systematic Framework For Large Video Generative Models]] — Tencent · 2024-12 · tech-report · [video] — https://arxiv.org/abs/2412.03603
+- [[omni/2024/infinity-bitwise-var|Infinity: Scaling Bitwise AutoRegressive Modeling for High-Resolution Image Synthesis]] — ByteDance · 2024-12 · paper · [method] — https://arxiv.org/abs/2412.04431
+- [[omni/2024/liquid-unified|Liquid: Language Models are Scalable and Unified Multi-modal Generators]] — HUST / ByteDance / HKU · 2024-12 · paper · [unified] — https://arxiv.org/abs/2412.04332
+- [[omni/2024/metamorph|MetaMorph: Multimodal Understanding and Generation via Instruction Tuning]] — Meta (FAIR) / New York University · 2024-12 · paper · [unified] — https://arxiv.org/abs/2412.14164
+- [[omni/2024/open-sora-plan|Open-Sora Plan / Open-Sora（2024 开源复现 Sora）]] — PKU-YuanGroup（北大-兔展）/ HPC-AI Tech（潞晨） · 2024-12 · tech-report · [video] — https://arxiv.org/abs/2412.00131
+- [[omni/2024/openai-sora-1-public|Sora（Sora Turbo）公开发布]] — OpenAI · 2024-12 · system-card · [video] — https://openai.com/index/sora-is-here/
+- [[omni/2024/trellis|TRELLIS: Structured 3D Latents for Scalable and Versatile 3D Generation]] — Microsoft Research / Tsinghua / USTC · 2024-12 · paper · [3d] — https://arxiv.org/abs/2412.01506
+- [[omni/2024/veo-2|Veo 2]] — Google DeepMind · 2024-12 · blog · [video] — https://blog.google/innovation-and-ai/models-and-research/google-labs/video-image-generation-update-december-2024/
 
 ## 2025（66 条）
 
-- [ACE++: Instruction-Based Image Creation and Editing via Context-Aware Content Filling](omni/2025/ace-plus-plus.md) — Alibaba Tongyi Lab (ali-vilab) · 2025-01 · tech-report · [edit] — https://arxiv.org/abs/2501.02487
-- [Cosmos World Foundation Model Platform for Physical AI (Cosmos-Predict1)](omni/2025/cosmos-predict.md) — NVIDIA · 2025-01 · tech-report · [video] — https://arxiv.org/abs/2501.03575
-- [Janus-Pro: Unified Multimodal Understanding and Generation with Data and Model Scaling](omni/2025/janus-pro.md) — DeepSeek-AI · 2025-01 · tech-report · [unified] — https://arxiv.org/abs/2501.17811
-- [SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer](omni/2025/pixart-and-sana-1-5.md) — NVIDIA / MIT / 清华 / Playground / 北大 / HKU · 2025-01 · tech-report · [t2i] — https://arxiv.org/abs/2501.18427
-- [Fractal Generative Models (FractalGen)](omni/2025/fractal-generative-models.md) — MIT CSAIL / Google DeepMind（何恺明组） · 2025-02 · paper · [method] — https://arxiv.org/abs/2502.17437
-- [Goku: Flow Based Video Generative Foundation Models](omni/2025/goku.md) — 字节跳动 / 港大 (HKU) · 2025-02 · tech-report · [video] — https://arxiv.org/abs/2502.04896
-- [Pika 2.0 / 2.1 / 2.2](omni/2025/pika-2-2.md) — Pika Labs · 2025-02 · blog · [video] — https://pika.art/
-- [Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction](omni/2025/step-audio.md) — 阶跃星辰 StepFun · 2025-02 · tech-report · [audio] — https://arxiv.org/abs/2502.11946
-- [CogView4-6B](omni/2025/cogview4.md) — 智谱 AI / 清华大学 KEG · 2025-03 · model-card · [t2i] — https://github.com/THUDM/CogView4
-- [GPT Image 1 / 4o 原生图像生成（GPT-4o native image generation）](omni/2025/gpt-image-1.md) — OpenAI · 2025-03 · system-card · [omni] — https://openai.com/index/introducing-4o-image-generation/
-- [Gemini 2.0 Flash 原生图像生成（公开实验版 gemini-2.0-flash-exp，2025-03）](omni/2025/gemini-2-0-flash-image.md) — Google DeepMind · 2025-03 · blog · [omni] — https://developers.googleblog.com/en/experiment-with-gemini-20-flash-native-image-generation/
-- [Ideogram 3.0](omni/2025/ideogram-3-0.md) — Ideogram · 2025-03 · blog · [t2i] — https://about.ideogram.ai/3.0
-- [Lumina-Image 2.0: A Unified and Efficient Image Generative Framework](omni/2025/lumina-image-2-0.md) — 上海AI实验室 / Alpha-VLLM · 2025-03 · tech-report · [t2i] — https://arxiv.org/abs/2503.21758
-- [Qwen2.5-Omni Technical Report](omni/2025/qwen2-5-omni.md) — 阿里巴巴 Qwen 团队 · 2025-03 · tech-report · [omni] — https://arxiv.org/abs/2503.20215
-- [Reve Image 1.0 (Halfmoon)](omni/2025/reve-image.md) — Reve AI, Inc. · 2025-03 · blog · [t2i] — https://reve.com/
-- [VACE: All-in-One Video Creation and Editing](omni/2025/vace.md) — Alibaba Tongyi Lab (Wan Team) · 2025-03 · paper · [video] — https://arxiv.org/abs/2503.07598
-- [Wan: Open and Advanced Large-Scale Video Generative Models (Wan 2.1)](omni/2025/wan-2-1.md) — 阿里巴巴 Wan 团队 (Alibaba Wan Team) · 2025-03 · tech-report · [video] — https://arxiv.org/abs/2503.20314
-- [Adobe Firefly Image Model 4 / 4 Ultra](omni/2025/firefly-image-model-4.md) — Adobe · 2025-04 · blog · [t2i] — https://blog.adobe.com/en/publish/2025/04/24/adobe-firefly-next-evolution-creative-ai-is-here
-- [DreamO: A Unified Framework for Image Customization](omni/2025/dreamo.md) — ByteDance · 2025-04 · paper · [edit] — https://arxiv.org/abs/2504.16915
-- [FramePack: Frame Context Packing and Drift Prevention in Next-Frame-Prediction Video Diffusion Models](omni/2025/framepack.md) — Stanford University / MIT · 2025-04 · paper · [video] — https://arxiv.org/abs/2504.12626
-- [ICEdit：用 In-Context 生成范式做指令图像编辑（Enabling Instructional Image Editing with In-Context Generation in Large-Scale DiT）](omni/2025/in-context-edit-icedit.md) — 浙江大学 ReLER/CCAI · 哈佛 DBMI/HMS · 2025-04 · paper · [edit] — https://arxiv.org/abs/2504.20690
-- [Lumina-mGPT 2.0: Stand-Alone AutoRegressive Image Modeling](omni/2025/lumina-mgpt-2-0.md) — Shanghai AI Laboratory / Alpha-VLLM · 2025-04 · tech-report · [unified] — https://arxiv.org/abs/2507.17801
-- [MetaQueries: Transfer between Modalities with MetaQueries](omni/2025/metaqueries.md) — Meta / 纽约大学 (NYU) · 2025-04 · paper · [unified] — https://arxiv.org/abs/2504.06256
-- [Midjourney V7](omni/2025/midjourney-v7.md) — Midjourney · 2025-04 · blog · [t2i] — https://www.midjourney.com/updates/v7-alpha
-- [Seedream 3.0 Technical Report](omni/2025/seedream-3-0.md) — 字节跳动 Seed · 2025-04 · tech-report · [t2i] — https://seed.bytedance.com/en/seedream3_0
-- [SkyReels-V2: Infinite-Length Film Generative Model](omni/2025/skyreels-v2.md) — 昆仑万维 Skywork AI · 2025-04 · tech-report · [video] — https://arxiv.org/abs/2504.13074
-- [Step1X-Edit: A Practical Framework for General Image Editing](omni/2025/step1x-edit.md) — 阶跃星辰 StepFun · 2025-04 · tech-report · [edit] — https://arxiv.org/abs/2504.17761
-- [UNO: Less-to-More Generalization — Unlocking More Controllability by In-Context Generation](omni/2025/uno.md) — ByteDance Intelligent Creation · 2025-04 · paper · [edit] — https://arxiv.org/abs/2504.02160
-- [可灵 Kling 2.0 / 2.1 / 2.5 Turbo](omni/2025/kling-2.md) — 快手 Kuaishou（可灵 Kling AI） · 2025-04 · blog · [video] — https://www.nasdaq.com/press-release/kling-ai-advances-20-era-empowering-everyone-tell-great-stories-ai-2025-04-15
-- [BAGEL: Emerging Properties in Unified Multimodal Pretraining](omni/2025/bagel.md) — ByteDance Seed · 2025-05 · paper · [unified] — https://arxiv.org/abs/2505.14683
-- [BLIP3-o: A Family of Fully Open Unified Multimodal Models](omni/2025/blip3-o.md) — Salesforce Research · 2025-05 · paper · [unified] — https://arxiv.org/abs/2505.09568
-- [FLUX.1 Kontext: Flow Matching for In-Context Image Generation and Editing in Latent Space](omni/2025/flux-1-kontext.md) — Black Forest Labs · 2025-05 · tech-report · [edit] — https://bfl.ai/announcements/flux-1-kontext
-- [HiDream-I1: A High-Efficient Image Generative Foundation Model with Sparse Diffusion Transformer](omni/2025/hidream-i1.md) — 智象未来 (HiDream.ai) · 2025-05 · tech-report · [t2i] — https://arxiv.org/abs/2505.22705
-- [Imagen 4 / Imagen 4 Ultra / Imagen 4 Fast](omni/2025/imagen-4.md) — Google DeepMind · 2025-05 · blog · [t2i] — https://deepmind.google/models/imagen/
-- [MAGI-1: Autoregressive Video Generation at Scale](omni/2025/magi-1.md) — Sand AI · 2025-05 · tech-report · [video] — https://arxiv.org/abs/2505.13211
-- [MMaDA: Multimodal Large Diffusion Language Models](omni/2025/mmada.md) — Princeton University / Peking University / Tsinghua University / ByteDance Seed · 2025-05 · paper · [unified] — https://arxiv.org/abs/2505.15809
-- [MeanFlow: Mean Flows for One-step Generative Modeling](omni/2025/mean-flows.md) — CMU + MIT (Geng·Deng·Bai·Kolter·He，He 组) · 2025-05 · paper · [method] — https://arxiv.org/abs/2505.13447
-- [Veo 3 与 Veo 3.1](omni/2025/veo-3.md) — Google DeepMind · 2025-05 · blog · [video] — https://blog.google/innovation-and-ai/products/generative-media-models-io-2025/
-- [Hunyuan3D 2.1: From Images to High-Fidelity 3D Assets with Production-Ready PBR Material](omni/2025/hunyuan3d-2-1.md) — 腾讯混元 (Tencent Hunyuan) · 2025-06 · tech-report · [3d] — https://arxiv.org/abs/2506.15442
-- [Ming-Omni / Ming-Lite-Omni: A Unified Multimodal Model for Perception and Generation](omni/2025/ming-omni.md) — 蚂蚁集团 Inclusion AI (Ant Group) · 2025-06 · tech-report · [omni] — https://arxiv.org/abs/2506.09344
-- [OmniGen2: Towards Instruction-Aligned Multimodal Generation](omni/2025/omnigen2.md) — 北京智源 BAAI · 2025-06 · paper · [unified] — https://arxiv.org/abs/2506.18871
-- [Ovis-U1: Unified Understanding, Generation and Editing](omni/2025/ovis-u1.md) — 阿里巴巴 (Alibaba Group, Ovis Team) · 2025-06 · tech-report · [unified] — https://arxiv.org/abs/2506.23044
-- [SeedEdit 3.0: Fast and High-Quality Generative Image Editing](omni/2025/seededit-3-0.md) — ByteDance Seed · 2025-06 · tech-report · [edit] — https://seed.bytedance.com/en/tech/seededit
-- [Seedance 1.0: Exploring the Boundaries of Video Generation Models](omni/2025/seedance-1-0.md) — 字节跳动 Seed (ByteDance Seed) · 2025-06 · tech-report · [video] — https://arxiv.org/abs/2506.09113
-- [Show-o2: Improved Native Unified Multimodal Models](omni/2025/show-o2.md) — Show Lab (新加坡国立大学) / ByteDance · 2025-06 · paper · [unified] — https://arxiv.org/abs/2506.15564
-- [UniWorld-V1: High-Resolution Semantic Encoders for Unified Visual Understanding and Generation](omni/2025/uniworld-v1.md) — Peking University (PKU-YuanGroup) / Peng Cheng Lab / Rabbitpre AI · 2025-06 · paper · [unified] — https://arxiv.org/abs/2506.03147
-- [FLUX.1 Krea (dev)](omni/2025/flux-1-krea-dev.md) — Black Forest Labs / Krea · 2025-07 · blog · [t2i] — https://www.krea.ai/blog/flux-krea-open-source-release
-- [Wan 2.2](omni/2025/wan-2-2.md) — 阿里巴巴 Wan 团队（Alibaba Wan Team / 通义万相） · 2025-07 · model-card · [video] — https://github.com/Wan-Video/Wan2.2
-- [X-Omni: Reinforcement Learning Makes Discrete Autoregressive Image Generative Models Great Again](omni/2025/x-omni.md) — 腾讯混元 (Tencent Hunyuan X) · 2025-07 · paper · [unified] — https://arxiv.org/abs/2507.22058
-- [Gemini 2.5 Flash Image（Nano Banana）](omni/2025/gemini-2-5-flash-image-nano-banana.md) — Google DeepMind · 2025-08 · blog · [edit] — https://blog.google/products-and-platforms/products/gemini/updated-image-editing-model/
-- [Imagen 4 Fast / Imagen 4(Ultra) GA 与 GPT Image 1 mini](omni/2025/gpt-image-1-mini-and-imagen-fast.md) — Google / OpenAI · 2025-08 · blog · [t2i] — https://developers.googleblog.com/en/announcing-imagen-4-fast-and-imagen-4-family-generally-available-in-the-gemini-api/
-- [NextStep-1: Toward Autoregressive Image Generation with Continuous Tokens at Scale](omni/2025/nextstep-1.md) — StepFun (阶跃星辰) · 2025-08 · tech-report · [t2i] — https://arxiv.org/abs/2508.10711
-- [Qwen-Image-Edit / Qwen-Image-Edit-2509](omni/2025/qwen-image-edit.md) — 阿里巴巴 Qwen 团队 · 2025-08 · model-card · [edit] — https://huggingface.co/Qwen/Qwen-Image-Edit
-- [Qwen-Image: 阿里巴巴 20B MMDiT 文生图基础模型](omni/2025/qwen-image.md) — 阿里巴巴 Qwen 团队 · 2025-08 · tech-report · [t2i] — https://arxiv.org/abs/2508.02324
-- [HunyuanImage 2.1：高效的 2K 高分辨率文生图扩散模型](omni/2025/hunyuanimage-2-1.md) — 腾讯混元 · 2025-09 · model-card · [t2i] — https://huggingface.co/tencent/HunyuanImage-2.1
-- [HunyuanImage 3.0 Technical Report](omni/2025/hunyuanimage-3-0.md) — 腾讯混元（Tencent Hunyuan Foundation Model Team） · 2025-09 · tech-report · [unified] — https://arxiv.org/abs/2509.23951
-- [Seedream 4.0: Toward Next-generation Multimodal Image Generation](omni/2025/seedream-4-0.md) — 字节跳动 Seed · 2025-09 · tech-report · [unified] — https://seed.bytedance.com/seedream4_0
-- [Sora 2](omni/2025/sora-2.md) — OpenAI · 2025-09 · system-card · [video] — https://openai.com/index/sora-2/
-- [Diffusion Transformers with Representation Autoencoders (RAE)](omni/2025/rae-diffusion-transformers-with-representation-autoencoders.md) — 纽约大学 (NYU) / 谢赛宁组 · 2025-10 · paper · [method] — https://arxiv.org/abs/2510.11690
-- [Emu3.5: Native Multimodal Models are World Learners](omni/2025/emu3-5.md) — 北京智源 BAAI · 2025-10 · tech-report · [omni] — https://arxiv.org/abs/2510.26583
-- [Lumina-DiMOO: An Omni Diffusion Large Language Model for Multi-Modal Generation and Understanding](omni/2025/lumina-dimoo.md) — Shanghai AI Laboratory / Alpha-VLLM · 2025-10 · tech-report · [unified] — https://arxiv.org/abs/2510.06308
-- [FLUX.2](omni/2025/flux-2.md) — Black Forest Labs · 2025-11 · blog · [t2i] — https://bfl.ai/blog/flux-2
-- [Gemini 3 Pro Image（Nano Banana Pro）](omni/2025/gemini-3-pro-image-nano-banana-pro.md) — Google DeepMind · 2025-11 · blog · [edit] — https://blog.google/innovation-and-ai/products/nano-banana-pro/
-- [HunyuanVideo 1.5](omni/2025/hunyuanvideo-1-5.md) — 腾讯混元 (Tencent Hunyuan Foundation Model Team) · 2025-11 · tech-report · [video] — https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5
-- [Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation](omni/2025/kandinsky-5.md) — Sber AI / AIRI (Kandinsky Lab) · 2025-11 · tech-report · [video] — https://arxiv.org/abs/2511.14993
-- [Z-Image / Z-Image-Turbo：单流扩散 Transformer 的高效 6B 文生图基础模型](omni/2025/z-image.md) — Alibaba Tongyi Lab (Tongyi-MAI) · 2025-11 · tech-report · [t2i] — https://arxiv.org/abs/2511.22699
+- [[omni/2025/ace-plus-plus|ACE++: Instruction-Based Image Creation and Editing via Context-Aware Content Filling]] — Alibaba Tongyi Lab (ali-vilab) · 2025-01 · tech-report · [edit] — https://arxiv.org/abs/2501.02487
+- [[omni/2025/cosmos-predict|Cosmos World Foundation Model Platform for Physical AI (Cosmos-Predict1)]] — NVIDIA · 2025-01 · tech-report · [video] — https://arxiv.org/abs/2501.03575
+- [[omni/2025/janus-pro|Janus-Pro: Unified Multimodal Understanding and Generation with Data and Model Scaling]] — DeepSeek-AI · 2025-01 · tech-report · [unified] — https://arxiv.org/abs/2501.17811
+- [[omni/2025/pixart-and-sana-1-5|SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer]] — NVIDIA / MIT / 清华 / Playground / 北大 / HKU · 2025-01 · tech-report · [t2i] — https://arxiv.org/abs/2501.18427
+- [[omni/2025/fractal-generative-models|Fractal Generative Models (FractalGen)]] — MIT CSAIL / Google DeepMind（何恺明组） · 2025-02 · paper · [method] — https://arxiv.org/abs/2502.17437
+- [[omni/2025/goku|Goku: Flow Based Video Generative Foundation Models]] — 字节跳动 / 港大 (HKU) · 2025-02 · tech-report · [video] — https://arxiv.org/abs/2502.04896
+- [[omni/2025/pika-2-2|Pika 2.0 / 2.1 / 2.2]] — Pika Labs · 2025-02 · blog · [video] — https://pika.art/
+- [[omni/2025/step-audio|Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction]] — 阶跃星辰 StepFun · 2025-02 · tech-report · [audio] — https://arxiv.org/abs/2502.11946
+- [[omni/2025/cogview4|CogView4-6B]] — 智谱 AI / 清华大学 KEG · 2025-03 · model-card · [t2i] — https://github.com/THUDM/CogView4
+- [[omni/2025/gpt-image-1|GPT Image 1 / 4o 原生图像生成（GPT-4o native image generation）]] — OpenAI · 2025-03 · system-card · [omni] — https://openai.com/index/introducing-4o-image-generation/
+- [[omni/2025/gemini-2-0-flash-image|Gemini 2.0 Flash 原生图像生成（公开实验版 gemini-2.0-flash-exp，2025-03）]] — Google DeepMind · 2025-03 · blog · [omni] — https://developers.googleblog.com/en/experiment-with-gemini-20-flash-native-image-generation/
+- [[omni/2025/ideogram-3-0|Ideogram 3.0]] — Ideogram · 2025-03 · blog · [t2i] — https://about.ideogram.ai/3.0
+- [[omni/2025/lumina-image-2-0|Lumina-Image 2.0: A Unified and Efficient Image Generative Framework]] — 上海AI实验室 / Alpha-VLLM · 2025-03 · tech-report · [t2i] — https://arxiv.org/abs/2503.21758
+- [[omni/2025/qwen2-5-omni|Qwen2.5-Omni Technical Report]] — 阿里巴巴 Qwen 团队 · 2025-03 · tech-report · [omni] — https://arxiv.org/abs/2503.20215
+- [[omni/2025/reve-image|Reve Image 1.0 (Halfmoon)]] — Reve AI, Inc. · 2025-03 · blog · [t2i] — https://reve.com/
+- [[omni/2025/vace|VACE: All-in-One Video Creation and Editing]] — Alibaba Tongyi Lab (Wan Team) · 2025-03 · paper · [video] — https://arxiv.org/abs/2503.07598
+- [[omni/2025/wan-2-1|Wan: Open and Advanced Large-Scale Video Generative Models (Wan 2.1)]] — 阿里巴巴 Wan 团队 (Alibaba Wan Team) · 2025-03 · tech-report · [video] — https://arxiv.org/abs/2503.20314
+- [[omni/2025/firefly-image-model-4|Adobe Firefly Image Model 4 / 4 Ultra]] — Adobe · 2025-04 · blog · [t2i] — https://blog.adobe.com/en/publish/2025/04/24/adobe-firefly-next-evolution-creative-ai-is-here
+- [[omni/2025/dreamo|DreamO: A Unified Framework for Image Customization]] — ByteDance · 2025-04 · paper · [edit] — https://arxiv.org/abs/2504.16915
+- [[omni/2025/framepack|FramePack: Frame Context Packing and Drift Prevention in Next-Frame-Prediction Video Diffusion Models]] — Stanford University / MIT · 2025-04 · paper · [video] — https://arxiv.org/abs/2504.12626
+- [[omni/2025/in-context-edit-icedit|ICEdit：用 In-Context 生成范式做指令图像编辑（Enabling Instructional Image Editing with In-Context Generation in Large-Scale DiT）]] — 浙江大学 ReLER/CCAI · 哈佛 DBMI/HMS · 2025-04 · paper · [edit] — https://arxiv.org/abs/2504.20690
+- [[omni/2025/lumina-mgpt-2-0|Lumina-mGPT 2.0: Stand-Alone AutoRegressive Image Modeling]] — Shanghai AI Laboratory / Alpha-VLLM · 2025-04 · tech-report · [unified] — https://arxiv.org/abs/2507.17801
+- [[omni/2025/metaqueries|MetaQueries: Transfer between Modalities with MetaQueries]] — Meta / 纽约大学 (NYU) · 2025-04 · paper · [unified] — https://arxiv.org/abs/2504.06256
+- [[omni/2025/midjourney-v7|Midjourney V7]] — Midjourney · 2025-04 · blog · [t2i] — https://www.midjourney.com/updates/v7-alpha
+- [[omni/2025/seedream-3-0|Seedream 3.0 Technical Report]] — 字节跳动 Seed · 2025-04 · tech-report · [t2i] — https://seed.bytedance.com/en/seedream3_0
+- [[omni/2025/skyreels-v2|SkyReels-V2: Infinite-Length Film Generative Model]] — 昆仑万维 Skywork AI · 2025-04 · tech-report · [video] — https://arxiv.org/abs/2504.13074
+- [[omni/2025/step1x-edit|Step1X-Edit: A Practical Framework for General Image Editing]] — 阶跃星辰 StepFun · 2025-04 · tech-report · [edit] — https://arxiv.org/abs/2504.17761
+- [[omni/2025/uno|UNO: Less-to-More Generalization — Unlocking More Controllability by In-Context Generation]] — ByteDance Intelligent Creation · 2025-04 · paper · [edit] — https://arxiv.org/abs/2504.02160
+- [[omni/2025/kling-2|可灵 Kling 2.0 / 2.1 / 2.5 Turbo]] — 快手 Kuaishou（可灵 Kling AI） · 2025-04 · blog · [video] — https://www.nasdaq.com/press-release/kling-ai-advances-20-era-empowering-everyone-tell-great-stories-ai-2025-04-15
+- [[omni/2025/bagel|BAGEL: Emerging Properties in Unified Multimodal Pretraining]] — ByteDance Seed · 2025-05 · paper · [unified] — https://arxiv.org/abs/2505.14683
+- [[omni/2025/blip3-o|BLIP3-o: A Family of Fully Open Unified Multimodal Models]] — Salesforce Research · 2025-05 · paper · [unified] — https://arxiv.org/abs/2505.09568
+- [[omni/2025/flux-1-kontext|FLUX.1 Kontext: Flow Matching for In-Context Image Generation and Editing in Latent Space]] — Black Forest Labs · 2025-05 · tech-report · [edit] — https://bfl.ai/announcements/flux-1-kontext
+- [[omni/2025/hidream-i1|HiDream-I1: A High-Efficient Image Generative Foundation Model with Sparse Diffusion Transformer]] — 智象未来 (HiDream.ai) · 2025-05 · tech-report · [t2i] — https://arxiv.org/abs/2505.22705
+- [[omni/2025/imagen-4|Imagen 4 / Imagen 4 Ultra / Imagen 4 Fast]] — Google DeepMind · 2025-05 · blog · [t2i] — https://deepmind.google/models/imagen/
+- [[omni/2025/magi-1|MAGI-1: Autoregressive Video Generation at Scale]] — Sand AI · 2025-05 · tech-report · [video] — https://arxiv.org/abs/2505.13211
+- [[omni/2025/mmada|MMaDA: Multimodal Large Diffusion Language Models]] — Princeton University / Peking University / Tsinghua University / ByteDance Seed · 2025-05 · paper · [unified] — https://arxiv.org/abs/2505.15809
+- [[omni/2025/mean-flows|MeanFlow: Mean Flows for One-step Generative Modeling]] — CMU + MIT (Geng·Deng·Bai·Kolter·He，He 组) · 2025-05 · paper · [method] — https://arxiv.org/abs/2505.13447
+- [[omni/2025/veo-3|Veo 3 与 Veo 3.1]] — Google DeepMind · 2025-05 · blog · [video] — https://blog.google/innovation-and-ai/products/generative-media-models-io-2025/
+- [[omni/2025/hunyuan3d-2-1|Hunyuan3D 2.1: From Images to High-Fidelity 3D Assets with Production-Ready PBR Material]] — 腾讯混元 (Tencent Hunyuan) · 2025-06 · tech-report · [3d] — https://arxiv.org/abs/2506.15442
+- [[omni/2025/ming-omni|Ming-Omni / Ming-Lite-Omni: A Unified Multimodal Model for Perception and Generation]] — 蚂蚁集团 Inclusion AI (Ant Group) · 2025-06 · tech-report · [omni] — https://arxiv.org/abs/2506.09344
+- [[omni/2025/omnigen2|OmniGen2: Towards Instruction-Aligned Multimodal Generation]] — 北京智源 BAAI · 2025-06 · paper · [unified] — https://arxiv.org/abs/2506.18871
+- [[omni/2025/ovis-u1|Ovis-U1: Unified Understanding, Generation and Editing]] — 阿里巴巴 (Alibaba Group, Ovis Team) · 2025-06 · tech-report · [unified] — https://arxiv.org/abs/2506.23044
+- [[omni/2025/seededit-3-0|SeedEdit 3.0: Fast and High-Quality Generative Image Editing]] — ByteDance Seed · 2025-06 · tech-report · [edit] — https://seed.bytedance.com/en/tech/seededit
+- [[omni/2025/seedance-1-0|Seedance 1.0: Exploring the Boundaries of Video Generation Models]] — 字节跳动 Seed (ByteDance Seed) · 2025-06 · tech-report · [video] — https://arxiv.org/abs/2506.09113
+- [[omni/2025/show-o2|Show-o2: Improved Native Unified Multimodal Models]] — Show Lab (新加坡国立大学) / ByteDance · 2025-06 · paper · [unified] — https://arxiv.org/abs/2506.15564
+- [[omni/2025/uniworld-v1|UniWorld-V1: High-Resolution Semantic Encoders for Unified Visual Understanding and Generation]] — Peking University (PKU-YuanGroup) / Peng Cheng Lab / Rabbitpre AI · 2025-06 · paper · [unified] — https://arxiv.org/abs/2506.03147
+- [[omni/2025/flux-1-krea-dev|FLUX.1 Krea (dev)]] — Black Forest Labs / Krea · 2025-07 · blog · [t2i] — https://www.krea.ai/blog/flux-krea-open-source-release
+- [[omni/2025/wan-2-2|Wan 2.2]] — 阿里巴巴 Wan 团队（Alibaba Wan Team / 通义万相） · 2025-07 · model-card · [video] — https://github.com/Wan-Video/Wan2.2
+- [[omni/2025/x-omni|X-Omni: Reinforcement Learning Makes Discrete Autoregressive Image Generative Models Great Again]] — 腾讯混元 (Tencent Hunyuan X) · 2025-07 · paper · [unified] — https://arxiv.org/abs/2507.22058
+- [[omni/2025/gemini-2-5-flash-image-nano-banana|Gemini 2.5 Flash Image（Nano Banana）]] — Google DeepMind · 2025-08 · blog · [edit] — https://blog.google/products-and-platforms/products/gemini/updated-image-editing-model/
+- [[omni/2025/gpt-image-1-mini-and-imagen-fast|Imagen 4 Fast / Imagen 4(Ultra) GA 与 GPT Image 1 mini]] — Google / OpenAI · 2025-08 · blog · [t2i] — https://developers.googleblog.com/en/announcing-imagen-4-fast-and-imagen-4-family-generally-available-in-the-gemini-api/
+- [[omni/2025/nextstep-1|NextStep-1: Toward Autoregressive Image Generation with Continuous Tokens at Scale]] — StepFun (阶跃星辰) · 2025-08 · tech-report · [t2i] — https://arxiv.org/abs/2508.10711
+- [[omni/2025/qwen-image-edit|Qwen-Image-Edit / Qwen-Image-Edit-2509]] — 阿里巴巴 Qwen 团队 · 2025-08 · model-card · [edit] — https://huggingface.co/Qwen/Qwen-Image-Edit
+- [[omni/2025/qwen-image|Qwen-Image: 阿里巴巴 20B MMDiT 文生图基础模型]] — 阿里巴巴 Qwen 团队 · 2025-08 · tech-report · [t2i] — https://arxiv.org/abs/2508.02324
+- [[omni/2025/hunyuanimage-2-1|HunyuanImage 2.1：高效的 2K 高分辨率文生图扩散模型]] — 腾讯混元 · 2025-09 · model-card · [t2i] — https://huggingface.co/tencent/HunyuanImage-2.1
+- [[omni/2025/hunyuanimage-3-0|HunyuanImage 3.0 Technical Report]] — 腾讯混元（Tencent Hunyuan Foundation Model Team） · 2025-09 · tech-report · [unified] — https://arxiv.org/abs/2509.23951
+- [[omni/2025/seedream-4-0|Seedream 4.0: Toward Next-generation Multimodal Image Generation]] — 字节跳动 Seed · 2025-09 · tech-report · [unified] — https://seed.bytedance.com/seedream4_0
+- [[omni/2025/sora-2|Sora 2]] — OpenAI · 2025-09 · system-card · [video] — https://openai.com/index/sora-2/
+- [[omni/2025/rae-diffusion-transformers-with-representation-autoencoders|Diffusion Transformers with Representation Autoencoders (RAE)]] — 纽约大学 (NYU) / 谢赛宁组 · 2025-10 · paper · [method] — https://arxiv.org/abs/2510.11690
+- [[omni/2025/emu3-5|Emu3.5: Native Multimodal Models are World Learners]] — 北京智源 BAAI · 2025-10 · tech-report · [omni] — https://arxiv.org/abs/2510.26583
+- [[omni/2025/lumina-dimoo|Lumina-DiMOO: An Omni Diffusion Large Language Model for Multi-Modal Generation and Understanding]] — Shanghai AI Laboratory / Alpha-VLLM · 2025-10 · tech-report · [unified] — https://arxiv.org/abs/2510.06308
+- [[omni/2025/flux-2|FLUX.2]] — Black Forest Labs · 2025-11 · blog · [t2i] — https://bfl.ai/blog/flux-2
+- [[omni/2025/gemini-3-pro-image-nano-banana-pro|Gemini 3 Pro Image（Nano Banana Pro）]] — Google DeepMind · 2025-11 · blog · [edit] — https://blog.google/innovation-and-ai/products/nano-banana-pro/
+- [[omni/2025/hunyuanvideo-1-5|HunyuanVideo 1.5]] — 腾讯混元 (Tencent Hunyuan Foundation Model Team) · 2025-11 · tech-report · [video] — https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5
+- [[omni/2025/kandinsky-5|Kandinsky 5.0: A Family of Foundation Models for Image and Video Generation]] — Sber AI / AIRI (Kandinsky Lab) · 2025-11 · tech-report · [video] — https://arxiv.org/abs/2511.14993
+- [[omni/2025/z-image|Z-Image / Z-Image-Turbo：单流扩散 Transformer 的高效 6B 文生图基础模型]] — Alibaba Tongyi Lab (Tongyi-MAI) · 2025-11 · tech-report · [t2i] — https://arxiv.org/abs/2511.22699
 
 ## 2026（21 条）
 
-- [FLUX.2 (klein)](omni/2026/flux-2-klein.md) — Black Forest Labs · 2026-01 · model-card · [unified] — https://bfl.ai/blog/flux2-klein-towards-interactive-visual-intelligence
-- [Luma Ray3.14](omni/2026/luma-ray3-14.md) — Luma AI · 2026-01 · blog · [video] — https://lumalabs.ai/news/ray3_14
-- [Skywork UniPic 3.0: Unified Multi-Image Composition via Sequence Modeling](omni/2026/skywork-unipic-3-0.md) — Kunlun Skywork (Skywork Multimodality Team) · 2026-01 · tech-report · [unified] — https://arxiv.org/abs/2601.15664
-- [Recraft V4](omni/2026/recraft-v4.md) — Recraft · 2026-02 · blog · [t2i] — https://www.recraft.ai/blog/introducing-recraft-v4-design-taste-meets-image-generation
-- [Seedance 2.0](omni/2026/seedance-2-0.md) — ByteDance Seed · 2026-02 · tech-report · [video] — https://seed.bytedance.com/en/blog/official-launch-of-seedance-2-0
-- [Seedream 5.0 Lite](omni/2026/seedream-5-0-lite.md) — 字节跳动 Seed · 2026-02 · blog · [unified] — https://seed.bytedance.com/en/blog/deeper-thinking-more-accurate-generation-introducing-seedream-5-0-lite
-- [可灵 3.0 系列模型（Kling 3.0：Video 3.0 / Video 3.0 Omni / Image 3.0 / Image 3.0 Omni）](omni/2026/kling-3-0.md) — 快手（Kuaishou / 可灵 AI） · 2026-02 · blog · [video] — https://kling.ai/release-note/release-notes/whbvu8hsip
-- [InternVL-U: Democratizing Unified Multimodal Models for Understanding, Reasoning, Generation and Editing](omni/2026/internvl-u.md) — Shanghai AI Laboratory (OpenGVLab) · 2026-03 · tech-report · [unified] — https://arxiv.org/abs/2603.09877
-- [GPT Image 2 / ChatGPT Images 2.0（含 Thinking mode）](omni/2026/gpt-image-2.md) — OpenAI · 2026-04 · system-card · [unified] — https://openai.com/index/introducing-chatgpt-images-2-0/
-- [Midjourney V8.1](omni/2026/midjourney-v8-1.md) — Midjourney · 2026-04 · blog · [t2i] — https://updates.midjourney.com/v8-1-alpha/
-- [Qwen3.5-Omni Technical Report](omni/2026/qwen3-5-omni.md) — Alibaba Qwen · 2026-04 · tech-report · [omni] — https://qwen.ai/blog?id=qwen3.5-omni
-- [Seed3D 2.0: Advancing High-Fidelity Simulation-Ready 3D Content Generation](omni/2026/seed3d-2-0.md) — ByteDance Seed · 2026-04 · tech-report · [3d] — https://seed.bytedance.com/en/seed3d_2_0
-- [ERNIE-Image Technical Report](omni/2026/ernie-image.md) — Baidu (ERNIE-Image Team) · 2026-05 · tech-report · [t2i] — https://arxiv.org/abs/2605.25347
-- [Qwen-Image-2.0 Technical Report](omni/2026/qwen-image-2-0.md) — Alibaba Qwen · 2026-05 · tech-report · [unified] — https://arxiv.org/abs/2605.10730
-- [Qwen-Image-Bench: From Generation to Creation in Text-to-Image Evaluation](omni/2026/qwen-image-bench.md) — Alibaba Qwen · 2026-05 · paper · [method] — https://arxiv.org/abs/2605.28091
-- [Qwen-Image-VAE-2.0 Technical Report](omni/2026/qwen-image-vae-2-0.md) — Alibaba Qwen · 2026-05 · tech-report · [method] — https://arxiv.org/abs/2605.13565
-- [Ideogram 4.0](omni/2026/ideogram-4-0.md) — Ideogram · 2026-06 · blog · [t2i] — https://ideogram.ai/blog/ideogram-4.0/
-- [Krea 2](omni/2026/krea-2.md) — Krea · 2026-06 · tech-report · [t2i] — https://www.krea.ai/blog/krea-2-technical-report
-- [OmniGen-AR: AutoRegressive Any-to-Image Generation](omni/2026/omnigen-ar.md) — Fudan University + ByteDance Seed + HKU · 2026-06 · paper · [unified] — https://arxiv.org/abs/2606.09156
-- [Qwen-Image-Flash: Beyond Objective Design](omni/2026/qwen-image-flash.md) — Alibaba Qwen · 2026-06 · tech-report · [t2i] — https://arxiv.org/abs/2606.03746
-- [Reve 2.0](omni/2026/reve-2-0.md) — Reve AI · 2026-06 · blog · [unified] — https://blog.reve.com/posts/announcing-reve-2.0/
+- [[omni/2026/flux-2-klein|FLUX.2 (klein)]] — Black Forest Labs · 2026-01 · model-card · [unified] — https://bfl.ai/blog/flux2-klein-towards-interactive-visual-intelligence
+- [[omni/2026/luma-ray3-14|Luma Ray3.14]] — Luma AI · 2026-01 · blog · [video] — https://lumalabs.ai/news/ray3_14
+- [[omni/2026/skywork-unipic-3-0|Skywork UniPic 3.0: Unified Multi-Image Composition via Sequence Modeling]] — Kunlun Skywork (Skywork Multimodality Team) · 2026-01 · tech-report · [unified] — https://arxiv.org/abs/2601.15664
+- [[omni/2026/recraft-v4|Recraft V4]] — Recraft · 2026-02 · blog · [t2i] — https://www.recraft.ai/blog/introducing-recraft-v4-design-taste-meets-image-generation
+- [[omni/2026/seedance-2-0|Seedance 2.0]] — ByteDance Seed · 2026-02 · tech-report · [video] — https://seed.bytedance.com/en/blog/official-launch-of-seedance-2-0
+- [[omni/2026/seedream-5-0-lite|Seedream 5.0 Lite]] — 字节跳动 Seed · 2026-02 · blog · [unified] — https://seed.bytedance.com/en/blog/deeper-thinking-more-accurate-generation-introducing-seedream-5-0-lite
+- [[omni/2026/kling-3-0|可灵 3.0 系列模型（Kling 3.0：Video 3.0 / Video 3.0 Omni / Image 3.0 / Image 3.0 Omni）]] — 快手（Kuaishou / 可灵 AI） · 2026-02 · blog · [video] — https://kling.ai/release-note/release-notes/whbvu8hsip
+- [[omni/2026/internvl-u|InternVL-U: Democratizing Unified Multimodal Models for Understanding, Reasoning, Generation and Editing]] — Shanghai AI Laboratory (OpenGVLab) · 2026-03 · tech-report · [unified] — https://arxiv.org/abs/2603.09877
+- [[omni/2026/gpt-image-2|GPT Image 2 / ChatGPT Images 2.0（含 Thinking mode）]] — OpenAI · 2026-04 · system-card · [unified] — https://openai.com/index/introducing-chatgpt-images-2-0/
+- [[omni/2026/midjourney-v8-1|Midjourney V8.1]] — Midjourney · 2026-04 · blog · [t2i] — https://updates.midjourney.com/v8-1-alpha/
+- [[omni/2026/qwen3-5-omni|Qwen3.5-Omni Technical Report]] — Alibaba Qwen · 2026-04 · tech-report · [omni] — https://qwen.ai/blog?id=qwen3.5-omni
+- [[omni/2026/seed3d-2-0|Seed3D 2.0: Advancing High-Fidelity Simulation-Ready 3D Content Generation]] — ByteDance Seed · 2026-04 · tech-report · [3d] — https://seed.bytedance.com/en/seed3d_2_0
+- [[omni/2026/ernie-image|ERNIE-Image Technical Report]] — Baidu (ERNIE-Image Team) · 2026-05 · tech-report · [t2i] — https://arxiv.org/abs/2605.25347
+- [[omni/2026/qwen-image-2-0|Qwen-Image-2.0 Technical Report]] — Alibaba Qwen · 2026-05 · tech-report · [unified] — https://arxiv.org/abs/2605.10730
+- [[omni/2026/qwen-image-bench|Qwen-Image-Bench: From Generation to Creation in Text-to-Image Evaluation]] — Alibaba Qwen · 2026-05 · paper · [method] — https://arxiv.org/abs/2605.28091
+- [[omni/2026/qwen-image-vae-2-0|Qwen-Image-VAE-2.0 Technical Report]] — Alibaba Qwen · 2026-05 · tech-report · [method] — https://arxiv.org/abs/2605.13565
+- [[omni/2026/ideogram-4-0|Ideogram 4.0]] — Ideogram · 2026-06 · blog · [t2i] — https://ideogram.ai/blog/ideogram-4.0/
+- [[omni/2026/krea-2|Krea 2]] — Krea · 2026-06 · tech-report · [t2i] — https://www.krea.ai/blog/krea-2-technical-report
+- [[omni/2026/omnigen-ar|OmniGen-AR: AutoRegressive Any-to-Image Generation]] — Fudan University + ByteDance Seed + HKU · 2026-06 · paper · [unified] — https://arxiv.org/abs/2606.09156
+- [[omni/2026/qwen-image-flash|Qwen-Image-Flash: Beyond Objective Design]] — Alibaba Qwen · 2026-06 · tech-report · [t2i] — https://arxiv.org/abs/2606.03746
+- [[omni/2026/reve-2-0|Reve 2.0]] — Reve AI · 2026-06 · blog · [unified] — https://blog.reve.com/posts/announcing-reve-2.0/
 
 ## 未知（11 条）
 
-- [Infra：训练规模·并行·tokenizer 工程·推理加速](omni/sections/infra.md) — - · ? · source · [-] — 
-- [中国系文生图/编辑族横向对比：CogView · Qwen-Image · Hunyuan · Seedream · Kolors · ERNIE 及开源诸侯（2021–2026）](omni/deep-dive/chinese-t2i-families.md) — - · ? · source · [-] — 
-- [图像编辑与可控生成族横向对比：从 ControlNet/InstructPix2Pix 到 Kontext/Step1X/Qwen-Edit](omni/deep-dive/image-editing-control.md) — - · ? · source · [-] — 
-- [模型族横向对比：Stable Diffusion → SDXL → SD3 → FLUX 谱系](omni/deep-dive/sd-flux-lineage.md) — - · ? · source · [-] — 
-- [模型架构演进：从 U-Net 扩散到统一 omni 骨干（2020–2026）](omni/sections/architecture.md) — - · ? · source · [-] — 
-- [横向综述 · 数据：规模 · 配比 · 重标注 · 过滤](omni/sections/data.md) — - · ? · source · [-] — 
-- [统一/Omni 模型族横向对比：Chameleon · Emu · Janus · BAGEL · OmniGen · Show-o · VAR 谱系](omni/deep-dive/unified-omni-families.md) — - · ? · source · [-] — 
-- [统一理解生成 & any-to-any 全模态专题](omni/sections/unified-omni.md) — - · ? · source · [-] — 
-- [视频生成族横向对比（Sora · Veo · Wan · Movie Gen · HunyuanVideo · Kling · CogVideoX 及其谱系）](omni/deep-dive/video-generation-families.md) — - · ? · source · [-] — 
-- [训练方法：目标函数·多阶段·偏好对齐·蒸馏](omni/sections/training.md) — - · ? · source · [-] — 
-- [评测 benchmark 演进与横向数字](omni/sections/benchmark.md) — - · ? · source · [-] — 
+- [[omni/sections/infra|Infra：训练规模·并行·tokenizer 工程·推理加速]] — - · ? · source · [-] — 
+- [[omni/deep-dive/chinese-t2i-families|中国系文生图/编辑族横向对比：CogView · Qwen-Image · Hunyuan · Seedream · Kolors · ERNIE 及开源诸侯（2021–2026）]] — - · ? · source · [-] — 
+- [[omni/deep-dive/image-editing-control|图像编辑与可控生成族横向对比：从 ControlNet/InstructPix2Pix 到 Kontext/Step1X/Qwen-Edit]] — - · ? · source · [-] — 
+- [[omni/deep-dive/sd-flux-lineage|模型族横向对比：Stable Diffusion → SDXL → SD3 → FLUX 谱系]] — - · ? · source · [-] — 
+- [[omni/sections/architecture|模型架构演进：从 U-Net 扩散到统一 omni 骨干（2020–2026）]] — - · ? · source · [-] — 
+- [[omni/sections/data|横向综述 · 数据：规模 · 配比 · 重标注 · 过滤]] — - · ? · source · [-] — 
+- [[omni/deep-dive/unified-omni-families|统一/Omni 模型族横向对比：Chameleon · Emu · Janus · BAGEL · OmniGen · Show-o · VAR 谱系]] — - · ? · source · [-] — 
+- [[omni/sections/unified-omni|统一理解生成 & any-to-any 全模态专题]] — - · ? · source · [-] — 
+- [[omni/deep-dive/video-generation-families|视频生成族横向对比（Sora · Veo · Wan · Movie Gen · HunyuanVideo · Kling · CogVideoX 及其谱系）]] — - · ? · source · [-] — 
+- [[omni/sections/training|训练方法：目标函数·多阶段·偏好对齐·蒸馏]] — - · ? · source · [-] — 
+- [[omni/sections/benchmark|评测 benchmark 演进与横向数字]] — - · ? · source · [-] — 

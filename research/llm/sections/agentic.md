@@ -173,9 +173,9 @@
 - **Nemotron 3 Ultra** (NVIDIA, 2026-06, paper) — Nemotron 3 家族最强（550B 总/55B 激活混合 Mamba-Attention MoE）为长时自主 agentic 优化：20T token 预训练→扩 1M 上下文→SFT+RL+多教师在线策略蒸馏(MOPD)；LatentMoE/MTP/NVFP4/多环境 RLVR，吞吐相比公开 SOTA 最高约 6×，全开源。https://arxiv.org/abs/2606.15007
 
 ## 增量补录（2026 调研后查漏，agentic 维度）
-- **Qwen-AgentWorld** — **首个语言世界模型(LWM)**，7 域环境仿真；两范式：当模拟器做 Sim RL(+4.3~12.3)、当 agent 基础模型 warm-up(+5.2~11.8)。[详](llm/2026/qwen-agentworld.md)
-- **Kimi-K2.6** — **agent swarm 300 子agent/4000步**、7×24 后台 agent、coding-driven design；Agentic benchmark(BrowseComp swarm 86.3/OSWorld-V 73.1)。[详](llm/2026/kimi-k2.6.md)
-- **GLM-5.2** — Agentic RL + 分层上下文管理(BrowseComp 55.3→75.9)；MCP-Atlas 76.8。[详](llm/2026/glm-5.2.md)
-- **MiniMax-M3** — frontier long-horizon agentic(coding & cowork)。[详](llm/2026/minimax-m3.md)
-- **Mistral-Small-4** — 原生 function calling+JSON、SWE 自动化(Devstral)。[详](llm/2026/mistral-small-4.md)
-- **Intern-S2-Preview** — 科学工作流 agent(OpenClaw/Hermes/Claude Code 集成)。[详](llm/2026/intern-s2-preview.md)
+- **Qwen-AgentWorld** — **首个语言世界模型(LWM)**，7 域环境仿真；两范式：当模拟器做 Sim RL(+4.3~12.3)、当 agent 基础模型 warm-up(+5.2~11.8)。[[llm/2026/qwen-agentworld|详]]
+- **Kimi-K2.6** — **agent swarm 300 子agent/4000步**、7×24 后台 agent、coding-driven design；Agentic benchmark(BrowseComp swarm 86.3/OSWorld-V 73.1)。[[llm/2026/kimi-k2.6|详]]
+- **GLM-5.2** — Agentic RL + 分层上下文管理(BrowseComp 55.3→75.9)；MCP-Atlas 76.8。[[llm/2026/glm-5.2|详]]
+- **MiniMax-M3** — frontier long-horizon agentic(coding & cowork)。[[llm/2026/minimax-m3|详]]
+- **Mistral-Small-4** — 原生 function calling+JSON、SWE 自动化(Devstral)。[[llm/2026/mistral-small-4|详]]
+- **Intern-S2-Preview** — 科学工作流 agent(OpenClaw/Hermes/Claude Code 集成)。[[llm/2026/intern-s2-preview|详]]

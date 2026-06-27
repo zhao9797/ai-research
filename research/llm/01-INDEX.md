@@ -12,559 +12,559 @@ updated: 2026-06-18
 
 ## 2018（1 条）
 
-- [GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism](llm/themes/ai-infra/gpipe.md) — Google · 2018-11 · paper · [AI infra] — https://arxiv.org/abs/1811.06965
+- [[llm/themes/ai-infra/gpipe|GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism]] — Google · 2018-11 · paper · [AI infra] — https://arxiv.org/abs/1811.06965
 
 ## 2019（4 条）
 
-- [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism](llm/themes/ai-infra/megatron-lm.md) — NVIDIA · 2019-09 · paper · [AI infra/架构] — https://arxiv.org/abs/1909.08053
-- [Root Mean Square Layer Normalization (RMSNorm)](llm/themes/architecture/rmsnorm.md) — University of Edinburgh / University of Zurich · 2019-10 · paper · [架构] — https://arxiv.org/abs/1910.07467
-- [ZeRO: Memory Optimizations Toward Training Trillion Parameter Models](llm/themes/ai-infra/zero.md) — Microsoft (DeepSpeed) · 2019-10 · paper · [AI infra] — https://arxiv.org/abs/1910.02054
-- [Fast Transformer Decoding: One Write-Head is All You Need (Multi-Query Attention)](llm/themes/architecture/multi-query-attention.md) — Google · 2019-11 · paper · [架构/AI infra] — https://arxiv.org/abs/1911.02150
+- [[llm/themes/ai-infra/megatron-lm|Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism]] — NVIDIA · 2019-09 · paper · [AI infra/架构] — https://arxiv.org/abs/1909.08053
+- [[llm/themes/architecture/rmsnorm|Root Mean Square Layer Normalization (RMSNorm)]] — University of Edinburgh / University of Zurich · 2019-10 · paper · [架构] — https://arxiv.org/abs/1910.07467
+- [[llm/themes/ai-infra/zero|ZeRO: Memory Optimizations Toward Training Trillion Parameter Models]] — Microsoft (DeepSpeed) · 2019-10 · paper · [AI infra] — https://arxiv.org/abs/1910.02054
+- [[llm/themes/architecture/multi-query-attention|Fast Transformer Decoding: One Write-Head is All You Need (Multi-Query Attention)]] — Google · 2019-11 · paper · [架构/AI infra] — https://arxiv.org/abs/1911.02150
 
 ## 2020（36 条）
 
-- [Reformer — The Efficient Transformer](llm/2020/reformer.md) — Google Research / UC Berkeley · 2020-01 · paper · [架构] — https://arxiv.org/abs/2001.04451
-- [Scaling Laws for Neural Language Models](llm/2020/scaling-laws-for-neural-language-models.md) — OpenAI · 2020-01 · paper · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2001.08361
-- [Towards a Human-like Open-Domain Chatbot (Meena)](llm/2020/meena-towards-human-like-open-domain-chatbot.md) — Google Brain · 2020-01 · paper · [架构/预训练数据] — https://arxiv.org/abs/2001.09977
-- [GLU Variants Improve Transformer](llm/2020/glu-variants-improve-transformer.md) — Google · 2020-02 · paper · [架构] — https://arxiv.org/abs/2002.05202
-- [REALM — Retrieval-Augmented Language Model Pre-Training](llm/2020/realm.md) — Google Research · 2020-02 · paper · [架构/预训练数据] — https://arxiv.org/abs/2002.08909
-- [Turing-NLG — A 17-billion-parameter language model by Microsoft](llm/2020/turing-nlg-microsoft.md) — Microsoft (Project Turing) · 2020-02 · blog · [架构/AI infra] — https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/
-- [ZeRO & DeepSpeed — New system optimizations enable training models with over 100 billion parameters](llm/2020/zero-deepspeed-100b-parameters.md) — Microsoft · 2020-02 · blog · [AI infra] — https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/
-- [ELECTRA — Pre-training Text Encoders as Discriminators Rather Than Generators](llm/2020/electra.md) — Google Brain / Stanford · 2020-03 · paper · [架构/预训练数据] — https://arxiv.org/abs/2003.10555
-- [TRL — Transformer Reinforcement Learning](llm/themes/ai-infra/trl.md) — Hugging Face · 2020-03 · github · [后训练/AI infra] — https://github.com/huggingface/trl
-- [Dense Passage Retrieval for Open-Domain Question Answering (DPR)](llm/2020/dense-passage-retrieval.md) — Meta / Facebook AI Research (FAIR), University of Washington, Princeton · 2020-04 · paper · [架构/预训练数据] — https://arxiv.org/abs/2004.04906
-- [Longformer — The Long-Document Transformer](llm/2020/longformer.md) — Allen Institute for AI (AI2) · 2020-04 · paper · [架构] — https://arxiv.org/abs/2004.05150
-- [Recipes for building an open-domain chatbot (BlenderBot)](llm/2020/blender-recipes-for-building-an-open-domain-chatbot.md) — Meta / Facebook AI Research (FAIR) · 2020-04 · paper · [后训练/预训练数据/架构] — https://arxiv.org/abs/2004.13637
-- [Conformer — Convolution-augmented Transformer for Speech Recognition](llm/2020/conformer.md) — Google · 2020-05 · paper · [架构] — https://arxiv.org/abs/2005.08100
-- [Language Models are Few-Shot Learners (GPT-3)](llm/2020/language-models-are-few-shot-learners-gpt-3.md) — OpenAI · 2020-05 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2005.14165
-- [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (RAG)](llm/2020/rag-retrieval-augmented-generation.md) — Meta / Facebook AI Research (FAIR), UCL · 2020-05 · paper · [架构/预训练数据] — https://arxiv.org/abs/2005.11401
-- [Synthesizer — Rethinking Self-Attention in Transformer Models](llm/2020/synthesizer.md) — Google Research · 2020-05 · paper · [架构] — https://arxiv.org/abs/2005.00743
-- [ZeRO-2 & DeepSpeed — Shattering barriers of deep learning speed & scale](llm/2020/zero-2-deepspeed.md) — Microsoft · 2020-05 · blog · [AI infra] — https://www.microsoft.com/en-us/research/blog/zero-2-deepspeed-shattering-barriers-of-deep-learning-speed-scale/
-- [DeBERTa — Decoding-enhanced BERT with Disentangled Attention](llm/2020/deberta.md) — Microsoft · 2020-06 · paper · [架构] — https://arxiv.org/abs/2006.03654
-- [GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding](llm/2020/gshard-scaling-giant-models.md) — Google · 2020-06 · paper · [架构/AI infra] — https://arxiv.org/abs/2006.16668
-- [Image GPT — Generative Pretraining from Pixels](llm/2020/image-gpt.md) — OpenAI · 2020-06 · blog · [架构/预训练数据] — https://openai.com/index/image-gpt/
-- [Linformer — Self-Attention with Linear Complexity](llm/2020/linformer.md) — Meta / Facebook AI · 2020-06 · paper · [架构] — https://arxiv.org/abs/2006.04768
-- [Memory-Efficient Pipeline-Parallel DNN Training (PipeDream-2BW)](llm/themes/ai-infra/pipedream-2bw.md) — Microsoft Research / Stanford / Carnegie Mellon · 2020-06 · paper · [AI infra] — https://arxiv.org/abs/2006.09503
-- [OpenAI API（GPT-3 商业化 API 发布）](llm/2020/openai-api-launch.md) — OpenAI · 2020-06 · blog · [AI infra/后训练] — https://openai.com/index/openai-api/
-- [PyTorch Distributed: Experiences on Accelerating Data Parallel Training](llm/themes/ai-infra/pytorch-ddp.md) — Meta (Facebook AI) · 2020-06 · paper · [AI infra] — https://arxiv.org/abs/2006.15704
-- [Transformers are RNNs — Fast Autoregressive Transformers with Linear Attention](llm/2020/linear-transformers-are-rnns.md) — Idiap Research Institute / EPFL · 2020-06 · paper · [架构] — https://arxiv.org/abs/2006.16236
-- [wav2vec 2.0 — A Framework for Self-Supervised Learning of Speech Representations](llm/2020/wav2vec-2.0.md) — Meta / Facebook AI Research (FAIR) · 2020-06 · paper · [架构/预训练数据] — https://arxiv.org/abs/2006.11477
-- [Big Bird — Transformers for Longer Sequences](llm/2020/big-bird.md) — Google Research · 2020-07 · paper · [架构] — https://arxiv.org/abs/2007.14062
-- [Generative Language Modeling for Automated Theorem Proving (GPT-f)](llm/2020/generative-language-modeling-for-automated-theorem-proving-gpt-f.md) — OpenAI · 2020-09 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2009.03393
-- [Learning to summarize from human feedback](llm/2020/learning-to-summarize-from-human-feedback.md) — OpenAI · 2020-09 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2009.01325
-- [Rethinking Attention with Performers](llm/2020/performer-rethinking-attention.md) — Google / DeepMind / University of Cambridge · 2020-09 · paper · [架构] — https://arxiv.org/abs/2009.14794
-- [An Image is Worth 16x16 Words — Transformers for Image Recognition at Scale (ViT)](llm/2020/vision-transformer-vit.md) — Google Research / Google Brain · 2020-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2010.11929
-- [Query-Key Normalization for Transformers (QKNorm)](llm/themes/architecture/qknorm-query-key-normalization.md) — 个人/学术合作（Alex Henry 等） · 2020-10 · paper · [架构] — https://arxiv.org/abs/2010.04245
-- [Scaling Laws for Autoregressive Generative Modeling](llm/2020/scaling-laws-for-autoregressive-generative-modeling.md) — OpenAI · 2020-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2010.14701
-- [mT5 — A massively multilingual pre-trained text-to-text transformer](llm/2020/mt5.md) — Google Research · 2020-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2010.11934
-- [CPM — A Large-scale Generative Chinese Pre-trained Language Model](llm/2020/cpm-chinese-pretrained-language-model.md) — 清华大学 / 北京智源人工智能研究院 (BAAI) — TsinghuaAI · 2020-12 · paper · [预训练数据/架构] — https://arxiv.org/abs/2012.00413
-- [The Pile — An 800GB Dataset of Diverse Text for Language Modeling](llm/2020/the-pile.md) — EleutherAI · 2020-12 · paper · [预训练数据] — https://arxiv.org/abs/2101.00027
+- [[llm/2020/reformer|Reformer — The Efficient Transformer]] — Google Research / UC Berkeley · 2020-01 · paper · [架构] — https://arxiv.org/abs/2001.04451
+- [[llm/2020/scaling-laws-for-neural-language-models|Scaling Laws for Neural Language Models]] — OpenAI · 2020-01 · paper · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2001.08361
+- [[llm/2020/meena-towards-human-like-open-domain-chatbot|Towards a Human-like Open-Domain Chatbot (Meena)]] — Google Brain · 2020-01 · paper · [架构/预训练数据] — https://arxiv.org/abs/2001.09977
+- [[llm/2020/glu-variants-improve-transformer|GLU Variants Improve Transformer]] — Google · 2020-02 · paper · [架构] — https://arxiv.org/abs/2002.05202
+- [[llm/2020/realm|REALM — Retrieval-Augmented Language Model Pre-Training]] — Google Research · 2020-02 · paper · [架构/预训练数据] — https://arxiv.org/abs/2002.08909
+- [[llm/2020/turing-nlg-microsoft|Turing-NLG — A 17-billion-parameter language model by Microsoft]] — Microsoft (Project Turing) · 2020-02 · blog · [架构/AI infra] — https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/
+- [[llm/2020/zero-deepspeed-100b-parameters|ZeRO & DeepSpeed — New system optimizations enable training models with over 100 billion parameters]] — Microsoft · 2020-02 · blog · [AI infra] — https://www.microsoft.com/en-us/research/blog/zero-deepspeed-new-system-optimizations-enable-training-models-with-over-100-billion-parameters/
+- [[llm/2020/electra|ELECTRA — Pre-training Text Encoders as Discriminators Rather Than Generators]] — Google Brain / Stanford · 2020-03 · paper · [架构/预训练数据] — https://arxiv.org/abs/2003.10555
+- [[llm/themes/ai-infra/trl|TRL — Transformer Reinforcement Learning]] — Hugging Face · 2020-03 · github · [后训练/AI infra] — https://github.com/huggingface/trl
+- [[llm/2020/dense-passage-retrieval|Dense Passage Retrieval for Open-Domain Question Answering (DPR)]] — Meta / Facebook AI Research (FAIR), University of Washington, Princeton · 2020-04 · paper · [架构/预训练数据] — https://arxiv.org/abs/2004.04906
+- [[llm/2020/longformer|Longformer — The Long-Document Transformer]] — Allen Institute for AI (AI2) · 2020-04 · paper · [架构] — https://arxiv.org/abs/2004.05150
+- [[llm/2020/blender-recipes-for-building-an-open-domain-chatbot|Recipes for building an open-domain chatbot (BlenderBot)]] — Meta / Facebook AI Research (FAIR) · 2020-04 · paper · [后训练/预训练数据/架构] — https://arxiv.org/abs/2004.13637
+- [[llm/2020/conformer|Conformer — Convolution-augmented Transformer for Speech Recognition]] — Google · 2020-05 · paper · [架构] — https://arxiv.org/abs/2005.08100
+- [[llm/2020/language-models-are-few-shot-learners-gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — OpenAI · 2020-05 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2005.14165
+- [[llm/2020/rag-retrieval-augmented-generation|Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (RAG)]] — Meta / Facebook AI Research (FAIR), UCL · 2020-05 · paper · [架构/预训练数据] — https://arxiv.org/abs/2005.11401
+- [[llm/2020/synthesizer|Synthesizer — Rethinking Self-Attention in Transformer Models]] — Google Research · 2020-05 · paper · [架构] — https://arxiv.org/abs/2005.00743
+- [[llm/2020/zero-2-deepspeed|ZeRO-2 & DeepSpeed — Shattering barriers of deep learning speed & scale]] — Microsoft · 2020-05 · blog · [AI infra] — https://www.microsoft.com/en-us/research/blog/zero-2-deepspeed-shattering-barriers-of-deep-learning-speed-scale/
+- [[llm/2020/deberta|DeBERTa — Decoding-enhanced BERT with Disentangled Attention]] — Microsoft · 2020-06 · paper · [架构] — https://arxiv.org/abs/2006.03654
+- [[llm/2020/gshard-scaling-giant-models|GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding]] — Google · 2020-06 · paper · [架构/AI infra] — https://arxiv.org/abs/2006.16668
+- [[llm/2020/image-gpt|Image GPT — Generative Pretraining from Pixels]] — OpenAI · 2020-06 · blog · [架构/预训练数据] — https://openai.com/index/image-gpt/
+- [[llm/2020/linformer|Linformer — Self-Attention with Linear Complexity]] — Meta / Facebook AI · 2020-06 · paper · [架构] — https://arxiv.org/abs/2006.04768
+- [[llm/themes/ai-infra/pipedream-2bw|Memory-Efficient Pipeline-Parallel DNN Training (PipeDream-2BW)]] — Microsoft Research / Stanford / Carnegie Mellon · 2020-06 · paper · [AI infra] — https://arxiv.org/abs/2006.09503
+- [[llm/2020/openai-api-launch|OpenAI API（GPT-3 商业化 API 发布）]] — OpenAI · 2020-06 · blog · [AI infra/后训练] — https://openai.com/index/openai-api/
+- [[llm/themes/ai-infra/pytorch-ddp|PyTorch Distributed: Experiences on Accelerating Data Parallel Training]] — Meta (Facebook AI) · 2020-06 · paper · [AI infra] — https://arxiv.org/abs/2006.15704
+- [[llm/2020/linear-transformers-are-rnns|Transformers are RNNs — Fast Autoregressive Transformers with Linear Attention]] — Idiap Research Institute / EPFL · 2020-06 · paper · [架构] — https://arxiv.org/abs/2006.16236
+- [[llm/2020/wav2vec-2.0|wav2vec 2.0 — A Framework for Self-Supervised Learning of Speech Representations]] — Meta / Facebook AI Research (FAIR) · 2020-06 · paper · [架构/预训练数据] — https://arxiv.org/abs/2006.11477
+- [[llm/2020/big-bird|Big Bird — Transformers for Longer Sequences]] — Google Research · 2020-07 · paper · [架构] — https://arxiv.org/abs/2007.14062
+- [[llm/2020/generative-language-modeling-for-automated-theorem-proving-gpt-f|Generative Language Modeling for Automated Theorem Proving (GPT-f)]] — OpenAI · 2020-09 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2009.03393
+- [[llm/2020/learning-to-summarize-from-human-feedback|Learning to summarize from human feedback]] — OpenAI · 2020-09 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2009.01325
+- [[llm/2020/performer-rethinking-attention|Rethinking Attention with Performers]] — Google / DeepMind / University of Cambridge · 2020-09 · paper · [架构] — https://arxiv.org/abs/2009.14794
+- [[llm/2020/vision-transformer-vit|An Image is Worth 16x16 Words — Transformers for Image Recognition at Scale (ViT)]] — Google Research / Google Brain · 2020-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2010.11929
+- [[llm/themes/architecture/qknorm-query-key-normalization|Query-Key Normalization for Transformers (QKNorm)]] — 个人/学术合作（Alex Henry 等） · 2020-10 · paper · [架构] — https://arxiv.org/abs/2010.04245
+- [[llm/2020/scaling-laws-for-autoregressive-generative-modeling|Scaling Laws for Autoregressive Generative Modeling]] — OpenAI · 2020-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2010.14701
+- [[llm/2020/mt5|mT5 — A massively multilingual pre-trained text-to-text transformer]] — Google Research · 2020-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2010.11934
+- [[llm/2020/cpm-chinese-pretrained-language-model|CPM — A Large-scale Generative Chinese Pre-trained Language Model]] — 清华大学 / 北京智源人工智能研究院 (BAAI) — TsinghuaAI · 2020-12 · paper · [预训练数据/架构] — https://arxiv.org/abs/2012.00413
+- [[llm/2020/the-pile|The Pile — An 800GB Dataset of Diverse Text for Language Modeling]] — EleutherAI · 2020-12 · paper · [预训练数据] — https://arxiv.org/abs/2101.00027
 
 ## 2021（32 条）
 
-- [Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity](llm/2021/switch-transformers.md) — Google · 2021-01 · paper · [架构/AI infra] — https://arxiv.org/abs/2101.03961
-- [Learning Transferable Visual Models From Natural Language Supervision (CLIP)](llm/themes/architecture/clip.md) — OpenAI · 2021-02 · paper · [架构/预训练数据] — https://arxiv.org/abs/2103.00020
-- [FastMoE: A Fast Mixture-of-Expert Training System](llm/2021/fastmoe-baai-tsinghua.md) — 清华 (Tsinghua) / BAAI 智源 · 2021-03 · paper · [AI infra/架构] — https://arxiv.org/abs/2103.13262
-- [GLM: General Language Model Pretraining with Autoregressive Blank Infilling](llm/2021/glm-general-language-model.md) — 清华 (Tsinghua) / BAAI 智源 · 2021-03 · paper · [架构] — https://arxiv.org/abs/2103.10360
-- [M6: A Chinese Multimodal Pretrainer](llm/2021/m6-chinese-multimodal-pretrainer.md) — 阿里巴巴 (Alibaba) / 清华 (Tsinghua) · 2021-03 · paper · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2103.00823
-- [Perceiver: General Perception with Iterative Attention](llm/themes/architecture/perceiver.md) — DeepMind · 2021-03 · paper · [架构] — https://arxiv.org/abs/2103.03206
-- [Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM](llm/2021/megatron-efficient-large-scale-training.md) — NVIDIA / Stanford / Microsoft Research · 2021-04 · paper · [AI infra] — https://arxiv.org/abs/2104.04473
-- [PanGu-α: Large-scale Autoregressive Pretrained Chinese Language Models with Auto-parallel Computation](llm/2021/pangu-alpha-huawei.md) — 华为 (Huawei) / 鹏城实验室 (Peng Cheng Laboratory) · 2021-04 · report · [架构/AI infra/预训练数据] — https://arxiv.org/abs/2104.12369
-- [RoFormer: Enhanced Transformer with Rotary Position Embedding](llm/2021/roformer-rope.md) — Zhuiyi Technology (追一科技) · 2021-04 · paper · [架构] — https://arxiv.org/abs/2104.09864
-- [ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning](llm/2021/zero-infinity-microsoft.md) — Microsoft · 2021-04 · paper · [AI infra] — https://arxiv.org/abs/2104.07857
-- [Anthropic raises $124 million to build more reliable, general AI systems](llm/2021/anthropic-founding-series-a.md) — Anthropic · 2021-05 · blog · [后训练] — https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems
-- [CogView: Mastering Text-to-Image Generation via Transformers](llm/2021/cogview-text-to-image.md) — 清华 (Tsinghua) / 阿里达摩院 (Alibaba DAMO) / BAAI 智源 · 2021-05 · paper · [架构/预训练数据] — https://arxiv.org/abs/2105.13290
-- [GSPMD: General and Scalable Parallelization for ML Computation Graphs](llm/themes/ai-infra/gspmd.md) — Google · 2021-05 · paper · [AI infra] — https://arxiv.org/abs/2105.04663
-- [LaMDA: our breakthrough conversation technology](llm/2021/lamda-google-blog.md) — Google · 2021-05 · blog · [架构/后训练] — https://blog.google/technology/ai/lamda/
-- [CPM-2: Large-scale Cost-effective Pre-trained Language Models](llm/2021/cpm-2-tsinghua.md) — 清华 (Tsinghua) / BAAI 智源 · 2021-06 · paper · [AI infra/架构/后训练] — https://arxiv.org/abs/2106.10715
-- [ERNIE 3.0: Large-scale Knowledge Enhanced Pre-training for Language Understanding and Generation](llm/2021/ernie-3.0-baidu.md) — 百度 (Baidu) · 2021-07 · paper · [架构/预训练数据] — https://arxiv.org/abs/2107.02137
-- [Evaluating Large Language Models Trained on Code (Codex)](llm/2021/codex-evaluating-llm-on-code.md) — OpenAI · 2021-07 · paper · [后训练/预训练数据] — https://arxiv.org/abs/2107.03374
-- [Jurassic-1: Technical Details and Evaluation (White Paper)](llm/2021/jurassic-1-ai21.md) — AI21 Labs · 2021-08 · report · [架构/预训练数据] — https://www.ai21.com/blog/announcing-ai21-studio-and-jurassic-1
-- [Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation (ALiBi)](llm/2021/alibi-attention-linear-biases.md) — University of Washington / Facebook AI Research / Allen Institute for AI · 2021-08 · paper · [架构] — https://arxiv.org/abs/2108.12409
-- [Finetuned Language Models Are Zero-Shot Learners (FLAN)](llm/2021/flan-finetuned-zero-shot.md) — Google Research · 2021-09 · paper · [后训练] — https://arxiv.org/abs/2109.01652
-- [What Changes Can Large-scale Language Models Bring? Intensive Study on HyperCLOVA: Billions-scale Korean Generative Pretrained Transformers](llm/2021/hyperclova-naver.md) — NAVER · 2021-09 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2109.04650
-- [Efficiently Modeling Long Sequences with Structured State Spaces (S4)](llm/themes/architecture/s4.md) — Stanford University (Hazy Research) · 2021-10 · paper · [架构] — https://arxiv.org/abs/2111.00396
-- [Introducing Pathways: A next-generation AI architecture](llm/2021/pathways-google-blog.md) — Google · 2021-10 · blog · [AI infra/架构] — https://blog.google/technology/ai/introducing-pathways-next-generation-ai-architecture/
-- [Multitask Prompted Training Enables Zero-Shot Task Generalization (T0)](llm/2021/t0-multitask-prompted-training.md) — Hugging Face / BigScience · 2021-10 · paper · [后训练] — https://arxiv.org/abs/2110.08207
-- [Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model](llm/2021/megatron-turing-nlg-530b.md) — Microsoft & NVIDIA · 2021-10 · paper · [AI infra/预训练数据/架构] — https://arxiv.org/abs/2201.11990
-- [Yuan 1.0: Large-Scale Pre-trained Language Model in Zero-Shot and Few-Shot Learning](llm/2021/yuan-1.0-inspur.md) — 浪潮 (Inspur) · 2021-10 · paper · [AI infra/预训练数据/后训练] — https://arxiv.org/abs/2110.04725
-- [A General Language Assistant as a Laboratory for Alignment](llm/2021/anthropic-general-language-assistant.md) — Anthropic · 2021-12 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2112.00861
-- [ERNIE 3.0 Titan: Exploring Larger-scale Knowledge Enhanced Pre-training for Language Understanding and Generation](llm/2021/ernie-3.0-titan-baidu-pcl.md) — 百度 (Baidu) & 鹏城实验室 (Peng Cheng Laboratory) · 2021-12 · paper · [架构/AI infra/后训练] — https://arxiv.org/abs/2112.12731
-- [GLaM: Efficient Scaling of Language Models with Mixture-of-Experts](llm/2021/glam-efficient-scaling-moe.md) — Google · 2021-12 · paper · [架构/AI infra/预训练数据] — https://arxiv.org/abs/2112.06905
-- [Improving language models by retrieving from trillions of tokens (RETRO)](llm/2021/retro-deepmind.md) — DeepMind · 2021-12 · paper · [架构/预训练数据] — https://arxiv.org/abs/2112.04426
-- [Scaling Language Models: Methods, Analysis & Insights from Training Gopher](llm/2021/scaling-language-models-gopher.md) — DeepMind · 2021-12 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2112.11446
-- [WebGPT: Browser-assisted question-answering with human feedback](llm/2021/webgpt-browser-assisted-qa.md) — OpenAI · 2021-12 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2112.09332
+- [[llm/2021/switch-transformers|Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity]] — Google · 2021-01 · paper · [架构/AI infra] — https://arxiv.org/abs/2101.03961
+- [[llm/themes/architecture/clip|Learning Transferable Visual Models From Natural Language Supervision (CLIP)]] — OpenAI · 2021-02 · paper · [架构/预训练数据] — https://arxiv.org/abs/2103.00020
+- [[llm/2021/fastmoe-baai-tsinghua|FastMoE: A Fast Mixture-of-Expert Training System]] — 清华 (Tsinghua) / BAAI 智源 · 2021-03 · paper · [AI infra/架构] — https://arxiv.org/abs/2103.13262
+- [[llm/2021/glm-general-language-model|GLM: General Language Model Pretraining with Autoregressive Blank Infilling]] — 清华 (Tsinghua) / BAAI 智源 · 2021-03 · paper · [架构] — https://arxiv.org/abs/2103.10360
+- [[llm/2021/m6-chinese-multimodal-pretrainer|M6: A Chinese Multimodal Pretrainer]] — 阿里巴巴 (Alibaba) / 清华 (Tsinghua) · 2021-03 · paper · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2103.00823
+- [[llm/themes/architecture/perceiver|Perceiver: General Perception with Iterative Attention]] — DeepMind · 2021-03 · paper · [架构] — https://arxiv.org/abs/2103.03206
+- [[llm/2021/megatron-efficient-large-scale-training|Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM]] — NVIDIA / Stanford / Microsoft Research · 2021-04 · paper · [AI infra] — https://arxiv.org/abs/2104.04473
+- [[llm/2021/pangu-alpha-huawei|PanGu-α: Large-scale Autoregressive Pretrained Chinese Language Models with Auto-parallel Computation]] — 华为 (Huawei) / 鹏城实验室 (Peng Cheng Laboratory) · 2021-04 · report · [架构/AI infra/预训练数据] — https://arxiv.org/abs/2104.12369
+- [[llm/2021/roformer-rope|RoFormer: Enhanced Transformer with Rotary Position Embedding]] — Zhuiyi Technology (追一科技) · 2021-04 · paper · [架构] — https://arxiv.org/abs/2104.09864
+- [[llm/2021/zero-infinity-microsoft|ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning]] — Microsoft · 2021-04 · paper · [AI infra] — https://arxiv.org/abs/2104.07857
+- [[llm/2021/anthropic-founding-series-a|Anthropic raises $124 million to build more reliable, general AI systems]] — Anthropic · 2021-05 · blog · [后训练] — https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems
+- [[llm/2021/cogview-text-to-image|CogView: Mastering Text-to-Image Generation via Transformers]] — 清华 (Tsinghua) / 阿里达摩院 (Alibaba DAMO) / BAAI 智源 · 2021-05 · paper · [架构/预训练数据] — https://arxiv.org/abs/2105.13290
+- [[llm/themes/ai-infra/gspmd|GSPMD: General and Scalable Parallelization for ML Computation Graphs]] — Google · 2021-05 · paper · [AI infra] — https://arxiv.org/abs/2105.04663
+- [[llm/2021/lamda-google-blog|LaMDA: our breakthrough conversation technology]] — Google · 2021-05 · blog · [架构/后训练] — https://blog.google/technology/ai/lamda/
+- [[llm/2021/cpm-2-tsinghua|CPM-2: Large-scale Cost-effective Pre-trained Language Models]] — 清华 (Tsinghua) / BAAI 智源 · 2021-06 · paper · [AI infra/架构/后训练] — https://arxiv.org/abs/2106.10715
+- [[llm/2021/ernie-3.0-baidu|ERNIE 3.0: Large-scale Knowledge Enhanced Pre-training for Language Understanding and Generation]] — 百度 (Baidu) · 2021-07 · paper · [架构/预训练数据] — https://arxiv.org/abs/2107.02137
+- [[llm/2021/codex-evaluating-llm-on-code|Evaluating Large Language Models Trained on Code (Codex)]] — OpenAI · 2021-07 · paper · [后训练/预训练数据] — https://arxiv.org/abs/2107.03374
+- [[llm/2021/jurassic-1-ai21|Jurassic-1: Technical Details and Evaluation (White Paper)]] — AI21 Labs · 2021-08 · report · [架构/预训练数据] — https://www.ai21.com/blog/announcing-ai21-studio-and-jurassic-1
+- [[llm/2021/alibi-attention-linear-biases|Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation (ALiBi)]] — University of Washington / Facebook AI Research / Allen Institute for AI · 2021-08 · paper · [架构] — https://arxiv.org/abs/2108.12409
+- [[llm/2021/flan-finetuned-zero-shot|Finetuned Language Models Are Zero-Shot Learners (FLAN)]] — Google Research · 2021-09 · paper · [后训练] — https://arxiv.org/abs/2109.01652
+- [[llm/2021/hyperclova-naver|What Changes Can Large-scale Language Models Bring? Intensive Study on HyperCLOVA: Billions-scale Korean Generative Pretrained Transformers]] — NAVER · 2021-09 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2109.04650
+- [[llm/themes/architecture/s4|Efficiently Modeling Long Sequences with Structured State Spaces (S4)]] — Stanford University (Hazy Research) · 2021-10 · paper · [架构] — https://arxiv.org/abs/2111.00396
+- [[llm/2021/pathways-google-blog|Introducing Pathways: A next-generation AI architecture]] — Google · 2021-10 · blog · [AI infra/架构] — https://blog.google/technology/ai/introducing-pathways-next-generation-ai-architecture/
+- [[llm/2021/t0-multitask-prompted-training|Multitask Prompted Training Enables Zero-Shot Task Generalization (T0)]] — Hugging Face / BigScience · 2021-10 · paper · [后训练] — https://arxiv.org/abs/2110.08207
+- [[llm/2021/megatron-turing-nlg-530b|Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model]] — Microsoft & NVIDIA · 2021-10 · paper · [AI infra/预训练数据/架构] — https://arxiv.org/abs/2201.11990
+- [[llm/2021/yuan-1.0-inspur|Yuan 1.0: Large-Scale Pre-trained Language Model in Zero-Shot and Few-Shot Learning]] — 浪潮 (Inspur) · 2021-10 · paper · [AI infra/预训练数据/后训练] — https://arxiv.org/abs/2110.04725
+- [[llm/2021/anthropic-general-language-assistant|A General Language Assistant as a Laboratory for Alignment]] — Anthropic · 2021-12 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2112.00861
+- [[llm/2021/ernie-3.0-titan-baidu-pcl|ERNIE 3.0 Titan: Exploring Larger-scale Knowledge Enhanced Pre-training for Language Understanding and Generation]] — 百度 (Baidu) & 鹏城实验室 (Peng Cheng Laboratory) · 2021-12 · paper · [架构/AI infra/后训练] — https://arxiv.org/abs/2112.12731
+- [[llm/2021/glam-efficient-scaling-moe|GLaM: Efficient Scaling of Language Models with Mixture-of-Experts]] — Google · 2021-12 · paper · [架构/AI infra/预训练数据] — https://arxiv.org/abs/2112.06905
+- [[llm/2021/retro-deepmind|Improving language models by retrieving from trillions of tokens (RETRO)]] — DeepMind · 2021-12 · paper · [架构/预训练数据] — https://arxiv.org/abs/2112.04426
+- [[llm/2021/scaling-language-models-gopher|Scaling Language Models: Methods, Analysis & Insights from Training Gopher]] — DeepMind · 2021-12 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2112.11446
+- [[llm/2021/webgpt-browser-assisted-qa|WebGPT: Browser-assisted question-answering with human feedback]] — OpenAI · 2021-12 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2112.09332
 
 ## 2022（58 条）
 
-- [Aligning language models to follow instructions (InstructGPT 官方博客)](llm/2022/openai-instructgpt-aligning-lms-blog.md) — OpenAI · 2022-01 · blog · [后训练] — https://openai.com/index/instruction-following/
-- [Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning](llm/themes/ai-infra/alpa.md) — UC Berkeley / Google / AMPLab · 2022-01 · paper · [AI infra] — https://arxiv.org/abs/2201.12023
-- [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](llm/2022/chain-of-thought-prompting.md) — Google Research (Brain) · 2022-01 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2201.11903
-- [DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training to Power Next-Generation AI Scale](llm/themes/ai-infra/deepspeed-moe.md) — Microsoft (DeepSpeed) · 2022-01 · paper · [AI infra] — https://arxiv.org/abs/2201.05596
-- [LaMDA: Language Models for Dialog Applications](llm/2022/lamda-language-models-for-dialog-applications.md) — Google Research · 2022-01 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2201.08239
-- [Predictability and Surprise in Large Generative Models](llm/2022/predictability-and-surprise-in-large-generative-models.md) — Anthropic · 2022-02 · paper · [架构] — https://arxiv.org/abs/2202.07785
-- [Red Teaming Language Models with Language Models](llm/themes/post-training/red-teaming-lms.md) — DeepMind · 2022-02 · paper · [后训练] — https://arxiv.org/abs/2202.03286
-- [ST-MoE: Designing Stable and Transferable Sparse Expert Models](llm/2022/st-moe-stable-transferable-sparse-expert-models.md) — Google Research (Brain) · 2022-02 · paper · [架构/AI infra] — https://arxiv.org/abs/2202.08906
-- [CodeGen: An Open Large Language Model for Code with Multi-Turn Program Synthesis](llm/2022/codegen-open-llm-for-code.md) — Salesforce Research · 2022-03 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2203.13474
-- [DeepNet: Scaling Transformers to 1,000 Layers (DeepNorm)](llm/2022/deepnet-scaling-transformers-to-1000-layers.md) — Microsoft Research · 2022-03 · paper · [架构] — https://arxiv.org/abs/2203.00555
-- [Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time](llm/2022/model-soups-averaging-finetuned-model-weights.md) — Univ. of Washington / Google / Columbia 等 · 2022-03 · paper · [后训练] — https://arxiv.org/abs/2203.05482
-- [Pathways: Asynchronous Distributed Dataflow for ML](llm/themes/ai-infra/pathways.md) — Google · 2022-03 · paper · [AI infra] — https://arxiv.org/abs/2203.12533
-- [Self-Consistency Improves Chain of Thought Reasoning in Language Models](llm/2022/self-consistency-improves-cot-reasoning.md) — Google Research (Brain) · 2022-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2203.11171
-- [Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer (muP / muTransfer)](llm/themes/architecture/mup-tensor-programs-v.md) — Microsoft / OpenAI · 2022-03 · paper · [架构/AI infra] — https://arxiv.org/abs/2203.03466
-- [Training Compute-Optimal Large Language Models (Chinchilla)](llm/2022/chinchilla-training-compute-optimal-large-language-models.md) — DeepMind · 2022-03 · paper · [预训练数据/架构] — https://arxiv.org/abs/2203.15556
-- [Training language models to follow instructions with human feedback (InstructGPT)](llm/2022/instructgpt-training-lms-to-follow-instructions-with-human-feedback.md) — OpenAI · 2022-03 · paper · [后训练] — https://arxiv.org/abs/2203.02155
-- [Flamingo: a Visual Language Model for Few-Shot Learning](llm/2022/flamingo-visual-language-model-for-few-shot-learning.md) — DeepMind · 2022-04 · paper · [架构/预训练数据] — https://arxiv.org/abs/2204.14198
-- [GPT-NeoX-20B: An Open-Source Autoregressive Language Model](llm/2022/gpt-neox-20b.md) — EleutherAI · 2022-04 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2204.06745
-- [PaLM: Scaling Language Modeling with Pathways](llm/2022/palm-scaling-language-modeling-with-pathways.md) — Google Research · 2022-04 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2204.02311
-- [Super-NaturalInstructions: Generalization via Declarative Instructions on 1600+ NLP Tasks](llm/2022/super-naturalinstructions.md) — AllenAI / Univ. Washington 等 (Tk-Instruct) · 2022-04 · paper · [后训练/预训练数据] — https://arxiv.org/abs/2204.07705
-- [Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback](llm/2022/anthropic-hh-rlhf-helpful-harmless-assistant.md) — Anthropic · 2022-04 · paper · [后训练] — https://arxiv.org/abs/2204.05862
-- [A Generalist Agent (Gato)](llm/2022/gato-a-generalist-agent.md) — DeepMind · 2022-05 · paper · [agentic训练/架构] — https://arxiv.org/abs/2205.06175
-- [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](llm/2022/flashattention.md) — Stanford · 2022-05 · paper · [AI infra/架构] — https://arxiv.org/abs/2205.14135
-- [Large Language Models are Zero-Shot Reasoners](llm/2022/large-language-models-are-zero-shot-reasoners.md) — Univ. of Tokyo / Google Research · 2022-05 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2205.11916
-- [OPT: Open Pre-trained Transformer Language Models](llm/2022/opt-open-pretrained-transformer-language-models.md) — Meta AI · 2022-05 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2205.01068
-- [Reducing Activation Recomputation in Large Transformer Models](llm/2022/reducing-activation-recomputation-in-large-transformer-models.md) — NVIDIA · 2022-05 · paper · [AI infra] — https://arxiv.org/abs/2205.05198
-- [UL2: Unifying Language Learning Paradigms](llm/2022/ul2-unifying-language-learning-paradigms.md) — Google Research (Brain) · 2022-05 · paper · [架构/预训练数据] — https://arxiv.org/abs/2205.05131
-- [Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models (BIG-bench)](llm/2022/big-bench-beyond-the-imitation-game.md) — Google 等 132 机构协作 · 2022-06 · paper · [预训练数据] — https://arxiv.org/abs/2206.04615
-- [Emergent Abilities of Large Language Models](llm/2022/emergent-abilities-of-large-language-models.md) — Google / DeepMind / Stanford / UNC · 2022-06 · paper · [架构] — https://arxiv.org/abs/2206.07682
-- [Language Models are General-Purpose Interfaces (MetaLM)](llm/2022/metalm-language-models-are-general-purpose-interfaces.md) — Microsoft Research · 2022-06 · paper · [架构] — https://arxiv.org/abs/2206.06336
-- [Solving Quantitative Reasoning Problems with Language Models (Minerva)](llm/2022/minerva-solving-quantitative-reasoning-problems.md) — Google Research · 2022-06 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2206.14858
-- [Tutel: Adaptive Mixture-of-Experts at Scale](llm/themes/ai-infra/tutel.md) — Microsoft · 2022-06 · paper · [AI infra] — https://arxiv.org/abs/2206.03382
-- [Language Models (Mostly) Know What They Know](llm/2022/language-models-mostly-know-what-they-know.md) — Anthropic · 2022-07 · paper · [后训练] — https://arxiv.org/abs/2207.05221
-- [WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents](llm/themes/agentic/webshop.md) — Princeton University · 2022-07 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2207.01206
-- [Atlas: Few-shot Learning with Retrieval Augmented Language Models](llm/2022/atlas-few-shot-retrieval-augmented-language-models.md) — Meta AI · 2022-08 · paper · [架构/预训练数据] — https://arxiv.org/abs/2208.03299
-- [LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale](llm/2022/llm-int8-8bit-matrix-multiplication.md) — Univ. of Washington / Meta AI 等 (bitsandbytes) · 2022-08 · paper · [AI infra] — https://arxiv.org/abs/2208.07339
-- [Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned](llm/2022/anthropic-red-teaming-language-models.md) — Anthropic · 2022-08 · paper · [后训练] — https://arxiv.org/abs/2209.07858
-- [Improving alignment of dialogue agents via targeted human judgements (Sparrow)](llm/2022/sparrow-improving-alignment-of-dialogue-agents.md) — DeepMind · 2022-09 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2209.14375
-- [In-context Learning and Induction Heads](llm/2022/in-context-learning-and-induction-heads.md) — Anthropic · 2022-09 · paper · [架构] — https://arxiv.org/abs/2209.11895
-- [NVIDIA Transformer Engine (FP8 Training Library)](llm/themes/ai-infra/transformer-engine.md) — NVIDIA · 2022-09 · github · [AI infra] — https://github.com/NVIDIA/TransformerEngine
-- [Challenging BIG-Bench Tasks and Whether Chain-of-Thought Can Solve Them (BBH)](llm/2022/bbh-challenging-big-bench-tasks-and-cot.md) — Google Research / Stanford · 2022-10 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2210.09261
-- [ERNIE-ViLG 2.0: Improving Text-to-Image Diffusion Model with Knowledge-Enhanced Mixture-of-Denoising-Experts](llm/2022/ernie-vilg-2-text-to-image-diffusion.md) — 百度 (Baidu) · 2022-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2210.15257
-- [GLM-130B: An Open Bilingual Pre-trained Model](llm/2022/glm-130b-open-bilingual-pretrained-model.md) — 清华大学 / 智谱 (Tsinghua KEG & Zhipu) · 2022-10 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2210.02414
-- [GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers](llm/2022/gptq-accurate-post-training-quantization.md) — IST Austria / ETH Zurich 等 · 2022-10 · paper · [AI infra] — https://arxiv.org/abs/2210.17323
-- [Large Language Models Can Self-Improve](llm/2022/large-language-models-can-self-improve.md) — Google / UIUC · 2022-10 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2210.11610
-- [ReAct: Synergizing Reasoning and Acting in Language Models](llm/2022/react-synergizing-reasoning-and-acting.md) — Princeton & Google Research · 2022-10 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2210.03629
-- [Scaling Instruction-Finetuned Language Models (Flan / Flan-PaLM)](llm/2022/scaling-instruction-finetuned-language-models-flan.md) — Google Research · 2022-10 · paper · [后训练] — https://arxiv.org/abs/2210.11416
-- [Scaling Laws for Reward Model Overoptimization](llm/themes/post-training/reward-model-overoptimization.md) — OpenAI · 2022-10 · paper · [后训练] — https://arxiv.org/abs/2210.10760
-- [BLOOM: A 176B-Parameter Open-Access Multilingual Language Model](llm/2022/bloom-176b-multilingual-language-model.md) — BigScience · 2022-11 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2211.05100
-- [Efficiently Scaling Transformer Inference](llm/themes/ai-infra/efficiently-scaling-inference.md) — Google · 2022-11 · paper · [AI infra] — https://arxiv.org/abs/2211.05102
-- [Galactica: A Large Language Model for Science](llm/2022/galactica-a-large-language-model-for-science.md) — Meta AI · 2022-11 · paper · [预训练数据/架构] — https://arxiv.org/abs/2211.09085
-- [Introducing ChatGPT (官方发布博客)](llm/2022/openai-chatgpt-launch-blog.md) — OpenAI · 2022-11 · blog · [后训练] — https://openai.com/index/chatgpt/
-- [MegaBlocks: Efficient Sparse Training with Mixture-of-Experts](llm/themes/ai-infra/megablocks.md) — Stanford / Microsoft / Google · 2022-11 · paper · [AI infra] — https://arxiv.org/abs/2211.15841
-- [SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models](llm/themes/ai-infra/smoothquant.md) — MIT (Han Lab) / NVIDIA · 2022-11 · paper · [AI infra] — https://arxiv.org/abs/2211.10438
-- [Solving math word problems with process- and outcome-based feedback](llm/themes/post-training/process-outcome-feedback.md) — DeepMind · 2022-11 · paper · [后训练] — https://arxiv.org/abs/2211.14275
-- [Constitutional AI: Harmlessness from AI Feedback](llm/2022/constitutional-ai-harmlessness-from-ai-feedback.md) — Anthropic · 2022-12 · paper · [后训练] — https://arxiv.org/abs/2212.08073
-- [Robust Speech Recognition via Large-Scale Weak Supervision (Whisper)](llm/2022/whisper-robust-speech-recognition.md) — OpenAI · 2022-12 · paper · [预训练数据/架构] — https://arxiv.org/abs/2212.04356
-- [Self-Instruct: Aligning Language Models with Self-Generated Instructions](llm/2022/self-instruct.md) — Univ. of Washington / AllenAI 等 · 2022-12 · paper · [后训练] — https://arxiv.org/abs/2212.10560
+- [[llm/2022/openai-instructgpt-aligning-lms-blog|Aligning language models to follow instructions (InstructGPT 官方博客)]] — OpenAI · 2022-01 · blog · [后训练] — https://openai.com/index/instruction-following/
+- [[llm/themes/ai-infra/alpa|Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning]] — UC Berkeley / Google / AMPLab · 2022-01 · paper · [AI infra] — https://arxiv.org/abs/2201.12023
+- [[llm/2022/chain-of-thought-prompting|Chain-of-Thought Prompting Elicits Reasoning in Large Language Models]] — Google Research (Brain) · 2022-01 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2201.11903
+- [[llm/themes/ai-infra/deepspeed-moe|DeepSpeed-MoE: Advancing Mixture-of-Experts Inference and Training to Power Next-Generation AI Scale]] — Microsoft (DeepSpeed) · 2022-01 · paper · [AI infra] — https://arxiv.org/abs/2201.05596
+- [[llm/2022/lamda-language-models-for-dialog-applications|LaMDA: Language Models for Dialog Applications]] — Google Research · 2022-01 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2201.08239
+- [[llm/2022/predictability-and-surprise-in-large-generative-models|Predictability and Surprise in Large Generative Models]] — Anthropic · 2022-02 · paper · [架构] — https://arxiv.org/abs/2202.07785
+- [[llm/themes/post-training/red-teaming-lms|Red Teaming Language Models with Language Models]] — DeepMind · 2022-02 · paper · [后训练] — https://arxiv.org/abs/2202.03286
+- [[llm/2022/st-moe-stable-transferable-sparse-expert-models|ST-MoE: Designing Stable and Transferable Sparse Expert Models]] — Google Research (Brain) · 2022-02 · paper · [架构/AI infra] — https://arxiv.org/abs/2202.08906
+- [[llm/2022/codegen-open-llm-for-code|CodeGen: An Open Large Language Model for Code with Multi-Turn Program Synthesis]] — Salesforce Research · 2022-03 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2203.13474
+- [[llm/2022/deepnet-scaling-transformers-to-1000-layers|DeepNet: Scaling Transformers to 1,000 Layers (DeepNorm)]] — Microsoft Research · 2022-03 · paper · [架构] — https://arxiv.org/abs/2203.00555
+- [[llm/2022/model-soups-averaging-finetuned-model-weights|Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time]] — Univ. of Washington / Google / Columbia 等 · 2022-03 · paper · [后训练] — https://arxiv.org/abs/2203.05482
+- [[llm/themes/ai-infra/pathways|Pathways: Asynchronous Distributed Dataflow for ML]] — Google · 2022-03 · paper · [AI infra] — https://arxiv.org/abs/2203.12533
+- [[llm/2022/self-consistency-improves-cot-reasoning|Self-Consistency Improves Chain of Thought Reasoning in Language Models]] — Google Research (Brain) · 2022-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2203.11171
+- [[llm/themes/architecture/mup-tensor-programs-v|Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer (muP / muTransfer)]] — Microsoft / OpenAI · 2022-03 · paper · [架构/AI infra] — https://arxiv.org/abs/2203.03466
+- [[llm/2022/chinchilla-training-compute-optimal-large-language-models|Training Compute-Optimal Large Language Models (Chinchilla)]] — DeepMind · 2022-03 · paper · [预训练数据/架构] — https://arxiv.org/abs/2203.15556
+- [[llm/2022/instructgpt-training-lms-to-follow-instructions-with-human-feedback|Training language models to follow instructions with human feedback (InstructGPT)]] — OpenAI · 2022-03 · paper · [后训练] — https://arxiv.org/abs/2203.02155
+- [[llm/2022/flamingo-visual-language-model-for-few-shot-learning|Flamingo: a Visual Language Model for Few-Shot Learning]] — DeepMind · 2022-04 · paper · [架构/预训练数据] — https://arxiv.org/abs/2204.14198
+- [[llm/2022/gpt-neox-20b|GPT-NeoX-20B: An Open-Source Autoregressive Language Model]] — EleutherAI · 2022-04 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2204.06745
+- [[llm/2022/palm-scaling-language-modeling-with-pathways|PaLM: Scaling Language Modeling with Pathways]] — Google Research · 2022-04 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2204.02311
+- [[llm/2022/super-naturalinstructions|Super-NaturalInstructions: Generalization via Declarative Instructions on 1600+ NLP Tasks]] — AllenAI / Univ. Washington 等 (Tk-Instruct) · 2022-04 · paper · [后训练/预训练数据] — https://arxiv.org/abs/2204.07705
+- [[llm/2022/anthropic-hh-rlhf-helpful-harmless-assistant|Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback]] — Anthropic · 2022-04 · paper · [后训练] — https://arxiv.org/abs/2204.05862
+- [[llm/2022/gato-a-generalist-agent|A Generalist Agent (Gato)]] — DeepMind · 2022-05 · paper · [agentic训练/架构] — https://arxiv.org/abs/2205.06175
+- [[llm/2022/flashattention|FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness]] — Stanford · 2022-05 · paper · [AI infra/架构] — https://arxiv.org/abs/2205.14135
+- [[llm/2022/large-language-models-are-zero-shot-reasoners|Large Language Models are Zero-Shot Reasoners]] — Univ. of Tokyo / Google Research · 2022-05 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2205.11916
+- [[llm/2022/opt-open-pretrained-transformer-language-models|OPT: Open Pre-trained Transformer Language Models]] — Meta AI · 2022-05 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2205.01068
+- [[llm/2022/reducing-activation-recomputation-in-large-transformer-models|Reducing Activation Recomputation in Large Transformer Models]] — NVIDIA · 2022-05 · paper · [AI infra] — https://arxiv.org/abs/2205.05198
+- [[llm/2022/ul2-unifying-language-learning-paradigms|UL2: Unifying Language Learning Paradigms]] — Google Research (Brain) · 2022-05 · paper · [架构/预训练数据] — https://arxiv.org/abs/2205.05131
+- [[llm/2022/big-bench-beyond-the-imitation-game|Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models (BIG-bench)]] — Google 等 132 机构协作 · 2022-06 · paper · [预训练数据] — https://arxiv.org/abs/2206.04615
+- [[llm/2022/emergent-abilities-of-large-language-models|Emergent Abilities of Large Language Models]] — Google / DeepMind / Stanford / UNC · 2022-06 · paper · [架构] — https://arxiv.org/abs/2206.07682
+- [[llm/2022/metalm-language-models-are-general-purpose-interfaces|Language Models are General-Purpose Interfaces (MetaLM)]] — Microsoft Research · 2022-06 · paper · [架构] — https://arxiv.org/abs/2206.06336
+- [[llm/2022/minerva-solving-quantitative-reasoning-problems|Solving Quantitative Reasoning Problems with Language Models (Minerva)]] — Google Research · 2022-06 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2206.14858
+- [[llm/themes/ai-infra/tutel|Tutel: Adaptive Mixture-of-Experts at Scale]] — Microsoft · 2022-06 · paper · [AI infra] — https://arxiv.org/abs/2206.03382
+- [[llm/2022/language-models-mostly-know-what-they-know|Language Models (Mostly) Know What They Know]] — Anthropic · 2022-07 · paper · [后训练] — https://arxiv.org/abs/2207.05221
+- [[llm/themes/agentic/webshop|WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents]] — Princeton University · 2022-07 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2207.01206
+- [[llm/2022/atlas-few-shot-retrieval-augmented-language-models|Atlas: Few-shot Learning with Retrieval Augmented Language Models]] — Meta AI · 2022-08 · paper · [架构/预训练数据] — https://arxiv.org/abs/2208.03299
+- [[llm/2022/llm-int8-8bit-matrix-multiplication|LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale]] — Univ. of Washington / Meta AI 等 (bitsandbytes) · 2022-08 · paper · [AI infra] — https://arxiv.org/abs/2208.07339
+- [[llm/2022/anthropic-red-teaming-language-models|Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned]] — Anthropic · 2022-08 · paper · [后训练] — https://arxiv.org/abs/2209.07858
+- [[llm/2022/sparrow-improving-alignment-of-dialogue-agents|Improving alignment of dialogue agents via targeted human judgements (Sparrow)]] — DeepMind · 2022-09 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2209.14375
+- [[llm/2022/in-context-learning-and-induction-heads|In-context Learning and Induction Heads]] — Anthropic · 2022-09 · paper · [架构] — https://arxiv.org/abs/2209.11895
+- [[llm/themes/ai-infra/transformer-engine|NVIDIA Transformer Engine (FP8 Training Library)]] — NVIDIA · 2022-09 · github · [AI infra] — https://github.com/NVIDIA/TransformerEngine
+- [[llm/2022/bbh-challenging-big-bench-tasks-and-cot|Challenging BIG-Bench Tasks and Whether Chain-of-Thought Can Solve Them (BBH)]] — Google Research / Stanford · 2022-10 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2210.09261
+- [[llm/2022/ernie-vilg-2-text-to-image-diffusion|ERNIE-ViLG 2.0: Improving Text-to-Image Diffusion Model with Knowledge-Enhanced Mixture-of-Denoising-Experts]] — 百度 (Baidu) · 2022-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2210.15257
+- [[llm/2022/glm-130b-open-bilingual-pretrained-model|GLM-130B: An Open Bilingual Pre-trained Model]] — 清华大学 / 智谱 (Tsinghua KEG & Zhipu) · 2022-10 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2210.02414
+- [[llm/2022/gptq-accurate-post-training-quantization|GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers]] — IST Austria / ETH Zurich 等 · 2022-10 · paper · [AI infra] — https://arxiv.org/abs/2210.17323
+- [[llm/2022/large-language-models-can-self-improve|Large Language Models Can Self-Improve]] — Google / UIUC · 2022-10 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2210.11610
+- [[llm/2022/react-synergizing-reasoning-and-acting|ReAct: Synergizing Reasoning and Acting in Language Models]] — Princeton & Google Research · 2022-10 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2210.03629
+- [[llm/2022/scaling-instruction-finetuned-language-models-flan|Scaling Instruction-Finetuned Language Models (Flan / Flan-PaLM)]] — Google Research · 2022-10 · paper · [后训练] — https://arxiv.org/abs/2210.11416
+- [[llm/themes/post-training/reward-model-overoptimization|Scaling Laws for Reward Model Overoptimization]] — OpenAI · 2022-10 · paper · [后训练] — https://arxiv.org/abs/2210.10760
+- [[llm/2022/bloom-176b-multilingual-language-model|BLOOM: A 176B-Parameter Open-Access Multilingual Language Model]] — BigScience · 2022-11 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2211.05100
+- [[llm/themes/ai-infra/efficiently-scaling-inference|Efficiently Scaling Transformer Inference]] — Google · 2022-11 · paper · [AI infra] — https://arxiv.org/abs/2211.05102
+- [[llm/2022/galactica-a-large-language-model-for-science|Galactica: A Large Language Model for Science]] — Meta AI · 2022-11 · paper · [预训练数据/架构] — https://arxiv.org/abs/2211.09085
+- [[llm/2022/openai-chatgpt-launch-blog|Introducing ChatGPT (官方发布博客)]] — OpenAI · 2022-11 · blog · [后训练] — https://openai.com/index/chatgpt/
+- [[llm/themes/ai-infra/megablocks|MegaBlocks: Efficient Sparse Training with Mixture-of-Experts]] — Stanford / Microsoft / Google · 2022-11 · paper · [AI infra] — https://arxiv.org/abs/2211.15841
+- [[llm/themes/ai-infra/smoothquant|SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models]] — MIT (Han Lab) / NVIDIA · 2022-11 · paper · [AI infra] — https://arxiv.org/abs/2211.10438
+- [[llm/themes/post-training/process-outcome-feedback|Solving math word problems with process- and outcome-based feedback]] — DeepMind · 2022-11 · paper · [后训练] — https://arxiv.org/abs/2211.14275
+- [[llm/2022/constitutional-ai-harmlessness-from-ai-feedback|Constitutional AI: Harmlessness from AI Feedback]] — Anthropic · 2022-12 · paper · [后训练] — https://arxiv.org/abs/2212.08073
+- [[llm/2022/whisper-robust-speech-recognition|Robust Speech Recognition via Large-Scale Weak Supervision (Whisper)]] — OpenAI · 2022-12 · paper · [预训练数据/架构] — https://arxiv.org/abs/2212.04356
+- [[llm/2022/self-instruct|Self-Instruct: Aligning Language Models with Self-Generated Instructions]] — Univ. of Washington / AllenAI 等 · 2022-12 · paper · [后训练] — https://arxiv.org/abs/2212.10560
 
 ## 2023（102 条）
 
-- [BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models](llm/themes/architecture/blip-2.md) — Salesforce Research · 2023-01 · paper · [架构] — https://arxiv.org/abs/2301.12597
-- [LLaMA: Open and Efficient Foundation Language Models](llm/2023/llama.md) — Meta AI · 2023-02 · paper · [预训练数据/架构] — https://arxiv.org/abs/2302.13971
-- [Toolformer: Language Models Can Teach Themselves to Use Tools](llm/2023/toolformer.md) — Meta AI · 2023-02 · paper · [agentic训练] — https://arxiv.org/abs/2302.04761
-- [Alpaca: A Strong, Replicable Instruction-Following Model](llm/2023/alpaca.md) — Stanford CRFM · 2023-03 · blog · [后训练] — https://crfm.stanford.edu/2023/03/13/alpaca.html
-- [ChatGLM-6B: An Open Bilingual Dialogue Language Model（官方 GitHub）](llm/2023/chatglm-6b.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua KEG） · 2023-03 · github · [架构/预训练数据/后训练] — https://github.com/THUDM/ChatGLM-6B
-- [CodeGeeX: A Pre-Trained Model for Code Generation with Multilingual Benchmarking on HumanEval-X](llm/2023/codegeex.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-03 · paper · [AI infra/架构/预训练数据] — https://arxiv.org/abs/2303.17568
-- [GPT-4 Technical Report](llm/2023/gpt-4-technical-report.md) — OpenAI · 2023-03 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2303.08774
-- [HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face](llm/2023/hugginggpt.md) — Microsoft Research / Zhejiang University · 2023-03 · paper · [agentic训练] — https://arxiv.org/abs/2303.17580
-- [Reflexion: Language Agents with Verbal Reinforcement Learning](llm/2023/reflexion.md) — Northeastern / MIT / Princeton · 2023-03 · paper · [agentic训练] — https://arxiv.org/abs/2303.11366
-- [Vicuna: An Open-Source Chatbot Impressing GPT-4 with 90% ChatGPT Quality](llm/2023/vicuna.md) — LMSYS Org（UC Berkeley / CMU / Stanford / UCSD / MBZUAI 联合） · 2023-03 · blog · [后训练/数据/评测] — https://lmsys.org/blog/2023-03-30-vicuna/
-- [Generative Agents: Interactive Simulacra of Human Behavior](llm/2023/generative-agents.md) — Stanford / Google · 2023-04 · paper · [agentic训练] — https://arxiv.org/abs/2304.03442
-- [MOSS: An open-source tool-augmented conversational language model from Fudan University（官方 GitHub）](llm/2023/moss.md) — 复旦大学（Fudan University / OpenMOSS） · 2023-04 · github · [预训练数据/后训练/agentic训练] — https://github.com/OpenMOSS/MOSS
-- [Pythia: A Suite for Analyzing LLMs Across Training and Scaling](llm/2023/pythia.md) — EleutherAI · 2023-04 · paper · [预训练数据/架构] — https://arxiv.org/abs/2304.01373
-- [RAFT: Reward rAnked FineTuning for Generative Foundation Model Alignment](llm/themes/post-training/raft.md) — HKUST / LMFlow · 2023-04 · paper · [后训练] — https://arxiv.org/abs/2304.06767
-- [RRHF: Rank Responses to Align Language Models with Human Feedback without tears](llm/themes/post-training/rrhf.md) — Alibaba DAMO Academy / Tsinghua University · 2023-04 · paper · [后训练] — https://arxiv.org/abs/2304.05302
-- [Visual Instruction Tuning (LLaVA)](llm/themes/architecture/llava.md) — University of Wisconsin–Madison / Microsoft Research / Columbia University · 2023-04 · paper · [架构/后训练] — https://arxiv.org/abs/2304.08485
-- [WizardLM: Empowering Large Language Models to Follow Complex Instructions (Evol-Instruct)](llm/themes/post-training/wizardlm-evol-instruct.md) — Microsoft / Peking University · 2023-04 · paper · [后训练] — https://arxiv.org/abs/2304.12244
-- [CPM-Bee: 百亿参数的中英文双语基座大模型（官方 GitHub）](llm/2023/cpm-bee.md) — 面壁智能 / 清华 OpenBMB（ModelBest / OpenBMB） · 2023-05 · github · [预训练数据/架构/AI infra] — https://github.com/OpenBMB/CPM-Bee
-- [Claude's Constitution](llm/themes/post-training/anthropic-claudes-constitution.md) — Anthropic · 2023-05 · blog · [后训练] — https://www.anthropic.com/news/claudes-constitution
-- [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](llm/2023/dpo.md) — Stanford University · 2023-05 · paper · [后训练] — https://arxiv.org/abs/2305.18290
-- [GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints](llm/2023/gqa.md) — Google Research · 2023-05 · paper · [架构/AI infra] — https://arxiv.org/abs/2305.13245
-- [Gorilla: Large Language Model Connected with Massive APIs](llm/2023/gorilla.md) — UC Berkeley / Microsoft Research · 2023-05 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2305.15334
-- [LIMA: Less Is More for Alignment](llm/2023/lima.md) — Meta AI · 2023-05 · paper · [后训练] — https://arxiv.org/abs/2305.11206
-- [Let's Verify Step by Step](llm/2023/lets-verify-step-by-step.md) — OpenAI · 2023-05 · paper · [后训练] — https://arxiv.org/abs/2305.20050
-- [PaLM 2 Technical Report](llm/2023/palm-2.md) — Google · 2023-05 · report · [预训练数据/架构] — https://arxiv.org/abs/2305.10403
-- [QLoRA: Efficient Finetuning of Quantized LLMs](llm/2023/qlora.md) — University of Washington · 2023-05 · paper · [后训练/AI infra] — https://arxiv.org/abs/2305.14314
-- [RWKV: Reinventing RNNs for the Transformer Era](llm/2023/rwkv.md) — EleutherAI / RWKV Foundation · 2023-05 · paper · [架构] — https://arxiv.org/abs/2305.13048
-- [Releasing 3B and 7B RedPajama-INCITE Family of Models](llm/2023/redpajama-incite-models.md) — Together AI · 2023-05 · blog · [预训练数据/后训练] — https://www.together.ai/blog/redpajama-models-v1
-- [The Impact of Positional Encoding on Length Generalization in Transformers (NoPE)](llm/themes/architecture/nope-positional-encoding.md) — Mila / McGill University / IBM Research / ServiceNow Research · 2023-05 · paper · [架构] — https://arxiv.org/abs/2305.19466
-- [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](llm/2023/tree-of-thoughts.md) — Princeton / Google DeepMind · 2023-05 · paper · [agentic训练] — https://arxiv.org/abs/2305.10601
-- [Voyager: An Open-Ended Embodied Agent with Large Language Models](llm/2023/voyager.md) — NVIDIA / Caltech · 2023-05 · paper · [agentic训练] — https://arxiv.org/abs/2305.16291
-- [AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration](llm/themes/ai-infra/awq.md) — MIT (Han Lab) / SJTU / others · 2023-06 · paper · [AI infra] — https://arxiv.org/abs/2306.00978
-- [Baichuan-7B: 开源可商用大规模预训练语言模型（官方 GitHub）](llm/2023/baichuan-7b.md) — 百川智能（Baichuan Inc.） · 2023-06 · github · [预训练数据/架构] — https://github.com/baichuan-inc/Baichuan-7B
-- [ChatGLM2-6B: An Open Bilingual Chat LLM（官方 GitHub）](llm/2023/chatglm2-6b.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua KEG） · 2023-06 · github · [架构/预训练数据/后训练] — https://github.com/THUDM/ChatGLM2-6B
-- [Extending Context Window of LLMs via Positional Interpolation](llm/2023/positional-interpolation.md) — Meta AI · 2023-06 · paper · [架构] — https://arxiv.org/abs/2306.15595
-- [Function calling and other API updates](llm/2023/openai-function-calling.md) — OpenAI · 2023-06 · blog · [agentic训练] — https://openai.com/index/function-calling-and-other-api-updates/
-- [How Far Can Camels Go? (Tülu)](llm/2023/tulu-camels.md) — Allen Institute for AI (AI2) · 2023-06 · paper · [后训练] — https://arxiv.org/abs/2306.04751
-- [InternLM: A Multilingual Language Model with Progressively Enhanced Capabilities](llm/2023/internlm.md) — 上海人工智能实验室（Shanghai AI Lab）& 商汤（SenseTime），联合港中文/复旦/上交大 · 2023-06 · technical-report · [架构/预训练数据/AI infra/后训练] — https://github.com/InternLM/InternLM-techreport
-- [Mind2Web: Towards a Generalist Agent for the Web](llm/themes/agentic/mind2web.md) — The Ohio State University · 2023-06 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2306.06070
-- [Orca: Progressive Learning from Complex Explanation Traces of GPT-4](llm/2023/orca.md) — Microsoft Research · 2023-06 · paper · [后训练] — https://arxiv.org/abs/2306.02707
-- [Textbooks Are All You Need (phi-1)](llm/2023/textbooks-are-all-you-need-phi-1.md) — Microsoft Research · 2023-06 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2306.11644
-- [WebGLM: Towards An Efficient Web-Enhanced Question Answering System with Human Preferences](llm/2023/webglm.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-06 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2306.07906
-- [Claude 2](llm/2023/claude-2.md) — Anthropic · 2023-07 · blog · [后训练] — https://www.anthropic.com/news/claude-2
-- [CodeGeeX2: A More Powerful Multilingual Code Generation Model（官方 GitHub）](llm/2023/codegeex2.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua KEG） · 2023-07 · github · [架构/预训练数据] — https://github.com/THUDM/CodeGeeX2
-- [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](llm/2023/flashattention-2.md) — Stanford / Princeton · 2023-07 · paper · [AI infra/架构] — https://arxiv.org/abs/2307.08691
-- [Llama 2: Open Foundation and Fine-Tuned Chat Models](llm/2023/llama-2.md) — Meta AI · 2023-07 · paper · [预训练数据/架构/后训练] — https://arxiv.org/abs/2307.09288
-- [Lost in the Middle: How Language Models Use Long Contexts](llm/2023/lost-in-the-middle.md) — Stanford University · 2023-07 · paper · [架构] — https://arxiv.org/abs/2307.03172
-- [Retentive Network: A Successor to Transformer for Large Language Models](llm/2023/retnet.md) — Microsoft Research · 2023-07 · paper · [架构] — https://arxiv.org/abs/2307.08621
-- [ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs](llm/themes/agentic/toolllm.md) — 清华大学 (THUNLP) / 人民大学 / 耶鲁 / 微信 / 智谱等 · 2023-07 · paper · [后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2307.16789
-- [WebArena: A Realistic Web Environment for Building Autonomous Agents](llm/themes/agentic/webarena.md) — Carnegie Mellon University · 2023-07 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2307.13854
-- [AgentBench: Evaluating LLMs as Agents](llm/2023/agentbench.md) — 清华大学 / 智谱AI（Tsinghua / Zhipu，与 Ohio State、UC Berkeley 合作） · 2023-08 · paper · [agentic训练] — https://arxiv.org/abs/2308.03688
-- [AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation](llm/2023/autogen.md) — Microsoft Research · 2023-08 · paper · [agentic训练] — https://arxiv.org/abs/2308.08155
-- [Code Llama: Meta's state-of-the-art LLM for coding](llm/2023/code-llama-meta-blog.md) — Meta AI · 2023-08 · blog · [预训练数据/架构] — https://ai.meta.com/blog/code-llama-large-language-model-coding/
-- [Code Llama: Open Foundation Models for Code](llm/2023/code-llama.md) — Meta AI · 2023-08 · paper · [预训练数据/架构] — https://arxiv.org/abs/2308.12950
-- [Megatron-Core — GPU-optimized Library for Training Transformers at Scale](llm/themes/ai-infra/megatron-core.md) — NVIDIA · 2023-08 · github · [AI infra] — https://github.com/NVIDIA/Megatron-LM
-- [NVIDIA TensorRT-LLM](llm/themes/ai-infra/tensorrt-llm.md) — NVIDIA · 2023-08 · github · [AI infra] — https://github.com/NVIDIA/TensorRT-LLM
-- [Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond](llm/2023/qwen-vl.md) — 阿里巴巴（Alibaba / Qwen Team） · 2023-08 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2308.12966
-- [SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills](llm/themes/ai-infra/sarathi.md) — Microsoft Research India / Georgia Tech · 2023-08 · paper · [AI infra] — https://arxiv.org/abs/2308.16369
-- [XVERSE-13B: A multilingual large language model（官方 GitHub）](llm/2023/xverse-13b.md) — 深圳元象科技（XVERSE Technology） · 2023-08 · github · [预训练数据/架构/AI infra] — https://github.com/xverse-ai/XVERSE-13B
-- [Announcing Mistral 7B](llm/2023/mistral-7b-blog.md) — Mistral AI · 2023-09 · blog · [架构/AI infra] — https://mistral.ai/news/announcing-mistral-7b/
-- [Baichuan 2: Open Large-scale Language Models](llm/2023/baichuan2.md) — 百川智能（Baichuan Inc.） · 2023-09 · paper · [预训练数据/架构/后训练] — https://arxiv.org/abs/2309.10305
-- [DeepSpeed Ulysses: System Optimizations for Enabling Training of Extreme Long Sequence Transformer Models](llm/themes/ai-infra/deepspeed-ulysses.md) — Microsoft (DeepSpeed) · 2023-09 · paper · [AI infra] — https://arxiv.org/abs/2309.14509
-- [Effective Long-Context Scaling of Foundation Models (Llama 2 Long)](llm/2023/llama-2-long.md) — Meta AI · 2023-09 · paper · [预训练数据/架构] — https://arxiv.org/abs/2309.16039
-- [Efficient Memory Management for LLM Serving with PagedAttention (vLLM)](llm/2023/vllm-pagedattention.md) — UC Berkeley · 2023-09 · paper · [AI infra] — https://arxiv.org/abs/2309.06180
-- [InternLM-XComposer: A Vision-Language Large Model for Advanced Text-image Comprehension and Composition](llm/2023/internlm-xcomposer.md) — 上海人工智能实验室（Shanghai AI Laboratory） · 2023-09 · paper · [架构/后训练] — https://arxiv.org/abs/2309.15112
-- [Qwen Technical Report](llm/2023/qwen-technical-report.md) — 阿里巴巴（Alibaba / Qwen Team） · 2023-09 · paper · [预训练数据/架构/后训练/agentic训练] — https://arxiv.org/abs/2309.16609
-- [RLAIF vs. RLHF: Scaling RL from Human Feedback with AI Feedback](llm/2023/rlaif-vs-rlhf.md) — Google Research · 2023-09 · paper · [后训练] — https://arxiv.org/abs/2309.00267
-- [Textbooks Are All You Need II: phi-1.5 technical report](llm/2023/phi-1-5.md) — Microsoft Research · 2023-09 · paper · [预训练数据] — https://arxiv.org/abs/2309.05463
-- [YaRN: Efficient Context Window Extension of Large Language Models](llm/2023/yarn.md) — Nous Research / EleutherAI · 2023-09 · paper · [架构] — https://arxiv.org/abs/2309.00071
-- [nanotron — Minimalistic Large Language Model 3D-parallelism Training](llm/themes/ai-infra/nanotron.md) — Hugging Face · 2023-09 · github · [AI infra] — https://github.com/huggingface/nanotron
-- [A General Theoretical Paradigm to Understand Learning from Human Preferences (IPO / ΨPO)](llm/themes/post-training/ipo.md) — Google DeepMind · 2023-10 · paper · [后训练] — https://arxiv.org/abs/2310.12036
-- [AgentTuning: Enabling Generalized Agent Abilities for LLMs](llm/2023/agenttuning.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-10 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2310.12823
-- [Aquila2 series（BAAI 悟道·天鹰，官方 GitHub）](llm/2023/aquila2.md) — 北京智源人工智能研究院（BAAI / FlagOpen） · 2023-10 · github · [预训练数据/架构/AI infra] — https://github.com/FlagAI-Open/Aquila2
-- [BitNet: Scaling 1-bit Transformers for Large Language Models](llm/2023/bitnet.md) — Microsoft Research · 2023-10 · paper · [架构/AI infra] — https://arxiv.org/abs/2310.11453
-- [ChatGLM3 series: Open Bilingual Chat LLMs（官方 GitHub）](llm/2023/chatglm3.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua KEG） · 2023-10 · github · [架构/后训练/agentic训练] — https://github.com/THUDM/ChatGLM3
-- [Collective Constitutional AI: Aligning a Language Model with Public Input](llm/themes/post-training/anthropic-collective-constitutional-ai.md) — Anthropic · 2023-10 · blog · [后训练] — https://www.anthropic.com/research/collective-constitutional-ai-aligning-a-language-model-with-public-input
-- [DISTFLASHATTN: Distributed Memory-efficient Attention for Long-context LLMs Training](llm/themes/ai-infra/distflashattn.md) — UC Berkeley / UCSD / CMU / MBZUAI · 2023-10 · paper · [AI infra] — https://arxiv.org/abs/2310.03294
-- [FireAct: Toward Language Agent Fine-tuning](llm/themes/agentic/fireact.md) — System2 Research / 剑桥 / 蒙特利尔大学 / Princeton · 2023-10 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2310.05915
-- [Flash-Decoding for long-context inference](llm/themes/ai-infra/flash-decoding.md) — Dao-AILab / Meta (PyTorch Blog) · 2023-10 · blog · [AI infra] — https://pytorch.org/blog/flash-decoding/
-- [Improved Baselines with Visual Instruction Tuning (LLaVA-1.5)](llm/2023/llava-1-5.md) — Microsoft Research / University of Wisconsin-Madison · 2023-10 · paper · [架构/后训练] — https://arxiv.org/abs/2310.03744
-- [Mistral 7B](llm/2023/mistral-7b.md) — Mistral AI · 2023-10 · paper · [架构/AI infra] — https://arxiv.org/abs/2310.06825
-- [Ring Attention with Blockwise Transformers for Near-Infinite Context](llm/themes/ai-infra/ring-attention.md) — UC Berkeley · 2023-10 · paper · [AI infra/架构] — https://arxiv.org/abs/2310.01889
-- [SWE-bench: Can Language Models Resolve Real-World GitHub Issues?](llm/2023/swe-bench.md) — Princeton / University of Chicago · 2023-10 · paper · [agentic训练] — https://arxiv.org/abs/2310.06770
-- [Skywork: A More Open Bilingual Foundation Model](llm/2023/skywork-13b.md) — 昆仑万维 · 天工（Kunlun · Skywork Team） · 2023-10 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2310.19341
-- [UltraFeedback: Boosting Language Models with Scaled AI Feedback](llm/themes/post-training/ultrafeedback.md) — Tsinghua / OpenBMB · 2023-10 · paper · [后训练] — https://arxiv.org/abs/2310.01377
-- [Zephyr: Direct Distillation of LM Alignment](llm/2023/zephyr.md) — Hugging Face · 2023-10 · paper · [后训练] — https://arxiv.org/abs/2310.16944
-- [Ziya-Visual: Bilingual Large Vision-Language Model via Multi-Task Instruction Tuning](llm/2023/ziya-visual.md) — 智源 IDEA 研究院 · 封神榜（IDEA / Fengshenbang） · 2023-10 · paper · [架构/后训练] — https://arxiv.org/abs/2310.08166
-- [Camels in a Changing Climate: Enhancing LM Adaptation with Tulu 2](llm/themes/post-training/tulu2-dpo.md) — AI2 (Allen Institute for AI) · 2023-11 · paper · [后训练] — https://arxiv.org/abs/2311.10702
-- [CogVLM: Visual Expert for Pretrained Language Models](llm/2023/cogvlm.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-11 · paper · [架构/预训练数据] — https://arxiv.org/abs/2311.03079
-- [GAIA: a benchmark for General AI Assistants](llm/themes/agentic/gaia.md) — Meta AI (FAIR) / HuggingFace / AutoGPT · 2023-11 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2311.12983
-- [Orca 2: Teaching Small Language Models How to Reason](llm/2023/orca-2.md) — Microsoft Research · 2023-11 · paper · [后训练] — https://arxiv.org/abs/2311.11045
-- [Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models](llm/2023/qwen-audio.md) — 阿里巴巴（Alibaba / Qwen Team） · 2023-11 · paper · [架构/预训练数据] — https://arxiv.org/abs/2311.07919
-- [CogAgent: A Visual Language Model for GUI Agents](llm/2023/cogagent.md) — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-12 · paper · [架构/agentic训练] — https://arxiv.org/abs/2312.08914
-- [Gated Linear Attention Transformers with Hardware-Efficient Training (GLA)](llm/themes/architecture/gated-linear-attention.md) — MIT / MIT-IBM Watson AI Lab · 2023-12 · paper · [架构] — https://arxiv.org/abs/2312.06635
-- [Gemini: A Family of Highly Capable Multimodal Models](llm/2023/gemini.md) — Google DeepMind · 2023-12 · report · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2312.11805
-- [Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations](llm/themes/post-training/llama-guard.md) — Meta · 2023-12 · paper · [后训练] — https://arxiv.org/abs/2312.06674
-- [Mamba: Linear-Time Sequence Modeling with Selective State Spaces](llm/2023/mamba.md) — Carnegie Mellon / Princeton · 2023-12 · paper · [架构] — https://arxiv.org/abs/2312.00752
-- [Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations](llm/themes/post-training/math-shepherd.md) — Peking University / DeepSeek-AI · 2023-12 · paper · [后训练] — https://arxiv.org/abs/2312.08935
-- [Mixtral of Experts](llm/2023/mixtral-blog.md) — Mistral AI · 2023-12 · blog · [架构/AI infra] — https://mistral.ai/news/mixtral-of-experts/
-- [Phi-2: The surprising power of small language models](llm/2023/phi-2-microsoft-blog.md) — Microsoft Research · 2023-12 · blog · [预训练数据] — https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/
-- [SGLang: Efficient Execution of Structured Language Model Programs](llm/themes/ai-infra/sglang-radixattention.md) — Stanford / UC Berkeley / others (SGLang) · 2023-12 · paper · [AI infra/agentic训练] — https://arxiv.org/abs/2312.07104
-- [TigerBot: An Open Multilingual Multitask LLM](llm/2023/tigerbot.md) — 虎博科技（TigerBot / TigerResearch） · 2023-12 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2312.08688
+- [[llm/themes/architecture/blip-2|BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models]] — Salesforce Research · 2023-01 · paper · [架构] — https://arxiv.org/abs/2301.12597
+- [[llm/2023/llama|LLaMA: Open and Efficient Foundation Language Models]] — Meta AI · 2023-02 · paper · [预训练数据/架构] — https://arxiv.org/abs/2302.13971
+- [[llm/2023/toolformer|Toolformer: Language Models Can Teach Themselves to Use Tools]] — Meta AI · 2023-02 · paper · [agentic训练] — https://arxiv.org/abs/2302.04761
+- [[llm/2023/alpaca|Alpaca: A Strong, Replicable Instruction-Following Model]] — Stanford CRFM · 2023-03 · blog · [后训练] — https://crfm.stanford.edu/2023/03/13/alpaca.html
+- [[llm/2023/chatglm-6b|ChatGLM-6B: An Open Bilingual Dialogue Language Model（官方 GitHub）]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua KEG） · 2023-03 · github · [架构/预训练数据/后训练] — https://github.com/THUDM/ChatGLM-6B
+- [[llm/2023/codegeex|CodeGeeX: A Pre-Trained Model for Code Generation with Multilingual Benchmarking on HumanEval-X]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-03 · paper · [AI infra/架构/预训练数据] — https://arxiv.org/abs/2303.17568
+- [[llm/2023/gpt-4-technical-report|GPT-4 Technical Report]] — OpenAI · 2023-03 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2303.08774
+- [[llm/2023/hugginggpt|HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face]] — Microsoft Research / Zhejiang University · 2023-03 · paper · [agentic训练] — https://arxiv.org/abs/2303.17580
+- [[llm/2023/reflexion|Reflexion: Language Agents with Verbal Reinforcement Learning]] — Northeastern / MIT / Princeton · 2023-03 · paper · [agentic训练] — https://arxiv.org/abs/2303.11366
+- [[llm/2023/vicuna|Vicuna: An Open-Source Chatbot Impressing GPT-4 with 90% ChatGPT Quality]] — LMSYS Org（UC Berkeley / CMU / Stanford / UCSD / MBZUAI 联合） · 2023-03 · blog · [后训练/数据/评测] — https://lmsys.org/blog/2023-03-30-vicuna/
+- [[llm/2023/generative-agents|Generative Agents: Interactive Simulacra of Human Behavior]] — Stanford / Google · 2023-04 · paper · [agentic训练] — https://arxiv.org/abs/2304.03442
+- [[llm/2023/moss|MOSS: An open-source tool-augmented conversational language model from Fudan University（官方 GitHub）]] — 复旦大学（Fudan University / OpenMOSS） · 2023-04 · github · [预训练数据/后训练/agentic训练] — https://github.com/OpenMOSS/MOSS
+- [[llm/2023/pythia|Pythia: A Suite for Analyzing LLMs Across Training and Scaling]] — EleutherAI · 2023-04 · paper · [预训练数据/架构] — https://arxiv.org/abs/2304.01373
+- [[llm/themes/post-training/raft|RAFT: Reward rAnked FineTuning for Generative Foundation Model Alignment]] — HKUST / LMFlow · 2023-04 · paper · [后训练] — https://arxiv.org/abs/2304.06767
+- [[llm/themes/post-training/rrhf|RRHF: Rank Responses to Align Language Models with Human Feedback without tears]] — Alibaba DAMO Academy / Tsinghua University · 2023-04 · paper · [后训练] — https://arxiv.org/abs/2304.05302
+- [[llm/themes/architecture/llava|Visual Instruction Tuning (LLaVA)]] — University of Wisconsin–Madison / Microsoft Research / Columbia University · 2023-04 · paper · [架构/后训练] — https://arxiv.org/abs/2304.08485
+- [[llm/themes/post-training/wizardlm-evol-instruct|WizardLM: Empowering Large Language Models to Follow Complex Instructions (Evol-Instruct)]] — Microsoft / Peking University · 2023-04 · paper · [后训练] — https://arxiv.org/abs/2304.12244
+- [[llm/2023/cpm-bee|CPM-Bee: 百亿参数的中英文双语基座大模型（官方 GitHub）]] — 面壁智能 / 清华 OpenBMB（ModelBest / OpenBMB） · 2023-05 · github · [预训练数据/架构/AI infra] — https://github.com/OpenBMB/CPM-Bee
+- [[llm/themes/post-training/anthropic-claudes-constitution|Claude's Constitution]] — Anthropic · 2023-05 · blog · [后训练] — https://www.anthropic.com/news/claudes-constitution
+- [[llm/2023/dpo|Direct Preference Optimization: Your Language Model is Secretly a Reward Model]] — Stanford University · 2023-05 · paper · [后训练] — https://arxiv.org/abs/2305.18290
+- [[llm/2023/gqa|GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints]] — Google Research · 2023-05 · paper · [架构/AI infra] — https://arxiv.org/abs/2305.13245
+- [[llm/2023/gorilla|Gorilla: Large Language Model Connected with Massive APIs]] — UC Berkeley / Microsoft Research · 2023-05 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2305.15334
+- [[llm/2023/lima|LIMA: Less Is More for Alignment]] — Meta AI · 2023-05 · paper · [后训练] — https://arxiv.org/abs/2305.11206
+- [[llm/2023/lets-verify-step-by-step|Let's Verify Step by Step]] — OpenAI · 2023-05 · paper · [后训练] — https://arxiv.org/abs/2305.20050
+- [[llm/2023/palm-2|PaLM 2 Technical Report]] — Google · 2023-05 · report · [预训练数据/架构] — https://arxiv.org/abs/2305.10403
+- [[llm/2023/qlora|QLoRA: Efficient Finetuning of Quantized LLMs]] — University of Washington · 2023-05 · paper · [后训练/AI infra] — https://arxiv.org/abs/2305.14314
+- [[llm/2023/rwkv|RWKV: Reinventing RNNs for the Transformer Era]] — EleutherAI / RWKV Foundation · 2023-05 · paper · [架构] — https://arxiv.org/abs/2305.13048
+- [[llm/2023/redpajama-incite-models|Releasing 3B and 7B RedPajama-INCITE Family of Models]] — Together AI · 2023-05 · blog · [预训练数据/后训练] — https://www.together.ai/blog/redpajama-models-v1
+- [[llm/themes/architecture/nope-positional-encoding|The Impact of Positional Encoding on Length Generalization in Transformers (NoPE)]] — Mila / McGill University / IBM Research / ServiceNow Research · 2023-05 · paper · [架构] — https://arxiv.org/abs/2305.19466
+- [[llm/2023/tree-of-thoughts|Tree of Thoughts: Deliberate Problem Solving with Large Language Models]] — Princeton / Google DeepMind · 2023-05 · paper · [agentic训练] — https://arxiv.org/abs/2305.10601
+- [[llm/2023/voyager|Voyager: An Open-Ended Embodied Agent with Large Language Models]] — NVIDIA / Caltech · 2023-05 · paper · [agentic训练] — https://arxiv.org/abs/2305.16291
+- [[llm/themes/ai-infra/awq|AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration]] — MIT (Han Lab) / SJTU / others · 2023-06 · paper · [AI infra] — https://arxiv.org/abs/2306.00978
+- [[llm/2023/baichuan-7b|Baichuan-7B: 开源可商用大规模预训练语言模型（官方 GitHub）]] — 百川智能（Baichuan Inc.） · 2023-06 · github · [预训练数据/架构] — https://github.com/baichuan-inc/Baichuan-7B
+- [[llm/2023/chatglm2-6b|ChatGLM2-6B: An Open Bilingual Chat LLM（官方 GitHub）]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua KEG） · 2023-06 · github · [架构/预训练数据/后训练] — https://github.com/THUDM/ChatGLM2-6B
+- [[llm/2023/positional-interpolation|Extending Context Window of LLMs via Positional Interpolation]] — Meta AI · 2023-06 · paper · [架构] — https://arxiv.org/abs/2306.15595
+- [[llm/2023/openai-function-calling|Function calling and other API updates]] — OpenAI · 2023-06 · blog · [agentic训练] — https://openai.com/index/function-calling-and-other-api-updates/
+- [[llm/2023/tulu-camels|How Far Can Camels Go? (Tülu)]] — Allen Institute for AI (AI2) · 2023-06 · paper · [后训练] — https://arxiv.org/abs/2306.04751
+- [[llm/2023/internlm|InternLM: A Multilingual Language Model with Progressively Enhanced Capabilities]] — 上海人工智能实验室（Shanghai AI Lab）& 商汤（SenseTime），联合港中文/复旦/上交大 · 2023-06 · technical-report · [架构/预训练数据/AI infra/后训练] — https://github.com/InternLM/InternLM-techreport
+- [[llm/themes/agentic/mind2web|Mind2Web: Towards a Generalist Agent for the Web]] — The Ohio State University · 2023-06 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2306.06070
+- [[llm/2023/orca|Orca: Progressive Learning from Complex Explanation Traces of GPT-4]] — Microsoft Research · 2023-06 · paper · [后训练] — https://arxiv.org/abs/2306.02707
+- [[llm/2023/textbooks-are-all-you-need-phi-1|Textbooks Are All You Need (phi-1)]] — Microsoft Research · 2023-06 · paper · [预训练数据/后训练] — https://arxiv.org/abs/2306.11644
+- [[llm/2023/webglm|WebGLM: Towards An Efficient Web-Enhanced Question Answering System with Human Preferences]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-06 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2306.07906
+- [[llm/2023/claude-2|Claude 2]] — Anthropic · 2023-07 · blog · [后训练] — https://www.anthropic.com/news/claude-2
+- [[llm/2023/codegeex2|CodeGeeX2: A More Powerful Multilingual Code Generation Model（官方 GitHub）]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua KEG） · 2023-07 · github · [架构/预训练数据] — https://github.com/THUDM/CodeGeeX2
+- [[llm/2023/flashattention-2|FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning]] — Stanford / Princeton · 2023-07 · paper · [AI infra/架构] — https://arxiv.org/abs/2307.08691
+- [[llm/2023/llama-2|Llama 2: Open Foundation and Fine-Tuned Chat Models]] — Meta AI · 2023-07 · paper · [预训练数据/架构/后训练] — https://arxiv.org/abs/2307.09288
+- [[llm/2023/lost-in-the-middle|Lost in the Middle: How Language Models Use Long Contexts]] — Stanford University · 2023-07 · paper · [架构] — https://arxiv.org/abs/2307.03172
+- [[llm/2023/retnet|Retentive Network: A Successor to Transformer for Large Language Models]] — Microsoft Research · 2023-07 · paper · [架构] — https://arxiv.org/abs/2307.08621
+- [[llm/themes/agentic/toolllm|ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs]] — 清华大学 (THUNLP) / 人民大学 / 耶鲁 / 微信 / 智谱等 · 2023-07 · paper · [后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2307.16789
+- [[llm/themes/agentic/webarena|WebArena: A Realistic Web Environment for Building Autonomous Agents]] — Carnegie Mellon University · 2023-07 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2307.13854
+- [[llm/2023/agentbench|AgentBench: Evaluating LLMs as Agents]] — 清华大学 / 智谱AI（Tsinghua / Zhipu，与 Ohio State、UC Berkeley 合作） · 2023-08 · paper · [agentic训练] — https://arxiv.org/abs/2308.03688
+- [[llm/2023/autogen|AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation]] — Microsoft Research · 2023-08 · paper · [agentic训练] — https://arxiv.org/abs/2308.08155
+- [[llm/2023/code-llama-meta-blog|Code Llama: Meta's state-of-the-art LLM for coding]] — Meta AI · 2023-08 · blog · [预训练数据/架构] — https://ai.meta.com/blog/code-llama-large-language-model-coding/
+- [[llm/2023/code-llama|Code Llama: Open Foundation Models for Code]] — Meta AI · 2023-08 · paper · [预训练数据/架构] — https://arxiv.org/abs/2308.12950
+- [[llm/themes/ai-infra/megatron-core|Megatron-Core — GPU-optimized Library for Training Transformers at Scale]] — NVIDIA · 2023-08 · github · [AI infra] — https://github.com/NVIDIA/Megatron-LM
+- [[llm/themes/ai-infra/tensorrt-llm|NVIDIA TensorRT-LLM]] — NVIDIA · 2023-08 · github · [AI infra] — https://github.com/NVIDIA/TensorRT-LLM
+- [[llm/2023/qwen-vl|Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond]] — 阿里巴巴（Alibaba / Qwen Team） · 2023-08 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2308.12966
+- [[llm/themes/ai-infra/sarathi|SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills]] — Microsoft Research India / Georgia Tech · 2023-08 · paper · [AI infra] — https://arxiv.org/abs/2308.16369
+- [[llm/2023/xverse-13b|XVERSE-13B: A multilingual large language model（官方 GitHub）]] — 深圳元象科技（XVERSE Technology） · 2023-08 · github · [预训练数据/架构/AI infra] — https://github.com/xverse-ai/XVERSE-13B
+- [[llm/2023/mistral-7b-blog|Announcing Mistral 7B]] — Mistral AI · 2023-09 · blog · [架构/AI infra] — https://mistral.ai/news/announcing-mistral-7b/
+- [[llm/2023/baichuan2|Baichuan 2: Open Large-scale Language Models]] — 百川智能（Baichuan Inc.） · 2023-09 · paper · [预训练数据/架构/后训练] — https://arxiv.org/abs/2309.10305
+- [[llm/themes/ai-infra/deepspeed-ulysses|DeepSpeed Ulysses: System Optimizations for Enabling Training of Extreme Long Sequence Transformer Models]] — Microsoft (DeepSpeed) · 2023-09 · paper · [AI infra] — https://arxiv.org/abs/2309.14509
+- [[llm/2023/llama-2-long|Effective Long-Context Scaling of Foundation Models (Llama 2 Long)]] — Meta AI · 2023-09 · paper · [预训练数据/架构] — https://arxiv.org/abs/2309.16039
+- [[llm/2023/vllm-pagedattention|Efficient Memory Management for LLM Serving with PagedAttention (vLLM)]] — UC Berkeley · 2023-09 · paper · [AI infra] — https://arxiv.org/abs/2309.06180
+- [[llm/2023/internlm-xcomposer|InternLM-XComposer: A Vision-Language Large Model for Advanced Text-image Comprehension and Composition]] — 上海人工智能实验室（Shanghai AI Laboratory） · 2023-09 · paper · [架构/后训练] — https://arxiv.org/abs/2309.15112
+- [[llm/2023/qwen-technical-report|Qwen Technical Report]] — 阿里巴巴（Alibaba / Qwen Team） · 2023-09 · paper · [预训练数据/架构/后训练/agentic训练] — https://arxiv.org/abs/2309.16609
+- [[llm/2023/rlaif-vs-rlhf|RLAIF vs. RLHF: Scaling RL from Human Feedback with AI Feedback]] — Google Research · 2023-09 · paper · [后训练] — https://arxiv.org/abs/2309.00267
+- [[llm/2023/phi-1-5|Textbooks Are All You Need II: phi-1.5 technical report]] — Microsoft Research · 2023-09 · paper · [预训练数据] — https://arxiv.org/abs/2309.05463
+- [[llm/2023/yarn|YaRN: Efficient Context Window Extension of Large Language Models]] — Nous Research / EleutherAI · 2023-09 · paper · [架构] — https://arxiv.org/abs/2309.00071
+- [[llm/themes/ai-infra/nanotron|nanotron — Minimalistic Large Language Model 3D-parallelism Training]] — Hugging Face · 2023-09 · github · [AI infra] — https://github.com/huggingface/nanotron
+- [[llm/themes/post-training/ipo|A General Theoretical Paradigm to Understand Learning from Human Preferences (IPO / ΨPO)]] — Google DeepMind · 2023-10 · paper · [后训练] — https://arxiv.org/abs/2310.12036
+- [[llm/2023/agenttuning|AgentTuning: Enabling Generalized Agent Abilities for LLMs]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-10 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2310.12823
+- [[llm/2023/aquila2|Aquila2 series（BAAI 悟道·天鹰，官方 GitHub）]] — 北京智源人工智能研究院（BAAI / FlagOpen） · 2023-10 · github · [预训练数据/架构/AI infra] — https://github.com/FlagAI-Open/Aquila2
+- [[llm/2023/bitnet|BitNet: Scaling 1-bit Transformers for Large Language Models]] — Microsoft Research · 2023-10 · paper · [架构/AI infra] — https://arxiv.org/abs/2310.11453
+- [[llm/2023/chatglm3|ChatGLM3 series: Open Bilingual Chat LLMs（官方 GitHub）]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua KEG） · 2023-10 · github · [架构/后训练/agentic训练] — https://github.com/THUDM/ChatGLM3
+- [[llm/themes/post-training/anthropic-collective-constitutional-ai|Collective Constitutional AI: Aligning a Language Model with Public Input]] — Anthropic · 2023-10 · blog · [后训练] — https://www.anthropic.com/research/collective-constitutional-ai-aligning-a-language-model-with-public-input
+- [[llm/themes/ai-infra/distflashattn|DISTFLASHATTN: Distributed Memory-efficient Attention for Long-context LLMs Training]] — UC Berkeley / UCSD / CMU / MBZUAI · 2023-10 · paper · [AI infra] — https://arxiv.org/abs/2310.03294
+- [[llm/themes/agentic/fireact|FireAct: Toward Language Agent Fine-tuning]] — System2 Research / 剑桥 / 蒙特利尔大学 / Princeton · 2023-10 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2310.05915
+- [[llm/themes/ai-infra/flash-decoding|Flash-Decoding for long-context inference]] — Dao-AILab / Meta (PyTorch Blog) · 2023-10 · blog · [AI infra] — https://pytorch.org/blog/flash-decoding/
+- [[llm/2023/llava-1-5|Improved Baselines with Visual Instruction Tuning (LLaVA-1.5)]] — Microsoft Research / University of Wisconsin-Madison · 2023-10 · paper · [架构/后训练] — https://arxiv.org/abs/2310.03744
+- [[llm/2023/mistral-7b|Mistral 7B]] — Mistral AI · 2023-10 · paper · [架构/AI infra] — https://arxiv.org/abs/2310.06825
+- [[llm/themes/ai-infra/ring-attention|Ring Attention with Blockwise Transformers for Near-Infinite Context]] — UC Berkeley · 2023-10 · paper · [AI infra/架构] — https://arxiv.org/abs/2310.01889
+- [[llm/2023/swe-bench|SWE-bench: Can Language Models Resolve Real-World GitHub Issues?]] — Princeton / University of Chicago · 2023-10 · paper · [agentic训练] — https://arxiv.org/abs/2310.06770
+- [[llm/2023/skywork-13b|Skywork: A More Open Bilingual Foundation Model]] — 昆仑万维 · 天工（Kunlun · Skywork Team） · 2023-10 · paper · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2310.19341
+- [[llm/themes/post-training/ultrafeedback|UltraFeedback: Boosting Language Models with Scaled AI Feedback]] — Tsinghua / OpenBMB · 2023-10 · paper · [后训练] — https://arxiv.org/abs/2310.01377
+- [[llm/2023/zephyr|Zephyr: Direct Distillation of LM Alignment]] — Hugging Face · 2023-10 · paper · [后训练] — https://arxiv.org/abs/2310.16944
+- [[llm/2023/ziya-visual|Ziya-Visual: Bilingual Large Vision-Language Model via Multi-Task Instruction Tuning]] — 智源 IDEA 研究院 · 封神榜（IDEA / Fengshenbang） · 2023-10 · paper · [架构/后训练] — https://arxiv.org/abs/2310.08166
+- [[llm/themes/post-training/tulu2-dpo|Camels in a Changing Climate: Enhancing LM Adaptation with Tulu 2]] — AI2 (Allen Institute for AI) · 2023-11 · paper · [后训练] — https://arxiv.org/abs/2311.10702
+- [[llm/2023/cogvlm|CogVLM: Visual Expert for Pretrained Language Models]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-11 · paper · [架构/预训练数据] — https://arxiv.org/abs/2311.03079
+- [[llm/themes/agentic/gaia|GAIA: a benchmark for General AI Assistants]] — Meta AI (FAIR) / HuggingFace / AutoGPT · 2023-11 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2311.12983
+- [[llm/2023/orca-2|Orca 2: Teaching Small Language Models How to Reason]] — Microsoft Research · 2023-11 · paper · [后训练] — https://arxiv.org/abs/2311.11045
+- [[llm/2023/qwen-audio|Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models]] — 阿里巴巴（Alibaba / Qwen Team） · 2023-11 · paper · [架构/预训练数据] — https://arxiv.org/abs/2311.07919
+- [[llm/2023/cogagent|CogAgent: A Visual Language Model for GUI Agents]] — 智谱AI / 清华 KEG（Zhipu AI / Tsinghua） · 2023-12 · paper · [架构/agentic训练] — https://arxiv.org/abs/2312.08914
+- [[llm/themes/architecture/gated-linear-attention|Gated Linear Attention Transformers with Hardware-Efficient Training (GLA)]] — MIT / MIT-IBM Watson AI Lab · 2023-12 · paper · [架构] — https://arxiv.org/abs/2312.06635
+- [[llm/2023/gemini|Gemini: A Family of Highly Capable Multimodal Models]] — Google DeepMind · 2023-12 · report · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2312.11805
+- [[llm/themes/post-training/llama-guard|Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations]] — Meta · 2023-12 · paper · [后训练] — https://arxiv.org/abs/2312.06674
+- [[llm/2023/mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] — Carnegie Mellon / Princeton · 2023-12 · paper · [架构] — https://arxiv.org/abs/2312.00752
+- [[llm/themes/post-training/math-shepherd|Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations]] — Peking University / DeepSeek-AI · 2023-12 · paper · [后训练] — https://arxiv.org/abs/2312.08935
+- [[llm/2023/mixtral-blog|Mixtral of Experts]] — Mistral AI · 2023-12 · blog · [架构/AI infra] — https://mistral.ai/news/mixtral-of-experts/
+- [[llm/2023/phi-2-microsoft-blog|Phi-2: The surprising power of small language models]] — Microsoft Research · 2023-12 · blog · [预训练数据] — https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/
+- [[llm/themes/ai-infra/sglang-radixattention|SGLang: Efficient Execution of Structured Language Model Programs]] — Stanford / UC Berkeley / others (SGLang) · 2023-12 · paper · [AI infra/agentic训练] — https://arxiv.org/abs/2312.07104
+- [[llm/2023/tigerbot|TigerBot: An Open Multilingual Multitask LLM]] — 虎博科技（TigerBot / TigerResearch） · 2023-12 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2312.08688
 
 ## 2024（136 条）
 
-- [Contrastive Preference Optimization: Pushing the Boundaries of LLM Performance in Machine Translation (CPO)](llm/themes/post-training/cpo.md) — Johns Hopkins University / Microsoft · 2024-01 · paper · [后训练] — https://arxiv.org/abs/2401.08417
-- [DeepSeek LLM: Scaling Open-Source Language Models with Longtermism](llm/2023/deepseek-llm.md) — 深度求索（DeepSeek-AI） · 2024-01 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2401.02954
-- [DeepSeek-Coder: When the Large Language Model Meets Programming -- The Rise of Code Intelligence](llm/2023/deepseek-coder.md) — 深度求索（DeepSeek-AI） · 2024-01 · paper · [预训练数据/架构] — https://arxiv.org/abs/2401.14196
-- [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](llm/2023/deepseekmoe.md) — 深度求索（DeepSeek-AI） · 2024-01 · paper · [架构/预训练数据] — https://arxiv.org/abs/2401.06066
-- [DeepSpeed-FastGen: High-throughput Text Generation for LLMs via MII and DeepSpeed-Inference](llm/themes/ai-infra/deepspeed-fastgen.md) — Microsoft (DeepSpeed) · 2024-01 · paper · [AI infra] — https://arxiv.org/abs/2401.08671
-- [DistServe: Disaggregating Prefill and Decoding for Goodput-optimized LLM Serving](llm/themes/ai-infra/distserve.md) — Peking University / UCSD · 2024-01 · paper · [AI infra] — https://arxiv.org/abs/2401.09670
-- [Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research](llm/2024/dolma.md) — Allen Institute for AI (AI2) · 2024-01 · paper · [预训练数据] — https://arxiv.org/abs/2402.00159
-- [InternLM-XComposer2: Mastering Free-form Text-Image Composition and Comprehension in Vision-Language Large Model](llm/2024/internlm-xcomposer2.md) — 上海人工智能实验室 (Shanghai AI Laboratory) · 2024-01 · arxiv · [架构/后训练] — https://arxiv.org/abs/2401.16420
-- [MambaByte: Token-free Selective State Space Model](llm/themes/architecture/mambabyte.md) — Cornell University · 2024-01 · paper · [架构] — https://arxiv.org/abs/2401.13660
-- [Mixtral of Experts (Mixtral 8x7B)](llm/themes/ai-infra/mixtral.md) — Mistral AI · 2024-01 · report · [架构/AI infra] — https://arxiv.org/abs/2401.04088
-- [Self-Play Fine-Tuning Converts Weak Language Models to Strong Language Models (SPIN)](llm/themes/post-training/spin.md) — UCLA · 2024-01 · paper · [后训练] — https://arxiv.org/abs/2401.01335
-- [Self-Rewarding Language Models](llm/2024/self-rewarding-language-models.md) — Meta (FAIR) / NYU · 2024-01 · paper · [后训练] — https://arxiv.org/abs/2401.10020
-- [WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models](llm/themes/agentic/webvoyager.md) — 浙江大学 / 腾讯 AI Lab / 西湖大学 等 · 2024-01 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2401.13919
-- [Back to Basics: Revisiting REINFORCE Style Optimization for Learning from Human Feedback in LLMs (RLOO)](llm/themes/post-training/rloo-back-to-basics.md) — Cohere / Cohere For AI · 2024-02 · paper · [后训练] — https://arxiv.org/abs/2402.14740
-- [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](llm/2023/deepseekmath.md) — 深度求索（DeepSeek-AI） · 2024-02 · paper · [后训练/预训练数据/agentic训练] — https://arxiv.org/abs/2402.03300
-- [Executable Code Actions Elicit Better LLM Agents (CodeAct)](llm/themes/agentic/codeact.md) — UIUC / Apple / Google 等 · 2024-02 · paper · [架构/后训练/agentic训练] — https://arxiv.org/abs/2402.01030
-- [Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models (Hawk & Griffin)](llm/themes/architecture/griffin-hawk.md) — Google DeepMind · 2024-02 · paper · [架构] — https://arxiv.org/abs/2402.19427
-- [KTO: Model Alignment as Prospect Theoretic Optimization](llm/2024/kto.md) — Stanford / Contextual AI · 2024-02 · paper · [后训练] — https://arxiv.org/abs/2402.01306
-- [MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs](llm/themes/ai-infra/megascale.md) — ByteDance / Peking University · 2024-02 · paper · [AI infra] — https://arxiv.org/abs/2402.15627
-- [Nemotron-4 15B Technical Report](llm/2024/nemotron-4-15b.md) — NVIDIA · 2024-02 · report · [预训练数据/架构] — https://arxiv.org/abs/2402.16819
-- [OLMo: Accelerating the Science of Language Models](llm/2024/olmo.md) — Allen Institute for AI (AI2) · 2024-02 · paper · [预训练数据/架构] — https://arxiv.org/abs/2402.00838
-- [DeepSeek-VL: Towards Real-World Vision-Language Understanding](llm/2024/deepseek-vl.md) — DeepSeek-AI · 2024-03 · arxiv · [架构/预训练数据/后训练] — https://arxiv.org/abs/2403.05525
-- [Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context](llm/2024/gemini-1-5.md) — Google DeepMind · 2024-03 · report · [架构] — https://arxiv.org/abs/2403.05530
-- [Gemma: Open Models Based on Gemini Research and Technology](llm/2024/gemma.md) — Google DeepMind · 2024-03 · report · [架构/后训练] — https://arxiv.org/abs/2403.08295
-- [Grok-1 open release](llm/2024/xai-grok-1-open-release.md) — xAI · 2024-03 · github · [架构] — https://github.com/xai-org/grok-1
-- [InternLM2 Technical Report](llm/2023/internlm2.md) — 上海人工智能实验室（Shanghai AI Laboratory）/ 商汤 · 2024-03 · paper · [预训练数据/架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2403.17297
-- [Introducing DBRX: A New State-of-the-Art Open LLM](llm/2024/databricks-dbrx.md) — Databricks (Mosaic Research) · 2024-03 · blog · [架构/AI infra/预训练数据] — https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
-- [Introducing the next generation of Claude (Claude 3 family)](llm/2024/anthropic-claude-3-family.md) — Anthropic · 2024-03 · blog · [架构/后训练] — https://www.anthropic.com/news/claude-3-family
-- [Jamba: A Hybrid Transformer-Mamba Language Model](llm/2024/jamba.md) — AI21 Labs · 2024-03 · paper · [架构] — https://arxiv.org/abs/2403.19887
-- [MM1: Methods, Analysis & Insights from Multimodal LLM Pre-training](llm/2024/mm1.md) — Apple · 2024-03 · paper · [预训练数据/架构] — https://arxiv.org/abs/2403.09611
-- [ORPO: Monolithic Preference Optimization without Reference Model](llm/2024/orpo.md) — KAIST AI · 2024-03 · paper · [后训练] — https://arxiv.org/abs/2403.07691
-- [RewardBench: Evaluating Reward Models for Language Modeling](llm/2024/rewardbench.md) — Allen Institute for AI (AI2) · 2024-03 · paper · [后训练] — https://arxiv.org/abs/2403.13787
-- [The Claude 3 Model Family - Opus, Sonnet, Haiku (Model Card)](llm/2024/anthropic-claude-3-model-card.md) — Anthropic · 2024-03 · model-card · [架构/后训练] — https://www.anthropic.com/claude-3-model-card
-- [Yi: Open Foundation Models by 01.AI](llm/2023/yi-01ai.md) — 零一万物（01.AI） · 2024-03 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2403.04652
-- [Cheaper, Better, Faster, Stronger (Mixtral 8x22B)](llm/2024/mistral-mixtral-8x22b.md) — Mistral AI · 2024-04 · blog · [架构] — https://mistral.ai/news/mixtral-8x22b/
-- [How Far Are We to GPT-4V? Closing the Gap to Commercial Multimodal Models with Open-Source Suites (InternVL 1.5)](llm/2024/internvl-1-5.md) — 上海人工智能实验室 (Shanghai AI Laboratory) / OpenGVLab · 2024-04 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2404.16821
-- [Introducing Command R+: A Scalable LLM Built for Business](llm/2024/cohere-command-r-plus.md) — Cohere · 2024-04 · blog · [后训练/agentic训练] — https://cohere.com/blog/command-r-plus-microsoft-azure
-- [Introducing Meta Llama 3 (8B & 70B)](llm/2024/meta-llama-3-blog.md) — Meta · 2024-04 · blog · [预训练数据/架构/AI infra/后训练] — https://ai.meta.com/blog/meta-llama-3/
-- [Is DPO Superior to PPO for LLM Alignment? A Comprehensive Study](llm/themes/post-training/dpo-vs-ppo.md) — Tsinghua / OpenPsi / ICML 2024 · 2024-04 · paper · [后训练] — https://arxiv.org/abs/2404.10719
-- [MiniCPM: Unveiling the Potential of Small Language Models with Scalable Training Strategies](llm/2024/minicpm.md) — 面壁智能 (ModelBest) / OpenBMB / 清华 THUNLP · 2024-04 · arxiv · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2404.06395
-- [OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments](llm/themes/agentic/osworld.md) — 香港大学 / 上海交大 / Salesforce Research 等 (XLANG Lab) · 2024-04 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2404.07972
-- [Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone](llm/2024/phi-3-technical-report.md) — Microsoft · 2024-04 · report · [预训练数据/架构/后训练] — https://arxiv.org/abs/2404.14219
-- [RecurrentGemma: Moving Past Transformers for Efficient Open Language Models](llm/themes/architecture/recurrentgemma.md) — Google DeepMind · 2024-04 · report · [架构] — https://arxiv.org/abs/2404.07839
-- [Snowflake Arctic: The Best LLM for Enterprise AI — Efficiently Intelligent, Truly Open](llm/2024/snowflake-arctic.md) — Snowflake · 2024-04 · blog · [架构/AI infra] — https://www.snowflake.com/en/blog/arctic-open-efficient-foundation-language-models-snowflake/
-- [Tele-FLM Technical Report](llm/2024/tele-flm.md) — 北京智源 (BAAI) / 中国电信 TeleAI · 2024-04 · arxiv · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2404.16645
-- [AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents](llm/themes/agentic/androidworld.md) — Google DeepMind / Google Research · 2024-05 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2405.14573
-- [Chameleon: Mixed-Modal Early-Fusion Foundation Models](llm/2024/chameleon.md) — Meta (FAIR) · 2024-05 · paper · [架构] — https://arxiv.org/abs/2405.09818
-- [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](llm/2024/deepseek-v2.md) — DeepSeek-AI · 2024-05 · arxiv · [架构/AI infra/后训练] — https://arxiv.org/abs/2405.04434
-- [Hello GPT-4o](llm/2024/openai-hello-gpt-4o.md) — OpenAI · 2024-05 · blog · [架构/后训练] — https://openai.com/index/hello-gpt-4o/
-- [MAP-Neo: Highly Capable and Transparent Bilingual Large Language Model Series](llm/2024/map-neo.md) — M-A-P / 滑铁卢大学 / 武汉人工智能研究院 / 01.AI · 2024-05 · arxiv · [预训练数据/架构/后训练] — https://arxiv.org/abs/2405.19327
-- [NeMo-Aligner: Scalable Toolkit for Efficient Model Alignment](llm/themes/ai-infra/nemo-aligner.md) — NVIDIA · 2024-05 · paper · [后训练/AI infra] — https://arxiv.org/abs/2405.01481
-- [OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework](llm/themes/ai-infra/openrlhf.md) — OpenRLHF community (含 ByteDance/NVIDIA 等贡献者) · 2024-05 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2405.11143
-- [QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving](llm/themes/ai-infra/qserve.md) — MIT (Han Lab) / NVIDIA · 2024-05 · paper · [AI infra] — https://arxiv.org/abs/2405.04532
-- [RLHF Workflow: From Reward Modeling to Online RLHF](llm/themes/post-training/rlhf-workflow.md) — Salesforce / UIUC (RLHFlow) · 2024-05 · paper · [后训练] — https://arxiv.org/abs/2405.07863
-- [SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering](llm/2024/swe-agent.md) — Princeton University · 2024-05 · paper · [agentic训练] — https://arxiv.org/abs/2405.15793
-- [SimPO: Simple Preference Optimization with a Reference-Free Reward](llm/2024/simpo.md) — Princeton / University of Virginia · 2024-05 · paper · [后训练] — https://arxiv.org/abs/2405.14734
-- [Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (Mamba-2)](llm/2024/mamba-2-ssd.md) — Princeton / Carnegie Mellon · 2024-05 · paper · [架构] — https://arxiv.org/abs/2405.21060
-- [Yuan 2.0-M32: Mixture of Experts with Attention Router](llm/2024/yuan2-m32.md) — 浪潮信息 (IEIT Systems) · 2024-05 · arxiv · [架构/AI infra] — https://arxiv.org/abs/2405.17976
-- [AgentGym: Evolving Large Language Model-based Agents across Diverse Environments](llm/themes/agentic/agentgym.md) — 复旦大学 (Fudan NLP) · 2024-06 · paper · [后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2406.04151
-- [ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools](llm/2024/glm-4.md) — 智谱 AI (Zhipu AI) / 清华大学 · 2024-06 · arxiv · [架构/后训练/预训练数据/agentic训练] — https://arxiv.org/abs/2406.12793
-- [DataComp-LM: In search of the next generation of training sets for language models](llm/2024/datacomp-lm.md) — DataComp / University of Washington / Apple / TRI / AI2 等 · 2024-06 · paper · [预训练数据] — https://arxiv.org/abs/2406.11794
-- [DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence](llm/2024/deepseek-coder-v2.md) — DeepSeek-AI · 2024-06 · arxiv · [预训练数据/架构/后训练] — https://arxiv.org/abs/2406.11931
-- [Introducing Apple's On-Device and Server Foundation Models](llm/2024/apple-intelligence-foundation-models-blog.md) — Apple · 2024-06 · blog · [架构/AI infra/后训练] — https://machinelearning.apple.com/research/introducing-apple-foundation-models
-- [Introducing Claude 3.5 Sonnet](llm/2024/anthropic-claude-3-5-sonnet.md) — Anthropic · 2024-06 · blog · [架构/后训练/agentic训练] — https://www.anthropic.com/news/claude-3-5-sonnet
-- [Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving](llm/2024/mooncake.md) — 月之暗面 Moonshot AI / 清华大学 · 2024-06 · arxiv · [AI infra] — https://arxiv.org/abs/2407.00079
-- [Nemotron-4 340B Technical Report](llm/2024/nemotron-4-340b.md) — NVIDIA · 2024-06 · report · [架构/后训练] — https://arxiv.org/abs/2406.11704
-- [Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling](llm/themes/architecture/samba.md) — Microsoft / University of Illinois Urbana-Champaign · 2024-06 · paper · [架构] — https://arxiv.org/abs/2406.07522
-- [Seed-TTS: A Family of High-Quality Versatile Speech Generation Models](llm/2024/seed-tts.md) — 字节跳动 Seed (ByteDance Seed) · 2024-06 · arxiv · [架构/后训练] — https://arxiv.org/abs/2406.02430
-- [Skywork-MoE: A Deep Dive into Training Techniques for Mixture-of-Experts Language Models](llm/2024/skywork-moe.md) — 昆仑万维天工 (Kunlun Inc. / Skywork Team) · 2024-06 · arxiv · [架构/AI infra] — https://arxiv.org/abs/2406.06563
-- [The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale](llm/2024/fineweb.md) — Hugging Face · 2024-06 · paper · [预训练数据] — https://arxiv.org/abs/2406.17557
-- [tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains](llm/2024/tau-bench.md) — Sierra · 2024-06 · paper · [agentic训练] — https://arxiv.org/abs/2406.12045
-- [AppWorld: A Controllable World of Apps and People for Benchmarking Interactive Coding Agents](llm/themes/agentic/appworld.md) — Stony Brook University / 等 · 2024-07 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2407.18901
-- [Apple Intelligence Foundation Language Models](llm/2024/apple-intelligence-foundation-language-models.md) — Apple · 2024-07 · report · [架构/AI infra/后训练] — https://arxiv.org/abs/2407.21075
-- [FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision](llm/2024/flashattention-3.md) — Colfax / Together AI / Meta / NVIDIA / Princeton (Tri Dao 等) · 2024-07 · paper · [AI infra/架构] — https://arxiv.org/abs/2407.08608
-- [Gemma 2: Improving Open Language Models at a Practical Size](llm/2024/gemma-2.md) — Google DeepMind · 2024-07 · report · [架构/后训练] — https://arxiv.org/abs/2408.00118
-- [InternLM2.5-7B-Chat (Model Card)](llm/2024/internlm2-5.md) — 上海人工智能实验室 (Shanghai AI Laboratory) · 2024-07 · model-card · [后训练/架构] — https://huggingface.co/internlm/internlm2_5-7b-chat
-- [Introducing Llama 3.1 - Our most capable models to date (405B)](llm/2024/meta-llama-3-1-blog.md) — Meta · 2024-07 · blog · [预训练数据/架构/AI infra/后训练] — https://ai.meta.com/blog/meta-llama-3-1/
-- [Large Enough (Mistral Large 2)](llm/2024/mistral-large-2.md) — Mistral AI · 2024-07 · blog · [架构/后训练] — https://mistral.ai/news/mistral-large-2407/
-- [Mistral NeMo](llm/2024/mistral-nemo.md) — Mistral AI / NVIDIA · 2024-07 · blog · [架构/AI infra] — https://mistral.ai/news/mistral-nemo/
-- [OpenHands: An Open Platform for AI Software Developers as Generalist Agents](llm/2024/openhands.md) — OpenHands community (UIUC / CMU 等, f.k.a. OpenDevin) · 2024-07 · paper · [agentic训练] — https://arxiv.org/abs/2407.16741
-- [Qwen2 Technical Report](llm/2024/qwen2.md) — 阿里巴巴 Qwen Team · 2024-07 · arxiv · [预训练数据/架构/后训练] — https://arxiv.org/abs/2407.10671
-- [Qwen2-Audio Technical Report](llm/2024/qwen2-audio.md) — 阿里巴巴 Qwen Team · 2024-07 · arxiv · [架构/后训练] — https://arxiv.org/abs/2407.10759
-- [The Llama 3 Herd of Models](llm/2024/llama-3-herd-of-models.md) — Meta · 2024-07 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2407.21783
-- [Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts](llm/themes/architecture/aux-loss-free-load-balancing.md) — DeepSeek-AI · 2024-08 · paper · [架构] — https://arxiv.org/abs/2408.15664
-- [CogVLM2: Visual Language Models for Image and Video Understanding](llm/2024/cogvlm2.md) — 智谱 AI (Zhipu AI) / 清华大学 · 2024-08 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2408.16500
-- [CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer](llm/2024/cogvideox.md) — 智谱 AI (Zhipu AI) / 清华大学 · 2024-08 · arxiv · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2408.06072
-- [Introducing SWE-bench Verified](llm/themes/agentic/openai-swe-bench-verified.md) — OpenAI · 2024-08 · blog · [agentic训练/agentic环境与数据] — https://openai.com/index/introducing-swe-bench-verified/
-- [Jamba-1.5: Hybrid Transformer-Mamba Models at Scale](llm/themes/architecture/jamba-1.5.md) — AI21 Labs · 2024-08 · report · [架构/AI infra] — https://arxiv.org/abs/2408.12570
-- [LongWriter: Unleashing 10,000+ Word Generation from Long Context LLMs](llm/2024/longwriter.md) — 智谱 AI (Zhipu AI) / 清华大学 · 2024-08 · arxiv · [后训练/预训练数据] — https://arxiv.org/abs/2408.07055
-- [MiniCPM-V: A GPT-4V Level MLLM on Your Phone](llm/2024/minicpm-v.md) — 面壁智能 (ModelBest) / OpenBMB / 清华 THUNLP · 2024-08 · arxiv · [架构/预训练数据/后训练] — https://arxiv.org/abs/2408.01800
-- [The Jamba 1.5 Open Model Family: The Most Powerful and Efficient Long Context Models](llm/2024/ai21-jamba-1-5.md) — AI21 Labs · 2024-08 · blog · [架构/AI infra] — https://www.ai21.com/blog/announcing-jamba-model-family/
-- [Emu3: Next-Token Prediction is All You Need](llm/2024/emu3.md) — 北京智源 (BAAI) · 2024-09 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2409.18869
-- [HybridFlow: A Flexible and Efficient RLHF Framework (verl)](llm/themes/ai-infra/hybridflow-verl.md) — ByteDance / Hong Kong University · 2024-09 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2409.19256
-- [Learning to Reason with LLMs (OpenAI o1)](llm/2024/openai-learning-to-reason-with-llms.md) — OpenAI · 2024-09 · blog · [后训练/agentic训练] — https://openai.com/index/learning-to-reason-with-llms/
-- [Llama 3.2 - Revolutionizing edge AI and vision with open, customizable models](llm/2024/meta-llama-3-2-blog.md) — Meta · 2024-09 · blog · [架构/后训练] — https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/
-- [MM1.5: Methods, Analysis & Insights from Multimodal LLM Fine-tuning](llm/2024/mm1-5.md) — Apple · 2024-09 · paper · [预训练数据/架构] — https://arxiv.org/abs/2409.20566
-- [MiniCPM3-4B (Model Card)](llm/2024/minicpm3.md) — 面壁智能 (ModelBest) / OpenBMB · 2024-09 · model-card · [架构/后训练] — https://huggingface.co/openbmb/MiniCPM3-4B
-- [Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models](llm/2024/molmo-pixmo.md) — Allen Institute for AI (AI2) · 2024-09 · paper · [预训练数据/架构] — https://arxiv.org/abs/2409.17146
-- [OLMoE: Open Mixture-of-Experts Language Models](llm/2024/olmoe.md) — Allen Institute for AI (AI2) · 2024-09 · paper · [架构/预训练数据] — https://arxiv.org/abs/2409.02060
-- [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](llm/2024/qwen2-vl.md) — 阿里巴巴 Qwen Team · 2024-09 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2409.12191
-- [Qwen2.5-Coder Technical Report](llm/2024/qwen2.5-coder.md) — 阿里巴巴 Qwen Team · 2024-09 · arxiv · [预训练数据/架构] — https://arxiv.org/abs/2409.12186
-- [Qwen2.5-Math Technical Report: Toward Mathematical Expert Model via Self-Improvement](llm/2024/qwen2.5-math.md) — 阿里巴巴 Qwen Team · 2024-09 · arxiv · [后训练/预训练数据] — https://arxiv.org/abs/2409.12122
-- [ToolACE: Winning the Points of LLM Function Calling](llm/themes/agentic/toolace.md) — 华为诺亚方舟实验室 / 香港科技大学 等 · 2024-09 · paper · [后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2409.00920
-- [Yi-Coder-9B-Chat (Model Card)](llm/2024/yi-coder.md) — 零一万物 (01.AI) · 2024-09 · model-card · [预训练数据/架构] — https://huggingface.co/01-ai/Yi-Coder-9B-Chat
-- [xLAM: A Family of Large Action Models to Empower AI Agent Systems](llm/themes/agentic/xlam.md) — Salesforce AI Research · 2024-09 · report · [架构/后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2409.03215
-- [AutoGLM: Autonomous Foundation Agents for GUIs](llm/themes/agentic/autoglm.md) — 智谱 AI / 清华大学 (Zhipu / THUDM) · 2024-10 · report · [架构/后训练/agentic训练] — https://arxiv.org/abs/2411.00820
-- [Baichuan-Omni Technical Report](llm/2024/baichuan-omni.md) — 百川智能 (Baichuan Inc.) / 西湖大学 / 浙江大学 · 2024-10 · arxiv · [架构/后训练] — https://arxiv.org/abs/2410.08565
-- [CCI3.0-HQ: a large-scale Chinese dataset of high quality designed for pre-training large language models](llm/2024/cci3-hq.md) — 北京智源 (BAAI) · 2024-10 · arxiv · [预训练数据] — https://arxiv.org/abs/2410.18505
-- [Developing a computer use model](llm/themes/agentic/anthropic-developing-computer-use.md) — Anthropic · 2024-10 · blog · [后训练/agentic训练] — https://www.anthropic.com/news/developing-computer-use
-- [Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku](llm/2024/anthropic-3-5-models-and-computer-use.md) — Anthropic · 2024-10 · blog · [后训练/agentic训练] — https://www.anthropic.com/news/3-5-models-and-computer-use
-- [Movie Gen: A Cast of Media Foundation Models](llm/2024/movie-gen.md) — Meta · 2024-10 · report · [架构/AI infra/预训练数据] — https://arxiv.org/abs/2410.13720
-- [Pixtral 12B](llm/2024/pixtral-12b.md) — Mistral AI · 2024-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2410.07073
-- [TorchTitan: One-stop PyTorch native solution for production ready LLM pre-training](llm/themes/ai-infra/torchtitan.md) — Meta (PyTorch) · 2024-10 · paper · [AI infra] — https://arxiv.org/abs/2410.06511
-- [VinePPO: Unlocking RL Potential For LLM Reasoning Through Refined Credit Assignment](llm/themes/post-training/vineppo.md) — Mila / McGill / ServiceNow · 2024-10 · paper · [后训练] — https://arxiv.org/abs/2410.01679
-- [nGPT: Normalized Transformer with Representation Learning on the Hypersphere](llm/themes/architecture/ngpt-normalized-transformer.md) — NVIDIA · 2024-10 · paper · [架构] — https://arxiv.org/abs/2410.01131
-- [Hunyuan-Large: An Open-Source MoE Model with 52 Billion Activated Parameters by Tencent](llm/2024/hunyuan-large.md) — 腾讯混元 (Tencent Hunyuan) · 2024-11 · arxiv · [架构/预训练数据/AI infra/后训练] — https://arxiv.org/abs/2411.02265
-- [Hymba: A Hybrid-head Architecture for Small Language Models](llm/themes/architecture/hymba.md) — NVIDIA · 2024-11 · paper · [架构] — https://arxiv.org/abs/2411.13676
-- [Llama Guard 3 Vision: Safeguarding Human-AI Image Understanding Conversations](llm/2024/llama-guard-3-vision.md) — Meta · 2024-11 · paper · [后训练] — https://arxiv.org/abs/2411.10414
-- [Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks](llm/themes/agentic/magentic-one.md) — Microsoft Research (AutoGen team) · 2024-11 · paper · [架构/agentic训练] — https://arxiv.org/abs/2411.04468
-- [Tulu 3: Pushing Frontiers in Open Language Model Post-Training](llm/2024/tulu-3.md) — Allen Institute for AI (AI2) · 2024-11 · paper · [后训练] — https://arxiv.org/abs/2411.15124
-- [WebRL: Training LLM Web Agents via Self-Evolving Online Curriculum Reinforcement Learning](llm/themes/agentic/webrl.md) — 清华大学 / 智谱 AI (THUDM / Zhipu) · 2024-11 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2411.02337
-- [Building effective agents](llm/themes/agentic/anthropic-building-effective-agents.md) — Anthropic · 2024-12 · blog · [架构/agentic训练] — https://www.anthropic.com/engineering/building-effective-agents
-- [Byte Latent Transformer: Patches Scale Better Than Tokens (BLT)](llm/themes/architecture/byte-latent-transformer.md) — FAIR at Meta / University of Washington / University of Chicago · 2024-12 · paper · [架构/预训练数据] — https://arxiv.org/abs/2412.09871
-- [DeepSeek-V3 Technical Report](llm/2024/deepseek-v3.md) — DeepSeek-AI · 2024-12 · arxiv · [架构/AI infra/预训练数据/后训练] — https://arxiv.org/abs/2412.19437
-- [DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding](llm/2024/deepseek-vl2.md) — DeepSeek-AI · 2024-12 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2412.10302
-- [Deliberative Alignment: Reasoning Enables Safer Language Models](llm/themes/post-training/deliberative-alignment.md) — OpenAI · 2024-12 · paper · [后训练] — https://arxiv.org/abs/2412.16339
-- [Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling (InternVL 2.5)](llm/2024/internvl-2-5.md) — 上海人工智能实验室 (Shanghai AI Laboratory) / OpenGVLab · 2024-12 · arxiv · [架构/预训练数据/后训练] — https://arxiv.org/abs/2412.05271
-- [GLM-4-Voice: Towards Intelligent and Human-Like End-to-End Spoken Chatbot](llm/2024/glm-4-voice.md) — 智谱 AI (Zhipu AI) / 清华大学 · 2024-12 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2412.02612
-- [Gated Delta Networks: Improving Mamba2 with Delta Rule](llm/themes/architecture/gated-deltanet.md) — NVIDIA / MIT CSAIL · 2024-12 · paper · [架构] — https://arxiv.org/abs/2412.06464
-- [HunyuanVideo: A Systematic Framework For Large Video Generative Models](llm/2024/hunyuan-video.md) — 腾讯混元 (Tencent Hunyuan) · 2024-12 · arxiv · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2412.03603
-- [Introducing Amazon Nova: A new generation of foundation models](llm/2024/amazon-nova.md) — Amazon (AWS) · 2024-12 · blog · [架构/后训练] — https://press.aboutamazon.com/2024/12/introducing-amazon-nova-a-new-generation-of-foundation-models
-- [Introducing Gemini 2.0 - our new AI model for the agentic era](llm/2024/google-gemini-2-0-blog.md) — Google / Google DeepMind · 2024-12 · blog · [架构/agentic训练] — https://blog.google/innovation-and-ai/models-and-research/google-deepmind/google-gemini-ai-update-december-2024/
-- [OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis](llm/themes/agentic/os-genesis.md) — 上海AI实验室 / 香港大学 / 上海交大 / MMLab(港中文) 等 · 2024-12 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2412.19723
-- [OpenAI o1 System Card](llm/2024/openai-o1-system-card.md) — OpenAI · 2024-12 · model-card · [后训练/agentic训练] — https://openai.com/index/openai-o1-system-card/
-- [Phi-4 Technical Report](llm/2024/phi-4-technical-report.md) — Microsoft · 2024-12 · report · [预训练数据/后训练] — https://arxiv.org/abs/2412.08905
-- [Qwen2.5 Technical Report](llm/2024/qwen2.5.md) — 阿里巴巴 Qwen Team · 2024-12 · arxiv · [预训练数据/架构/后训练] — https://arxiv.org/abs/2412.15115
+- [[llm/themes/post-training/cpo|Contrastive Preference Optimization: Pushing the Boundaries of LLM Performance in Machine Translation (CPO)]] — Johns Hopkins University / Microsoft · 2024-01 · paper · [后训练] — https://arxiv.org/abs/2401.08417
+- [[llm/2023/deepseek-llm|DeepSeek LLM: Scaling Open-Source Language Models with Longtermism]] — 深度求索（DeepSeek-AI） · 2024-01 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2401.02954
+- [[llm/2023/deepseek-coder|DeepSeek-Coder: When the Large Language Model Meets Programming -- The Rise of Code Intelligence]] — 深度求索（DeepSeek-AI） · 2024-01 · paper · [预训练数据/架构] — https://arxiv.org/abs/2401.14196
+- [[llm/2023/deepseekmoe|DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models]] — 深度求索（DeepSeek-AI） · 2024-01 · paper · [架构/预训练数据] — https://arxiv.org/abs/2401.06066
+- [[llm/themes/ai-infra/deepspeed-fastgen|DeepSpeed-FastGen: High-throughput Text Generation for LLMs via MII and DeepSpeed-Inference]] — Microsoft (DeepSpeed) · 2024-01 · paper · [AI infra] — https://arxiv.org/abs/2401.08671
+- [[llm/themes/ai-infra/distserve|DistServe: Disaggregating Prefill and Decoding for Goodput-optimized LLM Serving]] — Peking University / UCSD · 2024-01 · paper · [AI infra] — https://arxiv.org/abs/2401.09670
+- [[llm/2024/dolma|Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research]] — Allen Institute for AI (AI2) · 2024-01 · paper · [预训练数据] — https://arxiv.org/abs/2402.00159
+- [[llm/2024/internlm-xcomposer2|InternLM-XComposer2: Mastering Free-form Text-Image Composition and Comprehension in Vision-Language Large Model]] — 上海人工智能实验室 (Shanghai AI Laboratory) · 2024-01 · arxiv · [架构/后训练] — https://arxiv.org/abs/2401.16420
+- [[llm/themes/architecture/mambabyte|MambaByte: Token-free Selective State Space Model]] — Cornell University · 2024-01 · paper · [架构] — https://arxiv.org/abs/2401.13660
+- [[llm/themes/ai-infra/mixtral|Mixtral of Experts (Mixtral 8x7B)]] — Mistral AI · 2024-01 · report · [架构/AI infra] — https://arxiv.org/abs/2401.04088
+- [[llm/themes/post-training/spin|Self-Play Fine-Tuning Converts Weak Language Models to Strong Language Models (SPIN)]] — UCLA · 2024-01 · paper · [后训练] — https://arxiv.org/abs/2401.01335
+- [[llm/2024/self-rewarding-language-models|Self-Rewarding Language Models]] — Meta (FAIR) / NYU · 2024-01 · paper · [后训练] — https://arxiv.org/abs/2401.10020
+- [[llm/themes/agentic/webvoyager|WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models]] — 浙江大学 / 腾讯 AI Lab / 西湖大学 等 · 2024-01 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2401.13919
+- [[llm/themes/post-training/rloo-back-to-basics|Back to Basics: Revisiting REINFORCE Style Optimization for Learning from Human Feedback in LLMs (RLOO)]] — Cohere / Cohere For AI · 2024-02 · paper · [后训练] — https://arxiv.org/abs/2402.14740
+- [[llm/2023/deepseekmath|DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models]] — 深度求索（DeepSeek-AI） · 2024-02 · paper · [后训练/预训练数据/agentic训练] — https://arxiv.org/abs/2402.03300
+- [[llm/themes/agentic/codeact|Executable Code Actions Elicit Better LLM Agents (CodeAct)]] — UIUC / Apple / Google 等 · 2024-02 · paper · [架构/后训练/agentic训练] — https://arxiv.org/abs/2402.01030
+- [[llm/themes/architecture/griffin-hawk|Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models (Hawk & Griffin)]] — Google DeepMind · 2024-02 · paper · [架构] — https://arxiv.org/abs/2402.19427
+- [[llm/2024/kto|KTO: Model Alignment as Prospect Theoretic Optimization]] — Stanford / Contextual AI · 2024-02 · paper · [后训练] — https://arxiv.org/abs/2402.01306
+- [[llm/themes/ai-infra/megascale|MegaScale: Scaling Large Language Model Training to More Than 10,000 GPUs]] — ByteDance / Peking University · 2024-02 · paper · [AI infra] — https://arxiv.org/abs/2402.15627
+- [[llm/2024/nemotron-4-15b|Nemotron-4 15B Technical Report]] — NVIDIA · 2024-02 · report · [预训练数据/架构] — https://arxiv.org/abs/2402.16819
+- [[llm/2024/olmo|OLMo: Accelerating the Science of Language Models]] — Allen Institute for AI (AI2) · 2024-02 · paper · [预训练数据/架构] — https://arxiv.org/abs/2402.00838
+- [[llm/2024/deepseek-vl|DeepSeek-VL: Towards Real-World Vision-Language Understanding]] — DeepSeek-AI · 2024-03 · arxiv · [架构/预训练数据/后训练] — https://arxiv.org/abs/2403.05525
+- [[llm/2024/gemini-1-5|Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context]] — Google DeepMind · 2024-03 · report · [架构] — https://arxiv.org/abs/2403.05530
+- [[llm/2024/gemma|Gemma: Open Models Based on Gemini Research and Technology]] — Google DeepMind · 2024-03 · report · [架构/后训练] — https://arxiv.org/abs/2403.08295
+- [[llm/2024/xai-grok-1-open-release|Grok-1 open release]] — xAI · 2024-03 · github · [架构] — https://github.com/xai-org/grok-1
+- [[llm/2023/internlm2|InternLM2 Technical Report]] — 上海人工智能实验室（Shanghai AI Laboratory）/ 商汤 · 2024-03 · paper · [预训练数据/架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2403.17297
+- [[llm/2024/databricks-dbrx|Introducing DBRX: A New State-of-the-Art Open LLM]] — Databricks (Mosaic Research) · 2024-03 · blog · [架构/AI infra/预训练数据] — https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+- [[llm/2024/anthropic-claude-3-family|Introducing the next generation of Claude (Claude 3 family)]] — Anthropic · 2024-03 · blog · [架构/后训练] — https://www.anthropic.com/news/claude-3-family
+- [[llm/2024/jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] — AI21 Labs · 2024-03 · paper · [架构] — https://arxiv.org/abs/2403.19887
+- [[llm/2024/mm1|MM1: Methods, Analysis & Insights from Multimodal LLM Pre-training]] — Apple · 2024-03 · paper · [预训练数据/架构] — https://arxiv.org/abs/2403.09611
+- [[llm/2024/orpo|ORPO: Monolithic Preference Optimization without Reference Model]] — KAIST AI · 2024-03 · paper · [后训练] — https://arxiv.org/abs/2403.07691
+- [[llm/2024/rewardbench|RewardBench: Evaluating Reward Models for Language Modeling]] — Allen Institute for AI (AI2) · 2024-03 · paper · [后训练] — https://arxiv.org/abs/2403.13787
+- [[llm/2024/anthropic-claude-3-model-card|The Claude 3 Model Family - Opus, Sonnet, Haiku (Model Card)]] — Anthropic · 2024-03 · model-card · [架构/后训练] — https://www.anthropic.com/claude-3-model-card
+- [[llm/2023/yi-01ai|Yi: Open Foundation Models by 01.AI]] — 零一万物（01.AI） · 2024-03 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2403.04652
+- [[llm/2024/mistral-mixtral-8x22b|Cheaper, Better, Faster, Stronger (Mixtral 8x22B)]] — Mistral AI · 2024-04 · blog · [架构] — https://mistral.ai/news/mixtral-8x22b/
+- [[llm/2024/internvl-1-5|How Far Are We to GPT-4V? Closing the Gap to Commercial Multimodal Models with Open-Source Suites (InternVL 1.5)]] — 上海人工智能实验室 (Shanghai AI Laboratory) / OpenGVLab · 2024-04 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2404.16821
+- [[llm/2024/cohere-command-r-plus|Introducing Command R+: A Scalable LLM Built for Business]] — Cohere · 2024-04 · blog · [后训练/agentic训练] — https://cohere.com/blog/command-r-plus-microsoft-azure
+- [[llm/2024/meta-llama-3-blog|Introducing Meta Llama 3 (8B & 70B)]] — Meta · 2024-04 · blog · [预训练数据/架构/AI infra/后训练] — https://ai.meta.com/blog/meta-llama-3/
+- [[llm/themes/post-training/dpo-vs-ppo|Is DPO Superior to PPO for LLM Alignment? A Comprehensive Study]] — Tsinghua / OpenPsi / ICML 2024 · 2024-04 · paper · [后训练] — https://arxiv.org/abs/2404.10719
+- [[llm/2024/minicpm|MiniCPM: Unveiling the Potential of Small Language Models with Scalable Training Strategies]] — 面壁智能 (ModelBest) / OpenBMB / 清华 THUNLP · 2024-04 · arxiv · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2404.06395
+- [[llm/themes/agentic/osworld|OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments]] — 香港大学 / 上海交大 / Salesforce Research 等 (XLANG Lab) · 2024-04 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2404.07972
+- [[llm/2024/phi-3-technical-report|Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone]] — Microsoft · 2024-04 · report · [预训练数据/架构/后训练] — https://arxiv.org/abs/2404.14219
+- [[llm/themes/architecture/recurrentgemma|RecurrentGemma: Moving Past Transformers for Efficient Open Language Models]] — Google DeepMind · 2024-04 · report · [架构] — https://arxiv.org/abs/2404.07839
+- [[llm/2024/snowflake-arctic|Snowflake Arctic: The Best LLM for Enterprise AI — Efficiently Intelligent, Truly Open]] — Snowflake · 2024-04 · blog · [架构/AI infra] — https://www.snowflake.com/en/blog/arctic-open-efficient-foundation-language-models-snowflake/
+- [[llm/2024/tele-flm|Tele-FLM Technical Report]] — 北京智源 (BAAI) / 中国电信 TeleAI · 2024-04 · arxiv · [预训练数据/架构/AI infra] — https://arxiv.org/abs/2404.16645
+- [[llm/themes/agentic/androidworld|AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents]] — Google DeepMind / Google Research · 2024-05 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2405.14573
+- [[llm/2024/chameleon|Chameleon: Mixed-Modal Early-Fusion Foundation Models]] — Meta (FAIR) · 2024-05 · paper · [架构] — https://arxiv.org/abs/2405.09818
+- [[llm/2024/deepseek-v2|DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model]] — DeepSeek-AI · 2024-05 · arxiv · [架构/AI infra/后训练] — https://arxiv.org/abs/2405.04434
+- [[llm/2024/openai-hello-gpt-4o|Hello GPT-4o]] — OpenAI · 2024-05 · blog · [架构/后训练] — https://openai.com/index/hello-gpt-4o/
+- [[llm/2024/map-neo|MAP-Neo: Highly Capable and Transparent Bilingual Large Language Model Series]] — M-A-P / 滑铁卢大学 / 武汉人工智能研究院 / 01.AI · 2024-05 · arxiv · [预训练数据/架构/后训练] — https://arxiv.org/abs/2405.19327
+- [[llm/themes/ai-infra/nemo-aligner|NeMo-Aligner: Scalable Toolkit for Efficient Model Alignment]] — NVIDIA · 2024-05 · paper · [后训练/AI infra] — https://arxiv.org/abs/2405.01481
+- [[llm/themes/ai-infra/openrlhf|OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework]] — OpenRLHF community (含 ByteDance/NVIDIA 等贡献者) · 2024-05 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2405.11143
+- [[llm/themes/ai-infra/qserve|QServe: W4A8KV4 Quantization and System Co-design for Efficient LLM Serving]] — MIT (Han Lab) / NVIDIA · 2024-05 · paper · [AI infra] — https://arxiv.org/abs/2405.04532
+- [[llm/themes/post-training/rlhf-workflow|RLHF Workflow: From Reward Modeling to Online RLHF]] — Salesforce / UIUC (RLHFlow) · 2024-05 · paper · [后训练] — https://arxiv.org/abs/2405.07863
+- [[llm/2024/swe-agent|SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering]] — Princeton University · 2024-05 · paper · [agentic训练] — https://arxiv.org/abs/2405.15793
+- [[llm/2024/simpo|SimPO: Simple Preference Optimization with a Reference-Free Reward]] — Princeton / University of Virginia · 2024-05 · paper · [后训练] — https://arxiv.org/abs/2405.14734
+- [[llm/2024/mamba-2-ssd|Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (Mamba-2)]] — Princeton / Carnegie Mellon · 2024-05 · paper · [架构] — https://arxiv.org/abs/2405.21060
+- [[llm/2024/yuan2-m32|Yuan 2.0-M32: Mixture of Experts with Attention Router]] — 浪潮信息 (IEIT Systems) · 2024-05 · arxiv · [架构/AI infra] — https://arxiv.org/abs/2405.17976
+- [[llm/themes/agentic/agentgym|AgentGym: Evolving Large Language Model-based Agents across Diverse Environments]] — 复旦大学 (Fudan NLP) · 2024-06 · paper · [后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2406.04151
+- [[llm/2024/glm-4|ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools]] — 智谱 AI (Zhipu AI) / 清华大学 · 2024-06 · arxiv · [架构/后训练/预训练数据/agentic训练] — https://arxiv.org/abs/2406.12793
+- [[llm/2024/datacomp-lm|DataComp-LM: In search of the next generation of training sets for language models]] — DataComp / University of Washington / Apple / TRI / AI2 等 · 2024-06 · paper · [预训练数据] — https://arxiv.org/abs/2406.11794
+- [[llm/2024/deepseek-coder-v2|DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence]] — DeepSeek-AI · 2024-06 · arxiv · [预训练数据/架构/后训练] — https://arxiv.org/abs/2406.11931
+- [[llm/2024/apple-intelligence-foundation-models-blog|Introducing Apple's On-Device and Server Foundation Models]] — Apple · 2024-06 · blog · [架构/AI infra/后训练] — https://machinelearning.apple.com/research/introducing-apple-foundation-models
+- [[llm/2024/anthropic-claude-3-5-sonnet|Introducing Claude 3.5 Sonnet]] — Anthropic · 2024-06 · blog · [架构/后训练/agentic训练] — https://www.anthropic.com/news/claude-3-5-sonnet
+- [[llm/2024/mooncake|Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving]] — 月之暗面 Moonshot AI / 清华大学 · 2024-06 · arxiv · [AI infra] — https://arxiv.org/abs/2407.00079
+- [[llm/2024/nemotron-4-340b|Nemotron-4 340B Technical Report]] — NVIDIA · 2024-06 · report · [架构/后训练] — https://arxiv.org/abs/2406.11704
+- [[llm/themes/architecture/samba|Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling]] — Microsoft / University of Illinois Urbana-Champaign · 2024-06 · paper · [架构] — https://arxiv.org/abs/2406.07522
+- [[llm/2024/seed-tts|Seed-TTS: A Family of High-Quality Versatile Speech Generation Models]] — 字节跳动 Seed (ByteDance Seed) · 2024-06 · arxiv · [架构/后训练] — https://arxiv.org/abs/2406.02430
+- [[llm/2024/skywork-moe|Skywork-MoE: A Deep Dive into Training Techniques for Mixture-of-Experts Language Models]] — 昆仑万维天工 (Kunlun Inc. / Skywork Team) · 2024-06 · arxiv · [架构/AI infra] — https://arxiv.org/abs/2406.06563
+- [[llm/2024/fineweb|The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale]] — Hugging Face · 2024-06 · paper · [预训练数据] — https://arxiv.org/abs/2406.17557
+- [[llm/2024/tau-bench|tau-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains]] — Sierra · 2024-06 · paper · [agentic训练] — https://arxiv.org/abs/2406.12045
+- [[llm/themes/agentic/appworld|AppWorld: A Controllable World of Apps and People for Benchmarking Interactive Coding Agents]] — Stony Brook University / 等 · 2024-07 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2407.18901
+- [[llm/2024/apple-intelligence-foundation-language-models|Apple Intelligence Foundation Language Models]] — Apple · 2024-07 · report · [架构/AI infra/后训练] — https://arxiv.org/abs/2407.21075
+- [[llm/2024/flashattention-3|FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision]] — Colfax / Together AI / Meta / NVIDIA / Princeton (Tri Dao 等) · 2024-07 · paper · [AI infra/架构] — https://arxiv.org/abs/2407.08608
+- [[llm/2024/gemma-2|Gemma 2: Improving Open Language Models at a Practical Size]] — Google DeepMind · 2024-07 · report · [架构/后训练] — https://arxiv.org/abs/2408.00118
+- [[llm/2024/internlm2-5|InternLM2.5-7B-Chat (Model Card)]] — 上海人工智能实验室 (Shanghai AI Laboratory) · 2024-07 · model-card · [后训练/架构] — https://huggingface.co/internlm/internlm2_5-7b-chat
+- [[llm/2024/meta-llama-3-1-blog|Introducing Llama 3.1 - Our most capable models to date (405B)]] — Meta · 2024-07 · blog · [预训练数据/架构/AI infra/后训练] — https://ai.meta.com/blog/meta-llama-3-1/
+- [[llm/2024/mistral-large-2|Large Enough (Mistral Large 2)]] — Mistral AI · 2024-07 · blog · [架构/后训练] — https://mistral.ai/news/mistral-large-2407/
+- [[llm/2024/mistral-nemo|Mistral NeMo]] — Mistral AI / NVIDIA · 2024-07 · blog · [架构/AI infra] — https://mistral.ai/news/mistral-nemo/
+- [[llm/2024/openhands|OpenHands: An Open Platform for AI Software Developers as Generalist Agents]] — OpenHands community (UIUC / CMU 等, f.k.a. OpenDevin) · 2024-07 · paper · [agentic训练] — https://arxiv.org/abs/2407.16741
+- [[llm/2024/qwen2|Qwen2 Technical Report]] — 阿里巴巴 Qwen Team · 2024-07 · arxiv · [预训练数据/架构/后训练] — https://arxiv.org/abs/2407.10671
+- [[llm/2024/qwen2-audio|Qwen2-Audio Technical Report]] — 阿里巴巴 Qwen Team · 2024-07 · arxiv · [架构/后训练] — https://arxiv.org/abs/2407.10759
+- [[llm/2024/llama-3-herd-of-models|The Llama 3 Herd of Models]] — Meta · 2024-07 · paper · [预训练数据/架构/AI infra/后训练] — https://arxiv.org/abs/2407.21783
+- [[llm/themes/architecture/aux-loss-free-load-balancing|Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts]] — DeepSeek-AI · 2024-08 · paper · [架构] — https://arxiv.org/abs/2408.15664
+- [[llm/2024/cogvlm2|CogVLM2: Visual Language Models for Image and Video Understanding]] — 智谱 AI (Zhipu AI) / 清华大学 · 2024-08 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2408.16500
+- [[llm/2024/cogvideox|CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer]] — 智谱 AI (Zhipu AI) / 清华大学 · 2024-08 · arxiv · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2408.06072
+- [[llm/themes/agentic/openai-swe-bench-verified|Introducing SWE-bench Verified]] — OpenAI · 2024-08 · blog · [agentic训练/agentic环境与数据] — https://openai.com/index/introducing-swe-bench-verified/
+- [[llm/themes/architecture/jamba-1.5|Jamba-1.5: Hybrid Transformer-Mamba Models at Scale]] — AI21 Labs · 2024-08 · report · [架构/AI infra] — https://arxiv.org/abs/2408.12570
+- [[llm/2024/longwriter|LongWriter: Unleashing 10,000+ Word Generation from Long Context LLMs]] — 智谱 AI (Zhipu AI) / 清华大学 · 2024-08 · arxiv · [后训练/预训练数据] — https://arxiv.org/abs/2408.07055
+- [[llm/2024/minicpm-v|MiniCPM-V: A GPT-4V Level MLLM on Your Phone]] — 面壁智能 (ModelBest) / OpenBMB / 清华 THUNLP · 2024-08 · arxiv · [架构/预训练数据/后训练] — https://arxiv.org/abs/2408.01800
+- [[llm/2024/ai21-jamba-1-5|The Jamba 1.5 Open Model Family: The Most Powerful and Efficient Long Context Models]] — AI21 Labs · 2024-08 · blog · [架构/AI infra] — https://www.ai21.com/blog/announcing-jamba-model-family/
+- [[llm/2024/emu3|Emu3: Next-Token Prediction is All You Need]] — 北京智源 (BAAI) · 2024-09 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2409.18869
+- [[llm/themes/ai-infra/hybridflow-verl|HybridFlow: A Flexible and Efficient RLHF Framework (verl)]] — ByteDance / Hong Kong University · 2024-09 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2409.19256
+- [[llm/2024/openai-learning-to-reason-with-llms|Learning to Reason with LLMs (OpenAI o1)]] — OpenAI · 2024-09 · blog · [后训练/agentic训练] — https://openai.com/index/learning-to-reason-with-llms/
+- [[llm/2024/meta-llama-3-2-blog|Llama 3.2 - Revolutionizing edge AI and vision with open, customizable models]] — Meta · 2024-09 · blog · [架构/后训练] — https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/
+- [[llm/2024/mm1-5|MM1.5: Methods, Analysis & Insights from Multimodal LLM Fine-tuning]] — Apple · 2024-09 · paper · [预训练数据/架构] — https://arxiv.org/abs/2409.20566
+- [[llm/2024/minicpm3|MiniCPM3-4B (Model Card)]] — 面壁智能 (ModelBest) / OpenBMB · 2024-09 · model-card · [架构/后训练] — https://huggingface.co/openbmb/MiniCPM3-4B
+- [[llm/2024/molmo-pixmo|Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models]] — Allen Institute for AI (AI2) · 2024-09 · paper · [预训练数据/架构] — https://arxiv.org/abs/2409.17146
+- [[llm/2024/olmoe|OLMoE: Open Mixture-of-Experts Language Models]] — Allen Institute for AI (AI2) · 2024-09 · paper · [架构/预训练数据] — https://arxiv.org/abs/2409.02060
+- [[llm/2024/qwen2-vl|Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution]] — 阿里巴巴 Qwen Team · 2024-09 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2409.12191
+- [[llm/2024/qwen2.5-coder|Qwen2.5-Coder Technical Report]] — 阿里巴巴 Qwen Team · 2024-09 · arxiv · [预训练数据/架构] — https://arxiv.org/abs/2409.12186
+- [[llm/2024/qwen2.5-math|Qwen2.5-Math Technical Report: Toward Mathematical Expert Model via Self-Improvement]] — 阿里巴巴 Qwen Team · 2024-09 · arxiv · [后训练/预训练数据] — https://arxiv.org/abs/2409.12122
+- [[llm/themes/agentic/toolace|ToolACE: Winning the Points of LLM Function Calling]] — 华为诺亚方舟实验室 / 香港科技大学 等 · 2024-09 · paper · [后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2409.00920
+- [[llm/2024/yi-coder|Yi-Coder-9B-Chat (Model Card)]] — 零一万物 (01.AI) · 2024-09 · model-card · [预训练数据/架构] — https://huggingface.co/01-ai/Yi-Coder-9B-Chat
+- [[llm/themes/agentic/xlam|xLAM: A Family of Large Action Models to Empower AI Agent Systems]] — Salesforce AI Research · 2024-09 · report · [架构/后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2409.03215
+- [[llm/themes/agentic/autoglm|AutoGLM: Autonomous Foundation Agents for GUIs]] — 智谱 AI / 清华大学 (Zhipu / THUDM) · 2024-10 · report · [架构/后训练/agentic训练] — https://arxiv.org/abs/2411.00820
+- [[llm/2024/baichuan-omni|Baichuan-Omni Technical Report]] — 百川智能 (Baichuan Inc.) / 西湖大学 / 浙江大学 · 2024-10 · arxiv · [架构/后训练] — https://arxiv.org/abs/2410.08565
+- [[llm/2024/cci3-hq|CCI3.0-HQ: a large-scale Chinese dataset of high quality designed for pre-training large language models]] — 北京智源 (BAAI) · 2024-10 · arxiv · [预训练数据] — https://arxiv.org/abs/2410.18505
+- [[llm/themes/agentic/anthropic-developing-computer-use|Developing a computer use model]] — Anthropic · 2024-10 · blog · [后训练/agentic训练] — https://www.anthropic.com/news/developing-computer-use
+- [[llm/2024/anthropic-3-5-models-and-computer-use|Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku]] — Anthropic · 2024-10 · blog · [后训练/agentic训练] — https://www.anthropic.com/news/3-5-models-and-computer-use
+- [[llm/2024/movie-gen|Movie Gen: A Cast of Media Foundation Models]] — Meta · 2024-10 · report · [架构/AI infra/预训练数据] — https://arxiv.org/abs/2410.13720
+- [[llm/2024/pixtral-12b|Pixtral 12B]] — Mistral AI · 2024-10 · paper · [架构/预训练数据] — https://arxiv.org/abs/2410.07073
+- [[llm/themes/ai-infra/torchtitan|TorchTitan: One-stop PyTorch native solution for production ready LLM pre-training]] — Meta (PyTorch) · 2024-10 · paper · [AI infra] — https://arxiv.org/abs/2410.06511
+- [[llm/themes/post-training/vineppo|VinePPO: Unlocking RL Potential For LLM Reasoning Through Refined Credit Assignment]] — Mila / McGill / ServiceNow · 2024-10 · paper · [后训练] — https://arxiv.org/abs/2410.01679
+- [[llm/themes/architecture/ngpt-normalized-transformer|nGPT: Normalized Transformer with Representation Learning on the Hypersphere]] — NVIDIA · 2024-10 · paper · [架构] — https://arxiv.org/abs/2410.01131
+- [[llm/2024/hunyuan-large|Hunyuan-Large: An Open-Source MoE Model with 52 Billion Activated Parameters by Tencent]] — 腾讯混元 (Tencent Hunyuan) · 2024-11 · arxiv · [架构/预训练数据/AI infra/后训练] — https://arxiv.org/abs/2411.02265
+- [[llm/themes/architecture/hymba|Hymba: A Hybrid-head Architecture for Small Language Models]] — NVIDIA · 2024-11 · paper · [架构] — https://arxiv.org/abs/2411.13676
+- [[llm/2024/llama-guard-3-vision|Llama Guard 3 Vision: Safeguarding Human-AI Image Understanding Conversations]] — Meta · 2024-11 · paper · [后训练] — https://arxiv.org/abs/2411.10414
+- [[llm/themes/agentic/magentic-one|Magentic-One: A Generalist Multi-Agent System for Solving Complex Tasks]] — Microsoft Research (AutoGen team) · 2024-11 · paper · [架构/agentic训练] — https://arxiv.org/abs/2411.04468
+- [[llm/2024/tulu-3|Tulu 3: Pushing Frontiers in Open Language Model Post-Training]] — Allen Institute for AI (AI2) · 2024-11 · paper · [后训练] — https://arxiv.org/abs/2411.15124
+- [[llm/themes/agentic/webrl|WebRL: Training LLM Web Agents via Self-Evolving Online Curriculum Reinforcement Learning]] — 清华大学 / 智谱 AI (THUDM / Zhipu) · 2024-11 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2411.02337
+- [[llm/themes/agentic/anthropic-building-effective-agents|Building effective agents]] — Anthropic · 2024-12 · blog · [架构/agentic训练] — https://www.anthropic.com/engineering/building-effective-agents
+- [[llm/themes/architecture/byte-latent-transformer|Byte Latent Transformer: Patches Scale Better Than Tokens (BLT)]] — FAIR at Meta / University of Washington / University of Chicago · 2024-12 · paper · [架构/预训练数据] — https://arxiv.org/abs/2412.09871
+- [[llm/2024/deepseek-v3|DeepSeek-V3 Technical Report]] — DeepSeek-AI · 2024-12 · arxiv · [架构/AI infra/预训练数据/后训练] — https://arxiv.org/abs/2412.19437
+- [[llm/2024/deepseek-vl2|DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding]] — DeepSeek-AI · 2024-12 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2412.10302
+- [[llm/themes/post-training/deliberative-alignment|Deliberative Alignment: Reasoning Enables Safer Language Models]] — OpenAI · 2024-12 · paper · [后训练] — https://arxiv.org/abs/2412.16339
+- [[llm/2024/internvl-2-5|Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling (InternVL 2.5)]] — 上海人工智能实验室 (Shanghai AI Laboratory) / OpenGVLab · 2024-12 · arxiv · [架构/预训练数据/后训练] — https://arxiv.org/abs/2412.05271
+- [[llm/2024/glm-4-voice|GLM-4-Voice: Towards Intelligent and Human-Like End-to-End Spoken Chatbot]] — 智谱 AI (Zhipu AI) / 清华大学 · 2024-12 · arxiv · [架构/预训练数据] — https://arxiv.org/abs/2412.02612
+- [[llm/themes/architecture/gated-deltanet|Gated Delta Networks: Improving Mamba2 with Delta Rule]] — NVIDIA / MIT CSAIL · 2024-12 · paper · [架构] — https://arxiv.org/abs/2412.06464
+- [[llm/2024/hunyuan-video|HunyuanVideo: A Systematic Framework For Large Video Generative Models]] — 腾讯混元 (Tencent Hunyuan) · 2024-12 · arxiv · [架构/预训练数据/AI infra] — https://arxiv.org/abs/2412.03603
+- [[llm/2024/amazon-nova|Introducing Amazon Nova: A new generation of foundation models]] — Amazon (AWS) · 2024-12 · blog · [架构/后训练] — https://press.aboutamazon.com/2024/12/introducing-amazon-nova-a-new-generation-of-foundation-models
+- [[llm/2024/google-gemini-2-0-blog|Introducing Gemini 2.0 - our new AI model for the agentic era]] — Google / Google DeepMind · 2024-12 · blog · [架构/agentic训练] — https://blog.google/innovation-and-ai/models-and-research/google-deepmind/google-gemini-ai-update-december-2024/
+- [[llm/themes/agentic/os-genesis|OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis]] — 上海AI实验室 / 香港大学 / 上海交大 / MMLab(港中文) 等 · 2024-12 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2412.19723
+- [[llm/2024/openai-o1-system-card|OpenAI o1 System Card]] — OpenAI · 2024-12 · model-card · [后训练/agentic训练] — https://openai.com/index/openai-o1-system-card/
+- [[llm/2024/phi-4-technical-report|Phi-4 Technical Report]] — Microsoft · 2024-12 · report · [预训练数据/后训练] — https://arxiv.org/abs/2412.08905
+- [[llm/2024/qwen2.5|Qwen2.5 Technical Report]] — 阿里巴巴 Qwen Team · 2024-12 · arxiv · [预训练数据/架构/后训练] — https://arxiv.org/abs/2412.15115
 
 ## 2025（110 条）
 
-- [2 OLMo 2 Furious (OLMo 2 技术报告)](llm/2025/olmo-2.md) — Allen Institute for AI (AI2) · 2025-01 · technical-report · [预训练数据/架构/后训练/AI infra] — https://arxiv.org/abs/2501.00656
-- [Computer-Using Agent (CUA)](llm/themes/agentic/openai-computer-using-agent.md) — OpenAI · 2025-01 · blog · [后训练/agentic训练] — https://openai.com/index/computer-using-agent/
-- [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](llm/2025/deepseek-r1.md) — DeepSeek · 2025-01 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2501.12948
-- [Introducing Operator](llm/themes/agentic/openai-operator.md) — OpenAI · 2025-01 · blog · [agentic训练] — https://openai.com/index/introducing-operator/
-- [Kimi k1.5: Scaling Reinforcement Learning with LLMs](llm/2025/kimi-k1.5.md) — 月之暗面 Moonshot AI · 2025-01 · paper · [后训练/AI infra] — https://arxiv.org/abs/2501.12599
-- [MiniMax-01: Scaling Foundation Models with Lightning Attention](llm/2025/minimax-01.md) — MiniMax (稀宇科技) · 2025-01 · paper · [架构/AI infra/预训练数据] — https://arxiv.org/abs/2501.08313
-- [Mistral Small 3](llm/2025/mistral-small-3.md) — Mistral AI · 2025-01 · blog · [架构/后训练] — https://mistral.ai/news/mistral-small-3
-- [OpenAI o3-mini 发布](llm/2025/openai-o3-mini.md) — OpenAI · 2025-01 · blog · [后训练/agentic训练] — https://openai.com/index/openai-o3-mini/
-- [Qwen2.5-Max: Exploring the Intelligence of Large-scale MoE Model](llm/2025/qwen2.5-max.md) — 阿里巴巴 Qwen Team · 2025-01 · blog · [预训练数据/架构/后训练] — https://qwenlm.github.io/blog/qwen2.5-max/
-- [Search-o1: Agentic Search-Enhanced Large Reasoning Models](llm/themes/agentic/search-o1.md) — 中国人民大学 / 清华大学 · 2025-01 · paper · [agentic训练/推理] — https://arxiv.org/abs/2501.05366
-- [Streaming DiLoCo with overlapping communication: Towards a Distributed Free Lunch](llm/themes/ai-infra/streaming-diloco.md) — Google DeepMind / Google Research · 2025-01 · paper · [AI infra] — https://arxiv.org/abs/2501.18512
-- [The Lessons of Developing Process Reward Models in Mathematical Reasoning](llm/themes/post-training/prm-lessons-qwen.md) — Qwen Team, Alibaba · 2025-01 · paper · [后训练] — https://arxiv.org/abs/2501.07301
-- [UI-TARS: Pioneering Automated GUI Interaction with Native Agents](llm/themes/agentic/ui-tars.md) — 字节跳动 (ByteDance Seed) / 清华大学 · 2025-01 · paper · [架构/后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2501.12326
-- [WebWalker: Benchmarking LLMs in Web Traversal](llm/themes/agentic/webwalker.md) — 阿里巴巴 通义实验室 (Alibaba Tongyi Lab / Alibaba-NLP) · 2025-01 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2501.07572
-- [rStar-Math - Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking](llm/2025/rstar-math.md) — Microsoft Research Asia · 2025-01 · technical-report · [后训练] — https://arxiv.org/abs/2501.04519
-- [3FS (Fire-Flyer File System) — High-performance Distributed File System for AI](llm/themes/ai-infra/fire-flyer-3fs.md) — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/3FS
-- [Claude 3.7 Sonnet and Claude Code](llm/2025/anthropic-claude-3-7-sonnet.md) — Anthropic · 2025-02 · blog · [后训练/agentic训练] — https://www.anthropic.com/news/claude-3-7-sonnet
-- [DeepEP — Efficient Expert-Parallel Communication Library](llm/themes/ai-infra/deepep.md) — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/DeepEP
-- [DeepGEMM — Clean and Efficient FP8 GEMM Kernels with Fine-grained Scaling](llm/themes/ai-infra/deepgemm.md) — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/DeepGEMM
-- [DeepSeek Open Infra Index — Production-tested AI Infrastructure Tools](llm/themes/ai-infra/deepseek-open-infra-index.md) — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/open-infra-index
-- [DualPipe — Bidirectional Pipeline Parallelism for Computation-Communication Overlap](llm/themes/ai-infra/dualpipe.md) — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/DualPipe
-- [FlashMLA — Efficient Multi-head Latent Attention Kernels](llm/themes/ai-infra/flashmla.md) — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/FlashMLA
-- [Grok 3 Beta — The Age of Reasoning Agents](llm/2025/xai-grok-3.md) — xAI · 2025-02 · blog · [AI infra/后训练/agentic训练] — https://x.ai/news/grok-3
-- [Introducing deep research (OpenAI)](llm/2025/openai-deep-research.md) — OpenAI · 2025-02 · blog · [agentic训练/后训练] — https://openai.com/index/introducing-deep-research/
-- [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](llm/themes/ai-infra/native-sparse-attention.md) — DeepSeek-AI / Peking University / University of Washington · 2025-02 · paper · [架构/AI infra] — https://arxiv.org/abs/2502.11089
-- [OpenAI GPT-4.5 System Card](llm/2025/openai-gpt-4.5-system-card.md) — OpenAI · 2025-02 · system-card · [预训练数据/AI infra/后训练] — https://openai.com/index/gpt-4-5-system-card/
-- [SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution](llm/themes/post-training/swe-rl.md) — Meta (FAIR / GenAI) · 2025-02 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2502.18449
-- [Command A - An Enterprise-Ready Large Language Model](llm/2025/cohere-command-a.md) — Cohere · 2025-03 · technical-report · [架构/后训练/AI infra/agentic训练] — https://arxiv.org/abs/2504.00698
-- [DAPO: An Open-Source LLM Reinforcement Learning System at Scale](llm/themes/ai-infra/dapo.md) — ByteDance Seed / Tsinghua University (AIR) · 2025-03 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2503.14476
-- [Gemma 3 Technical Report](llm/2025/gemma-3.md) — Google DeepMind · 2025-03 · technical-report · [架构/后训练/预训练数据] — https://arxiv.org/abs/2503.19786
-- [Mistral Small 3.1](llm/2025/mistral-small-3.1.md) — Mistral AI · 2025-03 · blog · [架构/后训练] — https://mistral.ai/news/mistral-small-3-1
-- [OLMo 2 32B - First fully open model to outperform GPT-3.5 and GPT-4o mini](llm/2025/ai2-olmo-2-32b.md) — Allen Institute for AI (AI2) · 2025-03 · blog · [预训练数据/后训练/AI infra] — https://allenai.org/blog/olmo2-32B
-- [Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model](llm/themes/post-training/open-reasoner-zero.md) — StepFun / Tsinghua · 2025-03 · paper · [后训练] — https://arxiv.org/abs/2503.24290
-- [Phi-4-Mini Technical Report (Phi-4-Mini & Phi-4-Multimodal)](llm/2025/phi-4-mini.md) — Microsoft · 2025-03 · technical-report · [架构/预训练数据/后训练] — https://arxiv.org/abs/2503.01743
-- [QwQ-32B: Embracing the Power of Reinforcement Learning](llm/2025/qwq-32b.md) — 阿里巴巴 Qwen Team · 2025-03 · blog · [后训练/agentic训练] — https://qwenlm.github.io/blog/qwq-32b/
-- [Qwen2.5-Omni Technical Report](llm/2025/qwen2.5-omni.md) — 阿里巴巴 Qwen Team · 2025-03 · paper · [架构/后训练] — https://arxiv.org/abs/2503.20215
-- [Qwen2.5-VL Technical Report](llm/themes/architecture/qwen2.5-vl.md) — Qwen Team, Alibaba Group · 2025-03 · report · [架构] — https://arxiv.org/abs/2502.13923
-- [R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning](llm/themes/agentic/r1-searcher.md) — 中国人民大学高瓴人工智能学院 / DataCanvas Alaya NeW · 2025-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2503.05592
-- [Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning](llm/themes/agentic/search-r1.md) — UIUC / 马萨诸塞大学 Amherst / Google 等 · 2025-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2503.09516
-- [TAO - Using test-time compute to train efficient LLMs without labeled data](llm/2025/databricks-tao.md) — Databricks (Mosaic AI Research) · 2025-03 · blog · [后训练] — https://www.databricks.com/blog/tao-using-test-time-compute-train-efficient-llms-without-labeled-data
-- [The Amazon Nova Family of Models - Technical Report and Model Card](llm/2025/amazon-nova-family.md) — Amazon (Amazon AGI) · 2025-03 · technical-report · [架构/预训练数据/后训练/agentic训练] — https://www.amazon.science/publications/the-amazon-nova-family-of-models-technical-report-and-model-card
-- [ToRL: Scaling Tool-Integrated RL](llm/themes/agentic/torl.md) — 上海交通大学 / SII / GAIR · 2025-03 · paper · [后训练/agentic训练/推理] — https://arxiv.org/abs/2503.23383
-- [DeepResearcher: Scaling Deep Research via Reinforcement Learning in Real-world Environments](llm/themes/agentic/deepresearcher.md) — 上海交通大学 / SII / GAIR · 2025-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2504.03160
-- [DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition](llm/2025/deepseek-prover-v2.md) — DeepSeek · 2025-04 · paper · [后训练] — https://arxiv.org/abs/2504.21801
-- [InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models](llm/2025/internvl3.md) — 上海人工智能实验室 (Shanghai AI Lab) / OpenGVLab · 2025-04 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2504.10479
-- [Introducing OpenAI o3 and o4-mini](llm/themes/agentic/openai-o3-o4-mini.md) — OpenAI · 2025-04 · blog · [后训练/agentic训练] — https://openai.com/index/introducing-o3-and-o4-mini/
-- [MegaScale-Infer: Serving Mixture-of-Experts at Scale with Disaggregated Expert Parallelism](llm/themes/ai-infra/megascale-infer.md) — ByteDance / Peking University · 2025-04 · paper · [AI infra] — https://arxiv.org/abs/2504.02263
-- [Nemotron-H - Hybrid Mamba-Transformer Models](llm/2025/nemotron-h.md) — NVIDIA · 2025-04 · technical-report · [架构/AI infra] — https://arxiv.org/abs/2504.03624
-- [OpenAI o3 and o4-mini System Card](llm/2025/openai-o3-o4-mini-system-card.md) — OpenAI · 2025-04 · system-card · [后训练/agentic训练/AI infra] — https://openai.com/index/o3-o4-mini-system-card/
-- [Pangu Ultra - Pushing the Limits of Dense Large Language Models on Ascend NPUs](llm/2025/pangu-ultra.md) — 华为 (Huawei) 盘古 · 2025-04 · paper · [架构/AI infra/预训练数据/后训练] — https://arxiv.org/abs/2504.07866
-- [Phi-4-reasoning Technical Report](llm/2025/phi-4-reasoning.md) — Microsoft · 2025-04 · technical-report · [后训练/预训练数据] — https://arxiv.org/abs/2504.21318
-- [RAGEN: Understanding Self-Evolution in LLM Agents via Multi-Turn Reinforcement Learning](llm/themes/agentic/ragen.md) — 西北大学 / 斯坦福 / 微软 / 新加坡国立 等 · 2025-04 · paper · [后训练/agentic训练/AI infra] — https://arxiv.org/abs/2504.20073
-- [ReTool: Reinforcement Learning for Strategic Tool Use in LLMs](llm/themes/agentic/retool.md) — 字节跳动 (ByteDance Seed) · 2025-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2504.11536
-- [Seed1.5-Thinking: Advancing Superb Reasoning Models with Reinforcement Learning](llm/2025/seed1.5-thinking.md) — 字节跳动 Seed (ByteDance Seed) · 2025-04 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2504.13914
-- [Skywork R1V: Pioneering Multimodal Reasoning with Chain-of-Thought](llm/2025/skywork-r1v.md) — 昆仑万维 天工 (Kunlun Skywork AI) · 2025-04 · paper · [架构/后训练] — https://arxiv.org/abs/2504.05599
-- [The Llama 4 herd (Scout, Maverick, Behemoth)](llm/2025/meta-llama-4.md) — Meta AI · 2025-04 · blog · [架构/预训练数据/后训练/AI infra] — https://ai.meta.com/blog/llama-4-multimodal-intelligence/
-- [ToolRL: Reward is All Tool Learning Needs](llm/themes/post-training/toolrl.md) — University of Illinois Urbana-Champaign · 2025-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2504.13958
-- [WebThinker: Empowering Large Reasoning Models with Deep Research Capability](llm/themes/agentic/webthinker.md) — 中国人民大学 / 北京智源研究院(BAAI) / 华为 Poisson Lab · 2025-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2504.21776
-- [AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning](llm/themes/ai-infra/areal.md) — Ant Group / Tsinghua University (IIIS) · 2025-05 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2505.24298
-- [DeepSeek-R1-0528 Release](llm/2025/deepseek-r1-0528.md) — DeepSeek · 2025-05 · blog · [后训练/agentic训练] — https://api-docs.deepseek.com/news/news250528
-- [Hunyuan-TurboS: Advancing Large Language Models through Mamba-Transformer Synergy and Adaptive Chain-of-Thought](llm/2025/hunyuan-turbos.md) — 腾讯混元 (Tencent Hunyuan) · 2025-05 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2505.15431
-- [Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures](llm/themes/ai-infra/deepseek-v3-hardware.md) — DeepSeek-AI · 2025-05 · paper · [AI infra/架构] — https://arxiv.org/abs/2505.09343
-- [Introducing Claude 4 (Opus 4 & Sonnet 4)](llm/2025/anthropic-claude-4.md) — Anthropic · 2025-05 · blog · [后训练/agentic训练] — https://www.anthropic.com/news/claude-4
-- [Introducing Gemma 3n](llm/2025/gemma-3n.md) — Google DeepMind · 2025-05 · blog · [架构/AI infra] — https://developers.googleblog.com/en/introducing-gemma-3n/
-- [Llama-Nemotron - Efficient Reasoning Models](llm/2025/llama-nemotron.md) — NVIDIA · 2025-05 · technical-report · [架构/后训练/AI infra] — https://arxiv.org/abs/2505.00949
-- [MiMo: Unlocking the Reasoning Potential of Language Model -- From Pretraining to Posttraining](llm/2025/xiaomi-mimo.md) — 小米 (Xiaomi) MiMo / LLM-Core Team · 2025-05 · paper · [预训练数据/后训练/AI infra] — https://arxiv.org/abs/2505.07608
-- [Mistral Medium 3](llm/2025/mistral-medium-3.md) — Mistral AI · 2025-05 · blog · [架构/AI infra/后训练] — https://mistral.ai/news/mistral-medium-3
-- [Pangu Pro MoE - Mixture of Grouped Experts for Efficient Sparsity](llm/2025/pangu-pro-moe.md) — 华为 (Huawei) 盘古 · 2025-05 · paper · [架构/AI infra] — https://arxiv.org/abs/2505.21411
-- [Pangu Ultra MoE - How to Train Your Big MoE on Ascend NPUs](llm/2025/pangu-ultra-moe.md) — 华为 (Huawei) 盘古 · 2025-05 · paper · [架构/AI infra/后训练] — https://arxiv.org/abs/2505.04519
-- [ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models](llm/themes/post-training/prorl.md) — NVIDIA · 2025-05 · paper · [后训练] — https://arxiv.org/abs/2505.24864
-- [Qwen3 Technical Report](llm/2025/qwen3.md) — 阿里巴巴 Qwen Team · 2025-05 · paper · [架构/预训练数据/后训练/agentic训练] — https://arxiv.org/abs/2505.09388
-- [Seed1.5-VL Technical Report](llm/2025/seed1.5-vl.md) — 字节跳动 Seed (ByteDance Seed) · 2025-05 · paper · [架构/后训练/agentic训练] — https://arxiv.org/abs/2505.07062
-- [Skywork Open Reasoner 1 Technical Report (Skywork-OR1)](llm/2025/skywork-or1.md) — 昆仑万维 天工 (Kunlun Skywork AI) · 2025-05 · paper · [后训练/AI infra] — https://arxiv.org/abs/2505.22312
-- [System Card - Claude Opus 4 & Claude Sonnet 4](llm/2025/anthropic-claude-4-system-card.md) — Anthropic · 2025-05 · system-card · [后训练/agentic训练] — https://www.anthropic.com/system-cards
-- [WebDancer: Towards Autonomous Information Seeking Agency](llm/themes/post-training/webdancer.md) — Tongyi Lab, Alibaba (通义) · 2025-05 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2505.22648
-- [ERNIE 4.5 Technical Report](llm/2025/ernie-4.5.md) — 百度 文心 (Baidu ERNIE) · 2025-06 · report · [架构/预训练数据/后训练/AI infra] — https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf
-- [Gemini 2.5 Technical Report](llm/2025/gemini-2.5.md) — Google DeepMind · 2025-06 · technical-report · [架构/后训练/agentic训练/AI infra] — https://arxiv.org/abs/2507.06261
-- [Hunyuan-A13B Technical Report](llm/2025/hunyuan-a13b.md) — 腾讯混元 (Tencent Hunyuan) · 2025-06 · report · [架构/预训练数据/后训练/agentic训练] — https://github.com/Tencent-Hunyuan/Hunyuan-A13B
-- [Magistral (Mistral 首个推理模型)](llm/2025/mistral-magistral.md) — Mistral AI · 2025-06 · technical-report · [后训练/AI infra] — https://arxiv.org/abs/2506.10910
-- [Mind2Web 2: Evaluating Agentic Search with Agent-as-a-Judge](llm/themes/agentic/mind2web-2.md) — The Ohio State University / 等 · 2025-06 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2506.21506
-- [MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention](llm/2025/minimax-m1.md) — MiniMax (稀宇科技) · 2025-06 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2506.13585
-- [Ring-lite: Scalable Reasoning via C3PO-Stabilized Reinforcement Learning for LLMs](llm/2025/ring-lite.md) — 蚂蚁集团 Ling Team / inclusionAI (Ant Group) · 2025-06 · paper · [后训练/AI infra] — https://arxiv.org/abs/2506.14731
-- [dots.llm1 Technical Report](llm/2025/dots-llm1.md) — 小红书 hi lab (rednote / Xiaohongshu) · 2025-06 · paper · [架构/预训练数据] — https://arxiv.org/abs/2506.05767
-- [Apple Intelligence Foundation Language Models Tech Report 2025](llm/2025/apple-foundation-models-2025.md) — Apple · 2025-07 · technical-report · [架构/AI infra/预训练数据/后训练] — https://machinelearning.apple.com/research/apple-foundation-models-tech-report-2025
-- [Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance](llm/themes/architecture/falcon-h1.md) — TII (Technology Innovation Institute), Falcon LLM Team · 2025-07 · report · [架构] — https://arxiv.org/abs/2507.22448
-- [GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning](llm/2025/glm-4.5v.md) — 智谱 AI / Z.ai (Zhipu AI) · 2025-07 · paper · [架构/后训练/agentic训练] — https://arxiv.org/abs/2507.01006
-- [Grok 4](llm/2025/xai-grok-4.md) — xAI · 2025-07 · blog · [AI infra/后训练/agentic训练] — https://x.ai/news/grok-4
-- [Kimi K2: Open Agentic Intelligence](llm/2025/kimi-k2.md) — 月之暗面 Moonshot AI · 2025-07 · paper · [架构/AI infra/预训练数据/后训练/agentic训练] — https://arxiv.org/abs/2507.20534
-- [Qwen3-Coder: Agentic Coding in the World](llm/2025/qwen3-coder.md) — 阿里巴巴 Qwen Team · 2025-07 · blog · [后训练/agentic训练/AI infra] — https://qwenlm.github.io/blog/qwen3-coder/
-- [Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding](llm/2025/step-3.md) — 阶跃星辰 (StepFun) · 2025-07 · paper · [架构/AI infra] — https://arxiv.org/abs/2507.19427
-- [Towards Greater Leverage: Scaling Laws for Efficient Mixture-of-Experts Language Models](llm/2025/ling-moe-scaling-laws.md) — 蚂蚁集团 Ling Team / inclusionAI (Ant Group) · 2025-07 · paper · [架构/预训练数据] — https://arxiv.org/abs/2507.17702
-- [WebSailor: Navigating Super-human Reasoning for Web Agent](llm/themes/agentic/websailor.md) — 阿里巴巴 通义实验室 (Alibaba Tongyi Lab / Alibaba-NLP) · 2025-07 · paper · [后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2507.02592
-- [Agent Lightning: Train ANY AI Agents with Reinforcement Learning](llm/themes/agentic/agent-lightning.md) — Microsoft Research · 2025-08 · paper · [AI infra/后训练/agentic训练] — https://arxiv.org/abs/2508.03680
-- [DeepSeek-V3.1 Release](llm/2025/deepseek-v3.1.md) — DeepSeek · 2025-08 · blog · [后训练/agentic训练/架构] — https://api-docs.deepseek.com/news/news250821
-- [GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models](llm/2025/glm-4.5.md) — 智谱 AI / Z.ai (Zhipu AI) · 2025-08 · paper · [架构/预训练数据/后训练/agentic训练] — https://arxiv.org/abs/2508.06471
-- [NVIDIA Nemotron Nano 2 (Nemotron-Nano-9B-v2)](llm/2025/nemotron-nano-2.md) — NVIDIA · 2025-08 · technical-report · [架构/预训练数据/后训练/AI infra] — https://arxiv.org/abs/2508.14444
-- [OpenAI GPT-5 System Card](llm/2025/openai-gpt-5-system-card.md) — OpenAI · 2025-08 · system-card · [后训练/agentic训练/AI infra] — https://openai.com/index/gpt-5-system-card/
-- [gpt-oss-120b & gpt-oss-20b Model Card (OpenAI)](llm/2025/openai-gpt-oss.md) — OpenAI · 2025-08 · model-card · [架构/后训练/AI infra] — https://openai.com/index/gpt-oss-model-card/
-- [Baichuan-M2: Scaling Medical Capability with Large Verifier System](llm/2025/baichuan-m2.md) — 百川智能 (Baichuan AI) · 2025-09 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2509.02208
-- [DeepSeek-V3.2-Exp: Boosting Long-Context Efficiency with DeepSeek Sparse Attention](llm/themes/architecture/deepseek-v3.2-exp.md) — DeepSeek-AI · 2025-09 · report · [架构/AI infra] — https://github.com/deepseek-ai/DeepSeek-V3.2-Exp
-- [GLM-4.6: Advanced Agentic, Reasoning and Coding Capabilities](llm/2025/glm-4.6.md) — 智谱 AI / Z.ai (Zhipu AI) · 2025-09 · blog · [后训练/agentic训练/架构] — https://z.ai/blog/glm-4.6
-- [LongCat-Flash Technical Report](llm/2025/longcat-flash.md) — 美团 (Meituan) LongCat · 2025-09 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2509.01322
-- [Qwen3-Next：迈向更极致的训练推理性价比 (Qwen3-Next-80B-A3B)](llm/2025/qwen3-next.md) — 阿里巴巴 Qwen Team · 2025-09 · blog · [架构/AI infra/预训练数据/后训练] — https://qwen.ai/blog?id=qwen3-next
-- [Qwen3-Next：迈向更极致的训练推理性价比 (Qwen3-Next-80B-A3B)](llm/themes/architecture/qwen3-next.md) — Qwen Team, Alibaba Group · 2025-09 · blog · [架构/AI infra/后训练] — https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list
-- [Kimi Linear: An Expressive, Efficient Attention Architecture](llm/2025/kimi-linear.md) — 月之暗面 Moonshot AI · 2025-10 · paper · [架构/AI infra] — https://arxiv.org/abs/2510.26692
-- [Ling 2.0 — Every Activation Boosted: Scaling General Reasoner to 1 Trillion Open Language Foundation (含 Ling-1T)](llm/2025/ling-2.0.md) — 蚂蚁集团 百灵 / inclusionAI (Ant Group Ling Team) · 2025-10 · paper · [架构/预训练数据/AI infra/后训练] — https://arxiv.org/abs/2510.22115
-- [On-Policy Distillation](llm/themes/post-training/on-policy-distillation.md) — Thinking Machines Lab · 2025-10 · blog · [后训练] — https://thinkingmachines.ai/blog/on-policy-distillation/
-- [Ring-1T — Every Step Evolves: Scaling Reinforcement Learning for Trillion-Scale Thinking Model](llm/2025/ring-1t.md) — 蚂蚁集团 百灵 / inclusionAI (Ant Group Ling Team) · 2025-10 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2510.18855
-- [Tongyi DeepResearch Technical Report](llm/themes/agentic/tongyi-deepresearch.md) — 通义实验室(Tongyi Lab), 阿里巴巴 · 2025-10 · technical-report · [模型发布/后训练/agentic训练] — https://arxiv.org/abs/2510.24701
-- [DeepSeek-V3.2 (含 V3.2-Exp / DeepSeek Sparse Attention)](llm/2025/deepseek-v3.2.md) — DeepSeek · 2025-12 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2512.02556
+- [[llm/2025/olmo-2|2 OLMo 2 Furious (OLMo 2 技术报告)]] — Allen Institute for AI (AI2) · 2025-01 · technical-report · [预训练数据/架构/后训练/AI infra] — https://arxiv.org/abs/2501.00656
+- [[llm/themes/agentic/openai-computer-using-agent|Computer-Using Agent (CUA)]] — OpenAI · 2025-01 · blog · [后训练/agentic训练] — https://openai.com/index/computer-using-agent/
+- [[llm/2025/deepseek-r1|DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning]] — DeepSeek · 2025-01 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2501.12948
+- [[llm/themes/agentic/openai-operator|Introducing Operator]] — OpenAI · 2025-01 · blog · [agentic训练] — https://openai.com/index/introducing-operator/
+- [[llm/2025/kimi-k1.5|Kimi k1.5: Scaling Reinforcement Learning with LLMs]] — 月之暗面 Moonshot AI · 2025-01 · paper · [后训练/AI infra] — https://arxiv.org/abs/2501.12599
+- [[llm/2025/minimax-01|MiniMax-01: Scaling Foundation Models with Lightning Attention]] — MiniMax (稀宇科技) · 2025-01 · paper · [架构/AI infra/预训练数据] — https://arxiv.org/abs/2501.08313
+- [[llm/2025/mistral-small-3|Mistral Small 3]] — Mistral AI · 2025-01 · blog · [架构/后训练] — https://mistral.ai/news/mistral-small-3
+- [[llm/2025/openai-o3-mini|OpenAI o3-mini 发布]] — OpenAI · 2025-01 · blog · [后训练/agentic训练] — https://openai.com/index/openai-o3-mini/
+- [[llm/2025/qwen2.5-max|Qwen2.5-Max: Exploring the Intelligence of Large-scale MoE Model]] — 阿里巴巴 Qwen Team · 2025-01 · blog · [预训练数据/架构/后训练] — https://qwenlm.github.io/blog/qwen2.5-max/
+- [[llm/themes/agentic/search-o1|Search-o1: Agentic Search-Enhanced Large Reasoning Models]] — 中国人民大学 / 清华大学 · 2025-01 · paper · [agentic训练/推理] — https://arxiv.org/abs/2501.05366
+- [[llm/themes/ai-infra/streaming-diloco|Streaming DiLoCo with overlapping communication: Towards a Distributed Free Lunch]] — Google DeepMind / Google Research · 2025-01 · paper · [AI infra] — https://arxiv.org/abs/2501.18512
+- [[llm/themes/post-training/prm-lessons-qwen|The Lessons of Developing Process Reward Models in Mathematical Reasoning]] — Qwen Team, Alibaba · 2025-01 · paper · [后训练] — https://arxiv.org/abs/2501.07301
+- [[llm/themes/agentic/ui-tars|UI-TARS: Pioneering Automated GUI Interaction with Native Agents]] — 字节跳动 (ByteDance Seed) / 清华大学 · 2025-01 · paper · [架构/后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2501.12326
+- [[llm/themes/agentic/webwalker|WebWalker: Benchmarking LLMs in Web Traversal]] — 阿里巴巴 通义实验室 (Alibaba Tongyi Lab / Alibaba-NLP) · 2025-01 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2501.07572
+- [[llm/2025/rstar-math|rStar-Math - Small LLMs Can Master Math Reasoning with Self-Evolved Deep Thinking]] — Microsoft Research Asia · 2025-01 · technical-report · [后训练] — https://arxiv.org/abs/2501.04519
+- [[llm/themes/ai-infra/fire-flyer-3fs|3FS (Fire-Flyer File System) — High-performance Distributed File System for AI]] — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/3FS
+- [[llm/2025/anthropic-claude-3-7-sonnet|Claude 3.7 Sonnet and Claude Code]] — Anthropic · 2025-02 · blog · [后训练/agentic训练] — https://www.anthropic.com/news/claude-3-7-sonnet
+- [[llm/themes/ai-infra/deepep|DeepEP — Efficient Expert-Parallel Communication Library]] — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/DeepEP
+- [[llm/themes/ai-infra/deepgemm|DeepGEMM — Clean and Efficient FP8 GEMM Kernels with Fine-grained Scaling]] — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/DeepGEMM
+- [[llm/themes/ai-infra/deepseek-open-infra-index|DeepSeek Open Infra Index — Production-tested AI Infrastructure Tools]] — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/open-infra-index
+- [[llm/themes/ai-infra/dualpipe|DualPipe — Bidirectional Pipeline Parallelism for Computation-Communication Overlap]] — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/DualPipe
+- [[llm/themes/ai-infra/flashmla|FlashMLA — Efficient Multi-head Latent Attention Kernels]] — DeepSeek-AI · 2025-02 · github · [AI infra] — https://github.com/deepseek-ai/FlashMLA
+- [[llm/2025/xai-grok-3|Grok 3 Beta — The Age of Reasoning Agents]] — xAI · 2025-02 · blog · [AI infra/后训练/agentic训练] — https://x.ai/news/grok-3
+- [[llm/2025/openai-deep-research|Introducing deep research (OpenAI)]] — OpenAI · 2025-02 · blog · [agentic训练/后训练] — https://openai.com/index/introducing-deep-research/
+- [[llm/themes/ai-infra/native-sparse-attention|Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention]] — DeepSeek-AI / Peking University / University of Washington · 2025-02 · paper · [架构/AI infra] — https://arxiv.org/abs/2502.11089
+- [[llm/2025/openai-gpt-4.5-system-card|OpenAI GPT-4.5 System Card]] — OpenAI · 2025-02 · system-card · [预训练数据/AI infra/后训练] — https://openai.com/index/gpt-4-5-system-card/
+- [[llm/themes/post-training/swe-rl|SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution]] — Meta (FAIR / GenAI) · 2025-02 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2502.18449
+- [[llm/2025/cohere-command-a|Command A - An Enterprise-Ready Large Language Model]] — Cohere · 2025-03 · technical-report · [架构/后训练/AI infra/agentic训练] — https://arxiv.org/abs/2504.00698
+- [[llm/themes/ai-infra/dapo|DAPO: An Open-Source LLM Reinforcement Learning System at Scale]] — ByteDance Seed / Tsinghua University (AIR) · 2025-03 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2503.14476
+- [[llm/2025/gemma-3|Gemma 3 Technical Report]] — Google DeepMind · 2025-03 · technical-report · [架构/后训练/预训练数据] — https://arxiv.org/abs/2503.19786
+- [[llm/2025/mistral-small-3.1|Mistral Small 3.1]] — Mistral AI · 2025-03 · blog · [架构/后训练] — https://mistral.ai/news/mistral-small-3-1
+- [[llm/2025/ai2-olmo-2-32b|OLMo 2 32B - First fully open model to outperform GPT-3.5 and GPT-4o mini]] — Allen Institute for AI (AI2) · 2025-03 · blog · [预训练数据/后训练/AI infra] — https://allenai.org/blog/olmo2-32B
+- [[llm/themes/post-training/open-reasoner-zero|Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model]] — StepFun / Tsinghua · 2025-03 · paper · [后训练] — https://arxiv.org/abs/2503.24290
+- [[llm/2025/phi-4-mini|Phi-4-Mini Technical Report (Phi-4-Mini & Phi-4-Multimodal)]] — Microsoft · 2025-03 · technical-report · [架构/预训练数据/后训练] — https://arxiv.org/abs/2503.01743
+- [[llm/2025/qwq-32b|QwQ-32B: Embracing the Power of Reinforcement Learning]] — 阿里巴巴 Qwen Team · 2025-03 · blog · [后训练/agentic训练] — https://qwenlm.github.io/blog/qwq-32b/
+- [[llm/2025/qwen2.5-omni|Qwen2.5-Omni Technical Report]] — 阿里巴巴 Qwen Team · 2025-03 · paper · [架构/后训练] — https://arxiv.org/abs/2503.20215
+- [[llm/themes/architecture/qwen2.5-vl|Qwen2.5-VL Technical Report]] — Qwen Team, Alibaba Group · 2025-03 · report · [架构] — https://arxiv.org/abs/2502.13923
+- [[llm/themes/agentic/r1-searcher|R1-Searcher: Incentivizing the Search Capability in LLMs via Reinforcement Learning]] — 中国人民大学高瓴人工智能学院 / DataCanvas Alaya NeW · 2025-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2503.05592
+- [[llm/themes/agentic/search-r1|Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning]] — UIUC / 马萨诸塞大学 Amherst / Google 等 · 2025-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2503.09516
+- [[llm/2025/databricks-tao|TAO - Using test-time compute to train efficient LLMs without labeled data]] — Databricks (Mosaic AI Research) · 2025-03 · blog · [后训练] — https://www.databricks.com/blog/tao-using-test-time-compute-train-efficient-llms-without-labeled-data
+- [[llm/2025/amazon-nova-family|The Amazon Nova Family of Models - Technical Report and Model Card]] — Amazon (Amazon AGI) · 2025-03 · technical-report · [架构/预训练数据/后训练/agentic训练] — https://www.amazon.science/publications/the-amazon-nova-family-of-models-technical-report-and-model-card
+- [[llm/themes/agentic/torl|ToRL: Scaling Tool-Integrated RL]] — 上海交通大学 / SII / GAIR · 2025-03 · paper · [后训练/agentic训练/推理] — https://arxiv.org/abs/2503.23383
+- [[llm/themes/agentic/deepresearcher|DeepResearcher: Scaling Deep Research via Reinforcement Learning in Real-world Environments]] — 上海交通大学 / SII / GAIR · 2025-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2504.03160
+- [[llm/2025/deepseek-prover-v2|DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition]] — DeepSeek · 2025-04 · paper · [后训练] — https://arxiv.org/abs/2504.21801
+- [[llm/2025/internvl3|InternVL3: Exploring Advanced Training and Test-Time Recipes for Open-Source Multimodal Models]] — 上海人工智能实验室 (Shanghai AI Lab) / OpenGVLab · 2025-04 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2504.10479
+- [[llm/themes/agentic/openai-o3-o4-mini|Introducing OpenAI o3 and o4-mini]] — OpenAI · 2025-04 · blog · [后训练/agentic训练] — https://openai.com/index/introducing-o3-and-o4-mini/
+- [[llm/themes/ai-infra/megascale-infer|MegaScale-Infer: Serving Mixture-of-Experts at Scale with Disaggregated Expert Parallelism]] — ByteDance / Peking University · 2025-04 · paper · [AI infra] — https://arxiv.org/abs/2504.02263
+- [[llm/2025/nemotron-h|Nemotron-H - Hybrid Mamba-Transformer Models]] — NVIDIA · 2025-04 · technical-report · [架构/AI infra] — https://arxiv.org/abs/2504.03624
+- [[llm/2025/openai-o3-o4-mini-system-card|OpenAI o3 and o4-mini System Card]] — OpenAI · 2025-04 · system-card · [后训练/agentic训练/AI infra] — https://openai.com/index/o3-o4-mini-system-card/
+- [[llm/2025/pangu-ultra|Pangu Ultra - Pushing the Limits of Dense Large Language Models on Ascend NPUs]] — 华为 (Huawei) 盘古 · 2025-04 · paper · [架构/AI infra/预训练数据/后训练] — https://arxiv.org/abs/2504.07866
+- [[llm/2025/phi-4-reasoning|Phi-4-reasoning Technical Report]] — Microsoft · 2025-04 · technical-report · [后训练/预训练数据] — https://arxiv.org/abs/2504.21318
+- [[llm/themes/agentic/ragen|RAGEN: Understanding Self-Evolution in LLM Agents via Multi-Turn Reinforcement Learning]] — 西北大学 / 斯坦福 / 微软 / 新加坡国立 等 · 2025-04 · paper · [后训练/agentic训练/AI infra] — https://arxiv.org/abs/2504.20073
+- [[llm/themes/agentic/retool|ReTool: Reinforcement Learning for Strategic Tool Use in LLMs]] — 字节跳动 (ByteDance Seed) · 2025-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2504.11536
+- [[llm/2025/seed1.5-thinking|Seed1.5-Thinking: Advancing Superb Reasoning Models with Reinforcement Learning]] — 字节跳动 Seed (ByteDance Seed) · 2025-04 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2504.13914
+- [[llm/2025/skywork-r1v|Skywork R1V: Pioneering Multimodal Reasoning with Chain-of-Thought]] — 昆仑万维 天工 (Kunlun Skywork AI) · 2025-04 · paper · [架构/后训练] — https://arxiv.org/abs/2504.05599
+- [[llm/2025/meta-llama-4|The Llama 4 herd (Scout, Maverick, Behemoth)]] — Meta AI · 2025-04 · blog · [架构/预训练数据/后训练/AI infra] — https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+- [[llm/themes/post-training/toolrl|ToolRL: Reward is All Tool Learning Needs]] — University of Illinois Urbana-Champaign · 2025-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2504.13958
+- [[llm/themes/agentic/webthinker|WebThinker: Empowering Large Reasoning Models with Deep Research Capability]] — 中国人民大学 / 北京智源研究院(BAAI) / 华为 Poisson Lab · 2025-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2504.21776
+- [[llm/themes/ai-infra/areal|AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning]] — Ant Group / Tsinghua University (IIIS) · 2025-05 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2505.24298
+- [[llm/2025/deepseek-r1-0528|DeepSeek-R1-0528 Release]] — DeepSeek · 2025-05 · blog · [后训练/agentic训练] — https://api-docs.deepseek.com/news/news250528
+- [[llm/2025/hunyuan-turbos|Hunyuan-TurboS: Advancing Large Language Models through Mamba-Transformer Synergy and Adaptive Chain-of-Thought]] — 腾讯混元 (Tencent Hunyuan) · 2025-05 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2505.15431
+- [[llm/themes/ai-infra/deepseek-v3-hardware|Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures]] — DeepSeek-AI · 2025-05 · paper · [AI infra/架构] — https://arxiv.org/abs/2505.09343
+- [[llm/2025/anthropic-claude-4|Introducing Claude 4 (Opus 4 & Sonnet 4)]] — Anthropic · 2025-05 · blog · [后训练/agentic训练] — https://www.anthropic.com/news/claude-4
+- [[llm/2025/gemma-3n|Introducing Gemma 3n]] — Google DeepMind · 2025-05 · blog · [架构/AI infra] — https://developers.googleblog.com/en/introducing-gemma-3n/
+- [[llm/2025/llama-nemotron|Llama-Nemotron - Efficient Reasoning Models]] — NVIDIA · 2025-05 · technical-report · [架构/后训练/AI infra] — https://arxiv.org/abs/2505.00949
+- [[llm/2025/xiaomi-mimo|MiMo: Unlocking the Reasoning Potential of Language Model -- From Pretraining to Posttraining]] — 小米 (Xiaomi) MiMo / LLM-Core Team · 2025-05 · paper · [预训练数据/后训练/AI infra] — https://arxiv.org/abs/2505.07608
+- [[llm/2025/mistral-medium-3|Mistral Medium 3]] — Mistral AI · 2025-05 · blog · [架构/AI infra/后训练] — https://mistral.ai/news/mistral-medium-3
+- [[llm/2025/pangu-pro-moe|Pangu Pro MoE - Mixture of Grouped Experts for Efficient Sparsity]] — 华为 (Huawei) 盘古 · 2025-05 · paper · [架构/AI infra] — https://arxiv.org/abs/2505.21411
+- [[llm/2025/pangu-ultra-moe|Pangu Ultra MoE - How to Train Your Big MoE on Ascend NPUs]] — 华为 (Huawei) 盘古 · 2025-05 · paper · [架构/AI infra/后训练] — https://arxiv.org/abs/2505.04519
+- [[llm/themes/post-training/prorl|ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models]] — NVIDIA · 2025-05 · paper · [后训练] — https://arxiv.org/abs/2505.24864
+- [[llm/2025/qwen3|Qwen3 Technical Report]] — 阿里巴巴 Qwen Team · 2025-05 · paper · [架构/预训练数据/后训练/agentic训练] — https://arxiv.org/abs/2505.09388
+- [[llm/2025/seed1.5-vl|Seed1.5-VL Technical Report]] — 字节跳动 Seed (ByteDance Seed) · 2025-05 · paper · [架构/后训练/agentic训练] — https://arxiv.org/abs/2505.07062
+- [[llm/2025/skywork-or1|Skywork Open Reasoner 1 Technical Report (Skywork-OR1)]] — 昆仑万维 天工 (Kunlun Skywork AI) · 2025-05 · paper · [后训练/AI infra] — https://arxiv.org/abs/2505.22312
+- [[llm/2025/anthropic-claude-4-system-card|System Card - Claude Opus 4 & Claude Sonnet 4]] — Anthropic · 2025-05 · system-card · [后训练/agentic训练] — https://www.anthropic.com/system-cards
+- [[llm/themes/post-training/webdancer|WebDancer: Towards Autonomous Information Seeking Agency]] — Tongyi Lab, Alibaba (通义) · 2025-05 · paper · [agentic训练/后训练] — https://arxiv.org/abs/2505.22648
+- [[llm/2025/ernie-4.5|ERNIE 4.5 Technical Report]] — 百度 文心 (Baidu ERNIE) · 2025-06 · report · [架构/预训练数据/后训练/AI infra] — https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf
+- [[llm/2025/gemini-2.5|Gemini 2.5 Technical Report]] — Google DeepMind · 2025-06 · technical-report · [架构/后训练/agentic训练/AI infra] — https://arxiv.org/abs/2507.06261
+- [[llm/2025/hunyuan-a13b|Hunyuan-A13B Technical Report]] — 腾讯混元 (Tencent Hunyuan) · 2025-06 · report · [架构/预训练数据/后训练/agentic训练] — https://github.com/Tencent-Hunyuan/Hunyuan-A13B
+- [[llm/2025/mistral-magistral|Magistral (Mistral 首个推理模型)]] — Mistral AI · 2025-06 · technical-report · [后训练/AI infra] — https://arxiv.org/abs/2506.10910
+- [[llm/themes/agentic/mind2web-2|Mind2Web 2: Evaluating Agentic Search with Agent-as-a-Judge]] — The Ohio State University / 等 · 2025-06 · paper · [agentic训练/agentic环境与数据] — https://arxiv.org/abs/2506.21506
+- [[llm/2025/minimax-m1|MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention]] — MiniMax (稀宇科技) · 2025-06 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2506.13585
+- [[llm/2025/ring-lite|Ring-lite: Scalable Reasoning via C3PO-Stabilized Reinforcement Learning for LLMs]] — 蚂蚁集团 Ling Team / inclusionAI (Ant Group) · 2025-06 · paper · [后训练/AI infra] — https://arxiv.org/abs/2506.14731
+- [[llm/2025/dots-llm1|dots.llm1 Technical Report]] — 小红书 hi lab (rednote / Xiaohongshu) · 2025-06 · paper · [架构/预训练数据] — https://arxiv.org/abs/2506.05767
+- [[llm/2025/apple-foundation-models-2025|Apple Intelligence Foundation Language Models Tech Report 2025]] — Apple · 2025-07 · technical-report · [架构/AI infra/预训练数据/后训练] — https://machinelearning.apple.com/research/apple-foundation-models-tech-report-2025
+- [[llm/themes/architecture/falcon-h1|Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance]] — TII (Technology Innovation Institute), Falcon LLM Team · 2025-07 · report · [架构] — https://arxiv.org/abs/2507.22448
+- [[llm/2025/glm-4.5v|GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning]] — 智谱 AI / Z.ai (Zhipu AI) · 2025-07 · paper · [架构/后训练/agentic训练] — https://arxiv.org/abs/2507.01006
+- [[llm/2025/xai-grok-4|Grok 4]] — xAI · 2025-07 · blog · [AI infra/后训练/agentic训练] — https://x.ai/news/grok-4
+- [[llm/2025/kimi-k2|Kimi K2: Open Agentic Intelligence]] — 月之暗面 Moonshot AI · 2025-07 · paper · [架构/AI infra/预训练数据/后训练/agentic训练] — https://arxiv.org/abs/2507.20534
+- [[llm/2025/qwen3-coder|Qwen3-Coder: Agentic Coding in the World]] — 阿里巴巴 Qwen Team · 2025-07 · blog · [后训练/agentic训练/AI infra] — https://qwenlm.github.io/blog/qwen3-coder/
+- [[llm/2025/step-3|Step-3 is Large yet Affordable: Model-system Co-design for Cost-effective Decoding]] — 阶跃星辰 (StepFun) · 2025-07 · paper · [架构/AI infra] — https://arxiv.org/abs/2507.19427
+- [[llm/2025/ling-moe-scaling-laws|Towards Greater Leverage: Scaling Laws for Efficient Mixture-of-Experts Language Models]] — 蚂蚁集团 Ling Team / inclusionAI (Ant Group) · 2025-07 · paper · [架构/预训练数据] — https://arxiv.org/abs/2507.17702
+- [[llm/themes/agentic/websailor|WebSailor: Navigating Super-human Reasoning for Web Agent]] — 阿里巴巴 通义实验室 (Alibaba Tongyi Lab / Alibaba-NLP) · 2025-07 · paper · [后训练/agentic训练/agentic环境与数据] — https://arxiv.org/abs/2507.02592
+- [[llm/themes/agentic/agent-lightning|Agent Lightning: Train ANY AI Agents with Reinforcement Learning]] — Microsoft Research · 2025-08 · paper · [AI infra/后训练/agentic训练] — https://arxiv.org/abs/2508.03680
+- [[llm/2025/deepseek-v3.1|DeepSeek-V3.1 Release]] — DeepSeek · 2025-08 · blog · [后训练/agentic训练/架构] — https://api-docs.deepseek.com/news/news250821
+- [[llm/2025/glm-4.5|GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models]] — 智谱 AI / Z.ai (Zhipu AI) · 2025-08 · paper · [架构/预训练数据/后训练/agentic训练] — https://arxiv.org/abs/2508.06471
+- [[llm/2025/nemotron-nano-2|NVIDIA Nemotron Nano 2 (Nemotron-Nano-9B-v2)]] — NVIDIA · 2025-08 · technical-report · [架构/预训练数据/后训练/AI infra] — https://arxiv.org/abs/2508.14444
+- [[llm/2025/openai-gpt-5-system-card|OpenAI GPT-5 System Card]] — OpenAI · 2025-08 · system-card · [后训练/agentic训练/AI infra] — https://openai.com/index/gpt-5-system-card/
+- [[llm/2025/openai-gpt-oss|gpt-oss-120b & gpt-oss-20b Model Card (OpenAI)]] — OpenAI · 2025-08 · model-card · [架构/后训练/AI infra] — https://openai.com/index/gpt-oss-model-card/
+- [[llm/2025/baichuan-m2|Baichuan-M2: Scaling Medical Capability with Large Verifier System]] — 百川智能 (Baichuan AI) · 2025-09 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2509.02208
+- [[llm/themes/architecture/deepseek-v3.2-exp|DeepSeek-V3.2-Exp: Boosting Long-Context Efficiency with DeepSeek Sparse Attention]] — DeepSeek-AI · 2025-09 · report · [架构/AI infra] — https://github.com/deepseek-ai/DeepSeek-V3.2-Exp
+- [[llm/2025/glm-4.6|GLM-4.6: Advanced Agentic, Reasoning and Coding Capabilities]] — 智谱 AI / Z.ai (Zhipu AI) · 2025-09 · blog · [后训练/agentic训练/架构] — https://z.ai/blog/glm-4.6
+- [[llm/2025/longcat-flash|LongCat-Flash Technical Report]] — 美团 (Meituan) LongCat · 2025-09 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2509.01322
+- [[llm/2025/qwen3-next|Qwen3-Next：迈向更极致的训练推理性价比 (Qwen3-Next-80B-A3B)]] — 阿里巴巴 Qwen Team · 2025-09 · blog · [架构/AI infra/预训练数据/后训练] — https://qwen.ai/blog?id=qwen3-next
+- [[llm/themes/architecture/qwen3-next|Qwen3-Next：迈向更极致的训练推理性价比 (Qwen3-Next-80B-A3B)]] — Qwen Team, Alibaba Group · 2025-09 · blog · [架构/AI infra/后训练] — https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&from=research.latest-advancements-list
+- [[llm/2025/kimi-linear|Kimi Linear: An Expressive, Efficient Attention Architecture]] — 月之暗面 Moonshot AI · 2025-10 · paper · [架构/AI infra] — https://arxiv.org/abs/2510.26692
+- [[llm/2025/ling-2.0|Ling 2.0 — Every Activation Boosted: Scaling General Reasoner to 1 Trillion Open Language Foundation (含 Ling-1T)]] — 蚂蚁集团 百灵 / inclusionAI (Ant Group Ling Team) · 2025-10 · paper · [架构/预训练数据/AI infra/后训练] — https://arxiv.org/abs/2510.22115
+- [[llm/themes/post-training/on-policy-distillation|On-Policy Distillation]] — Thinking Machines Lab · 2025-10 · blog · [后训练] — https://thinkingmachines.ai/blog/on-policy-distillation/
+- [[llm/2025/ring-1t|Ring-1T — Every Step Evolves: Scaling Reinforcement Learning for Trillion-Scale Thinking Model]] — 蚂蚁集团 百灵 / inclusionAI (Ant Group Ling Team) · 2025-10 · paper · [后训练/AI infra/agentic训练] — https://arxiv.org/abs/2510.18855
+- [[llm/themes/agentic/tongyi-deepresearch|Tongyi DeepResearch Technical Report]] — 通义实验室(Tongyi Lab), 阿里巴巴 · 2025-10 · technical-report · [模型发布/后训练/agentic训练] — https://arxiv.org/abs/2510.24701
+- [[llm/2025/deepseek-v3.2|DeepSeek-V3.2 (含 V3.2-Exp / DeepSeek Sparse Attention)]] — DeepSeek · 2025-12 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2512.02556
 
 ## 2026（53 条）
 
-- [DeepSeek-OCR 2: Visual Causal Flow](llm/2026/deepseek-ocr-2.md) — DeepSeek (深度求索) · 2026-01 · paper · [架构/预训练数据] — https://arxiv.org/abs/2601.20552
-- [LongCat-Flash-Thinking-2601 Technical Report](llm/2026/longcat-flash-thinking-2601.md) — 美团 Meituan (LongCat Team) · 2026-01 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2601.16725
-- [Molmo2: Open Weights and Data for Vision-Language Models with Video Understanding and Grounding](llm/2026/molmo2.md) — Allen Institute for AI (Ai2) / University of Washington · 2026-01 · paper · [预训练数据/架构/后训练] — https://arxiv.org/abs/2601.10611
-- [Reasoning Models Generate Societies of Thought](llm/2026/reasoning-models-generate-societies-of-thought.md) — Google (Paradigms of Intelligence Team) / University of Chicago / Santa Fe Institute · 2026-01 · paper · [后训练] — https://arxiv.org/abs/2601.10825
-- [Skywork UniPic 3.0: Unified Multi-Image Composition via Sequence Modeling](llm/2026/skywork-unipic-3.0.md) — 昆仑万维 Skywork (Kunlun) · 2026-01 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2601.15664
-- [Stable-DiffCoder: Pushing the Frontier of Code Diffusion Large Language Model](llm/2026/stable-diffcoder.md) — 字节跳动 Seed (ByteDance Seed) · 2026-01 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2601.15892
-- [ERNIE 5.0 Technical Report](llm/2026/ernie-5.0-technical-report.md) — 百度 Baidu (ERNIE Team) · 2026-02 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2602.04705
-- [GLM-5: from Vibe Coding to Agentic Engineering](llm/2026/glm-5-vibe-coding-to-agentic-engineering.md) — 智谱 Z.ai (Zhipu / GLM-5-Team) · 2026-02 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2602.15763
-- [Gemini 3.1 Pro Model Card](llm/2026/gemini-3-1-pro-model-card.md) — Google DeepMind · 2026-02 · model-card · [架构/后训练] — https://deepmind.google/models/model-cards/gemini-3-1-pro/
-- [Kimi K2.5: Visual Agentic Intelligence](llm/2026/kimi-k2.5-visual-agentic-intelligence.md) — 月之暗面 Moonshot AI (Kimi Team) · 2026-02 · paper · [架构/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2602.02276
-- [Qwen3.5-397B-A17B（Qwen3.5 旗舰开源权重模型）](llm/2026/qwen3.5-397b-a17b.md) — 阿里巴巴 Qwen 团队 · 2026-02 · model-release · [pretraining/architecture/infra/post-training/agentic/multimodal/moe/linear-attention] — https://qwen.ai/blog?id=qwen3.5
-- [Risk Report: February 2026](llm/2026/anthropic-risk-report-feb-2026.md) — Anthropic · 2026-02 · report · [后训练/agentic训练] — https://www.anthropic.com/feb-2026-risk-report
-- [Seed2.0（字节跳动 Seed 通用智能体模型系列）](llm/2026/seed-2.0.md) — 字节跳动 ByteDance Seed · 2026-02 · model-release · [agentic/multimodal/post-training/eval/llm] — https://seed.bytedance.com/en/seed2
-- [EAGLE-Pangu: Accelerator-Safe Tree Speculative Decoding on Ascend NPUs](llm/2026/eagle-pangu-ascend-speculative-decoding.md) — 华为盘古 Huawei Pangu (昇腾 Ascend) · 2026-03 · paper · [AI infra] — https://arxiv.org/abs/2603.08088
-- [Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale](llm/2026/intern-s1-pro.md) — 上海人工智能实验室 Shanghai AI Lab (InternLM / OpenGVLab) · 2026-03 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2603.25040
-- [InternVL-U: Democratizing Unified Multimodal Models for Understanding, Reasoning, Generation and Editing](llm/2026/internvl-u.md) — 上海人工智能实验室 Shanghai AI Lab (OpenGVLab / InternVL) · 2026-03 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2603.09877
-- [LongCat-Flash-Prover: Advancing Native Formal Reasoning via Agentic Tool-Integrated Reinforcement Learning](llm/2026/longcat-flash-prover.md) — 美团 Meituan (LongCat Team) · 2026-03 · paper · [后训练/agentic训练/架构] — https://arxiv.org/abs/2603.21065
-- [LongCat-Next: Lexicalizing Modalities as Discrete Tokens](llm/2026/longcat-next.md) — 美团 Meituan (LongCat Team) · 2026-03 · paper · [架构/预训练数据] — https://arxiv.org/abs/2603.27538
-- [Mistral Small 4 119B A6B（统一 Instruct + Reasoning + Devstral）](llm/2026/mistral-small-4.md) — Mistral AI · 2026-03 · model-card · [架构/后训练/agentic训练] — https://huggingface.co/mistralai/Mistral-Small-4-119B-2603
-- [Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation](llm/2026/nemotron-cascade-2.md) — NVIDIA · 2026-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2603.19220
-- [Phi-4-reasoning-vision-15B Technical Report](llm/2026/phi-4-reasoning-vision-15b-technical-report.md) — Microsoft Research · 2026-03 · report · [预训练数据/架构/后训练] — https://www.microsoft.com/en-us/research/wp-content/uploads/2026/03/Phi-4-reasoning-vision-15B-Tech-Report.pdf
-- [DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence](llm/2026/deepseek-v4-technical-report.md) — DeepSeek (深度求索) · 2026-04 · report · [架构/AI infra/后训练/预训练数据] — https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro
-- [Grok 4.20 System Card](llm/2026/grok-4-20-system-card.md) — xAI · 2026-04 · model-card · [后训练/agentic训练] — https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf
-- [Hy3 preview (Hunyuan 3 preview)](llm/2026/hunyuan-3-preview.md) — 腾讯混元 Tencent Hunyuan (Hy Team) · 2026-04 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/tencent/Hy3-preview
-- [Introducing GPT-5.5](llm/2026/introducing-gpt-5-5.md) — OpenAI · 2026-04 · blog · [后训练/agentic训练] — https://openai.com/index/introducing-gpt-5-5/
-- [Introducing Muse Spark: Scaling Towards Personal Superintelligence](llm/2026/meta-muse-spark.md) — Meta (Meta Superintelligence Labs) · 2026-04 · blog · [预训练数据/架构/AI infra/后训练/agentic训练] — https://ai.meta.com/blog/introducing-muse-spark-msl/
-- [MiMo-V2.5-Pro](llm/2026/mimo-v2.5-pro.md) — 小米 Xiaomi MiMo · 2026-04 · model-card · [架构/agentic训练] — https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro
-- [MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction](llm/2026/minicpm-o-4.5.md) — 面壁智能 ModelBest / OpenBMB (清华 THUNLP) · 2026-04 · paper · [架构/后训练] — https://arxiv.org/abs/2604.27393
-- [Nemotron 3 Nano Omni: Efficient and Open Multimodal Intelligence](llm/2026/nemotron-3-nano-omni.md) — NVIDIA · 2026-04 · paper · [架构/AI infra/后训练/预训练数据] — https://arxiv.org/abs/2604.24954
-- [Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning](llm/2026/nemotron-3-super.md) — NVIDIA · 2026-04 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2604.12374
-- [Qwen3.5-Omni Technical Report](llm/2026/qwen3.5-omni-technical-report.md) — 阿里巴巴 Qwen (Qwen Team / Alibaba) · 2026-04 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2604.15804
-- [Step-Audio-R1.5 Technical Report](llm/2026/step-audio-r1.5.md) — 阶跃星辰 StepFun · 2026-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2604.25719
-- [openPangu-Ultra-MoE-718B (开源盘古 Ultra-MoE-718B)](llm/2026/openpangu-ultra-moe-718b.md) — 华为盘古 Huawei Pangu (昇腾 Ascend) · 2026-04 · model-card · [架构/AI infra/预训练数据/后训练] — https://huggingface.co/openpangu/openPangu-Ultra-MoE-718B-model
-- [Continuous Latent Diffusion Language Model (Cola-DLM)](llm/2026/cola-dlm.md) — 字节跳动 Seed (ByteDance Seed) · 2026-05 · paper · [架构/预训练数据] — https://arxiv.org/abs/2605.06548
-- [ERNIE-Image Technical Report](llm/2026/ernie-image.md) — 百度 Baidu (ERNIE Team) · 2026-05 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2605.25347
-- [GPT-5.5 Instant System Card](llm/2026/gpt-5-5-instant-system-card.md) — OpenAI · 2026-05 · model-card · [后训练/预训练数据] — https://openai.com/index/gpt-5-5-instant-system-card/
-- [Gemini 3 Pro Model Card (Last Updated May 2026)](llm/2026/gemini-3-pro-model-card.md) — Google DeepMind · 2026-05 · model-card · [架构/预训练数据/后训练/AI infra] — https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf
-- [Gemini 3.5 Flash Model Card](llm/2026/gemini-3-5-flash-model-card.md) — Google DeepMind · 2026-05 · model-card · [架构/后训练] — https://deepmind.google/models/model-cards/gemini-3-5-flash/
-- [MiniCPM5-1B（MiniCPM5 系列首款，端侧 1B SOTA）](llm/2026/minicpm5-1b.md) — 面壁智能 ModelBest / OpenBMB (清华 THUNLP) · 2026-05 · model-card · [架构/预训练数据/后训练/agentic训练] — https://huggingface.co/openbmb/MiniCPM5-1B
-- [Natural Language Autoencoders Produce Unsupervised Explanations of LLM Activations](llm/2026/natural-language-autoencoders.md) — Anthropic · 2026-05 · paper · [后训练] — https://transformer-circuits.pub/2026/nla/
-- [Remote agents in Vibe. Powered by Mistral Medium 3.5.](llm/2026/mistral-medium-3-5.md) — Mistral AI · 2026-05 · blog · [架构/后训练/agentic训练] — https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/
-- [Step 3.7 Flash](llm/2026/step-3.7-flash.md) — 阶跃星辰 StepFun · 2026-05 · model-card · [架构/agentic训练/后训练] — https://huggingface.co/stepfun-ai/Step-3.7-Flash
-- [The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence](llm/2026/minimax-m2-series.md) — MiniMax (稀宇科技) · 2026-05 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2605.26494
-- [Baichuan-M4: A Clinical-Grade Medical Agent System for Continuous Care](llm/2026/baichuan-m4.md) — 百川智能 Baichuan Intelligence · 2026-06 · paper · [后训练/agentic训练/架构] — https://arxiv.org/abs/2606.08982
-- [GLM-5.2（智谱旗舰：long-horizon + 1M 上下文 + IndexShare 稀疏注意力）](llm/2026/glm-5.2.md) — 智谱 Z.ai (Zhipu) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/zai-org/GLM-5.2
-- [Intern-S2-Preview（上海 AILab：35B 科学多模态，task scaling）](llm/2026/intern-s2-preview.md) — 上海人工智能实验室 Shanghai AI Lab (InternLM) · 2026-06 · model-card · [架构/后训练/预训练数据/agentic训练] — https://huggingface.co/internlm/Intern-S2-Preview-FP8
-- [Introducing new capabilities to GPT-Rosalind](llm/2026/gpt-rosalind.md) — OpenAI · 2026-06 · blog · [后训练/agentic训练] — https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/
-- [Kimi K2.6（月之暗面：原生多模态 agentic，1T MoE，agent swarm）](llm/2026/kimi-k2.6.md) — 月之暗面 Moonshot AI · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/moonshotai/Kimi-K2.6
-- [Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale](llm/2026/ling-ring-2.6-technical-report.md) — 蚂蚁 InclusionAI / Ant Group (Ling Team) · 2026-06 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2606.15079
-- [MiniMax Sparse Attention](llm/2026/minimax-sparse-attention.md) — MiniMax (稀宇科技) · 2026-06 · paper · [架构/AI infra] — https://arxiv.org/abs/2606.13392
-- [MiniMax-M3（原生多模态，1M 上下文，MiniMax Sparse Attention）](llm/2026/minimax-m3.md) — MiniMax (稀宇科技) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练/预训练数据] — https://huggingface.co/MiniMaxAI/MiniMax-M3
-- [Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning](llm/2026/nemotron-3-ultra.md) — NVIDIA · 2026-06 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2606.15007
-- [Qwen-AgentWorld（首个语言世界模型 LWM：agent 环境仿真）](llm/2026/qwen-agentworld.md) — 阿里巴巴 Qwen · 2026-06 · paper · [agentic训练/架构/后训练/预训练数据] — https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B
+- [[llm/2026/deepseek-ocr-2|DeepSeek-OCR 2: Visual Causal Flow]] — DeepSeek (深度求索) · 2026-01 · paper · [架构/预训练数据] — https://arxiv.org/abs/2601.20552
+- [[llm/2026/longcat-flash-thinking-2601|LongCat-Flash-Thinking-2601 Technical Report]] — 美团 Meituan (LongCat Team) · 2026-01 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2601.16725
+- [[llm/2026/molmo2|Molmo2: Open Weights and Data for Vision-Language Models with Video Understanding and Grounding]] — Allen Institute for AI (Ai2) / University of Washington · 2026-01 · paper · [预训练数据/架构/后训练] — https://arxiv.org/abs/2601.10611
+- [[llm/2026/reasoning-models-generate-societies-of-thought|Reasoning Models Generate Societies of Thought]] — Google (Paradigms of Intelligence Team) / University of Chicago / Santa Fe Institute · 2026-01 · paper · [后训练] — https://arxiv.org/abs/2601.10825
+- [[llm/2026/skywork-unipic-3.0|Skywork UniPic 3.0: Unified Multi-Image Composition via Sequence Modeling]] — 昆仑万维 Skywork (Kunlun) · 2026-01 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2601.15664
+- [[llm/2026/stable-diffcoder|Stable-DiffCoder: Pushing the Frontier of Code Diffusion Large Language Model]] — 字节跳动 Seed (ByteDance Seed) · 2026-01 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2601.15892
+- [[llm/2026/ernie-5.0-technical-report|ERNIE 5.0 Technical Report]] — 百度 Baidu (ERNIE Team) · 2026-02 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2602.04705
+- [[llm/2026/glm-5-vibe-coding-to-agentic-engineering|GLM-5: from Vibe Coding to Agentic Engineering]] — 智谱 Z.ai (Zhipu / GLM-5-Team) · 2026-02 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2602.15763
+- [[llm/2026/gemini-3-1-pro-model-card|Gemini 3.1 Pro Model Card]] — Google DeepMind · 2026-02 · model-card · [架构/后训练] — https://deepmind.google/models/model-cards/gemini-3-1-pro/
+- [[llm/2026/kimi-k2.5-visual-agentic-intelligence|Kimi K2.5: Visual Agentic Intelligence]] — 月之暗面 Moonshot AI (Kimi Team) · 2026-02 · paper · [架构/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2602.02276
+- [[llm/2026/qwen3.5-397b-a17b|Qwen3.5-397B-A17B（Qwen3.5 旗舰开源权重模型）]] — 阿里巴巴 Qwen 团队 · 2026-02 · model-release · [pretraining/architecture/infra/post-training/agentic/multimodal/moe/linear-attention] — https://qwen.ai/blog?id=qwen3.5
+- [[llm/2026/anthropic-risk-report-feb-2026|Risk Report: February 2026]] — Anthropic · 2026-02 · report · [后训练/agentic训练] — https://www.anthropic.com/feb-2026-risk-report
+- [[llm/2026/seed-2.0|Seed2.0（字节跳动 Seed 通用智能体模型系列）]] — 字节跳动 ByteDance Seed · 2026-02 · model-release · [agentic/multimodal/post-training/eval/llm] — https://seed.bytedance.com/en/seed2
+- [[llm/2026/eagle-pangu-ascend-speculative-decoding|EAGLE-Pangu: Accelerator-Safe Tree Speculative Decoding on Ascend NPUs]] — 华为盘古 Huawei Pangu (昇腾 Ascend) · 2026-03 · paper · [AI infra] — https://arxiv.org/abs/2603.08088
+- [[llm/2026/intern-s1-pro|Intern-S1-Pro: Scientific Multimodal Foundation Model at Trillion Scale]] — 上海人工智能实验室 Shanghai AI Lab (InternLM / OpenGVLab) · 2026-03 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2603.25040
+- [[llm/2026/internvl-u|InternVL-U: Democratizing Unified Multimodal Models for Understanding, Reasoning, Generation and Editing]] — 上海人工智能实验室 Shanghai AI Lab (OpenGVLab / InternVL) · 2026-03 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2603.09877
+- [[llm/2026/longcat-flash-prover|LongCat-Flash-Prover: Advancing Native Formal Reasoning via Agentic Tool-Integrated Reinforcement Learning]] — 美团 Meituan (LongCat Team) · 2026-03 · paper · [后训练/agentic训练/架构] — https://arxiv.org/abs/2603.21065
+- [[llm/2026/longcat-next|LongCat-Next: Lexicalizing Modalities as Discrete Tokens]] — 美团 Meituan (LongCat Team) · 2026-03 · paper · [架构/预训练数据] — https://arxiv.org/abs/2603.27538
+- [[llm/2026/mistral-small-4|Mistral Small 4 119B A6B（统一 Instruct + Reasoning + Devstral）]] — Mistral AI · 2026-03 · model-card · [架构/后训练/agentic训练] — https://huggingface.co/mistralai/Mistral-Small-4-119B-2603
+- [[llm/2026/nemotron-cascade-2|Nemotron-Cascade 2: Post-Training LLMs with Cascade RL and Multi-Domain On-Policy Distillation]] — NVIDIA · 2026-03 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2603.19220
+- [[llm/2026/phi-4-reasoning-vision-15b-technical-report|Phi-4-reasoning-vision-15B Technical Report]] — Microsoft Research · 2026-03 · report · [预训练数据/架构/后训练] — https://www.microsoft.com/en-us/research/wp-content/uploads/2026/03/Phi-4-reasoning-vision-15B-Tech-Report.pdf
+- [[llm/2026/deepseek-v4-technical-report|DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence]] — DeepSeek (深度求索) · 2026-04 · report · [架构/AI infra/后训练/预训练数据] — https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro
+- [[llm/2026/grok-4-20-system-card|Grok 4.20 System Card]] — xAI · 2026-04 · model-card · [后训练/agentic训练] — https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf
+- [[llm/2026/hunyuan-3-preview|Hy3 preview (Hunyuan 3 preview)]] — 腾讯混元 Tencent Hunyuan (Hy Team) · 2026-04 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/tencent/Hy3-preview
+- [[llm/2026/introducing-gpt-5-5|Introducing GPT-5.5]] — OpenAI · 2026-04 · blog · [后训练/agentic训练] — https://openai.com/index/introducing-gpt-5-5/
+- [[llm/2026/meta-muse-spark|Introducing Muse Spark: Scaling Towards Personal Superintelligence]] — Meta (Meta Superintelligence Labs) · 2026-04 · blog · [预训练数据/架构/AI infra/后训练/agentic训练] — https://ai.meta.com/blog/introducing-muse-spark-msl/
+- [[llm/2026/mimo-v2.5-pro|MiMo-V2.5-Pro]] — 小米 Xiaomi MiMo · 2026-04 · model-card · [架构/agentic训练] — https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro
+- [[llm/2026/minicpm-o-4.5|MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction]] — 面壁智能 ModelBest / OpenBMB (清华 THUNLP) · 2026-04 · paper · [架构/后训练] — https://arxiv.org/abs/2604.27393
+- [[llm/2026/nemotron-3-nano-omni|Nemotron 3 Nano Omni: Efficient and Open Multimodal Intelligence]] — NVIDIA · 2026-04 · paper · [架构/AI infra/后训练/预训练数据] — https://arxiv.org/abs/2604.24954
+- [[llm/2026/nemotron-3-super|Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning]] — NVIDIA · 2026-04 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2604.12374
+- [[llm/2026/qwen3.5-omni-technical-report|Qwen3.5-Omni Technical Report]] — 阿里巴巴 Qwen (Qwen Team / Alibaba) · 2026-04 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2604.15804
+- [[llm/2026/step-audio-r1.5|Step-Audio-R1.5 Technical Report]] — 阶跃星辰 StepFun · 2026-04 · paper · [后训练/agentic训练] — https://arxiv.org/abs/2604.25719
+- [[llm/2026/openpangu-ultra-moe-718b|openPangu-Ultra-MoE-718B (开源盘古 Ultra-MoE-718B)]] — 华为盘古 Huawei Pangu (昇腾 Ascend) · 2026-04 · model-card · [架构/AI infra/预训练数据/后训练] — https://huggingface.co/openpangu/openPangu-Ultra-MoE-718B-model
+- [[llm/2026/cola-dlm|Continuous Latent Diffusion Language Model (Cola-DLM)]] — 字节跳动 Seed (ByteDance Seed) · 2026-05 · paper · [架构/预训练数据] — https://arxiv.org/abs/2605.06548
+- [[llm/2026/ernie-image|ERNIE-Image Technical Report]] — 百度 Baidu (ERNIE Team) · 2026-05 · paper · [架构/预训练数据/后训练] — https://arxiv.org/abs/2605.25347
+- [[llm/2026/gpt-5-5-instant-system-card|GPT-5.5 Instant System Card]] — OpenAI · 2026-05 · model-card · [后训练/预训练数据] — https://openai.com/index/gpt-5-5-instant-system-card/
+- [[llm/2026/gemini-3-pro-model-card|Gemini 3 Pro Model Card (Last Updated May 2026)]] — Google DeepMind · 2026-05 · model-card · [架构/预训练数据/后训练/AI infra] — https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf
+- [[llm/2026/gemini-3-5-flash-model-card|Gemini 3.5 Flash Model Card]] — Google DeepMind · 2026-05 · model-card · [架构/后训练] — https://deepmind.google/models/model-cards/gemini-3-5-flash/
+- [[llm/2026/minicpm5-1b|MiniCPM5-1B（MiniCPM5 系列首款，端侧 1B SOTA）]] — 面壁智能 ModelBest / OpenBMB (清华 THUNLP) · 2026-05 · model-card · [架构/预训练数据/后训练/agentic训练] — https://huggingface.co/openbmb/MiniCPM5-1B
+- [[llm/2026/natural-language-autoencoders|Natural Language Autoencoders Produce Unsupervised Explanations of LLM Activations]] — Anthropic · 2026-05 · paper · [后训练] — https://transformer-circuits.pub/2026/nla/
+- [[llm/2026/mistral-medium-3-5|Remote agents in Vibe. Powered by Mistral Medium 3.5.]] — Mistral AI · 2026-05 · blog · [架构/后训练/agentic训练] — https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/
+- [[llm/2026/step-3.7-flash|Step 3.7 Flash]] — 阶跃星辰 StepFun · 2026-05 · model-card · [架构/agentic训练/后训练] — https://huggingface.co/stepfun-ai/Step-3.7-Flash
+- [[llm/2026/minimax-m2-series|The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence]] — MiniMax (稀宇科技) · 2026-05 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2605.26494
+- [[llm/2026/baichuan-m4|Baichuan-M4: A Clinical-Grade Medical Agent System for Continuous Care]] — 百川智能 Baichuan Intelligence · 2026-06 · paper · [后训练/agentic训练/架构] — https://arxiv.org/abs/2606.08982
+- [[llm/2026/glm-5.2|GLM-5.2（智谱旗舰：long-horizon + 1M 上下文 + IndexShare 稀疏注意力）]] — 智谱 Z.ai (Zhipu) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/zai-org/GLM-5.2
+- [[llm/2026/intern-s2-preview|Intern-S2-Preview（上海 AILab：35B 科学多模态，task scaling）]] — 上海人工智能实验室 Shanghai AI Lab (InternLM) · 2026-06 · model-card · [架构/后训练/预训练数据/agentic训练] — https://huggingface.co/internlm/Intern-S2-Preview-FP8
+- [[llm/2026/gpt-rosalind|Introducing new capabilities to GPT-Rosalind]] — OpenAI · 2026-06 · blog · [后训练/agentic训练] — https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/
+- [[llm/2026/kimi-k2.6|Kimi K2.6（月之暗面：原生多模态 agentic，1T MoE，agent swarm）]] — 月之暗面 Moonshot AI · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/moonshotai/Kimi-K2.6
+- [[llm/2026/ling-ring-2.6-technical-report|Ling and Ring 2.6 Technical Report: Efficient and Instant Agentic Intelligence at Trillion-Parameter Scale]] — 蚂蚁 InclusionAI / Ant Group (Ling Team) · 2026-06 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2606.15079
+- [[llm/2026/minimax-sparse-attention|MiniMax Sparse Attention]] — MiniMax (稀宇科技) · 2026-06 · paper · [架构/AI infra] — https://arxiv.org/abs/2606.13392
+- [[llm/2026/minimax-m3|MiniMax-M3（原生多模态，1M 上下文，MiniMax Sparse Attention）]] — MiniMax (稀宇科技) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练/预训练数据] — https://huggingface.co/MiniMaxAI/MiniMax-M3
+- [[llm/2026/nemotron-3-ultra|Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning]] — NVIDIA · 2026-06 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2606.15007
+- [[llm/2026/qwen-agentworld|Qwen-AgentWorld（首个语言世界模型 LWM：agent 环境仿真）]] — 阿里巴巴 Qwen · 2026-06 · paper · [agentic训练/架构/后训练/预训练数据] — https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B

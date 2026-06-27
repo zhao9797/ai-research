@@ -252,9 +252,9 @@
 > 去重说明：(1) MT-NLG 530B（arXiv 2201.11990）在 2021/2022 两处索引为同一工作，已合并；(2) DeepSeek-V3、Qwen2.5、Llama 3、DeepSeek-V2、CLIP、BLT、DeepSeekMath/GRPO 等在 themes/ 或 2024/2025 年份目录存在重复条目，本章以一条主条目合并；(3) Code Llama 博客、Meta Llama 3 / 3.1 博客并入对应论文条目（500B 代码 token、15T token 等数据细节已写入主条）。
 
 ## 增量补录（2026 调研后查漏，预训练数据维度）
-- **MiniCPM5-1B** — UltraData 分层数据管理 base→mid→post 三阶段（arXiv 2602.09003）。[详](llm/2026/minicpm5-1b.md)
-- **GLM-5.2**（承 GLM-5）— 基座 28.5T 分阶段：通用 18T@4K → 代码推理 9T@4K → 中训练 32K(1T)/128K(500B)/200K(50B)；Web 用 DCLM+World Knowledge 分类器、Math/Science 严格不用合成数据。[详](llm/2026/glm-5.2.md)
-- **Kimi-K2.6**（承 K2.5）— native 多模态联合预训练 ~15T 混合 token、**等比例早融合优于后期高占比**、MoonViT-3D。[详](llm/2026/kimi-k2.6.md)
-- **MiniMax-M3** — 原生混合模态从第一步训练。[详](llm/2026/minimax-m3.md)
-- **Qwen-AgentWorld** — 三源环境轨迹 + 专业领域世界知识 CPT；Table 2 SFT 7094/RL 92308 条。[详](llm/2026/qwen-agentworld.md)
-- **Intern-S2-Preview** — task scaling 全链、从 Qwen3.5 续训。[详](llm/2026/intern-s2-preview.md)
+- **MiniCPM5-1B** — UltraData 分层数据管理 base→mid→post 三阶段（arXiv 2602.09003）。[[llm/2026/minicpm5-1b|详]]
+- **GLM-5.2**（承 GLM-5）— 基座 28.5T 分阶段：通用 18T@4K → 代码推理 9T@4K → 中训练 32K(1T)/128K(500B)/200K(50B)；Web 用 DCLM+World Knowledge 分类器、Math/Science 严格不用合成数据。[[llm/2026/glm-5.2|详]]
+- **Kimi-K2.6**（承 K2.5）— native 多模态联合预训练 ~15T 混合 token、**等比例早融合优于后期高占比**、MoonViT-3D。[[llm/2026/kimi-k2.6|详]]
+- **MiniMax-M3** — 原生混合模态从第一步训练。[[llm/2026/minimax-m3|详]]
+- **Qwen-AgentWorld** — 三源环境轨迹 + 专业领域世界知识 CPT；Table 2 SFT 7094/RL 92308 条。[[llm/2026/qwen-agentworld|详]]
+- **Intern-S2-Preview** — task scaling 全链、从 Qwen3.5 续训。[[llm/2026/intern-s2-preview|详]]

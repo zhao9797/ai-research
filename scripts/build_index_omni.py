@@ -106,8 +106,9 @@ for y in years:
         continue
     out.append("\n## %s（%d 条）\n" % (y, len(ye)))
     for e in ye:
-        out.append("- [%s](%s) — %s · %s · %s · [%s] — %s" % (
-            e["title"].replace("[", "(").replace("]", ")"), SCOPE + "/" + e["rel"],
+        title = e["title"].replace("[", "(").replace("]", ")").replace("|", "/")
+        out.append("- [[%s|%s]] — %s · %s · %s · [%s] — %s" % (
+            SCOPE + "/" + e["rel"][:-3], title,
             e["org"] or "-", e["date"] or "?", e["type"] or "?",
             e["category"] or "-", e["url"] or ""))
 
