@@ -93,3 +93,4 @@
 - **GLM-5.2**（承 GLM-5）— **slime 异步 RL**(解耦 gen/train)、PD 分离、DP-attention(EP64/DP64)、FP8 rollout；Muon 零冗余通信、pipeline ZeRO2/激活offload；国产芯片全栈适配(昇腾/摩尔/海光/寒武纪/昆仑芯/沐曦/燧原)。[[llm/2026/glm-5.2|详]]
 - **Kimi-K2.6**（承 K2.5）— **Decoupled Encoder Process (DEP)**，多模态训练效率达纯文本 90%；MuonClip。[[llm/2026/kimi-k2.6|详]]
 - **MiniMax-M3** — MSA 协同 GPU kernel：exp-free TopK + KV-outer 稀疏注意力 + LSE 融合 + 动态负载均衡；109B 验证 prefill 14.2×/decode 7.6× vs GQA。[[llm/2026/minimax-m3|详]]
+- **DSpark**（DeepSeek，投机解码）— 半自回归 draft（并行 backbone + 轻量 Markov/RNN 序列 head 注入块内依赖，缓解后缀衰减）+ 置信度调度验证（confidence head + STS 校准 + 硬件感知 prefix scheduler 按 SPS 容量曲线动态裁剪验证长度，无损）；V4 生产取代 MTP-1，匹配吞吐下单用户提速 57%–85%。开源 DeepSpec 训练库（Eagle3/DFlash/DSpark）。[[llm/2026/deepseek-dspark|详]]

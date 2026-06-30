@@ -7,7 +7,7 @@ updated: 2026-06-18
 
 # 全量来源索引（按发布年月）
 
-> 去重后 **532** 条一手来源（按 `date` 年份归组；去重键为原始 URL）。
+> 去重后 **533** 条一手来源（按 `date` 年份归组；去重键为原始 URL）。
 
 
 ## 2018（1 条）
@@ -513,7 +513,7 @@ updated: 2026-06-18
 - [[llm/themes/agentic/tongyi-deepresearch|Tongyi DeepResearch Technical Report]] — 通义实验室(Tongyi Lab), 阿里巴巴 · 2025-10 · technical-report · [模型发布/后训练/agentic训练] — https://arxiv.org/abs/2510.24701
 - [[llm/2025/deepseek-v3.2|DeepSeek-V3.2 (含 V3.2-Exp / DeepSeek Sparse Attention)]] — DeepSeek · 2025-12 · paper · [架构/AI infra/后训练/agentic训练] — https://arxiv.org/abs/2512.02556
 
-## 2026（53 条）
+## 2026（54 条）
 
 - [[llm/2026/deepseek-ocr-2|DeepSeek-OCR 2: Visual Causal Flow]] — DeepSeek (深度求索) · 2026-01 · paper · [架构/预训练数据] — https://arxiv.org/abs/2601.20552
 - [[llm/2026/longcat-flash-thinking-2601|LongCat-Flash-Thinking-2601 Technical Report]] — 美团 Meituan (LongCat Team) · 2026-01 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2601.16725
@@ -559,6 +559,7 @@ updated: 2026-06-18
 - [[llm/2026/step-3.7-flash|Step 3.7 Flash]] — 阶跃星辰 StepFun · 2026-05 · model-card · [架构/agentic训练/后训练] — https://huggingface.co/stepfun-ai/Step-3.7-Flash
 - [[llm/2026/minimax-m2-series|The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence]] — MiniMax (稀宇科技) · 2026-05 · paper · [架构/AI infra/后训练/agentic训练/预训练数据] — https://arxiv.org/abs/2605.26494
 - [[llm/2026/baichuan-m4|Baichuan-M4: A Clinical-Grade Medical Agent System for Continuous Care]] — 百川智能 Baichuan Intelligence · 2026-06 · paper · [后训练/agentic训练/架构] — https://arxiv.org/abs/2606.08982
+- [[llm/2026/deepseek-dspark|DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation]] — DeepSeek (深度求索) · 北京大学 · 2026-06 · paper · [AI infra/架构] — https://github.com/deepseek-ai/DeepSpec
 - [[llm/2026/glm-5.2|GLM-5.2（智谱旗舰：long-horizon + 1M 上下文 + IndexShare 稀疏注意力）]] — 智谱 Z.ai (Zhipu) · 2026-06 · model-card · [架构/AI infra/后训练/agentic训练] — https://huggingface.co/zai-org/GLM-5.2
 - [[llm/2026/intern-s2-preview|Intern-S2-Preview（上海 AILab：35B 科学多模态，task scaling）]] — 上海人工智能实验室 Shanghai AI Lab (InternLM) · 2026-06 · model-card · [架构/后训练/预训练数据/agentic训练] — https://huggingface.co/internlm/Intern-S2-Preview-FP8
 - [[llm/2026/gpt-rosalind|Introducing new capabilities to GPT-Rosalind]] — OpenAI · 2026-06 · blog · [后训练/agentic训练] — https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/

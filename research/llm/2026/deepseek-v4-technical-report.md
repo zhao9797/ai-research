@@ -27,6 +27,7 @@ DeepSeek-V4 系列是 DeepSeek 发布的预览版（preview）旗舰模型，包
 - **精度**：Base 为 FP8 Mixed；Instruct（Pro/Flash）为 FP4 + FP8 Mixed（MoE 专家参数用 FP4，其余多数 FP8）。
 - **后训练**：两阶段范式——(1) 领域专家独立培养，通过 SFT + RL（GRPO）；(2) 通过 on-policy distillation 统一整合为单一模型。
 - **推理档位**：Pro/Flash 各支持三档 reasoning effort 模式；最大档位 DeepSeek-V4-Pro-Max 自称"当前最强开源模型"。
+- **投机解码**：V4-preview 发布两周后生产服务从 MTP-1 切到 [[llm/2026/deepseek-dspark|DSpark]]（半自回归 draft + 置信度调度验证），匹配吞吐下单用户提速 V4-Flash 60%–85% / V4-Pro 57%–78%；HF 上 V4-Pro-DSpark / V4-Flash-DSpark = 同 checkpoint 外挂投机解码模块。
 - **基座评测（节选）**：MMLU 90.1 / MMLU-Pro 73.5 / C-Eval 93.1（V4-Pro-Base，对比 V3.2-Base 87.8 / 65.5 / 90.4）；SimpleQA-verified 55.2（vs V3.2 28.3）；FACTS Parametric 62.6（vs 27.1）；LongBench-V2 51.5（vs 40.2）。
 - **发布矩阵**：Base 与 Instruct 各自的 Pro/Flash 共 4 个权重，HuggingFace + ModelScope 同步开源，MIT 许可。
 
